@@ -1,0 +1,18 @@
+{
+    "configurations": [
+      {
+        "name": "JUCE-Windows",
+        "includePath": [
+          "${workspaceFolder}/**",
+          "${workspaceFolder}/vcpkg_installed/x64-windows/include"
+        ],
+        "defines": [],
+        "compilerPath": "C:/Program Files/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.43.34808/bin/Hostx64/x64/cl.exe",
+        "cStandard": "c11",
+        "cppStandard": "c++17",
+        "intelliSenseMode": "windows-msvc-x64"
+      }
+    ],
+    "version": 4
+  }
+  
