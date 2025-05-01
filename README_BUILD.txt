@@ -39,4 +39,4 @@ cmake --build build --config Release
 
 ## 6. Lancer l'exectuable
 
-.\build\Release\NomDuProjet.exe
+.\build\MyJUCEApp_artefacts\Release\HarmoniaApp.exe
