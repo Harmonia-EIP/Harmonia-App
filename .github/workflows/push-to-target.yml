@@ -45,7 +45,7 @@ jobs:
       - name: Copy and push changes
         run: |
           set -e
-          rsync -av --delete --exclude='.git' ./ target-repo/
+          rsync -av --delete --exclude='.git' ./ target-repo/ || [ $? -eq 24 ]
           cd target-repo
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
