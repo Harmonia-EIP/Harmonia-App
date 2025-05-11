@@ -41,15 +41,21 @@ jobs:
       - name: Clone target repo branch
         run: |
           set -e
-          git clone --single-branch --branch ${{ env.TARGET_BRANCH }} ${{ env.TARGET_REPO_SSH }} target-repo
-
-      - name: Copy and push changes
-        run: |
-          set -e
-          rsync -av --delete --exclude='.git' ./ target-repo/ || [ $? -eq 24 ]
-          cd target-repo
+          git clone --single-branch --branch ${{ env.TARGET_BRANCH }} ${{ env.TARGET_REPO_SSH }} .
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
+
+      - name: Copy source files to target branch
+        run: |
+          set -e
+          rm -rf * .[^.]* || true  # supprime tous les fichiers et dossiers sauf .git
+          cp -r ../* . || true     # copie les fichiers du repo source vers le dossier courant (la branche clonée)
+          cp -r ../.??* . || true  # copie aussi les fichiers cachés (.gitignore, etc.)
+          rm -rf target-repo .github || true  # nettoyage des dossiers inutiles si jamais ils se sont copiés
+
+      - name: Commit and push
+        run: |
+          set -e
           git add .
           git commit -m "Sync from source repo (main)" || echo "Nothing to commit"
           git push origin ${{ env.TARGET_BRANCH }}
