@@ -33,6 +33,10 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan github.com >> ~/.ssh/known_hosts
 
+      - name: Test SSH connection
+        run: |
+          ssh -T git@github.com || true
+
       - name: Clone target repo branch
         run: |
           set -e
