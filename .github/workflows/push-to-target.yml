@@ -3,7 +3,7 @@ name: Push to branch on another repo
 on:
   push:
     branches:
-      - main
+      - harmonia-app
 
   pull_request:
     types: [closed]
