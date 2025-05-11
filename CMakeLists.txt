@@ -17,7 +17,6 @@ juce_add_gui_app(HarmoniaApp
     PRODUCT_NAME "HarmoniaApp"
 )
 
-# Recursive sur tout les fichiers
 file(GLOB SOURCE_FILES CONFIGURE_DEPENDS
     src/*.cpp
     src/*.h
