@@ -1,12 +1,7 @@
-name: Push to branch on another repo
+name: Mirror to another repo (with submodules)
 
 on:
   push:
-    branches:
-      - main
-
-  pull_request:
-    types: [closed]
     branches:
       - main
 
@@ -15,12 +10,11 @@ env:
   TARGET_BRANCH: "harmonia-app"
 
 jobs:
-  push_to_target:
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true)
+  mirror:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout source repo (with submodules)
+      - name: Checkout source with submodules
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
@@ -28,34 +22,12 @@ jobs:
 
       - name: Setup SSH
         run: |
-          set -e
           mkdir -p ~/.ssh
           echo "${{ secrets.SECRET_KEY_PUSH_MIRROR }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan github.com >> ~/.ssh/known_hosts
 
-      - name: Test SSH connection
+      - name: Push to target repo (with submodules)
         run: |
-          ssh -T git@github.com || true
-
-      - name: Clone target repo branch
-        run: |
-          set -e
-          git clone --single-branch --branch ${{ env.TARGET_BRANCH }} ${{ env.TARGET_REPO_SSH }} .
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-
-      - name: Copy source files to target branch
-        run: |
-          set -e
-          rm -rf * .[^.]* || true  # supprime tous les fichiers et dossiers sauf .git
-          cp -r ../* . || true     # copie les fichiers du repo source vers le dossier courant (la branche clonée)
-          cp -r ../.??* . || true  # copie aussi les fichiers cachés (.gitignore, etc.)
-          rm -rf target-repo .github || true  # nettoyage des dossiers inutiles si jamais ils se sont copiés
-
-      - name: Commit and push
-        run: |
-          set -e
-          git add .
-          git commit -m "Sync from source repo (main)" || echo "Nothing to commit"
-          git push origin ${{ env.TARGET_BRANCH }}
+          git remote add mirror "${{ env.TARGET_REPO_SSH }}"
+          git push mirror HEAD:${{ env.TARGET_BRANCH }} --force
