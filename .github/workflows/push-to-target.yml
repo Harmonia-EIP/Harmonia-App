@@ -1,0 +1,50 @@
+name: Push to branch on another repo
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+
+env:
+  TARGET_REPO_SSH: "git@github.com:EpitechPromo2027/G-EIP-600-LYN-6-1-eip-swan.sallet.git"
+  TARGET_BRANCH: "sync"
+
+jobs:
+  push_to_target:
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup SSH
+        run: |
+          set -e
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SECRET_KEY_PUSH_MIRROR }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+      - name: Clone target repo branch
+        run: |
+          set -e
+          git clone --single-branch --branch ${{ env.TARGET_BRANCH }} ${{ env.TARGET_REPO_SSH }} target-repo
+
+      - name: Copy and push changes
+        run: |
+          set -e
+          rsync -av --delete --exclude='.git' ./ target-repo/
+          cd target-repo
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add .
+          git commit -m "Sync from source repo (main)" || echo "Nothing to commit"
+          git push origin ${{ env.TARGET_BRANCH }}
