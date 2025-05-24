@@ -1,32 +1,28 @@
 cmake_minimum_required(VERSION 3.15)
-project(HarmoniaApp VERSION 0.1.0)
+project(HarmoniaApp)
 
-# Chemin vers vcpkg
-set(CMAKE_TOOLCHAIN_FILE "${CMAKE_SOURCE_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "")
-
-# Requis pour JUCE
 set(CMAKE_CXX_STANDARD 17)
 
-# Trouver JUCE
-find_package(JUCE CONFIG REQUIRED)
-find_package(nlohmann_json CONFIG REQUIRED)
+# Intégration de JUCE localement
+add_subdirectory(external/JUCE)
 
-juce_add_gui_app(HarmoniaApp
-    VERSION "0.1.0"
-    COMPANY_NAME "Harmonia"
-    PRODUCT_NAME "HarmoniaApp"
-)
-
-file(GLOB SOURCE_FILES CONFIGURE_DEPENDS
+# Tous les fichiers du dossier src
+file(GLOB_RECURSE SOURCE_FILES CONFIGURE_DEPENDS
     src/*.cpp
     src/*.h
 )
 
-target_sources(HarmoniaApp PRIVATE ${SOURCE_FILES})
+add_executable(HarmoniaApp WIN32 ${SOURCE_FILES})
+
+target_include_directories(HarmoniaApp PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/src
+)
 
 target_link_libraries(HarmoniaApp PRIVATE
+    juce::juce_core
+    juce::juce_data_structures
+    juce::juce_events
+    juce::juce_graphics
     juce::juce_gui_basics
     juce::juce_gui_extra
-    juce::juce_events
-    nlohmann_json::nlohmann_json
 )

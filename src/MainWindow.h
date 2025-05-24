@@ -1,10 +1,17 @@
 #pragma once
-#include <juce_gui_extra/juce_gui_extra.h>
+#include "JuceHeader.h"
 #include "MainComponent.h"
 
 class MainWindow : public juce::DocumentWindow
 {
 public:
-    MainWindow(juce::String name);
+    MainWindow(const juce::String& name, juce::Component* contentComponent, juce::JUCEApplication& app);
+    ~MainWindow() override;
+
     void closeButtonPressed() override;
+
+private:
+    juce::JUCEApplication& app;
+
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainWindow)
 };

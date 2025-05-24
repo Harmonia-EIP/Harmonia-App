@@ -5,7 +5,7 @@ const juce::String HarmoniaApp::getApplicationVersion() { return "0.1.0"; }
 
 void HarmoniaApp::initialise(const juce::String&)
 {
-    mainWindow = std::make_unique<MainWindow>("HarmoniaApp");
+    mainWindow = std::make_unique<MainWindow>("HarmoniaApp", new MainComponent(), *this);
 }
 
 void HarmoniaApp::shutdown()

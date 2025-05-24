@@ -1,36 +1,45 @@
 #include "MainComponent.h"
-#include <nlohmann/json.hpp>
 #include <filesystem>
 #include <fstream>
 
 MainComponent::MainComponent()
+    : waveformSelector("Waveform"),
+        frequencySlider("Fréquence", 20.0, 20000.0, 440.0),
+        volumeSlider("Volume", 0.0, 1.0, 0.8),
+        generateButton("Générer")
 {
     int width = 400;
     int height = 300;
 
-    try {
-        // Chemin absolu à partir du fichier source
-        std::filesystem::path configPath = std::filesystem::path(__FILE__).parent_path() / "config" / "config.json";
+    addAndMakeVisible(waveformSelector);
+    addAndMakeVisible(frequencySlider);
+    addAndMakeVisible(volumeSlider);
+    addAndMakeVisible(generateButton);
 
-        std::ifstream i(configPath);
-        if (!i) throw std::runtime_error("Fichier introuvable");
-
-        nlohmann::json j;
-        i >> j;
-
-        width = j["window"].value("width", width);
-        height = j["window"].value("height", height);
-    } catch (const std::exception& e) {
-        std::cerr << "Erreur lors du chargement de config.json : " << e.what() << "\n";
-    }
+    generateButton.onClick = [this]() {
+        DataModel model;
+        model.waveform = waveformSelector.getSelectedWaveform();
+        model.frequency = frequencySlider.getValue();
+        model.volume = volumeSlider.getValue();
+        model.saveToJson();
+    };
 
     setSize(width, height);
 }
 
 void MainComponent::paint (juce::Graphics& g)
 {
-    g.fillAll (juce::Colours::darkslategrey);
-    g.setColour (juce::Colours::white);
-    g.setFont (30.0f);
-    g.drawFittedText ("Hello JUCE!", getLocalBounds(), juce::Justification::centred, 1);
+    g.fillAll(juce::Colours::black);
+    g.setColour(juce::Colours::white);
+    g.setFont(16.0f);
+    g.drawFittedText("Harmonia", getLocalBounds(), juce::Justification::centredTop, 1);
+}
+
+void MainComponent::resized()
+{
+    auto area = getLocalBounds().reduced(20);
+    waveformSelector.setBounds(area.removeFromTop(40));
+    frequencySlider.setBounds(area.removeFromTop(40));
+    volumeSlider.setBounds(area.removeFromTop(40));
+    generateButton.setBounds(area.removeFromTop(30));
 }

@@ -1,4 +1,4 @@
-#pragma once
+
 #include <juce_events/juce_events.h>
 #include "MainWindow.h"
 
