@@ -6,7 +6,7 @@ MainComponent::MainComponent()
     : waveformSelector("Waveform"),
         frequencySlider("Fréquence", 20.0, 20000.0, 440.0),
         volumeSlider("Volume", 0.0, 1.0, 0.8),
-        generateButton("Générer")
+        generateButton("Generate")
 {
     int width = 400;
     int height = 300;
