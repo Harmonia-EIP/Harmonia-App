@@ -8,7 +8,7 @@ Ce projet est une application standalone écrite en C++, utilisant JUCE 8.0.6 av
 
 ## 1. Cloner le projet (avec les submodules)
 
-git clone --recurse-submodules https://github.com/TON_USER/TON_REPO.git
+git clone --recurse-submodules https://github.com/Harmonia-EIP/Harmonia-App.git
 cd TON_REPO
 
 ## 2. Génerer les fichiers de build
