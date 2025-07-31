@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - name: Checkout source with submodules
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
           submodules: recursive
@@ -25,9 +25,9 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.SECRET_KEY_PUSH_MIRROR }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
 
       - name: Push to target repo (with submodules)
         run: |
           git remote add mirror "${{ env.TARGET_REPO_SSH }}"
-          git push mirror HEAD:${{ env.TARGET_BRANCH }} --force
+          git push mirror HEAD:${{ env.TARGET_BRANCH }} --force --recurse-submodules=on-demand
