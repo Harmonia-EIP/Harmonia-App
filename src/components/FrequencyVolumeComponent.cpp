@@ -1,0 +1,44 @@
+#include "FrequencyVolumeComponent.h"
+
+FrequencyVolumeComponent::FrequencyVolumeComponent(CustomLookAndFeel& lnF)
+    : lookAndFeel(lnF),
+      frequencySlider("Frequency", 20.0, 20000.0, 440.0),
+      volumeSlider("Volume", 0.0, 1.0, 0.8)
+{
+    setupSlider(frequencySlider, frequencyLabel, "Frequency");
+    setupSlider(volumeSlider, volumeLabel, "Volume");
+
+    addAndMakeVisible(frequencySlider);
+    addAndMakeVisible(frequencyLabel);
+    addAndMakeVisible(volumeSlider);
+    addAndMakeVisible(volumeLabel);
+}
+
+FrequencyVolumeComponent::~FrequencyVolumeComponent()
+{
+    frequencySlider.setLookAndFeel(nullptr);
+    volumeSlider.setLookAndFeel(nullptr);
+}
+
+void FrequencyVolumeComponent::setupSlider(juce::Slider& slider, juce::Label& label, const juce::String& name)
+{
+    slider.setSliderStyle(juce::Slider::RotaryHorizontalVerticalDrag);
+    slider.setTextBoxStyle(juce::Slider::TextBoxBelow, false, 60, 20);
+    slider.setLookAndFeel(&lookAndFeel);
+
+    label.setText(name, juce::dontSendNotification);
+    label.setColour(juce::Label::textColourId, juce::Colours::white);
+    label.setJustificationType(juce::Justification::centred);
+}
+
+void FrequencyVolumeComponent::resized()
+{
+    auto area = getLocalBounds();
+    auto half = area.getWidth() / 2;
+
+    frequencyLabel.setBounds(0, 0, half, 20);
+    frequencySlider.setBounds(0, 20, half, getHeight() - 20);
+
+    volumeLabel.setBounds(half, 0, half, 20);
+    volumeSlider.setBounds(half, 20, half, getHeight() - 20);
+}

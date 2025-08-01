@@ -8,6 +8,9 @@
 #include "CustomLookAndFeel.h"
 #include "components/TitleComponent.h"
 #include "components/TopBarComponent.h"
+#include "components/FrequencyVolumeComponent.h"
+#include "components/ADSRComponent.h"
+#include "components/FilterComponent.h"
 
 class MainComponent : public juce::Component
 {
@@ -16,19 +19,6 @@ public:
      ~MainComponent() override;
     void paint(juce::Graphics&) override;
     void resized() override;
-
-    FrequencySlider frequencySlider;
-    VolumeSlider volumeSlider;
-
-    juce::Slider attackSlider, decaySlider, sustainSlider, releaseSlider;
-    juce::Label attackLabel, decayLabel, sustainLabel, releaseLabel;
-
-    juce::ComboBox filterTypeSelector;
-    juce::Slider cutoffSlider, resonanceSlider;
-    juce::Label cutoffLabel, resonanceLabel;
-
-    juce::Label frequencyLabel;
-    juce::Label volumeLabel;
 
     GenerateButton generateButton;
 
@@ -39,6 +29,9 @@ private:
 
     TitleComponent title { "Harmonia" };
     TopBarComponent topBar;
+    FrequencyVolumeComponent freqVolComponent;
+    ADSRComponent adsrComponent;
+    FilterComponent filterComponent;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainComponent)
 };

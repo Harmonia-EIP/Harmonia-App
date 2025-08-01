@@ -1,6 +1,6 @@
 #pragma once
 #include <JuceHeader.h>
-#include "../WaveformSelector.h"  // si ton waveform est une classe custom
+#include "../WaveformSelector.h"
 
 class TopBarComponent : public juce::Component
 {
@@ -11,7 +11,6 @@ public:
     void paint(juce::Graphics&) override;
     void resized() override;
 
-    // Accès public pour récupérer les valeurs dans MainComponent
     WaveformSelector waveformSelector;
     juce::ComboBox filterTypeSelector;
     juce::TextEditor promptEditor;
