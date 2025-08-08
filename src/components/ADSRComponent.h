@@ -10,7 +10,13 @@ public:
 
     void resized() override;
 
+    std::vector<double> getSlidersInfo() const;
+    void setAttack(double);
+    void setDecay(double);
+    void setSustain(double);
+    void setRelease(double);
     juce::Slider attackSlider, decaySlider, sustainSlider, releaseSlider;
+
 
 private:
     juce::Label attackLabel, decayLabel, sustainLabel, releaseLabel;

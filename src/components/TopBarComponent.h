@@ -11,6 +11,16 @@ public:
     void paint(juce::Graphics&) override;
     void resized() override;
 
+    juce::String getPrompt() const;
+
+    juce::String getFilterType() const;
+
+    juce::String getWaveform() const;
+
+    void setFilterType(juce::String);
+    void setPrompt(juce::String);
+    void setWaveform(juce::String);
+
     WaveformSelector waveformSelector;
     juce::ComboBox filterTypeSelector;
     juce::TextEditor promptEditor;

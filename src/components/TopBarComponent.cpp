@@ -38,6 +38,56 @@ TopBarComponent::TopBarComponent()
 
 TopBarComponent::~TopBarComponent() {}
 
+juce::String TopBarComponent::getPrompt() const
+{
+    return promptEditor.getText();
+}
+
+juce::String TopBarComponent::getFilterType() const
+{
+    return filterTypeSelector.getText();
+}
+
+juce::String TopBarComponent::getWaveform() const
+{
+    return waveformSelector.getSelectedWaveform(); // à condition que WaveformSelector ait cette méthode
+}
+
+void TopBarComponent::setFilterType(juce::String filterName)
+{
+    auto name = filterName.trim().toLowerCase();
+
+    if (name == "low pass")
+        filterTypeSelector.setSelectedId(1);
+    else if (name == "high pass")
+        filterTypeSelector.setSelectedId(2);
+    else if (name == "band pass")
+        filterTypeSelector.setSelectedId(3);
+    else
+        jassertfalse; // Unknown filter name
+}
+    
+void TopBarComponent::setPrompt(juce::String prompt)
+{
+    promptEditor.setText(prompt, juce::NotificationType::dontSendNotification);
+}
+   
+void TopBarComponent::setWaveform(juce::String waveformName)
+{
+    auto name = waveformName.trim().toLowerCase();
+
+    if (name == "sine")
+        waveformSelector.setSelectedId(1);
+    else if (name == "square")
+        waveformSelector.setSelectedId(2);
+    else if (name == "saw")
+        waveformSelector.setSelectedId(3);
+    else if (name == "triangle")
+        waveformSelector.setSelectedId(4);
+    else
+        jassertfalse; // Unknown waveform name
+}
+
 void TopBarComponent::paint(juce::Graphics& g)
 {
     // fond si besoin

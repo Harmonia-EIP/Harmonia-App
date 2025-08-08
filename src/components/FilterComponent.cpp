@@ -17,6 +17,21 @@ FilterComponent::~FilterComponent()
     resonanceSlider.setLookAndFeel(nullptr);
 }
 
+std::pair<double, double> FilterComponent::getSlidersInfo() const
+{
+    return std::make_pair<double, double>(cutoffSlider.getValue(), resonanceSlider.getValue());
+}
+
+void FilterComponent::setCutoff(double cutoff)
+{
+    cutoffSlider.setValue(cutoff, juce::NotificationType::dontSendNotification);
+}
+
+void FilterComponent::setResonance(double resonance)
+{
+    resonanceSlider.setValue(resonance, juce::NotificationType::dontSendNotification);
+}
+
 void FilterComponent::setupSlider(juce::Slider& slider, juce::Label& label, const juce::String& name,
                              float min, float max, float def)
 {

@@ -10,6 +10,10 @@ public:
 
     void resized() override;
 
+    std::pair<double, double> getSlidersInfo() const;
+    void setCutoff(double);
+    void setResonance(double);
+
     juce::Slider cutoffSlider, resonanceSlider;
 
 private:

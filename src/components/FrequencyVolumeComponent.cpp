@@ -20,6 +20,21 @@ FrequencyVolumeComponent::~FrequencyVolumeComponent()
     volumeSlider.setLookAndFeel(nullptr);
 }
 
+void FrequencyVolumeComponent::setFrequency(double freq)
+{
+    frequencySlider.setValue(freq, juce::NotificationType::dontSendNotification);
+}
+    
+void FrequencyVolumeComponent::setVolume(double vol)
+{
+    volumeSlider.setValue(vol, juce::NotificationType::dontSendNotification);
+}
+
+std::pair<double, double> FrequencyVolumeComponent::getFreqVol() const
+{
+    return std::make_pair<double, double>(frequencySlider.getValue(), volumeSlider.getValue());
+}
+
 void FrequencyVolumeComponent::setupSlider(juce::Slider& slider, juce::Label& label, const juce::String& name)
 {
     slider.setSliderStyle(juce::Slider::RotaryHorizontalVerticalDrag);

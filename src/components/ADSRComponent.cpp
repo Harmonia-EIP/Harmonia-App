@@ -21,6 +21,37 @@ ADSRComponent::~ADSRComponent()
     releaseSlider.setLookAndFeel(nullptr);
 }
 
+void ADSRComponent::setAttack(double attack)
+{
+    attackSlider.setValue(attack, juce::NotificationType::dontSendNotification);
+}
+
+void ADSRComponent::setDecay(double decay)
+{
+    decaySlider.setValue(decay, juce::NotificationType::dontSendNotification);
+}
+
+void ADSRComponent::setSustain(double sustain)
+{
+    sustainSlider.setValue(sustain, juce::NotificationType::dontSendNotification);
+}
+    
+void ADSRComponent::setRelease(double release)
+{
+    releaseSlider.setValue(release, juce::NotificationType::dontSendNotification);
+}
+
+std::vector<double> ADSRComponent::getSlidersInfo() const
+{
+    std::vector<double> adsrValues = {
+        attackSlider.getValue(),
+        decaySlider.getValue(),
+        sustainSlider.getValue(),
+        releaseSlider.getValue()
+    };
+    return adsrValues;
+}
+
 void ADSRComponent::setupSlider(juce::Slider& slider, juce::Label& label, const juce::String& name,
                            float min, float max, float def)
 {

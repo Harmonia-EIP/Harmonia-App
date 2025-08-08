@@ -12,6 +12,10 @@ public:
 
     void resized() override;
 
+    std::pair<double, double> getFreqVol() const;
+    void setFrequency(double);
+    void setVolume(double);
+
     FrequencySlider frequencySlider;
     VolumeSlider volumeSlider;
 

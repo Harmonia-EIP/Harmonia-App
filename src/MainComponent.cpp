@@ -28,19 +28,77 @@ MainComponent::MainComponent()
 
     // Generate button
     addAndMakeVisible(generateButton);
-    // generateButton.onClick = [this]() {
-    //     DataModel model;
-    //     model.frequency = frequencySlider.getValue();
-    //     model.volume = volumeSlider.getValue();
-    //     model.attack = attackSlider.getValue();
-    //     model.decay = decaySlider.getValue();
-    //     model.sustain = sustainSlider.getValue();
-    //     model.release = releaseSlider.getValue();
-    //     model.filterType = filterTypeSelector.getText();
-    //     model.cutoff = cutoffSlider.getValue();
-    //     model.resonance = resonanceSlider.getValue();
-    //     model.saveToJson();
-    // };
+    generateButton.onClick = [this]() {
+        DataModel model;
+        std::pair<double, double> freqVol = freqVolComponent.getFreqVol();
+        std::vector<double> adsrValues = adsrComponent.getSlidersInfo();
+        std::pair<double, double> cutoffReso = filterComponent.getSlidersInfo();
+
+        model.frequency = freqVol.first;
+        model.volume = freqVol.second;
+
+        model.attack = adsrValues[0];
+        model.decay = adsrValues[1];
+        model.sustain = adsrValues[2];
+        model.release = adsrValues[3];
+
+        model.cutoff = cutoffReso.first;
+        model.resonance = cutoffReso.second;
+        
+        model.filterType = topBar.getFilterType();
+        model.waveform = topBar.getWaveform();
+        model.prompt = topBar.getPrompt();
+        model.saveToJson();
+    };
+
+    addAndMakeVisible(loadButton);
+    addAndMakeVisible(resetMissingParamsToggle);
+
+    loadButton.onClick = [this]() {
+        auto* chooser = new juce::FileChooser("Select a JSON file to load", {}, "*.json");
+
+        chooser->launchAsync(
+            juce::FileBrowserComponent::openMode | juce::FileBrowserComponent::canSelectFiles,
+            [this, chooser](const juce::FileChooser& fc)
+            {
+                auto file = fc.getResult();
+                delete chooser; // libérer manuellement
+
+                if (!file.existsAsFile())
+                    return;
+
+                juce::FileInputStream inputStream(file);
+                if (!inputStream.openedOk())
+                    return;
+
+                juce::var json = juce::JSON::parse(inputStream.readEntireStreamAsString());
+                if (!json.isObject())
+                    return;
+
+                auto* obj = json.getDynamicObject();
+
+                auto setIfPresent = [&](const juce::String& key, auto setter, auto defaultValue) {
+                    if (obj->hasProperty(key))
+                        setter(obj->getProperty(key));
+                    else if (resetMissingParamsToggle.getToggleState())
+                        setter(defaultValue);
+                };
+
+                setIfPresent("frequency", [this](auto v) { freqVolComponent.setFrequency((double)v); }, 440.0);
+                setIfPresent("volume",    [this](auto v) { freqVolComponent.setVolume((double)v); }, 0.8);
+                setIfPresent("attack",    [this](auto v) { adsrComponent.setAttack((double)v); }, 0.1);
+                setIfPresent("decay",     [this](auto v) { adsrComponent.setDecay((double)v); }, 0.2);
+                setIfPresent("sustain",   [this](auto v) { adsrComponent.setSustain((double)v); }, 0.7);
+                setIfPresent("release",   [this](auto v) { adsrComponent.setRelease((double)v); }, 0.3);
+                setIfPresent("cutoff",    [this](auto v) { filterComponent.setCutoff((double)v); }, 1000.0);
+                setIfPresent("resonance", [this](auto v) { filterComponent.setResonance((double)v); }, 0.5);
+                setIfPresent("filterType", [this](auto v) { topBar.setFilterType(v); }, juce::String("Low-Pass"));
+                setIfPresent("prompt",     [this](auto v) { topBar.setPrompt(v); },     juce::String(""));
+                setIfPresent("waveform",   [this](auto v) { topBar.setWaveform(v); },   juce::String("Sine"));
+            }
+        );
+    };
+
 
     setSize(800, 600);
 }
@@ -74,5 +132,7 @@ void MainComponent::resized()
     filterComponent.setBounds(area.removeFromTop(100));
 
 
+    resetMissingParamsToggle.setBounds(area.removeFromBottom(30));
+    loadButton.setBounds(area.removeFromBottom(30));
     generateButton.setBounds(area.removeFromBottom(30));
 }

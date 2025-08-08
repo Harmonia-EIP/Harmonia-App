@@ -1,5 +1,6 @@
 #pragma once
 
+#define JUCE_USE_NATIVE_FILECHOOSERS 1
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "FrequencySlider.h"
 #include "VolumeSlider.h"
@@ -32,6 +33,9 @@ private:
     FrequencyVolumeComponent freqVolComponent;
     ADSRComponent adsrComponent;
     FilterComponent filterComponent;
+
+    juce::TextButton loadButton { "Load" };
+    juce::ToggleButton resetMissingParamsToggle { "Set missing values to default" };
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainComponent)
 };
