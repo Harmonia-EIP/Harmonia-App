@@ -22,6 +22,16 @@ std::pair<double, double> FilterComponent::getSlidersInfo() const
     return std::make_pair<double, double>(cutoffSlider.getValue(), resonanceSlider.getValue());
 }
 
+double FilterComponent::getCutoff() const
+{
+    return cutoffSlider.getValue();
+}
+    
+double FilterComponent::getResonance() const
+{
+    return resonanceSlider.getValue();
+}
+
 void FilterComponent::setCutoff(double cutoff)
 {
     cutoffSlider.setValue(cutoff, juce::NotificationType::dontSendNotification);

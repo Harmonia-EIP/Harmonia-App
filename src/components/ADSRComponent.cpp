@@ -52,6 +52,26 @@ std::vector<double> ADSRComponent::getSlidersInfo() const
     return adsrValues;
 }
 
+double ADSRComponent::getAttack() const
+{
+    return attackSlider.getValue();
+}
+
+double ADSRComponent::getDecay() const
+{
+    return decaySlider.getValue();
+}
+
+double ADSRComponent::getSustain() const
+{
+    return sustainSlider.getValue();
+}
+    
+double ADSRComponent::getRelease() const
+{
+    return releaseSlider.getValue();
+}
+
 void ADSRComponent::setupSlider(juce::Slider& slider, juce::Label& label, const juce::String& name,
                            float min, float max, float def)
 {

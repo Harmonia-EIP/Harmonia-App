@@ -11,6 +11,12 @@ public:
     void resized() override;
 
     std::vector<double> getSlidersInfo() const;
+
+    double getAttack() const;
+    double getDecay() const;
+    double getSustain() const;
+    double getRelease() const;
+
     void setAttack(double);
     void setDecay(double);
     void setSustain(double);

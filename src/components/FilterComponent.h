@@ -11,6 +11,10 @@ public:
     void resized() override;
 
     std::pair<double, double> getSlidersInfo() const;
+
+    double getCutoff() const;
+    double getResonance() const;
+    
     void setCutoff(double);
     void setResonance(double);
 

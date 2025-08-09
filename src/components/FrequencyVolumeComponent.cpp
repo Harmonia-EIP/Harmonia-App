@@ -35,6 +35,16 @@ std::pair<double, double> FrequencyVolumeComponent::getFreqVol() const
     return std::make_pair<double, double>(frequencySlider.getValue(), volumeSlider.getValue());
 }
 
+double FrequencyVolumeComponent::getFreq() const
+{
+    return frequencySlider.getValue();
+}
+    
+double FrequencyVolumeComponent::getVolume() const
+{
+    return volumeSlider.getValue();
+}
+
 void FrequencyVolumeComponent::setupSlider(juce::Slider& slider, juce::Label& label, const juce::String& name)
 {
     slider.setSliderStyle(juce::Slider::RotaryHorizontalVerticalDrag);

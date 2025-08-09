@@ -13,6 +13,9 @@ public:
     void resized() override;
 
     std::pair<double, double> getFreqVol() const;
+    double getFreq() const;
+    double getVolume() const;
+    
     void setFrequency(double);
     void setVolume(double);
 
