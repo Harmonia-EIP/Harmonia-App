@@ -53,7 +53,7 @@ void TitleComponent::buttonClicked(juce::Button* button)
     {
         supabase.clearSession();
         if (onLogout)
-            onLogout();
+            onLogout(); 
     }
 }
 
