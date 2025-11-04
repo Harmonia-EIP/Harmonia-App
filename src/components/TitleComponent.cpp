@@ -1,17 +1,59 @@
 #include "TitleComponent.h"
 
-TitleComponent::TitleComponent(const juce::String& textToDisplay)
-    : title(textToDisplay)
+TitleComponent::TitleComponent(const juce::String& textToDisplay, SupabaseManager& supabaseManager)
+    : supabase(supabaseManager), title(textToDisplay)
 {
-    addAndMakeVisible(label);
+    titleLabel.setText(title, juce::dontSendNotification);
+    titleLabel.setJustificationType(juce::Justification::centred);
+    titleLabel.setColour(juce::Label::textColourId, juce::Colours::white);
+    titleLabel.setFont(juce::Font(26.0f, juce::Font::bold));
+    addAndMakeVisible(titleLabel);
 
-    label.setText(title, juce::dontSendNotification);
-    label.setJustificationType(juce::Justification::centred);
-    label.setColour(juce::Label::textColourId, juce::Colours::white);
-    label.setFont(juce::Font(24.0f, juce::Font::bold));
+    auto sessionOpt = supabase.loadSession();
+    juce::String pseudo = sessionOpt.has_value() ? sessionOpt->pseudo : "Invité";
+
+    pseudoLabel.setText(pseudo, juce::dontSendNotification);
+    pseudoLabel.setFont(juce::Font(18.0f, juce::Font::plain));
+    pseudoLabel.setColour(juce::Label::textColourId, juce::Colours::white);
+    pseudoLabel.setJustificationType(juce::Justification::centredLeft);
+    addAndMakeVisible(pseudoLabel);
+
+    logoutButton.setButtonText("Deconnexion");
+    logoutButton.addListener(this);
+    logoutButton.setColour(juce::TextButton::buttonColourId, juce::Colours::darkred);
+    logoutButton.setColour(juce::TextButton::textColourOffId, juce::Colours::white);
+    logoutButton.setColour(juce::TextButton::textColourOnId, juce::Colours::white);
+    logoutButton.setSize(140, 36);
+    addAndMakeVisible(logoutButton);
+}
+
+TitleComponent::~TitleComponent()
+{
+    logoutButton.removeListener(this);
+}
+
+void TitleComponent::paint(juce::Graphics& g)
+{
+    g.fillAll(juce::Colours::black.withAlpha(0.5f));
 }
 
 void TitleComponent::resized()
 {
-    label.setBounds(getLocalBounds());
+    auto area = getLocalBounds().reduced(10);
+    auto leftArea = area.removeFromLeft(240);
+    pseudoLabel.setBounds(leftArea);
+    auto rightArea = area.removeFromRight(180);
+    logoutButton.setBounds(rightArea.reduced(5));
+    titleLabel.setBounds(area);
 }
+
+void TitleComponent::buttonClicked(juce::Button* button)
+{
+    if (button == &logoutButton)
+    {
+        supabase.clearSession();
+        if (onLogout)
+            onLogout();
+    }
+}
+

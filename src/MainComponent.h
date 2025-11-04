@@ -7,6 +7,7 @@
 #include "GenerateButton.h"
 #include "DataModel.h"
 #include "CustomLookAndFeel.h"
+#include "SupabaseManager.h"
 #include "components/TitleComponent.h"
 #include "components/TopBarComponent.h"
 #include "components/FrequencyVolumeComponent.h"
@@ -16,18 +17,19 @@
 
 class MainComponent : public juce::Component
 {
-public:
-    MainComponent();
-     ~MainComponent() override;
+public:                               
+    explicit MainComponent(SupabaseManager& supabaseManager);
+    ~MainComponent() override;
+
     void paint(juce::Graphics&) override;
     void resized() override;
-
+    
+    TitleComponent& getTitleComponent() { return title; }
 private:
     CustomLookAndFeel customLookAndFeel;
 
     // Components
-
-    TitleComponent title { "Harmonia" };
+    TitleComponent title;
     TopBarComponent topBar;
     FrequencyVolumeComponent freqVolComponent;
     ADSRComponent adsrComponent;

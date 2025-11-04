@@ -2,3 +2,4 @@
 vcpkg/
 vcpkg_installed/
 generated_presets/
+.env

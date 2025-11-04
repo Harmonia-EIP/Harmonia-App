@@ -2,23 +2,21 @@
 #include <filesystem>
 #include <fstream>
 
-MainComponent::MainComponent()
-    : freqVolComponent(customLookAndFeel),
+MainComponent::MainComponent(SupabaseManager& supabaseManager)
+    : title("Harmonia", supabaseManager),
+      freqVolComponent(customLookAndFeel),
       adsrComponent(customLookAndFeel),
       filterComponent(customLookAndFeel)
 {
     addAndMakeVisible(title);
     addAndMakeVisible(topBar);
-
     addAndMakeVisible(freqVolComponent);
     addAndMakeVisible(adsrComponent);
     addAndMakeVisible(filterComponent);
+    addAndMakeVisible(bottomBar);
 
     // LookAndFeel global
     setLookAndFeel(&customLookAndFeel);
-
-    // Bottom bar
-    addAndMakeVisible(bottomBar);
 
     // Bouton Generate
     bottomBar.onGenerateClicked = [this]()
@@ -30,15 +28,12 @@ MainComponent::MainComponent()
 
         model.frequency = freqVol.first;
         model.volume    = freqVol.second;
-
         model.attack  = adsrValues[0];
         model.decay   = adsrValues[1];
         model.sustain = adsrValues[2];
         model.release = adsrValues[3];
-
         model.cutoff    = cutoffReso.first;
         model.resonance = cutoffReso.second;
-
         model.filterType = topBar.getFilterType();
         model.waveform   = topBar.getWaveform();
         model.prompt     = topBar.getPrompt();
@@ -98,6 +93,7 @@ MainComponent::MainComponent()
     setSize(800, 600);
 }
 
+
 MainComponent::~MainComponent()
 {
     setLookAndFeel(nullptr);
@@ -112,10 +108,10 @@ void MainComponent::resized()
 {
     auto area = getLocalBounds().reduced(20);
 
-    auto titleBar = area.removeFromTop(20);
+    auto titleBar = area.removeFromTop(50);
     title.setBounds(titleBar);
-
-    auto topRow = area.removeFromTop(100);
+    
+    auto topRow = area.removeFromTop(150);
     topBar.setBounds(topRow);
 
     freqVolComponent.setBounds(area.removeFromTop(120));

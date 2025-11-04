@@ -1,3 +1,9 @@
 [submodule "external/JUCE"]
 	path = external/JUCE
 	url = https://github.com/juce-framework/JUCE.git
+[submodule "external/cpr"]
+	path = external/cpr
+	url = https://github.com/libcpr/cpr
+[submodule "external/json"]
+	path = external/json
+	url = https://github.com/nlohmann/json

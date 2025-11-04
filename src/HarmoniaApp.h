@@ -1,6 +1,7 @@
-
-#include <juce_events/juce_events.h>
-#include "MainWindow.h"
+#pragma once
+#include <JuceHeader.h>
+#include "MainWindow.h"          // ✅ ajoute cette ligne
+#include "SupabaseManager.h"
 
 class HarmoniaApp : public juce::JUCEApplication
 {
@@ -11,5 +12,6 @@ public:
     void shutdown() override;
 
 private:
-    std::unique_ptr<MainWindow> mainWindow;
+    std::unique_ptr<MainWindow> mainWindow;   // ✅ retire "class"
+    std::unique_ptr<SupabaseManager> supabase;
 };
