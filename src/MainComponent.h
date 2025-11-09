@@ -7,7 +7,7 @@
 #include "GenerateButton.h"
 #include "DataModel.h"
 #include "CustomLookAndFeel.h"
-#include "SupabaseManager.h"
+#include "BackendAuthManager.h"
 #include "components/TitleComponent.h"
 #include "components/TopBarComponent.h"
 #include "components/FrequencyVolumeComponent.h"
@@ -18,7 +18,7 @@
 class MainComponent : public juce::Component
 {
 public:                               
-    explicit MainComponent(SupabaseManager& supabaseManager);
+    explicit MainComponent(BackendAuthManager& be);
     ~MainComponent() override;
 
     void paint(juce::Graphics&) override;

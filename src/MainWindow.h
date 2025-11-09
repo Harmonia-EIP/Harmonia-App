@@ -1,6 +1,6 @@
 #pragma once
 #include <JuceHeader.h>
-#include "SupabaseManager.h"
+#include "BackendAuthManager.h"
 #include "MainComponent.h"
 #include "components/WelcomePage.h"
 #include "components/LoginPage.h"
@@ -11,14 +11,14 @@ class MainWindow : public juce::DocumentWindow
 public:
     MainWindow(const juce::String& name,
                juce::JUCEApplication& appRef,
-               SupabaseManager& sb,
+               BackendAuthManager& be,
                std::optional<UserSession> existingSession = std::nullopt);
 
     void closeButtonPressed() override;
 
 private:
     juce::JUCEApplication& app;
-    SupabaseManager& supabase;
+    BackendAuthManager& backend;
 
     std::unique_ptr<juce::Component> currentComponent;
 

@@ -2,8 +2,8 @@
 #include <filesystem>
 #include <fstream>
 
-MainComponent::MainComponent(SupabaseManager& supabaseManager)
-    : title("Harmonia", supabaseManager),
+MainComponent::MainComponent(BackendAuthManager& be)
+    : title("Harmonia", be),
       freqVolComponent(customLookAndFeel),
       adsrComponent(customLookAndFeel),
       filterComponent(customLookAndFeel)

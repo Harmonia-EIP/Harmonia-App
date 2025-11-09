@@ -1,7 +1,7 @@
 #include "SignupPage.h"
 
-SignupPage::SignupPage(SupabaseManager& sb, std::function<void(const UserSession&)> onSignupSuccess)
-    : supabase(sb), onSuccess(onSignupSuccess)
+SignupPage::SignupPage(BackendAuthManager& be, std::function<void(const UserSession&)> onSignupSuccess)
+    : backend(be), onSuccess(onSignupSuccess)
 {
     // --- Titre ---
     titleLabel.setText("Create your Harmonia account", juce::dontSendNotification);
@@ -90,19 +90,20 @@ void SignupPage::handleSignup()
         return;
     }
 
-    auto session = supabase.signupUser(email, password, username, firstname, lastname);
+    auto result = backend.signupUser(username, firstname, lastname, email, password);
 
-    if (session.has_value())
+    if (!result.success)
     {
+        juce::AlertWindow::showMessageBoxAsync(
+            juce::AlertWindow::WarningIcon,
+            "Erreur",
+            result.errorMessage
+        );
+    }
+    else {
         juce::AlertWindow::showMessageBoxAsync(juce::AlertWindow::InfoIcon,
                                                "Welcome",
                                                "Account created successfully!");
-        onSuccess(*session);
-    }
-    else
-    {
-        juce::AlertWindow::showMessageBoxAsync(juce::AlertWindow::WarningIcon,
-                                               "Error",
-                                               "Account creation failed.");
+        onSuccess(result.session);
     }
 }

@@ -1,7 +1,7 @@
 #pragma once
 #include <JuceHeader.h>
 #include "MainWindow.h"          // ✅ ajoute cette ligne
-#include "SupabaseManager.h"
+#include "BackendAuthManager.h"
 
 class HarmoniaApp : public juce::JUCEApplication
 {
@@ -13,5 +13,5 @@ public:
 
 private:
     std::unique_ptr<MainWindow> mainWindow;   // ✅ retire "class"
-    std::unique_ptr<SupabaseManager> supabase;
+    std::unique_ptr<BackendAuthManager> backend;
 };

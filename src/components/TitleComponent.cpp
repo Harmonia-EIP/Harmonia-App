@@ -1,7 +1,7 @@
 #include "TitleComponent.h"
 
-TitleComponent::TitleComponent(const juce::String& textToDisplay, SupabaseManager& supabaseManager)
-    : supabase(supabaseManager), title(textToDisplay)
+TitleComponent::TitleComponent(const juce::String& textToDisplay, BackendAuthManager& be)
+    : backend(be), title(textToDisplay)
 {
     titleLabel.setText(title, juce::dontSendNotification);
     titleLabel.setJustificationType(juce::Justification::centred);
@@ -9,7 +9,7 @@ TitleComponent::TitleComponent(const juce::String& textToDisplay, SupabaseManage
     titleLabel.setFont(juce::Font(26.0f, juce::Font::bold));
     addAndMakeVisible(titleLabel);
 
-    auto sessionOpt = supabase.loadSession();
+    auto sessionOpt = backend.loadSession();
     juce::String pseudo = sessionOpt.has_value() ? sessionOpt->pseudo : "Invité";
 
     pseudoLabel.setText(pseudo, juce::dontSendNotification);
@@ -51,7 +51,7 @@ void TitleComponent::buttonClicked(juce::Button* button)
 {
     if (button == &logoutButton)
     {
-        supabase.clearSession();
+        backend.clearSession();
         if (onLogout)
             onLogout(); 
     }

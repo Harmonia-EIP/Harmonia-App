@@ -1,11 +1,11 @@
 #pragma once
 #include <JuceHeader.h>
-#include "SupabaseManager.h"
+#include "BackendAuthManager.h"
 
 class LoginPage : public juce::Component
 {
 public:
-    LoginPage(SupabaseManager& sb, std::function<void(const UserSession&)> onSuccess);
+    LoginPage(BackendAuthManager& be, std::function<void(const UserSession&)> onSuccess);
 
     std::function<void()> onBack;
 
@@ -13,7 +13,7 @@ public:
     void resized() override;
 
 private:
-    SupabaseManager& supabase;
+    BackendAuthManager& backend;
     std::function<void(const UserSession&)> onSuccess;
 
     juce::Label titleLabel;

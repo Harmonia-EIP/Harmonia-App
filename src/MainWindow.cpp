@@ -3,14 +3,14 @@
 
 MainWindow::MainWindow(const juce::String& name,
                        juce::JUCEApplication& appRef,
-                       SupabaseManager& sb,
+                       BackendAuthManager& be,
                        std::optional<UserSession> existingSession)
     : juce::DocumentWindow(name,
                            juce::Desktop::getInstance().getDefaultLookAndFeel()
                                .findColour(juce::ResizableWindow::backgroundColourId),
                            juce::DocumentWindow::allButtons),
       app(appRef),
-      supabase(sb)
+      backend(be)
 {
     setUsingNativeTitleBar(true);
 
@@ -46,7 +46,7 @@ void MainWindow::showWelcomeScreen()
 
 void MainWindow::showLoginScreen()
 {
-    auto* login = new LoginPage(supabase, [this](const UserSession& session) {
+    auto* login = new LoginPage(backend, [this](const UserSession& session) {
         showMainScreen();
     });
 
@@ -60,7 +60,7 @@ void MainWindow::showLoginScreen()
 
 void MainWindow::showSignupScreen()
 {
-    auto* signup = new SignupPage(supabase, [this](const UserSession& session) {
+    auto* signup = new SignupPage(backend, [this](const UserSession& session) {
         showMainScreen();
     });
 
@@ -74,7 +74,7 @@ void MainWindow::showSignupScreen()
 
 void MainWindow::showMainScreen()
 {
-    auto* main = new MainComponent(supabase);
+    auto* main = new MainComponent(backend);
     main->getTitleComponent().onLogout = [this]() {
         showWelcomeScreen();
     };

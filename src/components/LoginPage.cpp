@@ -1,7 +1,7 @@
 #include "LoginPage.h"
 
-LoginPage::LoginPage(SupabaseManager& sb, std::function<void(const UserSession&)> onSuccessCallback)
-    : supabase(sb), onSuccess(onSuccessCallback)
+LoginPage::LoginPage(BackendAuthManager& be, std::function<void(const UserSession&)> onSuccessCallback)
+    : backend(be), onSuccess(onSuccessCallback)
 {
     titleLabel.setText("Sign in to Harmonia", juce::dontSendNotification);
     titleLabel.setFont(juce::Font(24.0f, juce::Font::bold));
@@ -53,16 +53,16 @@ void LoginPage::handleLogin()
         return;
     }
 
-    auto session = supabase.loginUser(email, password);
-    if (session.has_value())
+    auto result = backend.loginUser(email, password);
+    if (!result.success)
     {
-        supabase.saveSession(*session);
-        onSuccess(*session);
+        juce::AlertWindow::showMessageBoxAsync(
+            juce::AlertWindow::WarningIcon,
+            "Erreur",
+            result.errorMessage
+        );
     }
-    else
-    {
-        juce::AlertWindow::showMessageBoxAsync(juce::AlertWindow::WarningIcon,
-                                               "Erreur",
-                                               "Échec de connexion.");
+    else {
+        onSuccess(result.session);
     }
 }
