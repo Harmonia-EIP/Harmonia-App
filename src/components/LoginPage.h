@@ -18,7 +18,7 @@ private:
 
     juce::Label titleLabel;
     juce::TextEditor emailField, passwordField;
-    juce::TextButton loginButton{"Sign in"}, backButton{"← Back"};
+    juce::TextButton loginButton{"Sign in"}, backButton{"Go Back"};
 
     void handleLogin();
 };

@@ -3,14 +3,12 @@
 SignupPage::SignupPage(BackendAuthManager& be, std::function<void(const UserSession&)> onSignupSuccess)
     : backend(be), onSuccess(onSignupSuccess)
 {
-    // --- Titre ---
     titleLabel.setText("Create your Harmonia account", juce::dontSendNotification);
     titleLabel.setFont(juce::Font(24.0f, juce::Font::bold));
     titleLabel.setJustificationType(juce::Justification::centred);
     titleLabel.setColour(juce::Label::textColourId, juce::Colours::white);
     addAndMakeVisible(titleLabel);
 
-    // --- Champs ---
     usernameField.setTextToShowWhenEmpty("Username", juce::Colours::grey);
     firstnameField.setTextToShowWhenEmpty("First name", juce::Colours::grey);
     lastnameField.setTextToShowWhenEmpty("Last name", juce::Colours::grey);
@@ -25,14 +23,13 @@ SignupPage::SignupPage(BackendAuthManager& be, std::function<void(const UserSess
         addAndMakeVisible(*f);
     }
 
-    // --- Boutons ---
     signupButton.setButtonText("Create account");
     signupButton.setColour(juce::TextButton::buttonColourId, juce::Colours::skyblue);
     signupButton.setColour(juce::TextButton::textColourOffId, juce::Colours::black);
     signupButton.onClick = [this]() { handleSignup(); };
     addAndMakeVisible(signupButton);
 
-    backButton.setButtonText("← Back");
+    backButton.setButtonText("Go Back");
     backButton.setColour(juce::TextButton::buttonColourId, juce::Colours::darkgrey);
     backButton.setColour(juce::TextButton::textColourOffId, juce::Colours::white);
     backButton.onClick = [this]() { if (onBack) onBack(); };
@@ -46,9 +43,8 @@ void SignupPage::paint(juce::Graphics& g)
 
 void SignupPage::resized()
 {
-    auto area = getLocalBounds().reduced(200);
+    auto area = getLocalBounds().reduced(100);
 
-    // Centrer verticalement le contenu
     auto totalHeight = 60 + 20 + (5 * 35 + 4 * 10) + 30 + 40 + 10 + 30;
     area = area.withTrimmedTop((area.getHeight() - totalHeight) / 2);
 

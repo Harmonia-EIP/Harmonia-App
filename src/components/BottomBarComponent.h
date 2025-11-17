@@ -20,9 +20,8 @@ public:
     juce::TextButton&   getGenerateButton();
 
 private:
-    juce::TextButton   loadButton;
+    juce::TextButton   loadButton, generateButton;
     juce::ToggleButton resetMissingParamsToggle;
-    juce::TextButton   generateButton;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(BottomBarComponent)
 };

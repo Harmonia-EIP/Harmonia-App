@@ -12,6 +12,6 @@ public:
     void shutdown() override;
 
 private:
-    std::unique_ptr<MainWindow> mainWindow;   // ✅ retire "class"
+    std::unique_ptr<MainWindow> mainWindow;
     std::unique_ptr<BackendAuthManager> backend;
 };

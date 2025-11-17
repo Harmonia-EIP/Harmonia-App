@@ -3,3 +3,6 @@ vcpkg/
 vcpkg_installed/
 generated_presets/
 .env
+html/
+latex/
+Doxyfile

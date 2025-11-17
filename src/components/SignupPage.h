@@ -17,8 +17,8 @@ private:
 
     juce::Label titleLabel;
     juce::TextEditor usernameField, firstnameField, lastnameField, emailField, passwordField;
-    juce::TextButton signupButton { "Create account" };
-    juce::TextButton backButton { "← Back" };
+    juce::TextButton signupButton;
+    juce::TextButton backButton;
 
     void handleSignup();
 };
