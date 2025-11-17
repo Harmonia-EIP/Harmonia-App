@@ -9,14 +9,12 @@ public:
     void paint(juce::Graphics&) override;
     void resized() override;
 
-    // Callback pour revenir à la page précédente
     std::function<void()> onBack;
 
 private:
     BackendAuthManager& backend;
     std::function<void(const UserSession&)> onSuccess;
 
-    // UI
     juce::Label titleLabel;
     juce::TextEditor usernameField, firstnameField, lastnameField, emailField, passwordField;
     juce::TextButton signupButton { "Create account" };

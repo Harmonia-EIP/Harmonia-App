@@ -15,10 +15,8 @@ MainComponent::MainComponent(BackendAuthManager& be)
     addAndMakeVisible(filterComponent);
     addAndMakeVisible(bottomBar);
 
-    // LookAndFeel global
     setLookAndFeel(&customLookAndFeel);
 
-    // Bouton Generate
     bottomBar.onGenerateClicked = [this]()
     {
         DataModel model;
@@ -41,7 +39,6 @@ MainComponent::MainComponent(BackendAuthManager& be)
         model.saveToJson();
     };
 
-    // Bouton Load
     bottomBar.onLoadClicked = [this]()
     {
         auto* chooser = new juce::FileChooser("Select a JSON file to load", {}, "*.json");

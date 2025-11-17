@@ -28,7 +28,6 @@ public:
 private:
     CustomLookAndFeel customLookAndFeel;
 
-    // Components
     TitleComponent title;
     TopBarComponent topBar;
     FrequencyVolumeComponent freqVolComponent;

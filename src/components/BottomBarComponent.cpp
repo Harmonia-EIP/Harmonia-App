@@ -29,7 +29,6 @@ void BottomBarComponent::resized()
     row.items.add(juce::FlexItem(resetMissingParamsToggle)
                     .withMinWidth(220).withHeight(h - 8));
 
-    // Espace flexible pour pousser "Generate" à droite
     row.items.add(juce::FlexItem().withFlex(1.0f));
 
     row.items.add(juce::FlexItem(generateButton)

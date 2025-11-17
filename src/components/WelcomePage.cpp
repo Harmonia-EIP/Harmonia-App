@@ -2,14 +2,12 @@
 
 WelcomePage::WelcomePage()
 {
-    // --- Titre principal ---
     titleLabel.setText("Harmonia", juce::dontSendNotification);
     titleLabel.setFont(juce::Font(36.0f, juce::Font::bold));
     titleLabel.setJustificationType(juce::Justification::centred);
     titleLabel.setColour(juce::Label::textColourId, juce::Colours::white);
     addAndMakeVisible(titleLabel);
 
-    // --- Boutons ---
     signinButton.setButtonText("Sign in");
     signupButton.setButtonText("Sign up");
 
@@ -22,15 +20,14 @@ WelcomePage::WelcomePage()
     addAndMakeVisible(signinButton);
     addAndMakeVisible(signupButton);
 
-    // --- Actions ---
     signinButton.onClick = [this]() {
         if (onChoice)
-            onChoice(false); // false = login
+            onChoice(false);
     };
 
     signupButton.onClick = [this]() {
         if (onChoice)
-            onChoice(true); // true = signup
+            onChoice(true);
     };
 }
 
@@ -38,7 +35,6 @@ void WelcomePage::paint(juce::Graphics& g)
 {
     g.fillAll(juce::Colours::darkslategrey);
 
-    // Petit effet visuel simple : dégradé
     juce::ColourGradient gradient(
         juce::Colours::darkslategrey,
         0, 0,

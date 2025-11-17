@@ -1,6 +1,6 @@
 #pragma once
 #include <JuceHeader.h>
-#include "MainWindow.h"          // ✅ ajoute cette ligne
+#include "MainWindow.h"      
 #include "BackendAuthManager.h"
 
 class HarmoniaApp : public juce::JUCEApplication

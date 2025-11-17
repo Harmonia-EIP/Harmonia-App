@@ -8,7 +8,7 @@ public:
     void paint(juce::Graphics&) override;
     void resized() override;
 
-    std::function<void(bool)> onChoice; // true = signup, false = login
+    std::function<void(bool)> onChoice;
 
 private:
     juce::Label titleLabel;
