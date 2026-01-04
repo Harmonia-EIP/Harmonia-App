@@ -3,7 +3,7 @@
 
 MainWindow::MainWindow(const juce::String& name,
                        juce::JUCEApplication& appRef,
-                       BackendAuthManager& be,
+                       BackendManager& be,
                        std::optional<UserSession> existingSession)
     : juce::DocumentWindow(name,
                            juce::Desktop::getInstance().getDefaultLookAndFeel()

@@ -3,15 +3,18 @@
 BottomBarComponent::BottomBarComponent()
 {
     addAndMakeVisible(loadButton);
+    addAndMakeVisible(exportButton);
     addAndMakeVisible(resetMissingParamsToggle);
     addAndMakeVisible(generateButton);
 
     loadButton.setButtonText("Load");
+    exportButton.setButtonText("Export");
     resetMissingParamsToggle.setButtonText("Default if missing");
     generateButton.setButtonText("Generate");
 
-    loadButton.onClick     = [this] { if (onLoadClicked)      onLoadClicked(); };
-    generateButton.onClick = [this] { if (onGenerateClicked)  onGenerateClicked(); };
+    loadButton.onClick    = [this] { if (onLoadClicked)     onLoadClicked(); };
+    exportButton.onClick  = [this] { if (onExportClicked)   onExportClicked(); };
+    generateButton.onClick= [this] { if (onGenerateClicked) onGenerateClicked(); };
 }
 
 void BottomBarComponent::resized()
@@ -24,13 +27,20 @@ void BottomBarComponent::resized()
     row.justifyContent = juce::FlexBox::JustifyContent::spaceBetween;
     row.alignItems     = juce::FlexBox::AlignItems::center;
 
+    // Load puis Export à gauche
     row.items.add(juce::FlexItem(loadButton)
                     .withMinWidth(110).withHeight(h - 8));
+    row.items.add(juce::FlexItem(exportButton)
+                    .withMinWidth(110).withHeight(h - 8));
+
+    // Toggle au milieu
     row.items.add(juce::FlexItem(resetMissingParamsToggle)
                     .withMinWidth(220).withHeight(h - 8));
 
+    // espace flexible
     row.items.add(juce::FlexItem().withFlex(1.0f));
 
+    // Generate tout à droite
     row.items.add(juce::FlexItem(generateButton)
                     .withMinWidth(140).withHeight(h - 8));
 
@@ -47,6 +57,7 @@ void BottomBarComponent::setResetToggleState(bool enabled)
     resetMissingParamsToggle.setToggleState(enabled, juce::dontSendNotification);
 }
 
-juce::TextButton& BottomBarComponent::getLoadButton()        { return loadButton; }
-juce::ToggleButton& BottomBarComponent::getResetToggle()     { return resetMissingParamsToggle; }
-juce::TextButton& BottomBarComponent::getGenerateButton()    { return generateButton; }
+juce::TextButton& BottomBarComponent::getLoadButton()     { return loadButton; }
+juce::ToggleButton& BottomBarComponent::getResetToggle()  { return resetMissingParamsToggle; }
+juce::TextButton& BottomBarComponent::getExportButton()   { return exportButton; }
+juce::TextButton& BottomBarComponent::getGenerateButton() { return generateButton; }

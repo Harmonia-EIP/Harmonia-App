@@ -32,6 +32,12 @@ double FilterComponent::getResonance() const
     return resonanceSlider.getValue();
 }
 
+void FilterComponent::setCutoffResonance(double cutoff, double resonance)
+{
+    cutoffSlider.setValue(cutoff, juce::NotificationType::dontSendNotification);
+    resonanceSlider.setValue(resonance, juce::NotificationType::dontSendNotification);
+}
+
 void FilterComponent::setCutoff(double cutoff)
 {
     cutoffSlider.setValue(cutoff, juce::NotificationType::dontSendNotification);

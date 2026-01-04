@@ -21,6 +21,14 @@ ADSRComponent::~ADSRComponent()
     releaseSlider.setLookAndFeel(nullptr);
 }
 
+void ADSRComponent::setADSR(double attack, double decay, double sustain, double release)
+{
+    attackSlider.setValue(attack, juce::NotificationType::dontSendNotification);
+    decaySlider.setValue(decay, juce::NotificationType::dontSendNotification);
+    sustainSlider.setValue(sustain, juce::NotificationType::dontSendNotification);
+    releaseSlider.setValue(release, juce::NotificationType::dontSendNotification);
+}
+
 void ADSRComponent::setAttack(double attack)
 {
     attackSlider.setValue(attack, juce::NotificationType::dontSendNotification);

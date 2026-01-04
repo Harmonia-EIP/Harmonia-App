@@ -1,12 +1,12 @@
 #pragma once
 #include <juce_gui_basics/juce_gui_basics.h>
-#include "BackendAuthManager.h"
+#include "../backendManagement/BackendManager.h"
 
 class TitleComponent : public juce::Component,
                        public juce::Button::Listener
 {
 public:
-    TitleComponent(const juce::String& textToDisplay, BackendAuthManager& be);
+    TitleComponent(const juce::String& textToDisplay, BackendManager& be);
     ~TitleComponent() override;
 
     std::function<void()> onLogout;
@@ -16,7 +16,7 @@ public:
     void buttonClicked(juce::Button*) override;
 
 private:
-    BackendAuthManager& backend;
+    BackendManager& backend;
     juce::String title;
     juce::Label titleLabel;
     juce::Label pseudoLabel;

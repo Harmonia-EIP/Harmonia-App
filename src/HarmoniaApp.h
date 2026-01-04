@@ -1,7 +1,7 @@
 #pragma once
 #include <JuceHeader.h>
 #include "MainWindow.h"      
-#include "BackendAuthManager.h"
+#include "backendManagement/BackendManager.h"
 
 class HarmoniaApp : public juce::JUCEApplication
 {
@@ -13,5 +13,5 @@ public:
 
 private:
     std::unique_ptr<MainWindow> mainWindow;
-    std::unique_ptr<BackendAuthManager> backend;
+    std::unique_ptr<BackendManager> backend;
 };

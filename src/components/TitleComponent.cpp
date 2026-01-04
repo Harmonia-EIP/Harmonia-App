@@ -1,6 +1,6 @@
 #include "TitleComponent.h"
 
-TitleComponent::TitleComponent(const juce::String& textToDisplay, BackendAuthManager& be)
+TitleComponent::TitleComponent(const juce::String& textToDisplay, BackendManager& be)
     : backend(be), title(textToDisplay)
 {
     titleLabel.setText(title, juce::dontSendNotification);

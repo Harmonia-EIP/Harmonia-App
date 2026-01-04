@@ -1,6 +1,6 @@
 #include "LoginPage.h"
 
-LoginPage::LoginPage(BackendAuthManager& be, std::function<void(const UserSession&)> onSuccessCallback)
+LoginPage::LoginPage(BackendManager& be, std::function<void(const UserSession&)> onSuccessCallback)
     : backend(be), onSuccess(onSuccessCallback)
 {
     titleLabel.setText("Sign in to Harmonia", juce::dontSendNotification);

@@ -1,6 +1,6 @@
 #include "SignupPage.h"
 
-SignupPage::SignupPage(BackendAuthManager& be, std::function<void(const UserSession&)> onSignupSuccess)
+SignupPage::SignupPage(BackendManager& be, std::function<void(const UserSession&)> onSignupSuccess)
     : backend(be), onSuccess(onSignupSuccess)
 {
     titleLabel.setText("Create your Harmonia account", juce::dontSendNotification);

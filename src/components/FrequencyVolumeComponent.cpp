@@ -20,6 +20,12 @@ FrequencyVolumeComponent::~FrequencyVolumeComponent()
     volumeSlider.setLookAndFeel(nullptr);
 }
 
+void FrequencyVolumeComponent::setFreqVol(double frequency, double volume)
+{
+    frequencySlider.setValue(frequency, juce::NotificationType::dontSendNotification);
+    volumeSlider.setValue(volume, juce::NotificationType::dontSendNotification);
+}
+
 void FrequencyVolumeComponent::setFrequency(double freq)
 {
     frequencySlider.setValue(freq, juce::NotificationType::dontSendNotification);

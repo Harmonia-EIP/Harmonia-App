@@ -16,6 +16,7 @@ public:
     double getFreq() const;
     double getVolume() const;
     
+    void setFreqVol(double frequency, double volume);
     void setFrequency(double);
     void setVolume(double);
 

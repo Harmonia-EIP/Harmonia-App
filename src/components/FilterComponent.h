@@ -12,6 +12,8 @@ public:
 
     std::pair<double, double> getSlidersInfo() const;
 
+    void setCutoffResonance(double cutoff, double resonance);
+    
     double getCutoff() const;
     double getResonance() const;
     

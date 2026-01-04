@@ -11,14 +11,16 @@ void HarmoniaApp::initialise(const juce::String&)
 
     auto logFile = exeDir.getChildFile("HarmoniaLogs.txt");
 
-    if (!logFile.existsAsFile())
-        logFile.create(); 
-
     auto* logStream = new juce::FileLogger(logFile, "=== Harmonia Started ===", 0);
     juce::Logger::setCurrentLogger(logStream);
     juce::Logger::writeToLog("Logger initialisé dans le dossier de l’exécutable");
 
-    backend = std::make_unique<BackendAuthManager>();
+    if (!logFile.existsAsFile()) {
+        juce::Logger::writeToLog("Fichier de log non trouvé, création...");
+        logFile.create();
+    }
+
+    backend = std::make_unique<BackendManager>();
 
     auto session = backend->loadSession();
 

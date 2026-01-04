@@ -17,6 +17,7 @@ public:
     double getSustain() const;
     double getRelease() const;
 
+    void setADSR(double attack, double decay, double sustain, double release);
     void setAttack(double);
     void setDecay(double);
     void setSustain(double);
