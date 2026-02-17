@@ -13,6 +13,15 @@ FilterComponent::FilterComponent (AppLookAndFeel& lnF)
     addAndMakeVisible (cutoffLabel);
     addAndMakeVisible (resonanceSlider);
     addAndMakeVisible (resonanceLabel);
+
+    cutoffSlider.onValueChange = [this]()
+    {
+        if (onParamsChanged) onParamsChanged();
+    };
+    resonanceSlider.onValueChange = [this]()
+    {
+        if (onParamsChanged) onParamsChanged();
+    };
 }
 
 FilterComponent::~FilterComponent()

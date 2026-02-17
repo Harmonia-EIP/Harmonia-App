@@ -1,4 +1,5 @@
 #pragma once
+
 #include <JuceHeader.h>
 #include "../WaveformSelector.h"
 
@@ -6,24 +7,25 @@ class TopBarComponent : public juce::Component
 {
 public:
     TopBarComponent();
-    ~TopBarComponent() override;
+    ~TopBarComponent() override = default;
 
-    void paint(juce::Graphics&) override;
+    void paint (juce::Graphics&) override;
     void lookAndFeelChanged() override;
+    void resized() override;
 
     void applyTheme();
 
-    void resized() override;
-
     juce::String getPrompt() const;
-
     juce::String getFilterType() const;
-
     juce::String getWaveform() const;
+    int getWaveformIndex() const;
 
-    void setFilterType(juce::String);
-    void setPrompt(juce::String);
-    void setWaveform(juce::String);
+    void setFilterType (juce::String);
+    void setPrompt (juce::String);
+    void setWaveform (juce::String);
+
+    // IMPORTANT : appelé quand l’utilisateur change waveform/filter/prompt
+    std::function<void()> onParamsChanged;
 
     WaveformSelector waveformSelector;
     juce::ComboBox filterTypeSelector;

@@ -25,6 +25,8 @@ public:
 
     juce::Slider cutoffSlider, resonanceSlider;
 
+    std::function<void()> onParamsChanged;
+
 private:
     juce::Label cutoffLabel, resonanceLabel;
     AppLookAndFeel& lookAndFeel;

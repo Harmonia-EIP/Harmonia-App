@@ -13,6 +13,23 @@ ADSRComponent::ADSRComponent (AppLookAndFeel& lnF)
     addAndMakeVisible (decaySlider);   addAndMakeVisible (decayLabel);
     addAndMakeVisible (sustainSlider); addAndMakeVisible (sustainLabel);
     addAndMakeVisible (releaseSlider); addAndMakeVisible (releaseLabel);
+
+    attackSlider.onValueChange = [this]()
+    {
+        if (onParamsChanged) onParamsChanged();
+    };
+    decaySlider.onValueChange = [this]()
+    {
+        if (onParamsChanged) onParamsChanged();
+    };
+    sustainSlider.onValueChange = [this]()
+    {
+        if (onParamsChanged) onParamsChanged();
+    };
+    releaseSlider.onValueChange = [this]()
+    {
+        if (onParamsChanged) onParamsChanged();
+    };
 }
 
 ADSRComponent::~ADSRComponent()

@@ -14,6 +14,17 @@ FrequencyVolumeComponent::FrequencyVolumeComponent (AppLookAndFeel& lnF)
     addAndMakeVisible (volumeSlider);
     addAndMakeVisible (volumeLabel);
 
+    // IMPORTANT : quand l’utilisateur touche un slider, on notifie
+    frequencySlider.onValueChange = [this]()
+    {
+        if (onParamsChanged) onParamsChanged();
+    };
+
+    volumeSlider.onValueChange = [this]()
+    {
+        if (onParamsChanged) onParamsChanged();
+    };
+
     applyThemeColours();
 }
 

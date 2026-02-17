@@ -26,6 +26,7 @@ public:
     void setRelease(double);
     juce::Slider attackSlider, decaySlider, sustainSlider, releaseSlider;
 
+    std::function<void()> onParamsChanged;
 
 private:
     juce::Label attackLabel, decayLabel, sustainLabel, releaseLabel;

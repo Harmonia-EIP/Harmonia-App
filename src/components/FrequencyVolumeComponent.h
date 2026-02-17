@@ -1,4 +1,5 @@
 #pragma once
+
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../themes/AppLookAndFeel.h"
 
@@ -20,6 +21,9 @@ public:
     double getFreq() const;
     double getVolume() const;
 
+    // IMPORTANT : appelé quand l’utilisateur bouge un slider
+    std::function<void()> onParamsChanged;
+
 private:
     void setupSlider (juce::Slider& slider,
                       juce::Label& label,
@@ -32,9 +36,8 @@ private:
 
     juce::Slider frequencySlider;
     juce::Slider volumeSlider;
-
-    juce::Label frequencyLabel;
-    juce::Label volumeLabel;
+    juce::Label  frequencyLabel;
+    juce::Label  volumeLabel;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FrequencyVolumeComponent)
 };

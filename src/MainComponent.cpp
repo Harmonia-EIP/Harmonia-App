@@ -11,35 +11,57 @@ MainComponent::MainComponent (BackendManager& be)
     : AudioAppComponent(),
       backend (be),
       title ("Harmonia", be),
+      oscilloscope (8192, 60),
       freqVolComponent (appLookAndFeel),
       adsrComponent (appLookAndFeel),
       filterComponent (appLookAndFeel)
 {
-    // IMPORTANT : définir le LookAndFeel du root
+    // LookAndFeel root
     setLookAndFeel (&appLookAndFeel);
 
     // ===== UI =====
     addAndMakeVisible (title);
     addAndMakeVisible (topBar);
+
+    // Nouveau : oscilloscope juste après topBar
+    addAndMakeVisible (oscilloscope);
+
     addAndMakeVisible (freqVolComponent);
     addAndMakeVisible (adsrComponent);
     addAndMakeVisible (filterComponent);
     addAndMakeVisible (bottomBar);
     addAndMakeVisible (synthComponent);
 
-    // ===== Connexion du menu Theme =====
+    freqVolComponent.onParamsChanged = [this]()
+    {
+        updateSynthParamsFromUI();
+    };
+
+    adsrComponent.onParamsChanged = [this]()
+    {
+        updateSynthParamsFromUI();
+    };
+
+    filterComponent.onParamsChanged = [this]()
+    {
+        updateSynthParamsFromUI();
+    };
+
+    // Si votre TopBar change waveform / filterType via ComboBox
+    topBar.onParamsChanged = [this]()
+    {
+        updateSynthParamsFromUI();
+    };
+
+    // ===== Theme =====
     title.onThemeSelected = [this] (AppLookAndFeel::Preset p)
     {
         appLookAndFeel.setThemePreset (p);
-
-        // Notifie tous les composants qu'un LAF a changé
         sendLookAndFeelChange();
-
-        // Repaint global
         repaint();
     };
 
-    // ===== Synth initialisation =====
+    // ===== Synth init =====
     synth.clearVoices();
     for (int i = 0; i < 8; ++i)
         synth.addVoice (new HarmoniaVoice());
@@ -47,8 +69,7 @@ MainComponent::MainComponent (BackendManager& be)
     synth.clearSounds();
     synth.addSound (new HarmoniaSound());
 
-    //==============================================================================
-    // EXPORT JSON
+    // ===== EXPORT JSON =====
     bottomBar.onExportClicked = [this]()
     {
         auto freqVol    = freqVolComponent.getFreqVol();
@@ -98,8 +119,7 @@ MainComponent::MainComponent (BackendManager& be)
         );
     };
 
-    //==============================================================================
-    // LOAD JSON
+    // ===== LOAD JSON =====
     bottomBar.onLoadClicked = [this]()
     {
         auto* chooser = new juce::FileChooser ("Select a JSON file to load", {}, "*.json");
@@ -150,8 +170,7 @@ MainComponent::MainComponent (BackendManager& be)
         );
     };
 
-    //==============================================================================
-    // GENERATE VIA IA
+    // ===== GENERATE IA =====
     bottomBar.onGenerateClicked = [this]()
     {
         auto prompt = topBar.getPrompt();
@@ -222,8 +241,12 @@ void MainComponent::resized()
     auto area = getLocalBounds().reduced (20);
 
     title.setBounds (area.removeFromTop (50));
-    topBar.setBounds (area.removeFromTop (150));
-    freqVolComponent.setBounds (area.removeFromTop (120));
+    topBar.setBounds (area.removeFromTop (100));
+
+    // Nouveau : oscilloscope placé juste après topBar
+    oscilloscope.setBounds (area.removeFromTop (120));
+
+    freqVolComponent.setBounds (area.removeFromTop (100));
     adsrComponent.setBounds (area.removeFromTop (100));
     filterComponent.setBounds (area.removeFromTop (100));
     synthComponent.setBounds (area.removeFromTop (80));
@@ -255,43 +278,46 @@ void MainComponent::getNextAudioBlock (const juce::AudioSourceChannelInfo& buffe
         true
     );
 
-    synth.renderNextBlock (*bufferToFill.buffer,
-                           midi,
-                           bufferToFill.startSample,
-                           bufferToFill.numSamples);
+    synth.renderNextBlock (*bufferToFill.buffer, midi,
+                        bufferToFill.startSample, bufferToFill.numSamples);
+
+    oscilloscope.pushBuffer (*bufferToFill.buffer,
+                         bufferToFill.startSample,
+                         bufferToFill.numSamples);
 }
+
+
 
 void MainComponent::releaseResources() {}
 
 //==============================================================================
-// SYNTH PARAMS
+// SYNTH PARAMS — VERSION PROPRE ET COMPLÈTE
 
 void MainComponent::updateSynthParamsFromUI()
 {
+    auto freqVol    = freqVolComponent.getFreqVol();
     auto adsrValues = adsrComponent.getSlidersInfo();
     auto cutoffReso = filterComponent.getSlidersInfo();
 
-    float attack     = (float) adsrValues[0];
-    float decay      = (float) adsrValues[1];
-    float sustain    = (float) adsrValues[2];
-    float release    = (float) adsrValues[3];
-    float cutoff     = (float) cutoffReso.first;
-    float resonance  = (float) cutoffReso.second;
+    HarmoniaParams params;
 
-    auto filterTypeStr = topBar.getFilterType();
-    int filterTypeIndex = 0;
-    if (filterTypeStr.containsIgnoreCase ("Band")) filterTypeIndex = 1;
-    else if (filterTypeStr.containsIgnoreCase ("High")) filterTypeIndex = 2;
+    params.frequency = (float) freqVol.first;
+    params.volume    = (float) freqVol.second;
 
-    auto wf = topBar.getWaveform();
+    params.attack  = (float) adsrValues[0];
+    params.decay   = (float) adsrValues[1];
+    params.sustain = (float) adsrValues[2];
+    params.release = (float) adsrValues[3];
+
+    params.cutoff    = (float) cutoffReso.first;
+    params.resonance = (float) cutoffReso.second;
+
+    params.filterType    = topBar.getFilterType();
+    params.waveformIndex = topBar.getWaveformIndex();
 
     for (int i = 0; i < synth.getNumVoices(); ++i)
         if (auto* v = dynamic_cast<HarmoniaVoice*> (synth.getVoice (i)))
-        {
-            v->setADSR (attack, decay, sustain, release);
-            v->setFilter (cutoff, resonance, filterTypeIndex);
-            v->setWaveform (wf);
-        }
+            v->setParameters (params);
 }
 
 void MainComponent::triggerPreviewNote()

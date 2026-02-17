@@ -16,27 +16,45 @@ TopBarComponent::TopBarComponent()
     filterTypeSelector.addItem ("Low Pass",  1);
     filterTypeSelector.addItem ("High Pass", 2);
     filterTypeSelector.addItem ("Band Pass", 3);
-    filterTypeSelector.setSelectedId (1);
+    filterTypeSelector.setSelectedId (1, juce::dontSendNotification);
     addAndMakeVisible (filterTypeSelector);
 
     promptLabel.setText ("Prompt", juce::dontSendNotification);
     promptLabel.setJustificationType (juce::Justification::centredLeft);
     addAndMakeVisible (promptLabel);
 
-    promptEditor.setMultiLine (true);
-    promptEditor.setReturnKeyStartsNewLine (true);
+    promptEditor.setMultiLine (false);
+    promptEditor.setReturnKeyStartsNewLine (false);
     addAndMakeVisible (promptEditor);
 
-    clearPromptButton.setButtonText ("Clear");
     addAndMakeVisible (clearPromptButton);
-    clearPromptButton.onClick = [this]() { promptEditor.clear(); };
+    clearPromptButton.onClick = [this]()
+    {
+        promptEditor.clear();
+        if (onParamsChanged) onParamsChanged();
+    };
+
+    // ===== IMPORTANT : notifier MainComponent sur changement user =====
+    waveformSelector.onChange = [this]()
+    {
+        if (onParamsChanged) onParamsChanged();
+    };
+
+    filterTypeSelector.onChange = [this]()
+    {
+        if (onParamsChanged) onParamsChanged();
+    };
+
+    // Optionnel : si vous voulez update en live pendant qu’on tape
+    // (sinon vous pouvez le retirer)
+    promptEditor.onTextChange = [this]()
+    {
+        if (onParamsChanged) onParamsChanged();
+    };
 
     applyTheme();
 }
 
-TopBarComponent::~TopBarComponent() {}
-
-//==============================================================================
 void TopBarComponent::lookAndFeelChanged()
 {
     applyTheme();
@@ -55,7 +73,15 @@ void TopBarComponent::applyTheme()
     promptEditor.setTextToShowWhenEmpty ("Type your prompt here...", textSecondary);
 }
 
-//==============================================================================
+int TopBarComponent::getWaveformIndex() const
+{
+    // ATTENTION :
+    // Si votre WaveformSelector renvoie 1=Sine,2=Square,3=Saw,4=Triangle
+    // et que votre synth attend 0=Sine,1=Saw,2=Square
+    // alors il faut mapper dans updateSynthParamsFromUI (je vous montre plus bas).
+    return waveformSelector.getSelectedId();
+}
+
 juce::String TopBarComponent::getPrompt() const
 {
     return promptEditor.getText();
@@ -75,33 +101,33 @@ void TopBarComponent::setFilterType (juce::String filterName)
 {
     auto name = filterName.trim().toLowerCase();
 
-    if (name == "low pass")      filterTypeSelector.setSelectedId (1);
-    else if (name == "high pass") filterTypeSelector.setSelectedId (2);
-    else if (name == "band pass") filterTypeSelector.setSelectedId (3);
-    else                         jassertfalse;
+    if (name == "low pass")        filterTypeSelector.setSelectedId (1, juce::dontSendNotification);
+    else if (name == "high pass")  filterTypeSelector.setSelectedId (2, juce::dontSendNotification);
+    else if (name == "band pass")  filterTypeSelector.setSelectedId (3, juce::dontSendNotification);
+
+    // IMPORTANT : si vous voulez que le load JSON déclenche aussi une update, appelez :
+    // if (onParamsChanged) onParamsChanged();
 }
 
 void TopBarComponent::setPrompt (juce::String prompt)
 {
     promptEditor.setText (prompt, juce::dontSendNotification);
+    // idem : if (onParamsChanged) onParamsChanged(); (optionnel)
 }
 
 void TopBarComponent::setWaveform (juce::String waveformName)
 {
     auto name = waveformName.trim().toLowerCase();
 
-    if (name == "sine")       waveformSelector.setSelectedId (1);
-    else if (name == "square")   waveformSelector.setSelectedId (2);
-    else if (name == "saw")      waveformSelector.setSelectedId (3);
-    else if (name == "triangle") waveformSelector.setSelectedId (4);
-    else                         jassertfalse;
+    if (name == "sine")           waveformSelector.setSelectedId (1, juce::dontSendNotification);
+    else if (name == "square")    waveformSelector.setSelectedId (2, juce::dontSendNotification);
+    else if (name == "saw")       waveformSelector.setSelectedId (3, juce::dontSendNotification);
+    else if (name == "triangle")  waveformSelector.setSelectedId (4, juce::dontSendNotification);
 }
 
-//==============================================================================
 void TopBarComponent::paint (juce::Graphics& g)
 {
     g.fillAll (findColour (AppColourIds::panelBgId));
-
     g.setColour (findColour (AppColourIds::panelOutlineId));
     g.drawRect (getLocalBounds(), 1);
 }

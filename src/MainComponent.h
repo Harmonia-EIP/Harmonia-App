@@ -26,6 +26,7 @@
 #include "components/BottomBarComponent.h"
 #include "components/Synth.h"
 #include "components/SynthComponent.h"
+#include "components/OscilloscopeComponent.h"
 
 class MainComponent : public juce::AudioAppComponent
 {
@@ -49,6 +50,7 @@ private:
     AppLookAndFeel appLookAndFeel;
 
     TitleComponent title;
+    OscilloscopeComponent oscilloscope { 2048 };
     TopBarComponent topBar;
     FrequencyVolumeComponent freqVolComponent;
     ADSRComponent adsrComponent;
