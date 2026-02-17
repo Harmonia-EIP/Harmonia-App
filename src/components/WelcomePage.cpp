@@ -1,56 +1,63 @@
 #include "WelcomePage.h"
+#include "../themes/AppColourIds.h"
 
 WelcomePage::WelcomePage()
 {
+    // LookAndFeel local toujours sombre (pas dépendant de l'utilisateur)
+    authLookAndFeel.setThemePreset(AppLookAndFeel::Preset::Dark);
+    setLookAndFeel(&authLookAndFeel);
+
+    // ===== TITLE =====
     titleLabel.setText("Harmonia", juce::dontSendNotification);
     titleLabel.setFont(juce::Font(36.0f, juce::Font::bold));
     titleLabel.setJustificationType(juce::Justification::centred);
-    titleLabel.setColour(juce::Label::textColourId, juce::Colours::white);
     addAndMakeVisible(titleLabel);
 
+    // ===== BUTTONS =====
     signinButton.setButtonText("Sign in");
     signupButton.setButtonText("Sign up");
-
-    signinButton.setColour(juce::TextButton::buttonColourId, juce::Colours::lightblue);
-    signupButton.setColour(juce::TextButton::buttonColourId, juce::Colours::limegreen);
-
-    signinButton.setColour(juce::TextButton::textColourOffId, juce::Colours::black);
-    signupButton.setColour(juce::TextButton::textColourOffId, juce::Colours::black);
-
     addAndMakeVisible(signinButton);
     addAndMakeVisible(signupButton);
 
-    signinButton.onClick = [this]() {
-        if (onChoice)
-            onChoice(false);
+    // ===== CALLBACKS =====
+    signinButton.onClick = [this]()
+    {
+        if (onChoice) onChoice(false);
     };
 
-    signupButton.onClick = [this]() {
-        if (onChoice)
-            onChoice(true);
+    signupButton.onClick = [this]()
+    {
+        if (onChoice) onChoice(true);
     };
 }
 
+
 void WelcomePage::paint(juce::Graphics& g)
 {
-    g.fillAll(juce::Colours::darkslategrey);
+    // Fond basé sur le thème AUTH (toujours dark)
+    auto bg = findColour(AppColourIds::backgroundId);
+    auto accent = findColour(AppColourIds::accentId);
 
     juce::ColourGradient gradient(
-        juce::Colours::darkslategrey,
+        bg,
         0, 0,
-        juce::Colours::black,
+        accent.withAlpha(0.25f),
         0, (float)getHeight(),
         false
     );
+
     g.setGradientFill(gradient);
     g.fillAll();
+
+    titleLabel.setColour(juce::Label::textColourId,
+                         findColour(AppColourIds::textPrimaryId));
 }
 
 void WelcomePage::resized()
 {
     auto area = getLocalBounds().reduced(200);
-    titleLabel.setBounds(area.removeFromTop(100));
 
+    titleLabel.setBounds(area.removeFromTop(100));
     area.removeFromTop(50);
 
     auto buttonHeight = 50;

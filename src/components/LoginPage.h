@@ -1,6 +1,7 @@
 #pragma once
 #include <JuceHeader.h>
 #include "../backendManagement/BackendManager.h"
+#include "../themes/AppLookAndFeel.h"
 
 class LoginPage : public juce::Component
 {
@@ -13,6 +14,8 @@ public:
     void resized() override;
 
 private:
+    AppLookAndFeel authLookAndFeel;
+
     BackendManager& backend;
     std::function<void(const UserSession&)> onSuccess;
 

@@ -14,8 +14,10 @@
 #include "VolumeSlider.h"
 #include "GenerateButton.h"
 #include "DataModel.h"
-#include "CustomLookAndFeel.h"
+
+#include "themes/AppLookAndFeel.h"
 #include "backendManagement/BackendManager.h"
+
 #include "components/TitleComponent.h"
 #include "components/TopBarComponent.h"
 #include "components/FrequencyVolumeComponent.h"
@@ -27,11 +29,11 @@
 
 class MainComponent : public juce::AudioAppComponent
 {
-public:                               
-    explicit MainComponent(BackendManager& be);
+public:
+    explicit MainComponent (BackendManager& be);
     ~MainComponent() override;
 
-    void paint(juce::Graphics&) override;
+    void paint (juce::Graphics&) override;
     void resized() override;
 
     void prepareToPlay (int samplesPerBlockExpected, double sampleRate) override;
@@ -43,7 +45,8 @@ public:
 private:
     BackendManager& backend;
 
-    CustomLookAndFeel customLookAndFeel;
+    // IMPORTANT : doit être déclaré avant les composants qui l’utilisent
+    AppLookAndFeel appLookAndFeel;
 
     TitleComponent title;
     TopBarComponent topBar;
@@ -60,5 +63,5 @@ private:
     void updateSynthParamsFromUI();
     void triggerPreviewNote();
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainComponent)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

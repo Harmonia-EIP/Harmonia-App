@@ -66,7 +66,7 @@ Harmonia-App/
 ### Génération du projet Visual Studio
 
 ```bash
-cmake -S . -B build -G "Visual Studio 17 2022" -A x64
+cmake -S . -B build
 ```
 
 ### Compilation en mode Release

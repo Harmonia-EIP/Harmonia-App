@@ -9,6 +9,10 @@ public:
     ~TopBarComponent() override;
 
     void paint(juce::Graphics&) override;
+    void lookAndFeelChanged() override;
+
+    void applyTheme();
+
     void resized() override;
 
     juce::String getPrompt() const;

@@ -1,44 +1,56 @@
 #include "SignupPage.h"
+#include "../themes/AppColourIds.h"
 
 SignupPage::SignupPage(BackendManager& be, std::function<void(const UserSession&)> onSignupSuccess)
     : backend(be), onSuccess(onSignupSuccess)
 {
+    // LookAndFeel local toujours sombre (pas dépendant de l'utilisateur)
+    authLookAndFeel.setThemePreset(AppLookAndFeel::Preset::Dark);
+    setLookAndFeel(&authLookAndFeel);
+
     titleLabel.setText("Create your Harmonia account", juce::dontSendNotification);
     titleLabel.setFont(juce::Font(24.0f, juce::Font::bold));
     titleLabel.setJustificationType(juce::Justification::centred);
-    titleLabel.setColour(juce::Label::textColourId, juce::Colours::white);
     addAndMakeVisible(titleLabel);
 
-    usernameField.setTextToShowWhenEmpty("Username", juce::Colours::grey);
-    firstnameField.setTextToShowWhenEmpty("First name", juce::Colours::grey);
-    lastnameField.setTextToShowWhenEmpty("Last name", juce::Colours::grey);
-    emailField.setTextToShowWhenEmpty("Email", juce::Colours::grey);
-    passwordField.setTextToShowWhenEmpty("Password", juce::Colours::grey);
+    auto placeholder = findColour(AppColourIds::textSecondaryId);
+
+    usernameField.setTextToShowWhenEmpty("Username", placeholder);
+    firstnameField.setTextToShowWhenEmpty("First name", placeholder);
+    lastnameField.setTextToShowWhenEmpty("Last name", placeholder);
+    emailField.setTextToShowWhenEmpty("Email", placeholder);
+    passwordField.setTextToShowWhenEmpty("Password", placeholder);
     passwordField.setPasswordCharacter('*');
 
     for (auto* f : { &usernameField, &firstnameField, &lastnameField, &emailField, &passwordField })
-    {
-        f->setColour(juce::TextEditor::backgroundColourId, juce::Colours::whitesmoke);
-        f->setColour(juce::TextEditor::textColourId, juce::Colours::black);
         addAndMakeVisible(*f);
-    }
 
     signupButton.setButtonText("Create account");
-    signupButton.setColour(juce::TextButton::buttonColourId, juce::Colours::skyblue);
-    signupButton.setColour(juce::TextButton::textColourOffId, juce::Colours::black);
     signupButton.onClick = [this]() { handleSignup(); };
     addAndMakeVisible(signupButton);
 
     backButton.setButtonText("Go Back");
-    backButton.setColour(juce::TextButton::buttonColourId, juce::Colours::darkgrey);
-    backButton.setColour(juce::TextButton::textColourOffId, juce::Colours::white);
-    backButton.onClick = [this]() { if (onBack) onBack(); };
+    backButton.onClick = [this]()
+    {
+        if (onBack) onBack();
+    };
     addAndMakeVisible(backButton);
 }
 
 void SignupPage::paint(juce::Graphics& g)
 {
-    g.fillAll(juce::Colours::darkslategrey);
+    g.fillAll(findColour(AppColourIds::backgroundId));
+
+    titleLabel.setColour(juce::Label::textColourId,
+                         findColour(AppColourIds::textPrimaryId));
+
+    // Placeholder recalé (utile si un jour vous changez la palette auth)
+    auto placeholder = findColour(AppColourIds::textSecondaryId);
+    usernameField.setTextToShowWhenEmpty("Username", placeholder);
+    firstnameField.setTextToShowWhenEmpty("First name", placeholder);
+    lastnameField.setTextToShowWhenEmpty("Last name", placeholder);
+    emailField.setTextToShowWhenEmpty("Email", placeholder);
+    passwordField.setTextToShowWhenEmpty("Password", placeholder);
 }
 
 void SignupPage::resized()
@@ -80,9 +92,11 @@ void SignupPage::handleSignup()
 
     if (username.isEmpty() || firstname.isEmpty() || lastname.isEmpty() || email.isEmpty() || password.isEmpty())
     {
-        juce::AlertWindow::showMessageBoxAsync(juce::AlertWindow::WarningIcon,
-                                               "Missing fields",
-                                               "Please fill in all fields.");
+        juce::AlertWindow::showMessageBoxAsync(
+            juce::AlertWindow::WarningIcon,
+            "Missing fields",
+            "Please fill in all fields."
+        );
         return;
     }
 
@@ -95,11 +109,14 @@ void SignupPage::handleSignup()
             "Erreur",
             result.errorMessage
         );
+        return;
     }
-    else {
-        juce::AlertWindow::showMessageBoxAsync(juce::AlertWindow::InfoIcon,
-                                               "Welcome",
-                                               "Account created successfully!");
-        onSuccess(result.session);
-    }
+
+    juce::AlertWindow::showMessageBoxAsync(
+        juce::AlertWindow::InfoIcon,
+        "Welcome",
+        "Account created successfully!"
+    );
+
+    onSuccess(result.session);
 }

@@ -1,113 +1,128 @@
 #include "ADSRComponent.h"
+#include "../themes/AppColourIds.h"
 
-ADSRComponent::ADSRComponent(CustomLookAndFeel& lnF) : lookAndFeel(lnF)
+ADSRComponent::ADSRComponent (AppLookAndFeel& lnF)
+    : lookAndFeel (lnF)
 {
-    setupSlider(attackSlider, attackLabel, "Attack", 0.01f, 5.0f, 0.1f);
-    setupSlider(decaySlider, decayLabel, "Decay", 0.01f, 5.0f, 0.1f);
-    setupSlider(sustainSlider, sustainLabel, "Sustain", 0.0f, 1.0f, 0.8f);
-    setupSlider(releaseSlider, releaseLabel, "Release", 0.01f, 5.0f, 0.5f);
+    setupSlider (attackSlider,  attackLabel,  "Attack",  0.01f, 5.0f, 0.1f);
+    setupSlider (decaySlider,   decayLabel,   "Decay",   0.01f, 5.0f, 0.1f);
+    setupSlider (sustainSlider, sustainLabel, "Sustain", 0.0f,  1.0f, 0.8f);
+    setupSlider (releaseSlider, releaseLabel, "Release", 0.01f, 5.0f, 0.5f);
 
-    addAndMakeVisible(attackSlider); addAndMakeVisible(attackLabel);
-    addAndMakeVisible(decaySlider); addAndMakeVisible(decayLabel);
-    addAndMakeVisible(sustainSlider); addAndMakeVisible(sustainLabel);
-    addAndMakeVisible(releaseSlider); addAndMakeVisible(releaseLabel);
+    addAndMakeVisible (attackSlider);  addAndMakeVisible (attackLabel);
+    addAndMakeVisible (decaySlider);   addAndMakeVisible (decayLabel);
+    addAndMakeVisible (sustainSlider); addAndMakeVisible (sustainLabel);
+    addAndMakeVisible (releaseSlider); addAndMakeVisible (releaseLabel);
 }
 
 ADSRComponent::~ADSRComponent()
 {
-    attackSlider.setLookAndFeel(nullptr);
-    decaySlider.setLookAndFeel(nullptr);
-    sustainSlider.setLookAndFeel(nullptr);
-    releaseSlider.setLookAndFeel(nullptr);
+    attackSlider.setLookAndFeel (nullptr);
+    decaySlider.setLookAndFeel (nullptr);
+    sustainSlider.setLookAndFeel (nullptr);
+    releaseSlider.setLookAndFeel (nullptr);
 }
 
-void ADSRComponent::setADSR(double attack, double decay, double sustain, double release)
+//==============================================================================
+void ADSRComponent::setADSR (double attack, double decay, double sustain, double release)
 {
-    attackSlider.setValue(attack, juce::NotificationType::dontSendNotification);
-    decaySlider.setValue(decay, juce::NotificationType::dontSendNotification);
-    sustainSlider.setValue(sustain, juce::NotificationType::dontSendNotification);
-    releaseSlider.setValue(release, juce::NotificationType::dontSendNotification);
+    attackSlider.setValue  (attack,  juce::dontSendNotification);
+    decaySlider.setValue   (decay,   juce::dontSendNotification);
+    sustainSlider.setValue (sustain, juce::dontSendNotification);
+    releaseSlider.setValue (release, juce::dontSendNotification);
 }
 
-void ADSRComponent::setAttack(double attack)
+void ADSRComponent::setAttack (double attack)
 {
-    attackSlider.setValue(attack, juce::NotificationType::dontSendNotification);
+    attackSlider.setValue (attack, juce::dontSendNotification);
 }
 
-void ADSRComponent::setDecay(double decay)
+void ADSRComponent::setDecay (double decay)
 {
-    decaySlider.setValue(decay, juce::NotificationType::dontSendNotification);
+    decaySlider.setValue (decay, juce::dontSendNotification);
 }
 
-void ADSRComponent::setSustain(double sustain)
+void ADSRComponent::setSustain (double sustain)
 {
-    sustainSlider.setValue(sustain, juce::NotificationType::dontSendNotification);
-}
-    
-void ADSRComponent::setRelease(double release)
-{
-    releaseSlider.setValue(release, juce::NotificationType::dontSendNotification);
+    sustainSlider.setValue (sustain, juce::dontSendNotification);
 }
 
+void ADSRComponent::setRelease (double release)
+{
+    releaseSlider.setValue (release, juce::dontSendNotification);
+}
+
+//==============================================================================
 std::vector<double> ADSRComponent::getSlidersInfo() const
 {
-    std::vector<double> adsrValues = {
+    return {
         attackSlider.getValue(),
         decaySlider.getValue(),
         sustainSlider.getValue(),
         releaseSlider.getValue()
     };
-    return adsrValues;
 }
 
-double ADSRComponent::getAttack() const
+double ADSRComponent::getAttack() const  { return attackSlider.getValue(); }
+double ADSRComponent::getDecay() const   { return decaySlider.getValue(); }
+double ADSRComponent::getSustain() const { return sustainSlider.getValue(); }
+double ADSRComponent::getRelease() const { return releaseSlider.getValue(); }
+
+//==============================================================================
+void ADSRComponent::setupSlider (juce::Slider& slider,
+                                juce::Label& label,
+                                const juce::String& name,
+                                float min, float max, float def)
 {
-    return attackSlider.getValue();
+    slider.setSliderStyle (juce::Slider::RotaryHorizontalVerticalDrag);
+    slider.setTextBoxStyle (juce::Slider::TextBoxBelow, false, 50, 20);
+    slider.setRange (min, max);
+    slider.setValue (def, juce::dontSendNotification);
+    slider.setLookAndFeel (&lookAndFeel);
+
+    label.setText (name, juce::dontSendNotification);
+    label.setJustificationType (juce::Justification::centred);
+
+    label.setColour (juce::Label::textColourId,
+                     findColour (AppColourIds::textPrimaryId));
 }
 
-double ADSRComponent::getDecay() const
+//==============================================================================
+void ADSRComponent::paint (juce::Graphics& g)
 {
-    return decaySlider.getValue();
+    g.fillAll (findColour (AppColourIds::panelBgId));
+
+    g.setColour (findColour (AppColourIds::panelOutlineId));
+    g.drawRect (getLocalBounds(), 1);
 }
 
-double ADSRComponent::getSustain() const
-{
-    return sustainSlider.getValue();
-}
-    
-double ADSRComponent::getRelease() const
-{
-    return releaseSlider.getValue();
-}
-
-void ADSRComponent::setupSlider(juce::Slider& slider, juce::Label& label, const juce::String& name,
-                           float min, float max, float def)
-{
-    slider.setSliderStyle(juce::Slider::RotaryHorizontalVerticalDrag);
-    slider.setTextBoxStyle(juce::Slider::TextBoxBelow, false, 50, 20);
-    slider.setRange(min, max);
-    slider.setValue(def);
-    slider.setLookAndFeel(&lookAndFeel);
-
-    label.setText(name, juce::dontSendNotification);
-    label.setColour(juce::Label::textColourId, juce::Colours::white);
-    label.setJustificationType(juce::Justification::centred);
-}
-
+//==============================================================================
 void ADSRComponent::resized()
 {
     auto area = getLocalBounds();
     auto w = area.getWidth() / 4;
 
-    attackLabel.setBounds(0, 0, w, 20);
-    attackSlider.setBounds(0, 20, w, getHeight() - 20);
+    attackLabel.setBounds  (0,     0, w, 20);
+    attackSlider.setBounds (0,    20, w, getHeight() - 20);
 
-    decayLabel.setBounds(w, 0, w, 20);
-    decaySlider.setBounds(w, 20, w, getHeight() - 20);
+    decayLabel.setBounds   (w,     0, w, 20);
+    decaySlider.setBounds  (w,    20, w, getHeight() - 20);
 
-    sustainLabel.setBounds(2 * w, 0, w, 20);
-    sustainSlider.setBounds(2 * w, 20, w, getHeight() - 20);
+    sustainLabel.setBounds (2 * w, 0, w, 20);
+    sustainSlider.setBounds(2 * w,20, w, getHeight() - 20);
 
-    releaseLabel.setBounds(3 * w, 0, w, 20);
-    releaseSlider.setBounds(3 * w, 20, w, getHeight() - 20);
+    releaseLabel.setBounds (3 * w, 0, w, 20);
+    releaseSlider.setBounds(3 * w,20, w, getHeight() - 20);
+}
+
+void ADSRComponent::lookAndFeelChanged()
+{
+    auto text = findColour (AppColourIds::textPrimaryId);
+
+    attackLabel.setColour  (juce::Label::textColourId, text);
+    decayLabel.setColour   (juce::Label::textColourId, text);
+    sustainLabel.setColour (juce::Label::textColourId, text);
+    releaseLabel.setColour (juce::Label::textColourId, text);
+
+    repaint();
 }

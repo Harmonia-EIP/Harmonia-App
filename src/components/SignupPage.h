@@ -1,6 +1,7 @@
 #pragma once
 #include <JuceHeader.h>
 #include "../backendManagement/BackendManager.h"
+#include "../themes/AppLookAndFeel.h"
 
 class SignupPage : public juce::Component
 {
@@ -12,6 +13,8 @@ public:
     std::function<void()> onBack;
 
 private:
+    AppLookAndFeel authLookAndFeel;
+
     BackendManager& backend;
     std::function<void(const UserSession&)> onSuccess;
 

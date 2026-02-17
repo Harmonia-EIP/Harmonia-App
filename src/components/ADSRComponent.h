@@ -1,14 +1,16 @@
 #pragma once
 #include <JuceHeader.h>
-#include "../CustomLookAndFeel.h"
+#include "../themes/AppLookAndFeel.h"
 
 class ADSRComponent : public juce::Component
 {
 public:
-    ADSRComponent(CustomLookAndFeel& lnF);
+    ADSRComponent(AppLookAndFeel& lnF);
     ~ADSRComponent() override;
 
     void resized() override;
+    void paint(juce::Graphics& g) override;
+    void lookAndFeelChanged() override;
 
     std::vector<double> getSlidersInfo() const;
 
@@ -27,7 +29,7 @@ public:
 
 private:
     juce::Label attackLabel, decayLabel, sustainLabel, releaseLabel;
-    CustomLookAndFeel& lookAndFeel;
+    AppLookAndFeel& lookAndFeel;
 
     void setupSlider(juce::Slider& slider, juce::Label& label, const juce::String& name,
                      float min, float max, float def);

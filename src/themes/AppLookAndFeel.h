@@ -1,0 +1,126 @@
+#pragma once
+#include <juce_gui_basics/juce_gui_basics.h>
+#include "AppColourIds.h"
+#include "Themes.h"
+
+class AppLookAndFeel : public juce::LookAndFeel_V4
+{
+public:
+    enum class Preset { Dark, Light, Red, Blue };
+
+    AppLookAndFeel()
+    {
+        setThemePreset (Preset::Dark);
+    }
+
+    Preset getPreset() const { return preset; }
+
+    void setThemePreset (Preset p)
+    {
+        preset = p;
+
+        switch (preset)
+        {
+            case Preset::Dark:  palette = ThemePalette::dark();  break;
+            case Preset::Light: palette = ThemePalette::light(); break;
+            case Preset::Red:   palette = ThemePalette::red();   break;
+            case Preset::Blue:  palette = ThemePalette::blue();  break;
+            default:            palette = ThemePalette::dark();  break;
+        }
+
+        applyPalette();
+    }
+
+    // Optionnel : si vous gardez un bouton toggle rapide (Dark <-> Light)
+    void toggleTheme()
+    {
+        setThemePreset (preset == Preset::Dark ? Preset::Light : Preset::Dark);
+    }
+
+    void drawRotarySlider (juce::Graphics& g, int x, int y, int width, int height,
+                           float sliderPos, float rotaryStartAngle, float rotaryEndAngle,
+                           juce::Slider& slider) override
+    {
+        juce::ignoreUnused (slider);
+
+        auto radius  = (float) juce::jmin (width / 2, height / 2) - 4.0f;
+        auto centreX = (float) x + (float) width  * 0.5f;
+        auto centreY = (float) y + (float) height * 0.5f;
+        auto rx = centreX - radius;
+        auto ry = centreY - radius;
+        auto rw = radius * 2.0f;
+        auto angle = rotaryStartAngle + sliderPos * (rotaryEndAngle - rotaryStartAngle);
+
+        auto knobBg      = findColour (AppColourIds::knobBgId);
+        auto knobOutline = findColour (AppColourIds::knobOutlineId);
+        auto knobPointer = findColour (AppColourIds::knobPointerId);
+
+        g.setColour (knobBg);
+        g.fillEllipse (rx, ry, rw, rw);
+
+        g.setColour (knobOutline);
+        g.drawEllipse (rx, ry, rw, rw, 1.5f);
+
+        juce::Path p;
+        auto pointerLength    = radius * 0.7f;
+        auto pointerThickness = 3.0f;
+        p.addRectangle (-pointerThickness * 0.5f, -radius, pointerThickness, pointerLength);
+        p.applyTransform (juce::AffineTransform::rotation (angle).translated (centreX, centreY));
+
+        g.setColour (knobPointer);
+        g.fillPath (p);
+    }
+
+private:
+    void applyPalette()
+    {
+        // ===== Custom App Colour IDs =====
+        setColour (AppColourIds::backgroundId,    palette.background);
+        setColour (AppColourIds::panelBgId,       palette.panelBg);
+        setColour (AppColourIds::panelOutlineId,  palette.panelOutline);
+
+        setColour (AppColourIds::textPrimaryId,   palette.textPrimary);
+        setColour (AppColourIds::textSecondaryId, palette.textSecondary);
+
+        setColour (AppColourIds::accentId,        palette.accent);
+        setColour (AppColourIds::accentHoverId,   palette.accentHover);
+        setColour (AppColourIds::accentDownId,    palette.accentDown);
+
+        setColour (AppColourIds::knobBgId,        palette.knobBg);
+        setColour (AppColourIds::knobOutlineId,   palette.knobOutline);
+        setColour (AppColourIds::knobPointerId,   palette.knobPointer);
+
+        // ===== JUCE MAPPINGS =====
+        setColour (juce::ResizableWindow::backgroundColourId, palette.background);
+
+        setColour (juce::Label::textColourId, palette.textPrimary);
+
+        setColour (juce::ComboBox::backgroundColourId, palette.panelBg);
+        setColour (juce::ComboBox::textColourId, palette.textPrimary);
+        setColour (juce::ComboBox::outlineColourId, palette.panelOutline);
+        setColour (juce::ComboBox::arrowColourId, palette.textPrimary);
+
+        setColour (juce::PopupMenu::backgroundColourId, palette.panelBg);
+        setColour (juce::PopupMenu::textColourId, palette.textPrimary);
+        setColour (juce::PopupMenu::highlightedBackgroundColourId, palette.accent);
+        setColour (juce::PopupMenu::highlightedTextColourId, palette.textPrimary);
+
+        setColour (juce::TextButton::buttonColourId, palette.panelBg);
+        setColour (juce::TextButton::buttonOnColourId, palette.accentDown);
+        setColour (juce::TextButton::textColourOffId, palette.textPrimary);
+        setColour (juce::TextButton::textColourOnId, palette.textPrimary);
+
+        setColour (juce::Slider::trackColourId, palette.panelOutline);
+        setColour (juce::Slider::thumbColourId, palette.accent);
+        setColour (juce::Slider::rotarySliderFillColourId, palette.accent);
+        setColour (juce::Slider::rotarySliderOutlineColourId, palette.panelOutline);
+
+        setColour (juce::TextEditor::backgroundColourId, palette.panelBg);
+        setColour (juce::TextEditor::outlineColourId, palette.panelOutline);
+        setColour (juce::TextEditor::textColourId, palette.textPrimary);
+        setColour (juce::CaretComponent::caretColourId, palette.accent);
+    }
+
+    Preset preset = Preset::Dark;
+    ThemePalette palette = ThemePalette::dark();
+};

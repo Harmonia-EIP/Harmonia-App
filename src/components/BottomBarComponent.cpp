@@ -1,4 +1,5 @@
 #include "BottomBarComponent.h"
+#include "../themes/AppColourIds.h"
 
 BottomBarComponent::BottomBarComponent()
 {
@@ -12,11 +13,34 @@ BottomBarComponent::BottomBarComponent()
     resetMissingParamsToggle.setButtonText("Default if missing");
     generateButton.setButtonText("Generate");
 
-    loadButton.onClick    = [this] { if (onLoadClicked)     onLoadClicked(); };
-    exportButton.onClick  = [this] { if (onExportClicked)   onExportClicked(); };
-    generateButton.onClick= [this] { if (onGenerateClicked) onGenerateClicked(); };
+    loadButton.onClick     = [this] { if (onLoadClicked)     onLoadClicked(); };
+    exportButton.onClick   = [this] { if (onExportClicked)   onExportClicked(); };
+    generateButton.onClick = [this] { if (onGenerateClicked) onGenerateClicked(); };
 }
 
+//==============================================================================
+void BottomBarComponent::paint (juce::Graphics& g)
+{
+    // Background du panel selon thème
+    g.fillAll (findColour (AppColourIds::panelBgId));
+
+    // Bordure
+    g.setColour (findColour (AppColourIds::panelOutlineId));
+    g.drawRect (getLocalBounds(), 1);
+
+    // Couleurs des boutons (texte)
+    auto textColour = findColour (AppColourIds::textPrimaryId);
+
+    loadButton.setColour     (juce::TextButton::textColourOffId, textColour);
+    exportButton.setColour   (juce::TextButton::textColourOffId, textColour);
+    generateButton.setColour (juce::TextButton::textColourOffId, textColour);
+
+    resetMissingParamsToggle.setColour (
+        juce::ToggleButton::textColourId,
+        findColour (AppColourIds::textSecondaryId));
+}
+
+//==============================================================================
 void BottomBarComponent::resized()
 {
     auto area = getLocalBounds().reduced(10, 0);
@@ -47,6 +71,7 @@ void BottomBarComponent::resized()
     row.performLayout(area);
 }
 
+//==============================================================================
 bool BottomBarComponent::getResetToggleState() const
 {
     return resetMissingParamsToggle.getToggleState();
@@ -57,6 +82,7 @@ void BottomBarComponent::setResetToggleState(bool enabled)
     resetMissingParamsToggle.setToggleState(enabled, juce::dontSendNotification);
 }
 
+//==============================================================================
 juce::TextButton& BottomBarComponent::getLoadButton()     { return loadButton; }
 juce::ToggleButton& BottomBarComponent::getResetToggle()  { return resetMissingParamsToggle; }
 juce::TextButton& BottomBarComponent::getExportButton()   { return exportButton; }

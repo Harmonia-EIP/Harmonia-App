@@ -21,6 +21,8 @@ public:
     juce::TextButton&   getGenerateButton();
     juce::TextButton&   getExportButton();
 
+    void paint(juce::Graphics&) override;
+
 private:
     juce::TextButton   loadButton, generateButton, exportButton;
     juce::ToggleButton resetMissingParamsToggle;

@@ -1,14 +1,17 @@
 #pragma once
 #include <JuceHeader.h>
-#include "../CustomLookAndFeel.h"
+#include "../themes/AppLookAndFeel.h"
 
 class FilterComponent : public juce::Component
 {
 public:
-    FilterComponent(CustomLookAndFeel& lnF);
+    FilterComponent(AppLookAndFeel& lnF);
     ~FilterComponent() override;
 
     void resized() override;
+    
+    void paint(juce::Graphics& g) override;
+    void lookAndFeelChanged() override;
 
     std::pair<double, double> getSlidersInfo() const;
 
@@ -24,7 +27,7 @@ public:
 
 private:
     juce::Label cutoffLabel, resonanceLabel;
-    CustomLookAndFeel& lookAndFeel;
+    AppLookAndFeel& lookAndFeel;
 
     void setupSlider(juce::Slider& slider, juce::Label& label, const juce::String& name,
                      float min, float max, float def);
