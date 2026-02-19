@@ -51,14 +51,11 @@ TopBarComponent::TopBarComponent()
     {
         if (onParamsChanged) onParamsChanged();
     };
-
-    applyTheme();
 }
 
 void TopBarComponent::lookAndFeelChanged()
 {
     applyTheme();
-    repaint();
 }
 
 void TopBarComponent::applyTheme()
@@ -75,10 +72,6 @@ void TopBarComponent::applyTheme()
 
 int TopBarComponent::getWaveformIndex() const
 {
-    // ATTENTION :
-    // Si votre WaveformSelector renvoie 1=Sine,2=Square,3=Saw,4=Triangle
-    // et que votre synth attend 0=Sine,1=Saw,2=Square
-    // alors il faut mapper dans updateSynthParamsFromUI (je vous montre plus bas).
     return waveformSelector.getSelectedId();
 }
 
@@ -105,8 +98,6 @@ void TopBarComponent::setFilterType (juce::String filterName)
     else if (name == "high pass")  filterTypeSelector.setSelectedId (2, juce::dontSendNotification);
     else if (name == "band pass")  filterTypeSelector.setSelectedId (3, juce::dontSendNotification);
 
-    // IMPORTANT : si vous voulez que le load JSON déclenche aussi une update, appelez :
-    // if (onParamsChanged) onParamsChanged();
 }
 
 void TopBarComponent::setPrompt (juce::String prompt)
@@ -134,53 +125,60 @@ void TopBarComponent::paint (juce::Graphics& g)
 
 void TopBarComponent::resized()
 {
-    auto area = getLocalBounds();
-    const int midX        = area.getCentreX();
-    const int labelHeight = 25;
-    const int compHeight  = 30;
-    const int margin      = 20;
-    const int space       = 50;
+    auto area = getLocalBounds().reduced (8, 6);  // un peu plus de marge globale
 
-    auto leftArea = area.removeFromLeft (midX);
+    const int labelHeight     = 22;   // plus grand
+    const int compHeight      = 26;   // plus grand
+    const int marginTop       = 4;   // plus d’espace en haut
+    const int spacing         = 28;   // espace horizontal augmenté
+    const int verticalSpacing = 10;   // plus d’espace entre label et composant
 
-    const int filterAndWaveformWidth = leftArea.getWidth() / 3;
+    const int halfWidth = area.getWidth() / 2;
 
-    auto waveformArea = leftArea.removeFromLeft (filterAndWaveformWidth).reduced (10);
-    waveformLabel.setBounds (waveformArea.getX() + filterAndWaveformWidth / 4,
-                             margin,
-                             filterAndWaveformWidth,
+    auto leftArea  = area.removeFromLeft (halfWidth);
+    auto rightArea = area;
+
+    // ===== LEFT SIDE =====
+    const int controlWidth = leftArea.getWidth() / 2 - spacing;
+
+    // Waveform
+    waveformLabel.setBounds (leftArea.getX(),
+                             marginTop,
+                             controlWidth,
                              labelHeight);
-    waveformSelector.setBounds (waveformArea.getX(),
-                                margin + labelHeight,
-                                filterAndWaveformWidth,
+
+    waveformSelector.setBounds (leftArea.getX(),
+                                marginTop + labelHeight + verticalSpacing,
+                                controlWidth,
                                 compHeight);
 
-    auto filterArea = leftArea.reduced (10);
-    filterLabel.setBounds (filterArea.getX() + space + filterAndWaveformWidth / 4,
-                           margin,
-                           filterAndWaveformWidth,
+    // Filter
+    filterLabel.setBounds (leftArea.getX() + controlWidth + spacing,
+                           marginTop,
+                           controlWidth,
                            labelHeight);
-    filterTypeSelector.setBounds (filterArea.getX() + space,
-                                  margin + labelHeight,
-                                  filterAndWaveformWidth,
+
+    filterTypeSelector.setBounds (leftArea.getX() + controlWidth + spacing,
+                                  marginTop + labelHeight + verticalSpacing,
+                                  controlWidth,
                                   compHeight);
 
-    auto rightArea = area;
-    const int promptWidth = rightArea.getWidth() - 120;
+    // ===== RIGHT SIDE =====
+    const int buttonWidth = 90;  // bouton un peu plus gros
+    const int promptWidth = rightArea.getWidth() - buttonWidth - spacing;
 
-    auto promptArea = rightArea.removeFromLeft (promptWidth).reduced (10);
-    promptLabel.setBounds (promptArea.getX(),
-                           margin,
+    promptLabel.setBounds (rightArea.getX(),
+                           marginTop,
                            promptWidth,
                            labelHeight);
-    promptEditor.setBounds (promptArea.getX(),
-                            margin + labelHeight,
+
+    promptEditor.setBounds (rightArea.getX(),
+                            marginTop + labelHeight + verticalSpacing,
                             promptWidth,
                             compHeight);
 
-    auto buttonArea = rightArea.reduced (10);
-    clearPromptButton.setBounds (buttonArea.getX() + 20,
-                                 margin + labelHeight,
-                                 70,
+    clearPromptButton.setBounds (rightArea.getRight() - buttonWidth,
+                                 marginTop + labelHeight + verticalSpacing,
+                                 buttonWidth,
                                  compHeight);
 }

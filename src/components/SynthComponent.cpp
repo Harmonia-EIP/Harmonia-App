@@ -5,8 +5,8 @@ SynthComponent::SynthComponent()
 {
     addAndMakeVisible(keyboardComponent);
 
-    // Plage de notes visible sur le clavier (optionnel, ajustez comme vous voulez)
-    keyboardComponent.setAvailableRange(36, 84);
+    keyboardComponent.setAvailableRange(0, 127);
+    keyboardComponent.setScrollButtonsVisible(true);
 }
 
 void SynthComponent::paint(juce::Graphics& g)

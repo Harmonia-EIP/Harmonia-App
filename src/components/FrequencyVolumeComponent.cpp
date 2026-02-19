@@ -24,8 +24,6 @@ FrequencyVolumeComponent::FrequencyVolumeComponent (AppLookAndFeel& lnF)
     {
         if (onParamsChanged) onParamsChanged();
     };
-
-    applyThemeColours();
 }
 
 FrequencyVolumeComponent::~FrequencyVolumeComponent()
@@ -71,7 +69,9 @@ void FrequencyVolumeComponent::setupSlider (juce::Slider& slider,
                                            double min, double max, double def)
 {
     slider.setSliderStyle (juce::Slider::RotaryHorizontalVerticalDrag);
-    slider.setTextBoxStyle (juce::Slider::TextBoxBelow, false, 60, 20);
+
+    // 🔹 Augmentation largeur du TextBox pour mieux voir les chiffres
+    slider.setTextBoxStyle (juce::Slider::TextBoxBelow, false, 80, 24); // plus large et un peu plus haut
     slider.setRange (min, max);
     slider.setValue (def);
     slider.setLookAndFeel (&lookAndFeel);
@@ -86,8 +86,6 @@ void FrequencyVolumeComponent::applyThemeColours()
 
     frequencyLabel.setColour (juce::Label::textColourId, text);
     volumeLabel.setColour (juce::Label::textColourId, text);
-
-    repaint();
 }
 
 void FrequencyVolumeComponent::lookAndFeelChanged()
@@ -108,9 +106,14 @@ void FrequencyVolumeComponent::resized()
     auto area = getLocalBounds();
     auto half = area.getWidth() / 2;
 
-    frequencyLabel.setBounds (0, 0, half, 20);
-    frequencySlider.setBounds (0, 20, half, getHeight() - 20);
+    const int labelHeight = 22;       // labels un peu plus gros
+    const int sliderHeight = area.getHeight() - labelHeight - 10; // 10px de marge en bas
 
-    volumeLabel.setBounds (half, 0, half, 20);
-    volumeSlider.setBounds (half, 20, half, getHeight() - 20);
+    // Frequency
+    frequencyLabel.setBounds (0, 0, half, labelHeight);
+    frequencySlider.setBounds (0, labelHeight, half, sliderHeight);
+
+    // Volume
+    volumeLabel.setBounds (half, 0, half, labelHeight);
+    volumeSlider.setBounds (half, labelHeight, half, sliderHeight);
 }

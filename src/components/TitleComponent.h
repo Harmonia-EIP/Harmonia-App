@@ -15,6 +15,7 @@ public:
 
     std::function<void()> onLogout;
     std::function<void(AppLookAndFeel::Preset)> onThemeSelected;
+    std::function<void(AppLookAndFeel::LayoutPreset)> onLayoutSelected;
 
 private:
     void buttonClicked (juce::Button* button) override;
@@ -26,7 +27,10 @@ private:
     juce::Label pseudoLabel; 
 
     juce::TextButton themeButton  { "Theme" };
+    juce::TextButton layoutButton { "Layout" };
     juce::TextButton logoutButton { "Logout" };
+
+    AppLookAndFeel::LayoutPreset currentLayout = AppLookAndFeel::LayoutPreset::Layout1;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TitleComponent)
 };

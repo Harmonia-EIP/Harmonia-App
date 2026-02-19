@@ -1,3 +1,4 @@
+// AppLookAndFeel.h
 #pragma once
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "AppColourIds.h"
@@ -7,6 +8,7 @@ class AppLookAndFeel : public juce::LookAndFeel_V4
 {
 public:
     enum class Preset { Dark, Light, Red, Blue };
+    enum class LayoutPreset { Layout1, Layout2, Layout3, Layout4 };
 
     AppLookAndFeel()
     {
@@ -31,7 +33,6 @@ public:
         applyPalette();
     }
 
-    // Optionnel : si vous gardez un bouton toggle rapide (Dark <-> Light)
     void toggleTheme()
     {
         setThemePreset (preset == Preset::Dark ? Preset::Light : Preset::Dark);
@@ -90,10 +91,16 @@ private:
         setColour (AppColourIds::knobOutlineId,   palette.knobOutline);
         setColour (AppColourIds::knobPointerId,   palette.knobPointer);
 
+        // ===== Oscilloscope colours =====
+        setColour (AppColourIds::oscilloscopeWaveId, palette.accent);
+        setColour (AppColourIds::oscilloscopeGridId, palette.textSecondary);
+
         // ===== JUCE MAPPINGS =====
         setColour (juce::ResizableWindow::backgroundColourId, palette.background);
 
         setColour (juce::Label::textColourId, palette.textPrimary);
+        setColour (juce::Label::textWhenEditingColourId, palette.textPrimary);
+        setColour (juce::Label::outlineWhenEditingColourId, palette.accent);
 
         setColour (juce::ComboBox::backgroundColourId, palette.panelBg);
         setColour (juce::ComboBox::textColourId, palette.textPrimary);
@@ -114,6 +121,12 @@ private:
         setColour (juce::Slider::thumbColourId, palette.accent);
         setColour (juce::Slider::rotarySliderFillColourId, palette.accent);
         setColour (juce::Slider::rotarySliderOutlineColourId, palette.panelOutline);
+
+        // ===== IMPORTANT: Slider TextBox colours (fix light theme values) =====
+        setColour (juce::Slider::textBoxTextColourId,        palette.textPrimary);
+        setColour (juce::Slider::textBoxBackgroundColourId,  palette.panelBg);
+        setColour (juce::Slider::textBoxOutlineColourId,     palette.panelOutline);
+        setColour (juce::Slider::textBoxHighlightColourId,   palette.accent.withAlpha (0.25f));
 
         setColour (juce::TextEditor::backgroundColourId, palette.panelBg);
         setColour (juce::TextEditor::outlineColourId, palette.panelOutline);

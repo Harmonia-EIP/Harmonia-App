@@ -1,3 +1,4 @@
+// AppColourIds.h
 #pragma once
 #include <juce_gui_basics/juce_gui_basics.h>
 
@@ -18,6 +19,10 @@ namespace AppColourIds
 
         knobBgId           = 0x2100008,
         knobOutlineId      = 0x2100009,
-        knobPointerId      = 0x210000A
+        knobPointerId      = 0x210000A,
+
+        // ---- Oscilloscope ----
+        oscilloscopeWaveId = 0x210000B,
+        oscilloscopeGridId = 0x210000C
     };
 }

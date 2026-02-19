@@ -92,17 +92,17 @@ void ADSRComponent::setupSlider (juce::Slider& slider,
                                 float min, float max, float def)
 {
     slider.setSliderStyle (juce::Slider::RotaryHorizontalVerticalDrag);
-    slider.setTextBoxStyle (juce::Slider::TextBoxBelow, false, 50, 20);
+
+    // 🔹 TextBox plus large pour mieux voir les valeurs
+    slider.setTextBoxStyle (juce::Slider::TextBoxBelow, false, 70, 24); 
     slider.setRange (min, max);
     slider.setValue (def, juce::dontSendNotification);
     slider.setLookAndFeel (&lookAndFeel);
 
     label.setText (name, juce::dontSendNotification);
     label.setJustificationType (juce::Justification::centred);
-
-    label.setColour (juce::Label::textColourId,
-                     findColour (AppColourIds::textPrimaryId));
 }
+
 
 //==============================================================================
 void ADSRComponent::paint (juce::Graphics& g)
@@ -119,17 +119,21 @@ void ADSRComponent::resized()
     auto area = getLocalBounds();
     auto w = area.getWidth() / 4;
 
-    attackLabel.setBounds  (0,     0, w, 20);
-    attackSlider.setBounds (0,    20, w, getHeight() - 20);
+    const int labelHeight     = 22; // label un peu plus grand
+    const int sliderHeight    = area.getHeight() - labelHeight - 8; // 8px de marge en bas
+    const int verticalSpacing = 1; // espace entre label et slider
 
-    decayLabel.setBounds   (w,     0, w, 20);
-    decaySlider.setBounds  (w,    20, w, getHeight() - 20);
+    attackLabel.setBounds  (0, 0, w, labelHeight);
+    attackSlider.setBounds (0, labelHeight + verticalSpacing, w, sliderHeight - verticalSpacing);
 
-    sustainLabel.setBounds (2 * w, 0, w, 20);
-    sustainSlider.setBounds(2 * w,20, w, getHeight() - 20);
+    decayLabel.setBounds   (w, 0, w, labelHeight);
+    decaySlider.setBounds  (w, labelHeight + verticalSpacing, w, sliderHeight - verticalSpacing);
 
-    releaseLabel.setBounds (3 * w, 0, w, 20);
-    releaseSlider.setBounds(3 * w,20, w, getHeight() - 20);
+    sustainLabel.setBounds (2 * w, 0, w, labelHeight);
+    sustainSlider.setBounds(2 * w, labelHeight + verticalSpacing, w, sliderHeight - verticalSpacing);
+
+    releaseLabel.setBounds (3 * w, 0, w, labelHeight);
+    releaseSlider.setBounds(3 * w, labelHeight + verticalSpacing, w, sliderHeight - verticalSpacing);
 }
 
 void ADSRComponent::lookAndFeelChanged()
@@ -140,6 +144,4 @@ void ADSRComponent::lookAndFeelChanged()
     decayLabel.setColour   (juce::Label::textColourId, text);
     sustainLabel.setColour (juce::Label::textColourId, text);
     releaseLabel.setColour (juce::Label::textColourId, text);
-
-    repaint();
 }

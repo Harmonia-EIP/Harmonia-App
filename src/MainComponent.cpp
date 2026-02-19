@@ -1,3 +1,5 @@
+// MainComponent.cpp (fix : callback layout + resized() avec switch + marges réduites)
+
 #include "MainComponent.h"
 #include "themes/AppColourIds.h"
 
@@ -11,7 +13,7 @@ MainComponent::MainComponent (BackendManager& be)
     : AudioAppComponent(),
       backend (be),
       title ("Harmonia", be),
-      oscilloscope (8192, 60),
+      oscilloscope (appLookAndFeel, 8192, 60),
       freqVolComponent (appLookAndFeel),
       adsrComponent (appLookAndFeel),
       filterComponent (appLookAndFeel)
@@ -19,38 +21,36 @@ MainComponent::MainComponent (BackendManager& be)
     // LookAndFeel root
     setLookAndFeel (&appLookAndFeel);
 
+    appLookAndFeel.setThemePreset(AppLookAndFeel::Preset::Dark);
+
+    sendLookAndFeelChange();
+
     // ===== UI =====
     addAndMakeVisible (title);
     addAndMakeVisible (topBar);
-
-    // Nouveau : oscilloscope juste après topBar
     addAndMakeVisible (oscilloscope);
-
     addAndMakeVisible (freqVolComponent);
     addAndMakeVisible (adsrComponent);
     addAndMakeVisible (filterComponent);
     addAndMakeVisible (bottomBar);
     addAndMakeVisible (synthComponent);
 
-    freqVolComponent.onParamsChanged = [this]()
-    {
-        updateSynthParamsFromUI();
-    };
+    freqVolComponent.onParamsChanged = [this]() { updateSynthParamsFromUI(); };
+    adsrComponent.onParamsChanged    = [this]() { updateSynthParamsFromUI(); };
+    filterComponent.onParamsChanged  = [this]() { updateSynthParamsFromUI(); };
+    topBar.onParamsChanged           = [this]() { updateSynthParamsFromUI(); };
 
-    adsrComponent.onParamsChanged = [this]()
+    // ===== LAYOUT (fix: le type vient de TitleComponent, pas AppLookAndFeel) =====
+    title.onLayoutSelected = [this] (AppLookAndFeel::LayoutPreset p)
     {
-        updateSynthParamsFromUI();
-    };
-
-    filterComponent.onParamsChanged = [this]()
-    {
-        updateSynthParamsFromUI();
-    };
-
-    // Si votre TopBar change waveform / filterType via ComboBox
-    topBar.onParamsChanged = [this]()
-    {
-        updateSynthParamsFromUI();
+        switch (p)
+        {
+            case AppLookAndFeel::LayoutPreset::Layout1: setLayoutMode (LayoutMode::A); break;
+            case AppLookAndFeel::LayoutPreset::Layout2: setLayoutMode (LayoutMode::B); break;
+            case AppLookAndFeel::LayoutPreset::Layout3: setLayoutMode (LayoutMode::C); break;
+            case AppLookAndFeel::LayoutPreset::Layout4: setLayoutMode (LayoutMode::D); break;
+            default: break;
+        }
     };
 
     // ===== Theme =====
@@ -217,6 +217,9 @@ MainComponent::MainComponent (BackendManager& be)
         }).detach();
     };
 
+    // layout par défaut
+    layoutMode = LayoutMode::A;
+
     setSize (800, 600);
     setAudioChannels (0, 2);
 }
@@ -236,21 +239,101 @@ void MainComponent::paint (juce::Graphics& g)
     g.fillAll (findColour (AppColourIds::backgroundId));
 }
 
+void MainComponent::setLayoutMode (LayoutMode m)
+{
+    layoutMode = m;
+    resized();
+    repaint();
+}
+
 void MainComponent::resized()
 {
-    auto area = getLocalBounds().reduced (20);
+    // moins de marge globale
+    auto area = getLocalBounds().reduced (10);
 
     title.setBounds (area.removeFromTop (50));
-    topBar.setBounds (area.removeFromTop (100));
+    topBar.setBounds (area.removeFromTop (70));
+    bottomBar.setBounds (area.removeFromBottom (50));
 
-    // Nouveau : oscilloscope placé juste après topBar
-    oscilloscope.setBounds (area.removeFromTop (120));
+    switch (layoutMode)
+    {
+        // Layout 1 (A) : proche de l’actuel
+        case LayoutMode::A:
+        {
+            oscilloscope.setBounds (area.removeFromTop (100));
+            freqVolComponent.setBounds (area.removeFromTop (110));
+            adsrComponent.setBounds (area.removeFromTop (110));
+            filterComponent.setBounds (area.removeFromTop (110));
+            synthComponent.setBounds (area);
+            break;
+        }
 
-    freqVolComponent.setBounds (area.removeFromTop (100));
-    adsrComponent.setBounds (area.removeFromTop (100));
-    filterComponent.setBounds (area.removeFromTop (100));
-    synthComponent.setBounds (area.removeFromTop (80));
-    bottomBar.setBounds (area.removeFromBottom (40));
+        // Layout 2 (B) : oscillo plus grand
+        case LayoutMode::B:
+        {
+            oscilloscope.setBounds(area.removeFromTop(170));
+
+            // ===== KEYBOARD =====
+            synthComponent.setBounds(area.removeFromTop(100)); // tu peux ajuster la hauteur
+
+            // ===== FREQ + FILTER côte à côte =====
+            auto freqFilterArea = area.removeFromTop(120); // hauteur de la ligne freq+filter
+            auto halfWidth = freqFilterArea.getWidth() / 2;
+
+            freqVolComponent.setBounds(freqFilterArea.removeFromLeft(halfWidth));
+            filterComponent.setBounds(freqFilterArea); // le reste à droite
+
+            // ===== ADSR =====
+            adsrComponent.setBounds(area.removeFromTop(120));
+
+            break;
+        }
+
+        // Layout 3 (C) : oscillo gauche, contrôles droite
+        case LayoutMode::C:
+        {
+            auto upper = area.removeFromTop (260);
+
+            auto left = upper.removeFromLeft ((int) (upper.getWidth() * 0.65f));
+            oscilloscope.setBounds (left);
+
+            auto right = upper;
+            freqVolComponent.setBounds (right.removeFromTop (130));
+            filterComponent.setBounds (right);
+
+            adsrComponent.setBounds (area.removeFromTop (130));
+            synthComponent.setBounds (area);
+            break;
+        }
+
+        // Layout 4 (D) : clavier plus grand
+        case LayoutMode::D:
+        {
+            auto upper = area.removeFromTop(260);
+
+            // On met l'oscilloscope à droite
+            auto left = upper.removeFromLeft((int)(upper.getWidth() * 0.65f));
+            freqVolComponent.setBounds(left.removeFromTop(130));
+            filterComponent.setBounds(left);
+
+            auto right = upper;
+            oscilloscope.setBounds(right);
+
+            adsrComponent.setBounds(area.removeFromTop(130));
+            synthComponent.setBounds(area);
+            break;
+        }
+
+        default:
+        {
+            oscilloscope.setBounds (area.removeFromTop (120));
+            freqVolComponent.setBounds (area.removeFromTop (100));
+            adsrComponent.setBounds (area.removeFromTop (100));
+            filterComponent.setBounds (area.removeFromTop (100));
+            synthComponent.setBounds (area);
+            break;
+        }
+    }
 }
 
 //==============================================================================
@@ -279,19 +362,17 @@ void MainComponent::getNextAudioBlock (const juce::AudioSourceChannelInfo& buffe
     );
 
     synth.renderNextBlock (*bufferToFill.buffer, midi,
-                        bufferToFill.startSample, bufferToFill.numSamples);
+                           bufferToFill.startSample, bufferToFill.numSamples);
 
     oscilloscope.pushBuffer (*bufferToFill.buffer,
-                         bufferToFill.startSample,
-                         bufferToFill.numSamples);
+                             bufferToFill.startSample,
+                             bufferToFill.numSamples);
 }
-
-
 
 void MainComponent::releaseResources() {}
 
 //==============================================================================
-// SYNTH PARAMS — VERSION PROPRE ET COMPLÈTE
+// SYNTH PARAMS
 
 void MainComponent::updateSynthParamsFromUI()
 {

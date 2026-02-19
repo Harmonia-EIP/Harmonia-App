@@ -1,3 +1,4 @@
+// TitleComponent.cpp
 #include "TitleComponent.h"
 #include "../themes/AppColourIds.h"
 
@@ -7,7 +8,7 @@ TitleComponent::TitleComponent (const juce::String& textToDisplay, BackendManage
     // ===== TITLE =====
     titleLabel.setText (title, juce::dontSendNotification);
     titleLabel.setJustificationType (juce::Justification::centred);
-    titleLabel.setFont (juce::Font (26.0f, juce::Font::bold));
+    titleLabel.setFont (juce::Font (28.0f, juce::Font::bold));
     addAndMakeVisible (titleLabel);
 
     // ===== USER / PSEUDO =====
@@ -15,34 +16,38 @@ TitleComponent::TitleComponent (const juce::String& textToDisplay, BackendManage
     juce::String pseudo = sessionOpt.has_value() ? sessionOpt->pseudo : "Invité";
 
     pseudoLabel.setText (pseudo, juce::dontSendNotification);
-    pseudoLabel.setFont (juce::Font (18.0f, juce::Font::plain));
+    pseudoLabel.setFont (juce::Font (22.0f, juce::Font::bold));
     pseudoLabel.setJustificationType (juce::Justification::centredLeft);
     addAndMakeVisible (pseudoLabel);
 
     // ===== THEME BUTTON =====
     themeButton.addListener (this);
-    themeButton.setSize (90, 36);
+    themeButton.setSize (90, 32);
     addAndMakeVisible (themeButton);
+
+    // ===== LAYOUT BUTTON =====
+    layoutButton.addListener (this);
+    layoutButton.setSize (90, 32);
+    addAndMakeVisible (layoutButton);
 
     // ===== LOGOUT BUTTON =====
     logoutButton.addListener (this);
-    logoutButton.setSize (140, 36);
+    logoutButton.setSize (80, 30); // plus petit
     addAndMakeVisible (logoutButton);
 }
 
 TitleComponent::~TitleComponent()
 {
     themeButton.removeListener (this);
+    layoutButton.removeListener (this);
     logoutButton.removeListener (this);
 }
 
 void TitleComponent::paint (juce::Graphics& g)
 {
-    // Fond semi-transparent basé sur la couleur du thème
     auto bg = findColour (AppColourIds::panelBgId).withAlpha (0.5f);
     g.fillAll (bg);
 
-    // Labels
     titleLabel.setColour (juce::Label::textColourId,
                           findColour (AppColourIds::textPrimaryId));
 
@@ -52,20 +57,27 @@ void TitleComponent::paint (juce::Graphics& g)
 
 void TitleComponent::resized()
 {
-    auto area = getLocalBounds().reduced (10);
+    auto area = getLocalBounds().reduced (6);
 
-    auto leftArea = area.removeFromLeft (240);
-    pseudoLabel.setBounds (leftArea);
+    // ===== TITLE (centré sur toute la largeur) =====
+    titleLabel.setBounds (area);
 
-    auto rightArea = area.removeFromRight (280);
+    // ===== LEFT : PSEUDO =====
+    auto leftArea = area.removeFromLeft (260);
+    pseudoLabel.setBounds (leftArea.reduced (10, 0));
 
-    auto logoutArea = rightArea.removeFromRight (180);
-    logoutButton.setBounds (logoutArea.reduced (5));
+    // ===== RIGHT : BUTTONS =====
+    auto rightArea = getLocalBounds().reduced (6);
+    rightArea = rightArea.removeFromRight (330);
+
+    auto logoutArea = rightArea.removeFromRight (90);
+    logoutButton.setBounds (logoutArea.reduced (4));
 
     auto themeArea = rightArea.removeFromRight (100);
-    themeButton.setBounds (themeArea.reduced (5));
+    themeButton.setBounds (themeArea.reduced (4));
 
-    titleLabel.setBounds (area);
+    auto layoutArea = rightArea.removeFromRight (100);
+    layoutButton.setBounds (layoutArea.reduced (4));
 }
 
 void TitleComponent::buttonClicked (juce::Button* button)
@@ -83,14 +95,13 @@ void TitleComponent::buttonClicked (juce::Button* button)
     {
         juce::PopupMenu m;
 
-        // détecter le thème actuel depuis le LookAndFeel appliqué
         auto* laf = dynamic_cast<AppLookAndFeel*> (&getLookAndFeel());
         auto currentPreset = laf ? laf->getPreset() : AppLookAndFeel::Preset::Dark;
 
-        m.addItem (1, "Dark", true, currentPreset == AppLookAndFeel::Preset::Dark);
+        m.addItem (1, "Dark",  true, currentPreset == AppLookAndFeel::Preset::Dark);
         m.addItem (2, "Light", true, currentPreset == AppLookAndFeel::Preset::Light);
-        m.addItem (3, "Red", true, currentPreset == AppLookAndFeel::Preset::Red);
-        m.addItem (4, "Blue", true, currentPreset == AppLookAndFeel::Preset::Blue);
+        m.addItem (3, "Red",   true, currentPreset == AppLookAndFeel::Preset::Red);
+        m.addItem (4, "Blue",  true, currentPreset == AppLookAndFeel::Preset::Blue);
 
         m.showMenuAsync (
             juce::PopupMenu::Options()
@@ -110,5 +121,39 @@ void TitleComponent::buttonClicked (juce::Button* button)
                     default: break;
                 }
             });
+
+        return;
+    }
+
+    // ===== LAYOUT MENU =====
+    if (button == &layoutButton)
+    {
+        juce::PopupMenu m;
+
+        m.addItem (1, "Layout 1", true, currentLayout == AppLookAndFeel::LayoutPreset::Layout1);
+        m.addItem (2, "Layout 2", true, currentLayout == AppLookAndFeel::LayoutPreset::Layout2);
+        m.addItem (3, "Layout 3", true, currentLayout == AppLookAndFeel::LayoutPreset::Layout3);
+        m.addItem (4, "Layout 4", true, currentLayout == AppLookAndFeel::LayoutPreset::Layout4);
+
+        m.showMenuAsync (
+            juce::PopupMenu::Options()
+                .withTargetComponent (layoutButton)
+                .withPreferredPopupDirection (juce::PopupMenu::Options::PopupDirection::downwards),
+            [this] (int result)
+            {
+                if (! onLayoutSelected || result <= 0)
+                    return;
+
+                switch (result)
+                {
+                    case 1: currentLayout = AppLookAndFeel::LayoutPreset::Layout1; onLayoutSelected (AppLookAndFeel::LayoutPreset::Layout1); break;
+                    case 2: currentLayout = AppLookAndFeel::LayoutPreset::Layout2; onLayoutSelected (AppLookAndFeel::LayoutPreset::Layout2); break;
+                    case 3: currentLayout = AppLookAndFeel::LayoutPreset::Layout3; onLayoutSelected (AppLookAndFeel::LayoutPreset::Layout3); break;
+                    case 4: currentLayout = AppLookAndFeel::LayoutPreset::Layout4; onLayoutSelected (AppLookAndFeel::LayoutPreset::Layout4); break;
+                    default: break;
+                }
+            });
+
+        return;
     }
 }

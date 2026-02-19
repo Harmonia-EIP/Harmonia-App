@@ -43,17 +43,20 @@ void BottomBarComponent::paint (juce::Graphics& g)
 //==============================================================================
 void BottomBarComponent::resized()
 {
-    auto area = getLocalBounds().reduced(10, 0);
+    auto area = getLocalBounds().reduced(10, 1);
     const int h = juce::jmin(40, area.getHeight());
 
     juce::FlexBox row;
     row.flexDirection  = juce::FlexBox::Direction::row;
-    row.justifyContent = juce::FlexBox::JustifyContent::spaceBetween;
+    row.justifyContent = juce::FlexBox::JustifyContent::flexStart; // on gère l'espace avec des marges
     row.alignItems     = juce::FlexBox::AlignItems::center;
 
-    // Load puis Export à gauche
+    // Load puis Export à gauche, avec plus d'espace entre eux
     row.items.add(juce::FlexItem(loadButton)
                     .withMinWidth(110).withHeight(h - 8));
+    
+    row.items.add(juce::FlexItem().withWidth(4)); // <-- espace fixe entre Load et Export
+
     row.items.add(juce::FlexItem(exportButton)
                     .withMinWidth(110).withHeight(h - 8));
 

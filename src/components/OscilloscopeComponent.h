@@ -1,27 +1,34 @@
 #pragma once
 
 #include <JuceHeader.h>
-
-// Include explicite des classes audio (chez vous JuceHeader ne les expose pas ici)
 #include <juce_audio_basics/juce_audio_basics.h>
+
+#include "../themes/AppLookAndFeel.h"
+#include "../themes/AppColourIds.h"
 
 class OscilloscopeComponent : public juce::Component,
                               private juce::Timer
 {
 public:
-    // bufferSize : taille du ring buffer
-    // refreshHz  : fréquence de repaint
-    explicit OscilloscopeComponent (int bufferSize = 2048, int refreshHz = 60);
+    explicit OscilloscopeComponent (AppLookAndFeel& lnf,
+                                    int bufferSize = 2048,
+                                    int refreshHz  = 60);
 
     void pushBuffer (const juce::AudioBuffer<float>& buffer,
                      int startSample,
                      int numSamples) noexcept;
 
     void paint (juce::Graphics& g) override;
+    void resized() override {}
+    void lookAndFeelChanged() override;
+
+    void setVerticalGain (float newGain) noexcept { verticalGain = newGain; }
 
 private:
     void timerCallback() override;
     void drawWaveform (juce::Graphics& g, juce::Rectangle<int> area);
+
+    AppLookAndFeel& lookAndFeel;
 
     juce::CriticalSection lock;
 
@@ -30,4 +37,9 @@ private:
 
     int writePos = 0;
     float verticalGain = 1.0f;
+
+    juce::Colour panelBg;
+    juce::Colour panelOutline;
+    juce::Colour scopeWave;
+    juce::Colour scopeGrid;
 };

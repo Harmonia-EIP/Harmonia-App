@@ -31,6 +31,10 @@
 class MainComponent : public juce::AudioAppComponent
 {
 public:
+    enum class LayoutMode { A, B, C, D };
+    void setLayoutMode (LayoutMode m);
+    LayoutMode layoutMode = LayoutMode::A;
+
     explicit MainComponent (BackendManager& be);
     ~MainComponent() override;
 
@@ -46,11 +50,10 @@ public:
 private:
     BackendManager& backend;
 
-    // IMPORTANT : doit être déclaré avant les composants qui l’utilisent
     AppLookAndFeel appLookAndFeel;
 
     TitleComponent title;
-    OscilloscopeComponent oscilloscope { 2048 };
+    OscilloscopeComponent oscilloscope;
     TopBarComponent topBar;
     FrequencyVolumeComponent freqVolComponent;
     ADSRComponent adsrComponent;

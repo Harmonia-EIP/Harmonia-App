@@ -69,17 +69,16 @@ void FilterComponent::setupSlider (juce::Slider& slider,
                                   float min, float max, float def)
 {
     slider.setSliderStyle (juce::Slider::RotaryHorizontalVerticalDrag);
-    slider.setTextBoxStyle (juce::Slider::TextBoxBelow, false, 50, 20);
+
+    // 🔹 TextBox plus large pour mieux afficher les valeurs
+    slider.setTextBoxStyle (juce::Slider::TextBoxBelow, false, 90, 24);
+
     slider.setRange (min, max);
     slider.setValue (def, juce::dontSendNotification);
     slider.setLookAndFeel (&lookAndFeel);
 
     label.setText (name, juce::dontSendNotification);
     label.setJustificationType (juce::Justification::centred);
-
-    // Theme-based (plus de blanc en dur)
-    label.setColour (juce::Label::textColourId,
-                     findColour (AppColourIds::textPrimaryId));
 }
 
 //==============================================================================
@@ -97,11 +96,17 @@ void FilterComponent::resized()
     auto area = getLocalBounds();
     auto half = area.getWidth() / 2;
 
-    cutoffLabel.setBounds (0, 0, half, 20);
-    cutoffSlider.setBounds (0, 20, half, getHeight() - 20);
+    const int labelHeight     = 22; // un peu plus haut
+    const int sliderHeight    = area.getHeight() - labelHeight - 8; // marge 8px en bas
+    const int verticalSpacing = 1;  // espace entre label et slider
 
-    resonanceLabel.setBounds (half, 0, half, 20);
-    resonanceSlider.setBounds (half, 20, half, getHeight() - 20);
+    // Cutoff
+    cutoffLabel.setBounds (0, 0, half, labelHeight);
+    cutoffSlider.setBounds (0, labelHeight + verticalSpacing, half, sliderHeight - verticalSpacing);
+
+    // Resonance
+    resonanceLabel.setBounds (half, 0, half, labelHeight);
+    resonanceSlider.setBounds (half, labelHeight + verticalSpacing, half, sliderHeight - verticalSpacing);
 }
 
 void FilterComponent::lookAndFeelChanged()
@@ -110,6 +115,4 @@ void FilterComponent::lookAndFeelChanged()
 
     cutoffLabel.setColour    (juce::Label::textColourId, text);
     resonanceLabel.setColour (juce::Label::textColourId, text);
-
-    repaint();
 }
