@@ -312,7 +312,7 @@ void MainComponent::resized()
             auto upper = area.removeFromTop(260);
 
             // On met l'oscilloscope à droite
-            auto left = upper.removeFromLeft((int)(upper.getWidth() * 0.65f));
+            auto left = upper.removeFromLeft((int)(upper.getWidth() * 0.35f));
             freqVolComponent.setBounds(left.removeFromTop(130));
             filterComponent.setBounds(left);
 
