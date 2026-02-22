@@ -9,7 +9,7 @@
 
 //==============================================================================
 
-MainComponent::MainComponent (BackendManager& be)
+MainComponent::MainComponent (BackendManager& be, const UserSession& session)
     : AudioAppComponent(),
       backend (be),
       title ("Harmonia", be),
@@ -21,9 +21,25 @@ MainComponent::MainComponent (BackendManager& be)
     // LookAndFeel root
     setLookAndFeel (&appLookAndFeel);
 
-    appLookAndFeel.setThemePreset(AppLookAndFeel::Preset::Dark);
+    applyThemeFromId(session.themeId);
+    applyLayoutFromId(session.layoutId);
 
     sendLookAndFeelChange();
+
+    std::thread([this]()
+    {
+        auto result = backend.getProfile();
+
+        if (!result.success)
+            return;
+
+        juce::MessageManager::callAsync([this, result]()
+        {
+            applyThemeFromId(result.profile.themeId);
+            applyLayoutFromId(result.profile.layoutId);
+        });
+
+    }).detach();
 
     // ===== UI =====
     addAndMakeVisible (title);
@@ -222,6 +238,35 @@ MainComponent::MainComponent (BackendManager& be)
 
     setSize (800, 600);
     setAudioChannels (0, 2);
+}
+
+void MainComponent::applyThemeFromId(int themeId)
+{
+    using Preset = AppLookAndFeel::Preset;
+
+    switch (themeId)
+    {
+        case 1: appLookAndFeel.setThemePreset(Preset::Dark); break;
+        case 2: appLookAndFeel.setThemePreset(Preset::Light); break;
+        case 3: appLookAndFeel.setThemePreset(Preset::Blue); break;
+        case 4: appLookAndFeel.setThemePreset(Preset::Red); break;
+        default: appLookAndFeel.setThemePreset(Preset::Dark); break;
+    }
+
+    sendLookAndFeelChange();
+    repaint();
+}
+
+void MainComponent::applyLayoutFromId(int layoutId)
+{
+    switch (layoutId)
+    {
+        case 1: setLayoutMode(LayoutMode::A); break;
+        case 2: setLayoutMode(LayoutMode::B); break;
+        case 3: setLayoutMode(LayoutMode::C); break;
+        case 4: setLayoutMode(LayoutMode::D); break;
+        default: setLayoutMode(LayoutMode::A); break;
+    }
 }
 
 //==============================================================================

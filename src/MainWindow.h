@@ -22,8 +22,10 @@ private:
 
     std::unique_ptr<juce::Component> currentComponent;
 
+    std::optional<UserSession> currentSession;
+
     void showWelcomeScreen();
     void showLoginScreen();
     void showSignupScreen();
-    void showMainScreen();
+    void showMainScreen(const UserSession& session);
 };

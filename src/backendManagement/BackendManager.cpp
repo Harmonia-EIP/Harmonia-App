@@ -1,6 +1,7 @@
 #include "BackendManager.h"
 #include "BackendAuthManager.h"
 #include "BackendAiManager.h"
+#include "BackendProfileManager.h"
 
 #include <sstream>
 
@@ -63,6 +64,7 @@ BackendManager::BackendManager()
 
     authManager = new BackendAuthManager(*this);
     aiManager  = new BackendAiManager(*this);
+    profileManager = new BackendProfileManager(*this);
 }
 
 BackendManager::~BackendManager()
@@ -116,4 +118,10 @@ void BackendManager::clearSession()
 PatchCallResult BackendManager::generatePatch(const juce::String& prompt)
 {
     return aiManager->generatePatch(prompt);
+}
+
+ProfileResult BackendManager::getProfile()
+{
+    if (!profileManager) profileManager = new BackendProfileManager(*this);
+    return profileManager->getProfile();
 }

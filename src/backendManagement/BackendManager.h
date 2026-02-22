@@ -7,8 +7,10 @@
 
 #include "BackendTypes.h"
 
+
 class BackendAuthManager;
 class BackendAiManager;
+class BackendProfileManager;
 
 class BackendManager
 {
@@ -39,6 +41,8 @@ public:
 
     void writeLog(const juce::String& message) const;
 
+    ProfileResult getProfile();
+
 private:
     static juce::File getExeDir();
     static std::map<std::string, std::string> loadEnv();
@@ -48,7 +52,9 @@ private:
 
     BackendAuthManager* authManager = nullptr;
     BackendAiManager*  aiManager  = nullptr;
+    BackendProfileManager* profileManager = nullptr;
 
     friend class BackendAuthManager;
     friend class BackendAiManager;
+    friend class BackendProfileManager;
 };

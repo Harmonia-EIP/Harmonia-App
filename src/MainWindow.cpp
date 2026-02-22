@@ -14,9 +14,10 @@ MainWindow::MainWindow(const juce::String& name,
 {
     setUsingNativeTitleBar(true);
 
-    if (existingSession.has_value())
-        showMainScreen();
-    else
+    if (existingSession.has_value()) {
+        currentSession = existingSession;
+        showMainScreen(*existingSession);
+    } else
         showWelcomeScreen();
 
     centreWithSize(900, 700);
@@ -47,7 +48,8 @@ void MainWindow::showWelcomeScreen()
 void MainWindow::showLoginScreen()
 {
     auto* login = new LoginPage(backend, [this](const UserSession& session) {
-        showMainScreen();
+        currentSession = session;
+        showMainScreen(session);
     });
 
     login->onBack = [this]() {
@@ -61,7 +63,7 @@ void MainWindow::showLoginScreen()
 void MainWindow::showSignupScreen()
 {
     auto* signup = new SignupPage(backend, [this](const UserSession& session) {
-        showMainScreen();
+        showMainScreen(session);
     });
 
     signup->onBack = [this]() {
@@ -72,9 +74,9 @@ void MainWindow::showSignupScreen()
     setContentOwned(currentComponent.get(), false);
 }
 
-void MainWindow::showMainScreen()
+void MainWindow::showMainScreen(const UserSession& session)
 {
-    auto* main = new MainComponent(backend);
+    auto* main = new MainComponent(backend, session);
     main->getTitleComponent().onLogout = [this]() {
         showWelcomeScreen();
     };

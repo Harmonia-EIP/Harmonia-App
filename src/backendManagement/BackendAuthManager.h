@@ -18,6 +18,8 @@ public:
                           const juce::String& email,
                           const juce::String& password);
 
+    void syncProfileInBackground(const UserSession& session);
+
     std::optional<UserSession> loadSession();
     void saveSession(const UserSession& session);
     void clearSession();

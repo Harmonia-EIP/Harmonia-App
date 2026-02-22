@@ -115,12 +115,17 @@ AuthResult BackendAuthManager::signupUser(
 
     UserSession session;
     session.accessToken = body.value("token", "");
-    session.pseudo      = username;
-    session.email       = email;
-    session.expiresAt   = juce::Time::getCurrentTime()
-                          + juce::RelativeTime::hours(1);
+    session.pseudo      = body.value("username", "");
+    session.email       = body.value("email", "");
+    session.layoutId    = body.value("layout_id", 0);
+    session.themeId     = body.value("theme_id", 0);
+
+    session.expiresAt = juce::Time::getCurrentTime()
+                        + juce::RelativeTime::hours(1);
 
     saveSession(session);
+
+    syncProfileInBackground(session);
 
     return AuthResult{ true, session, {} };
 }
@@ -133,7 +138,9 @@ void BackendAuthManager::saveSession(const UserSession& session)
         { "pseudo",      session.pseudo.toStdString() },
         { "email",       session.email.toStdString() },
         { "accessToken", session.accessToken.toStdString() },
-        { "expiresAt",   (long long) session.expiresAt.toMilliseconds() }
+        { "expiresAt",   (long long) session.expiresAt.toMilliseconds() },
+        { "layoutId",    session.layoutId },
+        { "themeId",     session.themeId }
     };
 
     backend.getSessionFile().replaceWithText(j.dump(4));
@@ -156,6 +163,8 @@ std::optional<UserSession> BackendAuthManager::loadSession()
     session.pseudo      = j.value("pseudo", "");
     session.email       = j.value("email", "");
     session.accessToken = j.value("accessToken", "");
+    session.layoutId = j.value("layoutId", 0);
+    session.themeId  = j.value("themeId", 0);
 
     auto expiresMs = j.value("expiresAt", static_cast<int64_t>(0));
     session.expiresAt = juce::Time(expiresMs);
@@ -173,4 +182,43 @@ void BackendAuthManager::clearSession()
     auto sessionFile = backend.getSessionFile();
     if (sessionFile.existsAsFile())
         sessionFile.deleteFile();
+}
+
+void BackendAuthManager::syncProfileInBackground(const UserSession& session)
+{
+    std::thread([this, session]()
+    {
+        auto url = backend.getApiUrl() + "/profile/me";
+
+        auto response = cpr::Get(
+            cpr::Url{ url.toStdString() },
+            cpr::Header{
+                { "Authorization", "Bearer " + session.accessToken.toStdString() }
+            }
+        );
+
+        if (response.status_code != 200)
+            return;
+
+        try
+        {
+            auto body = json::parse(response.text);
+
+            int newLayout = body.value("layout_id", session.layoutId);
+            int newTheme  = body.value("theme_id", session.themeId);
+
+            if (newLayout != session.layoutId ||
+                newTheme  != session.themeId)
+            {
+                UserSession updated = session;
+                updated.layoutId = newLayout;
+                updated.themeId  = newTheme;
+
+                saveSession(updated);
+
+                backend.writeLog("Session sync depuis backend.");
+            }
+        }
+        catch (...) {}
+    }).detach();
 }

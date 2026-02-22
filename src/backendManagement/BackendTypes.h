@@ -8,6 +8,9 @@ struct UserSession
     juce::String email;
     juce::String accessToken;
     juce::Time   expiresAt;
+
+    int layoutId = 0;
+    int themeId  = 0;
 };
 
 struct AuthResult
@@ -37,4 +40,26 @@ struct PatchCallResult
     bool success = false;
     PatchParams params;
     juce::String errorMessage;
+};
+
+struct UserProfile
+{
+    int         id = 0;
+    std::string username;
+    std::string email;
+    std::string firstName;
+    std::string lastName;
+    std::string createdAt;
+    std::string role;
+    bool        isActive = true;
+
+    int layoutId = 1;
+    int themeId  = 1;
+};
+
+struct ProfileResult
+{
+    bool success = false;
+    std::string errorMessage;
+    UserProfile profile;
 };

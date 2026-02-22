@@ -35,7 +35,7 @@ public:
     void setLayoutMode (LayoutMode m);
     LayoutMode layoutMode = LayoutMode::A;
 
-    explicit MainComponent (BackendManager& be);
+    explicit MainComponent (BackendManager& be, const UserSession& session);
     ~MainComponent() override;
 
     void paint (juce::Graphics&) override;
@@ -67,6 +67,9 @@ private:
 
     void updateSynthParamsFromUI();
     void triggerPreviewNote();
+
+    void applyThemeFromId(int themeId);
+    void applyLayoutFromId(int layoutId);
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };
