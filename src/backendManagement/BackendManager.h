@@ -43,6 +43,12 @@ public:
 
     ProfileResult getProfile();
 
+    void syncProfileParamsInBackground(const UserSession& session);
+    std::optional<UserSession> syncProfileParams(const UserSession& session);
+
+    ProfileResult updateTheme(int themeId);
+    ProfileResult updateLayout(int layoutId);
+
 private:
     static juce::File getExeDir();
     static std::map<std::string, std::string> loadEnv();

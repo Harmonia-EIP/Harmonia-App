@@ -125,3 +125,25 @@ ProfileResult BackendManager::getProfile()
     if (!profileManager) profileManager = new BackendProfileManager(*this);
     return profileManager->getProfile();
 }
+
+ProfileResult BackendManager::updateTheme(int themeId)
+{
+    if (!profileManager) profileManager = new BackendProfileManager(*this);
+    return profileManager->updateTheme(themeId);
+}
+
+ProfileResult BackendManager::updateLayout(int layoutId)
+{
+    if (!profileManager) profileManager = new BackendProfileManager(*this);
+    return profileManager->updateLayout(layoutId);
+}
+
+void BackendManager::syncProfileParamsInBackground(const UserSession& session)
+{
+    authManager->syncProfileParamsInBackground(session);
+}
+
+std::optional<UserSession> BackendManager::syncProfileParams(const UserSession& session)
+{
+    return authManager->syncProfileParams(session);
+}

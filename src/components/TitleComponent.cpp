@@ -1,9 +1,8 @@
 // TitleComponent.cpp
 #include "TitleComponent.h"
-#include "../themes/AppColourIds.h"
 
-TitleComponent::TitleComponent (const juce::String& textToDisplay, BackendManager& be)
-    : backend (be), title (textToDisplay)
+TitleComponent::TitleComponent (const juce::String& textToDisplay, const UserSession& userSession)
+    : currentSession(userSession), title (textToDisplay)
 {
     // ===== TITLE =====
     titleLabel.setText (title, juce::dontSendNotification);
@@ -12,8 +11,8 @@ TitleComponent::TitleComponent (const juce::String& textToDisplay, BackendManage
     addAndMakeVisible (titleLabel);
 
     // ===== USER / PSEUDO =====
-    auto sessionOpt = backend.loadSession();
-    juce::String pseudo = sessionOpt.has_value() ? sessionOpt->pseudo : "Invité";
+            
+    juce::String pseudo = currentSession.pseudo.isNotEmpty() ? currentSession.pseudo : "User";
 
     pseudoLabel.setText (pseudo, juce::dontSendNotification);
     pseudoLabel.setFont (juce::Font (22.0f, juce::Font::bold));
@@ -80,13 +79,13 @@ void TitleComponent::resized()
     layoutButton.setBounds (layoutArea.reduced (4));
 }
 
-void TitleComponent::buttonClicked (juce::Button* button)
+void TitleComponent::buttonClicked(juce::Button* button)
 {
     // ===== LOGOUT =====
     if (button == &logoutButton)
     {
-        backend.clearSession();
-        if (onLogout) onLogout();
+        if (onLogout)
+            onLogout();
         return;
     }
 
@@ -95,31 +94,32 @@ void TitleComponent::buttonClicked (juce::Button* button)
     {
         juce::PopupMenu m;
 
-        auto* laf = dynamic_cast<AppLookAndFeel*> (&getLookAndFeel());
-        auto currentPreset = laf ? laf->getPreset() : AppLookAndFeel::Preset::Dark;
+        auto currentPreset =
+            ThemeAndLayoutConverter::idToThemePreset(currentSession.themeId);
 
-        m.addItem (1, "Dark",  true, currentPreset == AppLookAndFeel::Preset::Dark);
-        m.addItem (2, "Light", true, currentPreset == AppLookAndFeel::Preset::Light);
-        m.addItem (3, "Red",   true, currentPreset == AppLookAndFeel::Preset::Red);
-        m.addItem (4, "Blue",  true, currentPreset == AppLookAndFeel::Preset::Blue);
+        m.addItem(1, "Dark",  true, currentPreset == ThemePreset::Dark);
+        m.addItem(2, "Light", true, currentPreset == ThemePreset::Light);
+        m.addItem(3, "Red",   true, currentPreset == ThemePreset::Red);
+        m.addItem(4, "Blue",  true, currentPreset == ThemePreset::Blue);
 
-        m.showMenuAsync (
+        m.showMenuAsync(
             juce::PopupMenu::Options()
-                .withTargetComponent (themeButton)
-                .withPreferredPopupDirection (juce::PopupMenu::Options::PopupDirection::downwards),
-            [this] (int result)
+                .withTargetComponent(themeButton)
+                .withPreferredPopupDirection(
+                    juce::PopupMenu::Options::PopupDirection::downwards),
+            [this](int result)
             {
-                if (! onThemeSelected || result <= 0)
+                if (result <= 0 || !onThemeSelected)
                     return;
 
-                switch (result)
-                {
-                    case 1: onThemeSelected (AppLookAndFeel::Preset::Dark);  break;
-                    case 2: onThemeSelected (AppLookAndFeel::Preset::Light); break;
-                    case 3: onThemeSelected (AppLookAndFeel::Preset::Red);   break;
-                    case 4: onThemeSelected (AppLookAndFeel::Preset::Blue);  break;
-                    default: break;
-                }
+                // 🔥 update session FIRST
+                currentSession.themeId = result;
+
+                // convert id → preset
+                auto preset =
+                    ThemeAndLayoutConverter::idToThemePreset(result);
+
+                onThemeSelected(preset);
             });
 
         return;
@@ -130,28 +130,31 @@ void TitleComponent::buttonClicked (juce::Button* button)
     {
         juce::PopupMenu m;
 
-        m.addItem (1, "Layout 1", true, currentLayout == AppLookAndFeel::LayoutPreset::Layout1);
-        m.addItem (2, "Layout 2", true, currentLayout == AppLookAndFeel::LayoutPreset::Layout2);
-        m.addItem (3, "Layout 3", true, currentLayout == AppLookAndFeel::LayoutPreset::Layout3);
-        m.addItem (4, "Layout 4", true, currentLayout == AppLookAndFeel::LayoutPreset::Layout4);
+        auto currentPreset =
+            ThemeAndLayoutConverter::idToLayoutPreset(currentSession.layoutId);
 
-        m.showMenuAsync (
+        m.addItem(1, "Layout 1", true, currentPreset == LayoutPreset::Layout1);
+        m.addItem(2, "Layout 2", true, currentPreset == LayoutPreset::Layout2);
+        m.addItem(3, "Layout 3", true, currentPreset == LayoutPreset::Layout3);
+        m.addItem(4, "Layout 4", true, currentPreset == LayoutPreset::Layout4);
+
+        m.showMenuAsync(
             juce::PopupMenu::Options()
-                .withTargetComponent (layoutButton)
-                .withPreferredPopupDirection (juce::PopupMenu::Options::PopupDirection::downwards),
-            [this] (int result)
+                .withTargetComponent(layoutButton)
+                .withPreferredPopupDirection(
+                    juce::PopupMenu::Options::PopupDirection::downwards),
+            [this](int result)
             {
-                if (! onLayoutSelected || result <= 0)
+                if (result <= 0 || !onLayoutSelected)
                     return;
 
-                switch (result)
-                {
-                    case 1: currentLayout = AppLookAndFeel::LayoutPreset::Layout1; onLayoutSelected (AppLookAndFeel::LayoutPreset::Layout1); break;
-                    case 2: currentLayout = AppLookAndFeel::LayoutPreset::Layout2; onLayoutSelected (AppLookAndFeel::LayoutPreset::Layout2); break;
-                    case 3: currentLayout = AppLookAndFeel::LayoutPreset::Layout3; onLayoutSelected (AppLookAndFeel::LayoutPreset::Layout3); break;
-                    case 4: currentLayout = AppLookAndFeel::LayoutPreset::Layout4; onLayoutSelected (AppLookAndFeel::LayoutPreset::Layout4); break;
-                    default: break;
-                }
+                // 🔥 update session FIRST
+                currentSession.layoutId = result;
+
+                auto preset =
+                    ThemeAndLayoutConverter::idToLayoutPreset(result);
+
+                onLayoutSelected(preset);
             });
 
         return;

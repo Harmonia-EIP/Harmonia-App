@@ -14,6 +14,8 @@ public:
     BackendProfileManager(BackendManager& bm);
 
     ProfileResult getProfile();
+    ProfileResult updateTheme(int themeId);
+    ProfileResult updateLayout(int layoutId);
 
 private:
     BackendManager& backend;

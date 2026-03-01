@@ -54,13 +54,19 @@ AuthResult BackendAuthManager::loginUser(
     auto body = json::parse(response.text);
 
     UserSession session;
+    session.userId      = body.value("user_id", 0);
     session.accessToken = body.value("token", "");
     session.pseudo      = body.value("username", "");
     session.email       = body.value("email", "");
-    session.expiresAt   = juce::Time::getCurrentTime()
-                          + juce::RelativeTime::hours(1);
+    session.layoutId    = body.value("layout_id", 0);
+    session.themeId     = body.value("theme_id", 0);
+
+    session.expiresAt = juce::Time::getCurrentTime()
+                        + juce::RelativeTime::hours(1);
 
     saveSession(session);
+
+    syncProfileParamsInBackground(session);
 
     return AuthResult{ true, session, {} };
 }
@@ -114,6 +120,7 @@ AuthResult BackendAuthManager::signupUser(
     auto body = json::parse(response.text);
 
     UserSession session;
+    session.userId      = body.value("user_id", 0);
     session.accessToken = body.value("token", "");
     session.pseudo      = body.value("username", "");
     session.email       = body.value("email", "");
@@ -125,7 +132,7 @@ AuthResult BackendAuthManager::signupUser(
 
     saveSession(session);
 
-    syncProfileInBackground(session);
+    syncProfileParamsInBackground(session);
 
     return AuthResult{ true, session, {} };
 }
@@ -135,6 +142,7 @@ void BackendAuthManager::saveSession(const UserSession& session)
     backend.writeLog("saveSession()");
 
     json j{
+        { "userId",      session.userId },
         { "pseudo",      session.pseudo.toStdString() },
         { "email",       session.email.toStdString() },
         { "accessToken", session.accessToken.toStdString() },
@@ -160,6 +168,7 @@ std::optional<UserSession> BackendAuthManager::loadSession()
     auto j = json::parse(content.toStdString());
 
     UserSession session;
+    session.userId      = j.value("userId", 0);
     session.pseudo      = j.value("pseudo", "");
     session.email       = j.value("email", "");
     session.accessToken = j.value("accessToken", "");
@@ -184,7 +193,7 @@ void BackendAuthManager::clearSession()
         sessionFile.deleteFile();
 }
 
-void BackendAuthManager::syncProfileInBackground(const UserSession& session)
+void BackendAuthManager::syncProfileParamsInBackground(const UserSession& session)
 {
     std::thread([this, session]()
     {
@@ -204,21 +213,63 @@ void BackendAuthManager::syncProfileInBackground(const UserSession& session)
         {
             auto body = json::parse(response.text);
 
-            int newLayout = body.value("layout_id", session.layoutId);
-            int newTheme  = body.value("theme_id", session.themeId);
+            UserSession updated = session;
+            updated.userId   = body.value("user_id", session.userId);
+            updated.pseudo   = body.value("username", session.pseudo.toStdString()).c_str();
+            updated.email    = body.value("email", session.email.toStdString()).c_str();
+            updated.layoutId = body.value("layout_id", session.layoutId);
+            updated.themeId  = body.value("theme_id", session.themeId);
 
-            if (newLayout != session.layoutId ||
-                newTheme  != session.themeId)
-            {
-                UserSession updated = session;
-                updated.layoutId = newLayout;
-                updated.themeId  = newTheme;
+            saveSession(updated);
 
-                saveSession(updated);
-
-                backend.writeLog("Session sync depuis backend.");
-            }
+            backend.writeLog("Session sync depuis backend.");
         }
         catch (...) {}
     }).detach();
+}
+
+std::optional<UserSession> BackendAuthManager::syncProfileParams(const UserSession& session)
+{
+    auto url = backend.getApiUrl() + "/profile/me";
+
+    auto response = cpr::Get(
+        cpr::Url{ url.toStdString() },
+        cpr::Header{
+            { "Authorization", "Bearer " + session.accessToken.toStdString() }
+        }
+    );
+
+    if (response.status_code != 200)
+    {
+        backend.writeLog("Blocking sync failed, status: " + std::to_string(response.status_code));
+        return std::nullopt;
+    }
+
+    try
+    {
+        auto body = json::parse(response.text);
+
+        UserSession updated = session;
+        updated.userId   = body.value("user_id", session.userId);
+        updated.pseudo   = body.value("username", session.pseudo.toStdString()).c_str();
+        updated.email    = body.value("email", session.email.toStdString()).c_str();
+        updated.layoutId = body.value("layout_id", session.layoutId);
+        updated.themeId  = body.value("theme_id", session.themeId);
+
+        saveSession(updated);
+
+        backend.writeLog("Session synced (blocking) from backend.");
+
+        return updated;
+    }
+    catch (const std::exception& e)
+    {
+        backend.writeLog("Blocking sync JSON parse error: " + std::string(e.what()));
+        return std::nullopt;
+    }
+    catch (...)
+    {
+        backend.writeLog("Blocking sync unknown error");
+        return std::nullopt;
+    }
 }

@@ -1,5 +1,3 @@
-// MainComponent.cpp (fix : callback layout + resized() avec switch + marges réduites)
-
 #include "MainComponent.h"
 #include "themes/AppColourIds.h"
 
@@ -7,22 +5,20 @@
 #include <fstream>
 #include <thread>
 
-//==============================================================================
 
 MainComponent::MainComponent (BackendManager& be, const UserSession& session)
     : AudioAppComponent(),
       backend (be),
-      title ("Harmonia", be),
+      title ("Harmonia", session),
       oscilloscope (appLookAndFeel, 8192, 60),
       freqVolComponent (appLookAndFeel),
       adsrComponent (appLookAndFeel),
       filterComponent (appLookAndFeel)
 {
-    // LookAndFeel root
     setLookAndFeel (&appLookAndFeel);
 
-    applyThemeFromId(session.themeId);
-    applyLayoutFromId(session.layoutId);
+    applyTheme(ThemeAndLayoutConverter::idToThemePreset(session.themeId));
+    applyLayout(ThemeAndLayoutConverter::idToLayoutPreset(session.layoutId));
 
     sendLookAndFeelChange();
 
@@ -35,13 +31,12 @@ MainComponent::MainComponent (BackendManager& be, const UserSession& session)
 
         juce::MessageManager::callAsync([this, result]()
         {
-            applyThemeFromId(result.profile.themeId);
-            applyLayoutFromId(result.profile.layoutId);
+            applyTheme(ThemeAndLayoutConverter::idToThemePreset(result.profile.themeId));
+            applyLayout(ThemeAndLayoutConverter::idToLayoutPreset(result.profile.layoutId));
         });
 
     }).detach();
 
-    // ===== UI =====
     addAndMakeVisible (title);
     addAndMakeVisible (topBar);
     addAndMakeVisible (oscilloscope);
@@ -56,28 +51,23 @@ MainComponent::MainComponent (BackendManager& be, const UserSession& session)
     filterComponent.onParamsChanged  = [this]() { updateSynthParamsFromUI(); };
     topBar.onParamsChanged           = [this]() { updateSynthParamsFromUI(); };
 
-    // ===== LAYOUT (fix: le type vient de TitleComponent, pas AppLookAndFeel) =====
-    title.onLayoutSelected = [this] (AppLookAndFeel::LayoutPreset p)
+    title.onLayoutSelected = [this](LayoutPreset layout)
     {
-        switch (p)
-        {
-            case AppLookAndFeel::LayoutPreset::Layout1: setLayoutMode (LayoutMode::A); break;
-            case AppLookAndFeel::LayoutPreset::Layout2: setLayoutMode (LayoutMode::B); break;
-            case AppLookAndFeel::LayoutPreset::Layout3: setLayoutMode (LayoutMode::C); break;
-            case AppLookAndFeel::LayoutPreset::Layout4: setLayoutMode (LayoutMode::D); break;
-            default: break;
-        }
+        applyLayout(layout);
+        backend.updateLayout(ThemeAndLayoutConverter::layoutPresetToId(layout));
     };
 
-    // ===== Theme =====
-    title.onThemeSelected = [this] (AppLookAndFeel::Preset p)
+    title.onThemeSelected = [this] (ThemePreset p)
     {
-        appLookAndFeel.setThemePreset (p);
-        sendLookAndFeelChange();
-        repaint();
+        applyTheme(p);
+        backend.updateTheme(ThemeAndLayoutConverter::themePresetToId(p));
+    };
+    title.onLogout = [this]()
+    {
+        backend.clearSession();
+        if (title.onLogout) title.onLogout();
     };
 
-    // ===== Synth init =====
     synth.clearVoices();
     for (int i = 0; i < 8; ++i)
         synth.addVoice (new HarmoniaVoice());
@@ -233,40 +223,10 @@ MainComponent::MainComponent (BackendManager& be, const UserSession& session)
         }).detach();
     };
 
-    // layout par défaut
-    layoutMode = LayoutMode::A;
+    layoutPreset = ThemeAndLayoutConverter::idToLayoutPreset(session.layoutId);
 
     setSize (800, 600);
     setAudioChannels (0, 2);
-}
-
-void MainComponent::applyThemeFromId(int themeId)
-{
-    using Preset = AppLookAndFeel::Preset;
-
-    switch (themeId)
-    {
-        case 1: appLookAndFeel.setThemePreset(Preset::Dark); break;
-        case 2: appLookAndFeel.setThemePreset(Preset::Light); break;
-        case 3: appLookAndFeel.setThemePreset(Preset::Blue); break;
-        case 4: appLookAndFeel.setThemePreset(Preset::Red); break;
-        default: appLookAndFeel.setThemePreset(Preset::Dark); break;
-    }
-
-    sendLookAndFeelChange();
-    repaint();
-}
-
-void MainComponent::applyLayoutFromId(int layoutId)
-{
-    switch (layoutId)
-    {
-        case 1: setLayoutMode(LayoutMode::A); break;
-        case 2: setLayoutMode(LayoutMode::B); break;
-        case 3: setLayoutMode(LayoutMode::C); break;
-        case 4: setLayoutMode(LayoutMode::D); break;
-        default: setLayoutMode(LayoutMode::A); break;
-    }
 }
 
 //==============================================================================
@@ -284,13 +244,6 @@ void MainComponent::paint (juce::Graphics& g)
     g.fillAll (findColour (AppColourIds::backgroundId));
 }
 
-void MainComponent::setLayoutMode (LayoutMode m)
-{
-    layoutMode = m;
-    resized();
-    repaint();
-}
-
 void MainComponent::resized()
 {
     // moins de marge globale
@@ -300,10 +253,10 @@ void MainComponent::resized()
     topBar.setBounds (area.removeFromTop (70));
     bottomBar.setBounds (area.removeFromBottom (50));
 
-    switch (layoutMode)
+    switch (layoutPreset)
     {
         // Layout 1 (A) : proche de l’actuel
-        case LayoutMode::A:
+        case LayoutPreset::Layout1:
         {
             oscilloscope.setBounds (area.removeFromTop (100));
             freqVolComponent.setBounds (area.removeFromTop (110));
@@ -314,7 +267,7 @@ void MainComponent::resized()
         }
 
         // Layout 2 (B) : oscillo plus grand
-        case LayoutMode::B:
+        case LayoutPreset::Layout2:
         {
             oscilloscope.setBounds(area.removeFromTop(170));
 
@@ -335,7 +288,7 @@ void MainComponent::resized()
         }
 
         // Layout 3 (C) : oscillo gauche, contrôles droite
-        case LayoutMode::C:
+        case LayoutPreset::Layout3:
         {
             auto upper = area.removeFromTop (260);
 
@@ -352,7 +305,7 @@ void MainComponent::resized()
         }
 
         // Layout 4 (D) : clavier plus grand
-        case LayoutMode::D:
+        case LayoutPreset::Layout4:
         {
             auto upper = area.removeFromTop(260);
 
@@ -446,7 +399,16 @@ void MainComponent::updateSynthParamsFromUI()
             v->setParameters (params);
 }
 
-void MainComponent::triggerPreviewNote()
+void MainComponent::applyLayout(LayoutPreset layout)
 {
-    synth.noteOn (1, 60, 0.8f);
+    layoutPreset = layout;
+    resized();
+    repaint();
+}
+
+void MainComponent::applyTheme(ThemePreset theme)
+{
+    appLookAndFeel.setThemePreset(theme);
+    sendLookAndFeelChange();
+    repaint();
 }

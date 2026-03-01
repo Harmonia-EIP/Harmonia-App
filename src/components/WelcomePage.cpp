@@ -4,7 +4,7 @@
 WelcomePage::WelcomePage()
 {
     // LookAndFeel local toujours sombre (pas dépendant de l'utilisateur)
-    authLookAndFeel.setThemePreset(AppLookAndFeel::Preset::Dark);
+    authLookAndFeel.setThemePreset(AppLookAndFeel::ThemePreset::Dark);
     setLookAndFeel(&authLookAndFeel);
 
     // ===== TITLE =====

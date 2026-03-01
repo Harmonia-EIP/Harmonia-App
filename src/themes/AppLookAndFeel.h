@@ -7,26 +7,26 @@
 class AppLookAndFeel : public juce::LookAndFeel_V4
 {
 public:
-    enum class Preset { Dark, Light, Red, Blue };
+    enum class ThemePreset { Dark, Light, Red, Blue };
     enum class LayoutPreset { Layout1, Layout2, Layout3, Layout4 };
 
     AppLookAndFeel()
     {
-        setThemePreset (Preset::Dark);
+        setThemePreset (ThemePreset::Dark);
     }
 
-    Preset getPreset() const { return preset; }
+    ThemePreset getPreset() const { return preset; }
 
-    void setThemePreset (Preset p)
+    void setThemePreset (ThemePreset p)
     {
         preset = p;
 
         switch (preset)
         {
-            case Preset::Dark:  palette = ThemePalette::dark();  break;
-            case Preset::Light: palette = ThemePalette::light(); break;
-            case Preset::Red:   palette = ThemePalette::red();   break;
-            case Preset::Blue:  palette = ThemePalette::blue();  break;
+            case ThemePreset::Dark:  palette = ThemePalette::dark();  break;
+            case ThemePreset::Light: palette = ThemePalette::light(); break;
+            case ThemePreset::Red:   palette = ThemePalette::red();   break;
+            case ThemePreset::Blue:  palette = ThemePalette::blue();  break;
             default:            palette = ThemePalette::dark();  break;
         }
 
@@ -35,7 +35,7 @@ public:
 
     void toggleTheme()
     {
-        setThemePreset (preset == Preset::Dark ? Preset::Light : Preset::Dark);
+        setThemePreset (preset == ThemePreset::Dark ? ThemePreset::Light : ThemePreset::Dark);
     }
 
     void drawRotarySlider (juce::Graphics& g, int x, int y, int width, int height,
@@ -134,6 +134,6 @@ private:
         setColour (juce::CaretComponent::caretColourId, palette.accent);
     }
 
-    Preset preset = Preset::Dark;
+    ThemePreset preset = ThemePreset::Dark;
     ThemePalette palette = ThemePalette::dark();
 };

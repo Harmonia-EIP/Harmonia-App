@@ -28,12 +28,13 @@
 #include "components/SynthComponent.h"
 #include "components/OscilloscopeComponent.h"
 
+#include "tools/ThemeAndLayoutConverter.h"
+
 class MainComponent : public juce::AudioAppComponent
 {
 public:
-    enum class LayoutMode { A, B, C, D };
-    void setLayoutMode (LayoutMode m);
-    LayoutMode layoutMode = LayoutMode::A;
+    using LayoutPreset = AppLookAndFeel::LayoutPreset;
+    using ThemePreset = AppLookAndFeel::ThemePreset;
 
     explicit MainComponent (BackendManager& be, const UserSession& session);
     ~MainComponent() override;
@@ -66,10 +67,11 @@ private:
     double currentSampleRate = 44100.0;
 
     void updateSynthParamsFromUI();
-    void triggerPreviewNote();
 
-    void applyThemeFromId(int themeId);
-    void applyLayoutFromId(int layoutId);
+    LayoutPreset layoutPreset;
+
+    void applyTheme(ThemePreset theme);
+    void applyLayout(LayoutPreset layout);
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

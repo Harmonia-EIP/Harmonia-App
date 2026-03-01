@@ -24,26 +24,21 @@ void HarmoniaApp::initialise(const juce::String&)
 
     auto session = backend->loadSession();
 
-    if (session.has_value())
+    if (session && session->expiresAt > juce::Time::getCurrentTime())
     {
-        juce::Logger::writeToLog("Session trouvée pour " + session->email);
-
-        if (juce::Time::getCurrentTime() > session->expiresAt)
+        auto synced = backend->syncProfileParams(*session);
+        if (synced)
+            mainWindow = std::make_unique<MainWindow>("HarmoniaApp", *this, *backend, *synced);
+        else
         {
-            juce::Logger::writeToLog("Token expiré. Vous devrez vous reconnecter.");
-
             backend->clearSession();
             mainWindow = std::make_unique<MainWindow>("HarmoniaApp", *this, *backend, std::nullopt);
-            return;
         }
-
-        juce::Logger::writeToLog("Connexion automatique !");
-        mainWindow = std::make_unique<MainWindow>("HarmoniaApp", *this, *backend, session);
-        return;
     }
-
-    juce::Logger::writeToLog("Aucune session, ouverture de l’écran de connexion");
-    mainWindow = std::make_unique<MainWindow>("HarmoniaApp", *this, *backend, std::nullopt);
+    else
+    {
+        mainWindow = std::make_unique<MainWindow>("HarmoniaApp", *this, *backend, std::nullopt);
+    }
 }
 
 void HarmoniaApp::shutdown()

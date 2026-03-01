@@ -80,3 +80,90 @@ ProfileResult BackendProfileManager::getProfile()
 
     return result;
 }
+
+
+ProfileResult BackendProfileManager::updateTheme(int themeId)
+{
+    ProfileResult result;
+
+    auto sessionOpt = backend.loadSession();
+    if (!sessionOpt.has_value())
+    {
+        result.success = false;
+        result.errorMessage = "Pas de session active";
+        return result;
+    }
+
+    auto& session = sessionOpt.value();
+
+    json body;
+    body["theme_id"] = themeId;
+
+    auto url = backend.getApiUrl() + "/profile/" 
+               + juce::String(session.userId) 
+               + "/theme";
+
+    auto response = cpr::Put(
+        cpr::Url{ url.toStdString() },
+        cpr::Header{
+            { "Authorization", "Bearer " + session.accessToken.toStdString() },
+            { "Content-Type", "application/json" }
+        },
+        cpr::Body{ body.dump() }
+    );
+
+    backend.writeLog("PUT /theme : " + juce::String(response.status_code));
+
+    if (response.status_code != 200)
+    {
+        result.success = false;
+        result.errorMessage = "Erreur update theme";
+        return result;
+    }
+
+    result.success = true;
+    return result;
+}
+
+ProfileResult BackendProfileManager::updateLayout(int layoutId)
+{
+    ProfileResult result;
+
+    auto sessionOpt = backend.loadSession();
+    if (!sessionOpt.has_value())
+    {
+        result.success = false;
+        result.errorMessage = "Pas de session active";
+        return result;
+    }
+
+    auto& session = sessionOpt.value();
+
+    json body;
+    body["layout_id"] = layoutId;
+
+    auto url = backend.getApiUrl() + "/profile/" 
+               + juce::String(session.userId) 
+               + "/layout";
+
+    auto response = cpr::Put(
+        cpr::Url{ url.toStdString() },
+        cpr::Header{
+            { "Authorization", "Bearer " + session.accessToken.toStdString() },
+            { "Content-Type", "application/json" }
+        },
+        cpr::Body{ body.dump() }
+    );
+
+    backend.writeLog("PUT /layout : " + juce::String(response.status_code));
+
+    if (response.status_code != 200)
+    {
+        result.success = false;
+        result.errorMessage = "Erreur update layout";
+        return result;
+    }
+
+    result.success = true;
+    return result;
+}   

@@ -4,6 +4,8 @@
 
 struct UserSession
 {
+    int userId = 0;
+    
     juce::String pseudo;
     juce::String email;
     juce::String accessToken;
