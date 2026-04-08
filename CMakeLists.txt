@@ -25,7 +25,10 @@ file(GLOB_RECURSE SOURCE_FILES CONFIGURE_DEPENDS
     src/*.h
 )
 
-add_executable(HarmoniaApp WIN32 ${SOURCE_FILES})
+add_executable(HarmoniaApp WIN32
+    ${SOURCE_FILES}
+    icon.rc
+)
 
 target_include_directories(HarmoniaApp PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src
