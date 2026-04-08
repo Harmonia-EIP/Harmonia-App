@@ -1,0 +1,26 @@
+var classBackendManager =
+[
+    [ "BackendManager", "classBackendManager.html#ab9ef9e48bbc4984d1ea3ab0724be4f96", null ],
+    [ "~BackendManager", "classBackendManager.html#a55c06c26ce2b9ca7fd923ccb5088a37e", null ],
+    [ "clearSession", "classBackendManager.html#a022a7ce81088cec16dbe4a5abda31dd4", null ],
+    [ "generatePatch", "classBackendManager.html#a53f5ec480391968a62fac37fe6cbe78d", null ],
+    [ "getApiUrl", "classBackendManager.html#abfaf058d370332559ca2a79da994e72f", null ],
+    [ "getExeDir", "classBackendManager.html#a8c00c22a87eae97155272138db36a671", null ],
+    [ "getProfile", "classBackendManager.html#a45da484953210bee5b8baa2fafd463f6", null ],
+    [ "getSessionFile", "classBackendManager.html#a75e5015d05b4a9bf67492b95936a03f9", null ],
+    [ "loadEnv", "classBackendManager.html#ab2ec7106e573f3f0a074c7c6405c6365", null ],
+    [ "loadSession", "classBackendManager.html#acf262702909c9686548e84aa3bc9e40c", null ],
+    [ "loginUser", "classBackendManager.html#a27675e6f46e70bcbae60c9cbefba8fd6", null ],
+    [ "saveSession", "classBackendManager.html#aa1b7b42c72d7e0293566eea70d004b0e", null ],
+    [ "signupUser", "classBackendManager.html#a3fa4aa3de9a580bcdfa5d37816bbdec4", null ],
+    [ "syncProfileParams", "classBackendManager.html#aa869d21bab03453f69e0cc4e0dfa7a5a", null ],
+    [ "syncProfileParamsInBackground", "classBackendManager.html#a61203ae58e04ff22c866acb5dc602c23", null ],
+    [ "updateLayout", "classBackendManager.html#aea6d9fd0fcb7a047dd5c693535b0de7b", null ],
+    [ "updateTheme", "classBackendManager.html#ad143924eb6fd00d2c65ed7f9e572c818", null ],
+    [ "writeLog", "classBackendManager.html#a9ee33036fd962fa87dbedecfc3e8c259", null ],
+    [ "aiManager", "classBackendManager.html#afc7da8e52b21ef11d7b7197027cb3402", null ],
+    [ "apiUrl", "classBackendManager.html#a0bef3209241177f810c26fc771299900", null ],
+    [ "authManager", "classBackendManager.html#aa0049dc1eed25a18f702c7064afa5c3f", null ],
+    [ "profileManager", "classBackendManager.html#ad7ac6c7e1f592cf5bafc509c8d717c9a", null ],
+    [ "sessionFile", "classBackendManager.html#aaf2b056ac6c42db83b6f51edacf68b74", null ]
+];

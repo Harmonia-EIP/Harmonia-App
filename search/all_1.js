@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['backbutton_0',['backbutton',['../classSignupPage.html#a3c8d4626499ab361ef15d7dc3978b00c',1,'SignupPage::backButton'],['../classLoginPage.html#ad8510ec52ffdcba2dbb5e9799f3122d3',1,'LoginPage::backButton']]],
+  ['backend_1',['backend',['../classMainWindow.html#a1be9718cacc6d6203ca1eb5bb018c318',1,'MainWindow::backend'],['../classMainComponent.html#a406af97f9c54dcb7c7c13c0d7504372a',1,'MainComponent::backend'],['../classHarmoniaApp.html#ae0b89c5dd48557275963d8e072849554',1,'HarmoniaApp::backend'],['../classSignupPage.html#a4d9b97ef56922877a2326617e75fdbbc',1,'SignupPage::backend'],['../classLoginPage.html#ad467ba7fe5a4f10a28ea37ca0883c16d',1,'LoginPage::backend'],['../classBackendProfileManager.html#ab784acd7e87d0e6400406fefa667a143',1,'BackendProfileManager::backend'],['../classBackendAuthManager.html#ae172bbcf9b495d83dea5dcd114403d86',1,'BackendAuthManager::backend'],['../classBackendAiManager.html#acfa539ffdb14450010c1745d9e8c75a5',1,'BackendAiManager::backend']]],
+  ['backendaimanager_2',['backendaimanager',['../classBackendAiManager.html',1,'BackendAiManager'],['../classBackendAiManager.html#ac04b9bebb15e3012a40010cbb47a37d4',1,'BackendAiManager::BackendAiManager()']]],
+  ['backendaimanager_2ecpp_3',['BackendAiManager.cpp',['../BackendAiManager_8cpp.html',1,'']]],
+  ['backendaimanager_2eh_4',['BackendAiManager.h',['../BackendAiManager_8h.html',1,'']]],
+  ['backendauthmanager_5',['backendauthmanager',['../classBackendAuthManager.html',1,'BackendAuthManager'],['../classBackendAuthManager.html#aed542550962425c606b5fa913d78e2b7',1,'BackendAuthManager::BackendAuthManager()']]],
+  ['backendauthmanager_2ecpp_6',['BackendAuthManager.cpp',['../BackendAuthManager_8cpp.html',1,'']]],
+  ['backendauthmanager_2eh_7',['BackendAuthManager.h',['../BackendAuthManager_8h.html',1,'']]],
+  ['backendmanager_8',['backendmanager',['../classBackendManager.html',1,'BackendManager'],['../classBackendManager.html#ab9ef9e48bbc4984d1ea3ab0724be4f96',1,'BackendManager::BackendManager()']]],
+  ['backendmanager_2ecpp_9',['BackendManager.cpp',['../BackendManager_8cpp.html',1,'']]],
+  ['backendmanager_2eh_10',['BackendManager.h',['../BackendManager_8h.html',1,'']]],
+  ['backendprofilemanager_11',['backendprofilemanager',['../classBackendProfileManager.html#ad4da6095e745d454d1c5b6eeabbbbfa8',1,'BackendProfileManager::BackendProfileManager()'],['../classBackendProfileManager.html',1,'BackendProfileManager']]],
+  ['backendprofilemanager_2ecpp_12',['BackendProfileManager.cpp',['../BackendProfileManager_8cpp.html',1,'']]],
+  ['backendprofilemanager_2eh_13',['BackendProfileManager.h',['../BackendProfileManager_8h.html',1,'']]],
+  ['backendtypes_2eh_14',['BackendTypes.h',['../BackendTypes_8h.html',1,'']]],
+  ['background_15',['background',['../structThemePalette.html#a5185e50af37421b0ddd1557e367a174f',1,'ThemePalette']]],
+  ['backgroundid_16',['backgroundId',['../namespaceAppColourIds.html#a395e668d95f8775e059d210c51399489ac891110aefb40508a98dcb6489efc473',1,'AppColourIds']]],
+  ['blue_17',['blue',['../structThemePalette.html#ae5956eb3e300efa8b9e49c512e2aa324',1,'ThemePalette::blue()'],['../classAppLookAndFeel.html#a7e966ad29d8634970a167de96d1a6b87a9594eec95be70e7b1710f730fdda33d9',1,'AppLookAndFeel::Blue']]],
+  ['bottombar_18',['bottomBar',['../classMainComponent.html#a9de8a7b9dd87c3b0ba99376a6d5b37fe',1,'MainComponent']]],
+  ['bottombarcomponent_19',['bottombarcomponent',['../classBottomBarComponent.html',1,'BottomBarComponent'],['../classBottomBarComponent.html#a073f921d341afd0eea42b5ebc7f7c4ee',1,'BottomBarComponent::BottomBarComponent()']]],
+  ['bottombarcomponent_2ecpp_20',['BottomBarComponent.cpp',['../BottomBarComponent_8cpp.html',1,'']]],
+  ['bottombarcomponent_2eh_21',['BottomBarComponent.h',['../BottomBarComponent_8h.html',1,'']]],
+  ['buttonclicked_22',['buttonClicked',['../classTitleComponent.html#abc1ff940f3ae8f10c462e024f691d63a',1,'TitleComponent']]]
+];

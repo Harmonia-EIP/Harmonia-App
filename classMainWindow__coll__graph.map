@@ -1,0 +1,16 @@
+<map id="MainWindow" name="MainWindow">
+<area shape="rect" id="Node000001" title=" " alt="" coords="45,93,152,119"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,181,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="98,44,101,93,95,93,92,45"/>
+<area shape="rect" id="Node000003" href="$classBackendManager.html" title="Main facade for backend interactions (authentication, AI, profile)." alt="" coords="370,5,505,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="357,25,271,35,226,44,182,57,145,75,115,95,112,91,142,71,180,52,225,39,270,30,356,19"/>
+<area shape="rect" id="Node000004" href="$classBackendAuthManager.html" title="Handles authentication and session persistence." alt="" coords="178,93,342,119"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="356,27,292,38,267,46,251,56,248,64,248,73,255,92,250,94,243,74,243,63,247,53,264,41,291,32,356,22"/>
+<area shape="rect" id="Node000005" href="$classBackendAiManager.html" title="Handles AI&#45;based preset generation via backend API." alt="" coords="368,93,515,119"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="436,45,436,69,441,92,435,94,431,70,431,45"/>
+<area shape="rect" id="Node000006" href="$classBackendProfileManager.html" title="Handles user profile retrieval and updates." alt="" coords="587,93,762,119"/>
+<area shape="poly" id="edge8_Node000006_Node000003" title=" " alt="" coords="510,31,580,52,622,71,657,91,655,95,619,76,578,57,508,36"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="285,83,336,52,398,28,399,33,339,57,288,88"/>
+<area shape="poly" id="edge5_Node000003_Node000005" title=" " alt="" coords="480,85,495,71,497,64,495,56,484,43,468,33,471,28,487,39,500,53,502,64,500,73,484,88"/>
+<area shape="poly" id="edge7_Node000003_Node000006" title=" " alt="" coords="688,81,692,67,688,56,677,48,660,40,614,30,559,24,505,22,505,16,559,19,615,25,662,35,680,43,693,53,698,67,693,82"/>
+</map>

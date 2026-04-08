@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['textprimary_0',['textPrimary',['../structThemePalette.html#a221bbd68978b99f33701eff01eed03eb',1,'ThemePalette']]],
+  ['textprimaryid_1',['textPrimaryId',['../namespaceAppColourIds.html#a395e668d95f8775e059d210c51399489ab06ac58bf7d980ffed3b308d4604e803',1,'AppColourIds']]],
+  ['textsecondary_2',['textSecondary',['../structThemePalette.html#a421ac3d45c0036d9d234fd1063fd0065',1,'ThemePalette']]],
+  ['textsecondaryid_3',['textSecondaryId',['../namespaceAppColourIds.html#a395e668d95f8775e059d210c51399489ab77f0f8b9e8f98e988a15aa9a9c4848b',1,'AppColourIds']]],
+  ['themeandlayoutconverter_4',['ThemeAndLayoutConverter',['../classThemeAndLayoutConverter.html',1,'']]],
+  ['themeandlayoutconverter_2eh_5',['ThemeAndLayoutConverter.h',['../ThemeAndLayoutConverter_8h.html',1,'']]],
+  ['themebutton_6',['themeButton',['../classTitleComponent.html#ad5abc823bb4567ec3f39aa589fd03cb8',1,'TitleComponent']]],
+  ['themeid_7',['themeid',['../structUserProfile.html#ad653cf20ab1a2b58a26573efeb1baa07',1,'UserProfile::themeId'],['../structUserSession.html#aa672f9f78e0b491b07d5deabb3d6dd2e',1,'UserSession::themeId']]],
+  ['themepalette_8',['ThemePalette',['../structThemePalette.html',1,'']]],
+  ['themepreset_9',['themepreset',['../classAppLookAndFeel.html#a7e966ad29d8634970a167de96d1a6b87',1,'AppLookAndFeel::ThemePreset'],['../classTitleComponent.html#a1a68d6dfa5f903a119e8f49cfc65e48f',1,'TitleComponent::ThemePreset'],['../classMainComponent.html#af6e7a4a7bfb8f70bbb6d8122ddeda12f',1,'MainComponent::ThemePreset']]],
+  ['themepresettoid_10',['themePresetToId',['../classThemeAndLayoutConverter.html#a57dcc76f8dfe355466cf9f43bef7486b',1,'ThemeAndLayoutConverter']]],
+  ['themes_2eh_11',['Themes.h',['../Themes_8h.html',1,'']]],
+  ['timercallback_12',['timerCallback',['../classOscilloscopeComponent.html#ac3c325a5783106db2919d89b0c63931e',1,'OscilloscopeComponent']]],
+  ['title_13',['title',['../classMainComponent.html#a7a301d9e544c5b02f84bfb07ee1ad036',1,'MainComponent::title'],['../classTitleComponent.html#aade3079cd2fce24ac2ae1292c0a32bce',1,'TitleComponent::title']]],
+  ['titlecomponent_14',['titlecomponent',['../classTitleComponent.html',1,'TitleComponent'],['../classTitleComponent.html#a305c7243e8fc0ac7246f8cb60e62af30',1,'TitleComponent::TitleComponent()']]],
+  ['titlecomponent_2ecpp_15',['TitleComponent.cpp',['../TitleComponent_8cpp.html',1,'']]],
+  ['titlecomponent_2eh_16',['TitleComponent.h',['../TitleComponent_8h.html',1,'']]],
+  ['titlelabel_17',['titlelabel',['../classLoginPage.html#a743dbe692a5203c6c1a766c409b99d08',1,'LoginPage::titleLabel'],['../classSignupPage.html#a45a91e2876841839d278c9e8d0421367',1,'SignupPage::titleLabel'],['../classTitleComponent.html#ad4782dedf7a825df82392ffc9e7afa87',1,'TitleComponent::titleLabel'],['../classWelcomePage.html#a2d6dddcf5a14ba6ab661a31b4dae8601',1,'WelcomePage::titleLabel']]],
+  ['toggletheme_18',['toggleTheme',['../classAppLookAndFeel.html#a65e1af939c984595aa7b6eaac51f986b',1,'AppLookAndFeel']]],
+  ['topbar_19',['topBar',['../classMainComponent.html#a03ecf7c4690659d1bc95e85784e87f31',1,'MainComponent']]],
+  ['topbarcomponent_20',['topbarcomponent',['../classTopBarComponent.html#a985a179f171a911c9bf012be72f34ebc',1,'TopBarComponent::TopBarComponent()'],['../classTopBarComponent.html',1,'TopBarComponent']]],
+  ['topbarcomponent_2ecpp_21',['TopBarComponent.cpp',['../TopBarComponent_8cpp.html',1,'']]],
+  ['topbarcomponent_2eh_22',['TopBarComponent.h',['../TopBarComponent_8h.html',1,'']]]
+];

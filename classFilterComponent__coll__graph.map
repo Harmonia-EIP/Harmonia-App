@@ -1,0 +1,11 @@
+<map id="FilterComponent" name="FilterComponent">
+<area shape="rect" id="Node000001" title=" " alt="" coords="27,181,158,207"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,137,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="80,131,92,180,87,181,75,133"/>
+<area shape="rect" id="Node000003" href="$classAppLookAndFeel.html" title=" " alt="" coords="162,93,293,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="199,128,112,183,110,179,196,124"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="64,5,228,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="168,39,218,91,214,95,164,43"/>
+<area shape="rect" id="Node000005" href="$structThemePalette.html" title=" " alt="" coords="253,5,365,31"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="290,43,241,95,237,91,286,39"/>
+</map>

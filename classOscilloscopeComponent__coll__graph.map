@@ -1,0 +1,13 @@
+<map id="OscilloscopeComponent" name="OscilloscopeComponent">
+<area shape="rect" id="Node000001" title=" " alt="" coords="119,181,298,207"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,137,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="103,124,191,179,189,183,100,128"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="161,93,256,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="211,133,211,181,206,181,206,133"/>
+<area shape="rect" id="Node000004" href="$classAppLookAndFeel.html" title=" " alt="" coords="281,93,411,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="317,128,229,183,226,179,315,124"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="183,5,347,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="287,39,337,91,333,95,283,43"/>
+<area shape="rect" id="Node000006" href="$structThemePalette.html" title=" " alt="" coords="371,5,483,31"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="409,43,359,95,355,91,405,39"/>
+</map>

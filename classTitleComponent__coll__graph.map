@@ -1,0 +1,9 @@
+<map id="TitleComponent" name="TitleComponent">
+<area shape="rect" id="Node000001" title=" " alt="" coords="179,93,305,119"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,137,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,34,220,91,218,95,105,39"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="162,5,322,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="245,45,245,93,239,93,239,45"/>
+<area shape="rect" id="Node000004" href="$structUserSession.html" title=" " alt="" coords="347,5,449,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="366,40,264,95,262,91,364,35"/>
+</map>

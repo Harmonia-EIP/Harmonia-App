@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['lastname_0',['lastName',['../structUserProfile.html#af3d8118d173b31467957e6d65c63a27f',1,'UserProfile']]],
+  ['lastnamefield_1',['lastnameField',['../classSignupPage.html#a348d6106b42624d41bd078d439dba391',1,'SignupPage']]],
+  ['layout1_2',['Layout1',['../classAppLookAndFeel.html#a49a9340f3d5b5f90635f6c10385659b4a4820e68a1157319c4e06d24f78fc52ab',1,'AppLookAndFeel']]],
+  ['layout2_3',['Layout2',['../classAppLookAndFeel.html#a49a9340f3d5b5f90635f6c10385659b4a59a061a44f961f7f8cc2d10b3d14de96',1,'AppLookAndFeel']]],
+  ['layout3_4',['Layout3',['../classAppLookAndFeel.html#a49a9340f3d5b5f90635f6c10385659b4aa77a887b5e340da4edc103ddb5f381c6',1,'AppLookAndFeel']]],
+  ['layout4_5',['Layout4',['../classAppLookAndFeel.html#a49a9340f3d5b5f90635f6c10385659b4aa9babb889278f4dad59b2884f295482c',1,'AppLookAndFeel']]],
+  ['layoutbutton_6',['layoutButton',['../classTitleComponent.html#ace8791400fc9d77c4155a308043f43da',1,'TitleComponent']]],
+  ['layoutid_7',['layoutid',['../structUserSession.html#a7d3c006ea68de6e5b4e2c9e31e0ec371',1,'UserSession::layoutId'],['../structUserProfile.html#ad7330008a3a3461610fa22b1b7ab689e',1,'UserProfile::layoutId']]],
+  ['layoutpreset_8',['layoutpreset',['../classAppLookAndFeel.html#a49a9340f3d5b5f90635f6c10385659b4',1,'AppLookAndFeel::LayoutPreset'],['../classTitleComponent.html#ad3ea0db7a48f4b62a04acf38a5c61512',1,'TitleComponent::LayoutPreset'],['../classMainComponent.html#aebbbb11541f829d92d27f22df46c4678',1,'MainComponent::LayoutPreset'],['../classMainComponent.html#a1c918f30e59a3439ac11313bd79749df',1,'MainComponent::layoutPreset']]],
+  ['layoutpresettoid_9',['layoutPresetToId',['../classThemeAndLayoutConverter.html#a95198b7a34b3b587e1eb2224cabde2df',1,'ThemeAndLayoutConverter']]],
+  ['light_10',['light',['../classAppLookAndFeel.html#a7e966ad29d8634970a167de96d1a6b87a9914a0ce04a7b7b6a8e39bec55064b82',1,'AppLookAndFeel::Light'],['../structThemePalette.html#a86b2c82b1d6d3f3293fd3d847038d05e',1,'ThemePalette::light()']]],
+  ['loadbutton_11',['loadButton',['../classBottomBarComponent.html#a1e3ef82af6e17a545b1349e0117ac640',1,'BottomBarComponent']]],
+  ['loadenv_12',['loadEnv',['../classBackendManager.html#ab2ec7106e573f3f0a074c7c6405c6365',1,'BackendManager']]],
+  ['loadsession_13',['loadsession',['../classBackendAuthManager.html#aba97e10aaa644a6648402e46efce5f28',1,'BackendAuthManager::loadSession()'],['../classBackendManager.html#acf262702909c9686548e84aa3bc9e40c',1,'BackendManager::loadSession()']]],
+  ['lock_14',['lock',['../classOscilloscopeComponent.html#a0c1bb19835f1cf305e5750d80eb37623',1,'OscilloscopeComponent']]],
+  ['loginbutton_15',['loginButton',['../classLoginPage.html#acf48cba1b7f7c9e730a97458d64c1378',1,'LoginPage']]],
+  ['loginpage_16',['loginpage',['../classLoginPage.html#a50436cb2261e60d9bc286f0bf3dc0bac',1,'LoginPage::LoginPage()'],['../classLoginPage.html',1,'LoginPage']]],
+  ['loginpage_2ecpp_17',['LoginPage.cpp',['../LoginPage_8cpp.html',1,'']]],
+  ['loginpage_2eh_18',['LoginPage.h',['../LoginPage_8h.html',1,'']]],
+  ['loginuser_19',['loginuser',['../classBackendAuthManager.html#a8250fd7e65876e662252a9279e843c3b',1,'BackendAuthManager::loginUser()'],['../classBackendManager.html#a27675e6f46e70bcbae60c9cbefba8fd6',1,'BackendManager::loginUser()']]],
+  ['logoutbutton_20',['logoutButton',['../classTitleComponent.html#acd722a36ec92be3669eec5f47d69a72b',1,'TitleComponent']]],
+  ['lookandfeel_21',['lookandfeel',['../classADSRComponent.html#a35b05a5d3907b436a20f99885c59edc2',1,'ADSRComponent::lookAndFeel'],['../classFilterComponent.html#a721093e5f8fb6859ccf952175534e87e',1,'FilterComponent::lookAndFeel'],['../classFrequencyVolumeComponent.html#a92154a53ff8689db44a5b9065db6d180',1,'FrequencyVolumeComponent::lookAndFeel'],['../classOscilloscopeComponent.html#a3506bc0fd6d0d650cfb8ef1d4eb130f9',1,'OscilloscopeComponent::lookAndFeel']]],
+  ['lookandfeelchanged_22',['lookandfeelchanged',['../classADSRComponent.html#a161de454d3c756887979f35f84dd7171',1,'ADSRComponent::lookAndFeelChanged()'],['../classFilterComponent.html#a2da67501e4d401e01009f9f40e3b6da7',1,'FilterComponent::lookAndFeelChanged()'],['../classFrequencyVolumeComponent.html#aad23a3e86f647e7d793db409201a70a6',1,'FrequencyVolumeComponent::lookAndFeelChanged()'],['../classOscilloscopeComponent.html#aa70ce1c5672d5c20915a60c267e7f56e',1,'OscilloscopeComponent::lookAndFeelChanged()'],['../classTopBarComponent.html#abcd6aa13e8a7b9f7ddb958ab7cd06166',1,'TopBarComponent::lookAndFeelChanged()']]]
+];

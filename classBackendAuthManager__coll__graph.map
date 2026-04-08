@@ -1,0 +1,12 @@
+<map id="BackendAuthManager" name="BackendAuthManager">
+<area shape="rect" id="Node000001" title="Handles authentication and session persistence." alt="" coords="91,5,255,31"/>
+<area shape="rect" id="Node000002" href="$classBackendManager.html" title="Main facade for backend interactions (authentication, AI, profile)." alt="" coords="106,93,241,119"/>
+<area shape="poly" id="edge2_Node000002_Node000001" title=" " alt="" coords="128,39,112,56,110,66,115,75,140,91,137,96,111,79,104,67,107,53,124,36"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="195,82,203,68,204,59,201,50,186,33,191,29,205,47,209,58,208,70,199,85"/>
+<area shape="rect" id="Node000003" href="$classBackendAiManager.html" title="Handles AI&#45;based preset generation via backend API." alt="" coords="5,181,152,207"/>
+<area shape="poly" id="edge4_Node000003_Node000002" title=" " alt="" coords="94,116,68,127,48,144,45,153,48,162,64,179,60,183,43,164,39,153,43,141,65,122,91,111"/>
+<area shape="rect" id="Node000004" href="$classBackendProfileManager.html" title="Handles user profile retrieval and updates." alt="" coords="181,181,355,207"/>
+<area shape="poly" id="edge6_Node000004_Node000002" title=" " alt="" coords="194,127,223,155,253,179,250,183,220,159,191,131"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="94,169,121,141,153,117,156,121,124,145,98,172"/>
+<area shape="poly" id="edge5_Node000002_Node000004" title=" " alt="" coords="282,168,286,155,283,144,264,127,240,117,242,112,267,123,288,141,292,155,288,170"/>
+</map>

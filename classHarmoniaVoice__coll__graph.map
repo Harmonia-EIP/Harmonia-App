@@ -1,0 +1,7 @@
+<map id="HarmoniaVoice" name="HarmoniaVoice">
+<area shape="rect" id="Node000001" title=" " alt="" coords="117,93,238,119"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,173,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,38,167,91,163,95,109,42"/>
+<area shape="rect" id="Node000003" href="$structHarmoniaParams.html" title=" " alt="" coords="198,5,333,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="246,42,191,95,188,91,242,38"/>
+</map>

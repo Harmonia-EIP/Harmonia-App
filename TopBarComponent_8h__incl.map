@@ -1,0 +1,20 @@
+<map id="src/components/TopBarComponent.h" name="src/components/TopBarComponent.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="453,5,713,31"/>
+<area shape="rect" id="Node000002" href="$JuceHeader_8h.html" title=" " alt="" coords="529,152,636,177"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="576,32,562,53,551,79,549,95,552,111,567,140,562,142,547,112,544,95,545,78,557,51,571,29"/>
+<area shape="rect" id="Node000009" href="$WaveformSelector_8h.html" title=" " alt="" coords="560,79,725,104"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="595,29,626,66,622,70,591,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,233,168,258"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="529,176,373,198,180,228,155,233,154,227,180,223,372,192,529,170"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="192,225,365,265"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="539,180,365,225,364,219,538,175"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="389,233,584,258"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="570,180,513,226,510,222,567,175"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="609,225,751,265"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="599,175,648,215,644,219,595,180"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="776,225,931,265"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="623,175,776,219,774,224,621,180"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="955,225,1103,265"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="637,171,942,223,942,228,636,177"/>
+<area shape="poly" id="edge9_Node000009_Node000002" title=" " alt="" coords="635,106,603,143,599,140,631,103"/>
+</map>

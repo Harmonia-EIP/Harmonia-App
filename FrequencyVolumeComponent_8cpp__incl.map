@@ -1,0 +1,17 @@
+<map id="src/components/FrequencyVolumeComponent.cpp" name="src/components/FrequencyVolumeComponent.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="99,5,295,45"/>
+<area shape="rect" id="Node000002" href="$FrequencyVolumeComponent_8h.html" title=" " alt="" coords="10,93,235,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="181,47,145,85,141,81,177,44"/>
+<area shape="rect" id="Node000005" href="$AppColourIds_8h.html" title=" " alt="" coords="198,240,318,265"/>
+<area shape="poly" id="edge9_Node000001_Node000005" title=" " alt="" coords="217,44,235,66,249,92,258,128,263,164,263,226,258,226,258,165,253,129,244,94,230,69,213,47"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="12,313,166,353"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="82,121,45,139,29,152,17,168,10,185,8,202,18,238,38,273,61,302,57,305,33,276,13,240,3,203,5,184,12,165,25,148,42,135,79,116"/>
+<area shape="rect" id="Node000004" href="$AppLookAndFeel_8h.html" title=" " alt="" coords="27,167,234,192"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="126,119,130,153,125,153,121,119"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="116,194,94,214,77,241,73,270,78,300,73,301,68,271,72,239,90,211,112,190"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="152,190,227,231,224,235,150,194"/>
+<area shape="rect" id="Node000006" href="$Themes_8h.html" title=" " alt="" coords="87,240,174,265"/>
+<area shape="poly" id="edge7_Node000004_Node000006" title=" " alt="" coords="133,192,133,226,128,226,128,192"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="235,268,143,310,141,305,233,263"/>
+<area shape="poly" id="edge8_Node000006_Node000003" title=" " alt="" coords="127,267,108,302,103,300,122,264"/>
+</map>
