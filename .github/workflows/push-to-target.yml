@@ -3,7 +3,7 @@ name: Mirror to another repo (with submodules)
 on:
   push:
     branches:
-      - main
+      - dev
 
 env:
   TARGET_REPO_SSH: "git@github.com:EpitechPromo2027/G-EIP-600-LYN-6-1-eip-swan.sallet.git"
