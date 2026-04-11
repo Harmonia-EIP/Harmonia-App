@@ -1,7 +1,9 @@
 name: Build Windows (JUCE)
 
 on:
-  pull_request:
+  push:
+    branches:
+      - dev
 
 jobs:
   build:
