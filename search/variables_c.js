@@ -7,7 +7,7 @@ var searchData=
   ['passwordfield_4',['passwordfield',['../classLoginPage.html#a1a0bdb7ec6972b4aaf10bcdc399734dd',1,'LoginPage::passwordField'],['../classSignupPage.html#a47382a8d19ea8e0c388c711625eb6a3f',1,'SignupPage::passwordField']]],
   ['preset_5',['preset',['../classAppLookAndFeel.html#add9943b75e06170f5171590cac0cc203',1,'AppLookAndFeel']]],
   ['profile_6',['profile',['../structProfileResult.html#aa75142ddb619d8ecc0cedbf22b12b4a2',1,'ProfileResult']]],
-  ['profilemanager_7',['profileManager',['../classBackendManager.html#ad7ac6c7e1f592cf5bafc509c8d717c9a',1,'BackendManager']]],
+  ['profilemanager_7',['profileManager',['../classBackendManager.html#aee6460cdacda4829b65e362b145c6bfa',1,'BackendManager']]],
   ['prompt_8',['prompt',['../classDataModel.html#a815a7f4931f0ea4555009b8217c38ac3',1,'DataModel']]],
   ['prompteditor_9',['promptEditor',['../classTopBarComponent.html#aea556ddba4468b5416465a549a1575ed',1,'TopBarComponent']]],
   ['promptlabel_10',['promptLabel',['../classTopBarComponent.html#ac615d06e3b091d6926aa3a0e69976c58',1,'TopBarComponent']]],

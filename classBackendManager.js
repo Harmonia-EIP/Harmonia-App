@@ -18,9 +18,9 @@ var classBackendManager =
     [ "updateLayout", "classBackendManager.html#aea6d9fd0fcb7a047dd5c693535b0de7b", null ],
     [ "updateTheme", "classBackendManager.html#ad143924eb6fd00d2c65ed7f9e572c818", null ],
     [ "writeLog", "classBackendManager.html#a9ee33036fd962fa87dbedecfc3e8c259", null ],
-    [ "aiManager", "classBackendManager.html#afc7da8e52b21ef11d7b7197027cb3402", null ],
+    [ "aiManager", "classBackendManager.html#a79b635e8fdad51b3f510ac4a2206eb1e", null ],
     [ "apiUrl", "classBackendManager.html#a0bef3209241177f810c26fc771299900", null ],
-    [ "authManager", "classBackendManager.html#aa0049dc1eed25a18f702c7064afa5c3f", null ],
-    [ "profileManager", "classBackendManager.html#ad7ac6c7e1f592cf5bafc509c8d717c9a", null ],
+    [ "authManager", "classBackendManager.html#a1ccef5b4d24ef3205a6a487380506f86", null ],
+    [ "profileManager", "classBackendManager.html#aee6460cdacda4829b65e362b145c6bfa", null ],
     [ "sessionFile", "classBackendManager.html#aaf2b056ac6c42db83b6f51edacf68b74", null ]
 ];

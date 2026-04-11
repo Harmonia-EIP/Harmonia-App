@@ -48,7 +48,7 @@ var searchData=
   ['synth_45',['synth',['../classMainComponent.html#a2fe697e8000cbf42946d7368038bd36d',1,'MainComponent']]],
   ['synth_2ecpp_46',['Synth.cpp',['../Synth_8cpp.html',1,'']]],
   ['synth_2eh_47',['Synth.h',['../Synth_8h.html',1,'']]],
-  ['synthcomponent_48',['synthcomponent',['../classSynthComponent.html#aff2f35511f91bcbde6bf9fbcf33d5d35',1,'SynthComponent::SynthComponent()'],['../classMainComponent.html#a6ef85e5f5ab289e3affb1bc63ad1176c',1,'MainComponent::synthComponent'],['../classSynthComponent.html',1,'SynthComponent']]],
+  ['synthcomponent_48',['synthcomponent',['../classMainComponent.html#a6ef85e5f5ab289e3affb1bc63ad1176c',1,'MainComponent::synthComponent'],['../classSynthComponent.html#aff2f35511f91bcbde6bf9fbcf33d5d35',1,'SynthComponent::SynthComponent()'],['../classSynthComponent.html',1,'SynthComponent']]],
   ['synthcomponent_2ecpp_49',['SynthComponent.cpp',['../SynthComponent_8cpp.html',1,'']]],
   ['synthcomponent_2eh_50',['SynthComponent.h',['../SynthComponent_8h.html',1,'']]]
 ];

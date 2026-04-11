@@ -59,7 +59,7 @@ var NAVTREEINDEX =
 [
 "ADSRComponent_8cpp.html",
 "classHarmoniaApp.html",
-"structPatchParams.html#a0974bbcc51d69af2a965df151264ef28"
+"structPatchCallResult.html#af37fbad86bf564031e8bbdb5c3705bcb"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

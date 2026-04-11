@@ -8,11 +8,11 @@ var searchData=
   ['accentid_5',['accentId',['../namespaceAppColourIds.html#a395e668d95f8775e059d210c51399489a7ad1be13566be00f8adb0d45a48b677c',1,'AppColourIds']]],
   ['accesstoken_6',['accessToken',['../structUserSession.html#a1ddcbc4766e84e222fa78e6ae72bf997',1,'UserSession']]],
   ['adsr_7',['adsr',['../classHarmoniaVoice.html#a1197e52e7af5b35d222742a9934028f1',1,'HarmoniaVoice']]],
-  ['adsrcomponent_8',['adsrcomponent',['../classMainComponent.html#a509a0b94a611434dad4689a13d1c3365',1,'MainComponent::adsrComponent'],['../classADSRComponent.html#aa3f1171ed12584f2ec5db89cf1a35adf',1,'ADSRComponent::ADSRComponent()'],['../classADSRComponent.html',1,'ADSRComponent']]],
+  ['adsrcomponent_8',['adsrcomponent',['../classADSRComponent.html#aa3f1171ed12584f2ec5db89cf1a35adf',1,'ADSRComponent::ADSRComponent()'],['../classMainComponent.html#a509a0b94a611434dad4689a13d1c3365',1,'MainComponent::adsrComponent'],['../classADSRComponent.html',1,'ADSRComponent']]],
   ['adsrcomponent_2ecpp_9',['ADSRComponent.cpp',['../ADSRComponent_8cpp.html',1,'']]],
   ['adsrcomponent_2eh_10',['ADSRComponent.h',['../ADSRComponent_8h.html',1,'']]],
   ['adsrparams_11',['adsrParams',['../classHarmoniaVoice.html#ac8ac38ab19d49e105e2dc3aae0825c72',1,'HarmoniaVoice']]],
-  ['aimanager_12',['aiManager',['../classBackendManager.html#afc7da8e52b21ef11d7b7197027cb3402',1,'BackendManager']]],
+  ['aimanager_12',['aiManager',['../classBackendManager.html#a79b635e8fdad51b3f510ac4a2206eb1e',1,'BackendManager']]],
   ['apiurl_13',['apiUrl',['../classBackendManager.html#a0bef3209241177f810c26fc771299900',1,'BackendManager']]],
   ['app_14',['app',['../classMainWindow.html#a3f7b43f792249b299443748dbc46ba28',1,'MainWindow']]],
   ['appcolourids_15',['AppColourIds',['../namespaceAppColourIds.html',1,'']]],
@@ -29,6 +29,6 @@ var searchData=
   ['attacklabel_26',['attackLabel',['../classADSRComponent.html#a17cc8a3ccafab4e167a52be72af32db4',1,'ADSRComponent']]],
   ['attackslider_27',['attackSlider',['../classADSRComponent.html#ab7a90b1101078dc114e19f2945ee0305',1,'ADSRComponent']]],
   ['authlookandfeel_28',['authlookandfeel',['../classLoginPage.html#a6ec648796804dd988245ddf33fe94dd1',1,'LoginPage::authLookAndFeel'],['../classSignupPage.html#ab4514f953719c65c348406039345a90d',1,'SignupPage::authLookAndFeel'],['../classWelcomePage.html#ae1a15d2e3f49f5ded9e394a2c5fad676',1,'WelcomePage::authLookAndFeel']]],
-  ['authmanager_29',['authManager',['../classBackendManager.html#aa0049dc1eed25a18f702c7064afa5c3f',1,'BackendManager']]],
+  ['authmanager_29',['authManager',['../classBackendManager.html#a1ccef5b4d24ef3205a6a487380506f86',1,'BackendManager']]],
   ['authresult_30',['AuthResult',['../structAuthResult.html',1,'']]]
 ];

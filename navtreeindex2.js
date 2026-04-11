@@ -1,5 +1,7 @@
 var NAVTREEINDEX2 =
 {
+"structPatchCallResult.html#af37fbad86bf564031e8bbdb5c3705bcb":[1,0,21,0],
+"structPatchParams.html":[1,0,22],
 "structPatchParams.html#a0974bbcc51d69af2a965df151264ef28":[1,0,22,9],
 "structPatchParams.html#a0ac7427e8f3b4951151fff45132c69dd":[1,0,22,4],
 "structPatchParams.html#a7873f8146f771b786de64b4d198693c0":[1,0,22,1],
@@ -11,9 +13,11 @@ var NAVTREEINDEX2 =
 "structPatchParams.html#ad66b448eaa1b1ccc4761b5666a558ef6":[1,0,22,6],
 "structPatchParams.html#af95e5006acc4df2a97e3dd2741e25d8a":[1,0,22,8],
 "structProfileResult.html":[1,0,23],
-"structProfileResult.html#a1a26c71da70ac17bcc686339ed13e78a":[1,0,23,0],
-"structProfileResult.html#aa75142ddb619d8ecc0cedbf22b12b4a2":[1,0,23,1],
-"structProfileResult.html#af4dd36daebc4ba9ca9e79298ec2c6d10":[1,0,23,2],
+"structProfileResult.html#a1a26c71da70ac17bcc686339ed13e78a":[1,0,23,2],
+"structProfileResult.html#a6bcb9390a86d1a8948d9aa85cdc7d974":[1,0,23,0],
+"structProfileResult.html#aa75142ddb619d8ecc0cedbf22b12b4a2":[1,0,23,3],
+"structProfileResult.html#ab1806767bf110712681f60591850e89a":[1,0,23,1],
+"structProfileResult.html#af4dd36daebc4ba9ca9e79298ec2c6d10":[1,0,23,4],
 "structThemePalette.html":[1,0,27],
 "structThemePalette.html#a1e4a6cb0e4cebf9da5b92a2a3f32ab30":[1,0,27,1],
 "structThemePalette.html#a221bbd68978b99f33701eff01eed03eb":[1,0,27,13],

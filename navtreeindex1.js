@@ -193,8 +193,8 @@ var NAVTREEINDEX1 =
 "dir_68267d1309a1af8e8297ef4c3efbcdba.html":[2,0,0],
 "dir_e081a7a5c590926bad9223559b89aad5.html":[2,0,0,2],
 "files.html":[2,0],
-"functions.html":[1,3,0,0],
 "functions.html":[1,3,0],
+"functions.html":[1,3,0,0],
 "functions_b.html":[1,3,0,1],
 "functions_c.html":[1,3,0,2],
 "functions_d.html":[1,3,0,3],
@@ -246,8 +246,8 @@ var NAVTREEINDEX1 =
 "structHarmoniaParams.html#adf8ee43e0f4771c43f72ae13aa600193":[1,0,14,6],
 "structHarmoniaParams.html#ae29b347ea20b3eb4586cc36cb4574eeb":[1,0,14,5],
 "structPatchCallResult.html":[1,0,21],
-"structPatchCallResult.html#a33ba194cda8b05fead9f00c49cfe739e":[1,0,21,1],
-"structPatchCallResult.html#a5286c39ccf7f6b93ef47f1ce3586b05d":[1,0,21,2],
-"structPatchCallResult.html#a91ab79bcf4a0b4ee9634406989b776f9":[1,0,21,0],
-"structPatchParams.html":[1,0,22]
+"structPatchCallResult.html#a2e27aa75ef17c9d57aecbf34bc4215a7":[1,0,21,1],
+"structPatchCallResult.html#a33ba194cda8b05fead9f00c49cfe739e":[1,0,21,3],
+"structPatchCallResult.html#a5286c39ccf7f6b93ef47f1ce3586b05d":[1,0,21,4],
+"structPatchCallResult.html#a91ab79bcf4a0b4ee9634406989b776f9":[1,0,21,2]
 };

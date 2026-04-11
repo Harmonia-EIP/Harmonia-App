@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['idtolayoutpreset_0',['idToLayoutPreset',['../classThemeAndLayoutConverter.html#a7ad65f742de97047d76004f32a01833a',1,'ThemeAndLayoutConverter']]],
-  ['idtothemepreset_1',['idToThemePreset',['../classThemeAndLayoutConverter.html#ab19e625a2bf8e38bead0e1eb4b6fe272',1,'ThemeAndLayoutConverter']]],
-  ['initialise_2',['initialise',['../classHarmoniaApp.html#af7805781c7a0480d534d270658551815',1,'HarmoniaApp']]]
+  ['handlelogin_0',['handleLogin',['../classLoginPage.html#a326eaf944da59d499be384afadbc8017',1,'LoginPage']]],
+  ['handlesignup_1',['handleSignup',['../classSignupPage.html#abc904e743fc11f944fc2e997dbf79bd9',1,'SignupPage']]],
+  ['harmoniavoice_2',['HarmoniaVoice',['../classHarmoniaVoice.html#a1aaf512b7e24962549736551504882b7',1,'HarmoniaVoice']]]
 ];

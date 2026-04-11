@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['filtercomponent_0',['FilterComponent',['../classFilterComponent.html#aa94471c06c8436ffab6342e521aabf7c',1,'FilterComponent']]],
-  ['frequencyslider_1',['FrequencySlider',['../classFrequencySlider.html#a237b5f73ebb4556bc5f6b5905c64f385',1,'FrequencySlider']]],
-  ['frequencyvolumecomponent_2',['FrequencyVolumeComponent',['../classFrequencyVolumeComponent.html#a5a5a778395cfd933e0c8cd607014b0d9',1,'FrequencyVolumeComponent']]]
+  ['error_0',['error',['../structPatchCallResult.html#af37fbad86bf564031e8bbdb5c3705bcb',1,'PatchCallResult::error()'],['../structProfileResult.html#a6bcb9390a86d1a8948d9aa85cdc7d974',1,'ProfileResult::error()']]]
 ];

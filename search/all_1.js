@@ -17,7 +17,7 @@ var searchData=
   ['backendtypes_2eh_14',['BackendTypes.h',['../BackendTypes_8h.html',1,'']]],
   ['background_15',['background',['../structThemePalette.html#a5185e50af37421b0ddd1557e367a174f',1,'ThemePalette']]],
   ['backgroundid_16',['backgroundId',['../namespaceAppColourIds.html#a395e668d95f8775e059d210c51399489ac891110aefb40508a98dcb6489efc473',1,'AppColourIds']]],
-  ['blue_17',['blue',['../structThemePalette.html#ae5956eb3e300efa8b9e49c512e2aa324',1,'ThemePalette::blue()'],['../classAppLookAndFeel.html#a7e966ad29d8634970a167de96d1a6b87a9594eec95be70e7b1710f730fdda33d9',1,'AppLookAndFeel::Blue']]],
+  ['blue_17',['blue',['../classAppLookAndFeel.html#a7e966ad29d8634970a167de96d1a6b87a9594eec95be70e7b1710f730fdda33d9',1,'AppLookAndFeel::Blue'],['../structThemePalette.html#ae5956eb3e300efa8b9e49c512e2aa324',1,'ThemePalette::blue()']]],
   ['bottombar_18',['bottomBar',['../classMainComponent.html#a9de8a7b9dd87c3b0ba99376a6d5b37fe',1,'MainComponent']]],
   ['bottombarcomponent_19',['bottombarcomponent',['../classBottomBarComponent.html',1,'BottomBarComponent'],['../classBottomBarComponent.html#a073f921d341afd0eea42b5ebc7f7c4ee',1,'BottomBarComponent::BottomBarComponent()']]],
   ['bottombarcomponent_2ecpp_20',['BottomBarComponent.cpp',['../BottomBarComponent_8cpp.html',1,'']]],

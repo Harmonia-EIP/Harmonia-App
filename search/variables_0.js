@@ -7,7 +7,7 @@ var searchData=
   ['adsr_4',['adsr',['../classHarmoniaVoice.html#a1197e52e7af5b35d222742a9934028f1',1,'HarmoniaVoice']]],
   ['adsrcomponent_5',['adsrComponent',['../classMainComponent.html#a509a0b94a611434dad4689a13d1c3365',1,'MainComponent']]],
   ['adsrparams_6',['adsrParams',['../classHarmoniaVoice.html#ac8ac38ab19d49e105e2dc3aae0825c72',1,'HarmoniaVoice']]],
-  ['aimanager_7',['aiManager',['../classBackendManager.html#afc7da8e52b21ef11d7b7197027cb3402',1,'BackendManager']]],
+  ['aimanager_7',['aiManager',['../classBackendManager.html#a79b635e8fdad51b3f510ac4a2206eb1e',1,'BackendManager']]],
   ['apiurl_8',['apiUrl',['../classBackendManager.html#a0bef3209241177f810c26fc771299900',1,'BackendManager']]],
   ['app_9',['app',['../classMainWindow.html#a3f7b43f792249b299443748dbc46ba28',1,'MainWindow']]],
   ['applookandfeel_10',['appLookAndFeel',['../classMainComponent.html#ac97ed43dc14b1b5b6544412cb9c25d65',1,'MainComponent']]],
@@ -15,5 +15,5 @@ var searchData=
   ['attacklabel_12',['attackLabel',['../classADSRComponent.html#a17cc8a3ccafab4e167a52be72af32db4',1,'ADSRComponent']]],
   ['attackslider_13',['attackSlider',['../classADSRComponent.html#ab7a90b1101078dc114e19f2945ee0305',1,'ADSRComponent']]],
   ['authlookandfeel_14',['authlookandfeel',['../classLoginPage.html#a6ec648796804dd988245ddf33fe94dd1',1,'LoginPage::authLookAndFeel'],['../classSignupPage.html#ab4514f953719c65c348406039345a90d',1,'SignupPage::authLookAndFeel'],['../classWelcomePage.html#ae1a15d2e3f49f5ded9e394a2c5fad676',1,'WelcomePage::authLookAndFeel']]],
-  ['authmanager_15',['authManager',['../classBackendManager.html#aa0049dc1eed25a18f702c7064afa5c3f',1,'BackendManager']]]
+  ['authmanager_15',['authManager',['../classBackendManager.html#a1ccef5b4d24ef3205a6a487380506f86',1,'BackendManager']]]
 ];

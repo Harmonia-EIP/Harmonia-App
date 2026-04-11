@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['generatebutton_0',['generatebutton',['../classGenerateButton.html',1,'GenerateButton'],['../classBottomBarComponent.html#a7eef47dfabede7e366f7c68766114b57',1,'BottomBarComponent::generateButton'],['../classGenerateButton.html#a4bcef9cd2001e92f856c41c704366bb8',1,'GenerateButton::GenerateButton()']]],
+  ['generatebutton_0',['generatebutton',['../classGenerateButton.html',1,'GenerateButton'],['../classGenerateButton.html#a4bcef9cd2001e92f856c41c704366bb8',1,'GenerateButton::GenerateButton()'],['../classBottomBarComponent.html#a7eef47dfabede7e366f7c68766114b57',1,'BottomBarComponent::generateButton']]],
   ['generatebutton_2eh_1',['GenerateButton.h',['../GenerateButton_8h.html',1,'']]],
   ['generatepatch_2',['generatepatch',['../classBackendAiManager.html#a5e21592e7a62271e5b306ba008c6163f',1,'BackendAiManager::generatePatch()'],['../classBackendManager.html#a53f5ec480391968a62fac37fe6cbe78d',1,'BackendManager::generatePatch(const juce::String &amp;prompt)']]],
   ['getapiurl_3',['getApiUrl',['../classBackendManager.html#abfaf058d370332559ca2a79da994e72f',1,'BackendManager']]],
