@@ -16,7 +16,7 @@ std::map<std::string, std::string> BackendManager::loadEnv()
     std::map<std::string, std::string> envValues;
 
     auto exeDir  = getExeDir();
-    auto appRoot = exeDir.getParentDirectory();                  // IMPORTANT: .env un niveau au-dessus
+    auto appRoot = exeDir.getParentDirectory().getParentDirectory();                  // IMPORTANT: .env un niveau au-dessus
     auto envFile = appRoot.getChildFile(".env");
 
     if (!envFile.existsAsFile())
@@ -50,7 +50,19 @@ BackendManager::BackendManager()
     std::string url  = env.count("BACKEND_URL")  > 0 ? env["BACKEND_URL"]  : "http://127.0.0.1";
     std::string port = env.count("BACKEND_PORT") > 0 ? env["BACKEND_PORT"] : "8000";
 
-    apiUrl = juce::String(url + ":" + port);
+    url.erase(std::remove_if(url.begin(), url.end(), ::isspace), url.end());
+    port.erase(std::remove_if(port.begin(), port.end(), ::isspace), port.end());
+
+    bool isLocal =
+        url.find("localhost") != std::string::npos ||
+        url.find("127.0.0.1") != std::string::npos;
+
+    std::string fullUrl = url;
+
+    if (isLocal)
+        fullUrl += ":" + port;
+
+    apiUrl = juce::String(fullUrl);
 
     auto exeDir = getExeDir();
     sessionFile = exeDir.getChildFile("HarmoniaSession.json");
@@ -60,17 +72,18 @@ BackendManager::BackendManager()
     if (env.empty())
         writeLog(".env introuvable → valeurs par défaut utilisées (cherché un niveau au-dessus de l'exe)");
     else
-        writeLog(".env chargé avec succès (un niveau au-dessus de l'exe)");
+        writeLog(".env chargé avec succès (deux niveau au-dessus de l'exe)");
 
-    authManager = new BackendAuthManager(*this);
-    aiManager  = new BackendAiManager(*this);
-    profileManager = new BackendProfileManager(*this);
+    authManager = std::make_unique<BackendAuthManager>(*this);
+    aiManager  = std::make_unique<BackendAiManager>(*this);
+    profileManager = std::make_unique<BackendProfileManager>(*this);
 }
 
 BackendManager::~BackendManager()
 {
-    delete authManager;
-    delete aiManager;
+    authManager.reset();
+    aiManager.reset();
+    profileManager.reset();
 }
 
 void BackendManager::writeLog(const juce::String& message) const
@@ -117,25 +130,30 @@ void BackendManager::clearSession()
 
 PatchCallResult BackendManager::generatePatch(const juce::String& prompt)
 {
-    return aiManager->generatePatch(prompt);
+    if (aiManager)
+        return aiManager->generatePatch(prompt);
+    return PatchCallResult::error("AI manager not initialized");
 }
 
 ProfileResult BackendManager::getProfile()
 {
-    if (!profileManager) profileManager = new BackendProfileManager(*this);
-    return profileManager->getProfile();
+    if (profileManager)
+        return profileManager->getProfile();
+    return ProfileResult::error("Profile manager not initialized");
 }
 
 ProfileResult BackendManager::updateTheme(int themeId)
 {
-    if (!profileManager) profileManager = new BackendProfileManager(*this);
-    return profileManager->updateTheme(themeId);
+    if (profileManager)
+        return profileManager->updateTheme(themeId);
+    return ProfileResult::error("Profile manager not initialized");
 }
 
 ProfileResult BackendManager::updateLayout(int layoutId)
 {
-    if (!profileManager) profileManager = new BackendProfileManager(*this);
-    return profileManager->updateLayout(layoutId);
+    if (profileManager)
+        return profileManager->updateLayout(layoutId);
+    return ProfileResult::error("Profile manager not initialized");
 }
 
 void BackendManager::syncProfileParamsInBackground(const UserSession& session)
@@ -146,4 +164,15 @@ void BackendManager::syncProfileParamsInBackground(const UserSession& session)
 std::optional<UserSession> BackendManager::syncProfileParams(const UserSession& session)
 {
     return authManager->syncProfileParams(session);
+}
+
+const juce::String& BackendManager::getApiUrl() const
+{
+    return apiUrl;
+}
+
+
+const juce::File& BackendManager::getSessionFile() const
+{
+    return sessionFile;
 }

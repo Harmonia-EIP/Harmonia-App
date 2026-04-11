@@ -30,9 +30,6 @@ AuthResult BackendAuthManager::loginUser(
         cpr::Body{ payload.dump() }
     );
 
-    backend.writeLog("HTTP Status: " + juce::String(response.status_code));
-    backend.writeLog("Réponse brute: " + juce::String(response.text.c_str()));
-
     if (response.status_code != 200)
     {
         juce::String message = "Erreur inconnue";

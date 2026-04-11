@@ -42,6 +42,16 @@ struct PatchCallResult
     bool success = false;
     PatchParams params;
     juce::String errorMessage;
+
+    static PatchCallResult ok(const PatchParams& patchParams)
+    {
+        return { true, patchParams, "" };
+    }
+
+    static PatchCallResult error(const juce::String& message)
+    {
+        return { false, message, {} };
+    }
 };
 
 struct UserProfile
@@ -64,4 +74,14 @@ struct ProfileResult
     bool success = false;
     std::string errorMessage;
     UserProfile profile;
+
+    static ProfileResult ok(const UserProfile& profile)
+    {
+        return { true, "", profile };
+    }
+
+    static ProfileResult error(const std::string& message)
+    {
+        return { false, message, {} };
+    }
 };

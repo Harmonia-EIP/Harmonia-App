@@ -197,7 +197,7 @@ private:
     juce::String apiUrl;
     juce::File   sessionFile;
 
-    BackendAuthManager* authManager = nullptr;
-    BackendAiManager*  aiManager  = nullptr;
-    BackendProfileManager* profileManager = nullptr;
+    std::unique_ptr<BackendAuthManager> authManager;
+    std::unique_ptr<BackendAiManager>  aiManager;
+    std::unique_ptr<BackendProfileManager> profileManager;
 };
