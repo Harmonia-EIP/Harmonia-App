@@ -34,7 +34,7 @@ This repository represents the **application frontend**, built to support advanc
 ## 🛠️ Technologies Used
 
 * **C++17**
-* **JUCE 8.x**
+* **JUCE 8.0.8
 * **CMake**
 * **Visual Studio 2022**
 
