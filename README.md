@@ -1,9 +1,9 @@
-# Harmonia App – Frontend JUCE
+# Harmonia App – JUCE Frontend
 
 Epitech Innovation Project (EIP)
 
-Harmonia App est une application desktop développée en **C++ (C++17) avec JUCE**, servant d’interface utilisateur pour le projet Harmonia.
-Ce dépôt représente le **frontend applicatif**, conçu pour intégrer des fonctionnalités audio avancées (DSP, synthèse, plugins).
+Harmonia App is a desktop application developed in **C++ (C++17) using JUCE**, designed as the user interface for the Harmonia project.
+This repository represents the **application frontend**, built to support advanced audio features such as DSP, synthesis, and plugins.
 
 ---
 
@@ -16,22 +16,22 @@ Ce dépôt représente le **frontend applicatif**, conçu pour intégrer des fon
 
 ## 🚀 Features
 
-* 🖥️ Interface desktop moderne (JUCE)
-* 🎵 Base pour intégration audio (DSP, synthèse, VST)
-* 🧩 Architecture modulaire et extensible
-* ⚙️ Build cross-platform via CMake (Windows ready)
+* 🖥️ Modern desktop user interface (JUCE)
+* 🎵 Foundation for audio integration (DSP, synthesis, VST)
+* 🧩 Modular and extensible architecture
+* ⚙️ Cross-platform build system with CMake (Windows ready)
 
 ---
 
-## 🎓 Contexte académique
+## 🎓 Academic Context
 
-* Projet réalisé dans le cadre de l’**Epitech Innovation Project (EIP)**
-* Travail en équipe pluridisciplinaire
-* Objectif : créer une application innovante combinant **UI + audio processing**
+* Developed as part of the **Epitech Innovation Project (EIP)**
+* Collaborative work in a multidisciplinary team
+* Goal: build an innovative application combining **UI and audio processing**
 
 ---
 
-## 🛠️ Technologies utilisées
+## 🛠️ Technologies Used
 
 * **C++17**
 * **JUCE 8.x**
@@ -40,18 +40,18 @@ Ce dépôt représente le **frontend applicatif**, conçu pour intégrer des fon
 
 ---
 
-## 📋 Prérequis
+## 📋 Requirements
 
 * Windows 10+
-* Git (avec submodules)
+* Git (with submodules)
 * CMake ≥ 3.21
-* Visual Studio 2022 (C++ workload)
+* Visual Studio 2022 (C++ workload installed)
 
 ---
 
 ## ⚡ Quick Start
 
-```bash id="kqf0ot"
+```bash
 git clone --recurse-submodules https://github.com/Harmonia-EIP/Harmonia-App.git
 cd Harmonia-App
 
@@ -63,16 +63,16 @@ cmake --build build --config Release
 
 ## 📦 Installation
 
-### Clone avec submodules
+### Clone with submodules
 
-```bash id="c0v5rq"
+```bash
 git clone --recurse-submodules https://github.com/Harmonia-EIP/Harmonia-App.git
 cd Harmonia-App
 ```
 
-### Si déjà cloné
+### If already cloned
 
-```bash id="t6v6y8"
+```bash
 git submodule update --init --recursive
 ```
 
@@ -80,35 +80,35 @@ git submodule update --init --recursive
 
 ## 📁 Project Structure
 
-```text id="c9c2qz"
+```text
 Harmonia-App/
-├─ Source/            # Code C++ (UI, logique, audio)
-├─ JUCE/              # Framework JUCE (submodule)
-├─ CMakeLists.txt     # Configuration CMake
+├─ Source/            # C++ source code (UI, logic, audio)
+├─ JUCE/              # JUCE framework (submodule)
+├─ CMakeLists.txt     # CMake configuration
 ├─ docs/
 │   └── component_diagram.png
-└─ build/             # Dossier de build (généré)
+└─ build/             # Generated build directory
 ```
 
 ---
 
 ## 🏗️ Build & Run (Windows)
 
-### Génération du projet
+### Generate project
 
-```bash id="sl7b06"
+```bash
 cmake -S . -B build
 ```
 
-### Compilation
+### Build
 
-```bash id="5gzt6n"
+```bash
 cmake --build build --config Release
 ```
 
-### Exécution
+### Run
 
-```bash id="s1ikc5"
+```bash
 build/Release/HarmoniaApp.exe
 ```
 
@@ -122,34 +122,34 @@ build/Release/HarmoniaApp.exe
 
 ---
 
-## 🎯 Objectifs du frontend
+## 🎯 Frontend Goals
 
-* Fournir une **interface utilisateur claire et moderne**
-* Servir de base pour les **traitements audio avancés**
-* Permettre une **évolution vers plugins (VST) et modules audio**
-
----
-
-## ⚠️ Notes importantes
-
-* Le dossier `build/` est **généré automatiquement**
-* JUCE est géré via **Git submodule**
-* Éviter toute modification directe de JUCE
-* Projet conçu pour évoluer vers :
-
-  * DSP avancé
-  * Synthèse audio
-  * Plugins VST
+* Provide a **clean and modern user interface**
+* Serve as a foundation for **advanced audio processing**
+* Enable future expansion into **plugins (VST) and audio modules**
 
 ---
 
-## 👥 Équipe
+## ⚠️ Important Notes
 
-Projet développé dans le cadre de l’Epitech Innovation Project (EIP)
+* The `build/` directory is **auto-generated**
+* JUCE is managed via a **Git submodule**
+* Avoid modifying JUCE directly
+* The project is designed to evolve towards:
+
+  * Advanced DSP
+  * Audio synthesis
+  * VST plugins
 
 ---
 
-## 📝 Licence
+## 👥 Team
 
-Projet académique
-Licence à définir selon l’évolution du projet
+Developed as part of the Epitech Innovation Project (EIP)
+
+---
+
+## 📝 License
+
+Academic project
+License to be defined as the project evolves
