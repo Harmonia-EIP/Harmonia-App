@@ -1,43 +1,51 @@
 cmake_minimum_required(VERSION 3.15)
-project(HarmoniaApp)
+
+project(HarmoniaApp VERSION 1.0.0)
 
 set(CMAKE_CXX_STANDARD 17)
 
+# =========================
 # JUCE
+# =========================
 add_subdirectory(external/JUCE)
 
-# --- Ajout de CPR ---
+# =========================
+# CPR (HTTP)
+# =========================
 set(CPR_USE_SYSTEM_CURL OFF)
 set(CPR_ENABLE_SSL ON)
 set(CPR_CURL_USE_LIBPSL OFF)
-set(BUILD_SHARED_LIBS OFF CACHE BOOL "Build static libs" FORCE)
-set(CPR_BUILD_SHARED_LIBS OFF CACHE BOOL "Build CPR as static lib" FORCE)
-set(CPR_BUILD_TESTS OFF CACHE BOOL "Don't build CPR tests" FORCE)
+set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
+set(CPR_BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
+set(CPR_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 add_subdirectory(external/cpr)
 
-
-# nlohmann/json
+# =========================
+# JSON
+# =========================
 add_subdirectory(external/json)
 
-# Tous les fichiers du dossier src
-file(GLOB_RECURSE SOURCE_FILES CONFIGURE_DEPENDS
-    src/*.cpp
-    src/*.h
+# =========================
+# SHARED CODE (optionnel mais propre)
+# =========================
+file(GLOB_RECURSE SHARED_SOURCES CONFIGURE_DEPENDS
+    src/shared/*.cpp
+    src/shared/*.h
 )
 
-add_executable(HarmoniaApp WIN32
-    ${SOURCE_FILES}
-    icon.rc
-)
+add_library(HarmoniaCore ${SHARED_SOURCES})
 
-target_include_directories(HarmoniaApp PRIVATE
+target_include_directories(HarmoniaCore PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
 
-target_link_libraries(HarmoniaApp PRIVATE
+target_link_libraries(HarmoniaCore PUBLIC
+    cpr::cpr
+    nlohmann_json::nlohmann_json
+
     juce::juce_core
-    juce::juce_data_structures
     juce::juce_events
+    juce::juce_data_structures
     juce::juce_graphics
     juce::juce_gui_basics
     juce::juce_gui_extra
@@ -47,6 +55,64 @@ target_link_libraries(HarmoniaApp PRIVATE
     juce::juce_audio_processors
     juce::juce_audio_utils
     juce::juce_dsp
-    cpr::cpr
-    nlohmann_json::nlohmann_json
+)
+
+# =========================
+# PLUGIN JUCE (VST3 + Standalone)
+# =========================
+juce_add_plugin(HarmoniaPlugin
+    VERSION 1.0.0
+    COMPANY_NAME "Harmonia"
+
+    IS_SYNTH TRUE
+    NEEDS_MIDI_INPUT TRUE
+    NEEDS_MIDI_OUTPUT FALSE
+
+    PLUGIN_MANUFACTURER_CODE Hrmn
+    PLUGIN_CODE HApp
+
+    FORMATS VST3 Standalone
+
+    PRODUCT_NAME "HarmoniaPlugin"
+)
+
+target_compile_definitions(HarmoniaPlugin PUBLIC
+    JUCE_VST3_CAN_REPLACE_VST2=0
+    JUCE_STANDALONE_APPLICATION=1
+)
+
+# IMPORTANT
+juce_generate_juce_header(HarmoniaPlugin)
+
+# fichiers plugin uniquement
+target_sources(HarmoniaPlugin PRIVATE
+    src/plugin/PluginProcessor.cpp
+    src/plugin/PluginEditor.cpp
+)
+
+target_link_libraries(HarmoniaPlugin PRIVATE
+    HarmoniaCore
+
+    juce::juce_audio_utils
+    juce::juce_audio_processors
+    juce::juce_audio_devices
+    juce::juce_gui_basics
+    juce::juce_gui_extra
+    juce::juce_core
+)
+
+# =========================
+# APP CUSTOM (EXE)
+# =========================
+add_executable(HarmoniaApp WIN32
+    src/app/main.cpp
+    icon.rc
+)
+
+target_include_directories(HarmoniaApp PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/src
+)
+
+target_link_libraries(HarmoniaApp PRIVATE
+    HarmoniaCore
 )
