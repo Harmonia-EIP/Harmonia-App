@@ -1,5 +1,5 @@
-<map id="src/backendManagement/BackendProfileManager.h" name="src/backendManagement/BackendProfileManager.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="55,5,246,45"/>
+<map id="src/shared/backendManagement/BackendProfileManager.h" name="src/shared/backendManagement/BackendProfileManager.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="34,5,267,45"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="45,167,208,192"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,48,40,67,25,80,13,95,9,105,9,114,21,132,44,147,72,160,70,165,42,152,17,136,4,116,3,104,8,92,21,76,37,62,73,43"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="23,93,97,119"/>

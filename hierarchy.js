@@ -3,6 +3,12 @@ var hierarchy =
     [ "juce::AudioAppComponent", null, [
       [ "MainComponent", "classMainComponent.html", null ]
     ] ],
+    [ "juce::AudioProcessor", null, [
+      [ "HarmoniaAudioProcessor", "classHarmoniaAudioProcessor.html", null ]
+    ] ],
+    [ "juce::AudioProcessorEditor", null, [
+      [ "HarmoniaAudioProcessorEditor", "classHarmoniaAudioProcessorEditor.html", null ]
+    ] ],
     [ "AuthResult", "structAuthResult.html", null ],
     [ "BackendAiManager", "classBackendAiManager.html", null ],
     [ "BackendAuthManager", "classBackendAuthManager.html", null ],
@@ -18,6 +24,7 @@ var hierarchy =
       [ "FrequencyVolumeComponent", "classFrequencyVolumeComponent.html", null ],
       [ "LoginPage", "classLoginPage.html", null ],
       [ "OscilloscopeComponent", "classOscilloscopeComponent.html", null ],
+      [ "PluginAppWrapper", "classPluginAppWrapper.html", null ],
       [ "SignupPage", "classSignupPage.html", null ],
       [ "SynthComponent", "classSynthComponent.html", null ],
       [ "TitleComponent", "classTitleComponent.html", null ],

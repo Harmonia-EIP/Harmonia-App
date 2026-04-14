@@ -1,0 +1,15 @@
+<map id="HarmoniaAudioProcessorEditor" name="HarmoniaAudioProcessorEditor">
+<area shape="rect" id="Node000001" title=" " alt="" coords="205,181,429,207"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,200,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="146,122,289,179,288,184,144,126"/>
+<area shape="rect" id="Node000003" href="$classHarmoniaAudioProcessor.html" title=" " alt="" coords="224,93,411,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="320,133,320,181,315,181,315,133"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="239,5,396,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="320,45,320,93,315,93,315,45"/>
+<area shape="rect" id="Node000005" href="$classPluginAppWrapper.html" title=" " alt="" coords="435,93,578,119"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="481,129,428,160,362,184,360,179,426,155,478,124"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="430,5,562,31"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="502,44,508,92,503,93,497,45"/>
+<area shape="rect" id="Node000007" href="$classBackendManager.html" title="Main facade for backend interactions (authentication, AI, profile)." alt="" coords="586,5,721,31"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="623,40,528,95,525,91,620,35"/>
+</map>

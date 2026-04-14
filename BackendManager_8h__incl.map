@@ -1,5 +1,5 @@
-<map id="src/backendManagement/BackendManager.h" name="src/backendManagement/BackendManager.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="35,5,220,45"/>
+<map id="src/shared/backendManagement/BackendManager.h" name="src/shared/backendManagement/BackendManager.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="11,5,244,45"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="83,167,246,192"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="72,48,43,62,20,78,9,97,9,107,14,117,40,143,75,160,73,165,37,147,9,120,4,108,4,96,16,75,41,57,70,43"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="23,93,74,119"/>

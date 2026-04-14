@@ -38,7 +38,7 @@ var NAVTREE =
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
-        [ "Functions", "functions_func.html", null ],
+        [ "Functions", "functions_func.html", "functions_func" ],
         [ "Variables", "functions_vars.html", null ],
         [ "Typedefs", "functions_type.html", null ],
         [ "Enumerations", "functions_enum.html", null ]
@@ -48,6 +48,7 @@ var NAVTREE =
       [ "File List", "files.html", "files_dup" ],
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
+        [ "Functions", "globals_func.html", null ],
         [ "Typedefs", "globals_type.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
@@ -58,8 +59,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "ADSRComponent_8cpp.html",
-"classHarmoniaApp.html",
-"structPatchCallResult.html#af37fbad86bf564031e8bbdb5c3705bcb"
+"classFrequencyVolumeComponent.html#a6590c972b0130bdcb2459a3d01f041e1",
+"dir_71da2d8b394f79f07f5611c572961c10.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

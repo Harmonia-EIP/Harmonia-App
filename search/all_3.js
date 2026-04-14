@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['dark_0',['dark',['../classAppLookAndFeel.html#a7e966ad29d8634970a167de96d1a6b87aa18366b217ebf811ad1886e4f4f865b2',1,'AppLookAndFeel::Dark'],['../structThemePalette.html#a1e4a6cb0e4cebf9da5b92a2a3f32ab30',1,'ThemePalette::dark()']]],
+  ['dark_0',['dark',['../structThemePalette.html#a1e4a6cb0e4cebf9da5b92a2a3f32ab30',1,'ThemePalette::dark()'],['../classAppLookAndFeel.html#a7e966ad29d8634970a167de96d1a6b87aa18366b217ebf811ad1886e4f4f865b2',1,'AppLookAndFeel::Dark']]],
   ['datamodel_1',['DataModel',['../classDataModel.html',1,'']]],
   ['datamodel_2eh_2',['DataModel.h',['../DataModel_8h.html',1,'']]],
   ['decay_3',['decay',['../structPatchParams.html#abf803ff788fdfd60179524275fe53a66',1,'PatchParams::decay'],['../classDataModel.html#ac62f01905c0c6011cac2931a45da0805',1,'DataModel::decay'],['../structHarmoniaParams.html#a86c8a45aebe6938d47515f9d74c26652',1,'HarmoniaParams::decay']]],

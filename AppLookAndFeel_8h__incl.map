@@ -1,11 +1,11 @@
-<map id="src/themes/AppLookAndFeel.h" name="src/themes/AppLookAndFeel.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,224,31"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="37,152,192,192"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,33,73,46,55,63,44,83,43,93,45,103,58,124,76,142,72,145,54,127,40,105,37,93,39,81,51,60,70,42,91,29"/>
-<area shape="rect" id="Node000003" href="$AppColourIds_8h.html" title=" " alt="" coords="55,79,175,104"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="117,31,117,65,112,65,112,31"/>
-<area shape="rect" id="Node000004" href="$Themes_8h.html" title=" " alt="" coords="199,79,286,104"/>
-<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="137,28,211,69,208,74,134,33"/>
-<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="117,104,117,138,112,138,112,104"/>
-<area shape="poly" id="edge5_Node000004_Node000002" title=" " alt="" coords="225,106,159,147,156,142,222,102"/>
+<map id="src/shared/themes/AppLookAndFeel.h" name="src/shared/themes/AppLookAndFeel.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,208,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="29,167,184,207"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="77,48,58,62,43,79,35,98,37,118,50,138,68,156,64,160,46,142,32,120,30,97,39,77,55,58,73,43"/>
+<area shape="rect" id="Node000003" href="$AppColourIds_8h.html" title=" " alt="" coords="47,93,167,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="109,46,109,79,104,79,104,46"/>
+<area shape="rect" id="Node000004" href="$Themes_8h.html" title=" " alt="" coords="191,93,278,119"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="139,43,206,84,203,88,136,48"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="109,119,109,153,104,153,104,119"/>
+<area shape="poly" id="edge5_Node000004_Node000002" title=" " alt="" coords="217,121,151,161,148,157,214,117"/>
 </map>

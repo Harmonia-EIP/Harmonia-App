@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Harmonia Interface: src/FrequencySlider.h Source File</title>
+<title>Harmonia Interface: src/shared/components/FrequencySlider.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -98,32 +98,33 @@ $(document).ready(function(){initNavTree('FrequencySlider_8h_source.html',''); i
 </div><!--header-->
 <div class="contents">
 <a href="FrequencySlider_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;<a class="code" href="JuceHeader_8h.html">JuceHeader.h</a>&quot;</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="foldopen" id="foldopen00004" data-start="{" data-end="};">
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno"><a class="line" href="classFrequencySlider.html">    4</a></span><span class="keyword">class </span><a class="code hl_class" href="classFrequencySlider.html">FrequencySlider</a> : <span class="keyword">public</span> juce::Slider</div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>{</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">public</span>:</div>
-<div class="foldopen" id="foldopen00007" data-start="{" data-end="}">
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="classFrequencySlider.html#a237b5f73ebb4556bc5f6b5905c64f385">    7</a></span>    <a class="code hl_function" href="classFrequencySlider.html#a237b5f73ebb4556bc5f6b5905c64f385">FrequencySlider</a>(<span class="keyword">const</span> juce::String&amp; name, <span class="keywordtype">double</span> minHz, <span class="keywordtype">double</span> maxHz, <span class="keywordtype">double</span> defaultHz)</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    {</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>        setName(name);</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>        setRange(minHz, maxHz);</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        setValue(defaultHz);</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        setTextBoxStyle(juce::Slider::TextBoxRight, <span class="keyword">false</span>, 100, 20);</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    }</div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="ComponentsIncludes_8h.html">ComponentsIncludes.h</a>&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="foldopen" id="foldopen00005" data-start="{" data-end="};">
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="classFrequencySlider.html">    5</a></span><span class="keyword">class </span><a class="code hl_class" href="classFrequencySlider.html">FrequencySlider</a> : <span class="keyword">public</span> juce::Slider</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>{</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00008" data-start="{" data-end="}">
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="classFrequencySlider.html#a237b5f73ebb4556bc5f6b5905c64f385">    8</a></span>    <a class="code hl_function" href="classFrequencySlider.html#a237b5f73ebb4556bc5f6b5905c64f385">FrequencySlider</a>(<span class="keyword">const</span> juce::String&amp; name, <span class="keywordtype">double</span> minHz, <span class="keywordtype">double</span> maxHz, <span class="keywordtype">double</span> defaultHz)</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    {</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>        setName(name);</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        setRange(minHz, maxHz);</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        setValue(defaultHz);</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        setTextBoxStyle(juce::Slider::TextBoxRight, <span class="keyword">false</span>, 100, 20);</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    }</div>
 </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>};</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>};</div>
 </div>
-<div class="ttc" id="aJuceHeader_8h_html"><div class="ttname"><a href="JuceHeader_8h.html">JuceHeader.h</a></div></div>
-<div class="ttc" id="aclassFrequencySlider_html"><div class="ttname"><a href="classFrequencySlider.html">FrequencySlider</a></div><div class="ttdef"><b>Definition</b> FrequencySlider.h:5</div></div>
-<div class="ttc" id="aclassFrequencySlider_html_a237b5f73ebb4556bc5f6b5905c64f385"><div class="ttname"><a href="classFrequencySlider.html#a237b5f73ebb4556bc5f6b5905c64f385">FrequencySlider::FrequencySlider</a></div><div class="ttdeci">FrequencySlider(const juce::String &amp;name, double minHz, double maxHz, double defaultHz)</div><div class="ttdef"><b>Definition</b> FrequencySlider.h:7</div></div>
+<div class="ttc" id="aComponentsIncludes_8h_html"><div class="ttname"><a href="ComponentsIncludes_8h.html">ComponentsIncludes.h</a></div></div>
+<div class="ttc" id="aclassFrequencySlider_html"><div class="ttname"><a href="classFrequencySlider.html">FrequencySlider</a></div><div class="ttdef"><b>Definition</b> FrequencySlider.h:6</div></div>
+<div class="ttc" id="aclassFrequencySlider_html_a237b5f73ebb4556bc5f6b5905c64f385"><div class="ttname"><a href="classFrequencySlider.html#a237b5f73ebb4556bc5f6b5905c64f385">FrequencySlider::FrequencySlider</a></div><div class="ttdeci">FrequencySlider(const juce::String &amp;name, double minHz, double maxHz, double defaultHz)</div><div class="ttdef"><b>Definition</b> FrequencySlider.h:8</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="FrequencySlider_8h.html">FrequencySlider.h</a></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_4f38db07240614f25134cb9a8bebbaf9.html">shared</a></li><li class="navelem"><a class="el" href="dir_1fc41604e760a4389ddc5e5aa71c9c0b.html">components</a></li><li class="navelem"><a class="el" href="FrequencySlider_8h.html">FrequencySlider.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>

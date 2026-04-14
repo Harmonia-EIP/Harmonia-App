@@ -1,0 +1,16 @@
+<map id="src/shared/components" name="src/shared/components">
+<area shape="rect" id="node1" href="dir_12b39c674be3b5d4e9ccc3b615c66830.html" title="backendManagement" alt="" coords="27,125,189,151"/>
+<area shape="rect" id="node2" href="dir_151c4a7dbfdbdd9014fcb9fd0c74526e.html" title="parameters" alt="" coords="214,125,311,151"/>
+<area shape="rect" id="node3" href="dir_71da2d8b394f79f07f5611c572961c10.html" title="themes" alt="" coords="335,125,406,151"/>
+<area shape="rect" id="node4" href="dir_f4908875dbff3bb44a7049d21acdbc3b.html" title="tools" alt="" coords="430,125,485,151"/>
+<area shape="rect" id="node5" href="dir_1fc41604e760a4389ddc5e5aa71c9c0b.html" title="components" alt="" coords="265,52,367,77"/>
+<area shape="poly" id="edge1" href="dir_000002_000001.html" alt="" coords="283,80,156,123,154,118,282,75"/>
+<area shape="rect" id="edge1-headlabel" href="dir_000002_000001.html" title="2" alt="" coords="157,120,166,135"/>
+<area shape="poly" id="edge2" href="dir_000002_000005.html" alt="" coords="309,79,282,116,277,113,305,76"/>
+<area shape="rect" id="edge2-headlabel" href="dir_000002_000005.html" title="1" alt="" coords="284,109,294,123"/>
+<area shape="poly" id="edge3" href="dir_000002_000009.html" alt="" coords="327,76,356,113,351,116,323,79"/>
+<area shape="rect" id="edge3-headlabel" href="dir_000002_000009.html" title="2" alt="" coords="353,98,362,113"/>
+<area shape="poly" id="edge4" href="dir_000002_000010.html" alt="" coords="340,75,423,117,421,121,338,80"/>
+<area shape="rect" id="edge4-headlabel" href="dir_000002_000010.html" title="1" alt="" coords="417,102,426,117"/>
+<area shape="rect" id="clust1" href="dir_4f38db07240614f25134cb9a8bebbaf9.html" title="shared" alt="" coords="16,16,496,161"/>
+</map>

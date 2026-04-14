@@ -1,5 +1,5 @@
-<map id="src/tools/ThemeAndLayoutConverter.h" name="src/tools/ThemeAndLayoutConverter.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="82,5,277,45"/>
+<map id="src/shared/tools/ThemeAndLayoutConverter.h" name="src/shared/tools/ThemeAndLayoutConverter.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="80,5,279,45"/>
 <area shape="rect" id="Node000002" href="$AppLookAndFeel_8h.html" title=" " alt="" coords="5,93,212,119"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="164,47,130,85,126,81,160,44"/>
 <area shape="rect" id="Node000004" href="$AppColourIds_8h.html" title=" " alt="" coords="183,167,303,192"/>

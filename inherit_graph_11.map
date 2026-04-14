@@ -1,5 +1,31 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" title=" " alt="" coords="5,5,167,31"/>
-<area shape="rect" id="Node000001" href="$classHarmoniaApp.html" title="Main entry point of the Harmonia application." alt="" coords="215,5,325,31"/>
-<area shape="poly" id="edge17_Node000000_Node000001" title=" " alt="" coords="180,15,214,15,214,21,180,21"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="19,276,151,301"/>
+<area shape="rect" id="Node000001" href="$classADSRComponent.html" title=" " alt="" coords="253,55,387,80"/>
+<area shape="poly" id="edge5_Node000000_Node000001" title=" " alt="" coords="93,262,110,223,135,176,169,129,212,89,231,79,252,72,254,77,233,83,215,93,173,132,140,179,115,225,98,264"/>
+<area shape="rect" id="Node000002" href="$classBottomBarComponent.html" title=" " alt="" coords="237,104,403,129"/>
+<area shape="poly" id="edge6_Node000000_Node000002" title=" " alt="" coords="98,263,143,200,175,166,212,138,237,127,239,132,215,143,179,170,147,203,103,266"/>
+<area shape="rect" id="Node000003" href="$classFilterComponent.html" title=" " alt="" coords="255,153,385,179"/>
+<area shape="poly" id="edge7_Node000000_Node000003" title=" " alt="" coords="107,264,153,225,182,205,212,188,253,173,255,179,214,192,185,209,156,229,111,268"/>
+<area shape="rect" id="Node000004" href="$classFrequencyVolumeComponent.html" title=" " alt="" coords="213,203,427,228"/>
+<area shape="poly" id="edge8_Node000000_Node000004" title=" " alt="" coords="127,268,213,237,255,225,257,231,214,242,129,273"/>
+<area shape="rect" id="Node000005" href="$classLoginPage.html" title="User interface for account authentication." alt="" coords="276,252,364,277"/>
+<area shape="poly" id="edge9_Node000000_Node000005" title=" " alt="" coords="165,278,276,266,276,272,166,283"/>
+<area shape="rect" id="Node000006" href="$classOscilloscopeComponent.html" title=" " alt="" coords="231,5,409,31"/>
+<area shape="poly" id="edge10_Node000000_Node000006" title=" " alt="" coords="90,262,104,214,128,153,163,92,186,64,212,40,231,29,234,33,215,44,189,68,167,95,132,156,109,215,95,263"/>
+<area shape="rect" id="Node000008" href="$classPluginAppWrapper.html" title=" " alt="" coords="249,301,391,327"/>
+<area shape="poly" id="edge11_Node000000_Node000008" title=" " alt="" coords="166,295,249,304,248,309,165,300"/>
+<area shape="rect" id="Node000009" href="$classSignupPage.html" title="User interface for account creation." alt="" coords="271,351,369,376"/>
+<area shape="poly" id="edge12_Node000000_Node000009" title=" " alt="" coords="129,304,214,335,272,351,270,356,213,341,127,309"/>
+<area shape="rect" id="Node000010" href="$classSynthComponent.html" title=" " alt="" coords="253,400,387,425"/>
+<area shape="poly" id="edge13_Node000000_Node000010" title=" " alt="" coords="111,309,156,348,215,385,253,399,252,404,212,390,153,352,107,313"/>
+<area shape="rect" id="Node000011" href="$classTitleComponent.html" title=" " alt="" coords="257,548,383,573"/>
+<area shape="poly" id="edge14_Node000000_Node000011" title=" " alt="" coords="95,314,109,362,133,421,167,482,190,510,215,533,235,545,257,552,255,557,233,550,212,537,186,513,163,485,128,424,104,364,90,316"/>
+<area shape="rect" id="Node000013" href="$classTopBarComponent.html" title=" " alt="" coords="249,449,391,475"/>
+<area shape="poly" id="edge15_Node000000_Node000013" title=" " alt="" coords="103,312,148,374,179,407,215,434,250,449,248,454,212,439,175,411,144,378,99,315"/>
+<area shape="rect" id="Node000014" href="$classWelcomePage.html" title="Initial landing page allowing the user to choose between sign&#45;in and sign&#45;up." alt="" coords="263,499,377,524"/>
+<area shape="poly" id="edge16_Node000000_Node000014" title=" " alt="" coords="98,313,115,352,140,398,173,445,215,484,238,496,264,503,262,509,236,501,212,488,169,448,135,401,110,354,93,315"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="5,548,165,573"/>
+<area shape="poly" id="edge17_Node000012_Node000011" title=" " alt="" coords="179,558,257,558,257,563,179,563"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="38,5,133,31"/>
+<area shape="poly" id="edge18_Node000007_Node000006" title=" " alt="" coords="147,15,231,15,231,21,147,21"/>
 </map>

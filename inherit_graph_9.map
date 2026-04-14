@@ -1,29 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" title=" " alt="" coords="19,252,151,277"/>
-<area shape="rect" id="Node000001" href="$classADSRComponent.html" title=" " alt="" coords="253,301,387,327"/>
-<area shape="poly" id="edge3_Node000000_Node000001" title=" " alt="" coords="160,278,259,299,258,304,159,283"/>
-<area shape="rect" id="Node000002" href="$classBottomBarComponent.html" title=" " alt="" coords="237,351,403,376"/>
-<area shape="poly" id="edge4_Node000000_Node000002" title=" " alt="" coords="117,283,162,310,214,336,253,348,252,353,212,340,159,315,114,287"/>
-<area shape="rect" id="Node000003" href="$classFilterComponent.html" title=" " alt="" coords="255,400,385,425"/>
-<area shape="poly" id="edge5_Node000000_Node000003" title=" " alt="" coords="106,286,152,337,182,363,215,385,255,400,253,405,212,390,178,367,148,341,102,290"/>
-<area shape="rect" id="Node000004" href="$classFrequencyVolumeComponent.html" title=" " alt="" coords="213,5,427,31"/>
-<area shape="poly" id="edge6_Node000000_Node000004" title=" " alt="" coords="91,237,107,194,131,140,166,86,187,61,212,40,232,29,234,33,215,44,191,65,170,89,136,143,112,196,96,239"/>
-<area shape="rect" id="Node000005" href="$classLoginPage.html" title="User interface for account authentication." alt="" coords="276,55,364,80"/>
-<area shape="poly" id="edge7_Node000000_Node000005" title=" " alt="" coords="96,238,113,204,139,163,172,123,212,89,243,75,275,68,277,73,245,80,215,94,176,127,143,167,118,207,100,241"/>
-<area shape="rect" id="Node000006" href="$classOscilloscopeComponent.html" title=" " alt="" coords="231,449,409,475"/>
-<area shape="poly" id="edge8_Node000000_Node000006" title=" " alt="" coords="100,289,118,322,144,362,176,401,215,434,240,447,238,452,212,439,172,405,139,365,114,325,96,291"/>
-<area shape="rect" id="Node000008" href="$classSignupPage.html" title="User interface for account creation." alt="" coords="271,104,369,129"/>
-<area shape="poly" id="edge9_Node000000_Node000008" title=" " alt="" coords="102,239,148,188,178,161,212,138,241,126,270,119,272,124,243,131,215,143,182,165,152,191,106,243"/>
-<area shape="rect" id="Node000009" href="$classSynthComponent.html" title=" " alt="" coords="253,153,387,179"/>
-<area shape="poly" id="edge10_Node000000_Node000009" title=" " alt="" coords="114,242,159,214,212,188,252,175,253,180,214,192,162,218,117,247"/>
-<area shape="rect" id="Node000010" href="$classTitleComponent.html" title=" " alt="" coords="257,499,383,524"/>
-<area shape="poly" id="edge11_Node000000_Node000010" title=" " alt="" coords="100,289,154,397,186,450,215,484,235,495,257,503,256,508,233,500,212,488,182,453,149,399,96,291"/>
-<area shape="rect" id="Node000012" href="$classTopBarComponent.html" title=" " alt="" coords="249,203,391,228"/>
-<area shape="poly" id="edge12_Node000000_Node000012" title=" " alt="" coords="159,247,258,225,259,231,160,252"/>
-<area shape="rect" id="Node000013" href="$classWelcomePage.html" title="Initial landing page allowing the user to choose between sign&#45;in and sign&#45;up." alt="" coords="263,252,377,277"/>
-<area shape="poly" id="edge13_Node000000_Node000013" title=" " alt="" coords="165,262,263,262,263,267,165,267"/>
-<area shape="rect" id="Node000011" title=" " alt="" coords="5,499,165,524"/>
-<area shape="poly" id="edge14_Node000011_Node000010" title=" " alt="" coords="179,509,257,509,257,514,179,514"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="38,449,133,475"/>
-<area shape="poly" id="edge15_Node000007_Node000006" title=" " alt="" coords="147,459,231,459,231,465,147,465"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,5,200,31"/>
+<area shape="rect" id="Node000001" href="$classHarmoniaAudioProcessorEditor.html" title=" " alt="" coords="248,5,472,31"/>
+<area shape="poly" id="edge3_Node000000_Node000001" title=" " alt="" coords="214,15,248,15,248,21,214,21"/>
 </map>

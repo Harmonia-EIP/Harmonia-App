@@ -17,7 +17,7 @@ var searchData=
   ['titlecomponent_14',['titlecomponent',['../classTitleComponent.html',1,'TitleComponent'],['../classTitleComponent.html#a305c7243e8fc0ac7246f8cb60e62af30',1,'TitleComponent::TitleComponent()']]],
   ['titlecomponent_2ecpp_15',['TitleComponent.cpp',['../TitleComponent_8cpp.html',1,'']]],
   ['titlecomponent_2eh_16',['TitleComponent.h',['../TitleComponent_8h.html',1,'']]],
-  ['titlelabel_17',['titlelabel',['../classLoginPage.html#a743dbe692a5203c6c1a766c409b99d08',1,'LoginPage::titleLabel'],['../classSignupPage.html#a45a91e2876841839d278c9e8d0421367',1,'SignupPage::titleLabel'],['../classTitleComponent.html#ad4782dedf7a825df82392ffc9e7afa87',1,'TitleComponent::titleLabel'],['../classWelcomePage.html#a2d6dddcf5a14ba6ab661a31b4dae8601',1,'WelcomePage::titleLabel']]],
+  ['titlelabel_17',['titlelabel',['../classTitleComponent.html#ad4782dedf7a825df82392ffc9e7afa87',1,'TitleComponent::titleLabel'],['../classLoginPage.html#a743dbe692a5203c6c1a766c409b99d08',1,'LoginPage::titleLabel'],['../classSignupPage.html#a45a91e2876841839d278c9e8d0421367',1,'SignupPage::titleLabel'],['../classWelcomePage.html#a2d6dddcf5a14ba6ab661a31b4dae8601',1,'WelcomePage::titleLabel']]],
   ['toggletheme_18',['toggleTheme',['../classAppLookAndFeel.html#a65e1af939c984595aa7b6eaac51f986b',1,'AppLookAndFeel']]],
   ['topbar_19',['topBar',['../classMainComponent.html#a03ecf7c4690659d1bc95e85784e87f31',1,'MainComponent']]],
   ['topbarcomponent_20',['topbarcomponent',['../classTopBarComponent.html#a985a179f171a911c9bf012be72f34ebc',1,'TopBarComponent::TopBarComponent()'],['../classTopBarComponent.html',1,'TopBarComponent']]],

@@ -1,0 +1,7 @@
+<map id="src/plugin/PluginEditor.h" name="src/plugin/PluginEditor.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="127,5,306,31"/>
+<area shape="rect" id="Node000002" href="$PluginEditor_8cpp.html" title=" " alt="" coords="5,79,199,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="188,40,122,81,119,76,185,35"/>
+<area shape="rect" id="Node000003" href="$PluginProcessor_8cpp.html" title=" " alt="" coords="223,79,442,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="248,35,315,76,312,81,245,40"/>
+</map>

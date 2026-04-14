@@ -1,7 +1,7 @@
-<map id="src/backendManagement/BackendAiManager.h" name="src/backendManagement/BackendAiManager.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,191,45"/>
-<area shape="rect" id="Node000002" href="$BackendTypes_8h.html" title=" " alt="" coords="35,93,161,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="101,46,101,79,95,79,95,46"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="17,167,179,192"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="101,119,101,153,95,153,95,119"/>
+<map id="src/shared/backendManagement/BackendAiManager.h" name="src/shared/backendManagement/BackendAiManager.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,239,45"/>
+<area shape="rect" id="Node000002" href="$BackendTypes_8h.html" title=" " alt="" coords="59,93,185,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="125,46,125,79,119,79,119,46"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="41,167,203,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="125,119,125,153,119,153,119,119"/>
 </map>

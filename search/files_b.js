@@ -1,9 +1,10 @@
 var searchData=
 [
-  ['themeandlayoutconverter_2eh_0',['ThemeAndLayoutConverter.h',['../ThemeAndLayoutConverter_8h.html',1,'']]],
-  ['themes_2eh_1',['Themes.h',['../Themes_8h.html',1,'']]],
-  ['titlecomponent_2ecpp_2',['TitleComponent.cpp',['../TitleComponent_8cpp.html',1,'']]],
-  ['titlecomponent_2eh_3',['TitleComponent.h',['../TitleComponent_8h.html',1,'']]],
-  ['topbarcomponent_2ecpp_4',['TopBarComponent.cpp',['../TopBarComponent_8cpp.html',1,'']]],
-  ['topbarcomponent_2eh_5',['TopBarComponent.h',['../TopBarComponent_8h.html',1,'']]]
+  ['pagesincludes_2eh_0',['PagesIncludes.h',['../PagesIncludes_8h.html',1,'']]],
+  ['pluginappwrapper_2ecpp_1',['PluginAppWrapper.cpp',['../PluginAppWrapper_8cpp.html',1,'']]],
+  ['pluginappwrapper_2eh_2',['PluginAppWrapper.h',['../PluginAppWrapper_8h.html',1,'']]],
+  ['plugineditor_2ecpp_3',['PluginEditor.cpp',['../PluginEditor_8cpp.html',1,'']]],
+  ['plugineditor_2eh_4',['PluginEditor.h',['../PluginEditor_8h.html',1,'']]],
+  ['pluginprocessor_2ecpp_5',['PluginProcessor.cpp',['../PluginProcessor_8cpp.html',1,'']]],
+  ['pluginprocessor_2eh_6',['PluginProcessor.h',['../PluginProcessor_8h.html',1,'']]]
 ];

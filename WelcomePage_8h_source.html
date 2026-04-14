@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Harmonia Interface: src/components/WelcomePage.h Source File</title>
+<title>Harmonia Interface: src/shared/pages/WelcomePage.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -98,8 +98,8 @@ $(document).ready(function(){initNavTree('WelcomePage_8h_source.html',''); initR
 </div><!--header-->
 <div class="contents">
 <a href="WelcomePage_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;<a class="code" href="JuceHeader_8h.html">JuceHeader.h</a>&gt;</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;../themes/AppLookAndFeel.h&quot;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="PagesIncludes_8h.html">PagesIncludes.h</a>&quot;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
 <div class="foldopen" id="foldopen00025" data-start="{" data-end="};">
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="classWelcomePage.html">   25</a></span><span class="keyword">class </span><a class="code hl_class" href="classWelcomePage.html">WelcomePage</a> : <span class="keyword">public</span> juce::Component</div>
@@ -123,15 +123,15 @@ $(document).ready(function(){initNavTree('WelcomePage_8h_source.html',''); initR
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="classWelcomePage.html#aa6a9d4102ba8f13f507e298be862dc67">   88</a></span>    juce::TextButton <a class="code hl_variable" href="classWelcomePage.html#aa6a9d4102ba8f13f507e298be862dc67">signupButton</a>;</div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>};</div>
 </div>
-<div class="ttc" id="aJuceHeader_8h_html"><div class="ttname"><a href="JuceHeader_8h.html">JuceHeader.h</a></div></div>
+<div class="ttc" id="aPagesIncludes_8h_html"><div class="ttname"><a href="PagesIncludes_8h.html">PagesIncludes.h</a></div></div>
 <div class="ttc" id="aclassAppLookAndFeel_html"><div class="ttname"><a href="classAppLookAndFeel.html">AppLookAndFeel</a></div><div class="ttdef"><b>Definition</b> AppLookAndFeel.h:8</div></div>
 <div class="ttc" id="aclassWelcomePage_html"><div class="ttname"><a href="classWelcomePage.html">WelcomePage</a></div><div class="ttdoc">Initial landing page allowing the user to choose between sign-in and sign-up.</div><div class="ttdef"><b>Definition</b> WelcomePage.h:26</div></div>
 <div class="ttc" id="aclassWelcomePage_html_a19fe0a27f7a565caa8a6b3632459507d"><div class="ttname"><a href="classWelcomePage.html#a19fe0a27f7a565caa8a6b3632459507d">WelcomePage::onChoice</a></div><div class="ttdeci">std::function&lt; void(bool)&gt; onChoice</div><div class="ttdoc">Callback triggered when the user makes a choice.</div><div class="ttdef"><b>Definition</b> WelcomePage.h:64</div></div>
 <div class="ttc" id="aclassWelcomePage_html_a2d6dddcf5a14ba6ab661a31b4dae8601"><div class="ttname"><a href="classWelcomePage.html#a2d6dddcf5a14ba6ab661a31b4dae8601">WelcomePage::titleLabel</a></div><div class="ttdeci">juce::Label titleLabel</div><div class="ttdoc">Application title label.</div><div class="ttdef"><b>Definition</b> WelcomePage.h:78</div></div>
-<div class="ttc" id="aclassWelcomePage_html_a37aef1a9636960dc570512aea2fc6ec5"><div class="ttname"><a href="classWelcomePage.html#a37aef1a9636960dc570512aea2fc6ec5">WelcomePage::resized</a></div><div class="ttdeci">void resized() override</div><div class="ttdoc">Lays out child components.</div><div class="ttdef"><b>Definition</b> WelcomePage.cpp:56</div></div>
-<div class="ttc" id="aclassWelcomePage_html_a9a7dad9a04f5a6b94c721e49a9d006d5"><div class="ttname"><a href="classWelcomePage.html#a9a7dad9a04f5a6b94c721e49a9d006d5">WelcomePage::WelcomePage</a></div><div class="ttdeci">WelcomePage()</div><div class="ttdoc">Constructs the WelcomePage.</div><div class="ttdef"><b>Definition</b> WelcomePage.cpp:4</div></div>
+<div class="ttc" id="aclassWelcomePage_html_a37aef1a9636960dc570512aea2fc6ec5"><div class="ttname"><a href="classWelcomePage.html#a37aef1a9636960dc570512aea2fc6ec5">WelcomePage::resized</a></div><div class="ttdeci">void resized() override</div><div class="ttdoc">Lays out child components.</div><div class="ttdef"><b>Definition</b> WelcomePage.cpp:55</div></div>
+<div class="ttc" id="aclassWelcomePage_html_a9a7dad9a04f5a6b94c721e49a9d006d5"><div class="ttname"><a href="classWelcomePage.html#a9a7dad9a04f5a6b94c721e49a9d006d5">WelcomePage::WelcomePage</a></div><div class="ttdeci">WelcomePage()</div><div class="ttdoc">Constructs the WelcomePage.</div><div class="ttdef"><b>Definition</b> WelcomePage.cpp:3</div></div>
 <div class="ttc" id="aclassWelcomePage_html_aa6a9d4102ba8f13f507e298be862dc67"><div class="ttname"><a href="classWelcomePage.html#aa6a9d4102ba8f13f507e298be862dc67">WelcomePage::signupButton</a></div><div class="ttdeci">juce::TextButton signupButton</div><div class="ttdoc">Button to trigger sign-up flow.</div><div class="ttdef"><b>Definition</b> WelcomePage.h:88</div></div>
-<div class="ttc" id="aclassWelcomePage_html_ab28923b10637e4049f22e187907f4be1"><div class="ttname"><a href="classWelcomePage.html#ab28923b10637e4049f22e187907f4be1">WelcomePage::paint</a></div><div class="ttdeci">void paint(juce::Graphics &amp;) override</div><div class="ttdoc">Paints the component background.</div><div class="ttdef"><b>Definition</b> WelcomePage.cpp:35</div></div>
+<div class="ttc" id="aclassWelcomePage_html_ab28923b10637e4049f22e187907f4be1"><div class="ttname"><a href="classWelcomePage.html#ab28923b10637e4049f22e187907f4be1">WelcomePage::paint</a></div><div class="ttdeci">void paint(juce::Graphics &amp;) override</div><div class="ttdoc">Paints the component background.</div><div class="ttdef"><b>Definition</b> WelcomePage.cpp:34</div></div>
 <div class="ttc" id="aclassWelcomePage_html_acffa09e6d8f81b137802ec17e43fd6e7"><div class="ttname"><a href="classWelcomePage.html#acffa09e6d8f81b137802ec17e43fd6e7">WelcomePage::signinButton</a></div><div class="ttdeci">juce::TextButton signinButton</div><div class="ttdoc">Button to trigger sign-in flow.</div><div class="ttdef"><b>Definition</b> WelcomePage.h:83</div></div>
 <div class="ttc" id="aclassWelcomePage_html_ae1a15d2e3f49f5ded9e394a2c5fad676"><div class="ttname"><a href="classWelcomePage.html#ae1a15d2e3f49f5ded9e394a2c5fad676">WelcomePage::authLookAndFeel</a></div><div class="ttdeci">AppLookAndFeel authLookAndFeel</div><div class="ttdoc">Local LookAndFeel for authentication UI.</div><div class="ttdef"><b>Definition</b> WelcomePage.h:73</div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -139,7 +139,7 @@ $(document).ready(function(){initNavTree('WelcomePage_8h_source.html',''); initR
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_3c4c7c1a85608ccd561c026bec818e51.html">components</a></li><li class="navelem"><a class="el" href="WelcomePage_8h.html">WelcomePage.h</a></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_4f38db07240614f25134cb9a8bebbaf9.html">shared</a></li><li class="navelem"><a class="el" href="dir_9b937766098d1c3c45f3407af4cf1dad.html">pages</a></li><li class="navelem"><a class="el" href="WelcomePage_8h.html">WelcomePage.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>

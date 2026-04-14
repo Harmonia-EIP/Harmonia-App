@@ -14,6 +14,7 @@ var searchData=
   ['attack_11',['attack',['../structPatchParams.html#ac638f95591600378859be689435bd727',1,'PatchParams::attack'],['../classDataModel.html#a2291ee65278f9e14d4613667343a6536',1,'DataModel::attack'],['../structHarmoniaParams.html#abb1d5a0793b4320a6e3b466973c4890a',1,'HarmoniaParams::attack']]],
   ['attacklabel_12',['attackLabel',['../classADSRComponent.html#a17cc8a3ccafab4e167a52be72af32db4',1,'ADSRComponent']]],
   ['attackslider_13',['attackSlider',['../classADSRComponent.html#ab7a90b1101078dc114e19f2945ee0305',1,'ADSRComponent']]],
-  ['authlookandfeel_14',['authlookandfeel',['../classLoginPage.html#a6ec648796804dd988245ddf33fe94dd1',1,'LoginPage::authLookAndFeel'],['../classSignupPage.html#ab4514f953719c65c348406039345a90d',1,'SignupPage::authLookAndFeel'],['../classWelcomePage.html#ae1a15d2e3f49f5ded9e394a2c5fad676',1,'WelcomePage::authLookAndFeel']]],
-  ['authmanager_15',['authManager',['../classBackendManager.html#a1ccef5b4d24ef3205a6a487380506f86',1,'BackendManager']]]
+  ['audioprocessor_14',['audioProcessor',['../classHarmoniaAudioProcessorEditor.html#a4d1af66222c0c6ec427a857cd922a84d',1,'HarmoniaAudioProcessorEditor']]],
+  ['authlookandfeel_15',['authlookandfeel',['../classLoginPage.html#a6ec648796804dd988245ddf33fe94dd1',1,'LoginPage::authLookAndFeel'],['../classSignupPage.html#ab4514f953719c65c348406039345a90d',1,'SignupPage::authLookAndFeel'],['../classWelcomePage.html#ae1a15d2e3f49f5ded9e394a2c5fad676',1,'WelcomePage::authLookAndFeel']]],
+  ['authmanager_16',['authManager',['../classBackendManager.html#a1ccef5b4d24ef3205a6a487380506f86',1,'BackendManager']]]
 ];

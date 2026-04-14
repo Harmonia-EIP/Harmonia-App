@@ -1,5 +1,5 @@
-<map id="src/backendManagement/BackendAuthManager.cpp" name="src/backendManagement/BackendAuthManager.cpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="247,5,442,45"/>
+<map id="src/shared/backendManagement/BackendAuthManager.cpp" name="src/shared/backendManagement/BackendAuthManager.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="228,5,461,45"/>
 <area shape="rect" id="Node000002" href="$BackendAuthManager_8h.html" title=" " alt="" coords="5,93,180,119"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="285,48,143,92,142,87,284,43"/>
 <area shape="rect" id="Node000005" href="$BackendManager_8h.html" title=" " alt="" coords="204,93,349,119"/>
