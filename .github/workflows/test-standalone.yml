@@ -3,11 +3,12 @@ name: Build Windows (JUCE)
 on:
   push:
     branches:
-      - dev
+      - v1
 
 jobs:
   build:
     runs-on: windows-latest
+
     steps:
       - uses: actions/checkout@v4
         with:
@@ -18,3 +19,42 @@ jobs:
 
       - name: Build
         run: cmake --build build --config Release
+
+      - name: Check EXE
+        run: |
+          if (!(Test-Path "build/HarmoniaPlugin_artefacts/Release/Standalone/HarmoniaPlugin.exe")) {
+            Write-Error "EXE not found"
+            exit 1
+          } else {
+            Write-Host "EXE found"
+          }
+
+      - name: Check VST3 created by Plugin
+        run: |
+          if (!(Test-Path "build/HarmoniaPlugin_artefacts/Release/VST3/HarmoniaPlugin.vst3")) {
+            Write-Error "VST3 not found"
+            exit 1
+          } else {
+            Write-Host "VST3 found ✅"
+          }
+
+      - name: Check Exe created by Cmake
+        run: |
+          if (!(Test-Path "build/Release/HarmoniaApp.ex")) {
+            Write-Error "Exe not found"
+            exit 1
+          } else {
+            Write-Host "Exe found ✅"
+          }
+
+      - name: Upload EXE
+        uses: actions/upload-artifact@v4
+        with:
+          name: Harmonia-EXE
+          path: build/Release/HarmoniaApp.exe
+
+      - name: Upload VST3
+        uses: actions/upload-artifact@v4
+        with:
+          name: Harmonia-VST3
+          path: build/HarmoniaPlugin_artefacts/Release/VST3/HarmoniaPlugin.vst3
