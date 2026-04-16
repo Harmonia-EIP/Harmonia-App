@@ -35,16 +35,16 @@ jobs:
             Write-Error "VST3 not found"
             exit 1
           } else {
-            Write-Host "VST3 found ✅"
+            Write-Host "VST3 found"
           }
 
       - name: Check Exe created by Cmake
         run: |
-          if (!(Test-Path "build/Release/HarmoniaApp.ex")) {
+          if (!(Test-Path "build/Release/HarmoniaApp.exe")) {
             Write-Error "Exe not found"
             exit 1
           } else {
-            Write-Host "Exe found ✅"
+            Write-Host "Exe found"
           }
 
       - name: Upload EXE
