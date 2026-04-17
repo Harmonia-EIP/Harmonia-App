@@ -1,27 +1,23 @@
 #pragma once
 #include "JuceHeader.h"
+
 #include "backendManagement/BackendManager.h"
-#include "MainComponent.h"
 #include "pages/WelcomePage.h"
 #include "pages/LoginPage.h"
 #include "pages/SignupPage.h"
+#include "MainComponent.h"
 
-class MainWindow : public juce::DocumentWindow
+class AppCore : public juce::Component
 {
 public:
-    MainWindow(const juce::String& name,
-               juce::JUCEApplication& appRef,
-               BackendManager& be,
-               std::optional<UserSession> existingSession = std::nullopt);
+    AppCore();
 
-    void closeButtonPressed() override;
+    void resized() override;
 
 private:
-    juce::JUCEApplication& app;
-    BackendManager& backend;
+    BackendManager backend;
 
     std::unique_ptr<juce::Component> currentComponent;
-
     std::optional<UserSession> currentSession;
 
     void showWelcomeScreen();

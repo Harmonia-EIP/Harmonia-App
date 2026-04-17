@@ -2,7 +2,7 @@
 
 WelcomePage::WelcomePage()
 {
-    // LookAndFeel local toujours sombre (pas dépendant de l'utilisateur)
+    // LookAndFeel local toujours sombre
     authLookAndFeel.setThemePreset(AppLookAndFeel::ThemePreset::Dark);
     setLookAndFeel(&authLookAndFeel);
 
@@ -28,28 +28,70 @@ WelcomePage::WelcomePage()
     {
         if (onChoice) onChoice(true);
     };
+
+    // ===== ANIMATION =====
+    startTimerHz(60); // 60 FPS
 }
 
+WelcomePage::~WelcomePage()
+{
+    setLookAndFeel(nullptr);
+}
+
+void WelcomePage::timerCallback()
+{
+    animationPhase += 0.03f;
+    repaint();
+}
 
 void WelcomePage::paint(juce::Graphics& g)
 {
-    // Fond basé sur le thème AUTH (toujours dark)
     auto bg = findColour(AppColourIds::backgroundId);
     auto accent = findColour(AppColourIds::accentId);
+
+    // ===== GRADIENT ANIMÉ =====
+    auto dynamicAccent = accent.withRotatedHue(animationPhase * 0.05f);
 
     juce::ColourGradient gradient(
         bg,
         0, 0,
-        accent.withAlpha(0.25f),
-        0, (float)getHeight(),
+        dynamicAccent.withAlpha(0.3f),
+        (float)getWidth(),
+        (float)getHeight(),
         false
     );
 
     g.setGradientFill(gradient);
     g.fillAll();
 
-    titleLabel.setColour(juce::Label::textColourId,
-                         findColour(AppColourIds::textPrimaryId));
+    // ===== WAVE ANIMÉE =====
+    juce::Path wave;
+
+    float centerY = getHeight() * 0.6f;
+    float amplitude = 30.0f;
+    float frequency = 0.01f;
+
+    wave.startNewSubPath(0, centerY);
+
+    for (int x = 0; x < getWidth(); ++x)
+    {
+        float y = centerY + std::sin(x * frequency + animationPhase) * amplitude;
+        wave.lineTo((float)x, y);
+    }
+
+    // Glow léger
+    g.setColour(dynamicAccent.withAlpha(0.15f));
+    g.strokePath(wave, juce::PathStrokeType(6.0f));
+
+    // Ligne principale
+    g.setColour(dynamicAccent.withAlpha(0.6f));
+    g.strokePath(wave, juce::PathStrokeType(2.0f));
+
+    // ===== TEXT COLOR =====
+    titleLabel.setColour(
+        juce::Label::textColourId,
+        findColour(AppColourIds::textPrimaryId)
+    );
 }
 
 void WelcomePage::resized()
@@ -60,6 +102,7 @@ void WelcomePage::resized()
     area.removeFromTop(50);
 
     auto buttonHeight = 50;
+
     signinButton.setBounds(area.removeFromTop(buttonHeight));
     area.removeFromTop(20);
     signupButton.setBounds(area.removeFromTop(buttonHeight));

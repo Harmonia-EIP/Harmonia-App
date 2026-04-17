@@ -1,7 +1,7 @@
 #pragma once
 
-#include "JucePluginHeader.h"
-#include "../shared/PluginAppWrapper.h"
+#include "../shared/JuceHeader.h"
+#include "PluginAppWrapper.h"
 
 class HarmoniaAudioProcessorEditor  : public juce::AudioProcessorEditor
 {

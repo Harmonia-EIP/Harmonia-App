@@ -3,7 +3,7 @@ name: Build Windows (JUCE)
 on:
   push:
     branches:
-      - v1
+      - dev
 
 jobs:
   build:

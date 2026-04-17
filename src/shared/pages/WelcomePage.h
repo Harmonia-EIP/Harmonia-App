@@ -22,7 +22,8 @@
  * @note This component does not handle navigation directly; it delegates actions
  * through the callback.
  */
-class WelcomePage : public juce::Component
+class WelcomePage : public juce::Component,
+                    private juce::Timer
 {
 public:
     /**
@@ -34,6 +35,8 @@ public:
      * - Sets up button callbacks
      */
     WelcomePage();
+
+    ~WelcomePage() override;
 
     /**
      * @brief Paints the component background.
@@ -86,4 +89,8 @@ private:
      * @brief Button to trigger sign-up flow.
      */
     juce::TextButton signupButton;
+
+    float animationPhase = 0.0f;
+
+    void timerCallback() override;
 };

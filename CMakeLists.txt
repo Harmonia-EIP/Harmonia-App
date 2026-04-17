@@ -88,6 +88,7 @@ juce_generate_juce_header(HarmoniaPlugin)
 target_sources(HarmoniaPlugin PRIVATE
     src/plugin/PluginProcessor.cpp
     src/plugin/PluginEditor.cpp
+    src/plugin/PluginAppWrapper.cpp
 )
 
 target_link_libraries(HarmoniaPlugin PRIVATE
@@ -106,6 +107,9 @@ target_link_libraries(HarmoniaPlugin PRIVATE
 # =========================
 add_executable(HarmoniaApp WIN32
     src/app/main.cpp
+    src/app/StandaloneAppWrapper.cpp
+    src/app/StandaloneApp.cpp
+    src/app/StandaloneWindow.cpp
     icon.rc
 )
 

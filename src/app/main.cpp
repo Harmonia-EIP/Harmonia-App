@@ -1,3 +1,3 @@
-#include "../shared/HarmoniaApp.h"
+#include "StandaloneApp.h"
 
-START_JUCE_APPLICATION(HarmoniaApp)
+START_JUCE_APPLICATION(StandaloneApp)

@@ -1,6 +1,6 @@
-#include "PluginAppWrapper.h"
+#include "AppCore.h"
 
-PluginAppWrapper::PluginAppWrapper()
+AppCore::AppCore()
 {
     auto session = backend.loadSession();
 
@@ -10,7 +10,7 @@ PluginAppWrapper::PluginAppWrapper()
 
         if (synced)
         {
-            currentSession = synced;
+            currentSession = *synced;
             showMainScreen(*synced);
             return;
         }
@@ -25,7 +25,7 @@ PluginAppWrapper::PluginAppWrapper()
 
 //================================================
 
-void PluginAppWrapper::resized()
+void AppCore::resized()
 {
     if (currentComponent)
         currentComponent->setBounds(getLocalBounds());
@@ -33,9 +33,9 @@ void PluginAppWrapper::resized()
 
 //================================================
 
-void PluginAppWrapper::showWelcomeScreen()
+void AppCore::showWelcomeScreen()
 {
-    auto* welcome = new WelcomePage();
+    auto welcome = std::make_unique<WelcomePage>();
 
     welcome->onChoice = [this](bool signup)
     {
@@ -45,16 +45,16 @@ void PluginAppWrapper::showWelcomeScreen()
             showLoginScreen();
     };
 
-    currentComponent.reset(welcome);
+    currentComponent = std::move(welcome);
     addAndMakeVisible(currentComponent.get());
     resized();
 }
 
 //================================================
 
-void PluginAppWrapper::showLoginScreen()
+void AppCore::showLoginScreen()
 {
-    auto* login = new LoginPage(backend,
+    auto login = std::make_unique<LoginPage>(backend,
         [this](const UserSession& session)
         {
             currentSession = session;
@@ -66,16 +66,16 @@ void PluginAppWrapper::showLoginScreen()
         showWelcomeScreen();
     };
 
-    currentComponent.reset(login);
+    currentComponent = std::move(login);
     addAndMakeVisible(currentComponent.get());
     resized();
 }
 
 //================================================
 
-void PluginAppWrapper::showSignupScreen()
+void AppCore::showSignupScreen()
 {
-    auto* signup = new SignupPage(backend,
+    auto signup = std::make_unique<SignupPage>(backend,
         [this](const UserSession& session)
         {
             currentSession = session;
@@ -87,24 +87,25 @@ void PluginAppWrapper::showSignupScreen()
         showWelcomeScreen();
     };
 
-    currentComponent.reset(signup);
+    currentComponent = std::move(signup);
     addAndMakeVisible(currentComponent.get());
     resized();
 }
 
 //================================================
 
-void PluginAppWrapper::showMainScreen(const UserSession& session)
+void AppCore::showMainScreen(const UserSession& session)
 {
-    auto* main = new MainComponent(backend, session);
+    auto main = std::make_unique<MainComponent>(backend, session);
 
     main->getTitleComponent().onLogout = [this]()
     {
         backend.clearSession();
+        currentSession.reset();
         showWelcomeScreen();
     };
 
-    currentComponent.reset(main);
+    currentComponent = std::move(main);
     addAndMakeVisible(currentComponent.get());
     resized();
 }
