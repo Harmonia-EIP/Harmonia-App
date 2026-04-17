@@ -29,6 +29,7 @@
 #include "components/OscilloscopeComponent.h"
 
 #include "tools/ThemeAndLayoutConverter.h"
+#include "tools/PatchSerializer.h"
 
 /**
  * @class MainComponent
@@ -208,6 +209,16 @@ private:
      * @param layout Layout preset to apply
      */
     void applyLayout(LayoutPreset layout);
+    void initUI(const UserSession& session);
+    void addComponents();
+    void initComponentsListeners();
+    void initTitleComponent();
+    void initSynth();
+    void initAsyncProfileLoad();
+    void applyParamsToUI(const PatchParams& p);
+    void initExportParameters();
+    void initLoadParameters();
+    void initGenerateWithAI();
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

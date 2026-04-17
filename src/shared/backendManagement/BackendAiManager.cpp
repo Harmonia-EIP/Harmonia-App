@@ -70,8 +70,13 @@ PatchCallResult BackendAiManager::generatePatch(const juce::String& prompt)
     }
 
     PatchParams p;
-    p.waveform   = body.value("waveform",   "Sine");
-    p.filterType = body.value("filterType", "Low Pass");
+    p.waveform = PatchSerializer::waveformFromString(
+        juce::String(body.value("waveform", "Sine"))
+    );
+
+    p.filterType = PatchSerializer::filterFromString(
+        juce::String(body.value("filterType", "Low Pass"))
+    );
     p.frequency  = body.value("frequency",  440.0);
     p.volume     = body.value("volume",     0.8);
     p.attack     = body.value("attack",     0.1);

@@ -34,7 +34,7 @@ public:
 
     void prepare (double sampleRate, int samplesPerBlock, int numOutputChannels);
 
-    void setParameters (const HarmoniaParams& newParams);
+    void setParameters (const PatchParams& newParams);
 
     void setWaveform (int waveformIndex);
     void setFilter   (float cutoff, float resonance, int filterTypeIndex);
@@ -50,6 +50,6 @@ private:
     juce::ADSR             adsr;
     juce::ADSR::Parameters adsrParams;
 
-    HarmoniaParams currentParams;
+    PatchParams currentParams;
     double currentSampleRate = 44100.0;
 };

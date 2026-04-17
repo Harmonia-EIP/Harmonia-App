@@ -1,19 +1,36 @@
 #pragma once
 #include <juce_core/juce_core.h>
 
-struct HarmoniaParams
+enum class FilterType
 {
-    float frequency      = 440.0f;
-    float volume         = 0.8f;
+    LOWPASS,
+    HIGHPASS,
+    BANDPASS
+};
 
-    float attack         = 0.1f;
-    float decay          = 0.1f;
-    float sustain        = 0.8f;
-    float release        = 0.5f;
+enum class Waveform
+{
+    SINE,
+    SQUARE,
+    SAW,
+    TRIANGLE
+};
 
-    float cutoff         = 1000.0f;
-    float resonance      = 1.0f;
+struct PatchParams
+{
+    double frequency  = 440.0;
+    double volume     = 0.8;
 
-    int   waveformIndex  = 0;              // 0 = Sine, 1 = Saw, 2 = Square
-    juce::String filterType = "Low Pass";  // "Low Pass", "Band Pass", "High Pass"
+    double attack     = 0.1;
+    double decay      = 0.1;
+    double sustain    = 0.8;
+    double release    = 0.5;
+
+    double cutoff     = 1000.0;
+    double resonance  = 1.0;
+
+    FilterType filterType = FilterType::LOWPASS;
+    Waveform waveform     = Waveform::SINE;
+
+    juce::String prompt;
 };

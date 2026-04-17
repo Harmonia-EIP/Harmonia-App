@@ -6,7 +6,7 @@ HarmoniaVoice::HarmoniaVoice()
 
     filter.setType(juce::dsp::StateVariableTPTFilterType::lowpass);
 
-    currentParams = HarmoniaParams{};
+    currentParams = PatchParams{};
 }
 
 void HarmoniaVoice::prepare (double sampleRate, int samplesPerBlock, int numOutputChannels)
@@ -29,7 +29,7 @@ bool HarmoniaVoice::canPlaySound (juce::SynthesiserSound* sound)
     return dynamic_cast<HarmoniaSound*> (sound) != nullptr;
 }
 
-void HarmoniaVoice::setParameters (const HarmoniaParams& newParams)
+void HarmoniaVoice::setParameters (const PatchParams& newParams)
 {
     currentParams = newParams;
 
@@ -62,9 +62,9 @@ void HarmoniaVoice::setFilter (float cutoff, float resonance, int filterTypeInde
 
     switch (filterTypeIndex)
     {
-        case 1: currentParams.filterType = "Band Pass"; break;
-        case 2: currentParams.filterType = "High Pass"; break;
-        default: currentParams.filterType = "Low Pass"; break;
+        case 1: currentParams.filterType = FilterType::BANDPASS; break;
+        case 2: currentParams.filterType = FilterType::HIGHPASS; break;
+        default: currentParams.filterType = FilterType::LOWPASS; break;
     }
 
     setParameters(currentParams);
@@ -72,19 +72,26 @@ void HarmoniaVoice::setFilter (float cutoff, float resonance, int filterTypeInde
 
 void HarmoniaVoice::setWaveform (int waveformIndex)
 {
-    currentParams.waveformIndex = waveformIndex;
+    switch (waveformIndex)
+    {
+        case 1: currentParams.waveform = Waveform::SAW; break;
+        case 2: currentParams.waveform = Waveform::SQUARE; break;
+        case 3: currentParams.waveform = Waveform::TRIANGLE; break;
+        default: currentParams.waveform = Waveform::SINE; break;
+    }
+
     setParameters(currentParams);
 }
 
 void HarmoniaVoice::updateOscillator()
 {
-    switch (currentParams.waveformIndex)
+    switch (currentParams.waveform)
     {
-        case 0: // sine
+        case Waveform::SINE:
             osc.initialise([](float x) { return std::sin(x); }, 128);
             break;
 
-        case 1: // saw
+        case Waveform::SAW:
             osc.initialise([](float x)
             {
                 return juce::jmap(x,
@@ -94,23 +101,35 @@ void HarmoniaVoice::updateOscillator()
             }, 128);
             break;
 
-        case 2: // square
+        case Waveform::SQUARE:
             osc.initialise([](float x) { return x < 0.0f ? -1.0f : 1.0f; }, 128);
             break;
 
-        default:
+        case Waveform::TRIANGLE:
+            osc.initialise([](float x)
+            {
+                return std::asin(std::sin(x)) * (2.0f / juce::MathConstants<float>::pi);
+            }, 128);
             break;
     }
 }
 
 void HarmoniaVoice::updateFilterType()
 {
-    if (currentParams.filterType.containsIgnoreCase("Band"))
-        filter.setType(juce::dsp::StateVariableTPTFilterType::bandpass);
-    else if (currentParams.filterType.containsIgnoreCase("High"))
-        filter.setType(juce::dsp::StateVariableTPTFilterType::highpass);
-    else
-        filter.setType(juce::dsp::StateVariableTPTFilterType::lowpass);
+    switch (currentParams.filterType)
+    {
+        case FilterType::LOWPASS:
+            filter.setType(juce::dsp::StateVariableTPTFilterType::lowpass);
+            break;
+
+        case FilterType::HIGHPASS:
+            filter.setType(juce::dsp::StateVariableTPTFilterType::highpass);
+            break;
+
+        case FilterType::BANDPASS:
+            filter.setType(juce::dsp::StateVariableTPTFilterType::bandpass);
+            break;
+    }
 }
 
 void HarmoniaVoice::startNote (int midiNoteNumber, float velocity,
