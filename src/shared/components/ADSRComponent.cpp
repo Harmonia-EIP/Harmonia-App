@@ -3,10 +3,10 @@
 ADSRComponent::ADSRComponent (AppLookAndFeel& lnF)
     : lookAndFeel (lnF)
 {
-    setupSlider (attackSlider,  attackLabel,  "Attack",  0.01f, 5.0f, 0.1f);
-    setupSlider (decaySlider,   decayLabel,   "Decay",   0.01f, 5.0f, 0.1f);
-    setupSlider (sustainSlider, sustainLabel, "Sustain", 0.0f,  1.0f, 0.8f);
-    setupSlider (releaseSlider, releaseLabel, "Release", 0.01f, 5.0f, 0.5f);
+    setupSlider (attackSlider,  attackLabel,  Strings::Parameters::Attack,  AudioConfig::ADSR::Attack::Min, AudioConfig::ADSR::Attack::Max, AudioConfig::ADSR::Attack::Default);
+    setupSlider (decaySlider,   decayLabel,   Strings::Parameters::Decay,   AudioConfig::ADSR::Decay::Min, AudioConfig::ADSR::Decay::Max, AudioConfig::ADSR::Decay::Default);
+    setupSlider (sustainSlider, sustainLabel, Strings::Parameters::Sustain, AudioConfig::ADSR::Sustain::Min, AudioConfig::ADSR::Sustain::Max, AudioConfig::ADSR::Sustain::Default);
+    setupSlider (releaseSlider, releaseLabel, Strings::Parameters::Release, AudioConfig::ADSR::Release::Min, AudioConfig::ADSR::Release::Max, AudioConfig::ADSR::Release::Default);
 
     addAndMakeVisible (attackSlider);  addAndMakeVisible (attackLabel);
     addAndMakeVisible (decaySlider);   addAndMakeVisible (decayLabel);
@@ -92,7 +92,6 @@ void ADSRComponent::setupSlider (juce::Slider& slider,
 {
     slider.setSliderStyle (juce::Slider::RotaryHorizontalVerticalDrag);
 
-    // 🔹 TextBox plus large pour mieux voir les valeurs
     slider.setTextBoxStyle (juce::Slider::TextBoxBelow, false, 70, 24); 
     slider.setRange (min, max);
     slider.setValue (def, juce::dontSendNotification);
@@ -102,8 +101,6 @@ void ADSRComponent::setupSlider (juce::Slider& slider,
     label.setJustificationType (juce::Justification::centred);
 }
 
-
-//==============================================================================
 void ADSRComponent::paint (juce::Graphics& g)
 {
     g.fillAll (findColour (AppColourIds::panelBgId));
@@ -112,15 +109,14 @@ void ADSRComponent::paint (juce::Graphics& g)
     g.drawRect (getLocalBounds(), 1);
 }
 
-//==============================================================================
 void ADSRComponent::resized()
 {
     auto area = getLocalBounds();
     auto w = area.getWidth() / 4;
 
-    const int labelHeight     = 22; // label un peu plus grand
-    const int sliderHeight    = area.getHeight() - labelHeight - 8; // 8px de marge en bas
-    const int verticalSpacing = 1; // espace entre label et slider
+    const int labelHeight     = 22;
+    const int sliderHeight    = area.getHeight() - labelHeight - 8;
+    const int verticalSpacing = 1;
 
     attackLabel.setBounds  (0, 0, w, labelHeight);
     attackSlider.setBounds (0, labelHeight + verticalSpacing, w, sliderHeight - verticalSpacing);

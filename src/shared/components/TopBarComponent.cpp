@@ -1,24 +1,24 @@
 #include "TopBarComponent.h"
 
 TopBarComponent::TopBarComponent()
-    : waveformSelector ("Waveform")
+    : waveformSelector (Strings::Labels::Waveform)
 {
-    waveformLabel.setText ("Waveform", juce::dontSendNotification);
+    waveformLabel.setText (Strings::Labels::Waveform, juce::dontSendNotification);
     waveformLabel.setJustificationType (juce::Justification::centredLeft);
     addAndMakeVisible (waveformLabel);
     addAndMakeVisible (waveformSelector);
 
-    filterLabel.setText ("Filter", juce::dontSendNotification);
+    filterLabel.setText (Strings::Labels::Filter, juce::dontSendNotification);
     filterLabel.setJustificationType (juce::Justification::centredLeft);
     addAndMakeVisible (filterLabel);
 
-    filterTypeSelector.addItem ("Low Pass",  1);
-    filterTypeSelector.addItem ("High Pass", 2);
-    filterTypeSelector.addItem ("Band Pass", 3);
+    filterTypeSelector.addItem (Strings::Filter::LowPass,  1);
+    filterTypeSelector.addItem (Strings::Filter::HighPass, 2);
+    filterTypeSelector.addItem (Strings::Filter::BandPass, 3);
     filterTypeSelector.setSelectedId (1, juce::dontSendNotification);
     addAndMakeVisible (filterTypeSelector);
 
-    promptLabel.setText ("Prompt", juce::dontSendNotification);
+    promptLabel.setText (Strings::Labels::Prompt, juce::dontSendNotification);
     promptLabel.setJustificationType (juce::Justification::centredLeft);
     addAndMakeVisible (promptLabel);
 
@@ -33,7 +33,6 @@ TopBarComponent::TopBarComponent()
         if (onParamsChanged) onParamsChanged();
     };
 
-    // ===== IMPORTANT : notifier MainComponent sur changement user =====
     waveformSelector.onChange = [this]()
     {
         if (onParamsChanged) onParamsChanged();
@@ -44,8 +43,6 @@ TopBarComponent::TopBarComponent()
         if (onParamsChanged) onParamsChanged();
     };
 
-    // Optionnel : si vous voulez update en live pendant qu’on tape
-    // (sinon vous pouvez le retirer)
     promptEditor.onTextChange = [this]()
     {
         if (onParamsChanged) onParamsChanged();
@@ -93,26 +90,24 @@ void TopBarComponent::setFilterType (juce::String filterName)
 {
     auto name = filterName.trim().toLowerCase();
 
-    if (name == "low pass")        filterTypeSelector.setSelectedId (1, juce::dontSendNotification);
-    else if (name == "high pass")  filterTypeSelector.setSelectedId (2, juce::dontSendNotification);
-    else if (name == "band pass")  filterTypeSelector.setSelectedId (3, juce::dontSendNotification);
-
+    if (name == Strings::Filter::LowPass.toLowerCase())        filterTypeSelector.setSelectedId (1, juce::dontSendNotification);
+    else if (name == Strings::Filter::HighPass.toLowerCase())  filterTypeSelector.setSelectedId (2, juce::dontSendNotification);
+    else if (name == Strings::Filter::BandPass.toLowerCase())  filterTypeSelector.setSelectedId (3, juce::dontSendNotification);
 }
 
 void TopBarComponent::setPrompt (juce::String prompt)
 {
     promptEditor.setText (prompt, juce::dontSendNotification);
-    // idem : if (onParamsChanged) onParamsChanged(); (optionnel)
 }
 
 void TopBarComponent::setWaveform (juce::String waveformName)
 {
     auto name = waveformName.trim().toLowerCase();
 
-    if (name == "sine")           waveformSelector.setSelectedId (1, juce::dontSendNotification);
-    else if (name == "square")    waveformSelector.setSelectedId (2, juce::dontSendNotification);
-    else if (name == "saw")       waveformSelector.setSelectedId (3, juce::dontSendNotification);
-    else if (name == "triangle")  waveformSelector.setSelectedId (4, juce::dontSendNotification);
+    if (name == Strings::Waveform::Sine.toLowerCase())           waveformSelector.setSelectedId (1, juce::dontSendNotification);
+    else if (name == Strings::Waveform::Square.toLowerCase())    waveformSelector.setSelectedId (2, juce::dontSendNotification);
+    else if (name == Strings::Waveform::Saw.toLowerCase())       waveformSelector.setSelectedId (3, juce::dontSendNotification);
+    else if (name == Strings::Waveform::Triangle.toLowerCase())  waveformSelector.setSelectedId (4, juce::dontSendNotification);
 }
 
 void TopBarComponent::paint (juce::Graphics& g)
@@ -124,23 +119,21 @@ void TopBarComponent::paint (juce::Graphics& g)
 
 void TopBarComponent::resized()
 {
-    auto area = getLocalBounds().reduced (8, 6);  // un peu plus de marge globale
+    auto area = getLocalBounds().reduced (8, 6);
 
-    const int labelHeight     = 22;   // plus grand
-    const int compHeight      = 26;   // plus grand
-    const int marginTop       = 4;   // plus d’espace en haut
-    const int spacing         = 28;   // espace horizontal augmenté
-    const int verticalSpacing = 10;   // plus d’espace entre label et composant
+    const int labelHeight     = 22;
+    const int compHeight      = 26;
+    const int marginTop       = 4;
+    const int spacing         = 28;
+    const int verticalSpacing = 10;
 
     const int halfWidth = area.getWidth() / 2;
 
     auto leftArea  = area.removeFromLeft (halfWidth);
     auto rightArea = area;
 
-    // ===== LEFT SIDE =====
     const int controlWidth = leftArea.getWidth() / 2 - spacing;
 
-    // Waveform
     waveformLabel.setBounds (leftArea.getX(),
                              marginTop,
                              controlWidth,
@@ -151,7 +144,6 @@ void TopBarComponent::resized()
                                 controlWidth,
                                 compHeight);
 
-    // Filter
     filterLabel.setBounds (leftArea.getX() + controlWidth + spacing,
                            marginTop,
                            controlWidth,
@@ -162,8 +154,7 @@ void TopBarComponent::resized()
                                   controlWidth,
                                   compHeight);
 
-    // ===== RIGHT SIDE =====
-    const int buttonWidth = 90;  // bouton un peu plus gros
+    const int buttonWidth = 90;
     const int promptWidth = rightArea.getWidth() - buttonWidth - spacing;
 
     promptLabel.setBounds (rightArea.getX(),

@@ -8,10 +8,10 @@ public:
     WaveformSelector(const juce::String& name)
     {
         setName(name);
-        addItem("Sine", 1);
-        addItem("Square", 2);
-        addItem("Saw", 3);
-        addItem("Triangle", 4);
+        addItem(Strings::Waveform::Sine, 1);
+        addItem(Strings::Waveform::Square, 2);
+        addItem(Strings::Waveform::Saw, 3);
+        addItem(Strings::Waveform::Triangle, 4);
         setSelectedId(1);
     }
 

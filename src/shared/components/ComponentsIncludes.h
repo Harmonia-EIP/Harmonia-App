@@ -10,6 +10,11 @@
 
 #include "../tools/ThemeAndLayoutConverter.h"
 
-#include "WaveformSelector.h"
-
 #include "../parameters/HarmoniaParams.h"
+
+#include "../../config/String.h"
+#include "../../config/AppConfig.h"
+#include "../../config/UIStyle.h"
+#include "../../config/AudioConfig.h"
+
+#include "WaveformSelector.h"

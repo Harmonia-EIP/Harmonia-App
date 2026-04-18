@@ -68,7 +68,7 @@ void HarmoniaAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer,
 
         for (int sample = 0; sample < buffer.getNumSamples(); ++sample)
         {
-            channelData[sample] *= 0.5f; // 🔊 baisse le volume (test)
+            channelData[sample] *= 0.5f;
         }
     }
 }

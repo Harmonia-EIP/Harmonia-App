@@ -11,7 +11,6 @@ void MainComponent::resized()
 
     switch (layoutPreset)
     {
-        // Layout 1 (A) : proche de l’actuel
         case LayoutPreset::Layout1:
         {
             oscilloscope.setBounds (area.removeFromTop (100));
@@ -22,28 +21,23 @@ void MainComponent::resized()
             break;
         }
 
-        // Layout 2 (B) : oscillo plus grand
         case LayoutPreset::Layout2:
         {
             oscilloscope.setBounds(area.removeFromTop(170));
 
-            // ===== KEYBOARD =====
-            synthComponent.setBounds(area.removeFromTop(100)); // tu peux ajuster la hauteur
+            synthComponent.setBounds(area.removeFromTop(100));
 
-            // ===== FREQ + FILTER côte à côte =====
-            auto freqFilterArea = area.removeFromTop(120); // hauteur de la ligne freq+filter
+            auto freqFilterArea = area.removeFromTop(120);
             auto halfWidth = freqFilterArea.getWidth() / 2;
 
             freqVolComponent.setBounds(freqFilterArea.removeFromLeft(halfWidth));
-            filterComponent.setBounds(freqFilterArea); // le reste à droite
+            filterComponent.setBounds(freqFilterArea);
 
-            // ===== ADSR =====
             adsrComponent.setBounds(area.removeFromTop(120));
 
             break;
         }
 
-        // Layout 3 (C) : oscillo gauche, contrôles droite
         case LayoutPreset::Layout3:
         {
             auto upper = area.removeFromTop (260);
@@ -60,12 +54,10 @@ void MainComponent::resized()
             break;
         }
 
-        // Layout 4 (D) : clavier plus grand
         case LayoutPreset::Layout4:
         {
             auto upper = area.removeFromTop(260);
 
-            // On met l'oscilloscope à droite
             auto left = upper.removeFromLeft((int)(upper.getWidth() * 0.35f));
             freqVolComponent.setBounds(left.removeFromTop(130));
             filterComponent.setBounds(left);

@@ -60,18 +60,17 @@ struct ThemePalette
         return t;
     }
 
-    // Thème rouge complet : fonds + panels + outlines + accent rouges/rosés
     static ThemePalette red()
     {
         ThemePalette t;
-        t.background    = juce::Colour (28, 10, 12);   // rouge très sombre
-        t.panelBg       = juce::Colour (44, 14, 18);   // panel rouge sombre
-        t.panelOutline  = juce::Colour (90, 30, 38);   // outline rouge
+        t.background    = juce::Colour (28, 10, 12);
+        t.panelBg       = juce::Colour (44, 14, 18);
+        t.panelOutline  = juce::Colour (90, 30, 38);
 
         t.textPrimary   = juce::Colour (245, 235, 235);
         t.textSecondary = juce::Colour (195, 165, 170);
 
-        t.accent        = juce::Colour (235, 80, 95);  // rouge/rose vif
+        t.accent        = juce::Colour (235, 80, 95);
         t.accentHover   = juce::Colour (245, 110, 125);
         t.accentDown    = juce::Colour (200, 55, 70);
 
@@ -82,18 +81,17 @@ struct ThemePalette
         return t;
     }
 
-    // Thème bleu complet : fonds + panels + outlines + accent bleus
     static ThemePalette blue()
     {
         ThemePalette t;
-        t.background    = juce::Colour (8, 14, 28);    // bleu très sombre
-        t.panelBg       = juce::Colour (12, 22, 44);   // panel bleu sombre
-        t.panelOutline  = juce::Colour (35, 65, 105);  // outline bleu
+        t.background    = juce::Colour (8, 14, 28);
+        t.panelBg       = juce::Colour (12, 22, 44);
+        t.panelOutline  = juce::Colour (35, 65, 105);
 
         t.textPrimary   = juce::Colour (235, 242, 255);
         t.textSecondary = juce::Colour (160, 180, 205);
 
-        t.accent        = juce::Colour (80, 155, 255); // bleu vif
+        t.accent        = juce::Colour (80, 155, 255);
         t.accentHover   = juce::Colour (110, 180, 255);
         t.accentDown    = juce::Colour (55, 125, 230);
 

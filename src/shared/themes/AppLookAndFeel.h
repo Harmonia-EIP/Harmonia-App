@@ -75,7 +75,6 @@ public:
 private:
     void applyPalette()
     {
-        // ===== Custom App Colour IDs =====
         setColour (AppColourIds::backgroundId,    palette.background);
         setColour (AppColourIds::panelBgId,       palette.panelBg);
         setColour (AppColourIds::panelOutlineId,  palette.panelOutline);
@@ -91,11 +90,9 @@ private:
         setColour (AppColourIds::knobOutlineId,   palette.knobOutline);
         setColour (AppColourIds::knobPointerId,   palette.knobPointer);
 
-        // ===== Oscilloscope colours =====
         setColour (AppColourIds::oscilloscopeWaveId, palette.accent);
         setColour (AppColourIds::oscilloscopeGridId, palette.textSecondary);
 
-        // ===== JUCE MAPPINGS =====
         setColour (juce::ResizableWindow::backgroundColourId, palette.background);
 
         setColour (juce::Label::textColourId, palette.textPrimary);
@@ -122,7 +119,6 @@ private:
         setColour (juce::Slider::rotarySliderFillColourId, palette.accent);
         setColour (juce::Slider::rotarySliderOutlineColourId, palette.panelOutline);
 
-        // ===== IMPORTANT: Slider TextBox colours (fix light theme values) =====
         setColour (juce::Slider::textBoxTextColourId,        palette.textPrimary);
         setColour (juce::Slider::textBoxBackgroundColourId,  palette.panelBg);
         setColour (juce::Slider::textBoxOutlineColourId,     palette.panelOutline);

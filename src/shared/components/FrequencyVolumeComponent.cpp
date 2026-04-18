@@ -3,17 +3,16 @@
 FrequencyVolumeComponent::FrequencyVolumeComponent (AppLookAndFeel& lnF)
     : lookAndFeel (lnF)
 {
-    setupSlider (frequencySlider, frequencyLabel, "Frequency", 20.0, 20000.0, 440.0);
-    frequencySlider.setSkewFactorFromMidPoint (1000.0);
+    setupSlider (frequencySlider, frequencyLabel, Strings::Parameters::Frequency, AudioConfig::Frequency::Min, AudioConfig::Frequency::Max, AudioConfig::Frequency::Default);
+    frequencySlider.setSkewFactorFromMidPoint (AudioConfig::Frequency::Mid);
 
-    setupSlider (volumeSlider, volumeLabel, "Volume", 0.0, 1.0, 0.8);
+    setupSlider (volumeSlider, volumeLabel, Strings::Parameters::Volume, AudioConfig::Volume::Min, AudioConfig::Volume::Max, AudioConfig::Volume::Default);
 
     addAndMakeVisible (frequencySlider);
     addAndMakeVisible (frequencyLabel);
     addAndMakeVisible (volumeSlider);
     addAndMakeVisible (volumeLabel);
 
-    // IMPORTANT : quand l’utilisateur touche un slider, on notifie
     frequencySlider.onValueChange = [this]()
     {
         if (onParamsChanged) onParamsChanged();
@@ -69,7 +68,6 @@ void FrequencyVolumeComponent::setupSlider (juce::Slider& slider,
 {
     slider.setSliderStyle (juce::Slider::RotaryHorizontalVerticalDrag);
 
-    // 🔹 Augmentation largeur du TextBox pour mieux voir les chiffres
     slider.setTextBoxStyle (juce::Slider::TextBoxBelow, false, 80, 24); // plus large et un peu plus haut
     slider.setRange (min, max);
     slider.setValue (def);
@@ -105,14 +103,12 @@ void FrequencyVolumeComponent::resized()
     auto area = getLocalBounds();
     auto half = area.getWidth() / 2;
 
-    const int labelHeight = 22;       // labels un peu plus gros
-    const int sliderHeight = area.getHeight() - labelHeight - 10; // 10px de marge en bas
+    const int labelHeight = 22;
+    const int sliderHeight = area.getHeight() - labelHeight - 10;
 
-    // Frequency
     frequencyLabel.setBounds (0, 0, half, labelHeight);
     frequencySlider.setBounds (0, labelHeight, half, sliderHeight);
 
-    // Volume
     volumeLabel.setBounds (half, 0, half, labelHeight);
     volumeSlider.setBounds (half, labelHeight, half, sliderHeight);
 }

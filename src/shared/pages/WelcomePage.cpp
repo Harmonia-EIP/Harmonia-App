@@ -2,23 +2,19 @@
 
 WelcomePage::WelcomePage()
 {
-    // LookAndFeel local toujours sombre
     authLookAndFeel.setThemePreset(AppLookAndFeel::ThemePreset::Dark);
     setLookAndFeel(&authLookAndFeel);
 
-    // ===== TITLE =====
     titleLabel.setText("Harmonia", juce::dontSendNotification);
-    titleLabel.setFont(juce::Font(36.0f, juce::Font::bold));
+    titleLabel.setFont(UIStyle::Fonts::Title());
     titleLabel.setJustificationType(juce::Justification::centred);
     addAndMakeVisible(titleLabel);
 
-    // ===== BUTTONS =====
-    signinButton.setButtonText("Sign in");
-    signupButton.setButtonText("Sign up");
+    signinButton.setButtonText(Strings::Buttons::SignIn);
+    signupButton.setButtonText(Strings::Buttons::SignUp);
     addAndMakeVisible(signinButton);
     addAndMakeVisible(signupButton);
 
-    // ===== CALLBACKS =====
     signinButton.onClick = [this]()
     {
         if (onChoice) onChoice(false);
@@ -29,8 +25,7 @@ WelcomePage::WelcomePage()
         if (onChoice) onChoice(true);
     };
 
-    // ===== ANIMATION =====
-    startTimerHz(60); // 60 FPS
+    startTimerHz(60);
 }
 
 WelcomePage::~WelcomePage()
@@ -49,7 +44,6 @@ void WelcomePage::paint(juce::Graphics& g)
     auto bg = findColour(AppColourIds::backgroundId);
     auto accent = findColour(AppColourIds::accentId);
 
-    // ===== GRADIENT ANIMÉ =====
     auto dynamicAccent = accent.withRotatedHue(animationPhase * 0.05f);
 
     juce::ColourGradient gradient(
@@ -64,7 +58,6 @@ void WelcomePage::paint(juce::Graphics& g)
     g.setGradientFill(gradient);
     g.fillAll();
 
-    // ===== WAVE ANIMÉE =====
     juce::Path wave;
 
     float centerY = getHeight() * 0.6f;
@@ -79,15 +72,12 @@ void WelcomePage::paint(juce::Graphics& g)
         wave.lineTo((float)x, y);
     }
 
-    // Glow léger
     g.setColour(dynamicAccent.withAlpha(0.15f));
     g.strokePath(wave, juce::PathStrokeType(6.0f));
 
-    // Ligne principale
     g.setColour(dynamicAccent.withAlpha(0.6f));
     g.strokePath(wave, juce::PathStrokeType(2.0f));
 
-    // ===== TEXT COLOR =====
     titleLabel.setColour(
         juce::Label::textColourId,
         findColour(AppColourIds::textPrimaryId)

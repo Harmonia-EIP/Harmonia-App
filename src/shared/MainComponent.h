@@ -31,6 +31,9 @@
 #include "tools/ThemeAndLayoutConverter.h"
 #include "tools/PatchSerializer.h"
 
+#include "../config/String.h"
+#include "../config/AppConfig.h"
+
 /**
  * @class MainComponent
  * @brief Main UI and audio processing component of the application.

@@ -21,7 +21,6 @@ namespace AppColourIds
         knobOutlineId      = 0x2100009,
         knobPointerId      = 0x210000A,
 
-        // ---- Oscilloscope ----
         oscilloscopeWaveId = 0x210000B,
         oscilloscopeGridId = 0x210000C
     };

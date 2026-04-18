@@ -10,8 +10,8 @@ void MainComponent::initGenerateWithAI()
         {
             juce::AlertWindow::showMessageBoxAsync(
                 juce::AlertWindow::WarningIcon,
-                "Prompt manquant",
-                "Veuillez saisir un prompt avant de générer.");
+                Strings::Errors::MissingPrompt,
+                Strings::Errors::MissingPromptAdvice);
             return;
         }
 
@@ -25,7 +25,7 @@ void MainComponent::initGenerateWithAI()
                 {
                     juce::AlertWindow::showMessageBoxAsync(
                         juce::AlertWindow::WarningIcon,
-                        "Erreur IA",
+                        Strings::Errors::AiError,
                         msg);
                 });
                 return;

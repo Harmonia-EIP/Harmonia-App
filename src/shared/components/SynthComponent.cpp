@@ -5,8 +5,8 @@ SynthComponent::SynthComponent()
 {
     addAndMakeVisible(keyboardComponent);
 
-    keyboardComponent.setAvailableRange(0, 127);
-    keyboardComponent.setScrollButtonsVisible(true);
+    keyboardComponent.setAvailableRange(AppConfig::Synth::minimumAvailableRange, AppConfig::Synth::maximumAvailableRange);
+    keyboardComponent.setScrollButtonsVisible(false);
 }
 
 void SynthComponent::paint(juce::Graphics& g)

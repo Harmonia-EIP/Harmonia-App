@@ -23,13 +23,12 @@ public:
     void setPrompt (juce::String);
     void setWaveform (juce::String);
 
-    // IMPORTANT : appelé quand l’utilisateur change waveform/filter/prompt
     std::function<void()> onParamsChanged;
 
     WaveformSelector waveformSelector;
     juce::ComboBox filterTypeSelector;
     juce::TextEditor promptEditor;
-    juce::TextButton clearPromptButton { "Clear" };
+    juce::TextButton clearPromptButton { Strings::Buttons::Clear };
 
 private:
     juce::Label waveformLabel;

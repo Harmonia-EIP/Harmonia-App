@@ -28,9 +28,9 @@ private:
     juce::Label titleLabel;
     juce::Label pseudoLabel; 
 
-    juce::TextButton themeButton  { "Theme" };
-    juce::TextButton layoutButton { "Layout" };
-    juce::TextButton logoutButton { "Logout" };
+    juce::TextButton themeButton  { Strings::Buttons::Theme };
+    juce::TextButton layoutButton { Strings::Buttons::Layout };
+    juce::TextButton logoutButton { Strings::Buttons::Logout };
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TitleComponent)
 };

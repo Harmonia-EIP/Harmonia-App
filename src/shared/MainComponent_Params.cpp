@@ -22,7 +22,6 @@ void MainComponent::initExportParameters()
         p.cutoff    = cutoffReso.first;
         p.resonance = cutoffReso.second;
 
-        // ⚠️ si topBar retourne String → convertir
         p.filterType = PatchSerializer::filterFromString(topBar.getFilterType());
         p.waveform   = PatchSerializer::waveformFromString(topBar.getWaveform());
         p.prompt     = topBar.getPrompt();
@@ -78,7 +77,6 @@ void MainComponent::initLoadParameters()
 
                 const auto& p = *params;
 
-                // ===== APPLY TO UI =====
                 freqVolComponent.setFreqVol(p.frequency, p.volume);
                 adsrComponent.setADSR(p.attack, p.decay, p.sustain, p.release);
                 filterComponent.setCutoffResonance(p.cutoff, p.resonance);

@@ -2,6 +2,7 @@
 
 #include "../shared/JuceHeader.h"
 #include "PluginAppWrapper.h"
+#include "../config/AppConfig.h"
 
 class HarmoniaAudioProcessorEditor  : public juce::AudioProcessorEditor
 {

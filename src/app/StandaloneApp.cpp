@@ -1,9 +1,10 @@
 #include "StandaloneApp.h"
 #include "StandaloneAppWrapper.h"
 #include "StandaloneWindow.h"
+#include "../config/AppConfig.h"
 
-const juce::String StandaloneApp::getApplicationName()    { return "HarmoniaApp"; }
-const juce::String StandaloneApp::getApplicationVersion() { return "0.3.1"; }
+const juce::String StandaloneApp::getApplicationName()    { return AppConfig::AppName; }
+const juce::String StandaloneApp::getApplicationVersion() { return AppConfig::Version; }
 
 void StandaloneApp::initialise(const juce::String&)
 {
@@ -13,7 +14,7 @@ void StandaloneApp::initialise(const juce::String&)
 
     window->setContentOwned(new StandaloneAppWrapper(), true);
 
-    window->centreWithSize(900, 700);
+    window->centreWithSize(AppConfig::DefaultWidth, AppConfig::DefaultHeight);
     window->setResizable(true, true);
     window->setVisible(true);
 }

@@ -3,32 +3,31 @@
 SignupPage::SignupPage(BackendManager& be, std::function<void(const UserSession&)> onSignupSuccess)
     : backend(be), onSuccess(onSignupSuccess)
 {
-    // LookAndFeel local toujours sombre (pas dépendant de l'utilisateur)
     authLookAndFeel.setThemePreset(AppLookAndFeel::ThemePreset::Dark);
     setLookAndFeel(&authLookAndFeel);
 
-    titleLabel.setText("Create your Harmonia account", juce::dontSendNotification);
-    titleLabel.setFont(juce::Font(24.0f, juce::Font::bold));
+    titleLabel.setText(Strings::Titles::CreateAccount, juce::dontSendNotification);
+    titleLabel.setFont(UIStyle::Fonts::SubTitle());
     titleLabel.setJustificationType(juce::Justification::centred);
     addAndMakeVisible(titleLabel);
 
     auto placeholder = findColour(AppColourIds::textSecondaryId);
 
-    usernameField.setTextToShowWhenEmpty("Username", placeholder);
-    firstnameField.setTextToShowWhenEmpty("First name", placeholder);
-    lastnameField.setTextToShowWhenEmpty("Last name", placeholder);
-    emailField.setTextToShowWhenEmpty("Email", placeholder);
-    passwordField.setTextToShowWhenEmpty("Password", placeholder);
-    passwordField.setPasswordCharacter('*');
+    usernameField.setTextToShowWhenEmpty(Strings::Placeholders::Username, placeholder);
+    firstnameField.setTextToShowWhenEmpty(Strings::Placeholders::FirstName, placeholder);
+    lastnameField.setTextToShowWhenEmpty(Strings::Placeholders::LastName, placeholder);
+    emailField.setTextToShowWhenEmpty(Strings::Placeholders::Email, placeholder);
+    passwordField.setTextToShowWhenEmpty(Strings::Placeholders::Password, placeholder);
+    passwordField.setPasswordCharacter(Strings::Placeholders::PasswordChar);
 
     for (auto* f : { &usernameField, &firstnameField, &lastnameField, &emailField, &passwordField })
         addAndMakeVisible(*f);
 
-    signupButton.setButtonText("Create account");
+    signupButton.setButtonText(Strings::Buttons::CreateAccount);
     signupButton.onClick = [this]() { handleSignup(); };
     addAndMakeVisible(signupButton);
 
-    backButton.setButtonText("Go Back");
+    backButton.setButtonText(Strings::Buttons::Back);
     backButton.onClick = [this]()
     {
         if (onBack) onBack();
@@ -43,13 +42,12 @@ void SignupPage::paint(juce::Graphics& g)
     titleLabel.setColour(juce::Label::textColourId,
                          findColour(AppColourIds::textPrimaryId));
 
-    // Placeholder recalé (utile si un jour vous changez la palette auth)
     auto placeholder = findColour(AppColourIds::textSecondaryId);
-    usernameField.setTextToShowWhenEmpty("Username", placeholder);
-    firstnameField.setTextToShowWhenEmpty("First name", placeholder);
-    lastnameField.setTextToShowWhenEmpty("Last name", placeholder);
-    emailField.setTextToShowWhenEmpty("Email", placeholder);
-    passwordField.setTextToShowWhenEmpty("Password", placeholder);
+    usernameField.setTextToShowWhenEmpty(Strings::Placeholders::Username, placeholder);
+    firstnameField.setTextToShowWhenEmpty(Strings::Placeholders::FirstName, placeholder);
+    lastnameField.setTextToShowWhenEmpty(Strings::Placeholders::LastName, placeholder);
+    emailField.setTextToShowWhenEmpty(Strings::Placeholders::Email, placeholder);
+    passwordField.setTextToShowWhenEmpty(Strings::Placeholders::Password, placeholder);
 }
 
 void SignupPage::resized()
@@ -93,8 +91,8 @@ void SignupPage::handleSignup()
     {
         juce::AlertWindow::showMessageBoxAsync(
             juce::AlertWindow::WarningIcon,
-            "Missing fields",
-            "Please fill in all fields."
+            Strings::Errors::MissingFields,
+            Strings::Errors::MissingFieldsAdvice
         );
         return;
     }
@@ -105,7 +103,7 @@ void SignupPage::handleSignup()
     {
         juce::AlertWindow::showMessageBoxAsync(
             juce::AlertWindow::WarningIcon,
-            "Erreur",
+            Strings::Errors::ErrorTitle,
             result.errorMessage
         );
         return;
@@ -113,8 +111,8 @@ void SignupPage::handleSignup()
 
     juce::AlertWindow::showMessageBoxAsync(
         juce::AlertWindow::InfoIcon,
-        "Welcome",
-        "Account created successfully!"
+        Strings::Success::Welcome,
+        Strings::Success::AccountCreated
     );
 
     onSuccess(result.session);

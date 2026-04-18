@@ -20,7 +20,6 @@ public:
     double getFreq() const;
     double getVolume() const;
 
-    // IMPORTANT : appelé quand l’utilisateur bouge un slider
     std::function<void()> onParamsChanged;
 
 private:

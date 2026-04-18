@@ -3,34 +3,29 @@
 TitleComponent::TitleComponent (const juce::String& textToDisplay, const UserSession& userSession)
     : currentSession(userSession), title (textToDisplay)
 {
-    // ===== TITLE =====
     titleLabel.setText (title, juce::dontSendNotification);
     titleLabel.setJustificationType (juce::Justification::centred);
-    titleLabel.setFont (juce::Font (28.0f, juce::Font::bold));
+    titleLabel.setFont (UIStyle::Fonts::SubTitle());
     addAndMakeVisible (titleLabel);
 
-    // ===== USER / PSEUDO =====
             
-    juce::String pseudo = currentSession.pseudo.isNotEmpty() ? currentSession.pseudo : "User";
+    juce::String pseudo = currentSession.pseudo.isNotEmpty() ? currentSession.pseudo : Strings::Labels::User;
 
     pseudoLabel.setText (pseudo, juce::dontSendNotification);
-    pseudoLabel.setFont (juce::Font (22.0f, juce::Font::bold));
+    pseudoLabel.setFont (UIStyle::Fonts::Pseudo());
     pseudoLabel.setJustificationType (juce::Justification::centredLeft);
     addAndMakeVisible (pseudoLabel);
 
-    // ===== THEME BUTTON =====
     themeButton.addListener (this);
     themeButton.setSize (90, 32);
     addAndMakeVisible (themeButton);
 
-    // ===== LAYOUT BUTTON =====
     layoutButton.addListener (this);
     layoutButton.setSize (90, 32);
     addAndMakeVisible (layoutButton);
 
-    // ===== LOGOUT BUTTON =====
     logoutButton.addListener (this);
-    logoutButton.setSize (80, 30); // plus petit
+    logoutButton.setSize (80, 30);
     addAndMakeVisible (logoutButton);
 }
 
@@ -57,14 +52,11 @@ void TitleComponent::resized()
 {
     auto area = getLocalBounds().reduced (6);
 
-    // ===== TITLE (centré sur toute la largeur) =====
     titleLabel.setBounds (area);
 
-    // ===== LEFT : PSEUDO =====
     auto leftArea = area.removeFromLeft (260);
     pseudoLabel.setBounds (leftArea.reduced (10, 0));
 
-    // ===== RIGHT : BUTTONS =====
     auto rightArea = getLocalBounds().reduced (6);
     rightArea = rightArea.removeFromRight (330);
 
@@ -80,7 +72,6 @@ void TitleComponent::resized()
 
 void TitleComponent::buttonClicked(juce::Button* button)
 {
-    // ===== LOGOUT =====
     if (button == &logoutButton)
     {
         if (onLogout)
@@ -88,7 +79,6 @@ void TitleComponent::buttonClicked(juce::Button* button)
         return;
     }
 
-    // ===== THEME MENU =====
     if (button == &themeButton)
     {
         juce::PopupMenu m;
@@ -96,10 +86,10 @@ void TitleComponent::buttonClicked(juce::Button* button)
         auto currentPreset =
             ThemeAndLayoutConverter::idToThemePreset(currentSession.themeId);
 
-        m.addItem(1, "Dark",  true, currentPreset == ThemePreset::Dark);
-        m.addItem(2, "Light", true, currentPreset == ThemePreset::Light);
-        m.addItem(3, "Red",   true, currentPreset == ThemePreset::Red);
-        m.addItem(4, "Blue",  true, currentPreset == ThemePreset::Blue);
+        m.addItem(1, Strings::Themes::Dark,  true, currentPreset == ThemePreset::Dark);
+        m.addItem(2, Strings::Themes::Light, true, currentPreset == ThemePreset::Light);
+        m.addItem(3, Strings::Themes::Red,   true, currentPreset == ThemePreset::Red);
+        m.addItem(4, Strings::Themes::Blue,  true, currentPreset == ThemePreset::Blue);
 
         m.showMenuAsync(
             juce::PopupMenu::Options()
@@ -111,10 +101,8 @@ void TitleComponent::buttonClicked(juce::Button* button)
                 if (result <= 0 || !onThemeSelected)
                     return;
 
-                // 🔥 update session FIRST
                 currentSession.themeId = result;
 
-                // convert id → preset
                 auto preset =
                     ThemeAndLayoutConverter::idToThemePreset(result);
 
@@ -124,7 +112,6 @@ void TitleComponent::buttonClicked(juce::Button* button)
         return;
     }
 
-    // ===== LAYOUT MENU =====
     if (button == &layoutButton)
     {
         juce::PopupMenu m;
@@ -132,10 +119,10 @@ void TitleComponent::buttonClicked(juce::Button* button)
         auto currentPreset =
             ThemeAndLayoutConverter::idToLayoutPreset(currentSession.layoutId);
 
-        m.addItem(1, "Layout 1", true, currentPreset == LayoutPreset::Layout1);
-        m.addItem(2, "Layout 2", true, currentPreset == LayoutPreset::Layout2);
-        m.addItem(3, "Layout 3", true, currentPreset == LayoutPreset::Layout3);
-        m.addItem(4, "Layout 4", true, currentPreset == LayoutPreset::Layout4);
+        m.addItem(1, Strings::Layouts::Layout1, true, currentPreset == LayoutPreset::Layout1);
+        m.addItem(2, Strings::Layouts::Layout2, true, currentPreset == LayoutPreset::Layout2);
+        m.addItem(3, Strings::Layouts::Layout3, true, currentPreset == LayoutPreset::Layout3);
+        m.addItem(4, Strings::Layouts::Layout4, true, currentPreset == LayoutPreset::Layout4);
 
         m.showMenuAsync(
             juce::PopupMenu::Options()
@@ -147,7 +134,6 @@ void TitleComponent::buttonClicked(juce::Button* button)
                 if (result <= 0 || !onLayoutSelected)
                     return;
 
-                // 🔥 update session FIRST
                 currentSession.layoutId = result;
 
                 auto preset =

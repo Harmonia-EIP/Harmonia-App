@@ -2,7 +2,7 @@
 
 HarmoniaVoice::HarmoniaVoice()
 {
-    osc.initialise([](float x) { return std::sin(x); }, 128);
+    osc.initialise([](float x) { return std::sin(x); }, AppConfig::Synth::availableRangeSize);
 
     filter.setType(juce::dsp::StateVariableTPTFilterType::lowpass);
 
@@ -88,7 +88,7 @@ void HarmoniaVoice::updateOscillator()
     switch (currentParams.waveform)
     {
         case Waveform::SINE:
-            osc.initialise([](float x) { return std::sin(x); }, 128);
+            osc.initialise([](float x) { return std::sin(x); }, AppConfig::Synth::availableRangeSize);
             break;
 
         case Waveform::SAW:
@@ -98,18 +98,18 @@ void HarmoniaVoice::updateOscillator()
                                   -juce::MathConstants<float>::pi,
                                    juce::MathConstants<float>::pi,
                                   -1.0f, 1.0f);
-            }, 128);
+            }, AppConfig::Synth::availableRangeSize);
             break;
 
         case Waveform::SQUARE:
-            osc.initialise([](float x) { return x < 0.0f ? -1.0f : 1.0f; }, 128);
+            osc.initialise([](float x) { return x < 0.0f ? -1.0f : 1.0f; }, AppConfig::Synth::availableRangeSize);
             break;
 
         case Waveform::TRIANGLE:
             osc.initialise([](float x)
             {
                 return std::asin(std::sin(x)) * (2.0f / juce::MathConstants<float>::pi);
-            }, 128);
+            }, AppConfig::Synth::availableRangeSize);
             break;
     }
 }
@@ -173,7 +173,6 @@ void HarmoniaVoice::renderNextBlock (juce::AudioBuffer<float>& buffer,
 
         const float env = adsr.getNextSample();
 
-        // IMPORTANT: volume appliqué ici = changement immédiat assuré
         const float out = s * env * currentParams.volume;
 
         for (int ch = 0; ch < numChannels; ++ch)

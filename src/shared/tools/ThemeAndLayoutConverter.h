@@ -6,7 +6,6 @@
 class ThemeAndLayoutConverter
 {
 private:
-    /* data */
 public:
 
     static AppLookAndFeel::ThemePreset idToThemePreset(int themeId)

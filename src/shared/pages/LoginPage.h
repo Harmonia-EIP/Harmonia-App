@@ -95,9 +95,9 @@ private:
     juce::Label titleLabel;
 
     /**
-     * @brief Input field for user email.
+     * @brief Input field for user identifier (email or username).
      */
-    juce::TextEditor emailField;
+    juce::TextEditor identifierField;
 
     /**
      * @brief Input field for user password.
@@ -110,12 +110,12 @@ private:
     /**
      * @brief Button used to submit login credentials.
      */
-    juce::TextButton loginButton;
+    juce::TextButton loginButton { Strings::Buttons::SignIn };
 
     /**
      * @brief Button used to navigate back to the previous screen.
      */
-    juce::TextButton backButton;
+    juce::TextButton backButton { Strings::Buttons::Back };
 
     /**
      * @brief Handles the login process.

@@ -3,22 +3,21 @@
 LoginPage::LoginPage(BackendManager& be, std::function<void(const UserSession&)> onSuccessCallback)
     : backend(be), onSuccess(onSuccessCallback)
 {
-    // LookAndFeel local toujours sombre (pas dépendant de l'utilisateur)
     authLookAndFeel.setThemePreset(AppLookAndFeel::ThemePreset::Dark);
     setLookAndFeel(&authLookAndFeel);
 
-    titleLabel.setText("Sign in to Harmonia", juce::dontSendNotification);
-    titleLabel.setFont(juce::Font(24.0f, juce::Font::bold));
+    titleLabel.setText(Strings::Titles::SignIn, juce::dontSendNotification);
+    titleLabel.setFont(UIStyle::Fonts::SubTitle());
     titleLabel.setJustificationType(juce::Justification::centred);
     addAndMakeVisible(titleLabel);
 
     auto placeholder = findColour(AppColourIds::textSecondaryId);
 
-    emailField.setTextToShowWhenEmpty("Email", placeholder);
-    passwordField.setTextToShowWhenEmpty("Password", placeholder);
-    passwordField.setPasswordCharacter('*');
+    identifierField.setTextToShowWhenEmpty(Strings::Placeholders::identifier, placeholder);
+    passwordField.setTextToShowWhenEmpty(Strings::Placeholders::Password, placeholder);
+    passwordField.setPasswordCharacter(Strings::Placeholders::PasswordChar);
 
-    addAndMakeVisible(emailField);
+    addAndMakeVisible(identifierField);
     addAndMakeVisible(passwordField);
 
     addAndMakeVisible(loginButton);
@@ -39,8 +38,8 @@ void LoginPage::paint(juce::Graphics& g)
                          findColour(AppColourIds::textPrimaryId));
 
     auto placeholder = findColour(AppColourIds::textSecondaryId);
-    emailField.setTextToShowWhenEmpty("Email", placeholder);
-    passwordField.setTextToShowWhenEmpty("Password", placeholder);
+    identifierField.setTextToShowWhenEmpty(Strings::Placeholders::identifier, placeholder);
+    passwordField.setTextToShowWhenEmpty(Strings::Placeholders::Password, placeholder);
 }
 
 void LoginPage::resized()
@@ -49,7 +48,7 @@ void LoginPage::resized()
 
     titleLabel.setBounds(area.removeFromTop(60));
 
-    emailField.setBounds(area.removeFromTop(40));
+    identifierField.setBounds(area.removeFromTop(40));
     area.removeFromTop(10);
 
     passwordField.setBounds(area.removeFromTop(40));
@@ -63,26 +62,26 @@ void LoginPage::resized()
 
 void LoginPage::handleLogin()
 {
-    auto email = emailField.getText().trim();
+    auto identifier = identifierField.getText().trim();
     auto password = passwordField.getText().trim();
 
-    if (email.isEmpty() || password.isEmpty())
+    if (identifier.isEmpty() || password.isEmpty())
     {
         juce::AlertWindow::showMessageBoxAsync(
             juce::AlertWindow::WarningIcon,
-            "Champs vides",
-            "Veuillez remplir tous les champs."
+            Strings::Errors::MissingFields,
+            Strings::Errors::MissingFieldsAdvice
         );
         return;
     }
 
-    auto result = backend.loginUser(email, password);
+    auto result = backend.loginUser(identifier, password);
 
     if (!result.success)
     {
         juce::AlertWindow::showMessageBoxAsync(
             juce::AlertWindow::WarningIcon,
-            "Erreur",
+            Strings::Errors::ErrorTitle,
             result.errorMessage
         );
         return;

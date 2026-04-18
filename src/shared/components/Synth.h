@@ -51,5 +51,5 @@ private:
     juce::ADSR::Parameters adsrParams;
 
     PatchParams currentParams;
-    double currentSampleRate = 44100.0;
+    double currentSampleRate = AppConfig::Synth::defaultSampleRate;
 };

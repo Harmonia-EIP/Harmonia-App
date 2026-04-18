@@ -4,7 +4,6 @@
 
 namespace PatchSerializer
 {
-    // ===== ENUM → STRING =====
     inline juce::String filterToString(FilterType type)
     {
         switch (type)
@@ -45,7 +44,6 @@ namespace PatchSerializer
         return Waveform::SINE;
     }
 
-    // ===== SAFE GETTERS =====
     inline double getDouble(juce::DynamicObject* obj, const juce::String& key, double defaultValue)
     {
         if (obj->hasProperty(key))
@@ -62,7 +60,6 @@ namespace PatchSerializer
         return defaultValue;
     }
 
-    // ===== TO JSON =====
     inline juce::String toJson(const PatchParams& p)
     {
         juce::DynamicObject::Ptr obj = new juce::DynamicObject();
@@ -82,7 +79,6 @@ namespace PatchSerializer
         return juce::JSON::toString(juce::var(obj.get()), true);
     }
 
-    // ===== FROM JSON =====
     inline std::optional<PatchParams> fromJson(const juce::String& jsonString)
     {
         juce::var json = juce::JSON::parse(jsonString);

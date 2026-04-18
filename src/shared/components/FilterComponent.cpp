@@ -3,10 +3,11 @@
 FilterComponent::FilterComponent (AppLookAndFeel& lnF)
     : lookAndFeel (lnF)
 {
-    setupSlider (cutoffSlider, cutoffLabel, "Cutoff", 20.0f, 20000.0f, 1000.0f);
-    cutoffSlider.setSkewFactorFromMidPoint (1000.0);
+    setupSlider (cutoffSlider, cutoffLabel, Strings::Parameters::Cutoff, AudioConfig::Filter::Cutoff::Min, AudioConfig::Filter::Cutoff::Max, AudioConfig::Filter::Cutoff::Default);
+    cutoffSlider.setSkewFactorFromMidPoint (AudioConfig::Filter::Cutoff::Mid);
 
-    setupSlider (resonanceSlider, resonanceLabel, "Resonance", 0.1f, 10.0f, 1.0f);
+    setupSlider (resonanceSlider, resonanceLabel, Strings::Parameters::Resonance, AudioConfig::Filter::Resonance::Min, AudioConfig::Filter::Resonance::Max, AudioConfig::Filter::Resonance::Default);
+    resonanceSlider.setSkewFactorFromMidPoint (AudioConfig::Filter::Resonance::Mid);
 
     addAndMakeVisible (cutoffSlider);
     addAndMakeVisible (cutoffLabel);
@@ -69,7 +70,6 @@ void FilterComponent::setupSlider (juce::Slider& slider,
 {
     slider.setSliderStyle (juce::Slider::RotaryHorizontalVerticalDrag);
 
-    // 🔹 TextBox plus large pour mieux afficher les valeurs
     slider.setTextBoxStyle (juce::Slider::TextBoxBelow, false, 90, 24);
 
     slider.setRange (min, max);
@@ -95,9 +95,9 @@ void FilterComponent::resized()
     auto area = getLocalBounds();
     auto half = area.getWidth() / 2;
 
-    const int labelHeight     = 22; // un peu plus haut
-    const int sliderHeight    = area.getHeight() - labelHeight - 8; // marge 8px en bas
-    const int verticalSpacing = 1;  // espace entre label et slider
+    const int labelHeight     = 22;
+    const int sliderHeight    = area.getHeight() - labelHeight - 8;
+    const int verticalSpacing = 1;
 
     // Cutoff
     cutoffLabel.setBounds (0, 0, half, labelHeight);

@@ -6,7 +6,7 @@ HarmoniaAudioProcessorEditor::HarmoniaAudioProcessorEditor (HarmoniaAudioProcess
 {
     
     addAndMakeVisible(pluginAppWrapper);
-    setSize (900, 700);
+    setSize (AppConfig::DefaultWidth, AppConfig::DefaultHeight);
 }
 
 HarmoniaAudioProcessorEditor::~HarmoniaAudioProcessorEditor() {}
