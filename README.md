@@ -69,7 +69,7 @@ src/
 * **CMake**
 * **Visual Studio 2022**
 * **CPR (HTTP client)**
-* **nlohmann/json*
+* **nlohmann/json**
 
 ---
 
