@@ -5,42 +5,75 @@ Epitech Innovation Project (EIP)
 Harmonia App is a desktop application developed in **C++ (C++17) using JUCE**, designed as the user interface for the Harmonia project.
 This repository represents the **application frontend**, built to support advanced audio features such as DSP, synthesis, and plugins.
 
+This repository provides:
+
+A **standalone desktop application**
+A **VST3 plugin**
+A shared core for audio + UI logic
+
 ---
 
 ## 🔗 Links
 
-* 📦 GitHub Repository: https://github.com/Harmonia-EIP/Harmonia-App
-* 📚 Documentation: https://harmonia-eip.github.io/Harmonia-App/
+* GitHub Repository: https://github.com/Harmonia-EIP/Harmonia-App
+* Documentation: https://harmonia-eip.github.io/Harmonia-App/
 
 ---
 
-## 🚀 Features
+## Features
 
-* 🖥️ Modern desktop user interface (JUCE)
-* 🎵 Foundation for audio integration (DSP, synthesis, VST)
-* 🧩 Modular and extensible architecture
-* ⚙️ Cross-platform build system with CMake (Windows ready)
+* Modern desktop UI (JUCE)
+* VST3 plugin support
+* Audio synthesis (DSP, filters, ADSR)
+* Modular architecture (Core / App / Plugin)
+* Backend integration (HTTP via CPR)
+* Cross-platform build system (CMake)
 
 ---
 
-## 🎓 Academic Context
+## Academic Context
 
 * Developed as part of the **Epitech Innovation Project (EIP)**
-* Collaborative work in a multidisciplinary team
-* Goal: build an innovative application combining **UI and audio processing**
 
 ---
 
-## 🛠️ Technologies Used
+
+## Architecture
+
+### Component Diagram
+
+![Component Diagram](assets/doc/diagram-components.png)
+
+```
+src/
+├─ app/        # Standalone application (EXE)
+├─ plugin/     # JUCE plugin (VST3 / Standalone wrapper)
+├─ shared/     # Core logic (audio, UI components, models, tools)
+│   ├─ components/
+│   ├─ parameters/
+│   ├─ themes/
+│   ├─ backendManagement/
+│   └─ ...
+```
+
+### Layers
+
+* **HarmoniaCore** → shared logic (audio + UI + backend)
+* **HarmoniaApp** → standalone executable
+* **HarmoniaPlugin** → VST3 plugin
+
+## Technologies Used
 
 * **C++17**
-* **JUCE 8.0.8
+* **JUCE 8**
 * **CMake**
 * **Visual Studio 2022**
+* **CPR (HTTP client)**
+* **nlohmann/json*
 
 ---
 
-## 📋 Requirements
+## Requirements
 
 * Windows 10+
 * Git (with submodules)
@@ -49,7 +82,7 @@ This repository represents the **application frontend**, built to support advanc
 
 ---
 
-## ⚡ Quick Start
+## Quick Start
 
 ```bash
 git clone --recurse-submodules https://github.com/Harmonia-EIP/Harmonia-App.git
@@ -59,9 +92,43 @@ cmake -S . -B build
 cmake --build build --config Release
 ```
 
+## Build Outputs
+
+After build, you get:
+
+### Standalone App
+
+```
+build/Release/HarmoniaApp.exe
+```
+
 ---
 
-## 📦 Installation
+### VST3 Plugin
+
+```
+build/HarmoniaPlugin_artefacts/Release/VST3/HarmoniaPlugin.vst3
+```
+
+Copy this file into your DAW VST3 folder.
+
+---
+
+## Run
+
+### Standalone
+
+```bash
+build/Release/HarmoniaApp.exe
+```
+
+### Plugin
+
+Load the plugin in your DAW (Ableton, FL Studio, etc.)
+
+---
+
+## Installation
 
 ### Clone with submodules
 
@@ -76,70 +143,21 @@ cd Harmonia-App
 git submodule update --init --recursive
 ```
 
----
 
-## 📁 Project Structure
+##  Goals
 
-```text
-Harmonia-App/
-├─ Source/            # C++ source code (UI, logic, audio)
-├─ JUCE/              # JUCE framework (submodule)
-├─ CMakeLists.txt     # CMake configuration
-├─ docs/
-│   └── component_diagram.png
-└─ build/             # Generated build directory
-```
+* Provide a **modern and responsive audio UI**
+* Support **real-time audio synthesis**
+* Enable **plugin-based workflows (VST3)**
+* Connect with backend services for advanced features (AI, presets, etc.)
 
 ---
 
-## 🏗️ Build & Run (Windows)
+## Important Notes
 
-### Generate project
-
-```bash
-cmake -S . -B build
-```
-
-### Build
-
-```bash
-cmake --build build --config Release
-```
-
-### Run
-
-```bash
-build/Release/HarmoniaApp.exe
-```
-
----
-
-## 🧩 Architecture
-
-### Component Diagram
-
-![Component Diagram](assets/doc/diagram-components.png)
-
----
-
-## 🎯 Frontend Goals
-
-* Provide a **clean and modern user interface**
-* Serve as a foundation for **advanced audio processing**
-* Enable future expansion into **plugins (VST) and audio modules**
-
----
-
-## ⚠️ Important Notes
-
-* The `build/` directory is **auto-generated**
-* JUCE is managed via a **Git submodule**
-* Avoid modifying JUCE directly
-* The project is designed to evolve towards:
-
-  * Advanced DSP
-  * Audio synthesis
-  * VST plugins
+* `build/` is auto-generated
+* JUCE is included as a submodule
+* Do not modify JUCE directly
 
 ---
 
