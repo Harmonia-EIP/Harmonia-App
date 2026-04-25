@@ -36,7 +36,7 @@ void HarmoniaAudioProcessor::setCurrentProgram (int) {}
 const juce::String HarmoniaAudioProcessor::getProgramName (int) { return {}; }
 void HarmoniaAudioProcessor::changeProgramName (int, const juce::String&) {}
 
-//==============================================================================
+
 void HarmoniaAudioProcessor::prepareToPlay (double, int) {}
 void HarmoniaAudioProcessor::releaseResources() {}
 
@@ -56,7 +56,7 @@ bool HarmoniaAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts)
 }
 #endif
 
-//==============================================================================
+
 void HarmoniaAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer,
                                            juce::MidiBuffer&)
 {
@@ -73,7 +73,7 @@ void HarmoniaAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer,
     }
 }
 
-//==============================================================================
+
 bool HarmoniaAudioProcessor::hasEditor() const { return true; }
 
 juce::AudioProcessorEditor* HarmoniaAudioProcessor::createEditor()
@@ -81,7 +81,7 @@ juce::AudioProcessorEditor* HarmoniaAudioProcessor::createEditor()
     return new HarmoniaAudioProcessorEditor (*this);
 }
 
-//==============================================================================
+
 void HarmoniaAudioProcessor::getStateInformation (juce::MemoryBlock&) {}
 void HarmoniaAudioProcessor::setStateInformation (const void*, int) {}
 

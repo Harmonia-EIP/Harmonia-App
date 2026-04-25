@@ -120,3 +120,17 @@ target_include_directories(HarmoniaApp PRIVATE
 target_link_libraries(HarmoniaApp PRIVATE
     HarmoniaCore
 )
+
+# =========================
+# COPY VST3 TO INSTALLER (FIXED PATH)
+# =========================
+add_custom_command(TARGET HarmoniaPlugin POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E echo "Copying VST3 to installer..."
+
+    COMMAND ${CMAKE_COMMAND} -E rm -rf
+        "${CMAKE_SOURCE_DIR}/installer/HarmoniaPlugin.vst3"
+
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        "${CMAKE_BINARY_DIR}/HarmoniaPlugin_artefacts/$<CONFIG>/VST3/HarmoniaPlugin.vst3"
+        "${CMAKE_SOURCE_DIR}/installer/HarmoniaPlugin.vst3"
+)

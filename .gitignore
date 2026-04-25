@@ -7,3 +7,5 @@ html/
 latex/
 .bak
 docs/
+installer/
+test-plugin-harmonia/

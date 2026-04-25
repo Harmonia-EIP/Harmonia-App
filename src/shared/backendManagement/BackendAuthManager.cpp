@@ -158,8 +158,10 @@ std::optional<UserSession> BackendAuthManager::loadSession()
 
     auto sessionFile = backend.getSessionFile();
 
-    if (!sessionFile.existsAsFile())
+    if (!sessionFile.existsAsFile()) {
+        backend.writeLog("no session found");
         return std::nullopt;
+    }
 
     auto content = sessionFile.loadFileAsString();
     auto j = json::parse(content.toStdString());

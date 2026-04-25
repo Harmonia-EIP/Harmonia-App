@@ -36,13 +36,28 @@ void MainComponent::initTitleComponent()
     title.onLayoutSelected = [this](LayoutPreset layout)
     {
         applyLayout(layout);
-        backend.updateLayout(ThemeAndLayoutConverter::layoutPresetToId(layout));
+        
+        juce::Component::SafePointer<MainComponent> safeThis(this);
+
+        juce::Thread::launch([safeThis, layout]
+        {
+            if (safeThis == nullptr) return;
+
+            safeThis->backend.updateLayout(ThemeAndLayoutConverter::layoutPresetToId(layout));
+        });
     };
 
-    title.onThemeSelected = [this] (ThemePreset p)
+    title.onThemeSelected = [this] (ThemePreset preset)
     {
-        applyTheme(p);
-        backend.updateTheme(ThemeAndLayoutConverter::themePresetToId(p));
+        applyTheme(preset);
+
+        juce::Component::SafePointer<MainComponent> safeThis(this);
+
+        juce::Thread::launch([safeThis, preset]
+        {
+            if (safeThis == nullptr) return;
+            safeThis->backend.updateTheme(ThemeAndLayoutConverter::themePresetToId(preset));
+        });
     };
     title.onLogout = [this]()
     {

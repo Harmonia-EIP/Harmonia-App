@@ -180,19 +180,10 @@ public:
     ProfileResult updateLayout(int layoutId);
 
 private:
-    /**
-     * @brief Get executable directory.
-     */
-    static juce::File getExeDir();
+    juce::File getAppDataDir() const;
+    juce::String loadConfig();
 
-    /**
-     * @brief Load environment variables from .env file.
-     *
-     * @return Map of key-value pairs
-     *
-     * @note The file is expected one level above the executable directory.
-     */
-    static std::map<std::string, std::string> loadEnv();
+    juce::File logFile;
 
     juce::String apiUrl;
     juce::File   sessionFile;

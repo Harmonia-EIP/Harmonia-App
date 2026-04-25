@@ -3,81 +3,82 @@
 #include "BackendAiManager.h"
 #include "BackendProfileManager.h"
 
-#include <sstream>
+#include <nlohmann/json.hpp>
 
-juce::File BackendManager::getExeDir()
+using json = nlohmann::json;
+
+
+juce::File BackendManager::getAppDataDir() const
 {
-    return juce::File::getSpecialLocation(juce::File::currentExecutableFile)
-        .getParentDirectory();
+    auto appData = juce::File::getSpecialLocation(
+        juce::File::userApplicationDataDirectory);
+
+    auto harmoniaDir = appData.getChildFile("Harmonia");
+
+    if (!harmoniaDir.exists())
+        harmoniaDir.createDirectory();
+
+    return harmoniaDir;
 }
 
-std::map<std::string, std::string> BackendManager::loadEnv()
+
+juce::String BackendManager::loadConfig()
 {
-    std::map<std::string, std::string> envValues;
+    auto dir = getAppDataDir();
+    auto configFile = dir.getChildFile("config.json");
 
-    auto exeDir  = getExeDir();
-    auto appRoot = exeDir.getParentDirectory().getParentDirectory().getParentDirectory();                  // IMPORTANT: .env un niveau au-dessus
-    auto envFile = appRoot.getChildFile(".env");
+    writeLog("CONFIG PATH = " + configFile.getFullPathName());
 
-    if (!envFile.existsAsFile())
+    if (!configFile.existsAsFile())
     {
-        // pas de log ici (pas d'instance encore), on loguera dans le ctor si envValues est vide
-        return envValues;
+        json defaultConfig{
+            { "api_url", "http://127.0.0.1:8000" }
+        };
+
+        configFile.replaceWithText(defaultConfig.dump(4));
+        writeLog("config.json créé automatiquement");
+
+        return "http://127.0.0.1:8000";
     }
 
-    auto content = envFile.loadFileAsString().toStdString();
-    std::stringstream ss(content);
-    std::string line;
-
-    while (std::getline(ss, line))
+    try
     {
-        auto pos = line.find('=');
-        if (pos != std::string::npos)
-        {
-            auto key   = line.substr(0, pos);
-            auto value = line.substr(pos + 1);
-            envValues[key] = value;
-        }
+        auto content = configFile.loadFileAsString();
+        auto j = json::parse(content.toStdString());
+
+        if (j.contains("api_url"))
+            return juce::String(j["api_url"].get<std::string>());
+    }
+    catch (...)
+    {
+        writeLog("Erreur parsing config.json");
     }
 
-    return envValues;
+    return "http://127.0.0.1:8000";
 }
+
 
 BackendManager::BackendManager()
 {
-    auto env = loadEnv();
-
-    std::string url  = env.count("BACKEND_URL")  > 0 ? env["BACKEND_URL"]  : "http://127.0.0.1";
-    std::string port = env.count("BACKEND_PORT") > 0 ? env["BACKEND_PORT"] : "8000";
-
-    url.erase(std::remove_if(url.begin(), url.end(), ::isspace), url.end());
-    port.erase(std::remove_if(port.begin(), port.end(), ::isspace), port.end());
-
-    bool isLocal =
-        url.find("localhost") != std::string::npos ||
-        url.find("127.0.0.1") != std::string::npos;
-
-    std::string fullUrl = url;
-
-    if (isLocal)
-        fullUrl += ":" + port;
-
-    apiUrl = juce::String(fullUrl);
-
-    auto exeDir = getExeDir();
-    sessionFile = exeDir.getChildFile("HarmoniaSession.json");
-
+    // API
+    apiUrl = loadConfig();
     writeLog("API_URL = " + apiUrl);
 
-    if (env.empty())
-        writeLog(".env introuvable → valeurs par défaut utilisées (cherché un niveau au-dessus de l'exe)");
-    else
-        writeLog(".env chargé avec succès (deux niveau au-dessus de l'exe)");
+    // SESSION FILE
+    auto dir = getAppDataDir();
+    sessionFile = dir.getChildFile("HarmoniaSession.json");
 
-    authManager = std::make_unique<BackendAuthManager>(*this);
-    aiManager  = std::make_unique<BackendAiManager>(*this);
+    writeLog("SESSION PATH = " + sessionFile.getFullPathName());
+
+    // LOG FILE
+    logFile = dir.getChildFile("HarmoniaLogs.txt");
+
+
+    authManager    = std::make_unique<BackendAuthManager>(*this);
+    aiManager      = std::make_unique<BackendAiManager>(*this);
     profileManager = std::make_unique<BackendProfileManager>(*this);
 }
+
 
 BackendManager::~BackendManager()
 {
@@ -86,16 +87,15 @@ BackendManager::~BackendManager()
     profileManager.reset();
 }
 
+
 void BackendManager::writeLog(const juce::String& message) const
 {
-    auto exeDir = getExeDir();
-    auto logFile = exeDir.getChildFile("HarmoniaLogs.txt");
-
-    logFile.appendText("[Backend] " + message + "\n");
+    if (logFile != juce::File())
+        logFile.appendText("[Backend] " + message + "\n");
 }
 
-// Auth façade
-
+//================================================
+// AUTH
 AuthResult BackendManager::loginUser(const juce::String& usernameOrEmail,
                                      const juce::String& password)
 {
@@ -126,19 +126,23 @@ void BackendManager::clearSession()
     authManager->clearSession();
 }
 
-// IA façade
-
+//================================================
+// AI
 PatchCallResult BackendManager::generatePatch(const juce::String& prompt)
 {
     if (aiManager)
         return aiManager->generatePatch(prompt);
+
     return PatchCallResult::error("AI manager not initialized");
 }
 
+//================================================
+// PROFILE
 ProfileResult BackendManager::getProfile()
 {
     if (profileManager)
         return profileManager->getProfile();
+
     return ProfileResult::error("Profile manager not initialized");
 }
 
@@ -146,6 +150,7 @@ ProfileResult BackendManager::updateTheme(int themeId)
 {
     if (profileManager)
         return profileManager->updateTheme(themeId);
+
     return ProfileResult::error("Profile manager not initialized");
 }
 
@@ -153,9 +158,12 @@ ProfileResult BackendManager::updateLayout(int layoutId)
 {
     if (profileManager)
         return profileManager->updateLayout(layoutId);
+
     return ProfileResult::error("Profile manager not initialized");
 }
 
+//================================================
+// SYNC
 void BackendManager::syncProfileParamsInBackground(const UserSession& session)
 {
     authManager->syncProfileParamsInBackground(session);
@@ -166,11 +174,12 @@ std::optional<UserSession> BackendManager::syncProfileParams(const UserSession& 
     return authManager->syncProfileParams(session);
 }
 
+//================================================
+// GETTERS
 const juce::String& BackendManager::getApiUrl() const
 {
     return apiUrl;
 }
-
 
 const juce::File& BackendManager::getSessionFile() const
 {

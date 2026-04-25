@@ -6,24 +6,36 @@ AppCore::AppCore()
 
     if (session && session->expiresAt > juce::Time::getCurrentTime())
     {
-        auto synced = backend.syncProfileParams(*session);
+        currentSession = *session;
 
-        if (synced)
+        showMainScreen(*session);
+
+
+        juce::Thread::launch([this, session]
         {
-            currentSession = *synced;
-            showMainScreen(*synced);
-            return;
-        }
-        else
-        {
-            backend.clearSession();
-        }
+            auto synced = backend.syncProfileParams(*session);
+
+            if (synced)
+            {
+                juce::MessageManager::callAsync([this, synced]
+                {
+                    currentSession = *synced;
+
+                });
+            }
+            else
+            {
+                backend.clearSession();
+            }
+        });
+
+        return;
     }
+
 
     showWelcomeScreen();
 }
 
-//================================================
 
 void AppCore::resized()
 {
@@ -31,7 +43,6 @@ void AppCore::resized()
         currentComponent->setBounds(getLocalBounds());
 }
 
-//================================================
 
 void AppCore::showWelcomeScreen()
 {
@@ -50,7 +61,6 @@ void AppCore::showWelcomeScreen()
     resized();
 }
 
-//================================================
 
 void AppCore::showLoginScreen()
 {
@@ -71,7 +81,6 @@ void AppCore::showLoginScreen()
     resized();
 }
 
-//================================================
 
 void AppCore::showSignupScreen()
 {
@@ -92,7 +101,6 @@ void AppCore::showSignupScreen()
     resized();
 }
 
-//================================================
 
 void AppCore::showMainScreen(const UserSession& session)
 {

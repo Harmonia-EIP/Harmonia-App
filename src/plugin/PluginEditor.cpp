@@ -1,6 +1,6 @@
 #include "PluginEditor.h"
 
-//==============================================================================
+
 HarmoniaAudioProcessorEditor::HarmoniaAudioProcessorEditor (HarmoniaAudioProcessor& p)
     : AudioProcessorEditor (&p), audioProcessor (p)
 {
@@ -11,7 +11,7 @@ HarmoniaAudioProcessorEditor::HarmoniaAudioProcessorEditor (HarmoniaAudioProcess
 
 HarmoniaAudioProcessorEditor::~HarmoniaAudioProcessorEditor() {}
 
-//==============================================================================
+
 void HarmoniaAudioProcessorEditor::paint (juce::Graphics& g)
 {
      g.fillAll (juce::Colours::black);
