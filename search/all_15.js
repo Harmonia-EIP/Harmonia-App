@@ -1,15 +1,15 @@
 var searchData=
 [
-  ['_7eadsrcomponent_0',['~ADSRComponent',['../classADSRComponent.html#a2b8eb4c35324902772b5d8058b2e425f',1,'ADSRComponent']]],
-  ['_7ebackendmanager_1',['~BackendManager',['../classBackendManager.html#a55c06c26ce2b9ca7fd923ccb5088a37e',1,'BackendManager']]],
-  ['_7ebottombarcomponent_2',['~BottomBarComponent',['../classBottomBarComponent.html#a0d647028b293199ed0932fedd5477a6b',1,'BottomBarComponent']]],
-  ['_7efiltercomponent_3',['~FilterComponent',['../classFilterComponent.html#a3acbd8905f2542b907184f0d99ec382a',1,'FilterComponent']]],
-  ['_7efrequencyvolumecomponent_4',['~FrequencyVolumeComponent',['../classFrequencyVolumeComponent.html#a22d7bb6d647c03ad04c790a40c60a668',1,'FrequencyVolumeComponent']]],
-  ['_7eharmoniaaudioprocessor_5',['~HarmoniaAudioProcessor',['../classHarmoniaAudioProcessor.html#ae89ea737b85e0670de703ca671c3c417',1,'HarmoniaAudioProcessor']]],
-  ['_7eharmoniaaudioprocessoreditor_6',['~HarmoniaAudioProcessorEditor',['../classHarmoniaAudioProcessorEditor.html#a434f958e609ed0a35c8260458e7457a6',1,'HarmoniaAudioProcessorEditor']]],
-  ['_7emaincomponent_7',['~MainComponent',['../classMainComponent.html#afc7d0481eafa95da42e728443102f92e',1,'MainComponent']]],
-  ['_7epluginappwrapper_8',['~PluginAppWrapper',['../classPluginAppWrapper.html#a9c5138d6cc9583e0ead53fab497956b2',1,'PluginAppWrapper']]],
-  ['_7esynthcomponent_9',['~SynthComponent',['../classSynthComponent.html#a4cec9f95fa7ea465e9a59d03a9176a2b',1,'SynthComponent']]],
-  ['_7etitlecomponent_10',['~TitleComponent',['../classTitleComponent.html#a914109758655bf0c830cadf7664045b5',1,'TitleComponent']]],
-  ['_7etopbarcomponent_11',['~TopBarComponent',['../classTopBarComponent.html#a86a745911ced3c32814939cf3ce23bcb',1,'TopBarComponent']]]
+  ['waveform_0',['waveform',['../classDataModel.html#aab15ff71b591168b37c80b78e7188505',1,'DataModel::waveform'],['../structPatchParams.html#a51c85f847ed8313c32969d9a87fdf811',1,'PatchParams::waveform'],['../namespaceStrings_1_1Labels.html#abd181faebc7d19d02236170f0883943f',1,'Strings::Labels::Waveform'],['../HarmoniaParams_8h.html#a7d8c79438df26f5d08937a6566cd8ddf',1,'Waveform:&#160;HarmoniaParams.h']]],
+  ['waveformfromstring_1',['waveformFromString',['../namespacePatchSerializer.html#a2bc6ad20494219ef701aaa39661c1ae5',1,'PatchSerializer']]],
+  ['waveformlabel_2',['waveformLabel',['../classTopBarComponent.html#a415d95aeac7ce6558985f4b2c8e7ac04',1,'TopBarComponent']]],
+  ['waveformselector_3',['waveformselector',['../classWaveformSelector.html',1,'WaveformSelector'],['../classWaveformSelector.html#aedab30a827dae1e4daf6232d091e2e6b',1,'WaveformSelector::WaveformSelector()'],['../classTopBarComponent.html#a27def6963b89f0f64d781afee1d5ed4c',1,'TopBarComponent::waveformSelector']]],
+  ['waveformselector_2eh_4',['WaveformSelector.h',['../WaveformSelector_8h.html',1,'']]],
+  ['waveformtostring_5',['waveformToString',['../namespacePatchSerializer.html#a0f1bb1685edbc4631f3aa783ac410a30',1,'PatchSerializer']]],
+  ['welcome_6',['Welcome',['../namespaceStrings_1_1Success.html#a9f543bb8c6b3d15fa39cf1e6655dca2d',1,'Strings::Success']]],
+  ['welcomepage_7',['welcomepage',['../classWelcomePage.html#a9a7dad9a04f5a6b94c721e49a9d006d5',1,'WelcomePage::WelcomePage()'],['../classWelcomePage.html',1,'WelcomePage']]],
+  ['welcomepage_2ecpp_8',['WelcomePage.cpp',['../WelcomePage_8cpp.html',1,'']]],
+  ['welcomepage_2eh_9',['WelcomePage.h',['../WelcomePage_8h.html',1,'']]],
+  ['writelog_10',['writeLog',['../classBackendManager.html#a9ee33036fd962fa87dbedecfc3e8c259',1,'BackendManager']]],
+  ['writepos_11',['writePos',['../classOscilloscopeComponent.html#ab96afb3cfe5442424b42d8dcdaa45981',1,'OscilloscopeComponent']]]
 ];

@@ -1,7 +1,7 @@
-<map id="src/shared/pages/LoginPage.h" name="src/shared/pages/LoginPage.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,220,31"/>
-<area shape="rect" id="Node000002" href="$PagesIncludes_8h.html" title=" " alt="" coords="49,79,176,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="115,31,115,65,110,65,110,31"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="13,152,212,192"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="115,104,115,138,110,138,110,104"/>
+<map id="src/pages/LoginPage.h" name="src/pages/LoginPage.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="21,5,188,31"/>
+<area shape="rect" id="Node000002" href="$PagesIncludes_8h.html" title=" " alt="" coords="41,79,168,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="107,31,107,65,102,65,102,31"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,152,204,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="107,104,107,138,102,138,102,104"/>
 </map>

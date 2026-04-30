@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['layoutpreset_0',['LayoutPreset',['../classAppLookAndFeel.html#a49a9340f3d5b5f90635f6c10385659b4',1,'AppLookAndFeel']]]
+  ['filtertype_0',['FilterType',['../HarmoniaParams_8h.html#a7ef0ab496f57e183b484e62e2053c94f',1,'HarmoniaParams.h']]]
 ];

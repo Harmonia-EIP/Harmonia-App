@@ -1,8 +1,5 @@
 var hierarchy =
 [
-    [ "juce::AudioAppComponent", null, [
-      [ "MainComponent", "classMainComponent.html", null ]
-    ] ],
     [ "juce::AudioProcessor", null, [
       [ "HarmoniaAudioProcessor", "classHarmoniaAudioProcessor.html", null ]
     ] ],
@@ -19,12 +16,13 @@ var hierarchy =
     ] ],
     [ "juce::Component", null, [
       [ "ADSRComponent", "classADSRComponent.html", null ],
+      [ "AppController", "classAppController.html", null ],
       [ "BottomBarComponent", "classBottomBarComponent.html", null ],
       [ "FilterComponent", "classFilterComponent.html", null ],
       [ "FrequencyVolumeComponent", "classFrequencyVolumeComponent.html", null ],
       [ "LoginPage", "classLoginPage.html", null ],
+      [ "MainComponent", "classMainComponent.html", null ],
       [ "OscilloscopeComponent", "classOscilloscopeComponent.html", null ],
-      [ "PluginAppWrapper", "classPluginAppWrapper.html", null ],
       [ "SignupPage", "classSignupPage.html", null ],
       [ "SynthComponent", "classSynthComponent.html", null ],
       [ "TitleComponent", "classTitleComponent.html", null ],
@@ -32,13 +30,6 @@ var hierarchy =
       [ "WelcomePage", "classWelcomePage.html", null ]
     ] ],
     [ "DataModel", "classDataModel.html", null ],
-    [ "juce::DocumentWindow", null, [
-      [ "MainWindow", "classMainWindow.html", null ]
-    ] ],
-    [ "HarmoniaParams", "structHarmoniaParams.html", null ],
-    [ "juce::JUCEApplication", null, [
-      [ "HarmoniaApp", "classHarmoniaApp.html", null ]
-    ] ],
     [ "juce::Button::Listener", null, [
       [ "TitleComponent", "classTitleComponent.html", null ]
     ] ],
@@ -64,7 +55,8 @@ var hierarchy =
     [ "ThemeAndLayoutConverter", "classThemeAndLayoutConverter.html", null ],
     [ "ThemePalette", "structThemePalette.html", null ],
     [ "juce::Timer", null, [
-      [ "OscilloscopeComponent", "classOscilloscopeComponent.html", null ]
+      [ "OscilloscopeComponent", "classOscilloscopeComponent.html", null ],
+      [ "WelcomePage", "classWelcomePage.html", null ]
     ] ],
     [ "UserProfile", "structUserProfile.html", null ],
     [ "UserSession", "structUserSession.html", null ]

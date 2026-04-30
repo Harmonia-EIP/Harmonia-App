@@ -5,5 +5,6 @@ var searchData=
   ['harmoniaaudioprocessor_2',['HarmoniaAudioProcessor',['../classHarmoniaAudioProcessor.html#af7ed2bb8caf041ebc9127c06f758907e',1,'HarmoniaAudioProcessor']]],
   ['harmoniaaudioprocessoreditor_3',['HarmoniaAudioProcessorEditor',['../classHarmoniaAudioProcessorEditor.html#a763c17c765279adf413ecdc2a78b690c',1,'HarmoniaAudioProcessorEditor']]],
   ['harmoniavoice_4',['HarmoniaVoice',['../classHarmoniaVoice.html#a1aaf512b7e24962549736551504882b7',1,'HarmoniaVoice']]],
-  ['haseditor_5',['hasEditor',['../classHarmoniaAudioProcessor.html#a5e4224f517d5858c382fb6f44485ed40',1,'HarmoniaAudioProcessor']]]
+  ['haseditor_5',['hasEditor',['../classHarmoniaAudioProcessor.html#a5e4224f517d5858c382fb6f44485ed40',1,'HarmoniaAudioProcessor']]],
+  ['haserror_6',['hasError',['../structPatchCallResult.html#aebedf8efe351508853c84edc71cfb60f',1,'PatchCallResult']]]
 ];

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Harmonia Interface: src/shared/backendManagement/BackendAiManager.cpp File Reference</title>
+<title>Harmonia Interface: src/backendManagement/BackendAiManager.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -95,35 +95,44 @@ $(document).ready(function(){initNavTree('BackendAiManager_8cpp.html',''); initR
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="BackendAiManager_8h_source.html">BackendAiManager.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="BackendManager_8h_source.html">BackendManager.h</a>&quot;</code><br />
-<code>#include &lt;cpr/cpr.h&gt;</code><br />
-<code>#include &lt;nlohmann/json.hpp&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for BackendAiManager.cpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="BackendAiManager_8cpp__incl.png" border="0" usemap="#asrc_2shared_2backendManagement_2BackendAiManager_8cpp" alt=""/></div>
-<map name="asrc_2shared_2backendManagement_2BackendAiManager_8cpp" id="asrc_2shared_2backendManagement_2BackendAiManager_8cpp">
-<area shape="rect" title=" " alt="" coords="212,5,445,45"/>
-<area shape="rect" href="BackendAiManager_8h.html" title=" " alt="" coords="5,93,164,119"/>
-<area shape="poly" title=" " alt="" coords="271,48,134,92,133,86,269,43"/>
-<area shape="rect" href="BackendManager_8h.html" title=" " alt="" coords="188,93,333,119"/>
-<area shape="poly" title=" " alt="" coords="314,47,282,84,278,81,310,44"/>
-<area shape="rect" title=" " alt="" coords="358,93,435,119"/>
-<area shape="poly" title=" " alt="" coords="347,44,380,81,376,84,343,47"/>
-<area shape="rect" title=" " alt="" coords="459,93,606,119"/>
-<area shape="poly" title=" " alt="" coords="378,43,491,86,489,91,377,48"/>
-<area shape="rect" href="BackendTypes_8h.html" title=" " alt="" coords="27,167,153,192"/>
-<area shape="poly" title=" " alt="" coords="88,119,91,153,85,153,83,119"/>
-<area shape="rect" title=" " alt="" coords="59,240,222,265"/>
-<area shape="poly" title=" " alt="" coords="101,191,127,227,122,230,96,194"/>
-<area shape="poly" title=" " alt="" coords="234,121,131,164,129,159,232,116"/>
-<area shape="poly" title=" " alt="" coords="253,121,161,231,157,228,249,117"/>
-<area shape="rect" title=" " alt="" coords="229,167,279,192"/>
-<area shape="poly" title=" " alt="" coords="262,119,259,153,254,153,257,119"/>
-<area shape="rect" title=" " alt="" coords="303,167,362,192"/>
-<area shape="poly" title=" " alt="" coords="274,117,313,155,309,159,271,121"/>
-<area shape="rect" title=" " alt="" coords="386,167,461,192"/>
-<area shape="poly" title=" " alt="" coords="288,116,385,159,383,163,286,121"/>
+<div class="center"><img src="BackendAiManager_8cpp__incl.png" border="0" usemap="#asrc_2backendManagement_2BackendAiManager_8cpp" alt=""/></div>
+<map name="asrc_2backendManagement_2BackendAiManager_8cpp" id="asrc_2backendManagement_2BackendAiManager_8cpp">
+<area shape="rect" title=" " alt="" coords="509,5,694,45"/>
+<area shape="rect" href="BackendAiManager_8h.html" title=" " alt="" coords="522,93,681,119"/>
+<area shape="poly" title=" " alt="" coords="604,46,604,79,599,79,599,46"/>
+<area shape="rect" href="String_8h.html" title=" " alt="" coords="705,313,831,339"/>
+<area shape="poly" title=" " alt="" coords="612,117,753,300,749,304,608,121"/>
+<area shape="rect" href="BackendTypes_8h.html" title=" " alt="" coords="433,240,559,265"/>
+<area shape="poly" title=" " alt="" coords="595,121,515,230,510,227,591,118"/>
+<area shape="rect" title=" " alt="" coords="533,313,680,339"/>
+<area shape="poly" title=" " alt="" coords="604,119,609,299,603,299,599,119"/>
+<area shape="rect" href="BackendManager_8h.html" title=" " alt="" coords="135,167,281,192"/>
+<area shape="poly" title=" " alt="" coords="539,121,286,167,285,162,538,116"/>
+<area shape="rect" title=" " alt="" coords="689,167,767,192"/>
+<area shape="poly" title=" " alt="" coords="623,116,697,157,694,162,620,121"/>
+<area shape="rect" title=" " alt="" coords="352,460,515,485"/>
+<area shape="poly" title=" " alt="" coords="742,341,473,457,471,452,740,336"/>
+<area shape="poly" title=" " alt="" coords="540,263,712,307,710,312,539,268"/>
+<area shape="poly" title=" " alt="" coords="501,266,504,330,501,372,489,413,476,435,460,453,456,449,472,432,484,411,495,371,499,330,495,266"/>
+<area shape="poly" title=" " alt="" coords="515,263,578,303,575,308,512,268"/>
+<area shape="rect" href="HarmoniaParams_8h.html" title=" " alt="" coords="237,387,475,412"/>
+<area shape="poly" title=" " alt="" coords="488,268,422,341,381,379,377,376,418,337,484,264"/>
+<area shape="rect" href="PatchSerializer_8h.html" title=" " alt="" coords="230,313,407,339"/>
+<area shape="poly" title=" " alt="" coords="468,268,361,311,359,306,467,263"/>
+<area shape="poly" title=" " alt="" coords="370,410,412,449,409,452,367,414"/>
+<area shape="poly" title=" " alt="" coords="327,338,346,373,341,376,322,340"/>
+<area shape="rect" title=" " alt="" coords="139,387,213,412"/>
+<area shape="poly" title=" " alt="" coords="297,341,213,383,210,378,295,336"/>
+<area shape="poly" title=" " alt="" coords="199,194,166,234,130,291,117,322,111,353,114,383,129,410,142,421,161,431,213,446,275,456,338,463,338,469,275,462,212,451,159,435,139,425,125,414,109,385,106,353,112,320,125,288,162,230,195,190"/>
+<area shape="poly" title=" " alt="" coords="255,189,437,234,436,239,254,195"/>
+<area shape="poly" title=" " alt="" coords="209,193,182,373,177,373,204,192"/>
+<area shape="rect" title=" " alt="" coords="213,240,264,265"/>
+<area shape="poly" title=" " alt="" coords="216,191,231,227,226,229,211,193"/>
+<area shape="rect" title=" " alt="" coords="5,240,64,265"/>
+<area shape="poly" title=" " alt="" coords="181,194,77,237,75,232,179,190"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -152,7 +161,7 @@ Typedefs</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_4f38db07240614f25134cb9a8bebbaf9.html">shared</a></li><li class="navelem"><a class="el" href="dir_12b39c674be3b5d4e9ccc3b615c66830.html">backendManagement</a></li><li class="navelem"><a class="el" href="BackendAiManager_8cpp.html">BackendAiManager.cpp</a></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_330b044051c8fd211c3b3e3c64d42f44.html">backendManagement</a></li><li class="navelem"><a class="el" href="BackendAiManager_8cpp.html">BackendAiManager.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>

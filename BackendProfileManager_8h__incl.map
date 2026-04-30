@@ -1,14 +1,20 @@
-<map id="src/shared/backendManagement/BackendProfileManager.h" name="src/shared/backendManagement/BackendProfileManager.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="34,5,267,45"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="45,167,208,192"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,48,40,67,25,80,13,95,9,105,9,114,21,132,44,147,72,160,70,165,42,152,17,136,4,116,3,104,8,92,21,76,37,62,73,43"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="23,93,97,119"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="130,48,86,86,82,82,127,44"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="121,93,180,119"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="153,46,153,79,148,79,148,46"/>
-<area shape="rect" id="Node000005" href="$BackendTypes_8h.html" title=" " alt="" coords="205,93,331,119"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="181,43,241,84,238,88,178,48"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="356,93,503,119"/>
-<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="218,43,376,87,374,92,217,48"/>
-<area shape="poly" id="edge5_Node000005_Node000002" title=" " alt="" coords="246,121,163,163,161,158,244,116"/>
+<map id="src/backendManagement/BackendProfileManager.h" name="src/backendManagement/BackendProfileManager.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="145,5,335,45"/>
+<area shape="rect" id="Node000002" href="$BackendTypes_8h.html" title=" " alt="" coords="177,93,303,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="243,46,243,79,237,79,237,46"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,167,152,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="215,121,119,163,116,159,213,116"/>
+<area shape="rect" id="Node000004" href="$String_8h.html" title=" " alt="" coords="75,240,202,265"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="234,121,157,230,152,227,230,118"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="159,313,321,339"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="243,119,243,299,237,299,237,119"/>
+<area shape="rect" id="Node000006" href="$HarmoniaParams_8h.html" title=" " alt="" coords="277,240,515,265"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="251,117,281,151,319,190,370,230,366,234,316,194,277,155,247,121"/>
+<area shape="rect" id="Node000007" href="$PatchSerializer_8h.html" title=" " alt="" coords="329,167,506,192"/>
+<area shape="poly" id="edge8_Node000002_Node000007" title=" " alt="" coords="269,116,377,159,375,164,268,121"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="156,263,214,303,211,307,153,268"/>
+<area shape="poly" id="edge7_Node000006_Node000005" title=" " alt="" coords="372,268,279,310,277,305,370,263"/>
+<area shape="poly" id="edge9_Node000007_Node000006" title=" " alt="" coords="416,193,406,228,401,226,411,192"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="539,240,613,265"/>
+<area shape="poly" id="edge10_Node000007_Node000008" title=" " alt="" coords="444,190,539,232,537,237,442,194"/>
 </map>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Harmonia Interface: src/shared/backendManagement/BackendManager.cpp File Reference</title>
+<title>Harmonia Interface: src/backendManagement/BackendManager.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -89,6 +89,8 @@ $(document).ready(function(){initNavTree('BackendManager_8cpp.html',''); initRes
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#typedef-members">Typedefs</a>  </div>
   <div class="headertitle"><div class="title">BackendManager.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -96,50 +98,82 @@ $(document).ready(function(){initNavTree('BackendManager_8cpp.html',''); initRes
 <code>#include &quot;<a class="el" href="BackendAuthManager_8h_source.html">BackendAuthManager.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="BackendAiManager_8h_source.html">BackendAiManager.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="BackendProfileManager_8h_source.html">BackendProfileManager.h</a>&quot;</code><br />
-<code>#include &lt;sstream&gt;</code><br />
+<code>#include &lt;nlohmann/json.hpp&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for BackendManager.cpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="BackendManager_8cpp__incl.png" border="0" usemap="#asrc_2shared_2backendManagement_2BackendManager_8cpp" alt=""/></div>
-<map name="asrc_2shared_2backendManagement_2BackendManager_8cpp" id="asrc_2shared_2backendManagement_2BackendManager_8cpp">
-<area shape="rect" title=" " alt="" coords="429,5,662,45"/>
-<area shape="rect" href="BackendManager_8h.html" title=" " alt="" coords="78,93,223,119"/>
-<area shape="poly" title=" " alt="" coords="451,48,222,93,221,88,450,43"/>
-<area shape="rect" href="BackendAuthManager_8h.html" title=" " alt="" coords="649,93,823,119"/>
-<area shape="poly" title=" " alt="" coords="592,43,697,86,695,91,590,48"/>
-<area shape="rect" href="BackendAiManager_8h.html" title=" " alt="" coords="466,93,625,119"/>
-<area shape="poly" title=" " alt="" coords="548,46,548,79,543,79,543,46"/>
-<area shape="rect" href="BackendProfileManager_8h.html" title=" " alt="" coords="255,93,441,119"/>
-<area shape="poly" title=" " alt="" coords="499,48,391,91,389,86,497,43"/>
-<area shape="rect" title=" " alt="" coords="848,93,923,119"/>
-<area shape="poly" title=" " alt="" coords="628,43,835,90,834,96,626,48"/>
-<area shape="rect" title=" " alt="" coords="384,240,547,265"/>
-<area shape="poly" title=" " alt="" coords="100,121,61,134,27,150,16,159,9,169,9,179,15,190,31,199,62,208,154,223,371,243,370,248,153,228,61,213,29,204,12,194,4,180,4,167,12,155,24,145,59,129,98,116"/>
-<area shape="rect" title=" " alt="" coords="25,167,76,192"/>
-<area shape="poly" title=" " alt="" coords="136,121,80,161,77,156,133,117"/>
-<area shape="rect" title=" " alt="" coords="199,167,257,192"/>
-<area shape="poly" title=" " alt="" coords="165,117,207,155,204,159,161,121"/>
-<area shape="rect" title=" " alt="" coords="100,167,175,192"/>
-<area shape="poly" title=" " alt="" coords="151,119,145,154,140,153,146,119"/>
-<area shape="rect" href="BackendTypes_8h.html" title=" " alt="" coords="503,167,630,192"/>
-<area shape="poly" title=" " alt="" coords="218,116,490,162,489,168,217,121"/>
-<area shape="poly" title=" " alt="" coords="552,194,495,234,492,230,549,190"/>
-<area shape="poly" title=" " alt="" coords="710,121,608,164,606,159,708,116"/>
-<area shape="poly" title=" " alt="" coords="552,118,562,153,557,154,546,120"/>
-<area shape="poly" title=" " alt="" coords="377,116,411,136,442,165,458,195,465,226,460,227,453,197,438,168,408,140,374,121"/>
-<area shape="poly" title=" " alt="" coords="330,121,261,162,258,157,328,116"/>
-<area shape="poly" title=" " alt="" coords="315,121,185,165,183,160,313,116"/>
-<area shape="poly" title=" " alt="" coords="384,116,519,160,517,165,382,121"/>
-<area shape="rect" title=" " alt="" coords="281,167,428,192"/>
-<area shape="poly" title=" " alt="" coords="352,119,355,153,350,153,347,119"/>
+<div class="center"><img src="BackendManager_8cpp__incl.png" border="0" usemap="#asrc_2backendManagement_2BackendManager_8cpp" alt=""/></div>
+<map name="asrc_2backendManagement_2BackendManager_8cpp" id="asrc_2backendManagement_2BackendManager_8cpp">
+<area shape="rect" title=" " alt="" coords="425,5,610,45"/>
+<area shape="rect" href="BackendManager_8h.html" title=" " alt="" coords="91,167,237,192"/>
+<area shape="poly" title=" " alt="" coords="425,47,353,67,280,96,229,127,188,159,185,155,226,122,278,91,351,62,424,42"/>
+<area shape="rect" title=" " alt="" coords="685,313,832,339"/>
+<area shape="poly" title=" " alt="" coords="611,39,698,60,733,75,755,92,770,117,780,144,785,173,785,202,779,257,769,301,764,299,774,257,780,202,779,174,775,146,766,119,751,95,730,79,696,65,609,44"/>
+<area shape="rect" href="BackendAuthManager_8h.html" title=" " alt="" coords="465,167,639,192"/>
+<area shape="poly" title=" " alt="" coords="524,45,549,152,544,154,519,46"/>
+<area shape="rect" href="BackendAiManager_8h.html" title=" " alt="" coords="291,93,450,119"/>
+<area shape="poly" title=" " alt="" coords="483,48,406,89,403,84,481,43"/>
+<area shape="rect" href="BackendProfileManager_8h.html" title=" " alt="" coords="555,93,741,119"/>
+<area shape="poly" title=" " alt="" coords="550,43,618,84,616,88,548,48"/>
+<area shape="rect" title=" " alt="" coords="283,460,445,485"/>
+<area shape="poly" title=" " alt="" coords="95,195,58,205,27,221,16,230,10,240,9,251,13,264,40,302,73,336,110,366,150,391,232,429,304,454,302,459,230,434,147,395,107,370,69,340,36,306,8,267,3,252,5,238,12,226,24,216,56,200,93,190"/>
+<area shape="rect" title=" " alt="" coords="23,240,73,265"/>
+<area shape="poly" title=" " alt="" coords="147,194,80,235,77,230,144,190"/>
+<area shape="rect" title=" " alt="" coords="97,240,156,265"/>
+<area shape="poly" title=" " alt="" coords="160,194,141,229,137,227,156,191"/>
+<area shape="rect" title=" " alt="" coords="275,387,349,412"/>
+<area shape="poly" title=" " alt="" coords="168,192,182,258,198,299,221,337,245,360,273,378,271,383,242,365,217,340,193,301,177,259,163,193"/>
+<area shape="rect" href="BackendTypes_8h.html" title=" " alt="" coords="489,240,615,265"/>
+<area shape="poly" title=" " alt="" coords="227,189,477,235,476,240,226,195"/>
+<area shape="poly" title=" " alt="" coords="567,264,594,291,621,330,631,351,636,373,635,394,625,414,599,432,558,446,460,464,459,459,557,441,596,427,621,410,630,392,631,373,626,353,617,332,589,295,563,267"/>
+<area shape="poly" title=" " alt="" coords="586,263,713,306,711,311,584,268"/>
+<area shape="rect" href="String_8h.html" title=" " alt="" coords="231,313,358,339"/>
+<area shape="poly" title=" " alt="" coords="511,268,350,312,349,307,510,263"/>
+<area shape="rect" href="HarmoniaParams_8h.html" title=" " alt="" coords="373,387,611,412"/>
+<area shape="poly" title=" " alt="" coords="562,265,576,299,578,320,573,340,555,364,531,382,528,378,551,360,568,338,573,319,570,300,557,267"/>
+<area shape="rect" href="PatchSerializer_8h.html" title=" " alt="" coords="382,313,559,339"/>
+<area shape="poly" title=" " alt="" coords="541,267,496,306,493,302,537,263"/>
+<area shape="poly" title=" " alt="" coords="286,340,265,374,261,393,265,411,287,435,315,452,312,457,283,439,260,413,255,393,260,371,282,337"/>
+<area shape="poly" title=" " alt="" coords="473,414,398,455,396,451,470,410"/>
+<area shape="poly" title=" " alt="" coords="446,341,351,383,349,379,444,336"/>
+<area shape="poly" title=" " alt="" coords="477,338,487,373,482,374,472,340"/>
+<area shape="poly" title=" " alt="" coords="555,192,555,226,549,226,549,192"/>
+<area shape="poly" title=" " alt="" coords="338,121,211,165,210,160,337,116"/>
+<area shape="poly" title=" " alt="" coords="365,120,349,155,347,173,353,191,378,214,408,231,442,242,476,247,475,253,441,247,406,236,374,219,348,193,341,174,344,153,360,118"/>
+<area shape="poly" title=" " alt="" coords="451,106,499,111,552,121,605,139,654,164,688,195,716,231,737,268,752,299,747,302,733,271,712,234,684,199,651,169,603,144,551,127,498,116,450,111"/>
+<area shape="poly" title=" " alt="" coords="366,120,341,168,318,239,302,301,297,299,312,238,336,166,361,118"/>
+<area shape="rect" title=" " alt="" coords="363,167,440,192"/>
+<area shape="poly" title=" " alt="" coords="378,118,394,153,389,155,373,120"/>
+<area shape="poly" title=" " alt="" coords="655,119,662,153,661,174,654,193,632,219,603,237,600,232,628,215,650,191,656,173,657,154,650,120"/>
 </map>
 </div>
-</div></div><!-- contents -->
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:ab701e3ac61a85b337ec5c1abaad6742d" id="r_ab701e3ac61a85b337ec5c1abaad6742d"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="BackendManager_8cpp.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a> = nlohmann::json</td></tr>
+<tr class="separator:ab701e3ac61a85b337ec5c1abaad6742d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="ab701e3ac61a85b337ec5c1abaad6742d" name="ab701e3ac61a85b337ec5c1abaad6742d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab701e3ac61a85b337ec5c1abaad6742d">&#9670;&#160;</a></span>json</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="BackendAiManager_8cpp.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a> =  nlohmann::json</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_4f38db07240614f25134cb9a8bebbaf9.html">shared</a></li><li class="navelem"><a class="el" href="dir_12b39c674be3b5d4e9ccc3b615c66830.html">backendManagement</a></li><li class="navelem"><a class="el" href="BackendManager_8cpp.html">BackendManager.cpp</a></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_330b044051c8fd211c3b3e3c64d42f44.html">backendManagement</a></li><li class="navelem"><a class="el" href="BackendManager_8cpp.html">BackendManager.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>

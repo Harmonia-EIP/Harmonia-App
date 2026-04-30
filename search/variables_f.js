@@ -1,10 +1,15 @@
 var searchData=
 [
-  ['textprimary_0',['textPrimary',['../structThemePalette.html#a221bbd68978b99f33701eff01eed03eb',1,'ThemePalette']]],
-  ['textsecondary_1',['textSecondary',['../structThemePalette.html#a421ac3d45c0036d9d234fd1063fd0065',1,'ThemePalette']]],
-  ['themebutton_2',['themeButton',['../classTitleComponent.html#ad5abc823bb4567ec3f39aa589fd03cb8',1,'TitleComponent']]],
-  ['themeid_3',['themeid',['../structUserSession.html#aa672f9f78e0b491b07d5deabb3d6dd2e',1,'UserSession::themeId'],['../structUserProfile.html#ad653cf20ab1a2b58a26573efeb1baa07',1,'UserProfile::themeId']]],
-  ['title_4',['title',['../classTitleComponent.html#aade3079cd2fce24ac2ae1292c0a32bce',1,'TitleComponent::title'],['../classMainComponent.html#a7a301d9e544c5b02f84bfb07ee1ad036',1,'MainComponent::title']]],
-  ['titlelabel_5',['titlelabel',['../classTitleComponent.html#ad4782dedf7a825df82392ffc9e7afa87',1,'TitleComponent::titleLabel'],['../classLoginPage.html#a743dbe692a5203c6c1a766c409b99d08',1,'LoginPage::titleLabel'],['../classSignupPage.html#a45a91e2876841839d278c9e8d0421367',1,'SignupPage::titleLabel'],['../classWelcomePage.html#a2d6dddcf5a14ba6ab661a31b4dae8601',1,'WelcomePage::titleLabel']]],
-  ['topbar_6',['topBar',['../classMainComponent.html#a03ecf7c4690659d1bc95e85784e87f31',1,'MainComponent']]]
+  ['red_0',['Red',['../namespaceStrings_1_1Themes.html#a2a697e5d72c465787ddbca73d3965779',1,'Strings::Themes']]],
+  ['refreshrate_1',['RefreshRate',['../namespaceAppConfig_1_1Oscilloscope.html#ad37b46d10c8213e5207b6218898f996d',1,'AppConfig::Oscilloscope']]],
+  ['release_2',['release',['../classDataModel.html#a58155f163c9f06ce5e46fd3f5742086a',1,'DataModel::release'],['../structPatchParams.html#ad4c334330620124410505a5b72f8df0d',1,'PatchParams::release'],['../namespaceStrings_1_1Parameters.html#a3f5e12e9ec64e3239b9acc6aceda1f23',1,'Strings::Parameters::Release']]],
+  ['releaselabel_3',['releaseLabel',['../classADSRComponent.html#ad30ce38413f703d392055f8cb7a76938',1,'ADSRComponent']]],
+  ['releaseslider_4',['releaseSlider',['../classADSRComponent.html#a09462fce81ce3f69353caba5404f5de1',1,'ADSRComponent']]],
+  ['resetmissingparams_5',['ResetMissingParams',['../namespaceStrings_1_1Buttons.html#a632005a1710f25370383d2cc41d7e347',1,'Strings::Buttons']]],
+  ['resetmissingparamstoggle_6',['resetMissingParamsToggle',['../classBottomBarComponent.html#a31ab5b10e259c729ceaae6d6ab341911',1,'BottomBarComponent']]],
+  ['resonance_7',['resonance',['../classDataModel.html#a0c14f97fbe75de90c3df7115a79d9b23',1,'DataModel::resonance'],['../structPatchParams.html#ad66b448eaa1b1ccc4761b5666a558ef6',1,'PatchParams::resonance'],['../namespaceStrings_1_1Parameters.html#a4bd19e81521295d5c2d6f852cb140fe4',1,'Strings::Parameters::Resonance']]],
+  ['resonancelabel_8',['resonanceLabel',['../classFilterComponent.html#ae0a1e0f06d86164fec41306412ff311a',1,'FilterComponent']]],
+  ['resonanceslider_9',['resonanceSlider',['../classFilterComponent.html#a553f8e829479a8f210481051b47c8c62',1,'FilterComponent']]],
+  ['ringbuffer_10',['ringBuffer',['../classOscilloscopeComponent.html#a5db3a0f8b06f5b695871a08e4e51a9e1',1,'OscilloscopeComponent']]],
+  ['role_11',['role',['../structUserProfile.html#a79cc90d5e09f1f2c13ac3d2a956022db',1,'UserProfile']]]
 ];

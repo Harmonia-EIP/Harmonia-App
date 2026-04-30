@@ -91,6 +91,8 @@ $(document).ready(function(){initNavTree('classHarmoniaAudioProcessor.html','');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classHarmoniaAudioProcessor-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">HarmoniaAudioProcessor Class Reference</div></div>
 </div><!--header-->
@@ -112,9 +114,21 @@ Collaboration diagram for HarmoniaAudioProcessor:</div>
 <div class="dyncontent">
 <div class="center"><img src="classHarmoniaAudioProcessor__coll__graph.png" border="0" usemap="#aHarmoniaAudioProcessor_coll__map" alt="Collaboration graph"/></div>
 <map name="aHarmoniaAudioProcessor_coll__map" id="aHarmoniaAudioProcessor_coll__map">
-<area shape="rect" title=" " alt="" coords="5,79,192,104"/>
-<area shape="rect" title=" " alt="" coords="20,5,177,31"/>
-<area shape="poly" title=" " alt="" coords="101,44,101,79,96,79,96,44"/>
+<area shape="rect" title=" " alt="" coords="12,269,199,295"/>
+<area shape="rect" title=" " alt="" coords="5,181,163,207"/>
+<area shape="poly" title=" " alt="" coords="93,219,105,268,100,269,88,221"/>
+<area shape="rect" href="classOscilloscopeComponent.html" title=" " alt="" coords="187,181,365,207"/>
+<area shape="poly" title=" " alt="" coords="242,215,130,271,127,267,240,210"/>
+<area shape="rect" title=" " alt="" coords="73,93,205,119"/>
+<area shape="poly" title=" " alt="" coords="170,124,259,179,256,183,167,128"/>
+<area shape="rect" title=" " alt="" coords="229,93,323,119"/>
+<area shape="poly" title=" " alt="" coords="279,133,279,181,273,181,273,133"/>
+<area shape="rect" href="classAppLookAndFeel.html" title=" " alt="" coords="348,93,479,119"/>
+<area shape="poly" title=" " alt="" coords="385,128,296,183,293,179,382,124"/>
+<area shape="rect" title=" " alt="" coords="250,5,414,31"/>
+<area shape="poly" title=" " alt="" coords="354,39,404,91,400,95,350,43"/>
+<area shape="rect" href="structThemePalette.html" title=" " alt="" coords="439,5,551,31"/>
+<area shape="poly" title=" " alt="" coords="476,43,427,95,423,91,472,39"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -160,6 +174,26 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:af6a2fb3818fcae9d9e24d71f98f1b889"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f21c2da410ae60d5936f26c12234f29" id="r_a7f21c2da410ae60d5936f26c12234f29"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#a7f21c2da410ae60d5936f26c12234f29">setStateInformation</a> (const void *data, int sizeInBytes) override</td></tr>
 <tr class="separator:a7f21c2da410ae60d5936f26c12234f29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ee856de444282ab01de375d3afabaec" id="r_a9ee856de444282ab01de375d3afabaec"><td class="memItemLeft" align="right" valign="top">juce::MidiKeyboardState &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#a9ee856de444282ab01de375d3afabaec">getKeyboardState</a> ()</td></tr>
+<tr class="separator:a9ee856de444282ab01de375d3afabaec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8ae47529cc122365dc291ed115d9914" id="r_af8ae47529cc122365dc291ed115d9914"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#af8ae47529cc122365dc291ed115d9914">setParams</a> (const <a class="el" href="structPatchParams.html">PatchParams</a> &amp;params)</td></tr>
+<tr class="separator:af8ae47529cc122365dc291ed115d9914"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37f4f276d331c7fcaccb602aaad1626c" id="r_a37f4f276d331c7fcaccb602aaad1626c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#a37f4f276d331c7fcaccb602aaad1626c">setOscilloscope</a> (<a class="el" href="classOscilloscopeComponent.html">OscilloscopeComponent</a> *osc)</td></tr>
+<tr class="separator:a37f4f276d331c7fcaccb602aaad1626c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a265c748989db26b655dec1ec635f2526" id="r_a265c748989db26b655dec1ec635f2526"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classOscilloscopeComponent.html">OscilloscopeComponent</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#a265c748989db26b655dec1ec635f2526">oscilloscope</a> = nullptr</td></tr>
+<tr class="separator:a265c748989db26b655dec1ec635f2526"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61cf09b3ab1ddbc40d290414609adfe4" id="r_a61cf09b3ab1ddbc40d290414609adfe4"><td class="memItemLeft" align="right" valign="top">juce::CriticalSection&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#a61cf09b3ab1ddbc40d290414609adfe4">oscLock</a></td></tr>
+<tr class="separator:a61cf09b3ab1ddbc40d290414609adfe4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a398de85fb71b63459c0e2286aae2c8b5" id="r_a398de85fb71b63459c0e2286aae2c8b5"><td class="memItemLeft" align="right" valign="top">juce::Synthesiser&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#a398de85fb71b63459c0e2286aae2c8b5">synth</a></td></tr>
+<tr class="separator:a398de85fb71b63459c0e2286aae2c8b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0591acaf0cbf37c2fc24ef3ed6dafb1" id="r_af0591acaf0cbf37c2fc24ef3ed6dafb1"><td class="memItemLeft" align="right" valign="top">juce::MidiKeyboardState&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#af0591acaf0cbf37c2fc24ef3ed6dafb1">keyboardState</a></td></tr>
+<tr class="separator:af0591acaf0cbf37c2fc24ef3ed6dafb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af7ed2bb8caf041ebc9127c06f758907e" name="af7ed2bb8caf041ebc9127c06f758907e"></a>
@@ -312,6 +346,23 @@ Public Member Functions</h2></td></tr>
 <span class="mlabels"><span class="mlabel">override</span></span>  </td>
   </tr>
 </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9ee856de444282ab01de375d3afabaec" name="a9ee856de444282ab01de375d3afabaec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ee856de444282ab01de375d3afabaec">&#9670;&#160;</a></span>getKeyboardState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">juce::MidiKeyboardState &amp; HarmoniaAudioProcessor::getKeyboardState </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
 </div><div class="memdoc">
 
 </div>
@@ -574,7 +625,7 @@ Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">juce::MidiBuffer &amp;&#160;</td>
-          <td class="paramname">&#160;</td>
+          <td class="paramname"><em>midiMessages</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -667,6 +718,42 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a37f4f276d331c7fcaccb602aaad1626c" name="a37f4f276d331c7fcaccb602aaad1626c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37f4f276d331c7fcaccb602aaad1626c">&#9670;&#160;</a></span>setOscilloscope()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HarmoniaAudioProcessor::setOscilloscope </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classOscilloscopeComponent.html">OscilloscopeComponent</a> *&#160;</td>
+          <td class="paramname"><em>osc</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af8ae47529cc122365dc291ed115d9914" name="af8ae47529cc122365dc291ed115d9914"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8ae47529cc122365dc291ed115d9914">&#9670;&#160;</a></span>setParams()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HarmoniaAudioProcessor::setParams </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structPatchParams.html">PatchParams</a> &amp;&#160;</td>
+          <td class="paramname"><em>params</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a7f21c2da410ae60d5936f26c12234f29" name="a7f21c2da410ae60d5936f26c12234f29"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7f21c2da410ae60d5936f26c12234f29">&#9670;&#160;</a></span>setStateInformation()</h2>
 
@@ -703,9 +790,82 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="af0591acaf0cbf37c2fc24ef3ed6dafb1" name="af0591acaf0cbf37c2fc24ef3ed6dafb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0591acaf0cbf37c2fc24ef3ed6dafb1">&#9670;&#160;</a></span>keyboardState</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">juce::MidiKeyboardState HarmoniaAudioProcessor::keyboardState</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a265c748989db26b655dec1ec635f2526" name="a265c748989db26b655dec1ec635f2526"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a265c748989db26b655dec1ec635f2526">&#9670;&#160;</a></span>oscilloscope</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classOscilloscopeComponent.html">OscilloscopeComponent</a>* HarmoniaAudioProcessor::oscilloscope = nullptr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a61cf09b3ab1ddbc40d290414609adfe4" name="a61cf09b3ab1ddbc40d290414609adfe4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61cf09b3ab1ddbc40d290414609adfe4">&#9670;&#160;</a></span>oscLock</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">juce::CriticalSection HarmoniaAudioProcessor::oscLock</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a398de85fb71b63459c0e2286aae2c8b5" name="a398de85fb71b63459c0e2286aae2c8b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a398de85fb71b63459c0e2286aae2c8b5">&#9670;&#160;</a></span>synth</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">juce::Synthesiser HarmoniaAudioProcessor::synth</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/plugin/<a class="el" href="PluginProcessor_8h_source.html">PluginProcessor.h</a></li>
-<li>src/plugin/<a class="el" href="PluginProcessor_8cpp.html">PluginProcessor.cpp</a></li>
+<li>src/<a class="el" href="PluginProcessor_8h_source.html">PluginProcessor.h</a></li>
+<li>src/<a class="el" href="PluginProcessor_8cpp.html">PluginProcessor.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

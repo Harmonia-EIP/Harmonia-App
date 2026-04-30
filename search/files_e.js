@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['volumeslider_2eh_0',['VolumeSlider.h',['../VolumeSlider_8h.html',1,'']]]
+  ['uistyle_2eh_0',['UIStyle.h',['../UIStyle_8h.html',1,'']]]
 ];

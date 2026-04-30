@@ -1,6 +1,26 @@
 var dir_68267d1309a1af8e8297ef4c3efbcdba =
 [
-    [ "app", "dir_5194e5fea318fda12687127c23f8aba1.html", "dir_5194e5fea318fda12687127c23f8aba1" ],
-    [ "plugin", "dir_40bb855b7b2023435b78cde29725ed48.html", "dir_40bb855b7b2023435b78cde29725ed48" ],
-    [ "shared", "dir_4f38db07240614f25134cb9a8bebbaf9.html", "dir_4f38db07240614f25134cb9a8bebbaf9" ]
+    [ "backendManagement", "dir_330b044051c8fd211c3b3e3c64d42f44.html", "dir_330b044051c8fd211c3b3e3c64d42f44" ],
+    [ "components", "dir_3c4c7c1a85608ccd561c026bec818e51.html", "dir_3c4c7c1a85608ccd561c026bec818e51" ],
+    [ "config", "dir_7e83d1792d529f4aa7126ac7e0b3b699.html", "dir_7e83d1792d529f4aa7126ac7e0b3b699" ],
+    [ "models", "dir_bdeba5f06b852fec80257c0bf4c3c36e.html", "dir_bdeba5f06b852fec80257c0bf4c3c36e" ],
+    [ "pages", "dir_d1fc3cbd97cb772b87fa57d8dd8469cd.html", "dir_d1fc3cbd97cb772b87fa57d8dd8469cd" ],
+    [ "parameters", "dir_434cae81b587a8a3fa87d985996d40d2.html", "dir_434cae81b587a8a3fa87d985996d40d2" ],
+    [ "themes", "dir_e081a7a5c590926bad9223559b89aad5.html", "dir_e081a7a5c590926bad9223559b89aad5" ],
+    [ "tools", "dir_1563a38af0d3a5e4a6330d6d45e9792a.html", "dir_1563a38af0d3a5e4a6330d6d45e9792a" ],
+    [ "AppController.cpp", "AppController_8cpp.html", null ],
+    [ "AppController.h", "AppController_8h.html", "AppController_8h" ],
+    [ "JuceHeader.h", "JuceHeader_8h.html", null ],
+    [ "MainComponent.cpp", "MainComponent_8cpp.html", null ],
+    [ "MainComponent.h", "MainComponent_8h.html", "MainComponent_8h" ],
+    [ "MainComponent_AI.cpp", "MainComponent__AI_8cpp.html", null ],
+    [ "MainComponent_Audio.cpp", "MainComponent__Audio_8cpp.html", null ],
+    [ "MainComponent_Init.cpp", "MainComponent__Init_8cpp.html", null ],
+    [ "MainComponent_Layout.cpp", "MainComponent__Layout_8cpp.html", null ],
+    [ "MainComponent_Params.cpp", "MainComponent__Params_8cpp.html", null ],
+    [ "MainComponent_Theme.cpp", "MainComponent__Theme_8cpp.html", null ],
+    [ "PluginEditor.cpp", "PluginEditor_8cpp.html", null ],
+    [ "PluginEditor.h", "PluginEditor_8h.html", "PluginEditor_8h" ],
+    [ "PluginProcessor.cpp", "PluginProcessor_8cpp.html", "PluginProcessor_8cpp" ],
+    [ "PluginProcessor.h", "PluginProcessor_8h.html", "PluginProcessor_8h" ]
 ];

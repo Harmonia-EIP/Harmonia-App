@@ -6,6 +6,7 @@ var classHarmoniaAudioProcessor =
     [ "changeProgramName", "classHarmoniaAudioProcessor.html#aecb41de829b3b9910f964a45d39bc946", null ],
     [ "createEditor", "classHarmoniaAudioProcessor.html#a20d2e2bcbd3a744433fe1d35a233088e", null ],
     [ "getCurrentProgram", "classHarmoniaAudioProcessor.html#af7fead5b20f7ff059b4fdbc112ef069b", null ],
+    [ "getKeyboardState", "classHarmoniaAudioProcessor.html#a9ee856de444282ab01de375d3afabaec", null ],
     [ "getName", "classHarmoniaAudioProcessor.html#a918dd75f25614dc184ae001fe6c6089a", null ],
     [ "getNumPrograms", "classHarmoniaAudioProcessor.html#abd998afaed106bc555f50d09932a93bf", null ],
     [ "getProgramName", "classHarmoniaAudioProcessor.html#a9b300a27b2e7af330d955448f202000c", null ],
@@ -19,5 +20,11 @@ var classHarmoniaAudioProcessor =
     [ "producesMidi", "classHarmoniaAudioProcessor.html#ac7cf47b7562b4fb53ccb8e3f03228e70", null ],
     [ "releaseResources", "classHarmoniaAudioProcessor.html#a81b28881353f8f7fad2607b44767ac08", null ],
     [ "setCurrentProgram", "classHarmoniaAudioProcessor.html#a1b4b7b679ecfa0b689425aa36400cc60", null ],
-    [ "setStateInformation", "classHarmoniaAudioProcessor.html#a7f21c2da410ae60d5936f26c12234f29", null ]
+    [ "setOscilloscope", "classHarmoniaAudioProcessor.html#a37f4f276d331c7fcaccb602aaad1626c", null ],
+    [ "setParams", "classHarmoniaAudioProcessor.html#af8ae47529cc122365dc291ed115d9914", null ],
+    [ "setStateInformation", "classHarmoniaAudioProcessor.html#a7f21c2da410ae60d5936f26c12234f29", null ],
+    [ "keyboardState", "classHarmoniaAudioProcessor.html#af0591acaf0cbf37c2fc24ef3ed6dafb1", null ],
+    [ "oscilloscope", "classHarmoniaAudioProcessor.html#a265c748989db26b655dec1ec635f2526", null ],
+    [ "oscLock", "classHarmoniaAudioProcessor.html#a61cf09b3ab1ddbc40d290414609adfe4", null ],
+    [ "synth", "classHarmoniaAudioProcessor.html#a398de85fb71b63459c0e2286aae2c8b5", null ]
 ];

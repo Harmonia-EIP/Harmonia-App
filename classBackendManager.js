@@ -5,10 +5,10 @@ var classBackendManager =
     [ "clearSession", "classBackendManager.html#a022a7ce81088cec16dbe4a5abda31dd4", null ],
     [ "generatePatch", "classBackendManager.html#a53f5ec480391968a62fac37fe6cbe78d", null ],
     [ "getApiUrl", "classBackendManager.html#abfaf058d370332559ca2a79da994e72f", null ],
-    [ "getExeDir", "classBackendManager.html#a8c00c22a87eae97155272138db36a671", null ],
+    [ "getAppDataDir", "classBackendManager.html#a8676914547b9934d0ef6d2aa1ade0823", null ],
     [ "getProfile", "classBackendManager.html#a45da484953210bee5b8baa2fafd463f6", null ],
     [ "getSessionFile", "classBackendManager.html#a75e5015d05b4a9bf67492b95936a03f9", null ],
-    [ "loadEnv", "classBackendManager.html#ab2ec7106e573f3f0a074c7c6405c6365", null ],
+    [ "loadConfig", "classBackendManager.html#a06d82d328883c14c582114648142d5c6", null ],
     [ "loadSession", "classBackendManager.html#acf262702909c9686548e84aa3bc9e40c", null ],
     [ "loginUser", "classBackendManager.html#a27675e6f46e70bcbae60c9cbefba8fd6", null ],
     [ "saveSession", "classBackendManager.html#aa1b7b42c72d7e0293566eea70d004b0e", null ],
@@ -21,6 +21,7 @@ var classBackendManager =
     [ "aiManager", "classBackendManager.html#a79b635e8fdad51b3f510ac4a2206eb1e", null ],
     [ "apiUrl", "classBackendManager.html#a0bef3209241177f810c26fc771299900", null ],
     [ "authManager", "classBackendManager.html#a1ccef5b4d24ef3205a6a487380506f86", null ],
+    [ "logFile", "classBackendManager.html#aee247266ceecc3335b46d0ca7cd93af1", null ],
     [ "profileManager", "classBackendManager.html#aee6460cdacda4829b65e362b145c6bfa", null ],
     [ "sessionFile", "classBackendManager.html#aaf2b056ac6c42db83b6f51edacf68b74", null ]
 ];

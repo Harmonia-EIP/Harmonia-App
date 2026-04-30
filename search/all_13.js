@@ -1,8 +1,19 @@
 var searchData=
 [
-  ['verticalgain_0',['verticalGain',['../classOscilloscopeComponent.html#a0d57dcb8a9a009ddda3dee15e1b9b3b9',1,'OscilloscopeComponent']]],
-  ['volume_1',['volume',['../structPatchParams.html#af95e5006acc4df2a97e3dd2741e25d8a',1,'PatchParams::volume'],['../classDataModel.html#ad38d08c7096f02b581efbd6d948708e5',1,'DataModel::volume'],['../structHarmoniaParams.html#ac5fba4b7d6106f8df59097f391a230b0',1,'HarmoniaParams::volume']]],
-  ['volumelabel_2',['volumeLabel',['../classFrequencyVolumeComponent.html#a6590c972b0130bdcb2459a3d01f041e1',1,'FrequencyVolumeComponent']]],
-  ['volumeslider_3',['volumeslider',['../classVolumeSlider.html',1,'VolumeSlider'],['../classFrequencyVolumeComponent.html#af5ef5b4f2fb9875b0e1fd3a2af0df303',1,'FrequencyVolumeComponent::volumeSlider'],['../classVolumeSlider.html#a70cce861cd3fecfaaddb2496d9f57d7b',1,'VolumeSlider::VolumeSlider()']]],
-  ['volumeslider_2eh_4',['VolumeSlider.h',['../VolumeSlider_8h.html',1,'']]]
+  ['uistyle_0',['UIStyle',['../namespaceUIStyle.html',1,'']]],
+  ['uistyle_2eh_1',['UIStyle.h',['../UIStyle_8h.html',1,'']]],
+  ['uistyle_3a_3afonts_2',['Fonts',['../namespaceUIStyle_1_1Fonts.html',1,'UIStyle']]],
+  ['unknownerror_3',['UnknownError',['../namespaceStrings_1_1Errors.html#ac4894cade2db4978029094f2b7a36ccb',1,'Strings::Errors']]],
+  ['unreadableairesponse_4',['UnreadableAIResponse',['../namespaceStrings_1_1Errors.html#ad642bc9bfc2212b2729cf6e01e3e0132',1,'Strings::Errors']]],
+  ['updatefiltertype_5',['updateFilterType',['../classHarmoniaVoice.html#a593de7f83ffbf530a07b7c952197ab61',1,'HarmoniaVoice']]],
+  ['updatelayout_6',['updatelayout',['../classBackendManager.html#aea6d9fd0fcb7a047dd5c693535b0de7b',1,'BackendManager::updateLayout()'],['../classBackendProfileManager.html#af403c786e26c328ca21bb1991b46a7d1',1,'BackendProfileManager::updateLayout()']]],
+  ['updateoscillator_7',['updateOscillator',['../classHarmoniaVoice.html#af60465add6304ec5cd38c45a6e30822f',1,'HarmoniaVoice']]],
+  ['updatesynthparamsfromui_8',['updateSynthParamsFromUI',['../classMainComponent.html#a9c991d010f0d8f5ca0e321fb3d3d85fa',1,'MainComponent']]],
+  ['updatetheme_9',['updatetheme',['../classBackendManager.html#ad143924eb6fd00d2c65ed7f9e572c818',1,'BackendManager::updateTheme()'],['../classBackendProfileManager.html#a7bf82c8dcbae1ceed3d468f9207a220e',1,'BackendProfileManager::updateTheme()']]],
+  ['user_10',['User',['../namespaceStrings_1_1Labels.html#a5c4bfdb651f59c16cbc0925c7d9b35f2',1,'Strings::Labels']]],
+  ['userid_11',['userId',['../structUserSession.html#a787104200686f0a27ea5d8ee5d02acb8',1,'UserSession']]],
+  ['username_12',['username',['../namespaceStrings_1_1Placeholders.html#af916636856101bf67ea61c3a7b9027e6',1,'Strings::Placeholders::Username'],['../structUserProfile.html#a971f890fb9138b3b8a4424f400fdfbaf',1,'UserProfile::username']]],
+  ['usernamefield_13',['usernameField',['../classSignupPage.html#a199949519dbb9b95fd4f88cb743a5a2e',1,'SignupPage']]],
+  ['userprofile_14',['UserProfile',['../structUserProfile.html',1,'']]],
+  ['usersession_15',['UserSession',['../structUserSession.html',1,'']]]
 ];

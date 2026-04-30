@@ -1,0 +1,22 @@
+<map id="AppController" name="AppController">
+<area shape="rect" id="Node000001" title=" " alt="" coords="152,357,263,383"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,137,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="72,133,72,167,76,208,86,252,104,293,120,313,140,330,182,355,179,359,137,335,117,317,100,296,81,254,71,209,67,167,67,133"/>
+<area shape="rect" id="Node000005" href="$classOscilloscopeComponent.html" title=" " alt="" coords="118,181,297,207"/>
+<area shape="poly" id="edge5_Node000005_Node000002" title=" " alt="" coords="102,124,190,179,187,183,100,128"/>
+<area shape="rect" id="Node000003" href="$classHarmoniaAudioProcessor.html" title=" " alt="" coords="114,269,301,295"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="210,309,210,357,205,357,205,309"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="321,181,478,207"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="367,215,299,248,240,272,238,267,297,243,364,211"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="210,221,210,269,205,269,205,221"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="161,93,256,119"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="211,133,210,181,205,181,206,133"/>
+<area shape="rect" id="Node000007" href="$classAppLookAndFeel.html" title=" " alt="" coords="281,93,411,119"/>
+<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="317,128,228,183,225,179,314,124"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="183,5,347,31"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="287,39,337,91,333,95,283,43"/>
+<area shape="rect" id="Node000009" href="$structThemePalette.html" title=" " alt="" coords="371,5,483,31"/>
+<area shape="poly" id="edge9_Node000007_Node000009" title=" " alt="" coords="409,43,359,95,355,91,405,39"/>
+<area shape="rect" id="Node000010" href="$classBackendManager.html" title="Main facade for backend interactions (authentication, AI, profile)." alt="" coords="325,269,460,295"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="356,303,234,359,231,355,354,298"/>
+</map>

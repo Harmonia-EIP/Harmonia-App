@@ -1,10 +1,21 @@
 var searchData=
 [
-  ['main_2ecpp_0',['main.cpp',['../main_8cpp.html',1,'']]],
-  ['maincomponent_1',['maincomponent',['../classMainComponent.html',1,'MainComponent'],['../classMainComponent.html#a77a7309f9b97bee7c3ce44883c585ec5',1,'MainComponent::MainComponent()']]],
-  ['maincomponent_2ecpp_2',['MainComponent.cpp',['../MainComponent_8cpp.html',1,'']]],
-  ['maincomponent_2eh_3',['MainComponent.h',['../MainComponent_8h.html',1,'']]],
-  ['mainwindow_4',['mainwindow',['../classMainWindow.html',1,'MainWindow'],['../classHarmoniaApp.html#aa62b7e4b24fc1331e6136ce6417a029c',1,'HarmoniaApp::mainWindow'],['../classMainWindow.html#a072b12d70737757f59908fa55fc298c4',1,'MainWindow::MainWindow()']]],
-  ['mainwindow_2ecpp_5',['MainWindow.cpp',['../MainWindow_8cpp.html',1,'']]],
-  ['mainwindow_2eh_6',['MainWindow.h',['../MainWindow_8h.html',1,'']]]
+  ['maincomponent_0',['maincomponent',['../classMainComponent.html#a0b7eace3b84e1cb74fb65a93fd281835',1,'MainComponent::MainComponent()'],['../classMainComponent.html',1,'MainComponent']]],
+  ['maincomponent_2ecpp_1',['MainComponent.cpp',['../MainComponent_8cpp.html',1,'']]],
+  ['maincomponent_2eh_2',['MainComponent.h',['../MainComponent_8h.html',1,'']]],
+  ['maincomponent_5fai_2ecpp_3',['MainComponent_AI.cpp',['../MainComponent__AI_8cpp.html',1,'']]],
+  ['maincomponent_5faudio_2ecpp_4',['MainComponent_Audio.cpp',['../MainComponent__Audio_8cpp.html',1,'']]],
+  ['maincomponent_5finit_2ecpp_5',['MainComponent_Init.cpp',['../MainComponent__Init_8cpp.html',1,'']]],
+  ['maincomponent_5flayout_2ecpp_6',['MainComponent_Layout.cpp',['../MainComponent__Layout_8cpp.html',1,'']]],
+  ['maincomponent_5fparams_2ecpp_7',['MainComponent_Params.cpp',['../MainComponent__Params_8cpp.html',1,'']]],
+  ['maincomponent_5ftheme_2ecpp_8',['MainComponent_Theme.cpp',['../MainComponent__Theme_8cpp.html',1,'']]],
+  ['max_9',['max',['../namespaceAudioConfig_1_1Filter_1_1Resonance.html#a2d4e3842491d768e45dccdac3958231e',1,'AudioConfig::Filter::Resonance::Max'],['../namespaceAudioConfig_1_1Filter_1_1Cutoff.html#acdf63713d9a664a0f0ab83a4db108f4f',1,'AudioConfig::Filter::Cutoff::Max'],['../namespaceAudioConfig_1_1ADSR_1_1Release.html#aa97389ddfd5f05f14211e7d4ee800d7e',1,'AudioConfig::ADSR::Release::Max'],['../namespaceAudioConfig_1_1ADSR_1_1Sustain.html#ac1d141167471918b55f13e72807ef10d',1,'AudioConfig::ADSR::Sustain::Max'],['../namespaceAudioConfig_1_1ADSR_1_1Attack.html#a6496bb16efcbeed7869271bd2ede0a1e',1,'AudioConfig::ADSR::Attack::Max'],['../namespaceAudioConfig_1_1Volume.html#a5cc3784abf0f24866b16f6a06771e909',1,'AudioConfig::Volume::Max'],['../namespaceAudioConfig_1_1Frequency.html#a3175347bec60b1b4073428f8dc8495c5',1,'AudioConfig::Frequency::Max'],['../namespaceAudioConfig_1_1ADSR_1_1Decay.html#a1fe6a1d7fd6079be70d3bd0372f7d64b',1,'AudioConfig::ADSR::Decay::Max']]],
+  ['maximumavailablerange_10',['maximumAvailableRange',['../namespaceAppConfig_1_1Synth.html#af417105c85f6bb77155208c68f42bf87',1,'AppConfig::Synth']]],
+  ['mid_11',['mid',['../namespaceAudioConfig_1_1Frequency.html#ada91b6889aa80753d6af367579518c80',1,'AudioConfig::Frequency::Mid'],['../namespaceAudioConfig_1_1Filter_1_1Cutoff.html#aa2bbecf5cbc028acf32b526b732f0cd1',1,'AudioConfig::Filter::Cutoff::Mid'],['../namespaceAudioConfig_1_1Filter_1_1Resonance.html#a1bc0f5aa5128db8e33323831bd9d3139',1,'AudioConfig::Filter::Resonance::Mid']]],
+  ['min_12',['min',['../namespaceAudioConfig_1_1ADSR_1_1Attack.html#a66221594221407326cfa1835d29f38e8',1,'AudioConfig::ADSR::Attack::Min'],['../namespaceAudioConfig_1_1Filter_1_1Resonance.html#ade77bf5dd9840af54f1409eda2da92b9',1,'AudioConfig::Filter::Resonance::Min'],['../namespaceAudioConfig_1_1Filter_1_1Cutoff.html#a8e43c3c120a851cf1d9567a7500b09e6',1,'AudioConfig::Filter::Cutoff::Min'],['../namespaceAudioConfig_1_1ADSR_1_1Release.html#af504245bbc74fbdba0e41efd4a883f7b',1,'AudioConfig::ADSR::Release::Min'],['../namespaceAudioConfig_1_1ADSR_1_1Sustain.html#ae399dba04bf2265262ebd2a4161b9450',1,'AudioConfig::ADSR::Sustain::Min'],['../namespaceAudioConfig_1_1ADSR_1_1Decay.html#a8cd19e214cba53ce5096b0db8ecaedab',1,'AudioConfig::ADSR::Decay::Min'],['../namespaceAudioConfig_1_1Volume.html#a07560fd3f8aed7f06917473a10f68f0b',1,'AudioConfig::Volume::Min'],['../namespaceAudioConfig_1_1Frequency.html#ad7b24aea097364e48d0f9aec5b2917f2',1,'AudioConfig::Frequency::Min']]],
+  ['minimumavailablerange_13',['minimumAvailableRange',['../namespaceAppConfig_1_1Synth.html#acc9a31609159c061f4b70ef021b008c1',1,'AppConfig::Synth']]],
+  ['missingfields_14',['MissingFields',['../namespaceStrings_1_1Errors.html#a24960f8a62db41ea9c10c9bf939d66d0',1,'Strings::Errors']]],
+  ['missingfieldsadvice_15',['MissingFieldsAdvice',['../namespaceStrings_1_1Errors.html#af25d8becf717bd60d4bd9edd69a4b486',1,'Strings::Errors']]],
+  ['missingprompt_16',['MissingPrompt',['../namespaceStrings_1_1Errors.html#a5f2731490bab2c1a5abf5964a215f68e',1,'Strings::Errors']]],
+  ['missingpromptadvice_17',['MissingPromptAdvice',['../namespaceStrings_1_1Errors.html#a39cf1aafde4290a4622b66872c85d203',1,'Strings::Errors']]]
 ];

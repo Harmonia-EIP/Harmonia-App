@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Harmonia Interface: src/plugin/PluginEditor.h Source File</title>
+<title>Harmonia Interface: src/PluginEditor.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -99,42 +99,53 @@ $(document).ready(function(){initNavTree('PluginEditor_8h_source.html',''); init
 <div class="contents">
 <a href="PluginEditor_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="JucePluginHeader_8h.html">JucePluginHeader.h</a>&quot;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;../shared/PluginAppWrapper.h&quot;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="foldopen" id="foldopen00006" data-start="{" data-end="};">
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="classHarmoniaAudioProcessorEditor.html">    6</a></span><span class="keyword">class </span><a class="code hl_class" href="classHarmoniaAudioProcessorEditor.html">HarmoniaAudioProcessorEditor</a>  : <span class="keyword">public</span> juce::AudioProcessorEditor</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>{</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    <a class="code hl_class" href="classHarmoniaAudioProcessorEditor.html">HarmoniaAudioProcessorEditor</a> (<a class="code hl_class" href="classHarmoniaAudioProcessor.html">HarmoniaAudioProcessor</a>&amp;);</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <a class="code hl_function" href="classHarmoniaAudioProcessorEditor.html#a434f958e609ed0a35c8260458e7457a6">~HarmoniaAudioProcessorEditor</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classHarmoniaAudioProcessorEditor.html#a87c4ff74bffb8a6adbd8d8dd210cd21d">paint</a> (juce::Graphics&amp;) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classHarmoniaAudioProcessorEditor.html#a8af86ef7b9522394868e7b16da26adb4">resized</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="PluginProcessor_8h.html">PluginProcessor.h</a>&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="JuceHeader_8h.html">JuceHeader.h</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="AppConfig_8h.html">config/AppConfig.h</a>&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="SynthComponent_8h.html">components/SynthComponent.h</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="AppController_8h.html">AppController.h</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="foldopen" id="foldopen00009" data-start="{" data-end="};">
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="classHarmoniaAudioProcessorEditor.html">    9</a></span><span class="keyword">class </span><a class="code hl_class" href="classHarmoniaAudioProcessorEditor.html">HarmoniaAudioProcessorEditor</a>  : <span class="keyword">public</span> juce::AudioProcessorEditor</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>{</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <a class="code hl_class" href="classHarmoniaAudioProcessorEditor.html">HarmoniaAudioProcessorEditor</a> (<a class="code hl_class" href="classHarmoniaAudioProcessor.html">HarmoniaAudioProcessor</a>&amp;);</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <a class="code hl_function" href="classHarmoniaAudioProcessorEditor.html#a434f958e609ed0a35c8260458e7457a6">~HarmoniaAudioProcessorEditor</a>() <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classHarmoniaAudioProcessorEditor.html#a4d1af66222c0c6ec427a857cd922a84d">   16</a></span>    <a class="code hl_class" href="classHarmoniaAudioProcessor.html">HarmoniaAudioProcessor</a>&amp; <a class="code hl_variable" href="classHarmoniaAudioProcessorEditor.html#a4d1af66222c0c6ec427a857cd922a84d">audioProcessor</a>;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classHarmoniaAudioProcessorEditor.html#a87c4ff74bffb8a6adbd8d8dd210cd21d">paint</a> (juce::Graphics&amp;) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classHarmoniaAudioProcessorEditor.html#a8af86ef7b9522394868e7b16da26adb4">resized</a>() <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classHarmoniaAudioProcessorEditor.html#a62b5036c6fd319accc5b3e7442d6a088">   18</a></span>    <a class="code hl_class" href="classPluginAppWrapper.html">PluginAppWrapper</a> <a class="code hl_variable" href="classHarmoniaAudioProcessorEditor.html#a62b5036c6fd319accc5b3e7442d6a088">pluginAppWrapper</a>;</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (<a class="code hl_class" href="classHarmoniaAudioProcessorEditor.html">HarmoniaAudioProcessorEditor</a>)</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>};</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="classHarmoniaAudioProcessorEditor.html#a4d1af66222c0c6ec427a857cd922a84d">   19</a></span>    <a class="code hl_class" href="classHarmoniaAudioProcessor.html">HarmoniaAudioProcessor</a>&amp; <a class="code hl_variable" href="classHarmoniaAudioProcessorEditor.html#a4d1af66222c0c6ec427a857cd922a84d">audioProcessor</a>;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="classHarmoniaAudioProcessorEditor.html#af55e8505fb92115d8f79ec3b69b6d079">   21</a></span>    <a class="code hl_class" href="classAppController.html">AppController</a> <a class="code hl_variable" href="classHarmoniaAudioProcessorEditor.html#af55e8505fb92115d8f79ec3b69b6d079">appController</a>;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classHarmoniaAudioProcessorEditor.html#aabaf0f11150af504f03551712231a699">   23</a></span>    <a class="code hl_class" href="classSynthComponent.html">SynthComponent</a> <a class="code hl_variable" href="classHarmoniaAudioProcessorEditor.html#aabaf0f11150af504f03551712231a699">synthComponent</a>;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (<a class="code hl_class" href="classHarmoniaAudioProcessorEditor.html">HarmoniaAudioProcessorEditor</a>)</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>};</div>
 </div>
-<div class="ttc" id="aJucePluginHeader_8h_html"><div class="ttname"><a href="JucePluginHeader_8h.html">JucePluginHeader.h</a></div></div>
-<div class="ttc" id="aclassHarmoniaAudioProcessorEditor_html"><div class="ttname"><a href="classHarmoniaAudioProcessorEditor.html">HarmoniaAudioProcessorEditor</a></div><div class="ttdef"><b>Definition</b> PluginEditor.h:7</div></div>
-<div class="ttc" id="aclassHarmoniaAudioProcessorEditor_html_a434f958e609ed0a35c8260458e7457a6"><div class="ttname"><a href="classHarmoniaAudioProcessorEditor.html#a434f958e609ed0a35c8260458e7457a6">HarmoniaAudioProcessorEditor::~HarmoniaAudioProcessorEditor</a></div><div class="ttdeci">~HarmoniaAudioProcessorEditor() override</div><div class="ttdef"><b>Definition</b> PluginEditor.cpp:12</div></div>
-<div class="ttc" id="aclassHarmoniaAudioProcessorEditor_html_a4d1af66222c0c6ec427a857cd922a84d"><div class="ttname"><a href="classHarmoniaAudioProcessorEditor.html#a4d1af66222c0c6ec427a857cd922a84d">HarmoniaAudioProcessorEditor::audioProcessor</a></div><div class="ttdeci">HarmoniaAudioProcessor &amp; audioProcessor</div><div class="ttdef"><b>Definition</b> PluginEditor.h:16</div></div>
-<div class="ttc" id="aclassHarmoniaAudioProcessorEditor_html_a62b5036c6fd319accc5b3e7442d6a088"><div class="ttname"><a href="classHarmoniaAudioProcessorEditor.html#a62b5036c6fd319accc5b3e7442d6a088">HarmoniaAudioProcessorEditor::pluginAppWrapper</a></div><div class="ttdeci">PluginAppWrapper pluginAppWrapper</div><div class="ttdef"><b>Definition</b> PluginEditor.h:18</div></div>
-<div class="ttc" id="aclassHarmoniaAudioProcessorEditor_html_a87c4ff74bffb8a6adbd8d8dd210cd21d"><div class="ttname"><a href="classHarmoniaAudioProcessorEditor.html#a87c4ff74bffb8a6adbd8d8dd210cd21d">HarmoniaAudioProcessorEditor::paint</a></div><div class="ttdeci">void paint(juce::Graphics &amp;) override</div><div class="ttdef"><b>Definition</b> PluginEditor.cpp:15</div></div>
-<div class="ttc" id="aclassHarmoniaAudioProcessorEditor_html_a8af86ef7b9522394868e7b16da26adb4"><div class="ttname"><a href="classHarmoniaAudioProcessorEditor.html#a8af86ef7b9522394868e7b16da26adb4">HarmoniaAudioProcessorEditor::resized</a></div><div class="ttdeci">void resized() override</div><div class="ttdef"><b>Definition</b> PluginEditor.cpp:20</div></div>
-<div class="ttc" id="aclassHarmoniaAudioProcessor_html"><div class="ttname"><a href="classHarmoniaAudioProcessor.html">HarmoniaAudioProcessor</a></div><div class="ttdef"><b>Definition</b> PluginProcessor.h:6</div></div>
-<div class="ttc" id="aclassPluginAppWrapper_html"><div class="ttname"><a href="classPluginAppWrapper.html">PluginAppWrapper</a></div><div class="ttdef"><b>Definition</b> PluginAppWrapper.h:13</div></div>
+<div class="ttc" id="aAppConfig_8h_html"><div class="ttname"><a href="AppConfig_8h.html">AppConfig.h</a></div></div>
+<div class="ttc" id="aAppController_8h_html"><div class="ttname"><a href="AppController_8h.html">AppController.h</a></div></div>
+<div class="ttc" id="aJuceHeader_8h_html"><div class="ttname"><a href="JuceHeader_8h.html">JuceHeader.h</a></div></div>
+<div class="ttc" id="aPluginProcessor_8h_html"><div class="ttname"><a href="PluginProcessor_8h.html">PluginProcessor.h</a></div></div>
+<div class="ttc" id="aSynthComponent_8h_html"><div class="ttname"><a href="SynthComponent_8h.html">SynthComponent.h</a></div></div>
+<div class="ttc" id="aclassAppController_html"><div class="ttname"><a href="classAppController.html">AppController</a></div><div class="ttdef"><b>Definition</b> AppController.h:11</div></div>
+<div class="ttc" id="aclassHarmoniaAudioProcessorEditor_html"><div class="ttname"><a href="classHarmoniaAudioProcessorEditor.html">HarmoniaAudioProcessorEditor</a></div><div class="ttdef"><b>Definition</b> PluginEditor.h:10</div></div>
+<div class="ttc" id="aclassHarmoniaAudioProcessorEditor_html_a434f958e609ed0a35c8260458e7457a6"><div class="ttname"><a href="classHarmoniaAudioProcessorEditor.html#a434f958e609ed0a35c8260458e7457a6">HarmoniaAudioProcessorEditor::~HarmoniaAudioProcessorEditor</a></div><div class="ttdeci">~HarmoniaAudioProcessorEditor() override</div><div class="ttdef"><b>Definition</b> PluginEditor.cpp:11</div></div>
+<div class="ttc" id="aclassHarmoniaAudioProcessorEditor_html_a4d1af66222c0c6ec427a857cd922a84d"><div class="ttname"><a href="classHarmoniaAudioProcessorEditor.html#a4d1af66222c0c6ec427a857cd922a84d">HarmoniaAudioProcessorEditor::audioProcessor</a></div><div class="ttdeci">HarmoniaAudioProcessor &amp; audioProcessor</div><div class="ttdef"><b>Definition</b> PluginEditor.h:19</div></div>
+<div class="ttc" id="aclassHarmoniaAudioProcessorEditor_html_a87c4ff74bffb8a6adbd8d8dd210cd21d"><div class="ttname"><a href="classHarmoniaAudioProcessorEditor.html#a87c4ff74bffb8a6adbd8d8dd210cd21d">HarmoniaAudioProcessorEditor::paint</a></div><div class="ttdeci">void paint(juce::Graphics &amp;) override</div><div class="ttdef"><b>Definition</b> PluginEditor.cpp:14</div></div>
+<div class="ttc" id="aclassHarmoniaAudioProcessorEditor_html_a8af86ef7b9522394868e7b16da26adb4"><div class="ttname"><a href="classHarmoniaAudioProcessorEditor.html#a8af86ef7b9522394868e7b16da26adb4">HarmoniaAudioProcessorEditor::resized</a></div><div class="ttdeci">void resized() override</div><div class="ttdef"><b>Definition</b> PluginEditor.cpp:19</div></div>
+<div class="ttc" id="aclassHarmoniaAudioProcessorEditor_html_aabaf0f11150af504f03551712231a699"><div class="ttname"><a href="classHarmoniaAudioProcessorEditor.html#aabaf0f11150af504f03551712231a699">HarmoniaAudioProcessorEditor::synthComponent</a></div><div class="ttdeci">SynthComponent synthComponent</div><div class="ttdef"><b>Definition</b> PluginEditor.h:23</div></div>
+<div class="ttc" id="aclassHarmoniaAudioProcessorEditor_html_af55e8505fb92115d8f79ec3b69b6d079"><div class="ttname"><a href="classHarmoniaAudioProcessorEditor.html#af55e8505fb92115d8f79ec3b69b6d079">HarmoniaAudioProcessorEditor::appController</a></div><div class="ttdeci">AppController appController</div><div class="ttdef"><b>Definition</b> PluginEditor.h:21</div></div>
+<div class="ttc" id="aclassHarmoniaAudioProcessor_html"><div class="ttname"><a href="classHarmoniaAudioProcessor.html">HarmoniaAudioProcessor</a></div><div class="ttdef"><b>Definition</b> PluginProcessor.h:8</div></div>
+<div class="ttc" id="aclassSynthComponent_html"><div class="ttname"><a href="classSynthComponent.html">SynthComponent</a></div><div class="ttdef"><b>Definition</b> SynthComponent.h:6</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_40bb855b7b2023435b78cde29725ed48.html">plugin</a></li><li class="navelem"><a class="el" href="PluginEditor_8h.html">PluginEditor.h</a></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="PluginEditor_8h.html">PluginEditor.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>

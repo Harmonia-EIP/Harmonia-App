@@ -1,5 +1,5 @@
-<map id="src/shared/components/OscilloscopeComponent.h" name="src/shared/components/OscilloscopeComponent.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,200,45"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="19,93,187,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="105,46,105,79,100,79,100,46"/>
+<map id="src/components/OscilloscopeComponent.h" name="src/components/OscilloscopeComponent.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,216,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="27,93,195,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,46,113,79,108,79,108,46"/>
 </map>

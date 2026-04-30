@@ -1,6 +1,22 @@
 var searchData=
 [
-  ['userid_0',['userId',['../structUserSession.html#a787104200686f0a27ea5d8ee5d02acb8',1,'UserSession']]],
-  ['username_1',['username',['../structUserProfile.html#a971f890fb9138b3b8a4424f400fdfbaf',1,'UserProfile']]],
-  ['usernamefield_2',['usernameField',['../classSignupPage.html#a199949519dbb9b95fd4f88cb743a5a2e',1,'SignupPage']]]
+  ['saw_0',['Saw',['../namespaceStrings_1_1Waveform.html#aa82f7a295e310c58ba5f559fc14a2be6',1,'Strings::Waveform']]],
+  ['scopegrid_1',['scopeGrid',['../classOscilloscopeComponent.html#a2630998449efd28f755252b25129d7ee',1,'OscilloscopeComponent']]],
+  ['scopewave_2',['scopeWave',['../classOscilloscopeComponent.html#a8f7714aeaf6de84967ff46d8958d8e1c',1,'OscilloscopeComponent']]],
+  ['session_3',['session',['../structAuthResult.html#a2d0c65cf5c8e0f7a1ea4aa6c12ff0620',1,'AuthResult']]],
+  ['sessionexpired_4',['SessionExpired',['../namespaceStrings_1_1Errors.html#ab0f12251e9e15b8154bdb9809feb3817',1,'Strings::Errors']]],
+  ['sessionfile_5',['sessionFile',['../classBackendManager.html#aaf2b056ac6c42db83b6f51edacf68b74',1,'BackendManager']]],
+  ['signin_6',['signin',['../namespaceStrings_1_1Buttons.html#a3825148a29dbe84f25a3bea0d98bd405',1,'Strings::Buttons::SignIn'],['../namespaceStrings_1_1Titles.html#a6e1a4139e62bed7b7a6377a67e5ecc11',1,'Strings::Titles::SignIn']]],
+  ['signinbutton_7',['signinButton',['../classWelcomePage.html#acffa09e6d8f81b137802ec17e43fd6e7',1,'WelcomePage']]],
+  ['signup_8',['SignUp',['../namespaceStrings_1_1Buttons.html#ac8738ac8efba46b17ce72cc80712d29e',1,'Strings::Buttons']]],
+  ['signupbutton_9',['signupbutton',['../classSignupPage.html#a7514b7746eafb02fa458d3877c18e788',1,'SignupPage::signupButton'],['../classWelcomePage.html#aa6a9d4102ba8f13f507e298be862dc67',1,'WelcomePage::signupButton']]],
+  ['sine_10',['Sine',['../namespaceStrings_1_1Waveform.html#a1ad5332e3013541595bbf24dbe180ff1',1,'Strings::Waveform']]],
+  ['square_11',['Square',['../namespaceStrings_1_1Waveform.html#a9a82bb6249d240a3b0d35d54f9fd5ab0',1,'Strings::Waveform']]],
+  ['subtitlesize_12',['SubTitleSize',['../namespaceUIStyle_1_1Fonts.html#ae979357aa834b8d751644d9486741d21',1,'UIStyle::Fonts']]],
+  ['success_13',['success',['../structAuthResult.html#aa940ee4d1310ea31b071bc03e84e8960',1,'AuthResult::success'],['../structPatchCallResult.html#a5286c39ccf7f6b93ef47f1ce3586b05d',1,'PatchCallResult::success'],['../structProfileResult.html#af4dd36daebc4ba9ca9e79298ec2c6d10',1,'ProfileResult::success']]],
+  ['sustain_14',['sustain',['../namespaceStrings_1_1Parameters.html#a7fc95f7ba0883ad1ae4ed3c1311ceb3a',1,'Strings::Parameters::Sustain'],['../structPatchParams.html#a9f2116d3f496557966b9d258e70d8c65',1,'PatchParams::sustain'],['../classDataModel.html#a000aa847dc17b41bb3330f9820fe4fe1',1,'DataModel::sustain']]],
+  ['sustainlabel_15',['sustainLabel',['../classADSRComponent.html#a8d321ffb7a489cd278abf3ac80082a4e',1,'ADSRComponent']]],
+  ['sustainslider_16',['sustainSlider',['../classADSRComponent.html#aac32a66f0edf273252ed1aa1999130f5',1,'ADSRComponent']]],
+  ['synth_17',['synth',['../classHarmoniaAudioProcessor.html#a398de85fb71b63459c0e2286aae2c8b5',1,'HarmoniaAudioProcessor']]],
+  ['synthcomponent_18',['synthcomponent',['../classHarmoniaAudioProcessorEditor.html#aabaf0f11150af504f03551712231a699',1,'HarmoniaAudioProcessorEditor::synthComponent'],['../classMainComponent.html#a6ef85e5f5ab289e3affb1bc63ad1176c',1,'MainComponent::synthComponent']]]
 ];

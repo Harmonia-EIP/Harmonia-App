@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['red_0',['Red',['../classAppLookAndFeel.html#a7e966ad29d8634970a167de96d1a6b87aee38e4d5dd68c4e440825018d549cb47',1,'AppLookAndFeel']]]
+  ['panelbgid_0',['panelBgId',['../namespaceAppColourIds.html#a395e668d95f8775e059d210c51399489aa86f48c1fac4d9044d9c393b58057180',1,'AppColourIds']]],
+  ['paneloutlineid_1',['panelOutlineId',['../namespaceAppColourIds.html#a395e668d95f8775e059d210c51399489aa16c3b446fc025e027cd2f54253969d0',1,'AppColourIds']]]
 ];

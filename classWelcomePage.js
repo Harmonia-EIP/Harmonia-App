@@ -1,8 +1,11 @@
 var classWelcomePage =
 [
     [ "WelcomePage", "classWelcomePage.html#a9a7dad9a04f5a6b94c721e49a9d006d5", null ],
+    [ "~WelcomePage", "classWelcomePage.html#a7a336327432db29913ae5ed4eb61075b", null ],
     [ "paint", "classWelcomePage.html#ab28923b10637e4049f22e187907f4be1", null ],
     [ "resized", "classWelcomePage.html#a37aef1a9636960dc570512aea2fc6ec5", null ],
+    [ "timerCallback", "classWelcomePage.html#a80a5d0cbfd814bc489226ee884dc2498", null ],
+    [ "animationPhase", "classWelcomePage.html#adae06f50b234bd092df516a2f75b4ffd", null ],
     [ "authLookAndFeel", "classWelcomePage.html#ae1a15d2e3f49f5ded9e394a2c5fad676", null ],
     [ "onChoice", "classWelcomePage.html#a19fe0a27f7a565caa8a6b3632459507d", null ],
     [ "signinButton", "classWelcomePage.html#acffa09e6d8f81b137802ec17e43fd6e7", null ],
