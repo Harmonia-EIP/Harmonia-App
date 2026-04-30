@@ -1,4 +1,4 @@
-name: Build Windows (JUCE)
+name: Build Windows and Test Standalone/VST3 (JUCE)
 
 on:
   push:
