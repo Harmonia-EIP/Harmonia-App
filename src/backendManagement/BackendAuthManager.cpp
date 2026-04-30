@@ -32,7 +32,7 @@ AuthResult BackendAuthManager::loginUser(
 
     if (response.status_code != 200)
     {
-        juce::String message = "Erreur inconnue";
+        juce::String message = Strings::Errors::UnknownError;
 
         try
         {
@@ -42,7 +42,7 @@ AuthResult BackendAuthManager::loginUser(
         }
         catch (...)
         {
-            message = "Impossible de lire la réponse du serveur.";
+            message = Strings::Errors::UnknownError;
         }
 
         return AuthResult{ false, {}, message };
@@ -98,7 +98,7 @@ AuthResult BackendAuthManager::signupUser(
 
     if (response.status_code != 200)
     {
-        juce::String message = "Erreur inconnue";
+        juce::String message = Strings::Errors::UnknownError;
 
         try
         {
@@ -108,7 +108,7 @@ AuthResult BackendAuthManager::signupUser(
         }
         catch (...)
         {
-            message = "Impossible d’analyser l’erreur signup.";
+            message = Strings::Errors::UnknownError;
         }
 
         return AuthResult{ false, {}, message };

@@ -17,7 +17,7 @@ ProfileResult BackendProfileManager::getProfile()
     if (!sessionOpt.has_value())
     {
         result.success = false;
-        result.errorMessage = "Pas de session active";
+        result.errorMessage = Strings::Errors::NoUserConnected.toStdString();
         return result;
     }
 
@@ -44,11 +44,11 @@ ProfileResult BackendProfileManager::getProfile()
             if (body.contains("detail"))
                 result.errorMessage = body["detail"].get<std::string>();
             else
-                result.errorMessage = "Erreur inconnue";
+                result.errorMessage = Strings::Errors::UnknownError.toStdString();
         }
         catch (...)
         {
-            result.errorMessage = "Impossible d'analyser la réponse du serveur";
+            result.errorMessage = Strings::Errors::UnknownError.toStdString();
         }
         return result;
     }
@@ -75,7 +75,7 @@ ProfileResult BackendProfileManager::getProfile()
     catch (...)
     {
         result.success = false;
-        result.errorMessage = "Impossible de parser le profil";
+        result.errorMessage = Strings::Errors::UnknownError.toStdString();
     }
 
     return result;
@@ -90,7 +90,7 @@ ProfileResult BackendProfileManager::updateTheme(int themeId)
     if (!sessionOpt.has_value())
     {
         result.success = false;
-        result.errorMessage = "Pas de session active";
+        result.errorMessage = Strings::Errors::NoUserConnected.toStdString();
         return result;
     }
 
@@ -117,7 +117,7 @@ ProfileResult BackendProfileManager::updateTheme(int themeId)
     if (response.status_code != 200)
     {
         result.success = false;
-        result.errorMessage = "Erreur update theme";
+        result.errorMessage = Strings::Errors::UnknownError.toStdString();
         return result;
     }
 
@@ -133,7 +133,7 @@ ProfileResult BackendProfileManager::updateLayout(int layoutId)
     if (!sessionOpt.has_value())
     {
         result.success = false;
-        result.errorMessage = "Pas de session active";
+        result.errorMessage = Strings::Errors::NoUserConnected.toStdString();
         return result;
     }
 
@@ -160,7 +160,7 @@ ProfileResult BackendProfileManager::updateLayout(int layoutId)
     if (response.status_code != 200)
     {
         result.success = false;
-        result.errorMessage = "Erreur update layout";
+        result.errorMessage = Strings::Errors::UnknownError.toStdString();
         return result;
     }
 

@@ -7,14 +7,15 @@
 #include "pages/SignupPage.h"
 #include "MainComponent.h"
 
-class AppCore : public juce::Component
+class AppController : public juce::Component
 {
 public:
-    AppCore();
+    AppController(HarmoniaAudioProcessor& p);
 
     void resized() override;
 
 private:
+    HarmoniaAudioProcessor& processor;
     BackendManager backend;
 
     std::unique_ptr<juce::Component> currentComponent;

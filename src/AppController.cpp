@@ -1,6 +1,6 @@
-#include "AppCore.h"
+#include "AppController.h"
 
-AppCore::AppCore()
+AppController::AppController(HarmoniaAudioProcessor& p) : processor(p)
 {
     auto session = backend.loadSession();
 
@@ -37,14 +37,14 @@ AppCore::AppCore()
 }
 
 
-void AppCore::resized()
+void AppController::resized()
 {
     if (currentComponent)
         currentComponent->setBounds(getLocalBounds());
 }
 
 
-void AppCore::showWelcomeScreen()
+void AppController::showWelcomeScreen()
 {
     auto welcome = std::make_unique<WelcomePage>();
 
@@ -62,7 +62,7 @@ void AppCore::showWelcomeScreen()
 }
 
 
-void AppCore::showLoginScreen()
+void AppController::showLoginScreen()
 {
     auto login = std::make_unique<LoginPage>(backend,
         [this](const UserSession& session)
@@ -82,7 +82,7 @@ void AppCore::showLoginScreen()
 }
 
 
-void AppCore::showSignupScreen()
+void AppController::showSignupScreen()
 {
     auto signup = std::make_unique<SignupPage>(backend,
         [this](const UserSession& session)
@@ -102,9 +102,9 @@ void AppCore::showSignupScreen()
 }
 
 
-void AppCore::showMainScreen(const UserSession& session)
+void AppController::showMainScreen(const UserSession& session)
 {
-    auto main = std::make_unique<MainComponent>(backend, session);
+    auto main = std::make_unique<MainComponent>(processor, backend, session);
 
     main->getTitleComponent().onLogout = [this]()
     {

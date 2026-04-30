@@ -125,9 +125,5 @@ void MainComponent::updateSynthParamsFromUI()
         }
     }();
 
-    for (int i = 0; i < synth.getNumVoices(); ++i)
-    {
-        if (auto* v = dynamic_cast<HarmoniaVoice*>(synth.getVoice(i)))
-            v->setParameters(params);
-    }
+    processor.setParams(params);
 }

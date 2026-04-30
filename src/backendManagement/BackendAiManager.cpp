@@ -1,8 +1,4 @@
 #include "BackendAiManager.h"
-#include "BackendManager.h"
-
-#include <cpr/cpr.h>
-#include <nlohmann/json.hpp>
 
 using json = nlohmann::json;
 
@@ -17,14 +13,14 @@ PatchCallResult BackendAiManager::generatePatch(const juce::String& prompt)
 
     if (prompt.trim().isEmpty())
     {
-        result.errorMessage = "Prompt vide.";
+        result.errorMessage = Strings::Errors::EmptyPrompt.toStdString();
         return result;
     }
 
     auto sessionOpt = backend.loadSession();
     if (!sessionOpt.has_value())
     {
-        result.errorMessage = "Aucun utilisateur connecté.";
+        result.errorMessage = Strings::Errors::NoUserConnected.toStdString();
         return result;
     }
 
@@ -32,7 +28,7 @@ PatchCallResult BackendAiManager::generatePatch(const juce::String& prompt)
     auto now = juce::Time::getCurrentTime();
     if (session.expiresAt < now)
     {
-        result.errorMessage = "Session expirée. Veuillez vous reconnecter.";
+        result.errorMessage = Strings::Errors::SessionExpired.toStdString();
         return result;
     }
 
@@ -54,7 +50,7 @@ PatchCallResult BackendAiManager::generatePatch(const juce::String& prompt)
     if (response.status_code != 200)
     {
         result.errorMessage =
-            "Erreur HTTP " + juce::String(response.status_code);
+            Strings::Errors::ErrorHTTP + juce::String(response.status_code);
         return result;
     }
 
@@ -65,7 +61,7 @@ PatchCallResult BackendAiManager::generatePatch(const juce::String& prompt)
     }
     catch (...)
     {
-        result.errorMessage = "Réponse IA illisible.";
+        result.errorMessage = Strings::Errors::UnreadableAIResponse.toStdString();
         return result;
     }
 

@@ -1,8 +1,10 @@
 #pragma once
 
-#include "../shared/JuceHeader.h"
-#include "PluginAppWrapper.h"
-#include "../config/AppConfig.h"
+#include "PluginProcessor.h"
+#include "JuceHeader.h"
+#include "config/AppConfig.h"
+#include "components/SynthComponent.h"
+#include "AppController.h"
 
 class HarmoniaAudioProcessorEditor  : public juce::AudioProcessorEditor
 {
@@ -16,7 +18,9 @@ public:
 private:
     HarmoniaAudioProcessor& audioProcessor;
 
-    PluginAppWrapper pluginAppWrapper;
+    AppController appController;
+
+    SynthComponent synthComponent;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (HarmoniaAudioProcessorEditor)
 };

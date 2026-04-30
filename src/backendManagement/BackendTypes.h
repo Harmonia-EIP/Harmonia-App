@@ -1,5 +1,7 @@
 #pragma once
 
+#include <nlohmann/json.hpp>
+#include "../config/String.h"
 #include <juce_core/juce_core.h>
 #include "../parameters/HarmoniaParams.h"
 #include "../tools/PatchSerializer.h"

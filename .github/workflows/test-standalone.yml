@@ -38,20 +38,11 @@ jobs:
             Write-Host "VST3 found"
           }
 
-      - name: Check Exe created by Cmake
-        run: |
-          if (!(Test-Path "build/Release/HarmoniaApp.exe")) {
-            Write-Error "Exe not found"
-            exit 1
-          } else {
-            Write-Host "Exe found"
-          }
-
       - name: Upload EXE
         uses: actions/upload-artifact@v4
         with:
           name: Harmonia-EXE
-          path: build/Release/HarmoniaApp.exe
+          path: build/HarmoniaPlugin_artefacts/Release/Standalone/HarmoniaPlugin.exe
 
       - name: Upload VST3
         uses: actions/upload-artifact@v4

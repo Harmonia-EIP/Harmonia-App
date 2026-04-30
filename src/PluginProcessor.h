@@ -1,6 +1,8 @@
 #pragma once
 
-#include "JucePluginHeader.h"
+#include "JuceHeader.h"
+#include "components/Synth.h"
+#include "components/OscilloscopeComponent.h"
 
 class HarmoniaAudioProcessor  : public juce::AudioProcessor
 {
@@ -35,7 +37,19 @@ public:
 
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
+    
+    juce::MidiKeyboardState& getKeyboardState();
+
+    void setParams(const PatchParams& params);
+
+    OscilloscopeComponent* oscilloscope = nullptr;
+    juce::CriticalSection oscLock;
+
+    void setOscilloscope(OscilloscopeComponent* osc);
 
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (HarmoniaAudioProcessor)
+
+    juce::Synthesiser synth;
+    juce::MidiKeyboardState keyboardState;
 };

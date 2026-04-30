@@ -1,6 +1,10 @@
 #pragma once
 
+#include "../config/String.h"
 #include "BackendTypes.h"
+#include "BackendManager.h"
+#include <cpr/cpr.h>
+#include <nlohmann/json.hpp>
 
 class BackendManager;
 
