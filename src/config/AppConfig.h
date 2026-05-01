@@ -2,7 +2,7 @@
 
 namespace AppConfig
 {
-    static constexpr auto AppName    = "HarmoniaApp";
+    static constexpr auto AppName    = "Harmonia";
     static constexpr auto Version    = "0.3.1";
 
     static constexpr int DefaultWidth  = 900;

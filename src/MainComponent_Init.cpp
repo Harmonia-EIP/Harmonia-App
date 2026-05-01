@@ -2,10 +2,13 @@
 
 void MainComponent::initUI(const UserSession& session)
 {
-    setLookAndFeel (&appLookAndFeel);
+    setLookAndFeel(&appLookAndFeel);
 
     applyTheme(ThemeAndLayoutConverter::idToThemePreset(session.themeId));
-    applyLayout(ThemeAndLayoutConverter::idToLayoutPreset(session.layoutId));
+
+    layoutManager.setLayout(
+        ThemeAndLayoutConverter::idToLayoutPreset(session.layoutId)
+    );
 
     sendLookAndFeelChange();
 }
@@ -24,10 +27,10 @@ void MainComponent::addComponents()
 
 void MainComponent::initComponentsListeners()
 {
-    freqVolComponent.onParamsChanged = [this](){updateSynthParamsFromUI();};
-    adsrComponent.onParamsChanged    = [this](){updateSynthParamsFromUI();};
-    filterComponent.onParamsChanged  = [this](){updateSynthParamsFromUI();};
-    topBar.onParamsChanged           = [this](){updateSynthParamsFromUI();};
+    freqVolComponent.onParamsChanged = [this]() { onUIChanged(); };
+    adsrComponent.onParamsChanged    = [this]() { onUIChanged(); };
+    filterComponent.onParamsChanged  = [this]() { onUIChanged(); };
+    topBar.onParamsChanged           = [this]() { onUIChanged(); };
 }
 
 
@@ -82,4 +85,40 @@ void MainComponent::initAsyncProfileLoad()
         });
 
     }).detach();
+}
+
+void MainComponent::initGenerateWithAI()
+{
+    bottomBar.onGenerateClicked = [this]()
+    {
+        auto prompt = topBar.getPrompt();
+
+        if (prompt.trim().isEmpty())
+        {
+            juce::AlertWindow::showMessageBoxAsync(
+                juce::AlertWindow::WarningIcon,
+                Strings::Errors::MissingPrompt,
+                Strings::Errors::MissingPromptAdvice);
+            return;
+        }
+
+        aiManager.generate(prompt);
+    };
+}
+
+void MainComponent::initAIManager()
+{
+    aiManager.onSuccess = [this](const PatchParams& p)
+    {
+        patchController.setPatch(p);
+        patchController.applyToProcessor();
+    };
+
+    aiManager.onError = [](const juce::String& msg)
+    {
+        juce::AlertWindow::showMessageBoxAsync(
+            juce::AlertWindow::WarningIcon,
+            Strings::Errors::AiError,
+            msg);
+    };
 }

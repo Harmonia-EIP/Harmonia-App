@@ -12,6 +12,8 @@
 #include "components/GenerateButton.h"
 #include "models/DataModel.h"
 
+#include "LayoutManager.h"
+#include "ThemeManager.h"
 #include "themes/AppLookAndFeel.h"
 #include "backendManagement/BackendManager.h"
 
@@ -29,6 +31,10 @@
 
 #include "config/String.h"
 #include "config/AppConfig.h"
+
+#include "PatchController.h"
+
+#include "AIManager.h"
 
 class MainComponent : public juce::Component
 {
@@ -57,10 +63,13 @@ public:
     // fallback keyboard (si pas de processor)
     juce::MidiKeyboardState localKeyboardState;
 
+    PatchController patchController;
+
     //==============================================================================
     // BACKEND
 
     BackendManager& backend;
+    AIManager aiManager;
 
     //==============================================================================
     // UI
@@ -80,7 +89,10 @@ public:
     //==============================================================================
     // LAYOUT
 
-    LayoutPreset layoutPreset;
+    LayoutManager layoutManager;
+    ThemeManager themeManager;
+
+    bool isUpdatingUI = false;
 
     void applyTheme(ThemePreset theme);
     void applyLayout(LayoutPreset layout);
@@ -94,7 +106,9 @@ public:
     void initExportParameters();
     void initLoadParameters();
     void initGenerateWithAI();
-    void updateSynthParamsFromUI();
+    void initAIManager();
+    void onUIChanged();
+    PatchParams collectParamsFromUI();
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

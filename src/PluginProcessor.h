@@ -3,6 +3,7 @@
 #include "JuceHeader.h"
 #include "components/Synth.h"
 #include "components/OscilloscopeComponent.h"
+#include "parameters/HarmoniaParams.h"
 
 class HarmoniaAudioProcessor  : public juce::AudioProcessor
 {
@@ -40,7 +41,11 @@ public:
     
     juce::MidiKeyboardState& getKeyboardState();
 
-    void setParams(const PatchParams& params);
+    void applyPatchToSynth(const PatchParams& params);
+
+    void setPatch(const PatchParams& newData);
+
+    const PatchParams& getPatch() const;
 
     OscilloscopeComponent* oscilloscope = nullptr;
     juce::CriticalSection oscLock;
@@ -52,4 +57,5 @@ private:
 
     juce::Synthesiser synth;
     juce::MidiKeyboardState keyboardState;
+    PatchParams currentParams;
 };

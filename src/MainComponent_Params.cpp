@@ -5,38 +5,19 @@ void MainComponent::initExportParameters()
 {
     bottomBar.onExportClicked = [this]()
     {
-        PatchParams p;
+        auto jsonString = patchController.toJson();
 
-        auto freqVol    = freqVolComponent.getFreqVol();
-        auto adsrValues = adsrComponent.getSlidersInfo();
-        auto cutoffReso = filterComponent.getSlidersInfo();
-
-        p.frequency = freqVol.first;
-        p.volume    = freqVol.second;
-
-        p.attack  = adsrValues[0];
-        p.decay   = adsrValues[1];
-        p.sustain = adsrValues[2];
-        p.release = adsrValues[3];
-
-        p.cutoff    = cutoffReso.first;
-        p.resonance = cutoffReso.second;
-
-        p.filterType = PatchSerializer::filterFromString(topBar.getFilterType());
-        p.waveform   = PatchSerializer::waveformFromString(topBar.getWaveform());
-        p.prompt     = topBar.getPrompt();
-
-        auto jsonString = PatchSerializer::toJson(p);
-
-        auto defaultDir  = juce::File::getSpecialLocation(juce::File::userDocumentsDirectory);
-        auto defaultFile = defaultDir.getChildFile("harmonia_patch.json");
-
-        auto* chooser = new juce::FileChooser("Exporter le patch en JSON", defaultFile, "*.json");
+        auto* chooser = new juce::FileChooser(
+            "Exporter le patch en JSON",
+            juce::File::getSpecialLocation(juce::File::userDocumentsDirectory)
+                .getChildFile("harmonia_patch.json"),
+            "*.json"
+        );
 
         chooser->launchAsync(
             juce::FileBrowserComponent::saveMode
             | juce::FileBrowserComponent::canSelectFiles,
-            [chooser, jsonString](const juce::FileChooser& fc) mutable
+            [chooser, jsonString](const juce::FileChooser& fc)
             {
                 auto file = fc.getResult();
                 delete chooser;
@@ -57,10 +38,13 @@ void MainComponent::initLoadParameters()
 {
     bottomBar.onLoadClicked = [this]()
     {
-        auto* chooser = new juce::FileChooser("Select a JSON file to load", {}, "*.json");
+        auto* chooser = new juce::FileChooser(
+            "Select a JSON file to load", {}, "*.json"
+        );
 
         chooser->launchAsync(
-            juce::FileBrowserComponent::openMode | juce::FileBrowserComponent::canSelectFiles,
+            juce::FileBrowserComponent::openMode
+            | juce::FileBrowserComponent::canSelectFiles,
             [this, chooser](const juce::FileChooser& fc)
             {
                 auto file = fc.getResult();
@@ -71,50 +55,47 @@ void MainComponent::initLoadParameters()
 
                 auto content = file.loadFileAsString();
 
-                auto params = PatchSerializer::fromJson(content);
-                if (!params.has_value())
+                if (!patchController.fromJson(content))
                     return;
 
-                const auto& p = *params;
-
-                freqVolComponent.setFreqVol(p.frequency, p.volume);
-                adsrComponent.setADSR(p.attack, p.decay, p.sustain, p.release);
-                filterComponent.setCutoffResonance(p.cutoff, p.resonance);
-
-                topBar.setFilterType(PatchSerializer::filterToString(p.filterType));
-                topBar.setWaveform(PatchSerializer::waveformToString(p.waveform));
-                topBar.setPrompt(p.prompt);
-
-                updateSynthParamsFromUI();
+                patchController.applyToProcessor();
             }
         );
     };
 }
 
-void MainComponent::updateSynthParamsFromUI()
+void MainComponent::onUIChanged()
+{
+    if (isUpdatingUI)
+        return;
+
+    auto p = collectParamsFromUI();
+    patchController.setPatch(p);
+    patchController.applyToProcessor();
+}
+
+PatchParams MainComponent::collectParamsFromUI()
 {
     auto freqVol    = freqVolComponent.getFreqVol();
     auto adsrValues = adsrComponent.getSlidersInfo();
     auto cutoffReso = filterComponent.getSlidersInfo();
 
-    PatchParams params;
+    PatchParams p;
 
-    params.frequency = freqVol.first;
-    params.volume    = freqVol.second;
+    p.frequency = freqVol.first;
+    p.volume    = freqVol.second;
 
-    params.attack  = adsrValues[0];
-    params.decay   = adsrValues[1];
-    params.sustain = adsrValues[2];
-    params.release = adsrValues[3];
+    p.attack  = adsrValues[0];
+    p.decay   = adsrValues[1];
+    p.sustain = adsrValues[2];
+    p.release = adsrValues[3];
 
-    params.cutoff    = cutoffReso.first;
-    params.resonance = cutoffReso.second;
+    p.cutoff    = cutoffReso.first;
+    p.resonance = cutoffReso.second;
 
-    params.filterType = PatchSerializer::filterFromString(
-        topBar.getFilterType()
-    );
+    p.filterType = PatchSerializer::filterFromString(topBar.getFilterType());
 
-    params.waveform = [&]()
+    p.waveform = [&]()
     {
         switch (topBar.getWaveformIndex())
         {
@@ -125,5 +106,22 @@ void MainComponent::updateSynthParamsFromUI()
         }
     }();
 
-    processor.setParams(params);
+    p.prompt = topBar.getPrompt();
+
+    return p;
+}
+
+void MainComponent::applyParamsToUI(const PatchParams& p)
+{
+    isUpdatingUI = true;
+
+    freqVolComponent.setFreqVol(p.frequency, p.volume);
+    adsrComponent.setADSR(p.attack, p.decay, p.sustain, p.release);
+    filterComponent.setCutoffResonance(p.cutoff, p.resonance);
+
+    topBar.setFilterType(PatchSerializer::filterToString(p.filterType));
+    topBar.setWaveform(PatchSerializer::waveformToString(p.waveform));
+    topBar.setPrompt(p.prompt);
+
+    isUpdatingUI = false;
 }
