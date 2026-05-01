@@ -5,6 +5,10 @@ TopBarComponent::TopBarComponent()
 {
     waveformLabel.setText (Strings::Labels::Waveform, juce::dontSendNotification);
     waveformLabel.setJustificationType (juce::Justification::centredLeft);
+    waveformSelector.addItem("Sine", 1);
+    waveformSelector.addItem("Square", 2);
+    waveformSelector.addItem("Saw", 3);
+    waveformSelector.addItem("Triangle", 4);
     addAndMakeVisible (waveformLabel);
     addAndMakeVisible (waveformSelector);
 
@@ -171,4 +175,14 @@ void TopBarComponent::resized()
                                  marginTop + labelHeight + verticalSpacing,
                                  buttonWidth,
                                  compHeight);
+}
+
+Waveform TopBarComponent::getWaveformEnum() const
+{
+    return static_cast<Waveform>(waveformSelector.getSelectedId());
+}
+
+FilterType TopBarComponent::getFilterEnum() const
+{
+    return static_cast<FilterType>(filterTypeSelector.getSelectedId());
 }

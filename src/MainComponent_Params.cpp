@@ -80,7 +80,7 @@ PatchParams MainComponent::collectParamsFromUI()
     auto adsrValues = adsrComponent.getSlidersInfo();
     auto cutoffReso = filterComponent.getSlidersInfo();
 
-    PatchParams p;
+    PatchParams p = patchController.getPatch();
 
     p.frequency = freqVol.first;
     p.volume    = freqVol.second;
@@ -93,18 +93,8 @@ PatchParams MainComponent::collectParamsFromUI()
     p.cutoff    = cutoffReso.first;
     p.resonance = cutoffReso.second;
 
-    p.filterType = PatchSerializer::filterFromString(topBar.getFilterType());
-
-    p.waveform = [&]()
-    {
-        switch (topBar.getWaveformIndex())
-        {
-            case 1: return Waveform::SAW;
-            case 2: return Waveform::SQUARE;
-            case 3: return Waveform::TRIANGLE;
-            default: return Waveform::SINE;
-        }
-    }();
+    p.waveform = topBar.getWaveformEnum();
+    p.filterType = topBar.getFilterEnum();
 
     p.prompt = topBar.getPrompt();
 

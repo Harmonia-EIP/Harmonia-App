@@ -85,7 +85,25 @@ namespace PatchSerializer
         if (!json.isObject())
             return std::nullopt;
 
-        auto* obj = json.getDynamicObject();
+        auto* root = json.getDynamicObject();
+        if (root == nullptr)
+            return std::nullopt;
+
+        juce::DynamicObject* obj = nullptr;
+
+        if (root->hasProperty("parameters"))
+        {
+            auto paramsVar = root->getProperty("parameters");
+            if (paramsVar.isObject())
+                obj = paramsVar.getDynamicObject();
+        }
+        else
+        {
+            obj = root;
+        }
+
+        if (obj == nullptr)
+            return std::nullopt;
 
         PatchParams p;
 
@@ -99,14 +117,26 @@ namespace PatchSerializer
         p.resonance  = getDouble(obj, "resonance", 1.0);
 
         p.filterType = filterFromString(
-            getString(obj, "filterType", juce::String("Low Pass"))
+            getString(obj, "filterType", "Low Pass")
         );
 
         p.waveform = waveformFromString(
-            getString(obj, "waveform", juce::String("Sine"))
+            getString(obj, "waveform", "Sine")
         );
 
-        p.prompt = getString(obj, "prompt", juce::String());
+        if (root->hasProperty("metadata"))
+        {
+            auto metaVar = root->getProperty("metadata");
+            if (metaVar.isObject())
+            {
+                auto* meta = metaVar.getDynamicObject();
+                p.prompt = getString(meta, "name", "");
+            }
+        }
+        else
+        {
+            p.prompt = getString(obj, "prompt", "");
+        }
 
         return p;
     }

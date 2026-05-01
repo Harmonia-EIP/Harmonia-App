@@ -19,6 +19,9 @@ public:
     juce::String getWaveform() const;
     int getWaveformIndex() const;
 
+    Waveform getWaveformEnum() const;
+    FilterType getFilterEnum() const;
+
     void setFilterType (juce::String);
     void setPrompt (juce::String);
     void setWaveform (juce::String);

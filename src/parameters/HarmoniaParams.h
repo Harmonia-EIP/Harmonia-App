@@ -3,17 +3,17 @@
 
 enum class FilterType
 {
-    LOWPASS,
-    HIGHPASS,
-    BANDPASS
+    LOWPASS = 1,
+    HIGHPASS = 2,
+    BANDPASS = 3
 };
 
 enum class Waveform
 {
-    SINE,
-    SQUARE,
-    SAW,
-    TRIANGLE
+    SINE = 1,
+    SQUARE = 2,
+    SAW = 3,
+    TRIANGLE = 4
 };
 
 struct PatchParams
