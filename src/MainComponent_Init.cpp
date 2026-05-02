@@ -39,11 +39,21 @@ void MainComponent::initTitleComponent()
     title.onLayoutSelected = [this](LayoutPreset layout)
     {
         applyLayout(layout);
-        
-        juce::Component::SafePointer<MainComponent> safeThis(this);
 
-        juce::Thread::launch([safeThis, layout]
+        auto layoutId = ThemeAndLayoutConverter::layoutPresetToId(layout);
+
+        auto sessionOpt = backend.loadSession();
+        if (sessionOpt)
         {
+            auto session = *sessionOpt;
+            session.layoutId = layoutId;
+            backend.saveSession(session);
+        }
+
+        juce::Component::SafePointer<MainComponent> safeThis(this);
+        
+        juce::Thread::launch([safeThis, layout]
+            {
             if (safeThis == nullptr) return;
 
             safeThis->backend.updateLayout(ThemeAndLayoutConverter::layoutPresetToId(layout));
@@ -54,10 +64,20 @@ void MainComponent::initTitleComponent()
     {
         applyTheme(preset);
 
+        auto themeId = ThemeAndLayoutConverter::themePresetToId(preset);
+
+        auto sessionOpt = backend.loadSession();
+        if (sessionOpt)
+        {
+            auto session = *sessionOpt;
+            session.themeId = themeId;
+            backend.saveSession(session);
+        }
+        
         juce::Component::SafePointer<MainComponent> safeThis(this);
 
         juce::Thread::launch([safeThis, preset]
-        {
+            {
             if (safeThis == nullptr) return;
             safeThis->backend.updateTheme(ThemeAndLayoutConverter::themePresetToId(preset));
         });
@@ -95,10 +115,10 @@ void MainComponent::initGenerateWithAI()
 
         if (prompt.trim().isEmpty())
         {
-            juce::AlertWindow::showMessageBoxAsync(
-                juce::AlertWindow::WarningIcon,
+            Alert::warning(
                 Strings::Errors::MissingPrompt,
-                Strings::Errors::MissingPromptAdvice);
+                Strings::Errors::MissingPromptAdvice
+            );
             return;
         }
 

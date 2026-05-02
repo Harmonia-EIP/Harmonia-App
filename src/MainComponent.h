@@ -28,6 +28,7 @@
 
 #include "tools/ThemeAndLayoutConverter.h"
 #include "tools/PatchSerializer.h"
+#include "tools/Alert.h"
 
 #include "config/String.h"
 #include "config/AppConfig.h"

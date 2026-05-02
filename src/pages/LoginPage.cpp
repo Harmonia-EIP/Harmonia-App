@@ -67,8 +67,7 @@ void LoginPage::handleLogin()
 
     if (identifier.isEmpty() || password.isEmpty())
     {
-        juce::AlertWindow::showMessageBoxAsync(
-            juce::AlertWindow::WarningIcon,
+        Alert::warning(
             Strings::Errors::MissingFields,
             Strings::Errors::MissingFieldsAdvice
         );
@@ -79,8 +78,7 @@ void LoginPage::handleLogin()
 
     if (!result.success)
     {
-        juce::AlertWindow::showMessageBoxAsync(
-            juce::AlertWindow::WarningIcon,
+        Alert::error(
             Strings::Errors::ErrorTitle,
             result.errorMessage
         );

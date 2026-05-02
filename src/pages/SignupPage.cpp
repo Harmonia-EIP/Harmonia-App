@@ -89,8 +89,7 @@ void SignupPage::handleSignup()
 
     if (username.isEmpty() || firstname.isEmpty() || lastname.isEmpty() || email.isEmpty() || password.isEmpty())
     {
-        juce::AlertWindow::showMessageBoxAsync(
-            juce::AlertWindow::WarningIcon,
+        Alert::warning(
             Strings::Errors::MissingFields,
             Strings::Errors::MissingFieldsAdvice
         );
@@ -101,16 +100,14 @@ void SignupPage::handleSignup()
 
     if (!result.success)
     {
-        juce::AlertWindow::showMessageBoxAsync(
-            juce::AlertWindow::WarningIcon,
+        Alert::error(
             Strings::Errors::ErrorTitle,
             result.errorMessage
         );
         return;
     }
 
-    juce::AlertWindow::showMessageBoxAsync(
-        juce::AlertWindow::InfoIcon,
+    Alert::info(
         Strings::Success::Welcome,
         Strings::Success::AccountCreated
     );

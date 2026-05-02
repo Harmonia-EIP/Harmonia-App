@@ -12,6 +12,7 @@ MainComponent::MainComponent (HarmoniaAudioProcessor& p,
       patchController(p),
       backend (be),
       aiManager (be),
+      themeManager (appLookAndFeel),
       title (AppConfig::AppName, session),
       oscilloscope (appLookAndFeel,
                     AppConfig::Oscilloscope::BufferSize,
@@ -19,13 +20,12 @@ MainComponent::MainComponent (HarmoniaAudioProcessor& p,
       freqVolComponent (appLookAndFeel),
       adsrComponent (appLookAndFeel),
       filterComponent (appLookAndFeel),
-      synthComponent (p.getKeyboardState()),
-      themeManager (appLookAndFeel)
+      synthComponent (p.getKeyboardState())
 {
     processor.setOscilloscope(&oscilloscope);
 
-    initUI(session);
     addComponents();
+    initUI(session);
     initComponentsListeners();
     initTitleComponent();
     
