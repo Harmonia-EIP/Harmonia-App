@@ -1,6 +1,7 @@
 #pragma once
 
 #include "JuceHeader.h"
+#include "parameters/HarmoniaParameters.h"
 #include "components/Synth.h"
 #include "components/OscilloscopeComponent.h"
 
@@ -37,19 +38,24 @@ public:
 
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
-    
-    juce::MidiKeyboardState& getKeyboardState();
 
-    void setParams(const PatchParams& params);
+    juce::MidiKeyboardState& getKeyboardState();
+    juce::AudioProcessorValueTreeState& getAPVTS() { return apvts; }
+
+    void setOscilloscope (OscilloscopeComponent* osc);
+
+private:
+    juce::AudioProcessorValueTreeState apvts;
+    HarmoniaParams::AtomicRefs paramRefs;
+
+    juce::Synthesiser synth;
+    juce::MidiKeyboardState keyboardState;
+
+    juce::dsp::Reverb reverb;
+    juce::dsp::Reverb::Parameters reverbParams;
 
     OscilloscopeComponent* oscilloscope = nullptr;
     juce::CriticalSection oscLock;
 
-    void setOscilloscope(OscilloscopeComponent* osc);
-
-private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (HarmoniaAudioProcessor)
-
-    juce::Synthesiser synth;
-    juce::MidiKeyboardState keyboardState;
 };
