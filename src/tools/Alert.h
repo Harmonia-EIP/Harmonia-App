@@ -1,7 +1,7 @@
 #pragma once
 #include <juce_gui_basics/juce_gui_basics.h>
 
-class Alert
+class HarmoniaAlert
 {
 public:
     static void show(juce::AlertWindow::AlertIconType type,

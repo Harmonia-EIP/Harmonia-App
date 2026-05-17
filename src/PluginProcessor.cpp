@@ -1,7 +1,6 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
-//==============================================================================
 HarmoniaAudioProcessor::HarmoniaAudioProcessor()
 #ifndef JucePlugin_PreferredChannelConfigurations
      : AudioProcessor (BusesProperties()
@@ -11,31 +10,28 @@ HarmoniaAudioProcessor::HarmoniaAudioProcessor()
                       #endif
                        .withOutput ("Output", juce::AudioChannelSet::stereo(), true)
                      #endif
-                       )
+                       ),
+       apvts (*this, nullptr, "HARMONIA", HarmoniaParams::createLayout())
+#else
+     : apvts (*this, nullptr, "HARMONIA", HarmoniaParams::createLayout())
 #endif
 {
+    paramRefs.bind (apvts);
 }
 
 HarmoniaAudioProcessor::~HarmoniaAudioProcessor() {}
 
-//==============================================================================
-const juce::String HarmoniaAudioProcessor::getName() const
-{
-    return "HarmoniaPlugin";
-}
+const juce::String HarmoniaAudioProcessor::getName() const   { return "HarmoniaPlugin"; }
+bool HarmoniaAudioProcessor::acceptsMidi() const             { return true; }
+bool HarmoniaAudioProcessor::producesMidi() const            { return false; }
+bool HarmoniaAudioProcessor::isMidiEffect() const            { return false; }
+double HarmoniaAudioProcessor::getTailLengthSeconds() const  { return 4.0; }
 
-bool HarmoniaAudioProcessor::acceptsMidi() const { return true; }
-bool HarmoniaAudioProcessor::producesMidi() const { return false; }
-bool HarmoniaAudioProcessor::isMidiEffect() const { return false; }
-double HarmoniaAudioProcessor::getTailLengthSeconds() const { return 0.0; }
-
-//==============================================================================
-int HarmoniaAudioProcessor::getNumPrograms() { return 1; }
-int HarmoniaAudioProcessor::getCurrentProgram() { return 0; }
-void HarmoniaAudioProcessor::setCurrentProgram (int) {}
-const juce::String HarmoniaAudioProcessor::getProgramName (int) { return {}; }
-void HarmoniaAudioProcessor::changeProgramName (int, const juce::String&) {}
-
+int HarmoniaAudioProcessor::getNumPrograms()                                  { return 1; }
+int HarmoniaAudioProcessor::getCurrentProgram()                               { return 0; }
+void HarmoniaAudioProcessor::setCurrentProgram (int)                          {}
+const juce::String HarmoniaAudioProcessor::getProgramName (int)               { return {}; }
+void HarmoniaAudioProcessor::changeProgramName (int, const juce::String&)     {}
 
 void HarmoniaAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
@@ -43,23 +39,23 @@ void HarmoniaAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlo
     synth.clearSounds();
 
     for (int i = 0; i < 8; ++i)
-        synth.addVoice(new HarmoniaVoice());
+        synth.addVoice (new HarmoniaVoice (paramRefs));
 
-    synth.addSound(new HarmoniaSound());
+    synth.addSound (new HarmoniaSound());
+    synth.setCurrentPlaybackSampleRate (sampleRate);
 
-    synth.setCurrentPlaybackSampleRate(sampleRate);
-
-    // 🔥 préparation des voices (important pour DSP)
     for (int i = 0; i < synth.getNumVoices(); ++i)
-    {
-        if (auto* voice = dynamic_cast<HarmoniaVoice*>(synth.getVoice(i)))
-        {
-            voice->prepare(sampleRate,
-                           samplesPerBlock,
-                           getTotalNumOutputChannels());
-        }
-    }
+        if (auto* voice = dynamic_cast<HarmoniaVoice*> (synth.getVoice (i)))
+            voice->prepare (sampleRate, samplesPerBlock, getTotalNumOutputChannels());
+
+    juce::dsp::ProcessSpec spec;
+    spec.sampleRate       = sampleRate;
+    spec.maximumBlockSize = (juce::uint32) samplesPerBlock;
+    spec.numChannels      = (juce::uint32) juce::jmax (1, getTotalNumOutputChannels());
+    reverb.prepare (spec);
+    reverb.reset();
 }
+
 void HarmoniaAudioProcessor::releaseResources() {}
 
 #ifndef JucePlugin_PreferredChannelConfigurations
@@ -78,29 +74,34 @@ bool HarmoniaAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts)
 }
 #endif
 
-
 void HarmoniaAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer,
-                   juce::MidiBuffer& midiMessages)
+                                           juce::MidiBuffer& midiMessages)
 {
+    juce::ScopedNoDenormals noDenormals;
     buffer.clear();
 
-    keyboardState.processNextMidiBuffer(
-        midiMessages,
-        0,
-        buffer.getNumSamples(),
-        true
-    );
+    keyboardState.processNextMidiBuffer (midiMessages, 0, buffer.getNumSamples(), true);
+    synth.renderNextBlock (buffer, midiMessages, 0, buffer.getNumSamples());
 
-    synth.renderNextBlock(buffer, midiMessages, 0, buffer.getNumSamples());
+
+    const float wet = paramRefs.reverbMix != nullptr ? paramRefs.reverbMix->load() : 0.0f;
+    reverbParams.wetLevel = wet;
+    reverbParams.dryLevel = 1.0f - wet * 0.7f;
+    reverbParams.roomSize = 0.55f + wet * 0.35f;
+    reverbParams.damping  = 0.4f;
+    reverbParams.width    = 1.0f;
+    reverb.setParameters (reverbParams);
+
+    juce::dsp::AudioBlock<float> block (buffer);
+    juce::dsp::ProcessContextReplacing<float> ctx (block);
+    reverb.process (ctx);
 
     {
-        const juce::ScopedLock sl(oscLock);
-
+        const juce::ScopedLock sl (oscLock);
         if (oscilloscope != nullptr)
-            oscilloscope->pushBuffer(buffer, 0, buffer.getNumSamples());
+            oscilloscope->pushBuffer (buffer, 0, buffer.getNumSamples());
     }
 }
-
 
 bool HarmoniaAudioProcessor::hasEditor() const { return true; }
 
@@ -109,70 +110,18 @@ juce::AudioProcessorEditor* HarmoniaAudioProcessor::createEditor()
     return new HarmoniaAudioProcessorEditor (*this);
 }
 
-
 void HarmoniaAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
 {
-    juce::DynamicObject::Ptr obj = new juce::DynamicObject();
-
-    obj->setProperty("frequency", currentParams.frequency);
-    obj->setProperty("volume", currentParams.volume);
-
-    obj->setProperty("attack", currentParams.attack);
-    obj->setProperty("decay", currentParams.decay);
-    obj->setProperty("sustain", currentParams.sustain);
-    obj->setProperty("release", currentParams.release);
-
-    obj->setProperty("cutoff", currentParams.cutoff);
-    obj->setProperty("resonance", currentParams.resonance);
-
-    obj->setProperty("filterType", (int)currentParams.filterType);
-    obj->setProperty("waveform", (int)currentParams.waveform);
-
-    obj->setProperty("prompt", currentParams.prompt);
-
-    auto json = juce::JSON::toString(juce::var(obj));
-    destData.append(json.toRawUTF8(), json.getNumBytesAsUTF8());
+    if (auto state = apvts.copyState(); state.isValid())
+        if (auto xml = state.createXml())
+            copyXmlToBinary (*xml, destData);
 }
 
 void HarmoniaAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
-    auto jsonString = juce::String::fromUTF8((const char*)data, sizeInBytes);
-    auto parsed = juce::JSON::parse(jsonString);
-
-    if (auto* obj = parsed.getDynamicObject())
-    {
-        PatchParams p;
-
-        p.frequency = (double)obj->getProperty("frequency");
-        p.volume    = (double)obj->getProperty("volume");
-
-        p.attack  = (double)obj->getProperty("attack");
-        p.decay   = (double)obj->getProperty("decay");
-        p.sustain = (double)obj->getProperty("sustain");
-        p.release = (double)obj->getProperty("release");
-
-        p.cutoff    = (double)obj->getProperty("cutoff");
-        p.resonance = (double)obj->getProperty("resonance");
-
-        p.filterType = (FilterType)(int)obj->getProperty("filterType");
-        p.waveform   = (Waveform)(int)obj->getProperty("waveform");
-
-        p.prompt = obj->getProperty("prompt").toString();
-
-        setPatch(p);
-    }
-}
-
-void HarmoniaAudioProcessor::setPatch(const PatchParams& patch)
-{
-    currentParams = patch;
-
-    applyPatchToSynth(currentParams);
-}
-
-const PatchParams& HarmoniaAudioProcessor::getPatch() const
-{
-    return currentParams;
+    if (auto xml = getXmlFromBinary (data, sizeInBytes))
+        if (xml->hasTagName (apvts.state.getType()))
+            apvts.replaceState (juce::ValueTree::fromXml (*xml));
 }
 
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
@@ -185,19 +134,8 @@ juce::MidiKeyboardState& HarmoniaAudioProcessor::getKeyboardState()
     return keyboardState;
 }
 
-void HarmoniaAudioProcessor::applyPatchToSynth(const PatchParams& params)
+void HarmoniaAudioProcessor::setOscilloscope (OscilloscopeComponent* osc)
 {
-    for (int i = 0; i < synth.getNumVoices(); ++i)
-    {
-        if (auto* voice = dynamic_cast<HarmoniaVoice*>(synth.getVoice(i)))
-        {
-            voice->setParameters(params);
-        }
-    }
-}
-
-void HarmoniaAudioProcessor::setOscilloscope(OscilloscopeComponent* osc)
-{
-    const juce::ScopedLock sl(oscLock);
+    const juce::ScopedLock sl (oscLock);
     oscilloscope = osc;
 }

@@ -89,7 +89,7 @@ void SignupPage::handleSignup()
 
     if (username.isEmpty() || firstname.isEmpty() || lastname.isEmpty() || email.isEmpty() || password.isEmpty())
     {
-        Alert::warning(
+        HarmoniaAlert::warning(
             Strings::Errors::MissingFields,
             Strings::Errors::MissingFieldsAdvice
         );
@@ -100,14 +100,14 @@ void SignupPage::handleSignup()
 
     if (!result.success)
     {
-        Alert::error(
+        HarmoniaAlert::error(
             Strings::Errors::ErrorTitle,
             result.errorMessage
         );
         return;
     }
 
-    Alert::info(
+    HarmoniaAlert::info(
         Strings::Success::Welcome,
         Strings::Success::AccountCreated
     );

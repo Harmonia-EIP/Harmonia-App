@@ -3,13 +3,11 @@
 #include <nlohmann/json.hpp>
 #include "../config/String.h"
 #include <juce_core/juce_core.h>
-#include "../parameters/HarmoniaParams.h"
-#include "../tools/PatchSerializer.h"
 
 struct UserSession
 {
     int userId = 0;
-    
+
     juce::String pseudo;
     juce::String email;
     juce::String accessToken;
@@ -24,31 +22,6 @@ struct AuthResult
     bool success = false;
     UserSession session;
     juce::String errorMessage;
-};
-
-struct PatchCallResult
-{
-    bool success = false;
-    juce::String errorMessage;
-    PatchParams params;
-
-    // ===== SUCCESS =====
-    static PatchCallResult ok(const PatchParams& p)
-    {
-        return { true, {}, p };
-    }
-
-    // ===== ERROR =====
-    static PatchCallResult error(const juce::String& message)
-    {
-        return { false, message, {} };
-    }
-
-    // ===== HELPERS =====
-    bool hasError() const
-    {
-        return !success && errorMessage.isNotEmpty();
-    }
 };
 
 struct UserProfile
@@ -80,5 +53,22 @@ struct ProfileResult
     static ProfileResult error(const std::string& message)
     {
         return { false, message, {} };
+    }
+};
+
+struct AiResult
+{
+    bool success = false;
+    juce::String json;          
+    juce::String errorMessage;
+    
+    static AiResult ok(const juce::String& json)
+    {
+        return { true, json, {} };
+    }
+
+    static AiResult error(const juce::String& message)
+    {
+        return { false, {}, message };
     }
 };

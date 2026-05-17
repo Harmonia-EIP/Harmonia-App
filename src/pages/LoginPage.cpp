@@ -67,7 +67,7 @@ void LoginPage::handleLogin()
 
     if (identifier.isEmpty() || password.isEmpty())
     {
-        Alert::warning(
+        HarmoniaAlert::warning(
             Strings::Errors::MissingFields,
             Strings::Errors::MissingFieldsAdvice
         );
@@ -78,7 +78,7 @@ void LoginPage::handleLogin()
 
     if (!result.success)
     {
-        Alert::error(
+        HarmoniaAlert::error(
             Strings::Errors::ErrorTitle,
             result.errorMessage
         );

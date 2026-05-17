@@ -7,109 +7,105 @@
 
 #include "PluginProcessor.h"
 
-#include "components/FrequencySlider.h"
-#include "components/VolumeSlider.h"
-#include "components/GenerateButton.h"
-#include "models/DataModel.h"
+#include "themes/HarmoniaPalette.h"
+#include "themes/HiveLookAndFeel.h"
 
-#include "LayoutManager.h"
-#include "ThemeManager.h"
-#include "themes/AppLookAndFeel.h"
 #include "backendManagement/BackendManager.h"
 
-#include "components/TitleComponent.h"
-#include "components/TopBarComponent.h"
-#include "components/FrequencyVolumeComponent.h"
-#include "components/ADSRComponent.h"
-#include "components/FilterComponent.h"
-#include "components/BottomBarComponent.h"
 #include "components/SynthComponent.h"
 #include "components/OscilloscopeComponent.h"
+#include "components/SectionPanel.h"
+#include "components/KnobControl.h"
+#include "components/DisplayScreen.h"
+#include "components/ParticleField.h"
+#include "components/EnvelopeVisualizer.h"
+#include "components/LfoVisualizer.h"
+#include "components/WaveformSelector.h"
 
-#include "tools/ThemeAndLayoutConverter.h"
-#include "tools/PatchSerializer.h"
-#include "tools/Alert.h"
-
-#include "config/String.h"
 #include "config/AppConfig.h"
-
-#include "PatchController.h"
-
-#include "AIManager.h"
+#include "parameters/HarmoniaParameters.h"
+#include "tools/PresetLoader.h"
 
 class MainComponent : public juce::Component
 {
 public:
-    using LayoutPreset = AppLookAndFeel::LayoutPreset;
-    using ThemePreset  = AppLookAndFeel::ThemePreset;
-
-    MainComponent(HarmoniaAudioProcessor& p,
-                  BackendManager& be,
-                  const UserSession& session);
-
+    MainComponent (HarmoniaAudioProcessor& p,
+                   BackendManager& be,
+                   const UserSession& session);
 
     ~MainComponent() override;
 
     void paint (juce::Graphics&) override;
     void resized() override;
 
-    TitleComponent& getTitleComponent() { return title; }
-    
-    private:
-    //==============================================================================
-    // PROCESSOR
-    
+    std::function<void()> onLogout;
+
+private:
     HarmoniaAudioProcessor& processor;
-    
-    // fallback keyboard (si pas de processor)
-    juce::MidiKeyboardState localKeyboardState;
-
-    PatchController patchController;
-
-    //==============================================================================
-    // BACKEND
-
     BackendManager& backend;
-    AIManager aiManager;
+    UserSession session;
 
-    //==============================================================================
-    // UI
+    HiveLookAndFeel lookAndFeel;
+    ParticleField   particles;
 
-    AppLookAndFeel appLookAndFeel;
+    juce::Label   titleLabel;
+    juce::Label   subtitleLabel;
+    juce::Label   presetLabel;
+    juce::TextEditor promptEditor;
+    juce::TextButton generateButton { "Generate" };
+    juce::TextButton loadButton     { "Load" };
+    juce::TextButton saveButton     { "Save" };
+    juce::TextButton logoutButton   { "Logout" };
 
-    TitleComponent title;
+    SectionPanel oscMixPanel  { "Osc 1 / Mix",   HarmoniaPalette::sectionOsc      };
+    SectionPanel filterPanel  { "Filter",        HarmoniaPalette::sectionFilter   };
+    SectionPanel screenPanel  { "Display",       HarmoniaPalette::sectionDisplay  };
+    SectionPanel lfoPanel     { "LFO",           HarmoniaPalette::sectionLfo      };
+    SectionPanel osc2Panel    { "Osc 2",         HarmoniaPalette::sectionOsc      };
+    SectionPanel fxPanel      { "Effects",       HarmoniaPalette::sectionFx       };
+    SectionPanel ampPanel     { "Amp Envelope",  HarmoniaPalette::sectionAmpEnv   };
+
     OscilloscopeComponent oscilloscope;
-    TopBarComponent topBar;
-    FrequencyVolumeComponent freqVolComponent;
-    ADSRComponent adsrComponent;
-    FilterComponent filterComponent;
-    BottomBarComponent bottomBar;
+    DisplayScreen         displayScreen;
+    SynthComponent        synthComponent;
+    EnvelopeVisualizer    ampEnvViz;
+    LfoVisualizer         lfoViz;
 
-    SynthComponent synthComponent;
+    std::unique_ptr<WaveformSelector>   osc1WaveSel;
+    std::unique_ptr<KnobControl>        oscMixKnob;
+    std::unique_ptr<KnobControl>        noiseLevelKnob;
 
-    //==============================================================================
-    // LAYOUT
+    std::unique_ptr<KnobControl>        filterCutoffKnob;
+    std::unique_ptr<KnobControl>        filterResoKnob;
+    std::unique_ptr<FilterTypeSelector> filterTypeSel;
+    std::unique_ptr<KnobControl>        filterEnvAmtKnob;
+    std::unique_ptr<KnobControl>        filterEnvDecayKnob;
+    std::unique_ptr<KnobControl>        velocityFilterKnob;
 
-    LayoutManager layoutManager;
-    ThemeManager themeManager;
+    std::unique_ptr<KnobControl>        lfoRateKnob;
+    std::unique_ptr<KnobControl>        lfoToPitchKnob;
+    std::unique_ptr<KnobControl>        lfoToCutoffKnob;
 
-    bool isUpdatingUI = false;
+    std::unique_ptr<WaveformSelector>   osc2WaveSel;
+    std::unique_ptr<KnobControl>        osc2DetuneKnob;
+    std::unique_ptr<KnobControl>        distortionKnob;
+    std::unique_ptr<KnobControl>        reverbKnob;
 
-    void applyTheme(ThemePreset theme);
-    void applyLayout(LayoutPreset layout);
+    std::unique_ptr<KnobControl>        attackKnob;
+    std::unique_ptr<KnobControl>        decayKnob;
+    std::unique_ptr<KnobControl>        sustainKnob;
+    std::unique_ptr<KnobControl>        releaseKnob;
 
-    void initUI(const UserSession& session);
-    void addComponents();
-    void initComponentsListeners();
-    void initTitleComponent();
-    void initAsyncProfileLoad();
-    void applyParamsToUI(const PatchParams& p);
-    void initExportParameters();
-    void initLoadParameters();
-    void initGenerateWithAI();
-    void initAIManager();
-    void onUIChanged();
-    PatchParams collectParamsFromUI();
+    std::unique_ptr<juce::FileChooser>  chooser;
+
+    void buildHeader();
+    void buildControls();
+    void wireButtons();
+    void registerJuiceFor (juce::Component* c);
+
+    void doLoadPreset();
+    void doSavePreset();
+    void doGenerateWithAi();
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

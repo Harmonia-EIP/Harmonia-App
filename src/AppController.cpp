@@ -7,20 +7,16 @@ AppController::AppController(HarmoniaAudioProcessor& p) : processor(p)
     if (session && session->expiresAt > juce::Time::getCurrentTime())
     {
         currentSession = *session;
-
         showMainScreen(*session);
-
 
         juce::Thread::launch([this, session]
         {
             auto synced = backend.syncProfileParams(*session);
-
             if (synced)
             {
                 juce::MessageManager::callAsync([this, synced]
                 {
                     currentSession = *synced;
-
                 });
             }
             else
@@ -28,10 +24,8 @@ AppController::AppController(HarmoniaAudioProcessor& p) : processor(p)
                 backend.clearSession();
             }
         });
-
         return;
     }
-
 
     showWelcomeScreen();
 }
@@ -106,9 +100,8 @@ void AppController::showMainScreen(const UserSession& session)
 {
     auto main = std::make_unique<MainComponent>(processor, backend, session);
 
-    main->getTitleComponent().onLogout = [this]()
+    main->onLogout = [this]()
     {
-        backend.clearSession();
         currentSession.reset();
         showWelcomeScreen();
     };

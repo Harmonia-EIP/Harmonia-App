@@ -1,9 +1,9 @@
 #pragma once
 
-#include "ComponentsIncludes.h"
-#include <cmath>
+#include "../JuceHeader.h"
+#include "../parameters/HarmoniaParameters.h"
+#include <random>
 
-//================= Sound basique =================
 class HarmoniaSound : public juce::SynthesiserSound
 {
 public:
@@ -11,16 +11,14 @@ public:
     bool appliesToChannel (int) override { return true; }
 };
 
-//================= Une voix de synthé =================
 class HarmoniaVoice : public juce::SynthesiserVoice
 {
 public:
-    HarmoniaVoice();
+    explicit HarmoniaVoice (const HarmoniaParams::AtomicRefs& refs);
 
     bool canPlaySound (juce::SynthesiserSound* sound) override;
 
-    void startNote (int midiNoteNumber,
-                    float velocity,
+    void startNote (int midiNoteNumber, float velocity,
                     juce::SynthesiserSound* sound,
                     int currentPitchWheelPosition) override;
 
@@ -34,22 +32,30 @@ public:
 
     void prepare (double sampleRate, int samplesPerBlock, int numOutputChannels);
 
-    void setParameters (const PatchParams& newParams);
-
-    void setWaveform (int waveformIndex);
-    void setFilter   (float cutoff, float resonance, int filterTypeIndex);
-    void setADSR     (float attack, float decay, float sustain, float release);
-
 private:
-    void updateOscillator();
-    void updateFilterType();
+    enum class Wave { Sine = 0, Triangle = 1, Saw = 2, Square = 3 };
 
-    juce::dsp::Oscillator<float>             osc;
+    static float renderWave (Wave w, float phase) noexcept;
+
+    const HarmoniaParams::AtomicRefs& params;
+
+    double currentSampleRate = 44100.0;
+
+    float phase1 = 0.0f;
+    float phase2 = 0.0f;
+    float lfoPhase = 0.0f;
+
+    float baseFrequencyHz = 440.0f;
+    float noteVelocity    = 1.0f;
+
+    std::mt19937 rng { 0x4321 };
+    std::uniform_real_distribution<float> noiseDist { -1.0f, 1.0f };
+
     juce::dsp::StateVariableTPTFilter<float> filter;
 
-    juce::ADSR             adsr;
-    juce::ADSR::Parameters adsrParams;
+    juce::ADSR ampEnv;
+    juce::ADSR::Parameters ampParams;
 
-    PatchParams currentParams;
-    double currentSampleRate = AppConfig::Synth::defaultSampleRate;
+    juce::ADSR filterEnv;
+    juce::ADSR::Parameters filterEnvParams;
 };

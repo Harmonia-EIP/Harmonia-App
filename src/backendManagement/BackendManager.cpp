@@ -1,8 +1,8 @@
 #include "BackendManager.h"
 #include "BackendAuthManager.h"
-#include "BackendAiManager.h"
 #include "BackendProfileManager.h"
 
+#include <cpr/cpr.h>
 #include <nlohmann/json.hpp>
 
 using json = nlohmann::json;
@@ -60,31 +60,26 @@ juce::String BackendManager::loadConfig()
 
 BackendManager::BackendManager()
 {
-    // API
     apiUrl = loadConfig();
     writeLog("API_URL = " + apiUrl);
 
-    // SESSION FILE
     auto dir = getAppDataDir();
     sessionFile = dir.getChildFile("HarmoniaSession.json");
-
     writeLog("SESSION PATH = " + sessionFile.getFullPathName());
 
-    // LOG FILE
     logFile = dir.getChildFile("HarmoniaLogs.txt");
 
-
     authManager    = std::make_unique<BackendAuthManager>(*this);
-    aiManager      = std::make_unique<BackendAiManager>(*this);
     profileManager = std::make_unique<BackendProfileManager>(*this);
+    aiManager = std::make_unique<BackendAiManager>(*this);
 }
 
 
 BackendManager::~BackendManager()
 {
     authManager.reset();
-    aiManager.reset();
     profileManager.reset();
+    aiManager.reset();
 }
 
 
@@ -127,13 +122,10 @@ void BackendManager::clearSession()
 }
 
 //================================================
-// AI
-PatchCallResult BackendManager::generatePatch(const juce::String& prompt)
+// AI : retourne le JSON brut (format charter) pour que le caller le passe à PresetLoader.
+AiResult BackendManager::generatePreset(const juce::String& prompt)
 {
-    if (aiManager)
-        return aiManager->generatePatch(prompt);
-
-    return PatchCallResult::error("AI manager not initialized");
+    return aiManager->generatePreset(prompt);
 }
 
 //================================================

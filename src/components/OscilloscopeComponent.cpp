@@ -1,10 +1,8 @@
 #include "OscilloscopeComponent.h"
+#include "../themes/HarmoniaPalette.h"
 #include <cstring>
 
-OscilloscopeComponent::OscilloscopeComponent (AppLookAndFeel& lnf,
-                                              int bufferSize,
-                                              int refreshHz)
-    : lookAndFeel (lnf)
+OscilloscopeComponent::OscilloscopeComponent (int bufferSize, int refreshHz)
 {
     bufferSize = juce::jmax (256, bufferSize);
     refreshHz  = juce::jlimit (10, 120, refreshHz);
@@ -15,21 +13,7 @@ OscilloscopeComponent::OscilloscopeComponent (AppLookAndFeel& lnf,
     drawBuffer.setSize (1, bufferSize);
     drawBuffer.clear();
 
-    setLookAndFeel (&lookAndFeel);
-    lookAndFeelChanged();
-
     startTimerHz (refreshHz);
-}
-
-void OscilloscopeComponent::lookAndFeelChanged()
-{
-    panelBg      = findColour (AppColourIds::panelBgId);
-    panelOutline = findColour (AppColourIds::panelOutlineId);
-
-    scopeWave    = findColour (AppColourIds::oscilloscopeWaveId);
-    scopeGrid    = findColour (AppColourIds::oscilloscopeGridId);
-
-    repaint();
 }
 
 void OscilloscopeComponent::pushBuffer (const juce::AudioBuffer<float>& buffer,
@@ -84,18 +68,23 @@ void OscilloscopeComponent::timerCallback()
 
 void OscilloscopeComponent::paint (juce::Graphics& g)
 {
-    g.fillAll (panelBg);
+    auto area = getLocalBounds().toFloat().reduced (1.0f);
+    const float corner = 8.0f;
 
-    auto area = getLocalBounds();
+    juce::ColourGradient grad (HarmoniaPalette::panel.brighter (0.02f), area.getX(), area.getY(),
+                               HarmoniaPalette::panel.darker (0.06f),    area.getX(), area.getBottom(), false);
+    g.setGradientFill (grad);
+    g.fillRoundedRectangle (area, corner);
 
-    g.setColour (panelOutline);
-    g.drawRect (area, 1);
+    g.setColour (HarmoniaPalette::border);
+    g.drawRoundedRectangle (area, corner, 1.0f);
 
-    g.setColour (scopeGrid.withAlpha (0.25f));
-    g.drawLine ((float) area.getX(), (float) area.getCentreY(),
-                (float) area.getRight(), (float) area.getCentreY(), 1.0f);
+    // Centre line
+    g.setColour (HarmoniaPalette::textMuted.withAlpha (0.4f));
+    g.drawLine (area.getX() + 8.0f, area.getCentreY(),
+                area.getRight() - 8.0f, area.getCentreY(), 1.0f);
 
-    drawWaveform (g, area);
+    drawWaveform (g, area.toNearestInt().reduced (8, 6));
 }
 
 void OscilloscopeComponent::drawWaveform (juce::Graphics& g, juce::Rectangle<int> area)
@@ -127,10 +116,14 @@ void OscilloscopeComponent::drawWaveform (juce::Graphics& g, juce::Rectangle<int
     p.preallocateSpace ((size_t) n * 3);
 
     p.startNewSubPath (sampleToX (0), sampleToY (data[0]));
-
     for (int i = 1; i < n; ++i)
         p.lineTo (sampleToX (i), sampleToY (data[i]));
 
-    g.setColour (scopeWave);
-    g.strokePath (p, juce::PathStrokeType (2.0f));
+    // Glow layer
+    g.setColour (HarmoniaPalette::accent.withAlpha (0.18f));
+    g.strokePath (p, juce::PathStrokeType (4.5f));
+
+    // Sharp layer (gradient-coloured)
+    g.setColour (HarmoniaPalette::accentSecond);
+    g.strokePath (p, juce::PathStrokeType (1.6f));
 }
