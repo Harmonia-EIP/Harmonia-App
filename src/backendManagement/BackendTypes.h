@@ -55,3 +55,20 @@ struct ProfileResult
         return { false, message, {} };
     }
 };
+
+struct AiResult
+{
+    bool success = false;
+    juce::String json;          
+    juce::String errorMessage;
+    
+    static AiResult ok(const juce::String& json)
+    {
+        return { true, json, {} };
+    }
+
+    static AiResult error(const juce::String& message)
+    {
+        return { false, {}, message };
+    }
+};

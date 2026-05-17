@@ -49,14 +49,17 @@ MainComponent::~MainComponent()
 
 void MainComponent::buildHeader()
 {
-    titleLabel.setText ("HARMONIA", juce::dontSendNotification);
+    juce::String username = session.pseudo.isNotEmpty()
+        ? session.pseudo
+        : Strings::Errors::NoUserConnected;
+
+    titleLabel.setText (username.toUpperCase(), juce::dontSendNotification);
     titleLabel.setFont (juce::Font (juce::FontOptions (22.0f).withStyle ("Bold"))
                             .withExtraKerningFactor (0.10f));
     titleLabel.setColour (juce::Label::textColourId, HarmoniaPalette::accent);
     addAndMakeVisible (titleLabel);
 
-    subtitleLabel.setText ("AI SUBTRACTIVE SYNTHESIZER  -  CHARTER V1",
-                           juce::dontSendNotification);
+    subtitleLabel.setText (Strings::Titles::Subtitle, juce::dontSendNotification);
     subtitleLabel.setFont (juce::Font (juce::FontOptions (9.5f))
                                .withExtraKerningFactor (0.20f));
     subtitleLabel.setColour (juce::Label::textColourId, HarmoniaPalette::textMuted);
@@ -64,7 +67,7 @@ void MainComponent::buildHeader()
 
     promptEditor.setMultiLine (false);
     promptEditor.setReturnKeyStartsNewLine (false);
-    promptEditor.setTextToShowWhenEmpty ("Describe a sound and press GENERATE...",
+    promptEditor.setTextToShowWhenEmpty (Strings::Placeholders::Prompt,
                                          HarmoniaPalette::textMuted);
     promptEditor.setFont (juce::Font (juce::FontOptions (12.5f)));
     promptEditor.setIndents (10, 6);
@@ -73,7 +76,7 @@ void MainComponent::buildHeader()
     generateButton.getProperties().set ("accent", true);
     addAndMakeVisible (generateButton);
 
-    presetLabel.setText ("INIT", juce::dontSendNotification);
+    presetLabel.setText (Strings::Labels::UnsetPreset.toUpperCase(), juce::dontSendNotification);
     presetLabel.setFont (juce::Font (juce::FontOptions (10.5f).withStyle ("Bold"))
                              .withExtraKerningFactor (0.18f));
     presetLabel.setColour (juce::Label::textColourId, HarmoniaPalette::accent);
@@ -230,7 +233,11 @@ void MainComponent::doSavePreset()
             if (file == juce::File()) return;
             if (file.getFileExtension().isEmpty())
                 file = file.withFileExtension (".json");
-            const auto json = PresetLoader::saveToJsonString (processor.getAPVTS(), "User Preset");
+            juce::String pseudo = session.pseudo.isNotEmpty() ? session.pseudo : "Unknown";
+
+            juce::String presetName = file.getFileNameWithoutExtension();
+
+            const auto json = PresetLoader::saveToJsonString (processor.getAPVTS(), presetName, pseudo);
             file.replaceWithText (json);
             presetLabel.setText (file.getFileNameWithoutExtension().toUpperCase(),
                                  juce::dontSendNotification);
@@ -240,26 +247,68 @@ void MainComponent::doSavePreset()
 void MainComponent::doGenerateWithAi()
 {
     const auto prompt = promptEditor.getText();
-    if (prompt.trim().isEmpty()) return;
 
-    presetLabel.setText ("GENERATING...", juce::dontSendNotification);
+    if (prompt.trim().isEmpty())
+    {
+        juce::AlertWindow::showMessageBoxAsync(
+            juce::AlertWindow::WarningIcon,
+            Strings::Errors::MissingPrompt,
+            Strings::Errors::MissingPromptAdvice
+        );
+        return;
+    }
+
+    presetLabel.setText (Strings::Labels::GeneratingPreset, juce::dontSendNotification);
 
     juce::Thread::launch ([this, prompt]
     {
-        juce::String err;
-        const auto json = backend.generatePresetJson (prompt, err);
+        auto result = backend.generatePreset(prompt);
 
-        juce::MessageManager::callAsync ([this, json, err]
+        juce::MessageManager::callAsync ([this, result]
         {
-            if (json.isEmpty())
+            if (!result.success)
             {
-                presetLabel.setText ("AI ERR: " + err, juce::dontSendNotification);
+                juce::AlertWindow::showMessageBoxAsync(
+                    juce::AlertWindow::WarningIcon,
+                    Strings::Errors::AiError,
+                    result.errorMessage.isNotEmpty()
+                        ? result.errorMessage
+                        : Strings::Errors::UnknownError
+                );
+
+                presetLabel.setText(
+                    Strings::Labels::UnsetPreset.toUpperCase(),
+                    juce::dontSendNotification
+                );
                 return;
             }
-            auto r = PresetLoader::loadFromJsonString (json, processor.getAPVTS());
-            presetLabel.setText (r.success ? r.presetName.toUpperCase()
-                                           : ("PARSE ERR: " + r.errorMessage),
-                                 juce::dontSendNotification);
+
+            auto r = PresetLoader::loadFromJsonString(
+                result.json,
+                processor.getAPVTS()
+            );
+
+            if (!r.success)
+            {
+                juce::AlertWindow::showMessageBoxAsync(
+                    juce::AlertWindow::WarningIcon,
+                    Strings::Errors::ErrorTitle,
+                    r.errorMessage.isNotEmpty()
+                        ? r.errorMessage
+                        : Strings::Errors::UnreadableAIResponse
+                );
+
+                presetLabel.setText(
+                    Strings::Labels::UnsetPreset.toUpperCase(),
+                    juce::dontSendNotification
+                );
+                return;
+            }
+
+            presetLabel.setText(
+                r.presetName.toUpperCase(),
+                juce::dontSendNotification
+            );
         });
     });
 }
@@ -290,32 +339,71 @@ void MainComponent::resized()
     auto bounds = getLocalBounds();
     particles.setBounds (bounds);
 
-    auto header = bounds.removeFromTop (76).reduced (16, 12);
+    auto header = bounds.removeFromTop (76).reduced (16, 10);
     auto leftHeader = header.removeFromLeft (260);
+
     titleLabel.setBounds    (leftHeader.removeFromTop (28));
     subtitleLabel.setBounds (leftHeader.removeFromTop (16));
 
-    logoutButton.setBounds (header.removeFromRight (78).reduced (0, 12));
-    header.removeFromRight (8);
-    saveButton.setBounds   (header.removeFromRight (66).reduced (0, 12));
-    header.removeFromRight (4);
-    loadButton.setBounds   (header.removeFromRight (66).reduced (0, 12));
-    header.removeFromRight (16);
+    // ================= BUTTONS =================
+
+    const int buttonW = 72;
+    const int buttonH = 28;
+    const int headergap = 8;
+
+    auto buttonsArea = header.removeFromRight (buttonW * 3 + headergap * 2);
+
+    auto logoutArea = buttonsArea.removeFromRight (buttonW);
+    buttonsArea.removeFromRight (headergap);
+
+    auto saveArea = buttonsArea.removeFromRight (buttonW);
+    buttonsArea.removeFromRight (headergap);
+
+    auto loadArea = buttonsArea.removeFromRight (buttonW);
+
+    auto centerY = header.getCentreY();
+
+    auto place = [&](juce::Rectangle<int> area)
+    {
+        return juce::Rectangle<int>(
+            area.getX(),
+            centerY - buttonH / 2,
+            buttonW,
+            buttonH
+        );
+    };
+
+    logoutButton.setBounds (place(logoutArea));
+    saveButton.setBounds   (place(saveArea));
+    loadButton.setBounds   (place(loadArea));
+
+    // ================= PROMPT =================
+
+    header.removeFromTop (8);
+
+    header.removeFromRight (12);
 
     auto promptRow = header.removeFromTop (32);
-    generateButton.setBounds (promptRow.removeFromRight (104));
-    promptRow.removeFromRight (8);
+
+    auto generateArea = promptRow.removeFromRight (104);
+    promptRow.removeFromRight (8); // gap
     promptEditor.setBounds (promptRow);
+
+    generateButton.setBounds (generateArea);
+    promptEditor.setBounds (promptRow);
+
+    // ================= PRESET LABEL =================
+
     presetLabel.setBounds (header.removeFromTop (16));
 
-    auto kbArea = bounds.removeFromBottom (90);
+    auto kbArea = bounds.removeFromBottom (100);
     synthComponent.setBounds (kbArea);
 
-    auto ampArea = bounds.removeFromBottom (170).reduced (16, 8);
+    auto ampArea = bounds.removeFromBottom (180).reduced (16, 8);
     ampPanel.setBounds (ampArea);
     {
         auto inner = ampPanel.getContentBounds();
-        const int vizH = (int) (inner.getHeight() * 0.42f);
+        const int vizH = (int) (inner.getHeight() * 0.40f);
         ampEnvViz.setBounds (inner.removeFromTop (vizH));
         inner.removeFromTop (6);
 
@@ -327,7 +415,7 @@ void MainComponent::resized()
         releaseKnob->setBounds (juce::Rectangle<int> (inner.getX() + 3 * cellW, inner.getY(), cellW, inner.getHeight()).reduced (4));
     }
 
-    auto mainRow = bounds.reduced (16, 12);
+    auto mainRow = bounds.reduced (16, 6);
     const int gap = 10;
 
     const int leftW   = (int) (mainRow.getWidth() * 0.33f);
@@ -341,7 +429,7 @@ void MainComponent::resized()
     auto rightCol  = mainRow;
 
     {
-        const int osc1H = (int) (leftCol.getHeight() * 0.36f);
+        const int osc1H = (int) (leftCol.getHeight() * 0.40f);
         auto osc1Box   = leftCol.removeFromTop (osc1H);
         leftCol.removeFromTop (gap);
         auto filterBox = leftCol;
@@ -380,7 +468,7 @@ void MainComponent::resized()
     }
 
     {
-        const int screenH = (int) (centerCol.getHeight() * 0.55f);
+        const int screenH = (int) (centerCol.getHeight() * 0.50f);
         auto screenBox = centerCol.removeFromTop (screenH);
         centerCol.removeFromTop (gap);
         auto lfoBox    = centerCol;
@@ -402,7 +490,7 @@ void MainComponent::resized()
     }
 
     {
-        const int osc2H = (int) (rightCol.getHeight() * 0.50f);
+        const int osc2H = (int) (rightCol.getHeight() * 0.55f);
         auto osc2Box = rightCol.removeFromTop (osc2H);
         rightCol.removeFromTop (gap);
         auto fxBox   = rightCol;

@@ -33,6 +33,7 @@ namespace Strings
     {
         inline const juce::String CreateAccount = "Create your Harmonia account";
         inline const juce::String SignIn = "Sign in to your account";
+        inline const juce::String Subtitle = "AI SUBTRACTIVE SYNTHESIZER  -  CHARTER V1";
     }
 
     namespace Labels
@@ -41,6 +42,8 @@ namespace Strings
         inline const juce::String Filter = "Filter";
         inline const juce::String Prompt = "Prompt";
         inline const juce::String User = "User";
+        inline const juce::String UnsetPreset = "No preset loaded";
+        inline const juce::String GeneratingPreset = "Generating preset...";
     }
 
     namespace Placeholders
@@ -52,6 +55,7 @@ namespace Strings
         inline const juce::String Email     = "Email";
         inline const juce::String Password  = "Password";
         inline const juce::juce_wchar PasswordChar = '*';
+        inline const juce::String Prompt = "Describe a sound and press GENERATE...";
     }
 
     namespace Buttons

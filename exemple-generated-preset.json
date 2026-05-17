@@ -1,0 +1,164 @@
+{
+  "metadata": {
+    "prompt": "[CONTENT OF THE PROMPT]",
+    "generated_by": "Harmonia-AI",
+    "model_version": "1.0.0",
+    "model_hash": "abcdef1234567890"
+  },
+  "parameters": {
+    "osc_1_waveform": {
+      "value": 0.3456789012345678,
+      "range": [0.0, 1.0],
+      "mapping": {
+        "0.0": "sine",
+        "0.33": "triangle",
+        "0.66": "saw",
+        "1.0": "square"
+      },
+      "description": "Définit le corps principal du son"
+    },
+    "osc_2_waveform": {
+      "value": 0.3456789012345678,
+      "range": [0.0, 1.0],
+      "mapping": {
+        "0.0": "sine",
+        "0.33": "triangle",
+        "0.66": "saw",
+        "1.0": "square"
+      },
+      "description": "Couche harmonique secondaire pour épaissir"
+    },
+    "osc_mix": {
+      "value": 0.5,
+      "range": [0.0, 1.0],
+      "description": "Balance de volume entre les deux oscillateurs"
+    },
+    "osc_2_detune": {
+      "value": 0.2,
+      "range": [0.0, 1.0],
+      "description": "Crée de la largeur ou des battements"
+    },
+    "noise_level": {
+      "value": 0.1,
+      "range": [0.0, 1.0],
+      "description": "Simule le souffle et l’impact"
+    },
+    "filter_cutoff": {
+      "value": 0.10866595804691315,
+      "range": [0.0, 1.0],
+      "description": "Définit la brillance du son"
+    },
+    "filter_resonance": {
+      "value": 0.6364212036132812,
+      "range": [0.0, 1.0],
+      "description": "Crée le côté acide ou siffleur"
+    },
+    "filter_type": {
+      "value": 0.21061713993549347,
+      "range": [0.0, 1.0],
+      "mapping": {
+        "0.0": "lowpass",
+        "0.5": "bandpass",
+        "1.0": "highpass"
+      },
+      "description": "Type de filtre"
+    },
+    "amp_attack": {
+      "value": 0.41581475734710693,
+      "range": [0.0, 1.0],
+      "description": "Vitesse d'apparition"
+    },
+    "amp_decay": {
+      "value": 0.4063386619091034,
+      "range": [0.0, 1.0],
+      "description": "Temps de chute vers le niveau de sustain"
+    },
+    "amp_sustain": {
+      "value": 0.5804609060287476,
+      "range": [0.0, 1.0],
+      "description": "Niveau maintenu tant que la note est pressée"
+    },
+    "amp_release": {
+      "value": 0.6323370933532715,
+      "range": [0.0, 1.0],
+      "description": "Queue de résonance après relâchement"
+    },
+    "filter_env_amount": {
+      "value": 0.5,
+      "range": [0.0, 1.0],
+      "description": "Intensité de l'enveloppe sur le filtre"
+    },
+    "filter_env_decay": {
+      "value": 0.4,
+      "range": [0.0, 1.0],
+      "description": "Vitesse de fermeture du filtre"
+    },
+    "lfo_rate": {
+      "value": 0.3,
+      "range": [0.0, 1.0],
+      "description": "Vitesse d'oscillation"
+    },
+    "lfo_to_pitch": {
+      "value": 0.2,
+      "range": [0.0, 1.0],
+      "description": "Intensité du vibrato"
+    },
+    "lfo_to_cutoff": {
+      "value": 0.2,
+      "range": [0.0, 1.0],
+      "description": "Création de mouvement sur le timbre"
+    },
+    "velocity_to_filter": {
+      "value": 0.5,
+      "range": [0.0, 1.0],
+      "description": "Sensibilité à la frappe"
+    },
+    "distortion_mix": {
+      "value": 0.0,
+      "range": [0.0, 1.0],
+      "description": "Apporte des harmoniques et salit le son"
+    },
+    "reverb_mix": {
+      "value": 0.3,
+      "range": [0.0, 1.0],
+      "description": "Place le son dans un espace physique"
+    }
+  },
+
+  "example_file": {
+    "metadata": {
+      "prompt": "Warm analog pad with soft attack",
+      "generated_by": "Harmonia-AI",
+      "model_version": "1.0.0",
+      "model_hash": "abcdef1234567890"
+    },
+
+    "parameters": {
+      "osc_1_waveform": 0.66,
+      "osc_2_waveform": 0.33,
+      "osc_mix": 0.58,
+      "osc_2_detune": 0.18,
+      "noise_level": 0.07,
+
+      "filter_cutoff": 0.24,
+      "filter_resonance": 0.31,
+      "filter_type": 0.0,
+
+      "amp_attack": 0.72,
+      "amp_decay": 0.44,
+      "amp_sustain": 0.81,
+      "amp_release": 0.76,
+
+      "filter_env_amount": 0.37,
+      "filter_env_decay": 0.41,
+
+      "lfo_rate": 0.12,
+      "lfo_to_pitch": 0.04,
+      "lfo_to_cutoff": 0.19,
+
+      "velocity_to_filter": 0.43,
+      "distortion_mix": 0.02,
+      "reverb_mix": 0.57
+    }
+  }
+}

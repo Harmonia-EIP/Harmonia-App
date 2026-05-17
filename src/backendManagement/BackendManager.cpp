@@ -71,6 +71,7 @@ BackendManager::BackendManager()
 
     authManager    = std::make_unique<BackendAuthManager>(*this);
     profileManager = std::make_unique<BackendProfileManager>(*this);
+    aiManager = std::make_unique<BackendAiManager>(*this);
 }
 
 
@@ -78,6 +79,7 @@ BackendManager::~BackendManager()
 {
     authManager.reset();
     profileManager.reset();
+    aiManager.reset();
 }
 
 
@@ -121,48 +123,9 @@ void BackendManager::clearSession()
 
 //================================================
 // AI : retourne le JSON brut (format charter) pour que le caller le passe à PresetLoader.
-juce::String BackendManager::generatePresetJson(const juce::String& prompt, juce::String& errorOut)
+AiResult BackendManager::generatePreset(const juce::String& prompt)
 {
-    errorOut.clear();
-
-    if (prompt.trim().isEmpty())
-    {
-        errorOut = "Empty prompt";
-        return {};
-    }
-
-    auto sessionOpt = loadSession();
-    if (!sessionOpt.has_value())
-    {
-        errorOut = "No user connected";
-        return {};
-    }
-
-    auto session = sessionOpt.value();
-    if (session.expiresAt < juce::Time::getCurrentTime())
-    {
-        errorOut = "Session expired";
-        return {};
-    }
-
-    json payload{ { "prompt", prompt.toStdString() } };
-
-    auto response = cpr::Post(
-        cpr::Url{ (apiUrl + "/ai/generate-preset").toStdString() },
-        cpr::Header{
-            { "Content-Type", "application/json" },
-            { "Authorization", "Bearer " + session.accessToken.toStdString() }
-        },
-        cpr::Body{ payload.dump() }
-    );
-
-    if (response.status_code != 200)
-    {
-        errorOut = "HTTP " + juce::String(response.status_code);
-        return {};
-    }
-
-    return juce::String(response.text);
+    return aiManager->generatePreset(prompt);
 }
 
 //================================================

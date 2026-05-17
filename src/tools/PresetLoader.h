@@ -92,12 +92,12 @@ namespace PresetLoader
     // Sérialise l'état actuel de l'APVTS au format hel.json (avec parameters + values).
     // Utilisé par le bouton "Save preset".
     inline juce::String saveToJsonString (juce::AudioProcessorValueTreeState& apvts,
-                                          const juce::String& presetName = "User Preset")
+                                          const juce::String& presetName, const juce::String& generatedBy)
     {
         nlohmann::json doc;
         doc["metadata"] = {
             { "name", presetName.toStdString() },
-            { "generated_by", "User" },
+            { "generated_by", generatedBy.toStdString() },
             { "charter_version", "1.0" }
         };
 
