@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['patchcallresult_0',['PatchCallResult',['../structPatchCallResult.html',1,'']]],
-  ['patchparams_1',['PatchParams',['../structPatchParams.html',1,'']]],
-  ['profileresult_2',['ProfileResult',['../structProfileResult.html',1,'']]]
+  ['lfovisualizer_0',['LfoVisualizer',['../classLfoVisualizer.html',1,'']]],
+  ['loadresult_1',['LoadResult',['../structPresetLoader_1_1LoadResult.html',1,'PresetLoader']]],
+  ['loginpage_2',['LoginPage',['../classLoginPage.html',1,'']]]
 ];

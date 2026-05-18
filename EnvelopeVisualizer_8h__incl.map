@@ -1,0 +1,16 @@
+<map id="src/components/EnvelopeVisualizer.h" name="src/components/EnvelopeVisualizer.h">
+<area shape="rect" id="Node000001" title="ADSR envelope visualization component." alt="" coords="95,5,359,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,167,191,207"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="156,33,76,53,44,66,24,80,19,90,18,99,24,119,40,139,59,157,56,160,36,142,20,122,13,100,14,88,20,77,41,61,74,48,155,28"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="34,79,189,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="212,33,152,73,149,69,209,29"/>
+<area shape="rect" id="Node000004" href="$HarmoniaPalette_8h.html" title=" " alt="" coords="501,86,709,111"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="283,28,537,81,536,86,282,33"/>
+<area shape="rect" id="Node000006" href="$HarmoniaParameters_8h.html" title="Centralized synthesizer parameter definitions and APVTS layout creation." alt="" coords="213,86,476,111"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="246,29,317,76,314,80,243,33"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="533,167,676,207"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="607,112,607,153,602,153,602,112"/>
+<area shape="poly" id="edge6_Node000006_Node000002" title=" " alt="" coords="312,114,166,165,164,160,311,109"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="317,174,373,199"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="347,112,347,160,342,160,342,112"/>
+</map>

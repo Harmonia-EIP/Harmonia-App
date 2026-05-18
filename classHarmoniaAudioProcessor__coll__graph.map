@@ -1,17 +1,13 @@
 <map id="HarmoniaAudioProcessor" name="HarmoniaAudioProcessor">
-<area shape="rect" id="Node000001" title=" " alt="" coords="12,269,199,295"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,181,163,207"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="93,219,105,268,100,269,88,221"/>
-<area shape="rect" id="Node000003" href="$classOscilloscopeComponent.html" title=" " alt="" coords="187,181,365,207"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="242,215,130,271,127,267,240,210"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="73,93,205,119"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="170,124,259,179,256,183,167,128"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="229,93,323,119"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="279,133,279,181,273,181,273,133"/>
-<area shape="rect" id="Node000006" href="$classAppLookAndFeel.html" title=" " alt="" coords="348,93,479,119"/>
-<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="385,128,296,183,293,179,382,124"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="250,5,414,31"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="354,39,404,91,400,95,350,43"/>
-<area shape="rect" id="Node000008" href="$structThemePalette.html" title=" " alt="" coords="439,5,551,31"/>
-<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="476,43,427,95,423,91,472,39"/>
+<area shape="rect" id="Node000001" title="Main JUCE audio processor for the Harmonia synthesizer." alt="" coords="203,168,389,193"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,80,163,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="126,108,269,165,267,170,124,113"/>
+<area shape="rect" id="Node000003" href="$structHarmoniaParams_1_1AtomicRefs.html" title="Real&#45;time safe parameter access structure." alt="" coords="187,80,405,105"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="299,119,299,167,293,167,293,119"/>
+<area shape="rect" id="Node000004" href="$classOscilloscopeComponent.html" title="Real&#45;time oscilloscope waveform display." alt="" coords="429,80,608,105"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="477,113,327,170,325,165,475,108"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="385,5,517,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="473,39,510,78,506,81,469,43"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="541,5,635,31"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="569,43,532,82,528,78,565,39"/>
 </map>

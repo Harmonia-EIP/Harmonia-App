@@ -1,0 +1,29 @@
+<map id="src/tools/Alert.h" name="src/tools/Alert.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="337,5,461,31"/>
+<area shape="rect" id="Node000002" href="$PagesIncludes_8h.html" title=" " alt="" coords="303,79,495,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="402,44,402,79,397,79,397,44"/>
+<area shape="rect" id="Node000003" href="$LoginPage_8h.html" title=" " alt="" coords="519,152,685,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="445,106,570,149,568,154,444,111"/>
+<area shape="rect" id="Node000010" href="$SignupPage_8h.html" title=" " alt="" coords="105,152,280,177"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="354,111,227,154,225,149,352,106"/>
+<area shape="rect" id="Node000012" href="$WelcomePage_8h.html" title=" " alt="" coords="304,152,495,177"/>
+<area shape="poly" id="edge12_Node000002_Node000012" title=" " alt="" coords="402,118,402,152,397,152,397,118"/>
+<area shape="rect" id="Node000004" href="$AppController_8h.html" title="Main application navigation controller." alt="" coords="220,225,365,251"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="540,183,343,228,342,223,539,178"/>
+<area shape="rect" id="Node000009" href="$LoginPage_8cpp.html" title=" " alt="" coords="621,225,802,251"/>
+<area shape="poly" id="edge8_Node000003_Node000009" title=" " alt="" coords="632,183,695,223,692,227,630,187"/>
+<area shape="rect" id="Node000005" href="$AppController_8cpp.html" title=" " alt="" coords="126,299,286,324"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="270,261,222,301,218,296,267,257"/>
+<area shape="rect" id="Node000006" href="$PluginEditor_8h.html" title="Main graphical editor of the Harmonia plugin." alt="" coords="311,299,445,324"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="318,257,366,296,362,300,315,261"/>
+<area shape="rect" id="Node000007" href="$PluginEditor_8cpp.html" title=" " alt="" coords="210,372,359,397"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="354,334,302,374,298,370,351,330"/>
+<area shape="rect" id="Node000008" href="$PluginProcessor_8cpp.html" title=" " alt="" coords="384,372,559,397"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="405,330,458,370,454,374,402,334"/>
+<area shape="poly" id="edge10_Node000010_Node000004" title=" " alt="" coords="221,183,278,223,275,227,218,187"/>
+<area shape="rect" id="Node000011" href="$SignupPage_8cpp.html" title=" " alt="" coords="5,225,196,251"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="169,188,117,227,114,223,166,183"/>
+<area shape="poly" id="edge13_Node000012_Node000004" title=" " alt="" coords="372,187,312,227,309,223,370,183"/>
+<area shape="rect" id="Node000013" href="$WelcomePage_8cpp.html" title=" " alt="" coords="389,225,596,251"/>
+<area shape="poly" id="edge14_Node000012_Node000013" title=" " alt="" coords="427,183,479,223,476,227,423,188"/>
+</map>

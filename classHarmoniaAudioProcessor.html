@@ -91,12 +91,14 @@ $(document).ready(function(){initNavTree('classHarmoniaAudioProcessor.html','');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classHarmoniaAudioProcessor-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">HarmoniaAudioProcessor Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Main JUCE audio processor for the Harmonia synthesizer.  
+ <a href="classHarmoniaAudioProcessor.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="PluginProcessor_8h_source.html">PluginProcessor.h</a>&gt;</code></p>
 <div class="dynheader">
@@ -104,7 +106,7 @@ Inheritance diagram for HarmoniaAudioProcessor:</div>
 <div class="dyncontent">
 <div class="center"><img src="classHarmoniaAudioProcessor__inherit__graph.png" border="0" usemap="#aHarmoniaAudioProcessor_inherit__map" alt="Inheritance graph"/></div>
 <map name="aHarmoniaAudioProcessor_inherit__map" id="aHarmoniaAudioProcessor_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,79,192,104"/>
+<area shape="rect" title="Main JUCE audio processor for the Harmonia synthesizer." alt="" coords="5,79,192,104"/>
 <area shape="rect" title=" " alt="" coords="20,5,177,31"/>
 <area shape="poly" title=" " alt="" coords="101,44,101,79,96,79,96,44"/>
 </map>
@@ -114,88 +116,132 @@ Collaboration diagram for HarmoniaAudioProcessor:</div>
 <div class="dyncontent">
 <div class="center"><img src="classHarmoniaAudioProcessor__coll__graph.png" border="0" usemap="#aHarmoniaAudioProcessor_coll__map" alt="Collaboration graph"/></div>
 <map name="aHarmoniaAudioProcessor_coll__map" id="aHarmoniaAudioProcessor_coll__map">
-<area shape="rect" title=" " alt="" coords="12,269,199,295"/>
-<area shape="rect" title=" " alt="" coords="5,181,163,207"/>
-<area shape="poly" title=" " alt="" coords="93,219,105,268,100,269,88,221"/>
-<area shape="rect" href="classOscilloscopeComponent.html" title=" " alt="" coords="187,181,365,207"/>
-<area shape="poly" title=" " alt="" coords="242,215,130,271,127,267,240,210"/>
-<area shape="rect" title=" " alt="" coords="73,93,205,119"/>
-<area shape="poly" title=" " alt="" coords="170,124,259,179,256,183,167,128"/>
-<area shape="rect" title=" " alt="" coords="229,93,323,119"/>
-<area shape="poly" title=" " alt="" coords="279,133,279,181,273,181,273,133"/>
-<area shape="rect" href="classAppLookAndFeel.html" title=" " alt="" coords="348,93,479,119"/>
-<area shape="poly" title=" " alt="" coords="385,128,296,183,293,179,382,124"/>
-<area shape="rect" title=" " alt="" coords="250,5,414,31"/>
-<area shape="poly" title=" " alt="" coords="354,39,404,91,400,95,350,43"/>
-<area shape="rect" href="structThemePalette.html" title=" " alt="" coords="439,5,551,31"/>
-<area shape="poly" title=" " alt="" coords="476,43,427,95,423,91,472,39"/>
+<area shape="rect" title="Main JUCE audio processor for the Harmonia synthesizer." alt="" coords="203,168,389,193"/>
+<area shape="rect" title=" " alt="" coords="5,80,163,105"/>
+<area shape="poly" title=" " alt="" coords="126,108,269,165,267,170,124,113"/>
+<area shape="rect" href="structHarmoniaParams_1_1AtomicRefs.html" title="Real&#45;time safe parameter access structure." alt="" coords="187,80,405,105"/>
+<area shape="poly" title=" " alt="" coords="299,119,299,167,293,167,293,119"/>
+<area shape="rect" href="classOscilloscopeComponent.html" title="Real&#45;time oscilloscope waveform display." alt="" coords="429,80,608,105"/>
+<area shape="poly" title=" " alt="" coords="477,113,327,170,325,165,475,108"/>
+<area shape="rect" title=" " alt="" coords="385,5,517,31"/>
+<area shape="poly" title=" " alt="" coords="473,39,510,78,506,81,469,43"/>
+<area shape="rect" title=" " alt="" coords="541,5,635,31"/>
+<area shape="poly" title=" " alt="" coords="569,43,532,82,528,78,565,39"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:af7ed2bb8caf041ebc9127c06f758907e" id="r_af7ed2bb8caf041ebc9127c06f758907e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#af7ed2bb8caf041ebc9127c06f758907e">HarmoniaAudioProcessor</a> ()</td></tr>
+<tr class="memdesc:af7ed2bb8caf041ebc9127c06f758907e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the audio processor.  <br /></td></tr>
 <tr class="separator:af7ed2bb8caf041ebc9127c06f758907e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae89ea737b85e0670de703ca671c3c417" id="r_ae89ea737b85e0670de703ca671c3c417"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#ae89ea737b85e0670de703ca671c3c417">~HarmoniaAudioProcessor</a> () override</td></tr>
+<tr class="memdesc:ae89ea737b85e0670de703ca671c3c417"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the processor.  <br /></td></tr>
 <tr class="separator:ae89ea737b85e0670de703ca671c3c417"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac10325e77f4e1a83b2ef4fc0f3de4173" id="r_ac10325e77f4e1a83b2ef4fc0f3de4173"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#ac10325e77f4e1a83b2ef4fc0f3de4173">prepareToPlay</a> (double sampleRate, int samplesPerBlock) override</td></tr>
+<tr class="memdesc:ac10325e77f4e1a83b2ef4fc0f3de4173"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prepares DSP resources before playback starts.  <br /></td></tr>
 <tr class="separator:ac10325e77f4e1a83b2ef4fc0f3de4173"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a81b28881353f8f7fad2607b44767ac08" id="r_a81b28881353f8f7fad2607b44767ac08"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#a81b28881353f8f7fad2607b44767ac08">releaseResources</a> () override</td></tr>
+<tr class="memdesc:a81b28881353f8f7fad2607b44767ac08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Releases playback resources.  <br /></td></tr>
 <tr class="separator:a81b28881353f8f7fad2607b44767ac08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae05a48bbc10aff801c87ac7986827825" id="r_ae05a48bbc10aff801c87ac7986827825"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#ae05a48bbc10aff801c87ac7986827825">isBusesLayoutSupported</a> (const BusesLayout &amp;layouts) const override</td></tr>
+<tr class="memdesc:ae05a48bbc10aff801c87ac7986827825"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates supported audio bus layouts.  <br /></td></tr>
 <tr class="separator:ae05a48bbc10aff801c87ac7986827825"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab27fa8266e17700fd481991f59f2f1ad" id="r_ab27fa8266e17700fd481991f59f2f1ad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#ab27fa8266e17700fd481991f59f2f1ad">processBlock</a> (juce::AudioBuffer&lt; float &gt; &amp;, juce::MidiBuffer &amp;) override</td></tr>
+<tr class="memdesc:ab27fa8266e17700fd481991f59f2f1ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main real-time audio processing callback.  <br /></td></tr>
 <tr class="separator:ab27fa8266e17700fd481991f59f2f1ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a20d2e2bcbd3a744433fe1d35a233088e" id="r_a20d2e2bcbd3a744433fe1d35a233088e"><td class="memItemLeft" align="right" valign="top">juce::AudioProcessorEditor *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#a20d2e2bcbd3a744433fe1d35a233088e">createEditor</a> () override</td></tr>
+<tr class="memdesc:a20d2e2bcbd3a744433fe1d35a233088e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the plugin editor.  <br /></td></tr>
 <tr class="separator:a20d2e2bcbd3a744433fe1d35a233088e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e4224f517d5858c382fb6f44485ed40" id="r_a5e4224f517d5858c382fb6f44485ed40"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#a5e4224f517d5858c382fb6f44485ed40">hasEditor</a> () const override</td></tr>
+<tr class="memdesc:a5e4224f517d5858c382fb6f44485ed40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates that the plugin provides an editor.  <br /></td></tr>
 <tr class="separator:a5e4224f517d5858c382fb6f44485ed40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a918dd75f25614dc184ae001fe6c6089a" id="r_a918dd75f25614dc184ae001fe6c6089a"><td class="memItemLeft" align="right" valign="top">const juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#a918dd75f25614dc184ae001fe6c6089a">getName</a> () const override</td></tr>
+<tr class="memdesc:a918dd75f25614dc184ae001fe6c6089a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the plugin name.  <br /></td></tr>
 <tr class="separator:a918dd75f25614dc184ae001fe6c6089a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b43dddfde13a2c0d9ab3d26a4f49b08" id="r_a1b43dddfde13a2c0d9ab3d26a4f49b08"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#a1b43dddfde13a2c0d9ab3d26a4f49b08">acceptsMidi</a> () const override</td></tr>
+<tr class="memdesc:a1b43dddfde13a2c0d9ab3d26a4f49b08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates MIDI input support.  <br /></td></tr>
 <tr class="separator:a1b43dddfde13a2c0d9ab3d26a4f49b08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac7cf47b7562b4fb53ccb8e3f03228e70" id="r_ac7cf47b7562b4fb53ccb8e3f03228e70"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#ac7cf47b7562b4fb53ccb8e3f03228e70">producesMidi</a> () const override</td></tr>
+<tr class="memdesc:ac7cf47b7562b4fb53ccb8e3f03228e70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates MIDI output support.  <br /></td></tr>
 <tr class="separator:ac7cf47b7562b4fb53ccb8e3f03228e70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ec8e70f868ed305a6ada426c92e4306" id="r_a0ec8e70f868ed305a6ada426c92e4306"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#a0ec8e70f868ed305a6ada426c92e4306">isMidiEffect</a> () const override</td></tr>
+<tr class="memdesc:a0ec8e70f868ed305a6ada426c92e4306"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether the plugin is a MIDI effect.  <br /></td></tr>
 <tr class="separator:a0ec8e70f868ed305a6ada426c92e4306"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a79396f41b4a7bfc342de98eff0b4074e" id="r_a79396f41b4a7bfc342de98eff0b4074e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#a79396f41b4a7bfc342de98eff0b4074e">getTailLengthSeconds</a> () const override</td></tr>
+<tr class="memdesc:a79396f41b4a7bfc342de98eff0b4074e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the plugin tail duration.  <br /></td></tr>
 <tr class="separator:a79396f41b4a7bfc342de98eff0b4074e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd998afaed106bc555f50d09932a93bf" id="r_abd998afaed106bc555f50d09932a93bf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#abd998afaed106bc555f50d09932a93bf">getNumPrograms</a> () override</td></tr>
+<tr class="memdesc:abd998afaed106bc555f50d09932a93bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of programs.  <br /></td></tr>
 <tr class="separator:abd998afaed106bc555f50d09932a93bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7fead5b20f7ff059b4fdbc112ef069b" id="r_af7fead5b20f7ff059b4fdbc112ef069b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#af7fead5b20f7ff059b4fdbc112ef069b">getCurrentProgram</a> () override</td></tr>
+<tr class="memdesc:af7fead5b20f7ff059b4fdbc112ef069b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current program index.  <br /></td></tr>
 <tr class="separator:af7fead5b20f7ff059b4fdbc112ef069b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b4b7b679ecfa0b689425aa36400cc60" id="r_a1b4b7b679ecfa0b689425aa36400cc60"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#a1b4b7b679ecfa0b689425aa36400cc60">setCurrentProgram</a> (int index) override</td></tr>
+<tr class="memdesc:a1b4b7b679ecfa0b689425aa36400cc60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Changes the current program.  <br /></td></tr>
 <tr class="separator:a1b4b7b679ecfa0b689425aa36400cc60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b300a27b2e7af330d955448f202000c" id="r_a9b300a27b2e7af330d955448f202000c"><td class="memItemLeft" align="right" valign="top">const juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#a9b300a27b2e7af330d955448f202000c">getProgramName</a> (int index) override</td></tr>
+<tr class="memdesc:a9b300a27b2e7af330d955448f202000c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the name of a program.  <br /></td></tr>
 <tr class="separator:a9b300a27b2e7af330d955448f202000c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aecb41de829b3b9910f964a45d39bc946" id="r_aecb41de829b3b9910f964a45d39bc946"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#aecb41de829b3b9910f964a45d39bc946">changeProgramName</a> (int index, const juce::String &amp;newName) override</td></tr>
+<tr class="memdesc:aecb41de829b3b9910f964a45d39bc946"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renames a program.  <br /></td></tr>
 <tr class="separator:aecb41de829b3b9910f964a45d39bc946"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6a2fb3818fcae9d9e24d71f98f1b889" id="r_af6a2fb3818fcae9d9e24d71f98f1b889"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#af6a2fb3818fcae9d9e24d71f98f1b889">getStateInformation</a> (juce::MemoryBlock &amp;destData) override</td></tr>
+<tr class="memdesc:af6a2fb3818fcae9d9e24d71f98f1b889"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serializes plugin state.  <br /></td></tr>
 <tr class="separator:af6a2fb3818fcae9d9e24d71f98f1b889"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f21c2da410ae60d5936f26c12234f29" id="r_a7f21c2da410ae60d5936f26c12234f29"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#a7f21c2da410ae60d5936f26c12234f29">setStateInformation</a> (const void *data, int sizeInBytes) override</td></tr>
+<tr class="memdesc:a7f21c2da410ae60d5936f26c12234f29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restores plugin state.  <br /></td></tr>
 <tr class="separator:a7f21c2da410ae60d5936f26c12234f29"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ee856de444282ab01de375d3afabaec" id="r_a9ee856de444282ab01de375d3afabaec"><td class="memItemLeft" align="right" valign="top">juce::MidiKeyboardState &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#a9ee856de444282ab01de375d3afabaec">getKeyboardState</a> ()</td></tr>
+<tr class="memdesc:a9ee856de444282ab01de375d3afabaec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the shared MIDI keyboard state.  <br /></td></tr>
 <tr class="separator:a9ee856de444282ab01de375d3afabaec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8ae47529cc122365dc291ed115d9914" id="r_af8ae47529cc122365dc291ed115d9914"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#af8ae47529cc122365dc291ed115d9914">setParams</a> (const <a class="el" href="structPatchParams.html">PatchParams</a> &amp;params)</td></tr>
-<tr class="separator:af8ae47529cc122365dc291ed115d9914"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaaae53b13f5a6000288df71faa2b63ed" id="r_aaaae53b13f5a6000288df71faa2b63ed"><td class="memItemLeft" align="right" valign="top">juce::AudioProcessorValueTreeState &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#aaaae53b13f5a6000288df71faa2b63ed">getAPVTS</a> ()</td></tr>
+<tr class="memdesc:aaaae53b13f5a6000288df71faa2b63ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the parameter tree state.  <br /></td></tr>
+<tr class="separator:aaaae53b13f5a6000288df71faa2b63ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37f4f276d331c7fcaccb602aaad1626c" id="r_a37f4f276d331c7fcaccb602aaad1626c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#a37f4f276d331c7fcaccb602aaad1626c">setOscilloscope</a> (<a class="el" href="classOscilloscopeComponent.html">OscilloscopeComponent</a> *osc)</td></tr>
+<tr class="memdesc:a37f4f276d331c7fcaccb602aaad1626c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attaches an oscilloscope component.  <br /></td></tr>
 <tr class="separator:a37f4f276d331c7fcaccb602aaad1626c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a265c748989db26b655dec1ec635f2526" id="r_a265c748989db26b655dec1ec635f2526"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classOscilloscopeComponent.html">OscilloscopeComponent</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#a265c748989db26b655dec1ec635f2526">oscilloscope</a> = nullptr</td></tr>
-<tr class="separator:a265c748989db26b655dec1ec635f2526"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61cf09b3ab1ddbc40d290414609adfe4" id="r_a61cf09b3ab1ddbc40d290414609adfe4"><td class="memItemLeft" align="right" valign="top">juce::CriticalSection&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#a61cf09b3ab1ddbc40d290414609adfe4">oscLock</a></td></tr>
-<tr class="separator:a61cf09b3ab1ddbc40d290414609adfe4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
+<tr class="memitem:ad8768fee42b798a2fd476132d8295dc2" id="r_ad8768fee42b798a2fd476132d8295dc2"><td class="memItemLeft" align="right" valign="top">juce::AudioProcessorValueTreeState&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#ad8768fee42b798a2fd476132d8295dc2">apvts</a></td></tr>
+<tr class="memdesc:ad8768fee42b798a2fd476132d8295dc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">AudioProcessorValueTreeState storing all plugin parameters.  <br /></td></tr>
+<tr class="separator:ad8768fee42b798a2fd476132d8295dc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12ec5f5c119393db248fa6cdb4ce56be" id="r_a12ec5f5c119393db248fa6cdb4ce56be"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structHarmoniaParams_1_1AtomicRefs.html">HarmoniaParams::AtomicRefs</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#a12ec5f5c119393db248fa6cdb4ce56be">paramRefs</a></td></tr>
+<tr class="memdesc:a12ec5f5c119393db248fa6cdb4ce56be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cached atomic parameter references for fast real-time access inside DSP code.  <br /></td></tr>
+<tr class="separator:a12ec5f5c119393db248fa6cdb4ce56be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a398de85fb71b63459c0e2286aae2c8b5" id="r_a398de85fb71b63459c0e2286aae2c8b5"><td class="memItemLeft" align="right" valign="top">juce::Synthesiser&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#a398de85fb71b63459c0e2286aae2c8b5">synth</a></td></tr>
+<tr class="memdesc:a398de85fb71b63459c0e2286aae2c8b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Polyphonic synthesizer engine.  <br /></td></tr>
 <tr class="separator:a398de85fb71b63459c0e2286aae2c8b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0591acaf0cbf37c2fc24ef3ed6dafb1" id="r_af0591acaf0cbf37c2fc24ef3ed6dafb1"><td class="memItemLeft" align="right" valign="top">juce::MidiKeyboardState&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#af0591acaf0cbf37c2fc24ef3ed6dafb1">keyboardState</a></td></tr>
+<tr class="memdesc:af0591acaf0cbf37c2fc24ef3ed6dafb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shared MIDI keyboard state used by the UI and MIDI processing pipeline.  <br /></td></tr>
 <tr class="separator:af0591acaf0cbf37c2fc24ef3ed6dafb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfd3ec2052fd195f4ff63cbe74f938a1" id="r_acfd3ec2052fd195f4ff63cbe74f938a1"><td class="memItemLeft" align="right" valign="top">juce::dsp::Reverb&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#acfd3ec2052fd195f4ff63cbe74f938a1">reverb</a></td></tr>
+<tr class="memdesc:acfd3ec2052fd195f4ff63cbe74f938a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global reverb DSP processor.  <br /></td></tr>
+<tr class="separator:acfd3ec2052fd195f4ff63cbe74f938a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab266dad1a196b29d73132351985cf964" id="r_ab266dad1a196b29d73132351985cf964"><td class="memItemLeft" align="right" valign="top">juce::dsp::Reverb::Parameters&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#ab266dad1a196b29d73132351985cf964">reverbParams</a></td></tr>
+<tr class="memdesc:ab266dad1a196b29d73132351985cf964"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current reverb parameter configuration.  <br /></td></tr>
+<tr class="separator:ab266dad1a196b29d73132351985cf964"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a265c748989db26b655dec1ec635f2526" id="r_a265c748989db26b655dec1ec635f2526"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classOscilloscopeComponent.html">OscilloscopeComponent</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#a265c748989db26b655dec1ec635f2526">oscilloscope</a> = nullptr</td></tr>
+<tr class="memdesc:a265c748989db26b655dec1ec635f2526"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optional oscilloscope visualization target.  <br /></td></tr>
+<tr class="separator:a265c748989db26b655dec1ec635f2526"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61cf09b3ab1ddbc40d290414609adfe4" id="r_a61cf09b3ab1ddbc40d290414609adfe4"><td class="memItemLeft" align="right" valign="top">juce::CriticalSection&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#a61cf09b3ab1ddbc40d290414609adfe4">oscLock</a></td></tr>
+<tr class="memdesc:a61cf09b3ab1ddbc40d290414609adfe4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Synchronization lock protecting oscilloscope access.  <br /></td></tr>
+<tr class="separator:a61cf09b3ab1ddbc40d290414609adfe4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Main JUCE audio processor for the Harmonia synthesizer. </p>
+<p>This class contains the complete audio engine of the plugin.</p>
+<p>Core features:</p><ul>
+<li>Polyphonic synthesis engine</li>
+<li>Real-time MIDI synthesis</li>
+<li>Audio DSP processing</li>
+<li>Parameter automation support</li>
+<li>Plugin state persistence</li>
+<li>Oscilloscope audio monitoring</li>
+</ul>
+<p>DSP chain: MIDI Input → Synth Voices → Reverb → Oscilloscope Tap → Audio Output </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af7ed2bb8caf041ebc9127c06f758907e" name="af7ed2bb8caf041ebc9127c06f758907e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af7ed2bb8caf041ebc9127c06f758907e">&#9670;&#160;</a></span>HarmoniaAudioProcessor()</h2>
 
@@ -210,6 +256,13 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Creates the audio processor. </p>
+<p>Initializes:</p><ul>
+<li>Audio buses</li>
+<li>Parameter tree state</li>
+<li>Parameter references </li>
+</ul>
 
 </div>
 </div>
@@ -236,6 +289,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Destroys the processor. </p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -261,6 +316,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Indicates MIDI input support. </p>
 
 </div>
 </div>
@@ -298,6 +355,15 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Renames a program. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Program index. </td></tr>
+    <tr><td class="paramname">newName</td><td>New program name. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a20d2e2bcbd3a744433fe1d35a233088e" name="a20d2e2bcbd3a744433fe1d35a233088e"></a>
@@ -322,6 +388,36 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Creates the plugin editor. </p>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the editor instance. </dd></dl>
+
+</div>
+</div>
+<a id="aaaae53b13f5a6000288df71faa2b63ed" name="aaaae53b13f5a6000288df71faa2b63ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaaae53b13f5a6000288df71faa2b63ed">&#9670;&#160;</a></span>getAPVTS()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">juce::AudioProcessorValueTreeState &amp; HarmoniaAudioProcessor::getAPVTS </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the parameter tree state. </p>
 
 </div>
 </div>
@@ -348,6 +444,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Returns the current program index. </p>
+
 </div>
 </div>
 <a id="a9ee856de444282ab01de375d3afabaec" name="a9ee856de444282ab01de375d3afabaec"></a>
@@ -364,6 +462,8 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Returns the shared MIDI keyboard state. </p>
 
 </div>
 </div>
@@ -390,6 +490,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Returns the plugin name. </p>
+
 </div>
 </div>
 <a id="abd998afaed106bc555f50d09932a93bf" name="abd998afaed106bc555f50d09932a93bf"></a>
@@ -414,6 +516,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Returns the number of programs. </p>
 
 </div>
 </div>
@@ -441,6 +545,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Returns the name of a program. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Program index. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="af6a2fb3818fcae9d9e24d71f98f1b889" name="af6a2fb3818fcae9d9e24d71f98f1b889"></a>
@@ -467,6 +579,18 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Serializes plugin state. </p>
+<p>Stores:</p><ul>
+<li>Parameter values</li>
+<li>Automation state</li>
+</ul>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">destData</td><td>Destination memory block. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a79396f41b4a7bfc342de98eff0b4074e" name="a79396f41b4a7bfc342de98eff0b4074e"></a>
@@ -492,6 +616,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Returns the plugin tail duration. </p>
+<p>Mostly determined by the reverb effect. </p>
+
 </div>
 </div>
 <a id="a5e4224f517d5858c382fb6f44485ed40" name="a5e4224f517d5858c382fb6f44485ed40"></a>
@@ -516,6 +643,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Indicates that the plugin provides an editor. </p>
+<dl class="section return"><dt>Returns</dt><dd>Always true. </dd></dl>
 
 </div>
 </div>
@@ -543,6 +673,19 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Validates supported audio bus layouts. </p>
+<p>Supports:</p><ul>
+<li>Mono</li>
+<li>Stereo</li>
+</ul>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">layouts</td><td>Proposed bus layout. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if supported. </dd></dl>
+
 </div>
 </div>
 <a id="a0ec8e70f868ed305a6ada426c92e4306" name="a0ec8e70f868ed305a6ada426c92e4306"></a>
@@ -567,6 +710,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Indicates whether the plugin is a MIDI effect. </p>
 
 </div>
 </div>
@@ -604,6 +749,20 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Prepares DSP resources before playback starts. </p>
+<p>Initializes:</p><ul>
+<li>Synth voices</li>
+<li>Reverb DSP</li>
+<li>Playback sample rate</li>
+</ul>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sampleRate</td><td>Current playback sample rate. </td></tr>
+    <tr><td class="paramname">samplesPerBlock</td><td>Maximum block size. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="ab27fa8266e17700fd481991f59f2f1ad" name="ab27fa8266e17700fd481991f59f2f1ad"></a>
@@ -640,6 +799,21 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Main real-time audio processing callback. </p>
+<p>Processing stages:</p><ul>
+<li>MIDI processing</li>
+<li>Synth rendering</li>
+<li>Reverb processing</li>
+<li>Oscilloscope monitoring</li>
+</ul>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>Audio buffer to process. </td></tr>
+    <tr><td class="paramname">midiMessages</td><td>MIDI event buffer. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="ac7cf47b7562b4fb53ccb8e3f03228e70" name="ac7cf47b7562b4fb53ccb8e3f03228e70"></a>
@@ -665,6 +839,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Indicates MIDI output support. </p>
+
 </div>
 </div>
 <a id="a81b28881353f8f7fad2607b44767ac08" name="a81b28881353f8f7fad2607b44767ac08"></a>
@@ -689,6 +865,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Releases playback resources. </p>
 
 </div>
 </div>
@@ -716,6 +894,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Changes the current program. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Program index. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a37f4f276d331c7fcaccb602aaad1626c" name="a37f4f276d331c7fcaccb602aaad1626c"></a>
@@ -734,23 +920,14 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="af8ae47529cc122365dc291ed115d9914" name="af8ae47529cc122365dc291ed115d9914"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af8ae47529cc122365dc291ed115d9914">&#9670;&#160;</a></span>setParams()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void HarmoniaAudioProcessor::setParams </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="structPatchParams.html">PatchParams</a> &amp;&#160;</td>
-          <td class="paramname"><em>params</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p>Attaches an oscilloscope component. </p>
+<p>The oscilloscope receives processed audio samples during playback for waveform visualization.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">osc</td><td>Oscilloscope instance. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -788,9 +965,42 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Restores plugin state. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>Serialized state data. </td></tr>
+    <tr><td class="paramname">sizeInBytes</td><td>Data size. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="ad8768fee42b798a2fd476132d8295dc2" name="ad8768fee42b798a2fd476132d8295dc2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8768fee42b798a2fd476132d8295dc2">&#9670;&#160;</a></span>apvts</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">juce::AudioProcessorValueTreeState HarmoniaAudioProcessor::apvts</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>AudioProcessorValueTreeState storing all plugin parameters. </p>
+
+</div>
+</div>
 <a id="af0591acaf0cbf37c2fc24ef3ed6dafb1" name="af0591acaf0cbf37c2fc24ef3ed6dafb1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af0591acaf0cbf37c2fc24ef3ed6dafb1">&#9670;&#160;</a></span>keyboardState</h2>
 
@@ -811,6 +1021,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Shared MIDI keyboard state used by the UI and MIDI processing pipeline. </p>
+
 </div>
 </div>
 <a id="a265c748989db26b655dec1ec635f2526" name="a265c748989db26b655dec1ec635f2526"></a>
@@ -818,12 +1030,22 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classOscilloscopeComponent.html">OscilloscopeComponent</a>* HarmoniaAudioProcessor::oscilloscope = nullptr</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+
+<p>Optional oscilloscope visualization target. </p>
 
 </div>
 </div>
@@ -832,12 +1054,94 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">juce::CriticalSection HarmoniaAudioProcessor::oscLock</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+
+<p>Synchronization lock protecting oscilloscope access. </p>
+
+</div>
+</div>
+<a id="a12ec5f5c119393db248fa6cdb4ce56be" name="a12ec5f5c119393db248fa6cdb4ce56be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12ec5f5c119393db248fa6cdb4ce56be">&#9670;&#160;</a></span>paramRefs</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structHarmoniaParams_1_1AtomicRefs.html">HarmoniaParams::AtomicRefs</a> HarmoniaAudioProcessor::paramRefs</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Cached atomic parameter references for fast real-time access inside DSP code. </p>
+
+</div>
+</div>
+<a id="acfd3ec2052fd195f4ff63cbe74f938a1" name="acfd3ec2052fd195f4ff63cbe74f938a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfd3ec2052fd195f4ff63cbe74f938a1">&#9670;&#160;</a></span>reverb</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">juce::dsp::Reverb HarmoniaAudioProcessor::reverb</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Global reverb DSP processor. </p>
+
+</div>
+</div>
+<a id="ab266dad1a196b29d73132351985cf964" name="ab266dad1a196b29d73132351985cf964"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab266dad1a196b29d73132351985cf964">&#9670;&#160;</a></span>reverbParams</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">juce::dsp::Reverb::Parameters HarmoniaAudioProcessor::reverbParams</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Current reverb parameter configuration. </p>
 
 </div>
 </div>
@@ -860,6 +1164,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Polyphonic synthesizer engine. </p>
 
 </div>
 </div>

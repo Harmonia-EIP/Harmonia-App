@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['oscilloscopecomponent_0',['OscilloscopeComponent',['../classOscilloscopeComponent.html',1,'']]]
+  ['knobcontrol_0',['KnobControl',['../classKnobControl.html',1,'']]]
 ];

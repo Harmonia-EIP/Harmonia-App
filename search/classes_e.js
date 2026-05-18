@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['waveformselector_0',['WaveformSelector',['../classWaveformSelector.html',1,'']]],
-  ['welcomepage_1',['WelcomePage',['../classWelcomePage.html',1,'']]]
+  ['themepalette_0',['ThemePalette',['../structThemePalette.html',1,'']]]
 ];

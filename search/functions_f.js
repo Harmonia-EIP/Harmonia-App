@@ -1,10 +1,24 @@
 var searchData=
 [
-  ['themepresettoid_0',['themePresetToId',['../classThemeAndLayoutConverter.html#a57dcc76f8dfe355466cf9f43bef7486b',1,'ThemeAndLayoutConverter']]],
-  ['timercallback_1',['timercallback',['../classOscilloscopeComponent.html#ac3c325a5783106db2919d89b0c63931e',1,'OscilloscopeComponent::timerCallback()'],['../classWelcomePage.html#a80a5d0cbfd814bc489226ee884dc2498',1,'WelcomePage::timerCallback()']]],
-  ['title_2',['Title',['../namespaceUIStyle_1_1Fonts.html#a7e48b8ab54666ecd13fbc676aae8e2ed',1,'UIStyle::Fonts']]],
-  ['titlecomponent_3',['TitleComponent',['../classTitleComponent.html#a305c7243e8fc0ac7246f8cb60e62af30',1,'TitleComponent']]],
-  ['toggletheme_4',['toggleTheme',['../classAppLookAndFeel.html#a65e1af939c984595aa7b6eaac51f986b',1,'AppLookAndFeel']]],
-  ['tojson_5',['toJson',['../namespacePatchSerializer.html#ae88dd30b491706e9c9fbe04039dc7a54',1,'PatchSerializer']]],
-  ['topbarcomponent_6',['TopBarComponent',['../classTopBarComponent.html#a985a179f171a911c9bf012be72f34ebc',1,'TopBarComponent']]]
+  ['savesession_0',['savesession',['../classBackendManager.html#aa1b7b42c72d7e0293566eea70d004b0e',1,'BackendManager::saveSession()'],['../classBackendAuthManager.html#abd0339a789b94d873c5b88c0d14a4b3f',1,'BackendAuthManager::saveSession()']]],
+  ['savetojsonstring_1',['saveToJsonString',['../namespacePresetLoader.html#aa61c647476cdc8ae94dbdedb6e78bb44',1,'PresetLoader']]],
+  ['sectionpanel_2',['SectionPanel',['../classSectionPanel.html#a32902f9aa038869acc81af783768eecf',1,'SectionPanel']]],
+  ['setcurrentprogram_3',['setCurrentProgram',['../classHarmoniaAudioProcessor.html#a1b4b7b679ecfa0b689425aa36400cc60',1,'HarmoniaAudioProcessor']]],
+  ['setoscilloscope_4',['setOscilloscope',['../classHarmoniaAudioProcessor.html#a37f4f276d331c7fcaccb602aaad1626c',1,'HarmoniaAudioProcessor']]],
+  ['setstateinformation_5',['setStateInformation',['../classHarmoniaAudioProcessor.html#a7f21c2da410ae60d5936f26c12234f29',1,'HarmoniaAudioProcessor']]],
+  ['setthemepreset_6',['setThemePreset',['../classAppLookAndFeel.html#a2008ffa537418ac28efd6deee1ba4e13',1,'AppLookAndFeel']]],
+  ['setverticalgain_7',['setVerticalGain',['../classOscilloscopeComponent.html#a7b659375a415ac8a07909735c86e3989',1,'OscilloscopeComponent']]],
+  ['show_8',['show',['../classHarmoniaAlert.html#abefd32cfb262d314369fbb32b26d9c2d',1,'HarmoniaAlert']]],
+  ['showloginscreen_9',['showLoginScreen',['../classAppController.html#a90924723f058f69ffc036cfc70593f80',1,'AppController']]],
+  ['showmainscreen_10',['showMainScreen',['../classAppController.html#aee0ee1e6992c3dc8f2e352e94402af21',1,'AppController']]],
+  ['showsignupscreen_11',['showSignupScreen',['../classAppController.html#a0ff4a519262654442eb1acedc35d026c',1,'AppController']]],
+  ['showwelcomescreen_12',['showWelcomeScreen',['../classAppController.html#ad62a9456067f609c42781b58ed7ebb74',1,'AppController']]],
+  ['signuppage_13',['SignupPage',['../classSignupPage.html#ae9ff59544a0df1f565d2cf456df6fa30',1,'SignupPage']]],
+  ['signupuser_14',['signupuser',['../classBackendAuthManager.html#a8a7af3cd1ab6085750ad8cca97f5bc17',1,'BackendAuthManager::signupUser()'],['../classBackendManager.html#a3fa4aa3de9a580bcdfa5d37816bbdec4',1,'BackendManager::signupUser()']]],
+  ['startnote_15',['startNote',['../classHarmoniaVoice.html#a97c31b41ff73bae2ce09671208b251c6',1,'HarmoniaVoice']]],
+  ['stopnote_16',['stopNote',['../classHarmoniaVoice.html#a764b19684b604bb235e0c5abb3c22ac2',1,'HarmoniaVoice']]],
+  ['subtitle_17',['SubTitle',['../namespaceUIStyle_1_1Fonts.html#a8220b8886eca0151060bdce3dbf991fc',1,'UIStyle::Fonts']]],
+  ['syncprofileparams_18',['syncprofileparams',['../classBackendAuthManager.html#a9570c30391fd2cab5f1a537d8915cf3a',1,'BackendAuthManager::syncProfileParams()'],['../classBackendManager.html#aa869d21bab03453f69e0cc4e0dfa7a5a',1,'BackendManager::syncProfileParams()']]],
+  ['syncprofileparamsinbackground_19',['syncprofileparamsinbackground',['../classBackendAuthManager.html#a805f8923e89a4bf744b05bf0ffc44088',1,'BackendAuthManager::syncProfileParamsInBackground()'],['../classBackendManager.html#a61203ae58e04ff22c866acb5dc602c23',1,'BackendManager::syncProfileParamsInBackground()']]],
+  ['synthcomponent_20',['SynthComponent',['../classSynthComponent.html#a7f10dd6de5e0b53fd888c788d5385bc9',1,'SynthComponent']]]
 ];

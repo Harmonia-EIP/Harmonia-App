@@ -1,9 +1,11 @@
 var searchData=
 [
-  ['version_0',['Version',['../namespaceAppConfig.html#ad713117e2d68e40b493a2fa87946684f',1,'AppConfig']]],
-  ['verticalgain_1',['verticalGain',['../classOscilloscopeComponent.html#a0d57dcb8a9a009ddda3dee15e1b9b3b9',1,'OscilloscopeComponent']]],
-  ['volume_2',['volume',['../classDataModel.html#ad38d08c7096f02b581efbd6d948708e5',1,'DataModel::volume'],['../structPatchParams.html#af95e5006acc4df2a97e3dd2741e25d8a',1,'PatchParams::volume'],['../namespaceStrings_1_1Parameters.html#ad95139de35dc94d83b218d41ab2c17ac',1,'Strings::Parameters::Volume']]],
-  ['volumelabel_3',['volumeLabel',['../classFrequencyVolumeComponent.html#a6590c972b0130bdcb2459a3d01f041e1',1,'FrequencyVolumeComponent']]],
-  ['volumeslider_4',['volumeslider',['../classVolumeSlider.html',1,'VolumeSlider'],['../classVolumeSlider.html#a70cce861cd3fecfaaddb2496d9f57d7b',1,'VolumeSlider::VolumeSlider()'],['../classFrequencyVolumeComponent.html#af5ef5b4f2fb9875b0e1fd3a2af0df303',1,'FrequencyVolumeComponent::volumeSlider']]],
-  ['volumeslider_2eh_5',['VolumeSlider.h',['../VolumeSlider_8h.html',1,'']]]
+  ['velocityfilterknob_0',['velocityFilterKnob',['../classMainComponent.html#a2227fd236f234268d8e5855fe1c38d0d',1,'MainComponent']]],
+  ['velocitytofilter_1',['velocitytofilter',['../structHarmoniaParams_1_1AtomicRefs.html#a8d34fd7d165c2b95c5e19cbe829bcb8d',1,'HarmoniaParams::AtomicRefs::velocityToFilter'],['../namespaceHarmoniaParams_1_1IDs.html#a5f848ecf1dd24b93edb78f4a7cd3f49e',1,'HarmoniaParams::IDs::velocityToFilter']]],
+  ['version_2',['Version',['../namespaceAppConfig.html#ad713117e2d68e40b493a2fa87946684f',1,'AppConfig']]],
+  ['verticalgain_3',['verticalGain',['../classOscilloscopeComponent.html#a0d57dcb8a9a009ddda3dee15e1b9b3b9',1,'OscilloscopeComponent']]],
+  ['violet_4',['violet',['../namespaceHarmoniaPalette.html#a74128001df25f76982c296658e5ad742',1,'HarmoniaPalette']]],
+  ['volume_5',['Volume',['../namespaceStrings_1_1Parameters.html#ad95139de35dc94d83b218d41ab2c17ac',1,'Strings::Parameters']]],
+  ['vx_6',['vx',['../structParticleField_1_1Burst.html#ac8e99f5512d1337fcbc67ac3178a0d78',1,'ParticleField::Burst']]],
+  ['vy_7',['vy',['../structParticleField_1_1Burst.html#a8aa37d3af64aebf4bcebe50bfc70b14a',1,'ParticleField::Burst']]]
 ];

@@ -31,6 +31,7 @@ var NAVTREE =
         [ "All", "namespacemembers.html", null ],
         [ "Functions", "namespacemembers_func.html", null ],
         [ "Variables", "namespacemembers_vars.html", null ],
+        [ "Enumerations", "namespacemembers_enum.html", null ],
         [ "Enumerator", "namespacemembers_eval.html", null ]
       ] ]
     ] ],
@@ -40,8 +41,8 @@ var NAVTREE =
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
-        [ "Functions", "functions_func.html", "functions_func" ],
-        [ "Variables", "functions_vars.html", null ],
+        [ "Functions", "functions_func.html", null ],
+        [ "Variables", "functions_vars.html", "functions_vars" ],
         [ "Typedefs", "functions_type.html", null ],
         [ "Enumerations", "functions_enum.html", null ]
       ] ]
@@ -52,7 +53,6 @@ var NAVTREE =
         [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
         [ "Typedefs", "globals_type.html", null ],
-        [ "Enumerations", "globals_enum.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ]
@@ -61,10 +61,11 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"ADSRComponent_8cpp.html",
-"classADSRComponent.html#a6ff2f94d0d79ef0ac451aec6c9f3a928",
-"classMainComponent.html#a509a0b94a611434dad4689a13d1c3365",
-"namespacePatchSerializer.html#af57c6b69ad6da8c29b01fba4cb9a6499"
+"Alert_8h.html",
+"String_8h.html#af916636856101bf67ea61c3a7b9027e6",
+"classLfoVisualizer.html#a78bfb3f521e4d0c310c265047a37c329",
+"namespaceAudioConfig_1_1Filter_1_1Cutoff.html#a8e43c3c120a851cf1d9567a7500b09e6",
+"structParticleField_1_1Burst.html#a8aa37d3af64aebf4bcebe50bfc70b14a"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -2,12 +2,19 @@ var searchData=
 [
   ['handlelogin_0',['handleLogin',['../classLoginPage.html#a326eaf944da59d499be384afadbc8017',1,'LoginPage']]],
   ['handlesignup_1',['handleSignup',['../classSignupPage.html#abc904e743fc11f944fc2e997dbf79bd9',1,'SignupPage']]],
-  ['harmoniaaudioprocessor_2',['harmoniaaudioprocessor',['../classHarmoniaAudioProcessor.html',1,'HarmoniaAudioProcessor'],['../classHarmoniaAudioProcessor.html#af7ed2bb8caf041ebc9127c06f758907e',1,'HarmoniaAudioProcessor::HarmoniaAudioProcessor()']]],
-  ['harmoniaaudioprocessoreditor_3',['harmoniaaudioprocessoreditor',['../classHarmoniaAudioProcessorEditor.html',1,'HarmoniaAudioProcessorEditor'],['../classHarmoniaAudioProcessorEditor.html#a763c17c765279adf413ecdc2a78b690c',1,'HarmoniaAudioProcessorEditor::HarmoniaAudioProcessorEditor()']]],
-  ['harmoniaparams_2eh_4',['HarmoniaParams.h',['../HarmoniaParams_8h.html',1,'']]],
-  ['harmoniasound_5',['HarmoniaSound',['../classHarmoniaSound.html',1,'']]],
-  ['harmoniavoice_6',['harmoniavoice',['../classHarmoniaVoice.html',1,'HarmoniaVoice'],['../classHarmoniaVoice.html#a1aaf512b7e24962549736551504882b7',1,'HarmoniaVoice::HarmoniaVoice()']]],
-  ['haseditor_7',['hasEditor',['../classHarmoniaAudioProcessor.html#a5e4224f517d5858c382fb6f44485ed40',1,'HarmoniaAudioProcessor']]],
-  ['haserror_8',['hasError',['../structPatchCallResult.html#aebedf8efe351508853c84edc71cfb60f',1,'PatchCallResult']]],
-  ['highpass_9',['highpass',['../namespaceStrings_1_1Filter.html#a65375f1f176f5817629087f1d21ab2f3',1,'Strings::Filter::HighPass'],['../HarmoniaParams_8h.html#a7ef0ab496f57e183b484e62e2053c94fa828ad78e745209c145ada2b798f66322',1,'HIGHPASS:&#160;HarmoniaParams.h']]]
+  ['harmoniaalert_2',['HarmoniaAlert',['../classHarmoniaAlert.html',1,'']]],
+  ['harmoniaaudioprocessor_3',['harmoniaaudioprocessor',['../classHarmoniaAudioProcessor.html',1,'HarmoniaAudioProcessor'],['../classHarmoniaAudioProcessor.html#af7ed2bb8caf041ebc9127c06f758907e',1,'HarmoniaAudioProcessor::HarmoniaAudioProcessor()']]],
+  ['harmoniaaudioprocessoreditor_4',['harmoniaaudioprocessoreditor',['../classHarmoniaAudioProcessorEditor.html',1,'HarmoniaAudioProcessorEditor'],['../classHarmoniaAudioProcessorEditor.html#a64a30dc9c3089d73ae496500748a13f2',1,'HarmoniaAudioProcessorEditor::HarmoniaAudioProcessorEditor()']]],
+  ['harmoniapalette_5',['HarmoniaPalette',['../namespaceHarmoniaPalette.html',1,'']]],
+  ['harmoniapalette_2eh_6',['HarmoniaPalette.h',['../HarmoniaPalette_8h.html',1,'']]],
+  ['harmoniaparameters_2eh_7',['HarmoniaParameters.h',['../HarmoniaParameters_8h.html',1,'']]],
+  ['harmoniaparams_8',['HarmoniaParams',['../namespaceHarmoniaParams.html',1,'']]],
+  ['harmoniaparams_3a_3aids_9',['IDs',['../namespaceHarmoniaParams_1_1IDs.html',1,'HarmoniaParams']]],
+  ['harmoniasound_10',['HarmoniaSound',['../classHarmoniaSound.html',1,'']]],
+  ['harmoniavoice_11',['harmoniavoice',['../classHarmoniaVoice.html',1,'HarmoniaVoice'],['../classHarmoniaVoice.html#aabdcc3cab0d00f66d76156348ba75d84',1,'HarmoniaVoice::HarmoniaVoice()']]],
+  ['haseditor_12',['hasEditor',['../classHarmoniaAudioProcessor.html#a5e4224f517d5858c382fb6f44485ed40',1,'HarmoniaAudioProcessor']]],
+  ['highpass_13',['highpass',['../namespaceIconRenderer.html#a14d6d88133735f5ae17e33d01948ca8ba124600c5e81d846f402aab6727296cd5',1,'IconRenderer::Highpass'],['../namespaceStrings_1_1Filter.html#a65375f1f176f5817629087f1d21ab2f3',1,'Strings::Filter::HighPass']]],
+  ['hivelookandfeel_14',['hivelookandfeel',['../classHiveLookAndFeel.html#ae9f303aab9beb762871e002b3c506d00',1,'HiveLookAndFeel::HiveLookAndFeel()'],['../classHiveLookAndFeel.html',1,'HiveLookAndFeel']]],
+  ['hivelookandfeel_2eh_15',['HiveLookAndFeel.h',['../HiveLookAndFeel_8h.html',1,'']]],
+  ['hoveredindex_16',['hoveredIndex',['../classIconChoiceSelector.html#a2d49f9f20b9ce1829b5406e713b3e978',1,'IconChoiceSelector']]]
 ];

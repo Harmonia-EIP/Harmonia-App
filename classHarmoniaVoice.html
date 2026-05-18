@@ -91,12 +91,16 @@ $(document).ready(function(){initNavTree('classHarmoniaVoice.html',''); initResi
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-types">Private Types</a> &#124;
+<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classHarmoniaVoice-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">HarmoniaVoice Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Main synthesizer voice implementation.  
+ <a href="classHarmoniaVoice.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="Synth_8h_source.html">Synth.h</a>&gt;</code></p>
 <div class="dynheader">
@@ -104,7 +108,7 @@ Inheritance diagram for HarmoniaVoice:</div>
 <div class="dyncontent">
 <div class="center"><img src="classHarmoniaVoice__inherit__graph.png" border="0" usemap="#aHarmoniaVoice_inherit__map" alt="Inheritance graph"/></div>
 <map name="aHarmoniaVoice_inherit__map" id="aHarmoniaVoice_inherit__map">
-<area shape="rect" title=" " alt="" coords="29,79,150,104"/>
+<area shape="rect" title="Main synthesizer voice implementation." alt="" coords="29,79,150,104"/>
 <area shape="rect" title=" " alt="" coords="5,5,173,31"/>
 <area shape="poly" title=" " alt="" coords="92,44,92,79,87,79,87,44"/>
 </map>
@@ -114,78 +118,194 @@ Collaboration diagram for HarmoniaVoice:</div>
 <div class="dyncontent">
 <div class="center"><img src="classHarmoniaVoice__coll__graph.png" border="0" usemap="#aHarmoniaVoice_coll__map" alt="Collaboration graph"/></div>
 <map name="aHarmoniaVoice_coll__map" id="aHarmoniaVoice_coll__map">
-<area shape="rect" title=" " alt="" coords="109,93,230,119"/>
+<area shape="rect" title="Main synthesizer voice implementation." alt="" coords="137,93,258,119"/>
 <area shape="rect" title=" " alt="" coords="5,5,173,31"/>
-<area shape="poly" title=" " alt="" coords="111,39,160,91,156,95,107,43"/>
-<area shape="rect" href="structPatchParams.html" title=" " alt="" coords="198,5,303,31"/>
-<area shape="poly" title=" " alt="" coords="232,43,183,95,179,91,228,39"/>
+<area shape="poly" title=" " alt="" coords="116,37,184,91,181,95,113,41"/>
+<area shape="rect" href="structHarmoniaParams_1_1AtomicRefs.html" title="Real&#45;time safe parameter access structure." alt="" coords="198,5,415,31"/>
+<area shape="poly" title=" " alt="" coords="283,41,214,95,211,91,279,37"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a1aaf512b7e24962549736551504882b7" id="r_a1aaf512b7e24962549736551504882b7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaVoice.html#a1aaf512b7e24962549736551504882b7">HarmoniaVoice</a> ()</td></tr>
-<tr class="separator:a1aaf512b7e24962549736551504882b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabdcc3cab0d00f66d76156348ba75d84" id="r_aabdcc3cab0d00f66d76156348ba75d84"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaVoice.html#aabdcc3cab0d00f66d76156348ba75d84">HarmoniaVoice</a> (const <a class="el" href="structHarmoniaParams_1_1AtomicRefs.html">HarmoniaParams::AtomicRefs</a> &amp;refs)</td></tr>
+<tr class="memdesc:aabdcc3cab0d00f66d76156348ba75d84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a synthesizer voice.  <br /></td></tr>
+<tr class="separator:aabdcc3cab0d00f66d76156348ba75d84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac20388f945bd7b63c9edc0fa07c15870" id="r_ac20388f945bd7b63c9edc0fa07c15870"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaVoice.html#ac20388f945bd7b63c9edc0fa07c15870">canPlaySound</a> (juce::SynthesiserSound *sound) override</td></tr>
+<tr class="memdesc:ac20388f945bd7b63c9edc0fa07c15870"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether this voice can play a given sound.  <br /></td></tr>
 <tr class="separator:ac20388f945bd7b63c9edc0fa07c15870"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97c31b41ff73bae2ce09671208b251c6" id="r_a97c31b41ff73bae2ce09671208b251c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaVoice.html#a97c31b41ff73bae2ce09671208b251c6">startNote</a> (int midiNoteNumber, float velocity, juce::SynthesiserSound *sound, int currentPitchWheelPosition) override</td></tr>
+<tr class="memdesc:a97c31b41ff73bae2ce09671208b251c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts playback of a MIDI note.  <br /></td></tr>
 <tr class="separator:a97c31b41ff73bae2ce09671208b251c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a764b19684b604bb235e0c5abb3c22ac2" id="r_a764b19684b604bb235e0c5abb3c22ac2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaVoice.html#a764b19684b604bb235e0c5abb3c22ac2">stopNote</a> (float velocity, bool allowTailOff) override</td></tr>
+<tr class="memdesc:a764b19684b604bb235e0c5abb3c22ac2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops playback of the current note.  <br /></td></tr>
 <tr class="separator:a764b19684b604bb235e0c5abb3c22ac2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab45584eaa6a0e7acf8c5ff81c99d9df8" id="r_ab45584eaa6a0e7acf8c5ff81c99d9df8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaVoice.html#ab45584eaa6a0e7acf8c5ff81c99d9df8">pitchWheelMoved</a> (int) override</td></tr>
+<tr class="memdesc:ab45584eaa6a0e7acf8c5ff81c99d9df8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles pitch wheel changes.  <br /></td></tr>
 <tr class="separator:ab45584eaa6a0e7acf8c5ff81c99d9df8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae9c7ac7d723cb832d03204ef6bc8fe4" id="r_aae9c7ac7d723cb832d03204ef6bc8fe4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaVoice.html#aae9c7ac7d723cb832d03204ef6bc8fe4">controllerMoved</a> (int, int) override</td></tr>
+<tr class="memdesc:aae9c7ac7d723cb832d03204ef6bc8fe4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles MIDI controller changes.  <br /></td></tr>
 <tr class="separator:aae9c7ac7d723cb832d03204ef6bc8fe4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3a6622eab744cb5d177aa051b683ec2" id="r_ae3a6622eab744cb5d177aa051b683ec2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaVoice.html#ae3a6622eab744cb5d177aa051b683ec2">renderNextBlock</a> (juce::AudioBuffer&lt; float &gt; &amp;buffer, int startSample, int numSamples) override</td></tr>
+<tr class="memdesc:ae3a6622eab744cb5d177aa051b683ec2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates audio samples for the current block.  <br /></td></tr>
 <tr class="separator:ae3a6622eab744cb5d177aa051b683ec2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae26a64f3f55d9caa5f48c251674e2298" id="r_ae26a64f3f55d9caa5f48c251674e2298"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaVoice.html#ae26a64f3f55d9caa5f48c251674e2298">prepare</a> (double sampleRate, int samplesPerBlock, int numOutputChannels)</td></tr>
+<tr class="memdesc:ae26a64f3f55d9caa5f48c251674e2298"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prepares DSP resources before playback.  <br /></td></tr>
 <tr class="separator:ae26a64f3f55d9caa5f48c251674e2298"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55c0c9bcc76b520afbc59d894bf3f3c5" id="r_a55c0c9bcc76b520afbc59d894bf3f3c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaVoice.html#a55c0c9bcc76b520afbc59d894bf3f3c5">setParameters</a> (const <a class="el" href="structPatchParams.html">PatchParams</a> &amp;newParams)</td></tr>
-<tr class="separator:a55c0c9bcc76b520afbc59d894bf3f3c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a25e13da112805f52733c3fb03f4fc9a6" id="r_a25e13da112805f52733c3fb03f4fc9a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaVoice.html#a25e13da112805f52733c3fb03f4fc9a6">setWaveform</a> (int waveformIndex)</td></tr>
-<tr class="separator:a25e13da112805f52733c3fb03f4fc9a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a11a74dc2461d57e1fdd422a216df6256" id="r_a11a74dc2461d57e1fdd422a216df6256"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaVoice.html#a11a74dc2461d57e1fdd422a216df6256">setFilter</a> (float cutoff, float resonance, int filterTypeIndex)</td></tr>
-<tr class="separator:a11a74dc2461d57e1fdd422a216df6256"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08a1625333a0e3f7d71958b5ac99d600" id="r_a08a1625333a0e3f7d71958b5ac99d600"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaVoice.html#a08a1625333a0e3f7d71958b5ac99d600">setADSR</a> (float attack, float decay, float sustain, float release)</td></tr>
-<tr class="separator:a08a1625333a0e3f7d71958b5ac99d600"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:af60465add6304ec5cd38c45a6e30822f" id="r_af60465add6304ec5cd38c45a6e30822f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaVoice.html#af60465add6304ec5cd38c45a6e30822f">updateOscillator</a> ()</td></tr>
-<tr class="separator:af60465add6304ec5cd38c45a6e30822f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a593de7f83ffbf530a07b7c952197ab61" id="r_a593de7f83ffbf530a07b7c952197ab61"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaVoice.html#a593de7f83ffbf530a07b7c952197ab61">updateFilterType</a> ()</td></tr>
-<tr class="separator:a593de7f83ffbf530a07b7c952197ab61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-types" name="pri-types"></a>
+Private Types</h2></td></tr>
+<tr class="memitem:a29d2c9affcd14d31950e8d47b0660544" id="r_a29d2c9affcd14d31950e8d47b0660544"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaVoice.html#a29d2c9affcd14d31950e8d47b0660544">Wave</a> { <a class="el" href="classHarmoniaVoice.html#a29d2c9affcd14d31950e8d47b0660544a6ca9e2d793f678aba7c1b19526592a46">Sine</a> = 0
+, <a class="el" href="classHarmoniaVoice.html#a29d2c9affcd14d31950e8d47b0660544a5e5500cb2b82eb72d550de644bd1b64b">Triangle</a> = 1
+, <a class="el" href="classHarmoniaVoice.html#a29d2c9affcd14d31950e8d47b0660544ac551a26a97a7440529e861dff6933722">Saw</a> = 2
+, <a class="el" href="classHarmoniaVoice.html#a29d2c9affcd14d31950e8d47b0660544aceb46ca115d05c51aa5a16a8867c3304">Square</a> = 3
+ }</td></tr>
+<tr class="memdesc:a29d2c9affcd14d31950e8d47b0660544"><td class="mdescLeft">&#160;</td><td class="mdescRight">Available oscillator waveform types.  <a href="classHarmoniaVoice.html#a29d2c9affcd14d31950e8d47b0660544">More...</a><br /></td></tr>
+<tr class="separator:a29d2c9affcd14d31950e8d47b0660544"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
+Static Private Member Functions</h2></td></tr>
+<tr class="memitem:a64edec5ccefc6d7eae38dc753371bf9e" id="r_a64edec5ccefc6d7eae38dc753371bf9e"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaVoice.html#a64edec5ccefc6d7eae38dc753371bf9e">renderWave</a> (<a class="el" href="classHarmoniaVoice.html#a29d2c9affcd14d31950e8d47b0660544">Wave</a> w, float phase) noexcept</td></tr>
+<tr class="memdesc:a64edec5ccefc6d7eae38dc753371bf9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a waveform sample.  <br /></td></tr>
+<tr class="separator:a64edec5ccefc6d7eae38dc753371bf9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:af61087bb0cfd4092e5520242031cfa2a" id="r_af61087bb0cfd4092e5520242031cfa2a"><td class="memItemLeft" align="right" valign="top">juce::dsp::Oscillator&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaVoice.html#af61087bb0cfd4092e5520242031cfa2a">osc</a></td></tr>
-<tr class="separator:af61087bb0cfd4092e5520242031cfa2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7cd1e8064e9c532b68d8c07b37630e05" id="r_a7cd1e8064e9c532b68d8c07b37630e05"><td class="memItemLeft" align="right" valign="top">juce::dsp::StateVariableTPTFilter&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaVoice.html#a7cd1e8064e9c532b68d8c07b37630e05">filter</a></td></tr>
-<tr class="separator:a7cd1e8064e9c532b68d8c07b37630e05"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1197e52e7af5b35d222742a9934028f1" id="r_a1197e52e7af5b35d222742a9934028f1"><td class="memItemLeft" align="right" valign="top">juce::ADSR&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaVoice.html#a1197e52e7af5b35d222742a9934028f1">adsr</a></td></tr>
-<tr class="separator:a1197e52e7af5b35d222742a9934028f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac8ac38ab19d49e105e2dc3aae0825c72" id="r_ac8ac38ab19d49e105e2dc3aae0825c72"><td class="memItemLeft" align="right" valign="top">juce::ADSR::Parameters&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaVoice.html#ac8ac38ab19d49e105e2dc3aae0825c72">adsrParams</a></td></tr>
-<tr class="separator:ac8ac38ab19d49e105e2dc3aae0825c72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a15dca4f3e65d6cb38219b356996de8" id="r_a0a15dca4f3e65d6cb38219b356996de8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPatchParams.html">PatchParams</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaVoice.html#a0a15dca4f3e65d6cb38219b356996de8">currentParams</a></td></tr>
-<tr class="separator:a0a15dca4f3e65d6cb38219b356996de8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac4ecfb9885819f1283162d3aa2c7d2ea" id="r_ac4ecfb9885819f1283162d3aa2c7d2ea"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaVoice.html#ac4ecfb9885819f1283162d3aa2c7d2ea">currentSampleRate</a> = <a class="el" href="namespaceAppConfig_1_1Synth.html#a8fb53772fc54b05c1251187d13c3673d">AppConfig::Synth::defaultSampleRate</a></td></tr>
+<tr class="memitem:a0662dbda7765053e8a6aa26d88f00a37" id="r_a0662dbda7765053e8a6aa26d88f00a37"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structHarmoniaParams_1_1AtomicRefs.html">HarmoniaParams::AtomicRefs</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaVoice.html#a0662dbda7765053e8a6aa26d88f00a37">params</a></td></tr>
+<tr class="memdesc:a0662dbda7765053e8a6aa26d88f00a37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Real-time parameter references.  <br /></td></tr>
+<tr class="separator:a0662dbda7765053e8a6aa26d88f00a37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4ecfb9885819f1283162d3aa2c7d2ea" id="r_ac4ecfb9885819f1283162d3aa2c7d2ea"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaVoice.html#ac4ecfb9885819f1283162d3aa2c7d2ea">currentSampleRate</a> = 44100.0</td></tr>
+<tr class="memdesc:ac4ecfb9885819f1283162d3aa2c7d2ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current audio sample rate.  <br /></td></tr>
 <tr class="separator:ac4ecfb9885819f1283162d3aa2c7d2ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9e66d3e0b9d198f51e7a12da11307cc" id="r_af9e66d3e0b9d198f51e7a12da11307cc"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaVoice.html#af9e66d3e0b9d198f51e7a12da11307cc">phase1</a> = 0.0f</td></tr>
+<tr class="memdesc:af9e66d3e0b9d198f51e7a12da11307cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Oscillator 1 phase accumulator.  <br /></td></tr>
+<tr class="separator:af9e66d3e0b9d198f51e7a12da11307cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04a40630d0ff05dc4be1088dd89ece59" id="r_a04a40630d0ff05dc4be1088dd89ece59"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaVoice.html#a04a40630d0ff05dc4be1088dd89ece59">phase2</a> = 0.0f</td></tr>
+<tr class="memdesc:a04a40630d0ff05dc4be1088dd89ece59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Oscillator 2 phase accumulator.  <br /></td></tr>
+<tr class="separator:a04a40630d0ff05dc4be1088dd89ece59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa8fd65176c35e9fd02004803d8450c7" id="r_afa8fd65176c35e9fd02004803d8450c7"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaVoice.html#afa8fd65176c35e9fd02004803d8450c7">lfoPhase</a> = 0.0f</td></tr>
+<tr class="memdesc:afa8fd65176c35e9fd02004803d8450c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">LFO phase accumulator.  <br /></td></tr>
+<tr class="separator:afa8fd65176c35e9fd02004803d8450c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a840cc5fe28c50a004fbe8463dfbc89cf" id="r_a840cc5fe28c50a004fbe8463dfbc89cf"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaVoice.html#a840cc5fe28c50a004fbe8463dfbc89cf">baseFrequencyHz</a> = 440.0f</td></tr>
+<tr class="memdesc:a840cc5fe28c50a004fbe8463dfbc89cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current MIDI note frequency in Hz.  <br /></td></tr>
+<tr class="separator:a840cc5fe28c50a004fbe8463dfbc89cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec1a0df363b748b69343bc9d4bf5c984" id="r_aec1a0df363b748b69343bc9d4bf5c984"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaVoice.html#aec1a0df363b748b69343bc9d4bf5c984">noteVelocity</a> = 1.0f</td></tr>
+<tr class="memdesc:aec1a0df363b748b69343bc9d4bf5c984"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current note velocity.  <br /></td></tr>
+<tr class="separator:aec1a0df363b748b69343bc9d4bf5c984"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab481fb646781ce4338da148ad65f67cb" id="r_ab481fb646781ce4338da148ad65f67cb"><td class="memItemLeft" align="right" valign="top">std::mt19937&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaVoice.html#ab481fb646781ce4338da148ad65f67cb">rng</a> { 0x4321 }</td></tr>
+<tr class="memdesc:ab481fb646781ce4338da148ad65f67cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Random number generator used for noise synthesis.  <br /></td></tr>
+<tr class="separator:ab481fb646781ce4338da148ad65f67cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade24ce2d9c0cc8f9225a60570f0b486f" id="r_ade24ce2d9c0cc8f9225a60570f0b486f"><td class="memItemLeft" align="right" valign="top">std::uniform_real_distribution&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaVoice.html#ade24ce2d9c0cc8f9225a60570f0b486f">noiseDist</a> { -1.0f, 1.0f }</td></tr>
+<tr class="memdesc:ade24ce2d9c0cc8f9225a60570f0b486f"><td class="mdescLeft">&#160;</td><td class="mdescRight">White noise distribution generator.  <br /></td></tr>
+<tr class="separator:ade24ce2d9c0cc8f9225a60570f0b486f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7cd1e8064e9c532b68d8c07b37630e05" id="r_a7cd1e8064e9c532b68d8c07b37630e05"><td class="memItemLeft" align="right" valign="top">juce::dsp::StateVariableTPTFilter&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaVoice.html#a7cd1e8064e9c532b68d8c07b37630e05">filter</a></td></tr>
+<tr class="memdesc:a7cd1e8064e9c532b68d8c07b37630e05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resonant multimode state variable filter.  <br /></td></tr>
+<tr class="separator:a7cd1e8064e9c532b68d8c07b37630e05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd7f9c35b0f45dbe17c08ff530dc7a1d" id="r_acd7f9c35b0f45dbe17c08ff530dc7a1d"><td class="memItemLeft" align="right" valign="top">juce::ADSR&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaVoice.html#acd7f9c35b0f45dbe17c08ff530dc7a1d">ampEnv</a></td></tr>
+<tr class="memdesc:acd7f9c35b0f45dbe17c08ff530dc7a1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main amplitude ADSR envelope.  <br /></td></tr>
+<tr class="separator:acd7f9c35b0f45dbe17c08ff530dc7a1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9f19e7dcf57ede324c27bdb9ded44e9" id="r_ac9f19e7dcf57ede324c27bdb9ded44e9"><td class="memItemLeft" align="right" valign="top">juce::ADSR::Parameters&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaVoice.html#ac9f19e7dcf57ede324c27bdb9ded44e9">ampParams</a></td></tr>
+<tr class="memdesc:ac9f19e7dcf57ede324c27bdb9ded44e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parameters for the amplitude envelope.  <br /></td></tr>
+<tr class="separator:ac9f19e7dcf57ede324c27bdb9ded44e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae71e8f564e6ec9b6f54cfaee9d17f0e8" id="r_ae71e8f564e6ec9b6f54cfaee9d17f0e8"><td class="memItemLeft" align="right" valign="top">juce::ADSR&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaVoice.html#ae71e8f564e6ec9b6f54cfaee9d17f0e8">filterEnv</a></td></tr>
+<tr class="memdesc:ae71e8f564e6ec9b6f54cfaee9d17f0e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filter modulation envelope.  <br /></td></tr>
+<tr class="separator:ae71e8f564e6ec9b6f54cfaee9d17f0e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f78ff6e9e99a4c349501d714e1a7311" id="r_a4f78ff6e9e99a4c349501d714e1a7311"><td class="memItemLeft" align="right" valign="top">juce::ADSR::Parameters&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaVoice.html#a4f78ff6e9e99a4c349501d714e1a7311">filterEnvParams</a></td></tr>
+<tr class="memdesc:a4f78ff6e9e99a4c349501d714e1a7311"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parameters for the filter envelope.  <br /></td></tr>
+<tr class="separator:a4f78ff6e9e99a4c349501d714e1a7311"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a1aaf512b7e24962549736551504882b7" name="a1aaf512b7e24962549736551504882b7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1aaf512b7e24962549736551504882b7">&#9670;&#160;</a></span>HarmoniaVoice()</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Main synthesizer voice implementation. </p>
+<p><a class="el" href="classHarmoniaVoice.html" title="Main synthesizer voice implementation.">HarmoniaVoice</a> is responsible for generating audio for a single polyphonic synthesizer voice.</p>
+<p>Synthesis architecture:</p><ul>
+<li>Dual oscillator engine</li>
+<li>Noise generator</li>
+<li>Multimode resonant filter</li>
+<li>LFO modulation</li>
+<li>ADSR amplitude envelope</li>
+<li>Filter modulation envelope</li>
+<li>Distortion stage</li>
+</ul>
+<p>Supported waveform types:</p><ul>
+<li>Sine</li>
+<li>Triangle</li>
+<li>Saw</li>
+<li>Square</li>
+</ul>
+<p>Modulation capabilities:</p><ul>
+<li>Pitch modulation</li>
+<li>Filter cutoff modulation</li>
+<li>Velocity modulation</li>
+<li>Envelope-controlled filtering</li>
+</ul>
+<p>The voice uses real-time parameter access through <a class="el" href="structHarmoniaParams_1_1AtomicRefs.html" title="Real-time safe parameter access structure.">HarmoniaParams::AtomicRefs</a>. </p>
+</div><h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="a29d2c9affcd14d31950e8d47b0660544" name="a29d2c9affcd14d31950e8d47b0660544"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29d2c9affcd14d31950e8d47b0660544">&#9670;&#160;</a></span>Wave</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="classHarmoniaVoice.html#a29d2c9affcd14d31950e8d47b0660544">HarmoniaVoice::Wave</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Available oscillator waveform types. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a29d2c9affcd14d31950e8d47b0660544a6ca9e2d793f678aba7c1b19526592a46" name="a29d2c9affcd14d31950e8d47b0660544a6ca9e2d793f678aba7c1b19526592a46"></a>Sine&#160;</td><td class="fielddoc"><p>Sinusoidal waveform. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a29d2c9affcd14d31950e8d47b0660544a5e5500cb2b82eb72d550de644bd1b64b" name="a29d2c9affcd14d31950e8d47b0660544a5e5500cb2b82eb72d550de644bd1b64b"></a>Triangle&#160;</td><td class="fielddoc"><p>Triangle waveform. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a29d2c9affcd14d31950e8d47b0660544ac551a26a97a7440529e861dff6933722" name="a29d2c9affcd14d31950e8d47b0660544ac551a26a97a7440529e861dff6933722"></a>Saw&#160;</td><td class="fielddoc"><p>Sawtooth waveform. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a29d2c9affcd14d31950e8d47b0660544aceb46ca115d05c51aa5a16a8867c3304" name="a29d2c9affcd14d31950e8d47b0660544aceb46ca115d05c51aa5a16a8867c3304"></a>Square&#160;</td><td class="fielddoc"><p>Square waveform. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="aabdcc3cab0d00f66d76156348ba75d84" name="aabdcc3cab0d00f66d76156348ba75d84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aabdcc3cab0d00f66d76156348ba75d84">&#9670;&#160;</a></span>HarmoniaVoice()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">HarmoniaVoice::HarmoniaVoice </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="structHarmoniaParams_1_1AtomicRefs.html">HarmoniaParams::AtomicRefs</a> &amp;&#160;</td>
+          <td class="paramname"><em>refs</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+
+<p>Creates a synthesizer voice. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">refs</td><td>Atomic parameter references used for real-time synthesis. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -213,6 +333,15 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Checks whether this voice can play a given sound. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sound</td><td>Sound instance to validate. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the sound is a <a class="el" href="classHarmoniaSound.html" title="Generic synthesizer sound definition.">HarmoniaSound</a>. </dd></dl>
 
 </div>
 </div>
@@ -250,6 +379,16 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Handles MIDI controller changes. </p>
+<p>Currently unused.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">controller</td><td>Controller number. </td></tr>
+    <tr><td class="paramname">value</td><td>Controller value. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="ab45584eaa6a0e7acf8c5ff81c99d9df8" name="ab45584eaa6a0e7acf8c5ff81c99d9df8"></a>
@@ -275,6 +414,15 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Handles pitch wheel changes. </p>
+<p>Currently unused.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>Pitch wheel value. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -309,6 +457,22 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Prepares DSP resources before playback. </p>
+<p>This method initializes:</p><ul>
+<li>Filter processing</li>
+<li>Sample rate</li>
+<li>Envelope sample rates</li>
+<li>DSP specifications</li>
+</ul>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sampleRate</td><td>Current audio sample rate. </td></tr>
+    <tr><td class="paramname">samplesPerBlock</td><td>Maximum block size. </td></tr>
+    <tr><td class="paramname">numOutputChannels</td><td>Number of audio channels. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -352,37 +516,47 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Generates audio samples for the current block. </p>
+<p>Main DSP operations:</p><ul>
+<li>Oscillator generation</li>
+<li>LFO modulation</li>
+<li>Noise mixing</li>
+<li>Envelope processing</li>
+<li>Filter modulation</li>
+<li>Distortion processing</li>
+<li>Audio output generation</li>
+</ul>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>Destination audio buffer. </td></tr>
+    <tr><td class="paramname">startSample</td><td>First sample index. </td></tr>
+    <tr><td class="paramname">numSamples</td><td>Number of samples to generate. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a id="a08a1625333a0e3f7d71958b5ac99d600" name="a08a1625333a0e3f7d71958b5ac99d600"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a08a1625333a0e3f7d71958b5ac99d600">&#9670;&#160;</a></span>setADSR()</h2>
+<a id="a64edec5ccefc6d7eae38dc753371bf9e" name="a64edec5ccefc6d7eae38dc753371bf9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64edec5ccefc6d7eae38dc753371bf9e">&#9670;&#160;</a></span>renderWave()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void HarmoniaVoice::setADSR </td>
+          <td class="memname">float HarmoniaVoice::renderWave </td>
           <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>attack</em>, </td>
+          <td class="paramtype"><a class="el" href="classHarmoniaVoice.html#a29d2c9affcd14d31950e8d47b0660544">Wave</a>&#160;</td>
+          <td class="paramname"><em>w</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>decay</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>sustain</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>release</em>&#160;</td>
+          <td class="paramname"><em>phase</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -390,77 +564,22 @@ Private Attributes</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="a11a74dc2461d57e1fdd422a216df6256" name="a11a74dc2461d57e1fdd422a216df6256"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a11a74dc2461d57e1fdd422a216df6256">&#9670;&#160;</a></span>setFilter()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void HarmoniaVoice::setFilter </td>
-          <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>cutoff</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>resonance</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>filterTypeIndex</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a55c0c9bcc76b520afbc59d894bf3f3c5" name="a55c0c9bcc76b520afbc59d894bf3f3c5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a55c0c9bcc76b520afbc59d894bf3f3c5">&#9670;&#160;</a></span>setParameters()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void HarmoniaVoice::setParameters </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="structPatchParams.html">PatchParams</a> &amp;&#160;</td>
-          <td class="paramname"><em>newParams</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a25e13da112805f52733c3fb03f4fc9a6" name="a25e13da112805f52733c3fb03f4fc9a6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a25e13da112805f52733c3fb03f4fc9a6">&#9670;&#160;</a></span>setWaveform()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void HarmoniaVoice::setWaveform </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>waveformIndex</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p>Generates a waveform sample. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">w</td><td>Waveform type. </td></tr>
+    <tr><td class="paramname">phase</td><td>Oscillator phase. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Generated sample value. </dd></dl>
 
 </div>
 </div>
@@ -510,6 +629,24 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Starts playback of a MIDI note. </p>
+<p>This method:</p><ul>
+<li>Initializes oscillator phases</li>
+<li>Computes note frequency</li>
+<li>Stores note velocity</li>
+<li>Resets modulation phases</li>
+<li>Triggers envelopes</li>
+</ul>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">midiNoteNumber</td><td>MIDI note value. </td></tr>
+    <tr><td class="paramname">velocity</td><td>MIDI note velocity. </td></tr>
+    <tr><td class="paramname">sound</td><td>Associated synthesizer sound. </td></tr>
+    <tr><td class="paramname">currentPitchWheelPosition</td><td>Current pitch wheel value. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a764b19684b604bb235e0c5abb3c22ac2" name="a764b19684b604bb235e0c5abb3c22ac2"></a>
@@ -546,61 +683,24 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="a593de7f83ffbf530a07b7c952197ab61" name="a593de7f83ffbf530a07b7c952197ab61"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a593de7f83ffbf530a07b7c952197ab61">&#9670;&#160;</a></span>updateFilterType()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void HarmoniaVoice::updateFilterType </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="af60465add6304ec5cd38c45a6e30822f" name="af60465add6304ec5cd38c45a6e30822f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af60465add6304ec5cd38c45a6e30822f">&#9670;&#160;</a></span>updateOscillator()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void HarmoniaVoice::updateOscillator </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
+<p>Stops playback of the current note. </p>
+<p>Depending on allowTailOff:</p><ul>
+<li>envelopes may enter release stage</li>
+<li>or the voice may stop immediately</li>
+</ul>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">velocity</td><td>Release velocity. </td></tr>
+    <tr><td class="paramname">allowTailOff</td><td>Enables envelope release phase. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a1197e52e7af5b35d222742a9934028f1" name="a1197e52e7af5b35d222742a9934028f1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1197e52e7af5b35d222742a9934028f1">&#9670;&#160;</a></span>adsr</h2>
+<a id="acd7f9c35b0f45dbe17c08ff530dc7a1d" name="acd7f9c35b0f45dbe17c08ff530dc7a1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd7f9c35b0f45dbe17c08ff530dc7a1d">&#9670;&#160;</a></span>ampEnv</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -609,7 +709,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">juce::ADSR HarmoniaVoice::adsr</td>
+          <td class="memname">juce::ADSR HarmoniaVoice::ampEnv</td>
         </tr>
       </table>
   </td>
@@ -619,10 +719,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Main amplitude ADSR envelope. </p>
+
 </div>
 </div>
-<a id="ac8ac38ab19d49e105e2dc3aae0825c72" name="ac8ac38ab19d49e105e2dc3aae0825c72"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac8ac38ab19d49e105e2dc3aae0825c72">&#9670;&#160;</a></span>adsrParams</h2>
+<a id="ac9f19e7dcf57ede324c27bdb9ded44e9" name="ac9f19e7dcf57ede324c27bdb9ded44e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9f19e7dcf57ede324c27bdb9ded44e9">&#9670;&#160;</a></span>ampParams</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -631,7 +733,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">juce::ADSR::Parameters HarmoniaVoice::adsrParams</td>
+          <td class="memname">juce::ADSR::Parameters HarmoniaVoice::ampParams</td>
         </tr>
       </table>
   </td>
@@ -641,10 +743,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Parameters for the amplitude envelope. </p>
+
 </div>
 </div>
-<a id="a0a15dca4f3e65d6cb38219b356996de8" name="a0a15dca4f3e65d6cb38219b356996de8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0a15dca4f3e65d6cb38219b356996de8">&#9670;&#160;</a></span>currentParams</h2>
+<a id="a840cc5fe28c50a004fbe8463dfbc89cf" name="a840cc5fe28c50a004fbe8463dfbc89cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a840cc5fe28c50a004fbe8463dfbc89cf">&#9670;&#160;</a></span>baseFrequencyHz</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -653,7 +757,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structPatchParams.html">PatchParams</a> HarmoniaVoice::currentParams</td>
+          <td class="memname">float HarmoniaVoice::baseFrequencyHz = 440.0f</td>
         </tr>
       </table>
   </td>
@@ -662,6 +766,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Current MIDI note frequency in Hz. </p>
 
 </div>
 </div>
@@ -675,7 +781,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">double HarmoniaVoice::currentSampleRate = <a class="el" href="namespaceAppConfig_1_1Synth.html#a8fb53772fc54b05c1251187d13c3673d">AppConfig::Synth::defaultSampleRate</a></td>
+          <td class="memname">double HarmoniaVoice::currentSampleRate = 44100.0</td>
         </tr>
       </table>
   </td>
@@ -684,6 +790,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Current audio sample rate. </p>
 
 </div>
 </div>
@@ -707,10 +815,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Resonant multimode state variable filter. </p>
+
 </div>
 </div>
-<a id="af61087bb0cfd4092e5520242031cfa2a" name="af61087bb0cfd4092e5520242031cfa2a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af61087bb0cfd4092e5520242031cfa2a">&#9670;&#160;</a></span>osc</h2>
+<a id="ae71e8f564e6ec9b6f54cfaee9d17f0e8" name="ae71e8f564e6ec9b6f54cfaee9d17f0e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae71e8f564e6ec9b6f54cfaee9d17f0e8">&#9670;&#160;</a></span>filterEnv</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -719,7 +829,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">juce::dsp::Oscillator&lt;float&gt; HarmoniaVoice::osc</td>
+          <td class="memname">juce::ADSR HarmoniaVoice::filterEnv</td>
         </tr>
       </table>
   </td>
@@ -728,6 +838,200 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Filter modulation envelope. </p>
+
+</div>
+</div>
+<a id="a4f78ff6e9e99a4c349501d714e1a7311" name="a4f78ff6e9e99a4c349501d714e1a7311"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f78ff6e9e99a4c349501d714e1a7311">&#9670;&#160;</a></span>filterEnvParams</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">juce::ADSR::Parameters HarmoniaVoice::filterEnvParams</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Parameters for the filter envelope. </p>
+
+</div>
+</div>
+<a id="afa8fd65176c35e9fd02004803d8450c7" name="afa8fd65176c35e9fd02004803d8450c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa8fd65176c35e9fd02004803d8450c7">&#9670;&#160;</a></span>lfoPhase</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float HarmoniaVoice::lfoPhase = 0.0f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>LFO phase accumulator. </p>
+
+</div>
+</div>
+<a id="ade24ce2d9c0cc8f9225a60570f0b486f" name="ade24ce2d9c0cc8f9225a60570f0b486f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade24ce2d9c0cc8f9225a60570f0b486f">&#9670;&#160;</a></span>noiseDist</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::uniform_real_distribution&lt;float&gt; HarmoniaVoice::noiseDist { -1.0f, 1.0f }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>White noise distribution generator. </p>
+
+</div>
+</div>
+<a id="aec1a0df363b748b69343bc9d4bf5c984" name="aec1a0df363b748b69343bc9d4bf5c984"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec1a0df363b748b69343bc9d4bf5c984">&#9670;&#160;</a></span>noteVelocity</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float HarmoniaVoice::noteVelocity = 1.0f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Current note velocity. </p>
+
+</div>
+</div>
+<a id="a0662dbda7765053e8a6aa26d88f00a37" name="a0662dbda7765053e8a6aa26d88f00a37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0662dbda7765053e8a6aa26d88f00a37">&#9670;&#160;</a></span>params</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structHarmoniaParams_1_1AtomicRefs.html">HarmoniaParams::AtomicRefs</a>&amp; HarmoniaVoice::params</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Real-time parameter references. </p>
+
+</div>
+</div>
+<a id="af9e66d3e0b9d198f51e7a12da11307cc" name="af9e66d3e0b9d198f51e7a12da11307cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9e66d3e0b9d198f51e7a12da11307cc">&#9670;&#160;</a></span>phase1</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float HarmoniaVoice::phase1 = 0.0f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Oscillator 1 phase accumulator. </p>
+
+</div>
+</div>
+<a id="a04a40630d0ff05dc4be1088dd89ece59" name="a04a40630d0ff05dc4be1088dd89ece59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04a40630d0ff05dc4be1088dd89ece59">&#9670;&#160;</a></span>phase2</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float HarmoniaVoice::phase2 = 0.0f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Oscillator 2 phase accumulator. </p>
+
+</div>
+</div>
+<a id="ab481fb646781ce4338da148ad65f67cb" name="ab481fb646781ce4338da148ad65f67cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab481fb646781ce4338da148ad65f67cb">&#9670;&#160;</a></span>rng</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::mt19937 HarmoniaVoice::rng { 0x4321 }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Random number generator used for noise synthesis. </p>
 
 </div>
 </div>

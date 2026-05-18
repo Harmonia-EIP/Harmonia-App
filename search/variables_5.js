@@ -1,14 +1,22 @@
 var searchData=
 [
-  ['filter_0',['filter',['../classHarmoniaVoice.html#a7cd1e8064e9c532b68d8c07b37630e05',1,'HarmoniaVoice::filter'],['../namespaceStrings_1_1Labels.html#a63eb8e427dad0960646b1a357be709b2',1,'Strings::Labels::Filter']]],
-  ['filtercomponent_1',['filterComponent',['../classMainComponent.html#a1ce257c8da41203092664d8157fb8f24',1,'MainComponent']]],
-  ['filterlabel_2',['filterLabel',['../classTopBarComponent.html#aa6d6c632014024c5b766a4c6a539f84c',1,'TopBarComponent']]],
-  ['filtertype_3',['filtertype',['../classDataModel.html#a33b8b214a432c5aca636918b880d3d62',1,'DataModel::filterType'],['../structPatchParams.html#a4f43771284c0b2543035f7666408c94e',1,'PatchParams::filterType']]],
-  ['filtertypeselector_4',['filterTypeSelector',['../classTopBarComponent.html#ad1914230ade1795d76d44b3efa62ae37',1,'TopBarComponent']]],
-  ['firstname_5',['firstname',['../structUserProfile.html#a583a089cd1d186db7cdc8f33e76928d6',1,'UserProfile::firstName'],['../namespaceStrings_1_1Placeholders.html#a34558c41c65e8bb46affce51ff274ebf',1,'Strings::Placeholders::FirstName']]],
-  ['firstnamefield_6',['firstnameField',['../classSignupPage.html#a59f3751fa9e90de20e3dbb0e69d24195',1,'SignupPage']]],
-  ['frequency_7',['frequency',['../classDataModel.html#af021e23ea0ed2462039cdd95bd8da867',1,'DataModel::frequency'],['../structPatchParams.html#a0ac7427e8f3b4951151fff45132c69dd',1,'PatchParams::frequency'],['../namespaceStrings_1_1Parameters.html#a7c0722a011d084f48d3e2ca41ef36a3b',1,'Strings::Parameters::Frequency']]],
-  ['frequencylabel_8',['frequencyLabel',['../classFrequencyVolumeComponent.html#aaaa705510ace5ffcb6c57f3936cf0b90',1,'FrequencyVolumeComponent']]],
-  ['frequencyslider_9',['frequencySlider',['../classFrequencyVolumeComponent.html#aa1237ba43a2872e305e33d7b6ad165a6',1,'FrequencyVolumeComponent']]],
-  ['freqvolcomponent_10',['freqVolComponent',['../classMainComponent.html#ab02d46ce3849ac525a71e17bea54fec4',1,'MainComponent']]]
+  ['fastspeedthreshold_0',['fastSpeedThreshold',['../classKnobControl.html#abf6894b823f5157bc952650be31e0ecc',1,'KnobControl']]],
+  ['filter_1',['filter',['../classHarmoniaVoice.html#a7cd1e8064e9c532b68d8c07b37630e05',1,'HarmoniaVoice::filter'],['../namespaceStrings_1_1Labels.html#a63eb8e427dad0960646b1a357be709b2',1,'Strings::Labels::Filter']]],
+  ['filtercutoff_2',['filtercutoff',['../namespaceHarmoniaParams_1_1IDs.html#a3866b86c60a1862d6ca50d9d11eeeecd',1,'HarmoniaParams::IDs::filterCutoff'],['../structHarmoniaParams_1_1AtomicRefs.html#af9c3baeacdb5f194b6c3cf3ed903bce6',1,'HarmoniaParams::AtomicRefs::filterCutoff']]],
+  ['filtercutoffknob_3',['filterCutoffKnob',['../classMainComponent.html#ac9efedc239dd5adc5d96c4af4b435afd',1,'MainComponent']]],
+  ['filterenv_4',['filterEnv',['../classHarmoniaVoice.html#ae71e8f564e6ec9b6f54cfaee9d17f0e8',1,'HarmoniaVoice']]],
+  ['filterenvamount_5',['filterenvamount',['../structHarmoniaParams_1_1AtomicRefs.html#a68a3365d8322208f8bf8d4b786e9c72e',1,'HarmoniaParams::AtomicRefs::filterEnvAmount'],['../namespaceHarmoniaParams_1_1IDs.html#ae2c7fe6e81e2bf37695cb24035a39ed4',1,'HarmoniaParams::IDs::filterEnvAmount']]],
+  ['filterenvamtknob_6',['filterEnvAmtKnob',['../classMainComponent.html#a3dce0311e6189a43fb633a41d448d8d9',1,'MainComponent']]],
+  ['filterenvdecay_7',['filterenvdecay',['../structHarmoniaParams_1_1AtomicRefs.html#a4a92138ef12a9efa548dd8ccce2e2895',1,'HarmoniaParams::AtomicRefs::filterEnvDecay'],['../namespaceHarmoniaParams_1_1IDs.html#a1ebb36f99a1b6e8bcb4dfe543c8e0b18',1,'HarmoniaParams::IDs::filterEnvDecay']]],
+  ['filterenvdecayknob_8',['filterEnvDecayKnob',['../classMainComponent.html#abff0913ae997faf88edf9e2556778e9d',1,'MainComponent']]],
+  ['filterenvparams_9',['filterEnvParams',['../classHarmoniaVoice.html#a4f78ff6e9e99a4c349501d714e1a7311',1,'HarmoniaVoice']]],
+  ['filterpanel_10',['filterPanel',['../classMainComponent.html#a506f599c71431f550f350241c4d27cee',1,'MainComponent']]],
+  ['filterresoknob_11',['filterResoKnob',['../classMainComponent.html#afe899b99a93853ca252ae9708dafd597',1,'MainComponent']]],
+  ['filterresonance_12',['filterresonance',['../structHarmoniaParams_1_1AtomicRefs.html#ae0f1e0eff0afbd27b6a96f4232b17b76',1,'HarmoniaParams::AtomicRefs::filterResonance'],['../namespaceHarmoniaParams_1_1IDs.html#a6d1b32e62c13c2a2d0192aceb187ed3d',1,'HarmoniaParams::IDs::filterResonance']]],
+  ['filtertype_13',['filtertype',['../namespaceHarmoniaParams_1_1IDs.html#a34af4847b2c2f1f709ab36129a68eaf9',1,'HarmoniaParams::IDs::filterType'],['../structHarmoniaParams_1_1AtomicRefs.html#a843b0c06150257e435bf598ee5841f47',1,'HarmoniaParams::AtomicRefs::filterType']]],
+  ['filtertypesel_14',['filterTypeSel',['../classMainComponent.html#a141905eaeca018533470c916765213e9',1,'MainComponent']]],
+  ['firstname_15',['firstname',['../structUserProfile.html#a583a089cd1d186db7cdc8f33e76928d6',1,'UserProfile::firstName'],['../namespaceStrings_1_1Placeholders.html#a34558c41c65e8bb46affce51ff274ebf',1,'Strings::Placeholders::FirstName']]],
+  ['firstnamefield_16',['firstnameField',['../classSignupPage.html#a59f3751fa9e90de20e3dbb0e69d24195',1,'SignupPage']]],
+  ['frequency_17',['Frequency',['../namespaceStrings_1_1Parameters.html#a7c0722a011d084f48d3e2ca41ef36a3b',1,'Strings::Parameters']]],
+  ['fxpanel_18',['fxPanel',['../classMainComponent.html#ae43805c32b41c5f2b40bcd8b72bb007b',1,'MainComponent']]]
 ];

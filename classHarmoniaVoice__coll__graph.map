@@ -1,7 +1,7 @@
 <map id="HarmoniaVoice" name="HarmoniaVoice">
-<area shape="rect" id="Node000001" title=" " alt="" coords="109,93,230,119"/>
+<area shape="rect" id="Node000001" title="Main synthesizer voice implementation." alt="" coords="137,93,258,119"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,5,173,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="111,39,160,91,156,95,107,43"/>
-<area shape="rect" id="Node000003" href="$structPatchParams.html" title=" " alt="" coords="198,5,303,31"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="232,43,183,95,179,91,228,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="116,37,184,91,181,95,113,41"/>
+<area shape="rect" id="Node000003" href="$structHarmoniaParams_1_1AtomicRefs.html" title="Real&#45;time safe parameter access structure." alt="" coords="198,5,415,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="283,41,214,95,211,91,279,37"/>
 </map>

@@ -97,17 +97,17 @@ $(document).ready(function(){initNavTree('classBackendAiManager.html',''); initR
 </div><!--header-->
 <div class="contents">
 
-<p>Handles AI-based preset generation via backend API.  
+<p>Handles AI preset generation through the backend API.  
  <a href="classBackendAiManager.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="BackendAiManager_8h_source.html">BackendAiManager.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="backendAiManager_8h_source.html">backendAiManager.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for BackendAiManager:</div>
 <div class="dyncontent">
 <div class="center"><img src="classBackendAiManager__coll__graph.png" border="0" usemap="#aBackendAiManager_coll__map" alt="Collaboration graph"/></div>
 <map name="aBackendAiManager_coll__map" id="aBackendAiManager_coll__map">
-<area shape="rect" title="Handles AI&#45;based preset generation via backend API." alt="" coords="5,93,152,119"/>
-<area shape="rect" href="classBackendManager.html" title="Main facade for backend interactions (authentication, AI, profile)." alt="" coords="11,5,146,31"/>
+<area shape="rect" title="Handles AI preset generation through the backend API." alt="" coords="5,93,152,119"/>
+<area shape="rect" href="classBackendManager.html" title="Central facade for all backend operations." alt="" coords="11,5,146,31"/>
 <area shape="poly" title=" " alt="" coords="81,45,81,93,76,93,76,45"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
@@ -115,30 +115,27 @@ Collaboration diagram for BackendAiManager:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac04b9bebb15e3012a40010cbb47a37d4" id="r_ac04b9bebb15e3012a40010cbb47a37d4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendAiManager.html#ac04b9bebb15e3012a40010cbb47a37d4">BackendAiManager</a> (<a class="el" href="classBackendManager.html">BackendManager</a> &amp;<a class="el" href="classBackendAiManager.html#acfa539ffdb14450010c1745d9e8c75a5">backend</a>)</td></tr>
-<tr class="memdesc:ac04b9bebb15e3012a40010cbb47a37d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <br /></td></tr>
+<tr class="memdesc:ac04b9bebb15e3012a40010cbb47a37d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a <a class="el" href="classBackendAiManager.html" title="Handles AI preset generation through the backend API.">BackendAiManager</a> instance.  <br /></td></tr>
 <tr class="separator:ac04b9bebb15e3012a40010cbb47a37d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e21592e7a62271e5b306ba008c6163f" id="r_a5e21592e7a62271e5b306ba008c6163f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPatchCallResult.html">PatchCallResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendAiManager.html#a5e21592e7a62271e5b306ba008c6163f">generatePatch</a> (const juce::String &amp;prompt)</td></tr>
-<tr class="memdesc:a5e21592e7a62271e5b306ba008c6163f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate an audio preset from a text prompt.  <br /></td></tr>
-<tr class="separator:a5e21592e7a62271e5b306ba008c6163f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9256e309d981d2cb2feb7d610fee367" id="r_ab9256e309d981d2cb2feb7d610fee367"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structAiResult.html">AiResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendAiManager.html#ab9256e309d981d2cb2feb7d610fee367">generatePreset</a> (const juce::String &amp;prompt)</td></tr>
+<tr class="memdesc:ab9256e309d981d2cb2feb7d610fee367"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a prompt to the backend AI service.  <br /></td></tr>
+<tr class="separator:ab9256e309d981d2cb2feb7d610fee367"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:acfa539ffdb14450010c1745d9e8c75a5" id="r_acfa539ffdb14450010c1745d9e8c75a5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classBackendManager.html">BackendManager</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendAiManager.html#acfa539ffdb14450010c1745d9e8c75a5">backend</a></td></tr>
-<tr class="memdesc:acfa539ffdb14450010c1745d9e8c75a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reference to main backend manager.  <br /></td></tr>
+<tr class="memdesc:acfa539ffdb14450010c1745d9e8c75a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reference to the main backend manager.  <br /></td></tr>
 <tr class="separator:acfa539ffdb14450010c1745d9e8c75a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Handles AI-based preset generation via backend API. </p>
-<p>This class communicates with the AI service to generate audio presets based on a textual prompt.</p>
-<p>Endpoint:</p><ul>
-<li>POST /ai/generate-preset</li>
+<div class="textblock"><p>Handles AI preset generation through the backend API. </p>
+<p><a class="el" href="classBackendAiManager.html" title="Handles AI preset generation through the backend API.">BackendAiManager</a> acts as a bridge between the application and the backend AI services.</p>
+<p>It uses:</p><ul>
+<li>CPR for HTTP requests</li>
+<li>JSON payload serialization</li>
+<li><a class="el" href="classBackendManager.html" title="Central facade for all backend operations.">BackendManager</a> for session and configuration access</li>
 </ul>
-<p>Responsibilities:</p><ul>
-<li>Send prompt to backend AI</li>
-<li>Parse JSON response</li>
-<li>Convert response into <a class="el" href="structPatchParams.html">PatchParams</a></li>
-</ul>
-<dl class="section warning"><dt>Warning</dt><dd>Requires a valid authenticated session (JWT token). </dd></dl>
+<p>The generated preset is returned as raw JSON, which can later be parsed by the preset loader. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ac04b9bebb15e3012a40010cbb47a37d4" name="ac04b9bebb15e3012a40010cbb47a37d4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac04b9bebb15e3012a40010cbb47a37d4">&#9670;&#160;</a></span>BackendAiManager()</h2>
@@ -164,25 +161,30 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Constructor. </p>
+<p>Creates a <a class="el" href="classBackendAiManager.html" title="Handles AI preset generation through the backend API.">BackendAiManager</a> instance. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">backend</td><td>Reference to the main <a class="el" href="classBackendManager.html" title="Main facade for backend interactions (authentication, AI, profile).">BackendManager</a> </td></tr>
+    <tr><td class="paramname">backend</td><td>Reference to the main <a class="el" href="classBackendManager.html" title="Central facade for all backend operations.">BackendManager</a>.</td></tr>
   </table>
   </dd>
 </dl>
+<p>The <a class="el" href="classBackendManager.html" title="Central facade for all backend operations.">BackendManager</a> is used to:</p><ul>
+<li>Access user sessions</li>
+<li>Retrieve API configuration</li>
+<li>Centralize backend communication </li>
+</ul>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a5e21592e7a62271e5b306ba008c6163f" name="a5e21592e7a62271e5b306ba008c6163f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5e21592e7a62271e5b306ba008c6163f">&#9670;&#160;</a></span>generatePatch()</h2>
+<a id="ab9256e309d981d2cb2feb7d610fee367" name="ab9256e309d981d2cb2feb7d610fee367"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9256e309d981d2cb2feb7d610fee367">&#9670;&#160;</a></span>generatePreset()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structPatchCallResult.html">PatchCallResult</a> BackendAiManager::generatePatch </td>
+          <td class="memname"><a class="el" href="structAiResult.html">AiResult</a> BackendAiManager::generatePreset </td>
           <td>(</td>
           <td class="paramtype">const juce::String &amp;&#160;</td>
           <td class="paramname"><em>prompt</em></td><td>)</td>
@@ -191,21 +193,36 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Generate an audio preset from a text prompt. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Sends a prompt to the backend AI service. </p>
+<p>This method:</p><ul>
+<li>Validates the prompt</li>
+<li>Checks whether a user session exists</li>
+<li>Verifies session expiration</li>
+<li>Sends an authenticated HTTP POST request</li>
+<li>Returns the generated preset JSON</li>
+</ul>
+<p>Backend endpoint: POST /ai/generate-preset</p>
+<p>Request body format: </p><div class="fragment"><div class="line">{</div>
+<div class="line">    <span class="stringliteral">&quot;prompt&quot;</span>: <span class="stringliteral">&quot;user input&quot;</span></div>
+<div class="line">}</div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">prompt</td><td>Description of the desired sound </td></tr>
+    <tr><td class="paramname">prompt</td><td>User text prompt describing the preset to generate.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structPatchCallResult.html">PatchCallResult</a> containing generated parameters or error</dd></dl>
-<p>Sends a request to the AI backend and parses the response into usable parameters.</p>
-<dl class="section warning"><dt>Warning</dt><dd>Fails if:<ul>
-<li>prompt is empty</li>
-<li>session is missing</li>
-<li>session is expired </li>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structAiResult.html">AiResult</a><ul>
+<li>success = true: contains generated preset JSON</li>
+<li>success = false: contains an error message</li>
 </ul>
 </dd></dl>
+<p>Possible errors:</p><ul>
+<li>Empty prompt</li>
+<li>No active session</li>
+<li>Expired session</li>
+<li>HTTP request failure</li>
+<li>Empty backend response </li>
+</ul>
 
 </div>
 </div>
@@ -230,13 +247,18 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reference to main backend manager. </p>
+<p>Reference to the main backend manager. </p>
+<p>Used to:</p><ul>
+<li>Access session information</li>
+<li>Retrieve API configuration</li>
+<li>Centralize backend services </li>
+</ul>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/backendManagement/<a class="el" href="BackendAiManager_8h_source.html">BackendAiManager.h</a></li>
-<li>src/backendManagement/<a class="el" href="BackendAiManager_8cpp.html">BackendAiManager.cpp</a></li>
+<li>src/backendManagement/<a class="el" href="backendAiManager_8h_source.html">backendAiManager.h</a></li>
+<li>src/backendManagement/<a class="el" href="backendAiManager_8cpp.html">backendAiManager.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

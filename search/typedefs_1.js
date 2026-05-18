@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['layoutpreset_0',['layoutpreset',['../classTitleComponent.html#ad3ea0db7a48f4b62a04acf38a5c61512',1,'TitleComponent::LayoutPreset'],['../classMainComponent.html#aebbbb11541f829d92d27f22df46c4678',1,'MainComponent::LayoutPreset']]]
+  ['json_0',['json',['../backendAiManager_8cpp.html#ab701e3ac61a85b337ec5c1abaad6742d',1,'json:&#160;backendAiManager.cpp'],['../BackendAuthManager_8cpp.html#ab701e3ac61a85b337ec5c1abaad6742d',1,'json:&#160;BackendAuthManager.cpp'],['../BackendManager_8cpp.html#ab701e3ac61a85b337ec5c1abaad6742d',1,'json:&#160;BackendManager.cpp'],['../BackendProfileManager_8cpp.html#ab701e3ac61a85b337ec5c1abaad6742d',1,'json:&#160;BackendProfileManager.cpp']]]
 ];

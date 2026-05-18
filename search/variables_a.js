@@ -1,26 +1,10 @@
 var searchData=
 [
-  ['lastname_0',['lastname',['../namespaceStrings_1_1Placeholders.html#aa06b732789d24055187f3d199858a7ec',1,'Strings::Placeholders::LastName'],['../structUserProfile.html#af3d8118d173b31467957e6d65c63a27f',1,'UserProfile::lastName']]],
-  ['lastnamefield_1',['lastnameField',['../classSignupPage.html#a348d6106b42624d41bd078d439dba391',1,'SignupPage']]],
-  ['layout_2',['Layout',['../namespaceStrings_1_1Buttons.html#a8af85ae18cde4c75ce8edfc77826f937',1,'Strings::Buttons']]],
-  ['layout1_3',['Layout1',['../namespaceStrings_1_1Layouts.html#a88e19ef26d0eae21d80a28375fdd20a2',1,'Strings::Layouts']]],
-  ['layout2_4',['Layout2',['../namespaceStrings_1_1Layouts.html#a645a223a8765eee8090f2890333ae275',1,'Strings::Layouts']]],
-  ['layout3_5',['Layout3',['../namespaceStrings_1_1Layouts.html#a2e2975d3e9e0a85183d6d0d04365d18c',1,'Strings::Layouts']]],
-  ['layout4_6',['Layout4',['../namespaceStrings_1_1Layouts.html#a747b2721b19dcc006e1b4ec402dd5cc7',1,'Strings::Layouts']]],
-  ['layoutbutton_7',['layoutButton',['../classTitleComponent.html#ace8791400fc9d77c4155a308043f43da',1,'TitleComponent']]],
-  ['layoutid_8',['layoutid',['../structUserSession.html#a7d3c006ea68de6e5b4e2c9e31e0ec371',1,'UserSession::layoutId'],['../structUserProfile.html#ad7330008a3a3461610fa22b1b7ab689e',1,'UserProfile::layoutId']]],
-  ['layoutpreset_9',['layoutPreset',['../classMainComponent.html#a1c918f30e59a3439ac11313bd79749df',1,'MainComponent']]],
-  ['layoutupdatefailed_10',['LayoutUpdateFailed',['../namespaceStrings_1_1Errors.html#a828d932ec3104f836cbb3eaa79ccd129',1,'Strings::Errors']]],
-  ['light_11',['Light',['../namespaceStrings_1_1Themes.html#ace72922cebb3e7ac7508df28723dde0c',1,'Strings::Themes']]],
-  ['load_12',['Load',['../namespaceStrings_1_1Buttons.html#a295eb1be1d7ae3e8be7e015e74884296',1,'Strings::Buttons']]],
-  ['loadbutton_13',['loadButton',['../classBottomBarComponent.html#a1e3ef82af6e17a545b1349e0117ac640',1,'BottomBarComponent']]],
-  ['localkeyboardstate_14',['localKeyboardState',['../classMainComponent.html#a3b6131b64ebd62947451b2325174eb06',1,'MainComponent']]],
-  ['lock_15',['lock',['../classOscilloscopeComponent.html#a0c1bb19835f1cf305e5750d80eb37623',1,'OscilloscopeComponent']]],
-  ['logfile_16',['logFile',['../classBackendManager.html#aee247266ceecc3335b46d0ca7cd93af1',1,'BackendManager']]],
-  ['loggedout_17',['LoggedOut',['../namespaceStrings_1_1Success.html#a430f18e15cff6126b1d1b0c49e23bb4b',1,'Strings::Success']]],
-  ['loginbutton_18',['loginButton',['../classLoginPage.html#acf48cba1b7f7c9e730a97458d64c1378',1,'LoginPage']]],
-  ['logout_19',['Logout',['../namespaceStrings_1_1Buttons.html#a88c7345786593c9818697d00ccdfa9d9',1,'Strings::Buttons']]],
-  ['logoutbutton_20',['logoutButton',['../classTitleComponent.html#acd722a36ec92be3669eec5f47d69a72b',1,'TitleComponent']]],
-  ['lookandfeel_21',['lookandfeel',['../classFrequencyVolumeComponent.html#a92154a53ff8689db44a5b9065db6d180',1,'FrequencyVolumeComponent::lookAndFeel'],['../classOscilloscopeComponent.html#a3506bc0fd6d0d650cfb8ef1d4eb130f9',1,'OscilloscopeComponent::lookAndFeel'],['../classFilterComponent.html#a721093e5f8fb6859ccf952175534e87e',1,'FilterComponent::lookAndFeel'],['../classADSRComponent.html#a35b05a5d3907b436a20f99885c59edc2',1,'ADSRComponent::lookAndFeel']]],
-  ['lowpass_22',['LowPass',['../namespaceStrings_1_1Filter.html#a10d03eded3d9e92bfff2802400eae8d8',1,'Strings::Filter']]]
+  ['keyboardcomponent_0',['keyboardComponent',['../classSynthComponent.html#ad7e01443fde4a25f45fbc3ebf3738890',1,'SynthComponent']]],
+  ['keyboardstate_1',['keyboardstate',['../classSynthComponent.html#a104a0c1ed6d8bdd1849e69279415e55e',1,'SynthComponent::keyboardState'],['../classHarmoniaAudioProcessor.html#af0591acaf0cbf37c2fc24ef3ed6dafb1',1,'HarmoniaAudioProcessor::keyboardState']]],
+  ['knobbg_2',['knobbg',['../structThemePalette.html#abc54168bb38af6f01b991126a1469213',1,'ThemePalette::knobBg'],['../namespaceHarmoniaPalette.html#a7d0506f4dab4d8f8a708964a908c5e6e',1,'HarmoniaPalette::knobBg']]],
+  ['knobbghi_3',['knobBgHi',['../namespaceHarmoniaPalette.html#a7d0900a6a6121d55f5175f00a673db80',1,'HarmoniaPalette']]],
+  ['knoboutline_4',['knobOutline',['../structThemePalette.html#ad491883fa0c28a28d658b0f6e64e4cfc',1,'ThemePalette']]],
+  ['knobpointer_5',['knobPointer',['../structThemePalette.html#a94277e9b438aadb217828dcf04bf9356',1,'ThemePalette']]],
+  ['knobtrack_6',['knobTrack',['../namespaceHarmoniaPalette.html#a75aa6566fb7735ff6a6fd569130645ed',1,'HarmoniaPalette']]]
 ];

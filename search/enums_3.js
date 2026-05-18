@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['waveform_0',['Waveform',['../HarmoniaParams_8h.html#a7d8c79438df26f5d08937a6566cd8ddf',1,'HarmoniaParams.h']]]
+  ['wave_0',['wave',['../classHarmoniaVoice.html#a29d2c9affcd14d31950e8d47b0660544',1,'HarmoniaVoice::Wave'],['../namespaceIconRenderer.html#a11c788c1c3827c6f0932fcfecfc97d25',1,'IconRenderer::Wave']]]
 ];

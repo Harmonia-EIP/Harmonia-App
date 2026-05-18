@@ -1,9 +1,11 @@
 var searchData=
 [
-  ['themeandlayoutconverter_2eh_0',['ThemeAndLayoutConverter.h',['../ThemeAndLayoutConverter_8h.html',1,'']]],
-  ['themes_2eh_1',['Themes.h',['../Themes_8h.html',1,'']]],
-  ['titlecomponent_2ecpp_2',['TitleComponent.cpp',['../TitleComponent_8cpp.html',1,'']]],
-  ['titlecomponent_2eh_3',['TitleComponent.h',['../TitleComponent_8h.html',1,'']]],
-  ['topbarcomponent_2ecpp_4',['TopBarComponent.cpp',['../TopBarComponent_8cpp.html',1,'']]],
-  ['topbarcomponent_2eh_5',['TopBarComponent.h',['../TopBarComponent_8h.html',1,'']]]
+  ['sectionpanel_2eh_0',['SectionPanel.h',['../SectionPanel_8h.html',1,'']]],
+  ['signuppage_2ecpp_1',['SignupPage.cpp',['../SignupPage_8cpp.html',1,'']]],
+  ['signuppage_2eh_2',['SignupPage.h',['../SignupPage_8h.html',1,'']]],
+  ['string_2eh_3',['String.h',['../String_8h.html',1,'']]],
+  ['synth_2ecpp_4',['Synth.cpp',['../Synth_8cpp.html',1,'']]],
+  ['synth_2eh_5',['Synth.h',['../Synth_8h.html',1,'']]],
+  ['synthcomponent_2ecpp_6',['SynthComponent.cpp',['../SynthComponent_8cpp.html',1,'']]],
+  ['synthcomponent_2eh_7',['SynthComponent.h',['../SynthComponent_8h.html',1,'']]]
 ];

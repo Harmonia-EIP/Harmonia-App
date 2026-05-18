@@ -5,5 +5,5 @@ var searchData=
   ['layout3_2',['Layout3',['../classAppLookAndFeel.html#a49a9340f3d5b5f90635f6c10385659b4aa77a887b5e340da4edc103ddb5f381c6',1,'AppLookAndFeel']]],
   ['layout4_3',['Layout4',['../classAppLookAndFeel.html#a49a9340f3d5b5f90635f6c10385659b4aa9babb889278f4dad59b2884f295482c',1,'AppLookAndFeel']]],
   ['light_4',['Light',['../classAppLookAndFeel.html#a7e966ad29d8634970a167de96d1a6b87a9914a0ce04a7b7b6a8e39bec55064b82',1,'AppLookAndFeel']]],
-  ['lowpass_5',['LOWPASS',['../HarmoniaParams_8h.html#a7ef0ab496f57e183b484e62e2053c94facb8b651a89fa4feb96fe31bfc8610c89',1,'HarmoniaParams.h']]]
+  ['lowpass_5',['Lowpass',['../namespaceIconRenderer.html#a14d6d88133735f5ae17e33d01948ca8ba97ed1c13cd79855adc19c2b8a96dfa41',1,'IconRenderer']]]
 ];

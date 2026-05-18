@@ -1,0 +1,18 @@
+<map id="src/components/IconChoiceSelector.h" name="src/components/IconChoiceSelector.h">
+<area shape="rect" id="Node000001" title="Icon&#45;based selector component for choice parameters." alt="" coords="491,5,691,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,191,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="492,46,205,96,204,90,491,41"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="215,93,370,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="527,48,372,92,371,87,525,43"/>
+<area shape="rect" id="Node000004" href="$HarmoniaPalette_8h.html" title=" " alt="" coords="394,101,602,126"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="572,48,523,93,519,89,569,44"/>
+<area shape="rect" id="Node000006" href="$IconRenderer_8h.html" title="Utility namespace used to render waveform and filter icons." alt="" coords="627,101,745,126"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="614,44,664,89,661,93,611,48"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="769,101,856,126"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="641,43,771,93,769,98,639,48"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="880,101,943,126"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="688,43,777,64,869,91,875,93,874,98,868,96,775,69,687,48"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="520,181,663,221"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="512,124,562,170,559,174,509,128"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="675,128,624,174,621,170,671,124"/>
+</map>

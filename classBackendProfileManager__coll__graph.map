@@ -1,5 +1,5 @@
 <map id="BackendProfileManager" name="BackendProfileManager">
 <area shape="rect" id="Node000001" title="Handles user profile retrieval and updates." alt="" coords="5,93,180,119"/>
-<area shape="rect" id="Node000002" href="$classBackendManager.html" title="Main facade for backend interactions (authentication, AI, profile)." alt="" coords="25,5,160,31"/>
+<area shape="rect" id="Node000002" href="$classBackendManager.html" title="Central facade for all backend operations." alt="" coords="25,5,160,31"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,45,95,93,90,93,90,45"/>
 </map>

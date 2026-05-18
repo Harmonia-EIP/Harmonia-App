@@ -8,6 +8,6 @@
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="168,39,218,91,214,95,164,43"/>
 <area shape="rect" id="Node000005" href="$structThemePalette.html" title=" " alt="" coords="253,5,365,31"/>
 <area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="290,43,241,95,237,91,286,39"/>
-<area shape="rect" id="Node000006" href="$classBackendManager.html" title="Main facade for backend interactions (authentication, AI, profile)." alt="" coords="317,93,452,119"/>
+<area shape="rect" id="Node000006" href="$classBackendManager.html" title="Central facade for all backend operations." alt="" coords="317,93,452,119"/>
 <area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="375,133,365,147,352,160,315,178,277,189,275,184,313,173,348,155,361,143,371,129"/>
 </map>

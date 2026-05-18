@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['highpass_0',['HIGHPASS',['../HarmoniaParams_8h.html#a7ef0ab496f57e183b484e62e2053c94fa828ad78e745209c145ada2b798f66322',1,'HarmoniaParams.h']]]
+  ['highpass_0',['Highpass',['../namespaceIconRenderer.html#a14d6d88133735f5ae17e33d01948ca8ba124600c5e81d846f402aab6727296cd5',1,'IconRenderer']]]
 ];

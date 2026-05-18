@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['saw_0',['SAW',['../HarmoniaParams_8h.html#a7d8c79438df26f5d08937a6566cd8ddfa0539f4139fdf8b3b7ca00bb4f460261f',1,'HarmoniaParams.h']]],
-  ['sine_1',['SINE',['../HarmoniaParams_8h.html#a7d8c79438df26f5d08937a6566cd8ddfaeed52f6fa986d4fb81f722d6ea5f38bf',1,'HarmoniaParams.h']]],
-  ['square_2',['SQUARE',['../HarmoniaParams_8h.html#a7d8c79438df26f5d08937a6566cd8ddfa12dec4e1f7ec620651b2b95c440ffac0',1,'HarmoniaParams.h']]]
+  ['saw_0',['saw',['../classHarmoniaVoice.html#a29d2c9affcd14d31950e8d47b0660544ac551a26a97a7440529e861dff6933722',1,'HarmoniaVoice::Saw'],['../namespaceIconRenderer.html#a11c788c1c3827c6f0932fcfecfc97d25ac551a26a97a7440529e861dff6933722',1,'IconRenderer::Saw']]],
+  ['sine_1',['sine',['../classHarmoniaVoice.html#a29d2c9affcd14d31950e8d47b0660544a6ca9e2d793f678aba7c1b19526592a46',1,'HarmoniaVoice::Sine'],['../namespaceIconRenderer.html#a11c788c1c3827c6f0932fcfecfc97d25a6ca9e2d793f678aba7c1b19526592a46',1,'IconRenderer::Sine']]],
+  ['square_2',['square',['../classHarmoniaVoice.html#a29d2c9affcd14d31950e8d47b0660544aceb46ca115d05c51aa5a16a8867c3304',1,'HarmoniaVoice::Square'],['../namespaceIconRenderer.html#a11c788c1c3827c6f0932fcfecfc97d25aceb46ca115d05c51aa5a16a8867c3304',1,'IconRenderer::Square']]]
 ];

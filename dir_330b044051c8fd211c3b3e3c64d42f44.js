@@ -1,7 +1,7 @@
 var dir_330b044051c8fd211c3b3e3c64d42f44 =
 [
-    [ "BackendAiManager.cpp", "BackendAiManager_8cpp.html", "BackendAiManager_8cpp" ],
-    [ "BackendAiManager.h", "BackendAiManager_8h.html", "BackendAiManager_8h" ],
+    [ "backendAiManager.cpp", "backendAiManager_8cpp.html", "backendAiManager_8cpp" ],
+    [ "backendAiManager.h", "backendAiManager_8h.html", "backendAiManager_8h" ],
     [ "BackendAuthManager.cpp", "BackendAuthManager_8cpp.html", "BackendAuthManager_8cpp" ],
     [ "BackendAuthManager.h", "BackendAuthManager_8h.html", "BackendAuthManager_8h" ],
     [ "BackendManager.cpp", "BackendManager_8cpp.html", "BackendManager_8cpp" ],

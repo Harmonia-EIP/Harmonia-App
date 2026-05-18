@@ -1,0 +1,11 @@
+<map id="IconChoiceSelector" name="IconChoiceSelector">
+<area shape="rect" id="Node000001" title="Generic icon&#45;based parameter selector." alt="" coords="91,93,238,119"/>
+<area shape="rect" id="Node000004" href="$classFilterTypeSelector.html" title="Icon&#45;based filter type selector component." alt="" coords="13,167,151,192"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="143,130,97,168,94,164,139,126"/>
+<area shape="rect" id="Node000005" href="$classWaveformSelector.html" title="Icon&#45;based waveform selection component." alt="" coords="176,167,319,192"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="190,126,236,164,232,168,187,130"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,13,137,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,45,153,91,149,95,94,49"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="161,5,355,45"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="227,56,180,95,177,91,223,52"/>
+</map>

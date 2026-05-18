@@ -96,13 +96,16 @@ $(document).ready(function(){initNavTree('classHarmoniaSound.html',''); initResi
 </div><!--header-->
 <div class="contents">
 
+<p>Generic synthesizer sound definition.  
+ <a href="classHarmoniaSound.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="Synth_8h_source.html">Synth.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for HarmoniaSound:</div>
 <div class="dyncontent">
 <div class="center"><img src="classHarmoniaSound__inherit__graph.png" border="0" usemap="#aHarmoniaSound_inherit__map" alt="Inheritance graph"/></div>
 <map name="aHarmoniaSound_inherit__map" id="aHarmoniaSound_inherit__map">
-<area shape="rect" title=" " alt="" coords="29,79,155,104"/>
+<area shape="rect" title="Generic synthesizer sound definition." alt="" coords="29,79,155,104"/>
 <area shape="rect" title=" " alt="" coords="5,5,179,31"/>
 <area shape="poly" title=" " alt="" coords="95,44,95,79,89,79,89,44"/>
 </map>
@@ -112,7 +115,7 @@ Collaboration diagram for HarmoniaSound:</div>
 <div class="dyncontent">
 <div class="center"><img src="classHarmoniaSound__coll__graph.png" border="0" usemap="#aHarmoniaSound_coll__map" alt="Collaboration graph"/></div>
 <map name="aHarmoniaSound_coll__map" id="aHarmoniaSound_coll__map">
-<area shape="rect" title=" " alt="" coords="29,79,155,104"/>
+<area shape="rect" title="Generic synthesizer sound definition." alt="" coords="29,79,155,104"/>
 <area shape="rect" title=" " alt="" coords="5,5,179,31"/>
 <area shape="poly" title=" " alt="" coords="95,44,95,79,89,79,89,44"/>
 </map>
@@ -121,11 +124,17 @@ Collaboration diagram for HarmoniaSound:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aeaf38a0beb9cdae42307bdfd7988a1f6" id="r_aeaf38a0beb9cdae42307bdfd7988a1f6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaSound.html#aeaf38a0beb9cdae42307bdfd7988a1f6">appliesToNote</a> (int) override</td></tr>
+<tr class="memdesc:aeaf38a0beb9cdae42307bdfd7988a1f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether the sound can play a MIDI note.  <br /></td></tr>
 <tr class="separator:aeaf38a0beb9cdae42307bdfd7988a1f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3ee91321b1e532ba493251d7800ebefa" id="r_a3ee91321b1e532ba493251d7800ebefa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaSound.html#a3ee91321b1e532ba493251d7800ebefa">appliesToChannel</a> (int) override</td></tr>
+<tr class="memdesc:a3ee91321b1e532ba493251d7800ebefa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether the sound can play a MIDI channel.  <br /></td></tr>
 <tr class="separator:a3ee91321b1e532ba493251d7800ebefa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Generic synthesizer sound definition. </p>
+<p><a class="el" href="classHarmoniaSound.html" title="Generic synthesizer sound definition.">HarmoniaSound</a> represents a playable synthesizer sound compatible with all MIDI notes and channels.</p>
+<p>This class acts as the sound type required by JUCE's synthesizer architecture. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a3ee91321b1e532ba493251d7800ebefa" name="a3ee91321b1e532ba493251d7800ebefa"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3ee91321b1e532ba493251d7800ebefa">&#9670;&#160;</a></span>appliesToChannel()</h2>
 
@@ -149,6 +158,16 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Indicates whether the sound can play a MIDI channel. </p>
+<p>This implementation accepts all channels.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">channel</td><td>MIDI channel number. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Always returns true. </dd></dl>
 
 </div>
 </div>
@@ -175,6 +194,16 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Indicates whether the sound can play a MIDI note. </p>
+<p>This implementation accepts all notes.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">note</td><td>MIDI note number. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Always returns true. </dd></dl>
 
 </div>
 </div>

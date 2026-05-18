@@ -37,7 +37,9 @@ var namespaceStrings =
     ] ],
     [ "Labels", "namespaceStrings_1_1Labels.html", [
       [ "Filter", "namespaceStrings_1_1Labels.html#a63eb8e427dad0960646b1a357be709b2", null ],
+      [ "GeneratingPreset", "namespaceStrings_1_1Labels.html#a1fc08bf6e82405f90f62cc72d602bbd0", null ],
       [ "Prompt", "namespaceStrings_1_1Labels.html#ade6a5550fa7cf1378a02bbb988139f63", null ],
+      [ "UnsetPreset", "namespaceStrings_1_1Labels.html#a2524bd98d38c85ae86a5929853c34d75", null ],
       [ "User", "namespaceStrings_1_1Labels.html#a5c4bfdb651f59c16cbc0925c7d9b35f2", null ],
       [ "Waveform", "namespaceStrings_1_1Labels.html#abd181faebc7d19d02236170f0883943f", null ]
     ] ],
@@ -64,6 +66,7 @@ var namespaceStrings =
       [ "LastName", "namespaceStrings_1_1Placeholders.html#aa06b732789d24055187f3d199858a7ec", null ],
       [ "Password", "namespaceStrings_1_1Placeholders.html#a78685f8486cd09c7c8fa653348c07059", null ],
       [ "PasswordChar", "namespaceStrings_1_1Placeholders.html#a87b805d3aaa27a6c81ef95b61673e7bb", null ],
+      [ "Prompt", "namespaceStrings_1_1Placeholders.html#aff04d4054aca28ecc2c4684579efe8b4", null ],
       [ "Username", "namespaceStrings_1_1Placeholders.html#af916636856101bf67ea61c3a7b9027e6", null ]
     ] ],
     [ "Success", "namespaceStrings_1_1Success.html", [
@@ -80,7 +83,8 @@ var namespaceStrings =
     ] ],
     [ "Titles", "namespaceStrings_1_1Titles.html", [
       [ "CreateAccount", "namespaceStrings_1_1Titles.html#a50f44a453a58396f939d748312760ce7", null ],
-      [ "SignIn", "namespaceStrings_1_1Titles.html#a6e1a4139e62bed7b7a6377a67e5ecc11", null ]
+      [ "SignIn", "namespaceStrings_1_1Titles.html#a6e1a4139e62bed7b7a6377a67e5ecc11", null ],
+      [ "Subtitle", "namespaceStrings_1_1Titles.html#a62133f45f4433c7db29411f2b28b3344", null ]
     ] ],
     [ "Waveform", "namespaceStrings_1_1Waveform.html", [
       [ "Saw", "namespaceStrings_1_1Waveform.html#aa82f7a295e310c58ba5f559fc14a2be6", null ],

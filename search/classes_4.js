@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['generatebutton_0',['GenerateButton',['../classGenerateButton.html',1,'']]]
+  ['envelopevisualizer_0',['EnvelopeVisualizer',['../classEnvelopeVisualizer.html',1,'']]]
 ];

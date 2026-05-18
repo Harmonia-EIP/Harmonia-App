@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['maincomponent_0',['MainComponent',['../classMainComponent.html',1,'']]]
+  ['iconchoiceselector_0',['IconChoiceSelector',['../classIconChoiceSelector.html',1,'']]]
 ];

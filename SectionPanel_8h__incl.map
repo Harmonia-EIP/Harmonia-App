@@ -1,0 +1,9 @@
+<map id="src/components/SectionPanel.h" name="src/components/SectionPanel.h">
+<area shape="rect" id="Node000001" title="Styled container panel used to group synthesizer controls." alt="" coords="73,5,297,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,160,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="172,33,120,73,116,68,169,29"/>
+<area shape="rect" id="Node000003" href="$HarmoniaPalette_8h.html" title=" " alt="" coords="184,86,392,111"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="202,29,263,75,260,79,199,33"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="217,167,359,207"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="291,112,291,153,285,153,285,112"/>
+</map>

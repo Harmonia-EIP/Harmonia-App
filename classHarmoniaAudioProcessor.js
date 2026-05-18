@@ -5,6 +5,7 @@ var classHarmoniaAudioProcessor =
     [ "acceptsMidi", "classHarmoniaAudioProcessor.html#a1b43dddfde13a2c0d9ab3d26a4f49b08", null ],
     [ "changeProgramName", "classHarmoniaAudioProcessor.html#aecb41de829b3b9910f964a45d39bc946", null ],
     [ "createEditor", "classHarmoniaAudioProcessor.html#a20d2e2bcbd3a744433fe1d35a233088e", null ],
+    [ "getAPVTS", "classHarmoniaAudioProcessor.html#aaaae53b13f5a6000288df71faa2b63ed", null ],
     [ "getCurrentProgram", "classHarmoniaAudioProcessor.html#af7fead5b20f7ff059b4fdbc112ef069b", null ],
     [ "getKeyboardState", "classHarmoniaAudioProcessor.html#a9ee856de444282ab01de375d3afabaec", null ],
     [ "getName", "classHarmoniaAudioProcessor.html#a918dd75f25614dc184ae001fe6c6089a", null ],
@@ -21,10 +22,13 @@ var classHarmoniaAudioProcessor =
     [ "releaseResources", "classHarmoniaAudioProcessor.html#a81b28881353f8f7fad2607b44767ac08", null ],
     [ "setCurrentProgram", "classHarmoniaAudioProcessor.html#a1b4b7b679ecfa0b689425aa36400cc60", null ],
     [ "setOscilloscope", "classHarmoniaAudioProcessor.html#a37f4f276d331c7fcaccb602aaad1626c", null ],
-    [ "setParams", "classHarmoniaAudioProcessor.html#af8ae47529cc122365dc291ed115d9914", null ],
     [ "setStateInformation", "classHarmoniaAudioProcessor.html#a7f21c2da410ae60d5936f26c12234f29", null ],
+    [ "apvts", "classHarmoniaAudioProcessor.html#ad8768fee42b798a2fd476132d8295dc2", null ],
     [ "keyboardState", "classHarmoniaAudioProcessor.html#af0591acaf0cbf37c2fc24ef3ed6dafb1", null ],
     [ "oscilloscope", "classHarmoniaAudioProcessor.html#a265c748989db26b655dec1ec635f2526", null ],
     [ "oscLock", "classHarmoniaAudioProcessor.html#a61cf09b3ab1ddbc40d290414609adfe4", null ],
+    [ "paramRefs", "classHarmoniaAudioProcessor.html#a12ec5f5c119393db248fa6cdb4ce56be", null ],
+    [ "reverb", "classHarmoniaAudioProcessor.html#acfd3ec2052fd195f4ff63cbe74f938a1", null ],
+    [ "reverbParams", "classHarmoniaAudioProcessor.html#ab266dad1a196b29d73132351985cf964", null ],
     [ "synth", "classHarmoniaAudioProcessor.html#a398de85fb71b63459c0e2286aae2c8b5", null ]
 ];

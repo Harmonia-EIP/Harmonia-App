@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['ok_0',['ok',['../structPatchCallResult.html#a468e9bf345fb9ec5748389ba5d18a8e6',1,'PatchCallResult::ok()'],['../structProfileResult.html#ab1806767bf110712681f60591850e89a',1,'ProfileResult::ok()']]],
-  ['oscilloscopecomponent_1',['OscilloscopeComponent',['../classOscilloscopeComponent.html#ac61d50b1d1995b5416dfabbb522662b2',1,'OscilloscopeComponent']]]
+  ['maincomponent_0',['MainComponent',['../classMainComponent.html#a0b7eace3b84e1cb74fb65a93fd281835',1,'MainComponent']]],
+  ['makelogrange_1',['makeLogRange',['../namespaceHarmoniaParams.html#a299727c4fcdecee8c508ed19643a5bc0',1,'HarmoniaParams']]],
+  ['mousedown_2',['mouseDown',['../classIconChoiceSelector.html#a2de4f36277bed50af58f214408a714f0',1,'IconChoiceSelector']]],
+  ['mouseexit_3',['mouseExit',['../classIconChoiceSelector.html#a551a067af6715e0763f96893c206e795',1,'IconChoiceSelector']]],
+  ['mousemove_4',['mouseMove',['../classIconChoiceSelector.html#a951b7dbe2d2c870fec32b49634c87130',1,'IconChoiceSelector']]]
 ];

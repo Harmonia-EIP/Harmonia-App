@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['datamodel_0',['DataModel',['../classDataModel.html',1,'']]]
+  ['combocontrol_0',['ComboControl',['../classComboControl.html',1,'']]]
 ];

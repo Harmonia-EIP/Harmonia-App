@@ -3,7 +3,7 @@ var classBackendManager =
     [ "BackendManager", "classBackendManager.html#ab9ef9e48bbc4984d1ea3ab0724be4f96", null ],
     [ "~BackendManager", "classBackendManager.html#a55c06c26ce2b9ca7fd923ccb5088a37e", null ],
     [ "clearSession", "classBackendManager.html#a022a7ce81088cec16dbe4a5abda31dd4", null ],
-    [ "generatePatch", "classBackendManager.html#a53f5ec480391968a62fac37fe6cbe78d", null ],
+    [ "generatePreset", "classBackendManager.html#adecf94d9ebd3cf8c931f67089683bb08", null ],
     [ "getApiUrl", "classBackendManager.html#abfaf058d370332559ca2a79da994e72f", null ],
     [ "getAppDataDir", "classBackendManager.html#a8676914547b9934d0ef6d2aa1ade0823", null ],
     [ "getProfile", "classBackendManager.html#a45da484953210bee5b8baa2fafd463f6", null ],

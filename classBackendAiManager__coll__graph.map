@@ -1,5 +1,5 @@
 <map id="BackendAiManager" name="BackendAiManager">
-<area shape="rect" id="Node000001" title="Handles AI&#45;based preset generation via backend API." alt="" coords="5,93,152,119"/>
-<area shape="rect" id="Node000002" href="$classBackendManager.html" title="Main facade for backend interactions (authentication, AI, profile)." alt="" coords="11,5,146,31"/>
+<area shape="rect" id="Node000001" title="Handles AI preset generation through the backend API." alt="" coords="5,93,152,119"/>
+<area shape="rect" id="Node000002" href="$classBackendManager.html" title="Central facade for all backend operations." alt="" coords="11,5,146,31"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="81,45,81,93,76,93,76,45"/>
 </map>

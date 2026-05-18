@@ -98,7 +98,7 @@ $(document).ready(function(){initNavTree('classBackendManager.html',''); initRes
 </div><!--header-->
 <div class="contents">
 
-<p>Main facade for backend interactions (authentication, AI, profile).  
+<p>Central facade for all backend operations.  
  <a href="classBackendManager.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="BackendManager_8h_source.html">BackendManager.h</a>&gt;</code></p>
@@ -106,90 +106,100 @@ $(document).ready(function(){initNavTree('classBackendManager.html',''); initRes
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ab9ef9e48bbc4984d1ea3ab0724be4f96" id="r_ab9ef9e48bbc4984d1ea3ab0724be4f96"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#ab9ef9e48bbc4984d1ea3ab0724be4f96">BackendManager</a> ()</td></tr>
-<tr class="memdesc:ab9ef9e48bbc4984d1ea3ab0724be4f96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the <a class="el" href="classBackendManager.html" title="Main facade for backend interactions (authentication, AI, profile).">BackendManager</a>.  <br /></td></tr>
+<tr class="memdesc:ab9ef9e48bbc4984d1ea3ab0724be4f96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates and initializes the backend manager.  <br /></td></tr>
 <tr class="separator:ab9ef9e48bbc4984d1ea3ab0724be4f96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55c06c26ce2b9ca7fd923ccb5088a37e" id="r_a55c06c26ce2b9ca7fd923ccb5088a37e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a55c06c26ce2b9ca7fd923ccb5088a37e">~BackendManager</a> ()</td></tr>
-<tr class="memdesc:a55c06c26ce2b9ca7fd923ccb5088a37e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <br /></td></tr>
+<tr class="memdesc:a55c06c26ce2b9ca7fd923ccb5088a37e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the backend manager and releases resources.  <br /></td></tr>
 <tr class="separator:a55c06c26ce2b9ca7fd923ccb5088a37e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a27675e6f46e70bcbae60c9cbefba8fd6" id="r_a27675e6f46e70bcbae60c9cbefba8fd6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structAuthResult.html">AuthResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a27675e6f46e70bcbae60c9cbefba8fd6">loginUser</a> (const juce::String &amp;usernameOrEmail, const juce::String &amp;password)</td></tr>
-<tr class="memdesc:a27675e6f46e70bcbae60c9cbefba8fd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Authenticate a user.  <br /></td></tr>
+<tr class="memdesc:a27675e6f46e70bcbae60c9cbefba8fd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Authenticates a user using username/email and password.  <br /></td></tr>
 <tr class="separator:a27675e6f46e70bcbae60c9cbefba8fd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3fa4aa3de9a580bcdfa5d37816bbdec4" id="r_a3fa4aa3de9a580bcdfa5d37816bbdec4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structAuthResult.html">AuthResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a3fa4aa3de9a580bcdfa5d37816bbdec4">signupUser</a> (const juce::String &amp;username, const juce::String &amp;firstname, const juce::String &amp;lastname, const juce::String &amp;email, const juce::String &amp;password)</td></tr>
-<tr class="memdesc:a3fa4aa3de9a580bcdfa5d37816bbdec4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a new user.  <br /></td></tr>
+<tr class="memdesc:a3fa4aa3de9a580bcdfa5d37816bbdec4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new user account.  <br /></td></tr>
 <tr class="separator:a3fa4aa3de9a580bcdfa5d37816bbdec4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf262702909c9686548e84aa3bc9e40c" id="r_acf262702909c9686548e84aa3bc9e40c"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="structUserSession.html">UserSession</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#acf262702909c9686548e84aa3bc9e40c">loadSession</a> ()</td></tr>
-<tr class="memdesc:acf262702909c9686548e84aa3bc9e40c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load session from disk.  <br /></td></tr>
+<tr class="memdesc:acf262702909c9686548e84aa3bc9e40c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the locally stored user session.  <br /></td></tr>
 <tr class="separator:acf262702909c9686548e84aa3bc9e40c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa1b7b42c72d7e0293566eea70d004b0e" id="r_aa1b7b42c72d7e0293566eea70d004b0e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#aa1b7b42c72d7e0293566eea70d004b0e">saveSession</a> (const <a class="el" href="structUserSession.html">UserSession</a> &amp;session)</td></tr>
-<tr class="memdesc:aa1b7b42c72d7e0293566eea70d004b0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save session to disk.  <br /></td></tr>
+<tr class="memdesc:aa1b7b42c72d7e0293566eea70d004b0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves the current user session locally.  <br /></td></tr>
 <tr class="separator:aa1b7b42c72d7e0293566eea70d004b0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a022a7ce81088cec16dbe4a5abda31dd4" id="r_a022a7ce81088cec16dbe4a5abda31dd4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a022a7ce81088cec16dbe4a5abda31dd4">clearSession</a> ()</td></tr>
-<tr class="memdesc:a022a7ce81088cec16dbe4a5abda31dd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear stored session.  <br /></td></tr>
+<tr class="memdesc:a022a7ce81088cec16dbe4a5abda31dd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears the locally stored session.  <br /></td></tr>
 <tr class="separator:a022a7ce81088cec16dbe4a5abda31dd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a53f5ec480391968a62fac37fe6cbe78d" id="r_a53f5ec480391968a62fac37fe6cbe78d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPatchCallResult.html">PatchCallResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a53f5ec480391968a62fac37fe6cbe78d">generatePatch</a> (const juce::String &amp;prompt)</td></tr>
-<tr class="memdesc:a53f5ec480391968a62fac37fe6cbe78d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate an audio preset using AI.  <br /></td></tr>
-<tr class="separator:a53f5ec480391968a62fac37fe6cbe78d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adecf94d9ebd3cf8c931f67089683bb08" id="r_adecf94d9ebd3cf8c931f67089683bb08"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structAiResult.html">AiResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#adecf94d9ebd3cf8c931f67089683bb08">generatePreset</a> (const juce::String &amp;prompt)</td></tr>
+<tr class="memdesc:adecf94d9ebd3cf8c931f67089683bb08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates an AI preset from a text prompt.  <br /></td></tr>
+<tr class="separator:adecf94d9ebd3cf8c931f67089683bb08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abfaf058d370332559ca2a79da994e72f" id="r_abfaf058d370332559ca2a79da994e72f"><td class="memItemLeft" align="right" valign="top">const juce::String &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#abfaf058d370332559ca2a79da994e72f">getApiUrl</a> () const</td></tr>
-<tr class="memdesc:abfaf058d370332559ca2a79da994e72f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get backend API base URL.  <br /></td></tr>
+<tr class="memdesc:abfaf058d370332559ca2a79da994e72f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the backend API base URL.  <br /></td></tr>
 <tr class="separator:abfaf058d370332559ca2a79da994e72f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75e5015d05b4a9bf67492b95936a03f9" id="r_a75e5015d05b4a9bf67492b95936a03f9"><td class="memItemLeft" align="right" valign="top">const juce::File &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a75e5015d05b4a9bf67492b95936a03f9">getSessionFile</a> () const</td></tr>
-<tr class="memdesc:a75e5015d05b4a9bf67492b95936a03f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get session file path.  <br /></td></tr>
+<tr class="memdesc:a75e5015d05b4a9bf67492b95936a03f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the session file location.  <br /></td></tr>
 <tr class="separator:a75e5015d05b4a9bf67492b95936a03f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ee33036fd962fa87dbedecfc3e8c259" id="r_a9ee33036fd962fa87dbedecfc3e8c259"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a9ee33036fd962fa87dbedecfc3e8c259">writeLog</a> (const juce::String &amp;message) const</td></tr>
-<tr class="memdesc:a9ee33036fd962fa87dbedecfc3e8c259"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a message to the backend log file.  <br /></td></tr>
+<tr class="memdesc:a9ee33036fd962fa87dbedecfc3e8c259"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a message into the backend log file.  <br /></td></tr>
 <tr class="separator:a9ee33036fd962fa87dbedecfc3e8c259"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45da484953210bee5b8baa2fafd463f6" id="r_a45da484953210bee5b8baa2fafd463f6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structProfileResult.html">ProfileResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a45da484953210bee5b8baa2fafd463f6">getProfile</a> ()</td></tr>
-<tr class="memdesc:a45da484953210bee5b8baa2fafd463f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve user profile from backend.  <br /></td></tr>
+<tr class="memdesc:a45da484953210bee5b8baa2fafd463f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the current user profile.  <br /></td></tr>
 <tr class="separator:a45da484953210bee5b8baa2fafd463f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61203ae58e04ff22c866acb5dc602c23" id="r_a61203ae58e04ff22c866acb5dc602c23"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a61203ae58e04ff22c866acb5dc602c23">syncProfileParamsInBackground</a> (const <a class="el" href="structUserSession.html">UserSession</a> &amp;session)</td></tr>
-<tr class="memdesc:a61203ae58e04ff22c866acb5dc602c23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Synchronize profile parameters asynchronously.  <br /></td></tr>
+<tr class="memdesc:a61203ae58e04ff22c866acb5dc602c23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Synchronizes profile parameters asynchronously.  <br /></td></tr>
 <tr class="separator:a61203ae58e04ff22c866acb5dc602c23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa869d21bab03453f69e0cc4e0dfa7a5a" id="r_aa869d21bab03453f69e0cc4e0dfa7a5a"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="structUserSession.html">UserSession</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#aa869d21bab03453f69e0cc4e0dfa7a5a">syncProfileParams</a> (const <a class="el" href="structUserSession.html">UserSession</a> &amp;session)</td></tr>
-<tr class="memdesc:aa869d21bab03453f69e0cc4e0dfa7a5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Synchronize profile parameters synchronously.  <br /></td></tr>
+<tr class="memdesc:aa869d21bab03453f69e0cc4e0dfa7a5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Synchronizes profile parameters immediately.  <br /></td></tr>
 <tr class="separator:aa869d21bab03453f69e0cc4e0dfa7a5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad143924eb6fd00d2c65ed7f9e572c818" id="r_ad143924eb6fd00d2c65ed7f9e572c818"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structProfileResult.html">ProfileResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#ad143924eb6fd00d2c65ed7f9e572c818">updateTheme</a> (int themeId)</td></tr>
-<tr class="memdesc:ad143924eb6fd00d2c65ed7f9e572c818"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update user theme.  <br /></td></tr>
+<tr class="memdesc:ad143924eb6fd00d2c65ed7f9e572c818"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the current UI theme.  <br /></td></tr>
 <tr class="separator:ad143924eb6fd00d2c65ed7f9e572c818"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aea6d9fd0fcb7a047dd5c693535b0de7b" id="r_aea6d9fd0fcb7a047dd5c693535b0de7b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structProfileResult.html">ProfileResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#aea6d9fd0fcb7a047dd5c693535b0de7b">updateLayout</a> (int layoutId)</td></tr>
-<tr class="memdesc:aea6d9fd0fcb7a047dd5c693535b0de7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update user layout.  <br /></td></tr>
+<tr class="memdesc:aea6d9fd0fcb7a047dd5c693535b0de7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the current UI layout.  <br /></td></tr>
 <tr class="separator:aea6d9fd0fcb7a047dd5c693535b0de7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a8676914547b9934d0ef6d2aa1ade0823" id="r_a8676914547b9934d0ef6d2aa1ade0823"><td class="memItemLeft" align="right" valign="top">juce::File&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a8676914547b9934d0ef6d2aa1ade0823">getAppDataDir</a> () const</td></tr>
+<tr class="memdesc:a8676914547b9934d0ef6d2aa1ade0823"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the application data directory.  <br /></td></tr>
 <tr class="separator:a8676914547b9934d0ef6d2aa1ade0823"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a06d82d328883c14c582114648142d5c6" id="r_a06d82d328883c14c582114648142d5c6"><td class="memItemLeft" align="right" valign="top">juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a06d82d328883c14c582114648142d5c6">loadConfig</a> ()</td></tr>
+<tr class="memdesc:a06d82d328883c14c582114648142d5c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads backend configuration from config.json.  <br /></td></tr>
 <tr class="separator:a06d82d328883c14c582114648142d5c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:aee247266ceecc3335b46d0ca7cd93af1" id="r_aee247266ceecc3335b46d0ca7cd93af1"><td class="memItemLeft" align="right" valign="top">juce::File&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#aee247266ceecc3335b46d0ca7cd93af1">logFile</a></td></tr>
+<tr class="memdesc:aee247266ceecc3335b46d0ca7cd93af1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Backend log file.  <br /></td></tr>
 <tr class="separator:aee247266ceecc3335b46d0ca7cd93af1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0bef3209241177f810c26fc771299900" id="r_a0bef3209241177f810c26fc771299900"><td class="memItemLeft" align="right" valign="top">juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a0bef3209241177f810c26fc771299900">apiUrl</a></td></tr>
+<tr class="memdesc:a0bef3209241177f810c26fc771299900"><td class="mdescLeft">&#160;</td><td class="mdescRight">Backend API base URL.  <br /></td></tr>
 <tr class="separator:a0bef3209241177f810c26fc771299900"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf2b056ac6c42db83b6f51edacf68b74" id="r_aaf2b056ac6c42db83b6f51edacf68b74"><td class="memItemLeft" align="right" valign="top">juce::File&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#aaf2b056ac6c42db83b6f51edacf68b74">sessionFile</a></td></tr>
+<tr class="memdesc:aaf2b056ac6c42db83b6f51edacf68b74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Local session file path.  <br /></td></tr>
 <tr class="separator:aaf2b056ac6c42db83b6f51edacf68b74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ccef5b4d24ef3205a6a487380506f86" id="r_a1ccef5b4d24ef3205a6a487380506f86"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classBackendAuthManager.html">BackendAuthManager</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a1ccef5b4d24ef3205a6a487380506f86">authManager</a></td></tr>
+<tr class="memdesc:a1ccef5b4d24ef3205a6a487380506f86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Authentication manager instance.  <br /></td></tr>
 <tr class="separator:a1ccef5b4d24ef3205a6a487380506f86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a79b635e8fdad51b3f510ac4a2206eb1e" id="r_a79b635e8fdad51b3f510ac4a2206eb1e"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classBackendAiManager.html">BackendAiManager</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a79b635e8fdad51b3f510ac4a2206eb1e">aiManager</a></td></tr>
-<tr class="separator:a79b635e8fdad51b3f510ac4a2206eb1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee6460cdacda4829b65e362b145c6bfa" id="r_aee6460cdacda4829b65e362b145c6bfa"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classBackendProfileManager.html">BackendProfileManager</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#aee6460cdacda4829b65e362b145c6bfa">profileManager</a></td></tr>
+<tr class="memdesc:aee6460cdacda4829b65e362b145c6bfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Profile manager instance.  <br /></td></tr>
 <tr class="separator:aee6460cdacda4829b65e362b145c6bfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79b635e8fdad51b3f510ac4a2206eb1e" id="r_a79b635e8fdad51b3f510ac4a2206eb1e"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classBackendAiManager.html">BackendAiManager</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a79b635e8fdad51b3f510ac4a2206eb1e">aiManager</a></td></tr>
+<tr class="memdesc:a79b635e8fdad51b3f510ac4a2206eb1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">AI manager instance.  <br /></td></tr>
+<tr class="separator:a79b635e8fdad51b3f510ac4a2206eb1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Main facade for backend interactions (authentication, AI, profile). </p>
-<p>This class centralizes all communication with the backend API and delegates responsibilities to specialized managers:</p>
-<ul>
-<li><a class="el" href="classBackendAuthManager.html" title="Handles authentication and session persistence.">BackendAuthManager</a>: authentication and session handling</li>
-<li><a class="el" href="classBackendAiManager.html" title="Handles AI-based preset generation via backend API.">BackendAiManager</a>: AI-based preset generation</li>
-<li><a class="el" href="classBackendProfileManager.html" title="Handles user profile retrieval and updates.">BackendProfileManager</a>: user profile management</li>
+<div class="textblock"><p>Central facade for all backend operations. </p>
+<p><a class="el" href="classBackendManager.html" title="Central facade for all backend operations.">BackendManager</a> encapsulates specialized backend modules:</p><ul>
+<li><a class="el" href="classBackendAuthManager.html" title="Handles authentication and session persistence.">BackendAuthManager</a></li>
+<li><a class="el" href="classBackendProfileManager.html" title="Handles user profile retrieval and updates.">BackendProfileManager</a></li>
+<li><a class="el" href="classBackendAiManager.html" title="Handles AI preset generation through the backend API.">BackendAiManager</a></li>
 </ul>
-<p>It also handles:</p><ul>
-<li>Environment configuration loading (.env)</li>
-<li>API base URL setup</li>
-<li>Local session file management</li>
+<p>Responsibilities:</p><ul>
+<li>Manage user authentication</li>
+<li>Handle local session storage</li>
+<li>Synchronize profile settings</li>
+<li>Load backend configuration</li>
+<li>Provide logging utilities</li>
+<li>Delegate backend requests</li>
 </ul>
-<dl class="section note"><dt>Note</dt><dd>Uses raw pointers for internal managers. Lifetime is managed manually. </dd></dl>
+<p>This class follows the Facade design pattern to provide a simplified API for the application. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ab9ef9e48bbc4984d1ea3ab0724be4f96" name="ab9ef9e48bbc4984d1ea3ab0724be4f96"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab9ef9e48bbc4984d1ea3ab0724be4f96">&#9670;&#160;</a></span>BackendManager()</h2>
@@ -206,12 +216,12 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Constructs the <a class="el" href="classBackendManager.html" title="Main facade for backend interactions (authentication, AI, profile).">BackendManager</a>. </p>
-<ul>
-<li>Loads environment variables from .env file</li>
-<li>Initializes internal managers</li>
-<li>Configures API base URL</li>
-<li>Defines session file location </li>
+<p>Creates and initializes the backend manager. </p>
+<p>During initialization:</p><ul>
+<li>Configuration is loaded</li>
+<li>Application directories are created</li>
+<li>Backend managers are instantiated</li>
+<li>Session file paths are initialized </li>
 </ul>
 
 </div>
@@ -231,8 +241,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Destructor. </p>
-<dl class="section warning"><dt>Warning</dt><dd>Ensure all allocated managers are properly deleted to avoid leaks. </dd></dl>
+<p>Destroys the backend manager and releases resources. </p>
 
 </div>
 </div>
@@ -252,18 +261,18 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Clear stored session. </p>
+<p>Clears the locally stored session. </p>
 
 </div>
 </div>
-<a id="a53f5ec480391968a62fac37fe6cbe78d" name="a53f5ec480391968a62fac37fe6cbe78d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a53f5ec480391968a62fac37fe6cbe78d">&#9670;&#160;</a></span>generatePatch()</h2>
+<a id="adecf94d9ebd3cf8c931f67089683bb08" name="adecf94d9ebd3cf8c931f67089683bb08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adecf94d9ebd3cf8c931f67089683bb08">&#9670;&#160;</a></span>generatePreset()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structPatchCallResult.html">PatchCallResult</a> BackendManager::generatePatch </td>
+          <td class="memname"><a class="el" href="structAiResult.html">AiResult</a> BackendManager::generatePreset </td>
           <td>(</td>
           <td class="paramtype">const juce::String &amp;&#160;</td>
           <td class="paramname"><em>prompt</em></td><td>)</td>
@@ -272,15 +281,15 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Generate an audio preset using AI. </p>
+<p>Generates an AI preset from a text prompt. </p>
+<p>The backend returns raw JSON data that can later be parsed by the preset loader.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">prompt</td><td>Text description of the desired sound </td></tr>
+    <tr><td class="paramname">prompt</td><td>User prompt.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structPatchCallResult.html">PatchCallResult</a> containing generated parameters or error</dd></dl>
-<dl class="section warning"><dt>Warning</dt><dd>Requires a valid, non-expired session. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structAiResult.html">AiResult</a> Generated preset result. </dd></dl>
 
 </div>
 </div>
@@ -299,7 +308,8 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get backend API base URL. </p>
+<p>Returns the backend API base URL. </p>
+<dl class="section return"><dt>Returns</dt><dd>API URL string. </dd></dl>
 
 </div>
 </div>
@@ -326,6 +336,10 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Returns the application data directory. </p>
+<p>Creates the directory if it does not already exist.</p>
+<dl class="section return"><dt>Returns</dt><dd>Application data folder. </dd></dl>
+
 </div>
 </div>
 <a id="a45da484953210bee5b8baa2fafd463f6" name="a45da484953210bee5b8baa2fafd463f6"></a>
@@ -343,8 +357,8 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Retrieve user profile from backend. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structProfileResult.html">ProfileResult</a> containing profile data or error </dd></dl>
+<p>Retrieves the current user profile. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structProfileResult.html">ProfileResult</a> User profile data. </dd></dl>
 
 </div>
 </div>
@@ -363,7 +377,8 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get session file path. </p>
+<p>Returns the session file location. </p>
+<dl class="section return"><dt>Returns</dt><dd>Session file path. </dd></dl>
 
 </div>
 </div>
@@ -390,6 +405,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Loads backend configuration from config.json. </p>
+<dl class="section return"><dt>Returns</dt><dd>Backend API URL. </dd></dl>
+
 </div>
 </div>
 <a id="acf262702909c9686548e84aa3bc9e40c" name="acf262702909c9686548e84aa3bc9e40c"></a>
@@ -407,9 +425,8 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Load session from disk. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structUserSession.html">UserSession</a> if present, otherwise std::nullopt</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Does not validate expiration time. </dd></dl>
+<p>Loads the locally stored user session. </p>
+<dl class="section return"><dt>Returns</dt><dd>Optional <a class="el" href="structUserSession.html">UserSession</a> if available. </dd></dl>
 
 </div>
 </div>
@@ -439,20 +456,15 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Authenticate a user. </p>
+<p>Authenticates a user using username/email and password. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">usernameOrEmail</td><td>Username or email </td></tr>
-    <tr><td class="paramname">password</td><td>User password </td></tr>
+    <tr><td class="paramname">usernameOrEmail</td><td>Username or email address. </td></tr>
+    <tr><td class="paramname">password</td><td>User password.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structAuthResult.html">AuthResult</a> containing success flag, session data, and error message</dd></dl>
-<p>Sends a POST request to the backend authentication endpoint. On success:</p><ul>
-<li>A session is created</li>
-<li>Session is saved locally</li>
-<li>Profile synchronization is triggered asynchronously </li>
-</ul>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structAuthResult.html">AuthResult</a> Authentication result. </dd></dl>
 
 </div>
 </div>
@@ -472,10 +484,10 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Save session to disk. </p>
+<p>Saves the current user session locally. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">session</td><td>Session to store </td></tr>
+    <tr><td class="paramname">session</td><td>Session data to save. </td></tr>
   </table>
   </dd>
 </dl>
@@ -526,18 +538,18 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Register a new user. </p>
+<p>Creates a new user account. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">username</td><td>Username </td></tr>
-    <tr><td class="paramname">firstname</td><td>First name </td></tr>
-    <tr><td class="paramname">lastname</td><td>Last name </td></tr>
-    <tr><td class="paramname">email</td><td>Email address </td></tr>
-    <tr><td class="paramname">password</td><td>Password </td></tr>
+    <tr><td class="paramname">username</td><td>User username. </td></tr>
+    <tr><td class="paramname">firstname</td><td>User first name. </td></tr>
+    <tr><td class="paramname">lastname</td><td>User last name. </td></tr>
+    <tr><td class="paramname">email</td><td>User email address. </td></tr>
+    <tr><td class="paramname">password</td><td>User password.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structAuthResult.html">AuthResult</a> containing session data if successful </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structAuthResult.html">AuthResult</a> Registration result. </dd></dl>
 
 </div>
 </div>
@@ -557,14 +569,14 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Synchronize profile parameters synchronously. </p>
+<p>Synchronizes profile parameters immediately. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">session</td><td>Current user session </td></tr>
+    <tr><td class="paramname">session</td><td>Current user session.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Updated session or std::nullopt on failure </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Updated session if synchronization succeeds. </dd></dl>
 
 </div>
 </div>
@@ -584,14 +596,13 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Synchronize profile parameters asynchronously. </p>
+<p>Synchronizes profile parameters asynchronously. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">session</td><td>Current user session</td></tr>
+    <tr><td class="paramname">session</td><td>Current user session. </td></tr>
   </table>
   </dd>
 </dl>
-<p>@thread Runs in a detached thread. </p>
 
 </div>
 </div>
@@ -611,13 +622,14 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Update user layout. </p>
+<p>Updates the current UI layout. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">layoutId</td><td>Layout identifier </td></tr>
+    <tr><td class="paramname">layoutId</td><td>Layout identifier.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structProfileResult.html">ProfileResult</a> Operation result. </dd></dl>
 
 </div>
 </div>
@@ -637,13 +649,14 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Update user theme. </p>
+<p>Updates the current UI theme. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">themeId</td><td>Theme identifier </td></tr>
+    <tr><td class="paramname">themeId</td><td>Theme identifier.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structProfileResult.html">ProfileResult</a> Operation result. </dd></dl>
 
 </div>
 </div>
@@ -663,10 +676,10 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Write a message to the backend log file. </p>
+<p>Writes a message into the backend log file. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">message</td><td>Message to log </td></tr>
+    <tr><td class="paramname">message</td><td>Message to append. </td></tr>
   </table>
   </dd>
 </dl>
@@ -694,6 +707,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>AI manager instance. </p>
+
 </div>
 </div>
 <a id="a0bef3209241177f810c26fc771299900" name="a0bef3209241177f810c26fc771299900"></a>
@@ -715,6 +730,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Backend API base URL. </p>
 
 </div>
 </div>
@@ -738,6 +755,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Authentication manager instance. </p>
+
 </div>
 </div>
 <a id="aee247266ceecc3335b46d0ca7cd93af1" name="aee247266ceecc3335b46d0ca7cd93af1"></a>
@@ -759,6 +778,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Backend log file. </p>
 
 </div>
 </div>
@@ -782,6 +803,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Profile manager instance. </p>
+
 </div>
 </div>
 <a id="aaf2b056ac6c42db83b6f51edacf68b74" name="aaf2b056ac6c42db83b6f51edacf68b74"></a>
@@ -803,6 +826,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Local session file path. </p>
 
 </div>
 </div>

@@ -97,38 +97,48 @@ $(document).ready(function(){initNavTree('SynthComponent_8h_source.html',''); in
   <div class="headertitle"><div class="title">SynthComponent.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="SynthComponent_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="ComponentsIncludes_8h.html">ComponentsIncludes.h</a>&quot;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="foldopen" id="foldopen00005" data-start="{" data-end="};">
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="classSynthComponent.html">    5</a></span><span class="keyword">class </span><a class="code hl_class" href="classSynthComponent.html">SynthComponent</a> : <span class="keyword">public</span> juce::Component</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>{</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    <a class="code hl_class" href="classSynthComponent.html">SynthComponent</a>(juce::MidiKeyboardState&amp; state);</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="classSynthComponent.html#a4cec9f95fa7ea465e9a59d03a9176a2b">   10</a></span>    <a class="code hl_function" href="classSynthComponent.html#a4cec9f95fa7ea465e9a59d03a9176a2b">~SynthComponent</a>() <span class="keyword">override</span> = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="classSynthComponent.html#a6662afe1715848385730219a77dbe9e5">   12</a></span>    juce::MidiKeyboardState&amp; <a class="code hl_function" href="classSynthComponent.html#a6662afe1715848385730219a77dbe9e5">getKeyboardState</a>() noexcept { <span class="keywordflow">return</span> <a class="code hl_variable" href="classSynthComponent.html#a104a0c1ed6d8bdd1849e69279415e55e">keyboardState</a>; }</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSynthComponent.html#a79d6389010f8ca2ad067822511846ddd">paint</a>(juce::Graphics&amp; g) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSynthComponent.html#add2027f918401f18c379807a91365309">resized</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classSynthComponent.html#a104a0c1ed6d8bdd1849e69279415e55e">   18</a></span>    juce::MidiKeyboardState&amp; <a class="code hl_variable" href="classSynthComponent.html#a104a0c1ed6d8bdd1849e69279415e55e">keyboardState</a>;</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="classSynthComponent.html#ad7e01443fde4a25f45fbc3ebf3738890">   19</a></span>    juce::MidiKeyboardComponent <a class="code hl_variable" href="classSynthComponent.html#ad7e01443fde4a25f45fbc3ebf3738890">keyboardComponent</a>;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(<a class="code hl_class" href="classSynthComponent.html">SynthComponent</a>)</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>};</div>
+<a href="SynthComponent_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;<a class="code" href="ComponentsIncludes_8h.html">ComponentsIncludes.h</a>&quot;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="foldopen" id="foldopen00047" data-start="{" data-end="};">
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classSynthComponent.html">   47</a></span><span class="keyword">class </span><a class="code hl_class" href="classSynthComponent.html">SynthComponent</a> : <span class="keyword">public</span> juce::Component</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>{</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <a class="code hl_class" href="classSynthComponent.html">SynthComponent</a>(juce::MidiKeyboardState&amp; state);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="classSynthComponent.html#a4cec9f95fa7ea465e9a59d03a9176a2b">   70</a></span>    <a class="code hl_function" href="classSynthComponent.html#a4cec9f95fa7ea465e9a59d03a9176a2b">~SynthComponent</a>() <span class="keyword">override</span> = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="foldopen" id="foldopen00080" data-start="{" data-end="}">
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="classSynthComponent.html#a6662afe1715848385730219a77dbe9e5">   80</a></span>    juce::MidiKeyboardState&amp; <a class="code hl_function" href="classSynthComponent.html#a6662afe1715848385730219a77dbe9e5">getKeyboardState</a>() noexcept</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    {</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classSynthComponent.html#a104a0c1ed6d8bdd1849e69279415e55e">keyboardState</a>;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    }</div>
+</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSynthComponent.html#a79d6389010f8ca2ad067822511846ddd">paint</a>(juce::Graphics&amp; g) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSynthComponent.html#add2027f918401f18c379807a91365309">resized</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="classSynthComponent.html#a104a0c1ed6d8bdd1849e69279415e55e">  110</a></span>    juce::MidiKeyboardState&amp; <a class="code hl_variable" href="classSynthComponent.html#a104a0c1ed6d8bdd1849e69279415e55e">keyboardState</a>;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="classSynthComponent.html#ad7e01443fde4a25f45fbc3ebf3738890">  117</a></span>    juce::MidiKeyboardComponent <a class="code hl_variable" href="classSynthComponent.html#ad7e01443fde4a25f45fbc3ebf3738890">keyboardComponent</a>;</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(<a class="code hl_class" href="classSynthComponent.html">SynthComponent</a>)</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>};</div>
 </div>
 <div class="ttc" id="aComponentsIncludes_8h_html"><div class="ttname"><a href="ComponentsIncludes_8h.html">ComponentsIncludes.h</a></div></div>
-<div class="ttc" id="aclassSynthComponent_html"><div class="ttname"><a href="classSynthComponent.html">SynthComponent</a></div><div class="ttdef"><b>Definition</b> SynthComponent.h:6</div></div>
-<div class="ttc" id="aclassSynthComponent_html_a104a0c1ed6d8bdd1849e69279415e55e"><div class="ttname"><a href="classSynthComponent.html#a104a0c1ed6d8bdd1849e69279415e55e">SynthComponent::keyboardState</a></div><div class="ttdeci">juce::MidiKeyboardState &amp; keyboardState</div><div class="ttdef"><b>Definition</b> SynthComponent.h:18</div></div>
-<div class="ttc" id="aclassSynthComponent_html_a4cec9f95fa7ea465e9a59d03a9176a2b"><div class="ttname"><a href="classSynthComponent.html#a4cec9f95fa7ea465e9a59d03a9176a2b">SynthComponent::~SynthComponent</a></div><div class="ttdeci">~SynthComponent() override=default</div></div>
-<div class="ttc" id="aclassSynthComponent_html_a6662afe1715848385730219a77dbe9e5"><div class="ttname"><a href="classSynthComponent.html#a6662afe1715848385730219a77dbe9e5">SynthComponent::getKeyboardState</a></div><div class="ttdeci">juce::MidiKeyboardState &amp; getKeyboardState() noexcept</div><div class="ttdef"><b>Definition</b> SynthComponent.h:12</div></div>
-<div class="ttc" id="aclassSynthComponent_html_a79d6389010f8ca2ad067822511846ddd"><div class="ttname"><a href="classSynthComponent.html#a79d6389010f8ca2ad067822511846ddd">SynthComponent::paint</a></div><div class="ttdeci">void paint(juce::Graphics &amp;g) override</div><div class="ttdef"><b>Definition</b> SynthComponent.cpp:10</div></div>
-<div class="ttc" id="aclassSynthComponent_html_ad7e01443fde4a25f45fbc3ebf3738890"><div class="ttname"><a href="classSynthComponent.html#ad7e01443fde4a25f45fbc3ebf3738890">SynthComponent::keyboardComponent</a></div><div class="ttdeci">juce::MidiKeyboardComponent keyboardComponent</div><div class="ttdef"><b>Definition</b> SynthComponent.h:19</div></div>
-<div class="ttc" id="aclassSynthComponent_html_add2027f918401f18c379807a91365309"><div class="ttname"><a href="classSynthComponent.html#add2027f918401f18c379807a91365309">SynthComponent::resized</a></div><div class="ttdeci">void resized() override</div><div class="ttdef"><b>Definition</b> SynthComponent.cpp:15</div></div>
+<div class="ttc" id="aclassSynthComponent_html"><div class="ttname"><a href="classSynthComponent.html">SynthComponent</a></div><div class="ttdoc">UI component containing a virtual MIDI keyboard.</div><div class="ttdef"><b>Definition</b> SynthComponent.h:48</div></div>
+<div class="ttc" id="aclassSynthComponent_html_a104a0c1ed6d8bdd1849e69279415e55e"><div class="ttname"><a href="classSynthComponent.html#a104a0c1ed6d8bdd1849e69279415e55e">SynthComponent::keyboardState</a></div><div class="ttdeci">juce::MidiKeyboardState &amp; keyboardState</div><div class="ttdoc">Shared MIDI keyboard state.</div><div class="ttdef"><b>Definition</b> SynthComponent.h:110</div></div>
+<div class="ttc" id="aclassSynthComponent_html_a4cec9f95fa7ea465e9a59d03a9176a2b"><div class="ttname"><a href="classSynthComponent.html#a4cec9f95fa7ea465e9a59d03a9176a2b">SynthComponent::~SynthComponent</a></div><div class="ttdeci">~SynthComponent() override=default</div><div class="ttdoc">Destructor.</div></div>
+<div class="ttc" id="aclassSynthComponent_html_a6662afe1715848385730219a77dbe9e5"><div class="ttname"><a href="classSynthComponent.html#a6662afe1715848385730219a77dbe9e5">SynthComponent::getKeyboardState</a></div><div class="ttdeci">juce::MidiKeyboardState &amp; getKeyboardState() noexcept</div><div class="ttdoc">Returns the associated keyboard state.</div><div class="ttdef"><b>Definition</b> SynthComponent.h:80</div></div>
+<div class="ttc" id="aclassSynthComponent_html_a79d6389010f8ca2ad067822511846ddd"><div class="ttname"><a href="classSynthComponent.html#a79d6389010f8ca2ad067822511846ddd">SynthComponent::paint</a></div><div class="ttdeci">void paint(juce::Graphics &amp;g) override</div><div class="ttdoc">Paints the component background.</div><div class="ttdef"><b>Definition</b> SynthComponent.cpp:10</div></div>
+<div class="ttc" id="aclassSynthComponent_html_ad7e01443fde4a25f45fbc3ebf3738890"><div class="ttname"><a href="classSynthComponent.html#ad7e01443fde4a25f45fbc3ebf3738890">SynthComponent::keyboardComponent</a></div><div class="ttdeci">juce::MidiKeyboardComponent keyboardComponent</div><div class="ttdoc">Graphical JUCE piano keyboard component.</div><div class="ttdef"><b>Definition</b> SynthComponent.h:117</div></div>
+<div class="ttc" id="aclassSynthComponent_html_add2027f918401f18c379807a91365309"><div class="ttname"><a href="classSynthComponent.html#add2027f918401f18c379807a91365309">SynthComponent::resized</a></div><div class="ttdeci">void resized() override</div><div class="ttdoc">Updates child component layout.</div><div class="ttdef"><b>Definition</b> SynthComponent.cpp:15</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
