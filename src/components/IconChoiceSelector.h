@@ -1,3 +1,17 @@
+/**
+ * @file IconChoiceSelector.h
+ * @brief Icon-based selector component for choice parameters.
+ *
+ * IconChoiceSelector provides a custom graphical alternative
+ * to traditional combo boxes by rendering selectable icons.
+ *
+ * Features:
+ * - Icon rendering callbacks
+ * - Hover highlighting
+ * - Active state visualization
+ * - APVTS parameter synchronization
+ * - Mouse interaction support
+ */
 #pragma once
 
 #include <juce_audio_processors/juce_audio_processors.h>
@@ -7,6 +21,19 @@
 #include <functional>
 #include <vector>
 
+/**
+ * @class IconChoiceSelector
+ * @brief Generic icon-based parameter selector.
+ *
+ * This component displays multiple selectable icons,
+ * each representing one parameter choice.
+ *
+ * The selected value is synchronized with a
+ * juce::AudioProcessorValueTreeState parameter.
+ *
+ * Rendering is delegated through a custom callback
+ * allowing waveform, filter, or other icon types.
+ */
 class IconChoiceSelector : public juce::Component,
                            private juce::AudioProcessorValueTreeState::Listener
 {

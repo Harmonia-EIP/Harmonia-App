@@ -1,8 +1,24 @@
+/**
+ * @file WaveformSelector.h
+ * @brief Specialized waveform and filter selector components.
+ *
+ * This file defines icon-based selectors used to choose:
+ * - Oscillator waveforms
+ * - Filter types
+ *
+ * Both components inherit from IconChoiceSelector.
+ */
 #pragma once
 
 #include "IconChoiceSelector.h"
 #include "IconRenderer.h"
 
+/**
+ * @class WaveformSelector
+ * @brief Icon-based waveform selection component.
+ *
+ * Displays selectable waveform icons using IconRenderer.
+ */
 class WaveformSelector : public IconChoiceSelector
 {
 public:
@@ -17,6 +33,12 @@ public:
     {}
 };
 
+/**
+ * @class FilterTypeSelector
+ * @brief Icon-based filter type selector component.
+ *
+ * Displays selectable filter response icons.
+ */
 class FilterTypeSelector : public IconChoiceSelector
 {
 public:

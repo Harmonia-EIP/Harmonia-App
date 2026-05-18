@@ -1,9 +1,38 @@
+/**
+ * @file IconRenderer.h
+ * @brief Utility namespace used to render waveform and filter icons.
+ *
+ * IconRenderer contains helper functions used by
+ * selector components to draw synthesizer-related icons.
+ *
+ * Supported icons:
+ * - Oscillator waveforms
+ * - Filter response shapes
+ *
+ * Rendering is vector-based using JUCE Path objects.
+ */
 #pragma once
 
 #include <juce_graphics/juce_graphics.h>
 
+/**
+ * @namespace IconRenderer
+ * @brief Contains synthesizer icon drawing utilities.
+ *
+ * Provides reusable functions for rendering
+ * waveform and filter visual representations.
+ */
 namespace IconRenderer
 {
+    /**
+     * @enum IconRenderer::FilterShape
+     * @brief Available filter response shapes.
+     *
+     * Values:
+     * - Lowpass
+     * - Bandpass
+     * - Highpass
+     */
     enum class Wave { Sine = 0, Triangle = 1, Saw = 2, Square = 3 };
     enum class FilterShape { Lowpass = 0, Bandpass = 1, Highpass = 2 };
 

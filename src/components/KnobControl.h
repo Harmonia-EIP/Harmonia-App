@@ -1,9 +1,36 @@
+/**
+ * @file KnobControl.h
+ * @brief Rotary knob UI component linked to an APVTS parameter.
+ *
+ * KnobControl provides a custom-styled rotary slider
+ * used to manipulate synthesizer parameters.
+ *
+ * Features:
+ * - Rotary interaction
+ * - Optional bipolar mode
+ * - Value readout display
+ * - Fast tweak detection
+ * - APVTS synchronization
+ */
 #pragma once
 
 #include <juce_audio_processors/juce_audio_processors.h>
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../themes/HarmoniaPalette.h"
 
+/**
+ * @class KnobControl
+ * @brief Rotary parameter control component.
+ *
+ * This component wraps a JUCE rotary slider and automatically
+ * synchronizes it with an AudioProcessorValueTreeState parameter.
+ *
+ * Additional features:
+ * - Velocity-sensitive movement
+ * - Fast movement callback
+ * - Custom Harmonia rendering
+ * - Parameter text display
+ */
 class KnobControl : public juce::Component
 {
 public:

@@ -1,9 +1,33 @@
+/**
+ * @file ParticleField.h
+ * @brief Animated particle background component.
+ *
+ * ParticleField renders ambient floating particles
+ * and interactive burst effects used for UI feedback.
+ *
+ * Features:
+ * - Ambient particle animation
+ * - Burst emission system
+ * - Lightweight timer-based updates
+ * - Decorative visual effects
+ */
 #pragma once
 
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../themes/HarmoniaPalette.h"
 #include <random>
 
+/**
+ * @class ParticleField
+ * @brief Decorative animated particle system component.
+ *
+ * This component generates:
+ * - Ambient floating particles
+ * - Temporary burst particles
+ *
+ * It is intended for visual enhancement only
+ * and does not interact with audio processing.
+ */
 class ParticleField : public juce::Component, private juce::Timer
 {
 public:

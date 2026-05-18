@@ -1,3 +1,18 @@
+
+/**
+ * @file BackendTypes.h
+ * @brief Defines backend-related data structures.
+ *
+ * This file contains all shared backend structures used
+ * across the application.
+ *
+ * Included structures:
+ * - UserSession
+ * - AuthResult
+ * - UserProfile
+ * - ProfileResult
+ * - AiResult
+ */
 #pragma once
 
 #include <nlohmann/json.hpp>

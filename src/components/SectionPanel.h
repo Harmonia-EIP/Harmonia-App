@@ -1,8 +1,33 @@
+/**
+ * @file SectionPanel.h
+ * @brief Styled container panel used to group synthesizer controls.
+ *
+ * SectionPanel provides a reusable visual container
+ * with:
+ * - Title rendering
+ * - Accent color support
+ * - Decorative LED indicator
+ * - Gradient backgrounds
+ * - Content margin helpers
+ */
 #pragma once
 
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../themes/HarmoniaPalette.h"
 
+/**
+ * @class SectionPanel
+ * @brief Visual container for synthesizer UI sections.
+ *
+ * This component is used to visually separate
+ * synthesizer modules such as:
+ * - Oscillators
+ * - Filters
+ * - Envelopes
+ * - LFOs
+ *
+ * It provides a hardware-inspired interface style.
+ */
 class SectionPanel : public juce::Component
 {
 public:

@@ -1,3 +1,16 @@
+/**
+ * @file LfoVisualizer.h
+ * @brief Animated LFO waveform visualization component.
+ *
+ * LfoVisualizer displays a scrolling sine waveform
+ * representing the current low-frequency oscillator rate.
+ *
+ * Features:
+ * - Real-time animation
+ * - Dynamic waveform scrolling
+ * - APVTS parameter reading
+ * - Hardware-inspired display styling
+ */
 #pragma once
 
 #include <juce_audio_processors/juce_audio_processors.h>
@@ -5,6 +18,15 @@
 #include "../themes/HarmoniaPalette.h"
 #include "../parameters/HarmoniaParameters.h"
 
+/**
+ * @class LfoVisualizer
+ * @brief Real-time animated LFO visualizer.
+ *
+ * The component periodically repaints itself using a timer
+ * to simulate waveform motion.
+ *
+ * The animation speed is derived from the current LFO rate parameter.
+ */
 class LfoVisualizer : public juce::Component, private juce::Timer
 {
 public:

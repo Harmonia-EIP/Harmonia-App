@@ -1,9 +1,29 @@
+/**
+ * @file DisplayScreen.h
+ * @brief Decorative oscilloscope display container component.
+ *
+ * DisplayScreen wraps an OscilloscopeComponent inside
+ * a styled screen panel inspired by hardware synthesizers.
+ *
+ * Features:
+ * - Glow effect rendering
+ * - Decorative grid overlay
+ * - Oscilloscope title display
+ * - Integrated Harmonia theme styling
+ */
 #pragma once
 
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../themes/HarmoniaPalette.h"
 #include "OscilloscopeComponent.h"
 
+/**
+ * @class DisplayScreen
+ * @brief Decorative oscilloscope display container component.
+ *
+ * DisplayScreen wraps an OscilloscopeComponent inside
+ * a styled screen panel inspired by hardware synthesizers.
+ */
 class DisplayScreen : public juce::Component
 {
 public:

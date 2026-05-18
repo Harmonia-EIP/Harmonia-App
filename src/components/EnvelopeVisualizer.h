@@ -1,3 +1,25 @@
+/**
+ * @file EnvelopeVisualizer.h
+ * @brief ADSR envelope visualization component.
+ *
+ * EnvelopeVisualizer renders a real-time graphical
+ * representation of the synthesizer amplitude envelope.
+ *
+ * The component listens to:
+ * - Attack
+ * - Decay
+ * - Sustain
+ * - Release
+ *
+ * parameters from the AudioProcessorValueTreeState.
+ *
+ * Features:
+ * - Real-time updates
+ * - Animated ADSR curve
+ * - Gradient envelope fill
+ * - Sustain and peak markers
+ * - Harmonia visual styling
+ */
 #pragma once
 
 #include <juce_audio_processors/juce_audio_processors.h>
@@ -5,6 +27,22 @@
 #include "../themes/HarmoniaPalette.h"
 #include "../parameters/HarmoniaParameters.h"
 
+
+/**
+ * @class EnvelopeVisualizer
+ * @brief Visualizes ADSR envelope parameters in real time.
+ *
+ * This component listens to APVTS parameter changes and redraws
+ * the ADSR envelope whenever a parameter is modified.
+ *
+ * The displayed envelope includes:
+ * - Attack ramp
+ * - Decay slope
+ * - Sustain plateau
+ * - Release curve
+ *
+ * The component is purely visual and does not process audio.
+ */
 class EnvelopeVisualizer : public juce::Component,
                            private juce::AudioProcessorValueTreeState::Listener
 {
