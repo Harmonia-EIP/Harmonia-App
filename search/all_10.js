@@ -3,7 +3,7 @@ var searchData=
   ['radius_0',['radius',['../structParticleField_1_1Ambient.html#a08b8858a18bdc0b2555b02f2000c0213',1,'ParticleField::Ambient']]],
   ['readindex_1',['readIndex',['../classIconChoiceSelector.html#ad15d87d74d6a38624633b0942c04e6ea',1,'IconChoiceSelector']]],
   ['readouth_2',['readoutH',['../classKnobControl.html#a1216338b4dc104ecadc394bf9b63c17c',1,'KnobControl']]],
-  ['red_3',['red',['../structThemePalette.html#ab898e8330dcace2fe984615e69ebd64f',1,'ThemePalette::red()'],['../classAppLookAndFeel.html#a7e966ad29d8634970a167de96d1a6b87aee38e4d5dd68c4e440825018d549cb47',1,'AppLookAndFeel::Red'],['../namespaceStrings_1_1Themes.html#a2a697e5d72c465787ddbca73d3965779',1,'Strings::Themes::Red']]],
+  ['red_3',['red',['../classAppLookAndFeel.html#a7e966ad29d8634970a167de96d1a6b87aee38e4d5dd68c4e440825018d549cb47',1,'AppLookAndFeel::Red'],['../structThemePalette.html#ab898e8330dcace2fe984615e69ebd64f',1,'ThemePalette::red()'],['../namespaceStrings_1_1Themes.html#a2a697e5d72c465787ddbca73d3965779',1,'Strings::Themes::Red']]],
   ['refreshrate_4',['RefreshRate',['../namespaceAppConfig_1_1Oscilloscope.html#ad37b46d10c8213e5207b6218898f996d',1,'AppConfig::Oscilloscope']]],
   ['registerjuicefor_5',['registerJuiceFor',['../classMainComponent.html#aa55b0d777b42f9a2b5a0fb7a2ce9260f',1,'MainComponent']]],
   ['release_6',['Release',['../namespaceStrings_1_1Parameters.html#a3f5e12e9ec64e3239b9acc6aceda1f23',1,'Strings::Parameters']]],

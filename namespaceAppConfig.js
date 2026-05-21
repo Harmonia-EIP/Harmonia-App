@@ -10,6 +10,7 @@ var namespaceAppConfig =
       [ "maximumAvailableRange", "namespaceAppConfig_1_1Synth.html#af417105c85f6bb77155208c68f42bf87", null ],
       [ "minimumAvailableRange", "namespaceAppConfig_1_1Synth.html#acc9a31609159c061f4b70ef021b008c1", null ]
     ] ],
+    [ "ApiUrl", "namespaceAppConfig.html#a49fe7dce58247e6bb03ffb2c5e9e6266", null ],
     [ "AppName", "namespaceAppConfig.html#af1f5171cd3d12e6a7a5d4fbdb55f8b63", null ],
     [ "DefaultHeight", "namespaceAppConfig.html#a646a6b9dd60d0b3f63a5e12be5406b6f", null ],
     [ "DefaultWidth", "namespaceAppConfig.html#a1e76beb80618f44021e31283449da112", null ],

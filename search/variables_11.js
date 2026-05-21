@@ -31,5 +31,5 @@ var searchData=
   ['sustain_28',['Sustain',['../namespaceStrings_1_1Parameters.html#a7fc95f7ba0883ad1ae4ed3c1311ceb3a',1,'Strings::Parameters']]],
   ['sustainknob_29',['sustainKnob',['../classMainComponent.html#a39638816c16ba61e627a72c2f02d6737',1,'MainComponent']]],
   ['synth_30',['synth',['../classHarmoniaAudioProcessor.html#a398de85fb71b63459c0e2286aae2c8b5',1,'HarmoniaAudioProcessor']]],
-  ['synthcomponent_31',['synthcomponent',['../classHarmoniaAudioProcessorEditor.html#aabaf0f11150af504f03551712231a699',1,'HarmoniaAudioProcessorEditor::synthComponent'],['../classMainComponent.html#a6ef85e5f5ab289e3affb1bc63ad1176c',1,'MainComponent::synthComponent']]]
+  ['synthcomponent_31',['synthComponent',['../classMainComponent.html#a6ef85e5f5ab289e3affb1bc63ad1176c',1,'MainComponent']]]
 ];

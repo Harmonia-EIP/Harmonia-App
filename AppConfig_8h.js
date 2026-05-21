@@ -1,5 +1,6 @@
 var AppConfig_8h =
 [
+    [ "ApiUrl", "AppConfig_8h.html#a49fe7dce58247e6bb03ffb2c5e9e6266", null ],
     [ "AppName", "AppConfig_8h.html#af1f5171cd3d12e6a7a5d4fbdb55f8b63", null ],
     [ "availableRangeSize", "AppConfig_8h.html#a83b8dd3842f0445ea84da288d874ce43", null ],
     [ "BufferSize", "AppConfig_8h.html#a1e135db023421b9515e73aa5ffde2ea2", null ],

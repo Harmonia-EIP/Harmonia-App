@@ -8,7 +8,6 @@ var classBackendManager =
     [ "getAppDataDir", "classBackendManager.html#a8676914547b9934d0ef6d2aa1ade0823", null ],
     [ "getProfile", "classBackendManager.html#a45da484953210bee5b8baa2fafd463f6", null ],
     [ "getSessionFile", "classBackendManager.html#a75e5015d05b4a9bf67492b95936a03f9", null ],
-    [ "loadConfig", "classBackendManager.html#a06d82d328883c14c582114648142d5c6", null ],
     [ "loadSession", "classBackendManager.html#acf262702909c9686548e84aa3bc9e40c", null ],
     [ "loginUser", "classBackendManager.html#a27675e6f46e70bcbae60c9cbefba8fd6", null ],
     [ "saveSession", "classBackendManager.html#aa1b7b42c72d7e0293566eea70d004b0e", null ],
