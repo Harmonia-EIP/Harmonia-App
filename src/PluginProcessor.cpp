@@ -21,6 +21,13 @@ HarmoniaAudioProcessor::HarmoniaAudioProcessor()
 
 HarmoniaAudioProcessor::~HarmoniaAudioProcessor() {}
 
+BackendManager& HarmoniaAudioProcessor::getBackend()
+{
+    if (! backend)
+        backend = std::make_unique<BackendManager>();
+    return *backend;
+}
+
 const juce::String HarmoniaAudioProcessor::getName() const   { return "HarmoniaPlugin"; }
 bool HarmoniaAudioProcessor::acceptsMidi() const             { return true; }
 bool HarmoniaAudioProcessor::producesMidi() const            { return false; }

@@ -45,13 +45,13 @@ public:
 
     void setOscilloscope (OscilloscopeComponent* osc);
 
-    BackendManager& getBackend() { return backend; }
+    BackendManager& getBackend();
 
 private:
     juce::AudioProcessorValueTreeState apvts;
     HarmoniaParams::AtomicRefs paramRefs;
 
-    BackendManager backend;
+    std::unique_ptr<BackendManager> backend;
 
     juce::Synthesiser synth;
     juce::MidiKeyboardState keyboardState;
