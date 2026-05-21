@@ -223,13 +223,6 @@ private:
     juce::File getAppDataDir() const;
 
     /**
-     * @brief Loads backend configuration from config.json.
-     *
-     * @return Backend API URL.
-     */
-    juce::String loadConfig();
-
-    /**
      * @brief Backend log file.
      */
     juce::File logFile;

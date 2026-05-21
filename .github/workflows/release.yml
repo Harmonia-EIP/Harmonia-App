@@ -1,0 +1,30 @@
+name: Harmonia Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-upload:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create ZIP
+        run: |
+          mkdir release
+          echo "PLUGIN PLACEHOLDER" > release/Harmonia.vst3
+          cd release
+          zip -r Harmonia.zip Harmonia.vst3
+
+      - name: Upload to VPS
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          source: "release/Harmonia.zip"
+          target: "/var/www/harmonia-downloads"

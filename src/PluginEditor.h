@@ -88,12 +88,5 @@ private:
      */
     AppController appController;
 
-    /**
-     * Virtual MIDI keyboard component.
-     *
-     * Connected to the processor keyboard state.
-     */
-    SynthComponent synthComponent;
-
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(HarmoniaAudioProcessorEditor)
 };

@@ -22,45 +22,9 @@ juce::File BackendManager::getAppDataDir() const
 }
 
 
-juce::String BackendManager::loadConfig()
-{
-    auto dir = getAppDataDir();
-    auto configFile = dir.getChildFile("config.json");
-
-    writeLog("CONFIG PATH = " + configFile.getFullPathName());
-
-    if (!configFile.existsAsFile())
-    {
-        json defaultConfig{
-            { "api_url", "http://127.0.0.1:8000" }
-        };
-
-        configFile.replaceWithText(defaultConfig.dump(4));
-        writeLog("config.json créé automatiquement");
-
-        return "http://127.0.0.1:8000";
-    }
-
-    try
-    {
-        auto content = configFile.loadFileAsString();
-        auto j = json::parse(content.toStdString());
-
-        if (j.contains("api_url"))
-            return juce::String(j["api_url"].get<std::string>());
-    }
-    catch (...)
-    {
-        writeLog("Erreur parsing config.json");
-    }
-
-    return "http://127.0.0.1:8000";
-}
-
-
 BackendManager::BackendManager()
 {
-    apiUrl = loadConfig();
+    apiUrl = AppConfig::ApiUrl;
     writeLog("API_URL = " + apiUrl);
 
     auto dir = getAppDataDir();

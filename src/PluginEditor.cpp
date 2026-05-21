@@ -1,7 +1,7 @@
 #include "PluginEditor.h"
 
 HarmoniaAudioProcessorEditor::HarmoniaAudioProcessorEditor (HarmoniaAudioProcessor& p)
-    : AudioProcessorEditor (&p), audioProcessor (p), synthComponent(audioProcessor.getKeyboardState()), appController(p)
+    : AudioProcessorEditor (&p), audioProcessor (p), appController(p)
 {
     
     addAndMakeVisible(appController);

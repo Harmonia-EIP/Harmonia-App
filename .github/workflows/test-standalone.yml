@@ -1,9 +1,9 @@
-name: Build Windows and Test Standalone/VST3 (JUCE)
+name: Build and Deploy Harmonia
 
 on:
   push:
     branches:
-      - dev
+      - main
 
 jobs:
   build:
@@ -20,16 +20,7 @@ jobs:
       - name: Build
         run: cmake --build build --config Release
 
-      - name: Check EXE
-        run: |
-          if (!(Test-Path "build/HarmoniaPlugin_artefacts/Release/Standalone/HarmoniaPlugin.exe")) {
-            Write-Error "EXE not found"
-            exit 1
-          } else {
-            Write-Host "EXE found"
-          }
-
-      - name: Check VST3 created by Plugin
+      - name: Check VST3
         run: |
           if (!(Test-Path "build/HarmoniaPlugin_artefacts/Release/VST3/HarmoniaPlugin.vst3")) {
             Write-Error "VST3 not found"
@@ -38,14 +29,20 @@ jobs:
             Write-Host "VST3 found"
           }
 
-      - name: Upload EXE
-        uses: actions/upload-artifact@v4
-        with:
-          name: Harmonia-EXE
-          path: build/HarmoniaPlugin_artefacts/Release/Standalone/HarmoniaPlugin.exe
+      - name: Create Release Folder
+        run: mkdir release
 
-      - name: Upload VST3
-        uses: actions/upload-artifact@v4
+      - name: Zip VST3
+        run: |
+          Compress-Archive `
+            -Path "build/HarmoniaPlugin_artefacts/Release/VST3/HarmoniaPlugin.vst3" `
+            -DestinationPath "release/Harmonia.zip"
+
+      - name: Upload ZIP to VPS
+        uses: appleboy/scp-action@v0.1.7
         with:
-          name: Harmonia-VST3
-          path: build/HarmoniaPlugin_artefacts/Release/VST3/HarmoniaPlugin.vst3
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          source: "release/Harmonia.zip"
+          target: "/var/www/harmonia-downloads"

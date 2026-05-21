@@ -17,6 +17,7 @@
 
 #include <nlohmann/json.hpp>
 #include "../config/String.h"
+#include "../config/AppConfig.h"
 #include <juce_core/juce_core.h>
 
 struct UserSession
