@@ -7,24 +7,43 @@ on:
 
 jobs:
   build-and-upload:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          submodules: recursive
 
-      - name: Create ZIP
+      - name: Configure
+        run: cmake -S . -B build -G "Visual Studio 17 2022" -A x64
+
+      - name: Build
+        run: cmake --build build --config Release
+
+      - name: Check VST3
         run: |
-          mkdir release
-          echo "PLUGIN PLACEHOLDER" > release/Harmonia.vst3
-          cd release
-          zip -r Harmonia.zip Harmonia.vst3
+          if (!(Test-Path "build/HarmoniaPlugin_artefacts/Release/VST3/HarmoniaPlugin.vst3")) {
+            Write-Error "VST3 not found"
+            exit 1
+          } else {
+            Write-Host "VST3 found"
+          }
 
-      - name: Upload to VPS
+      - name: Create Release Folder
+        run: mkdir release
+
+      - name: Zip VST3
+        run: |
+          Compress-Archive `
+            -Path "build/HarmoniaPlugin_artefacts/Release/VST3/HarmoniaPlugin.vst3" `
+            -DestinationPath "release/Harmonia.zip"
+
+      - name: Upload ZIP to VPS
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USERNAME }}
           key: ${{ secrets.VPS_SSH_KEY }}
           source: "release/Harmonia.zip"
-          target: "/var/www/harmonia-downloads"
+          target: "/var/www/harmonia-downloads/release"
