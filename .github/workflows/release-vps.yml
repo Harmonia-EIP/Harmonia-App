@@ -1,0 +1,43 @@
+name: Deploy Harmonia to VPS
+
+on:
+  workflow_run:
+    workflows: ["Build Windows and Test Standalone/VST3 (JUCE)"]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download EXE artifact
+        uses: dawidd6/action-download-artifact@v3
+        with:
+          workflow: Build Windows and Test Standalone/VST3 (JUCE)
+          name: Harmonia-EXE
+          path: release/exe
+
+      - name: Download VST3 artifact
+        uses: dawidd6/action-download-artifact@v3
+        with:
+          workflow: Build Windows and Test Standalone/VST3 (JUCE)
+          name: Harmonia-VST3
+          path: release/vst3
+
+      - name: Zip VST3 bundle
+        run: |
+          cd release/vst3
+          zip -r ../Harmonia-VST3.zip HarmoniaPlugin.vst3
+
+      - name: Upload EXE + VST3 ZIP to VPS
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          source: |
+            release/exe/HarmoniaPlugin.exe
+            release/Harmonia-VST3.zip
+          target: /var/www/harmonia-downloads/release
