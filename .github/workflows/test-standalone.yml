@@ -1,4 +1,4 @@
-name: Build and Deploy Harmonia
+name: Build Windows and Test Standalone/VST3 (JUCE)
 
 on:
   push:

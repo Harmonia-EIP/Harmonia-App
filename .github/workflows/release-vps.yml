@@ -26,12 +26,7 @@ jobs:
           name: Harmonia-VST3
           path: release/vst3
 
-      - name: Zip VST3 bundle
-        run: |
-          cd release/vst3
-          zip -r ../Harmonia-VST3.zip HarmoniaPlugin.vst3
-
-      - name: Upload EXE + VST3 ZIP to VPS
+      - name: Upload raw files to VPS
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.VPS_HOST }}
@@ -39,5 +34,5 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           source: |
             release/exe/HarmoniaPlugin.exe
-            release/Harmonia-VST3.zip
+            release/vst3/HarmoniaPlugin.vst3
           target: /var/www/harmonia-downloads/release
