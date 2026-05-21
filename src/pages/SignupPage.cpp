@@ -35,6 +35,11 @@ SignupPage::SignupPage(BackendManager& be, std::function<void(const UserSession&
     addAndMakeVisible(backButton);
 }
 
+SignupPage::~SignupPage()
+{
+    setLookAndFeel(nullptr);
+}
+
 void SignupPage::paint(juce::Graphics& g)
 {
     g.fillAll(findColour(AppColourIds::backgroundId));

@@ -16,7 +16,7 @@ public:
 
 private:
     HarmoniaAudioProcessor& processor;
-    BackendManager backend;
+    BackendManager& backend;
 
     std::unique_ptr<juce::Component> currentComponent;
     std::optional<UserSession> currentSession;

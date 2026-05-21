@@ -38,6 +38,8 @@ public:
     LoginPage(BackendManager& be,
               std::function<void(const UserSession&)> onSuccess);
 
+    ~LoginPage() override;
+
     /**
      * @brief Callback triggered when the user wants to go back.
      *

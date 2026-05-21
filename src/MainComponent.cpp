@@ -201,16 +201,20 @@ void MainComponent::doLoadPreset()
         juce::File::getSpecialLocation (juce::File::userDocumentsDirectory),
         "*.json");
 
+    juce::Component::SafePointer<MainComponent> safeThis (this);
     chooser->launchAsync (
         juce::FileBrowserComponent::openMode | juce::FileBrowserComponent::canSelectFiles,
-        [this] (const juce::FileChooser& fc)
+        [safeThis] (const juce::FileChooser& fc)
         {
+            auto* self = safeThis.getComponent();
+            if (self == nullptr) return;
+
             auto file = fc.getResult();
             if (! file.existsAsFile()) return;
-            auto result = PresetLoader::loadFromFile (file, processor.getAPVTS());
-            presetLabel.setText (result.success ? result.presetName.toUpperCase()
-                                                : ("ERR: " + result.errorMessage),
-                                 juce::dontSendNotification);
+            auto result = PresetLoader::loadFromFile (file, self->processor.getAPVTS());
+            self->presetLabel.setText (result.success ? result.presetName.toUpperCase()
+                                                     : ("ERR: " + result.errorMessage),
+                                       juce::dontSendNotification);
         });
 }
 
@@ -222,18 +226,22 @@ void MainComponent::doSavePreset()
             .getChildFile ("harmonia_preset.json"),
         "*.json");
 
+    juce::Component::SafePointer<MainComponent> safeThis (this);
     chooser->launchAsync (
         juce::FileBrowserComponent::saveMode | juce::FileBrowserComponent::canSelectFiles,
-        [this] (const juce::FileChooser& fc)
+        [safeThis] (const juce::FileChooser& fc)
         {
+            auto* self = safeThis.getComponent();
+            if (self == nullptr) return;
+
             auto file = fc.getResult();
             if (file == juce::File()) return;
             if (file.getFileExtension().isEmpty())
                 file = file.withFileExtension (".json");
-            const auto json = PresetLoader::saveToJsonString (processor.getAPVTS(), "User Preset");
+            const auto json = PresetLoader::saveToJsonString (self->processor.getAPVTS(), "User Preset");
             file.replaceWithText (json);
-            presetLabel.setText (file.getFileNameWithoutExtension().toUpperCase(),
-                                 juce::dontSendNotification);
+            self->presetLabel.setText (file.getFileNameWithoutExtension().toUpperCase(),
+                                       juce::dontSendNotification);
         });
 }
 
@@ -244,22 +252,27 @@ void MainComponent::doGenerateWithAi()
 
     presetLabel.setText ("GENERATING...", juce::dontSendNotification);
 
-    juce::Thread::launch ([this, prompt]
+    juce::Component::SafePointer<MainComponent> safeThis (this);
+    BackendManager* backendPtr = &backend;
+    juce::Thread::launch ([safeThis, backendPtr, prompt]
     {
         juce::String err;
-        const auto json = backend.generatePresetJson (prompt, err);
+        const auto json = backendPtr->generatePresetJson (prompt, err);
 
-        juce::MessageManager::callAsync ([this, json, err]
+        juce::MessageManager::callAsync ([safeThis, json, err]
         {
+            auto* s = safeThis.getComponent();
+            if (s == nullptr) return;
+
             if (json.isEmpty())
             {
-                presetLabel.setText ("AI ERR: " + err, juce::dontSendNotification);
+                s->presetLabel.setText ("AI ERR: " + err, juce::dontSendNotification);
                 return;
             }
-            auto r = PresetLoader::loadFromJsonString (json, processor.getAPVTS());
-            presetLabel.setText (r.success ? r.presetName.toUpperCase()
-                                           : ("PARSE ERR: " + r.errorMessage),
-                                 juce::dontSendNotification);
+            auto r = PresetLoader::loadFromJsonString (json, s->processor.getAPVTS());
+            s->presetLabel.setText (r.success ? r.presetName.toUpperCase()
+                                              : ("PARSE ERR: " + r.errorMessage),
+                                    juce::dontSendNotification);
         });
     });
 }

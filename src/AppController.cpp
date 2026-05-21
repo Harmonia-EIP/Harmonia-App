@@ -1,6 +1,7 @@
 #include "AppController.h"
 
-AppController::AppController(HarmoniaAudioProcessor& p) : processor(p)
+AppController::AppController(HarmoniaAudioProcessor& p)
+    : processor(p), backend(p.getBackend())
 {
     auto session = backend.loadSession();
 
@@ -9,19 +10,22 @@ AppController::AppController(HarmoniaAudioProcessor& p) : processor(p)
         currentSession = *session;
         showMainScreen(*session);
 
-        juce::Thread::launch([this, session]
+        juce::Component::SafePointer<AppController> safeThis (this);
+        BackendManager* backendPtr = &backend;
+        juce::Thread::launch([safeThis, backendPtr, session]
         {
-            auto synced = backend.syncProfileParams(*session);
+            auto synced = backendPtr->syncProfileParams(*session);
             if (synced)
             {
-                juce::MessageManager::callAsync([this, synced]
+                juce::MessageManager::callAsync([safeThis, synced]
                 {
-                    currentSession = *synced;
+                    if (auto* s = safeThis.getComponent())
+                        s->currentSession = *synced;
                 });
             }
             else
             {
-                backend.clearSession();
+                backendPtr->clearSession();
             }
         });
         return;

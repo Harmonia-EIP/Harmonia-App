@@ -112,7 +112,12 @@ public:
 private:
     void parameterChanged (const juce::String&, float) override
     {
-        juce::MessageManager::callAsync ([this] { repaint(); });
+        juce::Component::SafePointer<EnvelopeVisualizer> safeThis (this);
+        juce::MessageManager::callAsync ([safeThis]
+        {
+            if (auto* self = safeThis.getComponent())
+                self->repaint();
+        });
     }
 
     float getNorm (const juce::String& id) const

@@ -4,6 +4,7 @@
 #include "parameters/HarmoniaParameters.h"
 #include "components/Synth.h"
 #include "components/OscilloscopeComponent.h"
+#include "backendManagement/BackendManager.h"
 
 class HarmoniaAudioProcessor  : public juce::AudioProcessor
 {
@@ -44,9 +45,13 @@ public:
 
     void setOscilloscope (OscilloscopeComponent* osc);
 
+    BackendManager& getBackend() { return backend; }
+
 private:
     juce::AudioProcessorValueTreeState apvts;
     HarmoniaParams::AtomicRefs paramRefs;
+
+    BackendManager backend;
 
     juce::Synthesiser synth;
     juce::MidiKeyboardState keyboardState;

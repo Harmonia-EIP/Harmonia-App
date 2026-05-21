@@ -30,6 +30,11 @@ LoginPage::LoginPage(BackendManager& be, std::function<void(const UserSession&)>
     };
 }
 
+LoginPage::~LoginPage()
+{
+    setLookAndFeel(nullptr);
+}
+
 void LoginPage::paint(juce::Graphics& g)
 {
     g.fillAll(findColour(AppColourIds::backgroundId));

@@ -38,6 +38,8 @@ public:
     SignupPage(BackendManager& be,
                std::function<void(const UserSession&)> onSignupSuccess);
 
+    ~SignupPage() override;
+
     /**
      * @brief Paints the component background.
      *
