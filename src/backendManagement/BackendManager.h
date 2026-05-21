@@ -7,8 +7,13 @@
 
 #include "BackendTypes.h"
 
+#include "BackendAiManager.h"
+#include "BackendAuthManager.h"
+#include "BackendProfileManager.h"
+
 class BackendAuthManager;
 class BackendProfileManager;
+class BackendAiManager;
 
 // Facade for backend interactions (auth + profile).
 // AI preset generation is now handled directly in the UI via JSON returned by
@@ -34,9 +39,8 @@ public:
     void clearSession();
 
     // ===================== AI =====================
-    // Calls /ai/generate-preset and returns the raw JSON response (charter format)
-    // so the UI can apply it via PresetLoader::loadFromJsonString. Empty on error.
-    juce::String generatePresetJson(const juce::String& prompt, juce::String& errorOut);
+    // Retourne un AiResult (success + json ou errorMessage)
+    AiResult generatePreset(const juce::String& prompt);
 
     // ===================== CONFIG =====================
     const juce::String& getApiUrl() const;
@@ -63,4 +67,5 @@ private:
 
     std::unique_ptr<BackendAuthManager>    authManager;
     std::unique_ptr<BackendProfileManager> profileManager;
+    std::unique_ptr<BackendAiManager>      aiManager;
 };
