@@ -27,8 +27,6 @@ jobs:
           if (!(Test-Path "build/HarmoniaPlugin_artefacts/Release/Standalone/HarmoniaPlugin.exe")) {
             Write-Error "EXE not found"
             exit 1
-          } else {
-            Write-Host "EXE found"
           }
 
       - name: Check VST3
@@ -36,8 +34,6 @@ jobs:
           if (!(Test-Path "build/HarmoniaPlugin_artefacts/Release/VST3/HarmoniaPlugin.vst3")) {
             Write-Error "VST3 not found"
             exit 1
-          } else {
-            Write-Host "VST3 found"
           }
 
       - name: Upload EXE Artifact
@@ -45,12 +41,6 @@ jobs:
         with:
           name: Harmonia-EXE
           path: build/HarmoniaPlugin_artefacts/Release/Standalone/HarmoniaPlugin.exe
-
-      - name: Upload VST3 Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: Harmonia-VST3
-          path: build/HarmoniaPlugin_artefacts/Release/VST3/HarmoniaPlugin.vst3
 
       - name: Create Release Folder
         if: github.ref == 'refs/heads/main'
@@ -63,8 +53,26 @@ jobs:
             -Path "build/HarmoniaPlugin_artefacts/Release/VST3/HarmoniaPlugin.vst3" `
             -DestinationPath "release/Harmonia.zip"
 
-      - name: Upload ZIP to VPS
+      - name: Upload ZIP Artifact
         if: github.ref == 'refs/heads/main'
+        uses: actions/upload-artifact@v4
+        with:
+          name: Harmonia-Release
+          path: release/Harmonia.zip
+
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download ZIP Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: Harmonia-Release
+          path: release
+
+      - name: Upload ZIP to VPS
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.VPS_HOST }}
