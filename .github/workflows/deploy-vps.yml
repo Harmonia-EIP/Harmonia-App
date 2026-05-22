@@ -30,3 +30,4 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           source: "release/vst3/HarmoniaPlugin.vst3"
           target: /var/www/harmonia-downloads/release
+          
