@@ -1,21 +1,26 @@
-name: Deploy VST3 to VPS (main)
+name: Manual Deploy VST3 to VPS
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Download VST3 artifact from latest build
+      - name: Download VST3 artifact
         uses: dawidd6/action-download-artifact@v3
         with:
           workflow: Build Windows and Test Standalone/VST3 (JUCE)
           name: Harmonia-VST3
           path: release/vst3
+
+      - name: Verify VST3 exists
+        run: |
+          if [ ! -d "release/vst3/HarmoniaPlugin.vst3" ]; then
+            echo "VST3 not found"
+            exit 1
+          fi
 
       - name: Upload VST3 to VPS
         uses: appleboy/scp-action@v0.1.7
