@@ -4,7 +4,7 @@ namespace AppConfig
 {
     static constexpr auto AppName    = "Harmonia";
     static constexpr auto Version    = "0.3.1";
-    static constexpr auto ApiUrl    = "https://api.harmonia-eip.com";
+    static constexpr auto ApiUrl    = "https://api.harmoniaeip.com";
 
     static constexpr int DefaultWidth  = 900;
     static constexpr int DefaultHeight = 700;
