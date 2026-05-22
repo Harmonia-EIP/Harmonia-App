@@ -1,10 +1,7 @@
 name: Deploy VST3 to VPS
 
 on:
-  workflow_run:
-    workflows: ["Build Windows and Test Standalone/VST3 (JUCE)"]
-    types:
-      - completed
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -30,4 +27,3 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           source: "release/vst3/HarmoniaPlugin.vst3"
           target: /var/www/harmonia-downloads/release
-          
