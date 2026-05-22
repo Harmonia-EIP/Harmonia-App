@@ -33,7 +33,7 @@ namespace Strings
     {
         inline const juce::String CreateAccount = "Create your Harmonia account";
         inline const juce::String SignIn = "Sign in to your account";
-        inline const juce::String Subtitle = "AI SUBTRACTIVE SYNTHESIZER  -  CHARTER V1";
+        inline const juce::String Subtitle = " TEST  -  CHARTER V1";
     }
 
     namespace Labels
