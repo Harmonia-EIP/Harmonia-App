@@ -3,7 +3,7 @@ name: Build Windows and Test Standalone/VST3 (JUCE)
 on:
   push:
     branches:
-      - main
+      - dev
 
 jobs:
   build:
