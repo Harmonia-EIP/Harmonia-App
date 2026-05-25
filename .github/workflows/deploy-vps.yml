@@ -20,7 +20,7 @@ jobs:
       - name: Build
         run: cmake --build build --config Release
 
-      - name: Upload VST3
+      - name: Upload VST3 artifact
         uses: actions/upload-artifact@v4
         with:
           name: Harmonia-VST3
@@ -40,11 +40,29 @@ jobs:
       - name: Check files
         run: ls -R release/vst3
 
-      - name: Upload to VPS
+      # ✅ Création du zip (SANS dossier parent)
+      - name: Create ZIP
+        run: |
+          cd release/vst3
+          zip -r ../../HarmoniaPlugin.vst3.zip .
+
+      # ✅ Upload temporaire (évite zip corrompu)
+      - name: Upload ZIP (temp)
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USERNAME }}
           key: ${{ secrets.VPS_SSH_KEY }}
-          source: "release/vst3/**"
-          target: "/var/www/harmonia-downloads/"
+          source: "HarmoniaPlugin.vst3.zip"
+          target: "/var/www/harmonia-downloads/HarmoniaPlugin.vst3.zip.tmp"
+
+      # ✅ Remplacement atomique
+      - name: Replace ZIP atomically
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script: |
+            mv /var/www/harmonia-downloads/HarmoniaPlugin.vst3.zip.tmp \
+               /var/www/harmonia-downloads/HarmoniaPlugin.vst3.zip
