@@ -40,13 +40,11 @@ jobs:
       - name: Check files
         run: ls -R release/vst3
 
-      # ✅ Création du zip (SANS dossier parent)
       - name: Create ZIP
         run: |
           cd release/vst3
-          zip -r ../../HarmoniaPlugin.vst3.zip .
+          zip -r ../../HarmoniaPlugin.vst3.zip HarmoniaPlugin.vst3
 
-      # ✅ Upload temporaire (évite zip corrompu)
       - name: Upload ZIP (temp)
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -56,7 +54,6 @@ jobs:
           source: "HarmoniaPlugin.vst3.zip"
           target: "/var/www/harmonia-downloads/HarmoniaPlugin.vst3.zip.tmp"
 
-      # ✅ Remplacement atomique
       - name: Replace ZIP atomically
         uses: appleboy/ssh-action@v1.0.3
         with:
