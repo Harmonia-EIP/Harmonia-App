@@ -9,19 +9,32 @@ AppController::AppController(HarmoniaAudioProcessor& p) : processor(p)
         currentSession = *session;
         showMainScreen(*session);
 
-        juce::Thread::launch([this, session]
+        juce::Component::SafePointer<AppController> safeThis(this);
+
+        juce::Thread::launch([safeThis, session]
         {
-            auto synced = backend.syncProfileParams(*session);
+            if (safeThis == nullptr)
+                return;
+
+            auto synced = safeThis->backend.syncProfileParams(*session);
+
+            if (safeThis == nullptr)
+                return;
+
             if (synced)
             {
-                juce::MessageManager::callAsync([this, synced]
+                juce::MessageManager::callAsync([safeThis, synced]
                 {
-                    currentSession = *synced;
+                    if (safeThis == nullptr)
+                        return;
+
+                    safeThis->currentSession = *synced;
                 });
             }
             else
             {
-                backend.clearSession();
+                if (safeThis != nullptr)
+                    safeThis->backend.clearSession();
             }
         });
         return;

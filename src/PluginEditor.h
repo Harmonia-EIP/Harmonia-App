@@ -86,7 +86,7 @@ private:
      * - Authentication screens
      * - Main application interface
      */
-    AppController appController;
+    std::unique_ptr<AppController> appController;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(HarmoniaAudioProcessorEditor)
 };

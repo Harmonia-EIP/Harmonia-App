@@ -49,7 +49,7 @@ public:
             p.alpha = 0.06f + ux (rng) * 0.06f;
         }
 
-        startTimerHz (45);
+        startTimerHz (15);
     }
 
     void emitBurst (juce::Point<float> origin, int count = 5, juce::Colour col = HarmoniaPalette::accent)

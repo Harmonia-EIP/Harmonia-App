@@ -34,7 +34,7 @@ public:
                    juce::Colour tint = HarmoniaPalette::mint)
         : state (apvts), accent (tint)
     {
-        startTimerHz (45);
+        startTimerHz (20);
     }
 
     void paint (juce::Graphics& g) override
@@ -59,7 +59,7 @@ public:
         const float rateHz = juce::jlimit (0.1f, 20.0f, getRaw (HarmoniaParams::IDs::lfoRate));
         const float cycles = juce::jlimit (0.5f, 6.0f, rateHz * 0.4f);
 
-        const int   steps = 200;
+        const int   steps = 80;
         juce::Path  wave;
         for (int i = 0; i <= steps; ++i)
         {

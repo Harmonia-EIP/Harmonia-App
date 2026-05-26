@@ -274,7 +274,7 @@ private:
     /**
      * Optional oscilloscope visualization target.
      */
-    OscilloscopeComponent* oscilloscope = nullptr;
+    juce::Component::SafePointer<OscilloscopeComponent> oscilloscope = nullptr;
 
     /**
      * Synchronization lock protecting oscilloscope access.

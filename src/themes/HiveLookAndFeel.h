@@ -84,8 +84,6 @@ public:
             // Soft drop shadow
             juce::Path shadowPath;
             shadowPath.addRoundedRectangle (r.translated (0.0f, 1.5f), corner);
-            juce::DropShadow ds (HarmoniaPalette::accent.withAlpha (0.30f), 10, { 0, 2 });
-            ds.drawForPath (g, shadowPath);
 
             // Cyan gradient fill
             juce::ColourGradient grad (HarmoniaPalette::accentHover, r.getX(), r.getY(),
@@ -147,15 +145,6 @@ public:
         const auto   tint     = tintProp.isVoid()
                                   ? HarmoniaPalette::accent
                                   : juce::Colour::fromString (tintProp.toString());
-
-        // 1) Drop shadow diffuse
-        {
-            juce::Path shadowPath;
-            shadowPath.addEllipse (juce::Rectangle<float> (bodyRadius * 2.0f, bodyRadius * 2.0f)
-                                       .withCentre (centre.translated (0.0f, 2.0f)));
-            juce::DropShadow ds (juce::Colours::black.withAlpha (0.55f), 10, { 0, 3 });
-            ds.drawForPath (g, shadowPath);
-        }
 
         // 2) Track sombre
         {

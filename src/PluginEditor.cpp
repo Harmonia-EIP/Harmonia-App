@@ -1,10 +1,10 @@
 #include "PluginEditor.h"
 
 HarmoniaAudioProcessorEditor::HarmoniaAudioProcessorEditor (HarmoniaAudioProcessor& p)
-    : AudioProcessorEditor (&p), audioProcessor (p), appController(p)
+    : AudioProcessorEditor (&p), audioProcessor (p)
 {
-    
-    addAndMakeVisible(appController);
+    appController = std::make_unique<AppController>(p);
+    addAndMakeVisible(appController.get());
     setSize (AppConfig::DefaultWidth, AppConfig::DefaultHeight);
 }
 
@@ -18,5 +18,5 @@ void HarmoniaAudioProcessorEditor::paint (juce::Graphics& g)
 
 void HarmoniaAudioProcessorEditor::resized()
 {
-    appController.setBounds(getLocalBounds());
+    appController->setBounds(getLocalBounds());
 }
