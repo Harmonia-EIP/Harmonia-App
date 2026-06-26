@@ -1,148 +1,86 @@
 #pragma once
 
 #include "PagesIncludes.h"
+#include "AuthPageLookAndFeel.h"
 
 /**
  * @class SignupPage
- * @brief User interface for account creation.
+ * @brief Authentication page — create a new Harmonia account.
  *
- * @details
- * This component provides a complete sign-up form allowing users to create
- * a new account by entering their personal information.
- *
- * Features:
- * - Input fields for username, first name, last name, email, and password
- * - Validation to ensure all fields are filled
- * - Backend API call for account creation
- * - Success and error feedback via dialog windows
- *
- * The component uses a dedicated dark theme for consistency during the
- * authentication process.
- *
- * @note Navigation is handled externally via callbacks.
+ * Visual design mirrors LoginPage and WelcomePage (dark gradient, animated waves).
+ * Buttons use AuthPageLookAndFeel for a unified auth-flow aesthetic.
  */
-class SignupPage : public juce::Component
+class SignupPage : public juce::Component,
+                   private juce::Timer
 {
 public:
-    /**
-     * @brief Constructs the SignupPage.
-     *
-     * @param be Reference to BackendManager used for API calls
-     * @param onSignupSuccess Callback triggered on successful account creation
-     *
-     * @details
-     * - Initializes UI components (labels, input fields, buttons)
-     * - Applies a dark LookAndFeel preset
-     * - Binds button interactions to internal logic
-     */
     SignupPage(BackendManager& be,
                std::function<void(const UserSession&)> onSignupSuccess);
 
-    /**
-     * @brief Paints the component background.
-     *
-     * @param g Graphics context
-     *
-     * @details
-     * Fills the background using theme colors and updates text styling dynamically.
-     */
-    void paint(juce::Graphics&) override;
+    ~SignupPage() override;
 
-    /**
-     * @brief Lays out child components.
-     *
-     * @details
-     * Arranges form fields and buttons vertically with consistent spacing
-     * and centers the content within the available area.
-     */
-    void resized() override;
-
-    /**
-     * @brief Callback triggered when the user wants to go back.
-     *
-     * @details
-     * Typically used to navigate back to the welcome or login page.
-     */
+    /** Triggered when the user taps the back arrow. */
     std::function<void()> onBack;
 
+    void paint(juce::Graphics&) override;
+    void resized() override;
+
 private:
-    /**
-     * @brief Local LookAndFeel for authentication UI.
-     *
-     * @details
-     * Always uses a dark theme, independent of user preferences.
-     */
+    struct WaveLayer
+    {
+        float amplitude   = 20.f;
+        float frequency   = 0.015f;
+        float phaseOffset = 0.f;
+        float alphaFill   = 0.08f;
+        float yRatio      = 0.82f;
+        juce::Colour colour;
+    };
+
+    std::array<WaveLayer, 3> waveLayers;
+
+    // -------------------------------------------------------------------------
     AppLookAndFeel authLookAndFeel;
-
-    /**
-     * @brief Reference to backend manager.
-     *
-     * @details
-     * Used to perform API calls such as account creation.
-     */
     BackendManager& backend;
-
-    /**
-     * @brief Callback triggered on successful signup.
-     *
-     * @param UserSession Newly created user session
-     */
     std::function<void(const UserSession&)> onSuccess;
 
-    /**
-     * @brief Title label displayed at the top of the form.
-     */
-    juce::Label titleLabel;
+    // -------------------------------------------------------------------------
+    // LookAndFeel instances
+    // -------------------------------------------------------------------------
+    std::unique_ptr<AuthPageLookAndFeel> lafSignup;
+    std::unique_ptr<AuthPageLookAndFeel> lafBack;
 
-    /**
-     * @brief Input field for username.
-     */
+    // -------------------------------------------------------------------------
+    // Widgets
+    // -------------------------------------------------------------------------
+    juce::Rectangle<float> logoIconBounds;
+
+    juce::Label      titleLabel;
+    juce::Label      subtitleLabel;
+
     juce::TextEditor usernameField;
-
-    /**
-     * @brief Input field for first name.
-     */
     juce::TextEditor firstnameField;
-
-    /**
-     * @brief Input field for last name.
-     */
     juce::TextEditor lastnameField;
-
-    /**
-     * @brief Input field for email address.
-     */
     juce::TextEditor emailField;
-
-    /**
-     * @brief Input field for password.
-     *
-     * @details
-     * Displays masked characters for security.
-     */
     juce::TextEditor passwordField;
 
-    /**
-     * @brief Button to submit the signup form.
-     */
     juce::TextButton signupButton;
-
-    /**
-     * @brief Button to return to the previous screen.
-     */
     juce::TextButton backButton;
 
-    /**
-     * @brief Handles the signup process.
-     *
-     * @details
-     * - Retrieves and trims user input
-     * - Validates that all fields are filled
-     * - Sends signup request to backend
-     * - Displays feedback (success or error)
-     * - Triggers success callback on completion
-     *
-     * @warning This method performs a synchronous backend call.
-     */
+    // -------------------------------------------------------------------------
+    float animationPhase = 0.f;
+
+    void timerCallback() override;
+
+    void drawWaveLayer(juce::Graphics& g,
+                       const WaveLayer& layer,
+                       float width,
+                       float height,
+                       float phase) const;
+
+    void drawLogoIcon(juce::Graphics& g,
+                      juce::Rectangle<float> bounds) const;
+
     void handleSignup();
+
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SignupPage)
 };

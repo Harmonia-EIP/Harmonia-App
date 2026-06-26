@@ -44,6 +44,7 @@ namespace Strings
         inline const juce::String User = "User";
         inline const juce::String UnsetPreset = "No preset loaded";
         inline const juce::String GeneratingPreset = "Generating preset...";
+        inline const juce::String GuestMode = "Guest";
     }
 
     namespace Placeholders
@@ -60,8 +61,8 @@ namespace Strings
 
     namespace Buttons
     {
-        inline const juce::String Export = "Exporter";
-        inline const juce::String Load   = "Charger";
+        inline const juce::String Export = "Export";
+        inline const juce::String Load   = "Load";
         inline const juce::String SignIn = "Sign in";
         inline const juce::String SignUp = "Sign up";
         inline const juce::String Logout = "Logout";
@@ -72,6 +73,7 @@ namespace Strings
         inline const juce::String Theme = "Theme";
         inline const juce::String Layout = "Layout";
         inline const juce::String ResetMissingParams = "Default if missing";
+        inline const juce::String GuestMode = "Continue as Guest";
     }
 
     namespace Filter
@@ -115,5 +117,33 @@ namespace Strings
         inline const juce::String Layout2 = "Layout 2";
         inline const juce::String Layout3 = "Layout 3";
         inline const juce::String Layout4 = "Layout 4";
+    }
+
+    namespace Sections
+    {
+        inline const juce::String Osc1    = "Osc 1 / Mix";
+        inline const juce::String Filter  = "Filter";
+        inline const juce::String Display = "Display";
+        inline const juce::String Lfo     = "LFO";
+        inline const juce::String Osc2    = "Osc 2";
+        inline const juce::String Fx      = "Effects";
+        inline const juce::String AmpEnv  = "Amp Envelope";
+    }
+
+    namespace Knobs
+    {
+        inline const juce::String Mix      = "Mix";
+        inline const juce::String Noise    = "Noise";
+        inline const juce::String Cutoff   = "Cutoff";
+        inline const juce::String Reso     = "Reso";
+        inline const juce::String FEnvAmt  = "F.Env Amt";
+        inline const juce::String FEnvDec  = "F.Env Dec";
+        inline const juce::String VelFlt   = "Vel >Flt";
+        inline const juce::String Rate     = "Rate";
+        inline const juce::String ToPitch  = "to Pitch";
+        inline const juce::String ToCutoff = "to Cutoff";
+        inline const juce::String Detune   = "Detune";
+        inline const juce::String Drive    = "Drive";
+        inline const juce::String Reverb   = "Reverb";
     }
 }

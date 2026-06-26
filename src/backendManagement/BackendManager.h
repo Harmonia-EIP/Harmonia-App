@@ -211,6 +211,10 @@ public:
      */
     ProfileResult updateLayout(int layoutId);
 
+    void updateLocalTheme(int themeId);
+
+    void updateThemeAsync(int themeId);
+
 private:
 
     /**

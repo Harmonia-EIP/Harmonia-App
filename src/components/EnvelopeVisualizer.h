@@ -48,7 +48,7 @@ class EnvelopeVisualizer : public juce::Component,
 {
 public:
     EnvelopeVisualizer (juce::AudioProcessorValueTreeState& apvts,
-                        juce::Colour tint = HarmoniaPalette::amber)
+                        juce::Colour tint = HarmoniaPalette::sectionAmpEnv)
         : state (apvts), accent (tint)
     {
         for (auto& id : { HarmoniaParams::IDs::ampAttack,
@@ -65,6 +65,12 @@ public:
                           HarmoniaParams::IDs::ampSustain,
                           HarmoniaParams::IDs::ampRelease })
             state.removeParameterListener (id, this);
+    }
+
+    void setAccentColour (juce::Colour c)
+    {
+        accent = c;
+        repaint();
     }
 
     void paint (juce::Graphics& g) override

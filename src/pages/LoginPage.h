@@ -1,133 +1,83 @@
 #pragma once
 
 #include "PagesIncludes.h"
+#include "AuthPageLookAndFeel.h"
 
 /**
  * @class LoginPage
- * @brief User interface for account authentication.
+ * @brief Authentication page — sign in with identifier + password.
  *
- * @details
- * This component provides a login form allowing users to authenticate
- * using their email and password.
- *
- * Features:
- * - Input fields for email and password
- * - Input validation to ensure required fields are filled
- * - Backend API call for authentication
- * - Error feedback via dialog windows
- *
- * The component uses a dedicated dark theme for consistency during
- * the authentication process.
- *
- * @note Navigation and post-login behavior are handled externally via callbacks.
+ * Visual design mirrors the WelcomePage (dark gradient, animated waves).
+ * Buttons use AuthPageLookAndFeel for a unified auth-flow aesthetic.
  */
-class LoginPage : public juce::Component
+class LoginPage : public juce::Component,
+                  private juce::Timer
 {
 public:
-    /**
-     * @brief Constructs the LoginPage.
-     *
-     * @param be Reference to BackendManager used for authentication
-     * @param onSuccess Callback triggered on successful login
-     *
-     * @details
-     * - Initializes UI components (title, fields, buttons)
-     * - Applies a dark LookAndFeel preset
-     * - Binds button interactions to internal logic
-     */
     LoginPage(BackendManager& be,
               std::function<void(const UserSession&)> onSuccess);
 
-    /**
-     * @brief Callback triggered when the user wants to go back.
-     *
-     * @details
-     * Typically used to navigate back to the welcome page.
-     */
+    ~LoginPage() override;
+
+    /** Triggered when the user taps the back arrow. */
     std::function<void()> onBack;
 
-    /**
-     * @brief Paints the component background.
-     *
-     * @param g Graphics context
-     *
-     * @details
-     * Fills the background using theme colors and updates text styling dynamically.
-     */
     void paint(juce::Graphics&) override;
-
-    /**
-     * @brief Lays out child components.
-     *
-     * @details
-     * Arranges the title, input fields, and buttons vertically
-     * with consistent spacing and margins.
-     */
     void resized() override;
 
 private:
-    /**
-     * @brief Local LookAndFeel for authentication UI.
-     *
-     * @details
-     * Always uses a dark theme, independent of user preferences.
-     */
+    struct WaveLayer
+    {
+        float amplitude   = 20.f;
+        float frequency   = 0.015f;
+        float phaseOffset = 0.f;
+        float alphaFill   = 0.08f;
+        float yRatio      = 0.82f;
+        juce::Colour colour;
+    };
+
+    std::array<WaveLayer, 3> waveLayers;
+
+    // -------------------------------------------------------------------------
     AppLookAndFeel authLookAndFeel;
-
-    /**
-     * @brief Reference to backend manager.
-     *
-     * @details
-     * Used to perform authentication API calls.
-     */
     BackendManager& backend;
-
-    /**
-     * @brief Callback triggered on successful login.
-     *
-     * @param UserSession Authenticated user session
-     */
     std::function<void(const UserSession&)> onSuccess;
 
-    /**
-     * @brief Title label displayed at the top of the form.
-     */
-    juce::Label titleLabel;
+    // -------------------------------------------------------------------------
+    // LookAndFeel instances
+    // -------------------------------------------------------------------------
+    std::unique_ptr<AuthPageLookAndFeel> lafLogin;
+    std::unique_ptr<AuthPageLookAndFeel> lafBack;
 
-    /**
-     * @brief Input field for user identifier (email or username).
-     */
+    // -------------------------------------------------------------------------
+    // Widgets
+    // -------------------------------------------------------------------------
+    juce::Rectangle<float> logoIconBounds;
+
+    juce::Label      titleLabel;
+    juce::Label      subtitleLabel;
+
     juce::TextEditor identifierField;
-
-    /**
-     * @brief Input field for user password.
-     *
-     * @details
-     * Displays masked characters for security.
-     */
     juce::TextEditor passwordField;
 
-    /**
-     * @brief Button used to submit login credentials.
-     */
     juce::TextButton loginButton { Strings::Buttons::SignIn };
+    juce::TextButton backButton  { Strings::Buttons::Back  };
 
-    /**
-     * @brief Button used to navigate back to the previous screen.
-     */
-    juce::TextButton backButton { Strings::Buttons::Back };
+    // -------------------------------------------------------------------------
+    float animationPhase = 0.f;
 
-    /**
-     * @brief Handles the login process.
-     *
-     * @details
-     * - Retrieves and trims user input
-     * - Validates that required fields are filled
-     * - Sends authentication request to backend
-     * - Displays error messages if authentication fails
-     * - Triggers success callback on success
-     *
-     * @warning This method performs a synchronous backend call.
-     */
+    void timerCallback() override;
+
+    void drawWaveLayer(juce::Graphics& g,
+                       const WaveLayer& layer,
+                       float width,
+                       float height,
+                       float phase) const;
+
+    void drawLogoIcon(juce::Graphics& g,
+                      juce::Rectangle<float> bounds) const;
+
     void handleLogin();
+
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(LoginPage)
 };

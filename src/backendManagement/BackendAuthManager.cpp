@@ -51,6 +51,7 @@ AuthResult BackendAuthManager::loginUser(
     auto body = json::parse(response.text);
 
     UserSession session;
+    session.isGuest     = false;
     session.userId      = body.value("user_id", 0);
     session.accessToken = body.value("token", "");
     session.pseudo      = body.value("username", "");
@@ -117,6 +118,7 @@ AuthResult BackendAuthManager::signupUser(
     auto body = json::parse(response.text);
 
     UserSession session;
+    session.isGuest     = false;
     session.userId      = body.value("user_id", 0);
     session.accessToken = body.value("token", "");
     session.pseudo      = body.value("username", "");
@@ -139,6 +141,7 @@ void BackendAuthManager::saveSession(const UserSession& session)
     backend.writeLog("saveSession()");
 
     json j{
+        { "isGuest",     session.isGuest },
         { "userId",      session.userId },
         { "pseudo",      session.pseudo.toStdString() },
         { "email",       session.email.toStdString() },
@@ -158,6 +161,8 @@ std::optional<UserSession> BackendAuthManager::loadSession()
 
     auto sessionFile = backend.getSessionFile();
 
+    backend.writeLog("Session file: " + sessionFile.loadFileAsString());
+
     if (!sessionFile.existsAsFile()) {
         backend.writeLog("no session found");
         return std::nullopt;
@@ -171,13 +176,14 @@ std::optional<UserSession> BackendAuthManager::loadSession()
     session.pseudo      = j.value("pseudo", "");
     session.email       = j.value("email", "");
     session.accessToken = j.value("accessToken", "");
+    session.isGuest     = j.value("isGuest", false);
     session.layoutId = j.value("layoutId", 0);
     session.themeId  = j.value("themeId", 0);
 
     auto expiresMs = j.value("expiresAt", static_cast<int64_t>(0));
     session.expiresAt = juce::Time(expiresMs);
 
-    if (session.accessToken.isEmpty())
+    if (session.accessToken.isEmpty() && !session.isGuest)
         return std::nullopt;
 
     return session;

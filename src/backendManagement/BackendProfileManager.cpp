@@ -81,6 +81,37 @@ ProfileResult BackendProfileManager::getProfile()
     return result;
 }
 
+void BackendProfileManager::updateLocalTheme(int themeId)
+{
+    auto sessionOpt = backend.loadSession();
+    backend.writeLog("updateLocalTheme() appelé avec themeId: " + juce::String(themeId));
+    if (!sessionOpt.has_value()) {
+        backend.writeLog("Aucune session trouvée, impossible de mettre à jour le thème local.");
+        return;
+    }
+
+    auto session = sessionOpt.value();
+
+    session.themeId = themeId;
+
+    backend.saveSession(session);
+}
+
+void BackendProfileManager::updateThemeAsync(int themeId)
+{
+    std::thread([this, themeId]()
+    {
+        auto result = updateTheme(themeId);
+
+        if (!result.success)
+        {
+            backend.writeLog(
+                "Erreur update theme : "
+                + juce::String(result.errorMessage));
+        }
+
+    }).detach();
+}
 
 ProfileResult BackendProfileManager::updateTheme(int themeId)
 {

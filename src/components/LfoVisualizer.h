@@ -31,10 +31,16 @@ class LfoVisualizer : public juce::Component, private juce::Timer
 {
 public:
     LfoVisualizer (juce::AudioProcessorValueTreeState& apvts,
-                   juce::Colour tint = HarmoniaPalette::mint)
+                   juce::Colour tint = HarmoniaPalette::sectionLfo)
         : state (apvts), accent (tint)
     {
         startTimerHz (20);
+    }
+
+    void setAccentColour (juce::Colour c)
+    {
+        accent = c;
+        repaint();
     }
 
     void paint (juce::Graphics& g) override

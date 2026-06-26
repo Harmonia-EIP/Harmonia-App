@@ -118,6 +118,18 @@ ProfileResult BackendManager::updateLayout(int layoutId)
     return ProfileResult::error("Profile manager not initialized");
 }
 
+void BackendManager::updateLocalTheme(int themeId)
+{
+    if (profileManager)
+        profileManager->updateLocalTheme(themeId);
+}
+
+void BackendManager::updateThemeAsync(int themeId)
+{
+    if (profileManager)
+        profileManager->updateThemeAsync(themeId);
+}
+
 //================================================
 // SYNC
 void BackendManager::syncProfileParamsInBackground(const UserSession& session)

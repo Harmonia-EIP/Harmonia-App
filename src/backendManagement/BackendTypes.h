@@ -22,6 +22,8 @@
 
 struct UserSession
 {
+    bool isGuest = true;
+
     int userId = 0;
 
     juce::String pseudo;

@@ -407,4 +407,100 @@ public:
             g.fillRect (textArea.removeFromRight (6).withSizeKeepingCentre (6, 6));
         }
     }
+
+    void refreshTheme()
+    {
+        setColour (juce::ResizableWindow::backgroundColourId,
+                HarmoniaPalette::background);
+
+        setColour (juce::Label::textColourId,
+                HarmoniaPalette::textSecondary);
+
+        setColour (juce::Label::textWhenEditingColourId,
+                HarmoniaPalette::textPrimary);
+
+        setColour (juce::Label::outlineWhenEditingColourId,
+                HarmoniaPalette::accent);
+
+        setColour (juce::ComboBox::backgroundColourId,
+                HarmoniaPalette::panel);
+
+        setColour (juce::ComboBox::textColourId,
+                HarmoniaPalette::accent);
+
+        setColour (juce::ComboBox::outlineColourId,
+                HarmoniaPalette::border);
+
+        setColour (juce::ComboBox::arrowColourId,
+                HarmoniaPalette::accent);
+
+        setColour (juce::ComboBox::buttonColourId,
+                HarmoniaPalette::panel);
+
+        setColour (juce::ComboBox::focusedOutlineColourId,
+                HarmoniaPalette::accent);
+
+        setColour (juce::PopupMenu::backgroundColourId,
+                HarmoniaPalette::panel);
+
+        setColour (juce::PopupMenu::textColourId,
+                HarmoniaPalette::textSecondary);
+
+        setColour (juce::PopupMenu::highlightedBackgroundColourId,
+                HarmoniaPalette::accent.withAlpha (0.18f));
+
+        setColour (juce::PopupMenu::highlightedTextColourId,
+                HarmoniaPalette::accent);
+
+        setColour (juce::TextButton::buttonColourId,
+                HarmoniaPalette::panel);
+
+        setColour (juce::TextButton::buttonOnColourId,
+                HarmoniaPalette::accent);
+
+        setColour (juce::TextButton::textColourOffId,
+                HarmoniaPalette::textSecondary);
+
+        setColour (juce::TextButton::textColourOnId,
+                HarmoniaPalette::background);
+
+        setColour (juce::Slider::trackColourId,
+                HarmoniaPalette::knobTrack);
+
+        setColour (juce::Slider::thumbColourId,
+                HarmoniaPalette::textPrimary);
+
+        setColour (juce::Slider::rotarySliderFillColourId,
+                HarmoniaPalette::accent);
+
+        setColour (juce::Slider::rotarySliderOutlineColourId,
+                HarmoniaPalette::border);
+
+        setColour (juce::Slider::textBoxTextColourId,
+                HarmoniaPalette::accent);
+
+        setColour (juce::Slider::textBoxBackgroundColourId,
+                juce::Colours::transparentBlack);
+
+        setColour (juce::Slider::textBoxOutlineColourId,
+                juce::Colours::transparentBlack);
+
+        setColour (juce::TextEditor::backgroundColourId,
+                HarmoniaPalette::panel);
+
+        setColour (juce::TextEditor::outlineColourId,
+                HarmoniaPalette::border);
+
+        setColour (juce::TextEditor::focusedOutlineColourId,
+                HarmoniaPalette::accent);
+
+        setColour (juce::TextEditor::textColourId,
+                HarmoniaPalette::textPrimary);
+
+        setColour (juce::TextEditor::highlightColourId,
+                HarmoniaPalette::accent.withAlpha (0.35f));
+
+        setColour (juce::CaretComponent::caretColourId,
+                HarmoniaPalette::accent);
+    }
 };

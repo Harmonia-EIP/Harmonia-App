@@ -37,6 +37,12 @@ public:
     {
     }
 
+    void setAccentColour (juce::Colour newColour)
+    {
+        tint = newColour;
+        repaint();
+    }
+
     void paint (juce::Graphics& g) override
     {
         const auto r = getLocalBounds().toFloat().reduced (1.0f);

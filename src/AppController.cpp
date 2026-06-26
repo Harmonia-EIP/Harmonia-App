@@ -55,12 +55,37 @@ void AppController::showWelcomeScreen()
 {
     auto welcome = std::make_unique<WelcomePage>();
 
-    welcome->onChoice = [this](bool signup)
+    welcome->onChoice = [this](WelcomePage::Choice choice)
     {
-        if (signup)
-            showSignupScreen();
-        else
-            showLoginScreen();
+        switch (choice)
+        {
+            case WelcomePage::Choice::SignIn:
+                showLoginScreen();
+                break;
+
+            case WelcomePage::Choice::SignUp:
+                showSignupScreen();
+                break;
+
+            case WelcomePage::Choice::Guest:
+            {
+                UserSession guest;
+
+                guest.isGuest = true;
+                guest.userId = 0;
+                guest.pseudo = Strings::Labels::GuestMode;
+                guest.themeId = 0;
+                guest.layoutId = 0;
+
+                currentSession = guest;
+
+                backend.writeLog("Guest mode activated");
+                backend.saveSession(guest);
+                showMainScreen(guest);
+
+                break;
+            }
+        }
     };
 
     currentComponent = std::move(welcome);
@@ -80,6 +105,7 @@ void AppController::showLoginScreen()
 
     login->onBack = [this]()
     {
+        currentSession.reset();
         showWelcomeScreen();
     };
 
@@ -94,12 +120,14 @@ void AppController::showSignupScreen()
     auto signup = std::make_unique<SignupPage>(backend,
         [this](const UserSession& session)
         {
+            backend.writeLog("Signup successful for user: " + session.themeId);
             currentSession = session;
             showMainScreen(session);
         });
 
     signup->onBack = [this]()
     {
+        currentSession.reset();
         showWelcomeScreen();
     };
 

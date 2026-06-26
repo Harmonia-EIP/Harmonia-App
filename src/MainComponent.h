@@ -50,6 +50,7 @@
 
 #include "themes/HarmoniaPalette.h"
 #include "themes/HiveLookAndFeel.h"
+#include "themes/PaletteSelector.h"
 
 #include "backendManagement/BackendManager.h"
 
@@ -62,6 +63,8 @@
 #include "components/EnvelopeVisualizer.h"
 #include "components/LfoVisualizer.h"
 #include "components/WaveformSelector.h"
+
+#include "sections/HeaderComponent.h"
 
 #include "config/AppConfig.h"
 #include "parameters/HarmoniaParameters.h"
@@ -126,7 +129,22 @@ public:
      */
     std::function<void()> onLogout;
 
+    // in the private section, near the other header widgets:
+    PaletteSelector paletteSelector;
+
 private:
+
+    HarmoniaPalette::Theme currentTheme { HarmoniaPalette::Theme::Cyan };
+
+    void applyTheme();
+
+    static void repaintAllChildren (juce::Component& root)
+    {
+        root.repaint();
+        for (int i = 0; i < root.getNumChildComponents(); ++i)
+            repaintAllChildren (*root.getChildComponent(i));
+    }
+
     /** Reference to the main audio processor. */
     HarmoniaAudioProcessor& processor;
 
@@ -148,53 +166,18 @@ private:
     //==========================================================================
     // Header UI
 
-    /** Displays connected username. */
-    juce::Label titleLabel;
-
-    /** Displays plugin subtitle/tagline. */
-    juce::Label subtitleLabel;
-
-    /** Displays currently loaded preset name. */
-    juce::Label presetLabel;
-
-    /** Prompt field used for AI preset generation. */
-    juce::TextEditor promptEditor;
-
-    /** AI generation trigger button. */
-    juce::TextButton generateButton { "Generate" };
-
-    /** Preset loading button. */
-    juce::TextButton loadButton     { "Load" };
-
-    /** Preset saving button. */
-    juce::TextButton saveButton     { "Save" };
-
-    /** Logout/sign-in button. */
-    juce::TextButton logoutButton   { "Logout" };
+    std::unique_ptr<HeaderComponent> headerComponent;
 
     //==========================================================================
     // Section containers
 
-    /** Oscillator 1 / mixer section panel. */
-    SectionPanel oscMixPanel  { "Osc 1 / Mix",   HarmoniaPalette::sectionOsc      };
-
-    /** Filter section panel. */
-    SectionPanel filterPanel  { "Filter",        HarmoniaPalette::sectionFilter   };
-
-    /** Display / oscilloscope section panel. */
-    SectionPanel screenPanel  { "Display",       HarmoniaPalette::sectionDisplay  };
-
-    /** LFO section panel. */
-    SectionPanel lfoPanel     { "LFO",           HarmoniaPalette::sectionLfo      };
-
-    /** Oscillator 2 section panel. */
-    SectionPanel osc2Panel    { "Osc 2",         HarmoniaPalette::sectionOsc      };
-
-    /** Effects section panel. */
-    SectionPanel fxPanel      { "Effects",       HarmoniaPalette::sectionFx       };
-
-    /** Amplitude envelope section panel. */
-    SectionPanel ampPanel     { "Amp Envelope",  HarmoniaPalette::sectionAmpEnv   };
+    std::unique_ptr<SectionPanel> oscMixPanel;
+    std::unique_ptr<SectionPanel> filterPanel;
+    std::unique_ptr<SectionPanel> screenPanel;
+    std::unique_ptr<SectionPanel> lfoPanel;
+    std::unique_ptr<SectionPanel> osc2Panel;
+    std::unique_ptr<SectionPanel> fxPanel;
+    std::unique_ptr<SectionPanel> ampPanel;
 
     //==========================================================================
     // Visualizers & displays
@@ -302,16 +285,6 @@ private:
     // Internal helpers
 
     /**
-     * @brief Builds the top header interface.
-     *
-     * Creates:
-     * - Labels
-     * - Prompt field
-     * - Action buttons
-     */
-    void buildHeader();
-
-    /**
      * @brief Creates and registers all parameter controls.
      *
      * Instantiates:
@@ -324,7 +297,7 @@ private:
     /**
      * @brief Connects button callbacks and interactions.
      */
-    void wireButtons();
+    void wireHeaderButtons();
 
     /**
      * @brief Registers particle feedback interactions for a control.
