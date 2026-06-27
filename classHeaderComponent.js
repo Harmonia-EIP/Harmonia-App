@@ -1,0 +1,25 @@
+var classHeaderComponent =
+[
+    [ "HeaderComponent", "classHeaderComponent.html#ab197394165cd8bd0a3ccc0d06eba87f5", null ],
+    [ "getGenerateButton", "classHeaderComponent.html#a5fb7342f50a5738ba61dfa8121af1bb6", null ],
+    [ "getLoadButton", "classHeaderComponent.html#a14c9a57cc504cc81133a373c5f6b037f", null ],
+    [ "getLogoutButton", "classHeaderComponent.html#ae4283f73c46bc7011931b3c960db6528", null ],
+    [ "getPaletteSelector", "classHeaderComponent.html#a550c1fd2de24092a7fc12a598163ae2c", null ],
+    [ "getPresetLabel", "classHeaderComponent.html#aecc099778e77651b31c09637fa910925", null ],
+    [ "getPromptEditor", "classHeaderComponent.html#ac68112add0b0d8a2cc9a9d934f306ede", null ],
+    [ "getSaveButton", "classHeaderComponent.html#a0fe01f0c0181df90840879cedea4e41b", null ],
+    [ "paint", "classHeaderComponent.html#ad93e8537fc2f9280d2cd00c452dea5cf", null ],
+    [ "refreshTheme", "classHeaderComponent.html#a26da71110ed3764dd3568e3f0d94731b", null ],
+    [ "resized", "classHeaderComponent.html#a1300fd103fcbb604dacafffe9841003c", null ],
+    [ "generateButton", "classHeaderComponent.html#a804dd9870286a6f8f3427b85a8b44025", null ],
+    [ "loadButton", "classHeaderComponent.html#ae8237f81cd59415f1fdc37982b78181e", null ],
+    [ "logoutButton", "classHeaderComponent.html#a5bc6965e338bf18d7b8aee8e30f82541", null ],
+    [ "onThemeChanged", "classHeaderComponent.html#abf93db66e54696b9d5248424d262a849", null ],
+    [ "paletteSelector", "classHeaderComponent.html#ac59efc850793da5ba5a8c8363a9806a9", null ],
+    [ "presetLabel", "classHeaderComponent.html#ad99c5e743c5b9b2b2320bb6d90448ad1", null ],
+    [ "promptEditor", "classHeaderComponent.html#ac9aa8a0411a5e2374839b62ddfb7215a", null ],
+    [ "saveButton", "classHeaderComponent.html#af64ae755a4d97323cbe8e6cfa9e0370f", null ],
+    [ "session", "classHeaderComponent.html#ab65c20be7ce6572d9a7347f5a927ab66", null ],
+    [ "subtitleLabel", "classHeaderComponent.html#a27fd6db02c972348cc37b9f75ecaf17d", null ],
+    [ "titleLabel", "classHeaderComponent.html#a66e50ad65c1c37690fd0edd6bd9301c0", null ]
+];

@@ -1,0 +1,10 @@
+<map id="HeaderComponent" name="HeaderComponent">
+<area shape="rect" id="Node000001" title=" " alt="" coords="81,168,225,193"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,137,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="72,45,75,74,83,104,94,123,109,140,138,166,135,170,105,144,90,126,78,106,69,75,67,45"/>
+<area shape="rect" id="Node000004" href="$classPaletteSelector.html" title=" " alt="" coords="93,80,213,105"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="96,38,141,78,138,82,93,42"/>
+<area shape="rect" id="Node000003" href="$structUserSession.html" title=" " alt="" coords="237,80,340,105"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="281,120,261,146,238,161,213,170,211,165,235,156,258,142,277,116"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="155,119,155,167,150,167,150,119"/>
+</map>

@@ -90,6 +90,7 @@ $(document).ready(function(){initNavTree('classLoginPage.html',''); initResizabl
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
@@ -99,7 +100,7 @@ $(document).ready(function(){initNavTree('classLoginPage.html',''); initResizabl
 </div><!--header-->
 <div class="contents">
 
-<p>User interface for account authentication.  
+<p>Authentication page — sign in with identifier + password.  
  <a href="classLoginPage.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="LoginPage_8h_source.html">LoginPage.h</a>&gt;</code></p>
@@ -108,9 +109,11 @@ Inheritance diagram for LoginPage:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLoginPage__inherit__graph.png" border="0" usemap="#aLoginPage_inherit__map" alt="Inheritance graph"/></div>
 <map name="aLoginPage_inherit__map" id="aLoginPage_inherit__map">
-<area shape="rect" title="User interface for account authentication." alt="" coords="27,79,115,104"/>
+<area shape="rect" title="Authentication page — sign in with identifier + password." alt="" coords="95,79,183,104"/>
 <area shape="rect" title=" " alt="" coords="5,5,137,31"/>
-<area shape="poly" title=" " alt="" coords="74,44,74,79,69,79,69,44"/>
+<area shape="poly" title=" " alt="" coords="94,39,130,77,126,80,90,42"/>
+<area shape="rect" title=" " alt="" coords="161,5,256,31"/>
+<area shape="poly" title=" " alt="" coords="190,43,152,80,149,77,186,39"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -118,82 +121,88 @@ Collaboration diagram for LoginPage:</div>
 <div class="dyncontent">
 <div class="center"><img src="classLoginPage__coll__graph.png" border="0" usemap="#aLoginPage_coll__map" alt="Collaboration graph"/></div>
 <map name="aLoginPage_coll__map" id="aLoginPage_coll__map">
-<area shape="rect" title="User interface for account authentication." alt="" coords="183,181,271,207"/>
+<area shape="rect" title="Authentication page — sign in with identifier + password." alt="" coords="210,181,298,207"/>
 <area shape="rect" title=" " alt="" coords="5,93,137,119"/>
-<area shape="poly" title=" " alt="" coords="105,123,207,179,205,183,103,128"/>
-<area shape="rect" href="classAppLookAndFeel.html" title=" " alt="" coords="162,93,293,119"/>
-<area shape="poly" title=" " alt="" coords="230,133,230,181,225,181,225,133"/>
-<area shape="rect" title=" " alt="" coords="64,5,228,31"/>
-<area shape="poly" title=" " alt="" coords="168,39,218,91,214,95,164,43"/>
-<area shape="rect" href="structThemePalette.html" title=" " alt="" coords="253,5,365,31"/>
-<area shape="poly" title=" " alt="" coords="290,43,241,95,237,91,286,39"/>
-<area shape="rect" href="classBackendManager.html" title="Central facade for all backend operations." alt="" coords="317,93,452,119"/>
-<area shape="poly" title=" " alt="" coords="375,133,365,147,352,160,312,179,272,190,271,185,310,174,348,155,361,143,371,129"/>
+<area shape="poly" title=" " alt="" coords="109,122,230,179,228,183,107,127"/>
+<area shape="rect" title=" " alt="" coords="161,93,256,119"/>
+<area shape="poly" title=" " alt="" coords="224,130,250,180,245,182,219,132"/>
+<area shape="rect" href="classAppLookAndFeel.html" title=" " alt="" coords="281,93,411,119"/>
+<area shape="poly" title=" " alt="" coords="325,130,269,183,265,179,322,126"/>
+<area shape="rect" title=" " alt="" coords="183,5,347,31"/>
+<area shape="poly" title=" " alt="" coords="287,39,337,91,333,95,283,43"/>
+<area shape="rect" href="structThemePalette.html" title=" " alt="" coords="371,5,483,31"/>
+<area shape="poly" title=" " alt="" coords="409,43,359,95,355,91,405,39"/>
+<area shape="rect" href="classBackendManager.html" title="Central facade for all backend operations." alt="" coords="436,93,571,119"/>
+<area shape="poly" title=" " alt="" coords="480,130,456,146,428,160,361,180,299,191,298,186,360,175,426,155,453,141,477,125"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLoginPage_1_1WaveLayer.html">WaveLayer</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a50436cb2261e60d9bc286f0bf3dc0bac" id="r_a50436cb2261e60d9bc286f0bf3dc0bac"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoginPage.html#a50436cb2261e60d9bc286f0bf3dc0bac">LoginPage</a> (<a class="el" href="classBackendManager.html">BackendManager</a> &amp;be, std::function&lt; void(const <a class="el" href="structUserSession.html">UserSession</a> &amp;)&gt; <a class="el" href="classLoginPage.html#a9e3ee1eba8b129249961f011009874fe">onSuccess</a>)</td></tr>
-<tr class="memdesc:a50436cb2261e60d9bc286f0bf3dc0bac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the <a class="el" href="classLoginPage.html" title="User interface for account authentication.">LoginPage</a>.  <br /></td></tr>
 <tr class="separator:a50436cb2261e60d9bc286f0bf3dc0bac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf5b30835039b07dd9075c7f81402077" id="r_acf5b30835039b07dd9075c7f81402077"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoginPage.html#acf5b30835039b07dd9075c7f81402077">~LoginPage</a> () override</td></tr>
+<tr class="separator:acf5b30835039b07dd9075c7f81402077"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf528640f46e505b7a32848f647aa1c7" id="r_acf528640f46e505b7a32848f647aa1c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoginPage.html#acf528640f46e505b7a32848f647aa1c7">paint</a> (juce::Graphics &amp;) override</td></tr>
-<tr class="memdesc:acf528640f46e505b7a32848f647aa1c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Paints the component background.  <br /></td></tr>
 <tr class="separator:acf528640f46e505b7a32848f647aa1c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a41a228192795781be0e272d76f2e3dd2" id="r_a41a228192795781be0e272d76f2e3dd2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoginPage.html#a41a228192795781be0e272d76f2e3dd2">resized</a> () override</td></tr>
-<tr class="memdesc:a41a228192795781be0e272d76f2e3dd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lays out child components.  <br /></td></tr>
 <tr class="separator:a41a228192795781be0e272d76f2e3dd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:aa97b70a10594f475c77975754c15ac06" id="r_aa97b70a10594f475c77975754c15ac06"><td class="memItemLeft" align="right" valign="top">std::function&lt; void()&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoginPage.html#aa97b70a10594f475c77975754c15ac06">onBack</a></td></tr>
-<tr class="memdesc:aa97b70a10594f475c77975754c15ac06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback triggered when the user wants to go back.  <br /></td></tr>
 <tr class="separator:aa97b70a10594f475c77975754c15ac06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
+<tr class="memitem:ae866f59bf6946cbeafaa787b596c39d8" id="r_ae866f59bf6946cbeafaa787b596c39d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoginPage.html#ae866f59bf6946cbeafaa787b596c39d8">timerCallback</a> () override</td></tr>
+<tr class="separator:ae866f59bf6946cbeafaa787b596c39d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bb79d673a766e83ad8bdb120bcec08a" id="r_a2bb79d673a766e83ad8bdb120bcec08a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoginPage.html#a2bb79d673a766e83ad8bdb120bcec08a">drawWaveLayer</a> (juce::Graphics &amp;g, const <a class="el" href="structLoginPage_1_1WaveLayer.html">WaveLayer</a> &amp;layer, float width, float height, float phase) const</td></tr>
+<tr class="separator:a2bb79d673a766e83ad8bdb120bcec08a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3729223770f979eb74c0c2928dc0d84" id="r_ac3729223770f979eb74c0c2928dc0d84"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoginPage.html#ac3729223770f979eb74c0c2928dc0d84">drawLogoIcon</a> (juce::Graphics &amp;g, juce::Rectangle&lt; float &gt; bounds) const</td></tr>
+<tr class="separator:ac3729223770f979eb74c0c2928dc0d84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a326eaf944da59d499be384afadbc8017" id="r_a326eaf944da59d499be384afadbc8017"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoginPage.html#a326eaf944da59d499be384afadbc8017">handleLogin</a> ()</td></tr>
-<tr class="memdesc:a326eaf944da59d499be384afadbc8017"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles the login process.  <br /></td></tr>
 <tr class="separator:a326eaf944da59d499be384afadbc8017"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
+<tr class="memitem:ae86e371c2d770bae6d2bb28ebfe0874c" id="r_ae86e371c2d770bae6d2bb28ebfe0874c"><td class="memItemLeft" align="right" valign="top">std::array&lt; <a class="el" href="structLoginPage_1_1WaveLayer.html">WaveLayer</a>, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoginPage.html#ae86e371c2d770bae6d2bb28ebfe0874c">waveLayers</a></td></tr>
+<tr class="separator:ae86e371c2d770bae6d2bb28ebfe0874c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ec648796804dd988245ddf33fe94dd1" id="r_a6ec648796804dd988245ddf33fe94dd1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classAppLookAndFeel.html">AppLookAndFeel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoginPage.html#a6ec648796804dd988245ddf33fe94dd1">authLookAndFeel</a></td></tr>
-<tr class="memdesc:a6ec648796804dd988245ddf33fe94dd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Local LookAndFeel for authentication UI.  <br /></td></tr>
 <tr class="separator:a6ec648796804dd988245ddf33fe94dd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad467ba7fe5a4f10a28ea37ca0883c16d" id="r_ad467ba7fe5a4f10a28ea37ca0883c16d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classBackendManager.html">BackendManager</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoginPage.html#ad467ba7fe5a4f10a28ea37ca0883c16d">backend</a></td></tr>
-<tr class="memdesc:ad467ba7fe5a4f10a28ea37ca0883c16d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reference to backend manager.  <br /></td></tr>
 <tr class="separator:ad467ba7fe5a4f10a28ea37ca0883c16d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e3ee1eba8b129249961f011009874fe" id="r_a9e3ee1eba8b129249961f011009874fe"><td class="memItemLeft" align="right" valign="top">std::function&lt; void(const <a class="el" href="structUserSession.html">UserSession</a> &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoginPage.html#a9e3ee1eba8b129249961f011009874fe">onSuccess</a></td></tr>
-<tr class="memdesc:a9e3ee1eba8b129249961f011009874fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback triggered on successful login.  <br /></td></tr>
 <tr class="separator:a9e3ee1eba8b129249961f011009874fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb077fe232ad2f4b878f486e7e967f45" id="r_afb077fe232ad2f4b878f486e7e967f45"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classAuthPageLookAndFeel.html">AuthPageLookAndFeel</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoginPage.html#afb077fe232ad2f4b878f486e7e967f45">lafLogin</a></td></tr>
+<tr class="separator:afb077fe232ad2f4b878f486e7e967f45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a753fb329d4fcfaf7930ca6a7e21a54c6" id="r_a753fb329d4fcfaf7930ca6a7e21a54c6"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classAuthPageLookAndFeel.html">AuthPageLookAndFeel</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoginPage.html#a753fb329d4fcfaf7930ca6a7e21a54c6">lafBack</a></td></tr>
+<tr class="separator:a753fb329d4fcfaf7930ca6a7e21a54c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2dea95348fdea0ad0c47c0deef15c51c" id="r_a2dea95348fdea0ad0c47c0deef15c51c"><td class="memItemLeft" align="right" valign="top">juce::Rectangle&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoginPage.html#a2dea95348fdea0ad0c47c0deef15c51c">logoIconBounds</a></td></tr>
+<tr class="separator:a2dea95348fdea0ad0c47c0deef15c51c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a743dbe692a5203c6c1a766c409b99d08" id="r_a743dbe692a5203c6c1a766c409b99d08"><td class="memItemLeft" align="right" valign="top">juce::Label&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoginPage.html#a743dbe692a5203c6c1a766c409b99d08">titleLabel</a></td></tr>
-<tr class="memdesc:a743dbe692a5203c6c1a766c409b99d08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Title label displayed at the top of the form.  <br /></td></tr>
 <tr class="separator:a743dbe692a5203c6c1a766c409b99d08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7cfa0b9e5fe711d5b08492c064564c7" id="r_af7cfa0b9e5fe711d5b08492c064564c7"><td class="memItemLeft" align="right" valign="top">juce::Label&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoginPage.html#af7cfa0b9e5fe711d5b08492c064564c7">subtitleLabel</a></td></tr>
+<tr class="separator:af7cfa0b9e5fe711d5b08492c064564c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45dbf3ac1b6f55261bf3010cb0fe70c8" id="r_a45dbf3ac1b6f55261bf3010cb0fe70c8"><td class="memItemLeft" align="right" valign="top">juce::TextEditor&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoginPage.html#a45dbf3ac1b6f55261bf3010cb0fe70c8">identifierField</a></td></tr>
-<tr class="memdesc:a45dbf3ac1b6f55261bf3010cb0fe70c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Input field for user identifier (email or username).  <br /></td></tr>
 <tr class="separator:a45dbf3ac1b6f55261bf3010cb0fe70c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a0bdb7ec6972b4aaf10bcdc399734dd" id="r_a1a0bdb7ec6972b4aaf10bcdc399734dd"><td class="memItemLeft" align="right" valign="top">juce::TextEditor&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoginPage.html#a1a0bdb7ec6972b4aaf10bcdc399734dd">passwordField</a></td></tr>
-<tr class="memdesc:a1a0bdb7ec6972b4aaf10bcdc399734dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Input field for user password.  <br /></td></tr>
 <tr class="separator:a1a0bdb7ec6972b4aaf10bcdc399734dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf48cba1b7f7c9e730a97458d64c1378" id="r_acf48cba1b7f7c9e730a97458d64c1378"><td class="memItemLeft" align="right" valign="top">juce::TextButton&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoginPage.html#acf48cba1b7f7c9e730a97458d64c1378">loginButton</a> { <a class="el" href="namespaceStrings_1_1Buttons.html#a3825148a29dbe84f25a3bea0d98bd405">Strings::Buttons::SignIn</a> }</td></tr>
-<tr class="memdesc:acf48cba1b7f7c9e730a97458d64c1378"><td class="mdescLeft">&#160;</td><td class="mdescRight">Button used to submit login credentials.  <br /></td></tr>
 <tr class="separator:acf48cba1b7f7c9e730a97458d64c1378"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad8510ec52ffdcba2dbb5e9799f3122d3" id="r_ad8510ec52ffdcba2dbb5e9799f3122d3"><td class="memItemLeft" align="right" valign="top">juce::TextButton&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoginPage.html#ad8510ec52ffdcba2dbb5e9799f3122d3">backButton</a> { <a class="el" href="namespaceStrings_1_1Buttons.html#a3885bc8f0f6aa19b9d4e39eb60825f7a">Strings::Buttons::Back</a> }</td></tr>
-<tr class="memdesc:ad8510ec52ffdcba2dbb5e9799f3122d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Button used to navigate back to the previous screen.  <br /></td></tr>
 <tr class="separator:ad8510ec52ffdcba2dbb5e9799f3122d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ff8ad69c884d76cd46f5c96bd24d9db" id="r_a1ff8ad69c884d76cd46f5c96bd24d9db"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLoginPage.html#a1ff8ad69c884d76cd46f5c96bd24d9db">animationPhase</a> = 0.f</td></tr>
+<tr class="separator:a1ff8ad69c884d76cd46f5c96bd24d9db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>User interface for account authentication. </p>
-<p>This component provides a login form allowing users to authenticate using their email and password.</p>
-<p>Features:</p><ul>
-<li>Input fields for email and password</li>
-<li>Input validation to ensure required fields are filled</li>
-<li>Backend API call for authentication</li>
-<li>Error feedback via dialog windows</li>
-</ul>
-<p>The component uses a dedicated dark theme for consistency during the authentication process.</p>
-<dl class="section note"><dt>Note</dt><dd>Navigation and post-login behavior are handled externally via callbacks. </dd></dl>
+<div class="textblock"><p>Authentication page — sign in with identifier + password. </p>
+<p>Visual design mirrors the <a class="el" href="classWelcomePage.html" title="Initial landing page allowing the user to choose between sign-in and sign-up.">WelcomePage</a> (dark gradient, animated waves). Buttons use <a class="el" href="classAuthPageLookAndFeel.html" title="Shared LookAndFeel for LoginPage and SignupPage buttons.">AuthPageLookAndFeel</a> for a unified auth-flow aesthetic. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a50436cb2261e60d9bc286f0bf3dc0bac" name="a50436cb2261e60d9bc286f0bf3dc0bac"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a50436cb2261e60d9bc286f0bf3dc0bac">&#9670;&#160;</a></span>LoginPage()</h2>
@@ -221,23 +230,124 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Constructs the <a class="el" href="classLoginPage.html" title="User interface for account authentication.">LoginPage</a>. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">be</td><td>Reference to <a class="el" href="classBackendManager.html" title="Central facade for all backend operations.">BackendManager</a> used for authentication </td></tr>
-    <tr><td class="paramname">onSuccess</td><td>Callback triggered on successful login</td></tr>
-  </table>
-  </dd>
-</dl>
-<ul>
-<li>Initializes UI components (title, fields, buttons)</li>
-<li>Applies a dark LookAndFeel preset</li>
-<li>Binds button interactions to internal logic </li>
-</ul>
+</div>
+</div>
+<a id="acf5b30835039b07dd9075c7f81402077" name="acf5b30835039b07dd9075c7f81402077"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf5b30835039b07dd9075c7f81402077">&#9670;&#160;</a></span>~LoginPage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">LoginPage::~LoginPage </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ac3729223770f979eb74c0c2928dc0d84" name="ac3729223770f979eb74c0c2928dc0d84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3729223770f979eb74c0c2928dc0d84">&#9670;&#160;</a></span>drawLogoIcon()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LoginPage::drawLogoIcon </td>
+          <td>(</td>
+          <td class="paramtype">juce::Graphics &amp;&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">juce::Rectangle&lt; float &gt;&#160;</td>
+          <td class="paramname"><em>bounds</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2bb79d673a766e83ad8bdb120bcec08a" name="a2bb79d673a766e83ad8bdb120bcec08a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bb79d673a766e83ad8bdb120bcec08a">&#9670;&#160;</a></span>drawWaveLayer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LoginPage::drawWaveLayer </td>
+          <td>(</td>
+          <td class="paramtype">juce::Graphics &amp;&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structLoginPage_1_1WaveLayer.html">WaveLayer</a> &amp;&#160;</td>
+          <td class="paramname"><em>layer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>height</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>phase</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a326eaf944da59d499be384afadbc8017" name="a326eaf944da59d499be384afadbc8017"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a326eaf944da59d499be384afadbc8017">&#9670;&#160;</a></span>handleLogin()</h2>
 
@@ -260,16 +370,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Handles the login process. </p>
-<ul>
-<li>Retrieves and trims user input</li>
-<li>Validates that required fields are filled</li>
-<li>Sends authentication request to backend</li>
-<li>Displays error messages if authentication fails</li>
-<li>Triggers success callback on success</li>
-</ul>
-<dl class="section warning"><dt>Warning</dt><dd>This method performs a synchronous backend call. </dd></dl>
 
 </div>
 </div>
@@ -297,15 +397,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Paints the component background. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">g</td><td>Graphics context</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>Fills the background using theme colors and updates text styling dynamically. </p>
-
 </div>
 </div>
 <a id="a41a228192795781be0e272d76f2e3dd2" name="a41a228192795781be0e272d76f2e3dd2"></a>
@@ -331,12 +422,56 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Lays out child components. </p>
-<p>Arranges the title, input fields, and buttons vertically with consistent spacing and margins. </p>
+</div>
+</div>
+<a id="ae866f59bf6946cbeafaa787b596c39d8" name="ae866f59bf6946cbeafaa787b596c39d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae866f59bf6946cbeafaa787b596c39d8">&#9670;&#160;</a></span>timerCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LoginPage::timerCallback </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a1ff8ad69c884d76cd46f5c96bd24d9db" name="a1ff8ad69c884d76cd46f5c96bd24d9db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ff8ad69c884d76cd46f5c96bd24d9db">&#9670;&#160;</a></span>animationPhase</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float LoginPage::animationPhase = 0.f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a6ec648796804dd988245ddf33fe94dd1" name="a6ec648796804dd988245ddf33fe94dd1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6ec648796804dd988245ddf33fe94dd1">&#9670;&#160;</a></span>authLookAndFeel</h2>
 
@@ -356,9 +491,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Local LookAndFeel for authentication UI. </p>
-<p>Always uses a dark theme, independent of user preferences. </p>
 
 </div>
 </div>
@@ -382,8 +514,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Button used to navigate back to the previous screen. </p>
-
 </div>
 </div>
 <a id="ad467ba7fe5a4f10a28ea37ca0883c16d" name="ad467ba7fe5a4f10a28ea37ca0883c16d"></a>
@@ -405,9 +535,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Reference to backend manager. </p>
-<p>Used to perform authentication API calls. </p>
 
 </div>
 </div>
@@ -431,7 +558,49 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Input field for user identifier (email or username). </p>
+</div>
+</div>
+<a id="a753fb329d4fcfaf7930ca6a7e21a54c6" name="a753fb329d4fcfaf7930ca6a7e21a54c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a753fb329d4fcfaf7930ca6a7e21a54c6">&#9670;&#160;</a></span>lafBack</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classAuthPageLookAndFeel.html">AuthPageLookAndFeel</a>&gt; LoginPage::lafBack</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afb077fe232ad2f4b878f486e7e967f45" name="afb077fe232ad2f4b878f486e7e967f45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb077fe232ad2f4b878f486e7e967f45">&#9670;&#160;</a></span>lafLogin</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classAuthPageLookAndFeel.html">AuthPageLookAndFeel</a>&gt; LoginPage::lafLogin</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -455,7 +624,27 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Button used to submit login credentials. </p>
+</div>
+</div>
+<a id="a2dea95348fdea0ad0c47c0deef15c51c" name="a2dea95348fdea0ad0c47c0deef15c51c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2dea95348fdea0ad0c47c0deef15c51c">&#9670;&#160;</a></span>logoIconBounds</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">juce::Rectangle&lt;float&gt; LoginPage::logoIconBounds</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -470,9 +659,6 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Callback triggered when the user wants to go back. </p>
-<p>Typically used to navigate back to the welcome page. </p>
 
 </div>
 </div>
@@ -496,14 +682,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Callback triggered on successful login. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname"><a class="el" href="structUserSession.html">UserSession</a></td><td>Authenticated user session </td></tr>
-  </table>
-  </dd>
-</dl>
-
 </div>
 </div>
 <a id="a1a0bdb7ec6972b4aaf10bcdc399734dd" name="a1a0bdb7ec6972b4aaf10bcdc399734dd"></a>
@@ -526,8 +704,27 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Input field for user password. </p>
-<p>Displays masked characters for security. </p>
+</div>
+</div>
+<a id="af7cfa0b9e5fe711d5b08492c064564c7" name="af7cfa0b9e5fe711d5b08492c064564c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7cfa0b9e5fe711d5b08492c064564c7">&#9670;&#160;</a></span>subtitleLabel</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">juce::Label LoginPage::subtitleLabel</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -551,7 +748,27 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Title label displayed at the top of the form. </p>
+</div>
+</div>
+<a id="ae86e371c2d770bae6d2bb28ebfe0874c" name="ae86e371c2d770bae6d2bb28ebfe0874c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae86e371c2d770bae6d2bb28ebfe0874c">&#9670;&#160;</a></span>waveLayers</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::array&lt;<a class="el" href="structLoginPage_1_1WaveLayer.html">WaveLayer</a>, 3&gt; LoginPage::waveLayers</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

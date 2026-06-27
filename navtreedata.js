@@ -28,9 +28,9 @@ var NAVTREE =
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
-        [ "All", "namespacemembers.html", null ],
+        [ "All", "namespacemembers.html", "namespacemembers_dup" ],
         [ "Functions", "namespacemembers_func.html", null ],
-        [ "Variables", "namespacemembers_vars.html", null ],
+        [ "Variables", "namespacemembers_vars.html", "namespacemembers_vars" ],
         [ "Enumerations", "namespacemembers_enum.html", null ],
         [ "Enumerator", "namespacemembers_eval.html", null ]
       ] ]
@@ -41,7 +41,7 @@ var NAVTREE =
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
-        [ "Functions", "functions_func.html", null ],
+        [ "Functions", "functions_func.html", "functions_func" ],
         [ "Variables", "functions_vars.html", "functions_vars" ],
         [ "Typedefs", "functions_type.html", null ],
         [ "Enumerations", "functions_enum.html", null ]
@@ -62,10 +62,11 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "Alert_8h.html",
-"String_8h.html#af25d8becf717bd60d4bd9edd69a4b486",
-"classLfoVisualizer.html#a8cc9f38c8cdc904372208644adad0425",
-"namespaceAudioConfig_1_1Filter_1_1Cutoff.html#a8e43c3c120a851cf1d9567a7500b09e6",
-"structParticleField_1_1Burst.html#a8aa37d3af64aebf4bcebe50bfc70b14a"
+"String_8h.html#a55cfa6b21cf9d3b31bd4cb7fedd5c86f",
+"classHarmoniaVoice.html#a04a40630d0ff05dc4be1088dd89ece59",
+"classSynthComponent.html#a4cec9f95fa7ea465e9a59d03a9176a2b",
+"namespaceHarmoniaParams_1_1IDs.html#a34af4847b2c2f1f709ab36129a68eaf9",
+"structHarmoniaParams_1_1AtomicRefs.html#a32b128626b9be206020b4da504d45a5c"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -1,16 +1,27 @@
 var classLoginPage =
 [
+    [ "WaveLayer", "structLoginPage_1_1WaveLayer.html", "structLoginPage_1_1WaveLayer" ],
     [ "LoginPage", "classLoginPage.html#a50436cb2261e60d9bc286f0bf3dc0bac", null ],
+    [ "~LoginPage", "classLoginPage.html#acf5b30835039b07dd9075c7f81402077", null ],
+    [ "drawLogoIcon", "classLoginPage.html#ac3729223770f979eb74c0c2928dc0d84", null ],
+    [ "drawWaveLayer", "classLoginPage.html#a2bb79d673a766e83ad8bdb120bcec08a", null ],
     [ "handleLogin", "classLoginPage.html#a326eaf944da59d499be384afadbc8017", null ],
     [ "paint", "classLoginPage.html#acf528640f46e505b7a32848f647aa1c7", null ],
     [ "resized", "classLoginPage.html#a41a228192795781be0e272d76f2e3dd2", null ],
+    [ "timerCallback", "classLoginPage.html#ae866f59bf6946cbeafaa787b596c39d8", null ],
+    [ "animationPhase", "classLoginPage.html#a1ff8ad69c884d76cd46f5c96bd24d9db", null ],
     [ "authLookAndFeel", "classLoginPage.html#a6ec648796804dd988245ddf33fe94dd1", null ],
     [ "backButton", "classLoginPage.html#ad8510ec52ffdcba2dbb5e9799f3122d3", null ],
     [ "backend", "classLoginPage.html#ad467ba7fe5a4f10a28ea37ca0883c16d", null ],
     [ "identifierField", "classLoginPage.html#a45dbf3ac1b6f55261bf3010cb0fe70c8", null ],
+    [ "lafBack", "classLoginPage.html#a753fb329d4fcfaf7930ca6a7e21a54c6", null ],
+    [ "lafLogin", "classLoginPage.html#afb077fe232ad2f4b878f486e7e967f45", null ],
     [ "loginButton", "classLoginPage.html#acf48cba1b7f7c9e730a97458d64c1378", null ],
+    [ "logoIconBounds", "classLoginPage.html#a2dea95348fdea0ad0c47c0deef15c51c", null ],
     [ "onBack", "classLoginPage.html#aa97b70a10594f475c77975754c15ac06", null ],
     [ "onSuccess", "classLoginPage.html#a9e3ee1eba8b129249961f011009874fe", null ],
     [ "passwordField", "classLoginPage.html#a1a0bdb7ec6972b4aaf10bcdc399734dd", null ],
-    [ "titleLabel", "classLoginPage.html#a743dbe692a5203c6c1a766c409b99d08", null ]
+    [ "subtitleLabel", "classLoginPage.html#af7cfa0b9e5fe711d5b08492c064564c7", null ],
+    [ "titleLabel", "classLoginPage.html#a743dbe692a5203c6c1a766c409b99d08", null ],
+    [ "waveLayers", "classLoginPage.html#ae86e371c2d770bae6d2bb28ebfe0874c", null ]
 ];

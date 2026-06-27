@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['panelbgid_0',['panelBgId',['../namespaceAppColourIds.html#a395e668d95f8775e059d210c51399489aa86f48c1fac4d9044d9c393b58057180',1,'AppColourIds']]],
-  ['paneloutlineid_1',['panelOutlineId',['../namespaceAppColourIds.html#a395e668d95f8775e059d210c51399489aa16c3b446fc025e027cd2f54253969d0',1,'AppColourIds']]]
+  ['knobbgid_0',['knobBgId',['../namespaceAppColourIds.html#a395e668d95f8775e059d210c51399489a7b807dedac52d43ca1c486d5b0803bb2',1,'AppColourIds']]],
+  ['knoboutlineid_1',['knobOutlineId',['../namespaceAppColourIds.html#a395e668d95f8775e059d210c51399489ab3e8ebf185fc2032bafa43458431d1b9',1,'AppColourIds']]],
+  ['knobpointerid_2',['knobPointerId',['../namespaceAppColourIds.html#a395e668d95f8775e059d210c51399489a64159b31f6ade69e34105319c88f2f01',1,'AppColourIds']]]
 ];

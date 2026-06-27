@@ -5,6 +5,7 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "config", "dir_7e83d1792d529f4aa7126ac7e0b3b699.html", "dir_7e83d1792d529f4aa7126ac7e0b3b699" ],
     [ "pages", "dir_d1fc3cbd97cb772b87fa57d8dd8469cd.html", "dir_d1fc3cbd97cb772b87fa57d8dd8469cd" ],
     [ "parameters", "dir_434cae81b587a8a3fa87d985996d40d2.html", "dir_434cae81b587a8a3fa87d985996d40d2" ],
+    [ "sections", "dir_fbfb3173cd1e3fddb60ea42395eae556.html", "dir_fbfb3173cd1e3fddb60ea42395eae556" ],
     [ "themes", "dir_e081a7a5c590926bad9223559b89aad5.html", "dir_e081a7a5c590926bad9223559b89aad5" ],
     [ "tools", "dir_1563a38af0d3a5e4a6330d6d45e9792a.html", "dir_1563a38af0d3a5e4a6330d6d45e9792a" ],
     [ "AppController.cpp", "AppController_8cpp.html", null ],

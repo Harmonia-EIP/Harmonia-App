@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['lfovisualizer_0',['LfoVisualizer',['../classLfoVisualizer.html#a57c2c7f0943154979834c70030380127',1,'LfoVisualizer']]],
+  ['lfovisualizer_0',['LfoVisualizer',['../classLfoVisualizer.html#a9b9f528f29113ac1e15a527122578b1d',1,'LfoVisualizer']]],
   ['light_1',['light',['../structThemePalette.html#a86b2c82b1d6d3f3293fd3d847038d05e',1,'ThemePalette']]],
   ['loadfromfile_2',['loadFromFile',['../namespacePresetLoader.html#a56f2feb76c7d6882a5d53ebd15f51427',1,'PresetLoader']]],
   ['loadfromjsonstring_3',['loadFromJsonString',['../namespacePresetLoader.html#a99a8ac571f29575259e50f4e089217c2',1,'PresetLoader']]],

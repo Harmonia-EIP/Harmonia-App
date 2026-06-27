@@ -93,6 +93,7 @@ $(document).ready(function(){initNavTree('classMainComponent.html',''); initResi
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classMainComponent-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">MainComponent Class Reference</div></div>
@@ -115,52 +116,51 @@ Collaboration diagram for MainComponent:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMainComponent__coll__graph.png" border="0" usemap="#aMainComponent_coll__map" alt="Collaboration graph"/></div>
 <map name="aMainComponent_coll__map" id="aMainComponent_coll__map">
-<area shape="rect" title=" " alt="" coords="979,424,1108,449"/>
-<area shape="rect" title=" " alt="" coords="36,523,168,548"/>
-<area shape="poly" title=" " alt="" coords="182,539,307,546,470,551,652,550,835,539,896,535,922,530,953,517,977,502,999,483,1030,448,1034,451,1002,487,980,506,956,522,924,535,897,541,835,545,652,555,470,556,307,551,182,544"/>
-<area shape="rect" href="classOscilloscopeComponent.html" title="Real&#45;time oscilloscope waveform display." alt="" coords="267,505,446,531"/>
-<area shape="poly" title=" " alt="" coords="181,527,267,521,267,527,182,533"/>
-<area shape="rect" href="classParticleField.html" title="Decorative animated particle system component." alt="" coords="306,633,407,659"/>
-<area shape="poly" title=" " alt="" coords="146,551,249,597,327,631,325,636,247,602,144,556"/>
-<area shape="rect" href="classSectionPanel.html" title="Visual container for synthesizer UI sections." alt="" coords="504,292,609,317"/>
-<area shape="poly" title=" " alt="" coords="119,510,171,450,207,418,247,392,313,361,382,338,448,321,503,310,504,315,449,326,384,343,315,366,249,396,210,423,175,454,123,513"/>
-<area shape="rect" href="classDisplayScreen.html" title="Decorative oscilloscope display container component." alt="" coords="684,468,799,493"/>
-<area shape="poly" title=" " alt="" coords="153,516,247,491,352,474,435,467,518,467,624,470,684,473,684,479,624,475,518,472,435,472,353,480,249,497,154,521"/>
-<area shape="rect" href="classSynthComponent.html" title="UI component containing a virtual MIDI keyboard." alt="" coords="489,399,624,424"/>
-<area shape="poly" title=" " alt="" coords="121,510,164,469,191,449,222,433,291,412,362,402,430,400,489,402,489,407,430,405,363,408,292,418,224,438,194,453,167,473,125,514"/>
-<area shape="rect" href="classEnvelopeVisualizer.html" title="Visualizes ADSR envelope parameters in real time." alt="" coords="283,696,430,721"/>
-<area shape="poly" title=" " alt="" coords="124,557,177,612,212,643,249,669,277,683,306,693,304,698,275,688,247,674,209,647,174,616,120,560"/>
-<area shape="rect" href="classLfoVisualizer.html" title="Real&#45;time animated LFO visualizer." alt="" coords="303,759,410,784"/>
-<area shape="poly" title=" " alt="" coords="124,557,201,659,223,699,232,715,250,732,276,747,304,758,302,763,273,752,246,736,228,719,218,702,196,662,120,561"/>
-<area shape="rect" href="classHarmoniaAudioProcessor.html" title="Main JUCE audio processor for the Harmonia synthesizer." alt="" coords="648,55,835,80"/>
-<area shape="poly" title=" " alt="" coords="849,79,906,101,933,118,957,139,983,174,1003,214,1019,255,1030,297,1041,372,1045,423,1039,424,1036,373,1024,298,1014,257,998,216,978,177,953,142,930,122,904,106,847,84"/>
-<area shape="rect" title=" " alt="" coords="278,5,435,31"/>
-<area shape="poly" title=" " alt="" coords="449,24,624,45,671,52,670,57,624,50,449,29"/>
-<area shape="rect" href="structHarmoniaParams_1_1AtomicRefs.html" title="Real&#45;time safe parameter access structure." alt="" coords="248,55,465,80"/>
-<area shape="poly" title=" " alt="" coords="479,65,648,65,648,70,479,70"/>
-<area shape="poly" title=" " alt="" coords="460,527,542,533,636,535,736,531,834,518,887,504,938,485,1018,447,1020,452,940,490,889,509,835,523,736,537,636,541,541,538,460,533"/>
-<area shape="poly" title=" " alt="" coords="365,491,398,411,456,300,494,241,539,184,589,132,647,89,671,78,673,82,649,94,593,136,543,188,498,244,460,303,403,413,369,493"/>
-<area shape="poly" title=" " alt="" coords="459,505,683,484,684,489,460,511"/>
-<area shape="rect" title=" " alt="" coords="55,672,149,697"/>
-<area shape="poly" title=" " alt="" coords="133,662,334,529,337,533,136,666"/>
-<area shape="poly" title=" " alt="" coords="163,673,306,651,306,656,164,678"/>
-<area shape="poly" title=" " alt="" coords="160,700,200,717,224,734,264,749,303,760,302,765,262,754,221,739,197,722,158,704"/>
-<area shape="rect" href="classBackendManager.html" title="Central facade for all backend operations." alt="" coords="674,305,809,331"/>
-<area shape="poly" title=" " alt="" coords="823,322,889,334,956,358,1001,389,1033,422,1029,425,997,394,953,363,888,340,822,327"/>
-<area shape="rect" href="structUserSession.html" title=" " alt="" coords="690,355,793,380"/>
-<area shape="poly" title=" " alt="" coords="807,371,879,381,955,398,1017,421,1015,426,954,403,878,386,806,376"/>
-<area shape="rect" href="classHiveLookAndFeel.html" title=" " alt="" coords="674,104,809,129"/>
-<area shape="poly" title=" " alt="" coords="802,131,836,146,903,183,929,205,957,236,989,287,1014,340,1041,423,1036,425,1009,342,985,289,953,240,925,208,900,188,833,151,800,136"/>
-<area shape="rect" title=" " alt="" coords="275,104,439,129"/>
-<area shape="poly" title=" " alt="" coords="452,114,674,114,674,119,452,119"/>
-<area shape="poly" title=" " alt="" coords="421,648,550,654,707,655,784,651,854,642,912,629,953,610,973,594,989,573,1014,527,1029,483,1037,449,1042,450,1035,484,1019,529,994,576,976,597,956,615,914,634,855,648,785,656,707,660,550,659,421,653"/>
-<area shape="poly" title=" " alt="" coords="614,286,687,272,775,265,822,267,869,274,914,287,956,308,987,334,1011,366,1040,423,1035,425,1007,369,983,338,953,312,912,292,868,279,822,272,775,270,687,277,615,291"/>
-<area shape="poly" title=" " alt="" coords="812,470,954,450,978,446,979,451,955,455,813,475"/>
-<area shape="poly" title=" " alt="" coords="638,413,979,431,978,436,638,418"/>
-<area shape="poly" title=" " alt="" coords="425,721,538,738,606,742,679,741,753,732,825,715,893,687,924,668,953,645,974,623,992,597,1017,541,1031,488,1038,449,1043,450,1037,489,1022,543,996,600,978,626,956,649,927,672,895,691,826,720,754,738,679,746,606,747,538,743,425,727"/>
-<area shape="rect" title=" " alt="" coords="5,731,199,771"/>
-<area shape="poly" title=" " alt="" coords="212,730,283,718,284,723,213,736"/>
-<area shape="poly" title=" " alt="" coords="418,785,534,806,605,813,681,813,757,805,830,786,864,772,896,754,926,732,953,706,976,674,995,639,1021,564,1034,496,1039,449,1044,450,1039,497,1026,565,1000,641,981,677,957,709,929,736,899,758,866,777,831,791,758,810,681,818,605,818,533,811,417,790"/>
+<area shape="rect" title=" " alt="" coords="979,321,1108,346"/>
+<area shape="rect" title=" " alt="" coords="36,413,168,438"/>
+<area shape="poly" title=" " alt="" coords="181,411,222,405,654,362,978,335,979,341,655,367,223,411,182,416"/>
+<area shape="rect" href="classPaletteSelector.html" title=" " alt="" coords="497,29,617,54"/>
+<area shape="poly" title=" " alt="" coords="102,399,112,329,134,237,153,189,177,142,208,100,246,65,275,47,307,34,374,22,440,21,497,27,496,32,439,26,374,27,309,40,278,52,250,69,212,103,182,145,158,191,139,239,117,330,108,399"/>
+<area shape="rect" href="classParticleField.html" title="Decorative animated particle system component." alt="" coords="306,517,407,542"/>
+<area shape="poly" title=" " alt="" coords="141,442,249,491,315,514,313,519,247,496,139,446"/>
+<area shape="rect" href="classOscilloscopeComponent.html" title="Real&#45;time oscilloscope waveform display." alt="" coords="267,455,446,481"/>
+<area shape="poly" title=" " alt="" coords="182,436,281,453,280,458,181,441"/>
+<area shape="rect" href="classDisplayScreen.html" title="Decorative oscilloscope display container component." alt="" coords="684,465,799,490"/>
+<area shape="poly" title=" " alt="" coords="182,423,224,424,425,432,512,439,624,452,684,462,683,467,624,457,512,444,424,437,224,429,182,428"/>
+<area shape="rect" href="classSynthComponent.html" title="UI component containing a virtual MIDI keyboard." alt="" coords="489,293,624,318"/>
+<area shape="poly" title=" " alt="" coords="124,401,167,367,193,350,222,336,291,316,363,305,431,300,489,299,489,305,431,305,363,310,292,321,224,341,196,354,170,371,127,405"/>
+<area shape="rect" href="classEnvelopeVisualizer.html" title="Visualizes ADSR envelope parameters in real time." alt="" coords="283,579,430,605"/>
+<area shape="poly" title=" " alt="" coords="126,447,179,499,213,528,249,552,278,566,307,577,305,582,276,571,247,557,210,532,175,503,122,450"/>
+<area shape="rect" href="classLfoVisualizer.html" title="Real&#45;time animated LFO visualizer." alt="" coords="303,642,410,667"/>
+<area shape="poly" title=" " alt="" coords="123,447,201,549,223,585,233,600,250,615,276,630,304,641,302,646,274,635,246,619,229,604,218,588,196,552,119,450"/>
+<area shape="poly" title=" " alt="" coords="630,25,705,17,791,20,835,26,878,38,919,55,956,79,983,106,1003,137,1019,172,1030,207,1042,273,1045,320,1039,320,1036,274,1025,208,1014,174,999,140,979,109,953,83,916,60,876,43,834,31,790,25,705,23,631,30"/>
+<area shape="rect" href="classHarmoniaAudioProcessor.html" title="Main JUCE audio processor for the Harmonia synthesizer." alt="" coords="648,90,835,115"/>
+<area shape="poly" title=" " alt="" coords="849,97,905,108,932,119,956,134,978,154,996,179,1022,232,1036,283,1043,320,1038,321,1031,284,1017,234,991,181,974,158,953,138,929,123,903,113,848,102"/>
+<area shape="rect" title=" " alt="" coords="278,79,435,105"/>
+<area shape="poly" title=" " alt="" coords="450,92,648,97,648,103,449,97"/>
+<area shape="rect" href="structHarmoniaParams_1_1AtomicRefs.html" title="Real&#45;time safe parameter access structure." alt="" coords="248,129,465,154"/>
+<area shape="poly" title=" " alt="" coords="479,131,624,117,659,113,660,118,624,123,480,136"/>
+<area shape="rect" href="classBackendManager.html" title="Central facade for all backend operations." alt="" coords="674,189,809,214"/>
+<area shape="poly" title=" " alt="" coords="823,202,890,214,924,224,956,239,982,257,1004,279,1036,319,1032,322,1000,282,978,261,953,244,922,229,888,219,822,207"/>
+<area shape="rect" href="structUserSession.html" title=" " alt="" coords="690,238,793,263"/>
+<area shape="poly" title=" " alt="" coords="806,252,879,262,956,281,993,299,1025,318,1022,323,991,304,954,287,878,267,806,257"/>
+<area shape="rect" href="classHiveLookAndFeel.html" title=" " alt="" coords="674,139,809,165"/>
+<area shape="poly" title=" " alt="" coords="823,148,891,159,925,170,956,187,989,218,1013,255,1031,291,1041,320,1036,321,1026,293,1009,258,985,221,953,191,923,175,890,164,822,153"/>
+<area shape="rect" title=" " alt="" coords="275,178,439,203"/>
+<area shape="poly" title=" " alt="" coords="452,178,673,156,674,161,453,184"/>
+<area shape="poly" title=" " alt="" coords="421,542,532,560,600,566,673,567,747,560,821,545,890,519,923,502,953,481,984,448,1008,410,1036,345,1041,347,1013,413,988,452,956,485,925,506,892,524,822,550,748,566,673,572,600,571,532,566,421,547"/>
+<area shape="rect" title=" " alt="" coords="55,562,149,587"/>
+<area shape="poly" title=" " alt="" coords="163,561,305,536,306,541,164,567"/>
+<area shape="poly" title=" " alt="" coords="139,553,247,503,314,478,316,483,249,508,141,558"/>
+<area shape="poly" title=" " alt="" coords="160,590,200,607,212,616,224,624,263,638,303,646,302,651,262,643,221,629,209,620,197,612,158,594"/>
+<area shape="poly" title=" " alt="" coords="459,455,728,424,859,403,954,380,991,363,1023,344,1026,348,994,368,956,385,861,408,728,429,460,461"/>
+<area shape="poly" title=" " alt="" coords="460,471,489,472,684,475,684,480,489,477,460,476"/>
+<area shape="poly" title=" " alt="" coords="812,479,883,472,920,462,953,447,982,424,1005,396,1034,345,1039,347,1009,399,986,428,956,452,921,467,884,477,813,484"/>
+<area shape="poly" title=" " alt="" coords="638,307,979,327,978,332,638,313"/>
+<area shape="poly" title=" " alt="" coords="444,599,527,604,625,606,730,601,834,587,900,572,925,560,953,537,972,514,989,488,1014,434,1029,383,1037,346,1043,347,1035,384,1019,435,994,491,977,517,957,541,928,564,901,577,835,592,731,607,625,612,527,610,444,604"/>
+<area shape="rect" title=" " alt="" coords="5,621,199,661"/>
+<area shape="poly" title=" " alt="" coords="212,617,290,602,291,607,213,623"/>
+<area shape="poly" title=" " alt="" coords="422,668,536,686,606,690,680,690,754,681,827,663,894,632,925,612,953,587,977,559,996,526,1011,491,1022,456,1034,391,1039,346,1044,346,1040,392,1027,457,1016,493,1001,529,981,562,957,591,928,616,897,637,829,668,755,686,680,695,606,696,536,691,421,673"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -184,18 +184,19 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a80ea8483a9a9aff0868765d01274ca4c" id="r_a80ea8483a9a9aff0868765d01274ca4c"><td class="memItemLeft" align="right" valign="top">std::function&lt; void()&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#a80ea8483a9a9aff0868765d01274ca4c">onLogout</a></td></tr>
 <tr class="memdesc:a80ea8483a9a9aff0868765d01274ca4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback triggered when user logs out.  <br /></td></tr>
 <tr class="separator:a80ea8483a9a9aff0868765d01274ca4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad88331a5eb776241101871cd44650d17" id="r_ad88331a5eb776241101871cd44650d17"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPaletteSelector.html">PaletteSelector</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#ad88331a5eb776241101871cd44650d17">paletteSelector</a></td></tr>
+<tr class="separator:ad88331a5eb776241101871cd44650d17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a40e6f04d9ab058fb7a2fb5a765ca955f" id="r_a40e6f04d9ab058fb7a2fb5a765ca955f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#a40e6f04d9ab058fb7a2fb5a765ca955f">buildHeader</a> ()</td></tr>
-<tr class="memdesc:a40e6f04d9ab058fb7a2fb5a765ca955f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Builds the top header interface.  <br /></td></tr>
-<tr class="separator:a40e6f04d9ab058fb7a2fb5a765ca955f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8583f3f10ddc81a2094d21533c031f58" id="r_a8583f3f10ddc81a2094d21533c031f58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#a8583f3f10ddc81a2094d21533c031f58">applyTheme</a> ()</td></tr>
+<tr class="separator:a8583f3f10ddc81a2094d21533c031f58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2cbd32d8f73439ce532b33a6c9ffa4ff" id="r_a2cbd32d8f73439ce532b33a6c9ffa4ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#a2cbd32d8f73439ce532b33a6c9ffa4ff">buildControls</a> ()</td></tr>
 <tr class="memdesc:a2cbd32d8f73439ce532b33a6c9ffa4ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates and registers all parameter controls.  <br /></td></tr>
 <tr class="separator:a2cbd32d8f73439ce532b33a6c9ffa4ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ff963c88e776aed4d6cf8d705a65d88" id="r_a8ff963c88e776aed4d6cf8d705a65d88"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#a8ff963c88e776aed4d6cf8d705a65d88">wireButtons</a> ()</td></tr>
-<tr class="memdesc:a8ff963c88e776aed4d6cf8d705a65d88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connects button callbacks and interactions.  <br /></td></tr>
-<tr class="separator:a8ff963c88e776aed4d6cf8d705a65d88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b9a588d88f74a774c88f7456ca6da4a" id="r_a9b9a588d88f74a774c88f7456ca6da4a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#a9b9a588d88f74a774c88f7456ca6da4a">wireHeaderButtons</a> ()</td></tr>
+<tr class="memdesc:a9b9a588d88f74a774c88f7456ca6da4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connects button callbacks and interactions.  <br /></td></tr>
+<tr class="separator:a9b9a588d88f74a774c88f7456ca6da4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa55b0d777b42f9a2b5a0fb7a2ce9260f" id="r_aa55b0d777b42f9a2b5a0fb7a2ce9260f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#aa55b0d777b42f9a2b5a0fb7a2ce9260f">registerJuiceFor</a> (juce::Component *c)</td></tr>
 <tr class="memdesc:aa55b0d777b42f9a2b5a0fb7a2ce9260f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers particle feedback interactions for a control.  <br /></td></tr>
 <tr class="separator:aa55b0d777b42f9a2b5a0fb7a2ce9260f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -209,8 +210,15 @@ Private Member Functions</h2></td></tr>
 <tr class="memdesc:a2b2d15db289b800286c3be022860766e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a new preset using AI backend services.  <br /></td></tr>
 <tr class="separator:a2b2d15db289b800286c3be022860766e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
+Static Private Member Functions</h2></td></tr>
+<tr class="memitem:aa6a6216b5a861cc2b25a5f3f60e4bc5a" id="r_aa6a6216b5a861cc2b25a5f3f60e4bc5a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#aa6a6216b5a861cc2b25a5f3f60e4bc5a">repaintAllChildren</a> (juce::Component &amp;root)</td></tr>
+<tr class="separator:aa6a6216b5a861cc2b25a5f3f60e4bc5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
+<tr class="memitem:ac6574fc6bee9c3803680a994867965f1" id="r_ac6574fc6bee9c3803680a994867965f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceHarmoniaPalette.html#a48dd6f8d4570ed63402450e3ea1fba8c">HarmoniaPalette::Theme</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#ac6574fc6bee9c3803680a994867965f1">currentTheme</a> { <a class="el" href="namespaceHarmoniaPalette.html#a48dd6f8d4570ed63402450e3ea1fba8ca023c239d2f2538f140a20e72c7b73f20">HarmoniaPalette::Theme::Cyan</a> }</td></tr>
+<tr class="separator:ac6574fc6bee9c3803680a994867965f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8afb48f92180976d940c6a4f6c46ee10" id="r_a8afb48f92180976d940c6a4f6c46ee10"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classHarmoniaAudioProcessor.html">HarmoniaAudioProcessor</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#a8afb48f92180976d940c6a4f6c46ee10">processor</a></td></tr>
 <tr class="memdesc:a8afb48f92180976d940c6a4f6c46ee10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reference to the main audio processor.  <br /></td></tr>
 <tr class="separator:a8afb48f92180976d940c6a4f6c46ee10"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -226,51 +234,22 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a7c159e59f7f68d7f1bbedfcd29de69b4" id="r_a7c159e59f7f68d7f1bbedfcd29de69b4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classParticleField.html">ParticleField</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#a7c159e59f7f68d7f1bbedfcd29de69b4">particles</a></td></tr>
 <tr class="memdesc:a7c159e59f7f68d7f1bbedfcd29de69b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Animated particle background layer.  <br /></td></tr>
 <tr class="separator:a7c159e59f7f68d7f1bbedfcd29de69b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f117d943804e5df2210a00f40967562" id="r_a1f117d943804e5df2210a00f40967562"><td class="memItemLeft" align="right" valign="top">juce::Label&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#a1f117d943804e5df2210a00f40967562">titleLabel</a></td></tr>
-<tr class="memdesc:a1f117d943804e5df2210a00f40967562"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays connected username.  <br /></td></tr>
-<tr class="separator:a1f117d943804e5df2210a00f40967562"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa4787314833300817169b4a5d481a3d8" id="r_aa4787314833300817169b4a5d481a3d8"><td class="memItemLeft" align="right" valign="top">juce::Label&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#aa4787314833300817169b4a5d481a3d8">subtitleLabel</a></td></tr>
-<tr class="memdesc:aa4787314833300817169b4a5d481a3d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays plugin subtitle/tagline.  <br /></td></tr>
-<tr class="separator:aa4787314833300817169b4a5d481a3d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac8863e619983776de537fab716e967f1" id="r_ac8863e619983776de537fab716e967f1"><td class="memItemLeft" align="right" valign="top">juce::Label&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#ac8863e619983776de537fab716e967f1">presetLabel</a></td></tr>
-<tr class="memdesc:ac8863e619983776de537fab716e967f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays currently loaded preset name.  <br /></td></tr>
-<tr class="separator:ac8863e619983776de537fab716e967f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af39c4f12e8c25be757ceb5e189d45e38" id="r_af39c4f12e8c25be757ceb5e189d45e38"><td class="memItemLeft" align="right" valign="top">juce::TextEditor&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#af39c4f12e8c25be757ceb5e189d45e38">promptEditor</a></td></tr>
-<tr class="memdesc:af39c4f12e8c25be757ceb5e189d45e38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prompt field used for AI preset generation.  <br /></td></tr>
-<tr class="separator:af39c4f12e8c25be757ceb5e189d45e38"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96c90f693082f6c083aa1b3348dcc9a8" id="r_a96c90f693082f6c083aa1b3348dcc9a8"><td class="memItemLeft" align="right" valign="top">juce::TextButton&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#a96c90f693082f6c083aa1b3348dcc9a8">generateButton</a> { &quot;Generate&quot; }</td></tr>
-<tr class="memdesc:a96c90f693082f6c083aa1b3348dcc9a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">AI generation trigger button.  <br /></td></tr>
-<tr class="separator:a96c90f693082f6c083aa1b3348dcc9a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2d32febda2146cc9f77b608dc95b0de" id="r_ae2d32febda2146cc9f77b608dc95b0de"><td class="memItemLeft" align="right" valign="top">juce::TextButton&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#ae2d32febda2146cc9f77b608dc95b0de">loadButton</a> { &quot;Load&quot; }</td></tr>
-<tr class="memdesc:ae2d32febda2146cc9f77b608dc95b0de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Preset loading button.  <br /></td></tr>
-<tr class="separator:ae2d32febda2146cc9f77b608dc95b0de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab82be57733a9d54dab52cb78c086b78f" id="r_ab82be57733a9d54dab52cb78c086b78f"><td class="memItemLeft" align="right" valign="top">juce::TextButton&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#ab82be57733a9d54dab52cb78c086b78f">saveButton</a> { &quot;Save&quot; }</td></tr>
-<tr class="memdesc:ab82be57733a9d54dab52cb78c086b78f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Preset saving button.  <br /></td></tr>
-<tr class="separator:ab82be57733a9d54dab52cb78c086b78f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a29f2491ba220a016babe5968233899bf" id="r_a29f2491ba220a016babe5968233899bf"><td class="memItemLeft" align="right" valign="top">juce::TextButton&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#a29f2491ba220a016babe5968233899bf">logoutButton</a> { &quot;Logout&quot; }</td></tr>
-<tr class="memdesc:a29f2491ba220a016babe5968233899bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logout/sign-in button.  <br /></td></tr>
-<tr class="separator:a29f2491ba220a016babe5968233899bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab373b56a051d44010b71da6ff56ecbc9" id="r_ab373b56a051d44010b71da6ff56ecbc9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSectionPanel.html">SectionPanel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#ab373b56a051d44010b71da6ff56ecbc9">oscMixPanel</a> { &quot;Osc 1 / Mix&quot;, <a class="el" href="namespaceHarmoniaPalette.html#a5f8f7dc7f711e435a07418c582082585">HarmoniaPalette::sectionOsc</a> }</td></tr>
-<tr class="memdesc:ab373b56a051d44010b71da6ff56ecbc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Oscillator 1 / mixer section panel.  <br /></td></tr>
-<tr class="separator:ab373b56a051d44010b71da6ff56ecbc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a506f599c71431f550f350241c4d27cee" id="r_a506f599c71431f550f350241c4d27cee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSectionPanel.html">SectionPanel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#a506f599c71431f550f350241c4d27cee">filterPanel</a> { &quot;Filter&quot;, <a class="el" href="namespaceHarmoniaPalette.html#ad096a22dd19079d1e5d3b43a902b61cd">HarmoniaPalette::sectionFilter</a> }</td></tr>
-<tr class="memdesc:a506f599c71431f550f350241c4d27cee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filter section panel.  <br /></td></tr>
-<tr class="separator:a506f599c71431f550f350241c4d27cee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae14787c639eac02ee159277d6501e6ad" id="r_ae14787c639eac02ee159277d6501e6ad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSectionPanel.html">SectionPanel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#ae14787c639eac02ee159277d6501e6ad">screenPanel</a> { &quot;Display&quot;, <a class="el" href="namespaceHarmoniaPalette.html#ad4d8e1b4cea4cbc91ff2b3b40d61225f">HarmoniaPalette::sectionDisplay</a> }</td></tr>
-<tr class="memdesc:ae14787c639eac02ee159277d6501e6ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display / oscilloscope section panel.  <br /></td></tr>
-<tr class="separator:ae14787c639eac02ee159277d6501e6ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5cfcd758d88757d296b07d6ba937f31" id="r_af5cfcd758d88757d296b07d6ba937f31"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSectionPanel.html">SectionPanel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#af5cfcd758d88757d296b07d6ba937f31">lfoPanel</a> { &quot;LFO&quot;, <a class="el" href="namespaceHarmoniaPalette.html#a1009a8b6c927a851bd126247ce047d68">HarmoniaPalette::sectionLfo</a> }</td></tr>
-<tr class="memdesc:af5cfcd758d88757d296b07d6ba937f31"><td class="mdescLeft">&#160;</td><td class="mdescRight">LFO section panel.  <br /></td></tr>
-<tr class="separator:af5cfcd758d88757d296b07d6ba937f31"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8dfc1ddacbd4c35f232817bf6698ac2a" id="r_a8dfc1ddacbd4c35f232817bf6698ac2a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSectionPanel.html">SectionPanel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#a8dfc1ddacbd4c35f232817bf6698ac2a">osc2Panel</a> { &quot;Osc 2&quot;, HarmoniaPalette::sectionOsc }</td></tr>
-<tr class="memdesc:a8dfc1ddacbd4c35f232817bf6698ac2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Oscillator 2 section panel.  <br /></td></tr>
-<tr class="separator:a8dfc1ddacbd4c35f232817bf6698ac2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae43805c32b41c5f2b40bcd8b72bb007b" id="r_ae43805c32b41c5f2b40bcd8b72bb007b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSectionPanel.html">SectionPanel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#ae43805c32b41c5f2b40bcd8b72bb007b">fxPanel</a> { &quot;Effects&quot;, <a class="el" href="namespaceHarmoniaPalette.html#a8c0f1d7a91cc2656008eb28caf0536fd">HarmoniaPalette::sectionFx</a> }</td></tr>
-<tr class="memdesc:ae43805c32b41c5f2b40bcd8b72bb007b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Effects section panel.  <br /></td></tr>
-<tr class="separator:ae43805c32b41c5f2b40bcd8b72bb007b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8277fbbfcd374c33f4fd3733a1dc0e0" id="r_ae8277fbbfcd374c33f4fd3733a1dc0e0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSectionPanel.html">SectionPanel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#ae8277fbbfcd374c33f4fd3733a1dc0e0">ampPanel</a> { &quot;Amp Envelope&quot;, <a class="el" href="namespaceHarmoniaPalette.html#a2193c7f828985574c656832c6b1a9a25">HarmoniaPalette::sectionAmpEnv</a> }</td></tr>
-<tr class="memdesc:ae8277fbbfcd374c33f4fd3733a1dc0e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Amplitude envelope section panel.  <br /></td></tr>
-<tr class="separator:ae8277fbbfcd374c33f4fd3733a1dc0e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9588dcfca7c5dceb93eacde2b33fc73" id="r_aa9588dcfca7c5dceb93eacde2b33fc73"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classHeaderComponent.html">HeaderComponent</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#aa9588dcfca7c5dceb93eacde2b33fc73">headerComponent</a></td></tr>
+<tr class="separator:aa9588dcfca7c5dceb93eacde2b33fc73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a718c8d42b0e992aeb305a62c1b57b0b0" id="r_a718c8d42b0e992aeb305a62c1b57b0b0"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classSectionPanel.html">SectionPanel</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#a718c8d42b0e992aeb305a62c1b57b0b0">oscMixPanel</a></td></tr>
+<tr class="separator:a718c8d42b0e992aeb305a62c1b57b0b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add92cf268e07a1d6bceff3c184fb54b3" id="r_add92cf268e07a1d6bceff3c184fb54b3"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classSectionPanel.html">SectionPanel</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#add92cf268e07a1d6bceff3c184fb54b3">filterPanel</a></td></tr>
+<tr class="separator:add92cf268e07a1d6bceff3c184fb54b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee45ca92ad9fe1417060839e3c10d1d0" id="r_aee45ca92ad9fe1417060839e3c10d1d0"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classSectionPanel.html">SectionPanel</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#aee45ca92ad9fe1417060839e3c10d1d0">screenPanel</a></td></tr>
+<tr class="separator:aee45ca92ad9fe1417060839e3c10d1d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a530e8164d33b1fb56dfda5521940d637" id="r_a530e8164d33b1fb56dfda5521940d637"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classSectionPanel.html">SectionPanel</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#a530e8164d33b1fb56dfda5521940d637">lfoPanel</a></td></tr>
+<tr class="separator:a530e8164d33b1fb56dfda5521940d637"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4809b3da3216c64ab5ff5c32b676d99" id="r_aa4809b3da3216c64ab5ff5c32b676d99"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classSectionPanel.html">SectionPanel</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#aa4809b3da3216c64ab5ff5c32b676d99">osc2Panel</a></td></tr>
+<tr class="separator:aa4809b3da3216c64ab5ff5c32b676d99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11399c6fb851b0356fc0e10589078d13" id="r_a11399c6fb851b0356fc0e10589078d13"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classSectionPanel.html">SectionPanel</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#a11399c6fb851b0356fc0e10589078d13">fxPanel</a></td></tr>
+<tr class="separator:a11399c6fb851b0356fc0e10589078d13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9871110a5f820fcb9856c5cc74ce7ec1" id="r_a9871110a5f820fcb9856c5cc74ce7ec1"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classSectionPanel.html">SectionPanel</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#a9871110a5f820fcb9856c5cc74ce7ec1">ampPanel</a></td></tr>
+<tr class="separator:a9871110a5f820fcb9856c5cc74ce7ec1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45c18e37c5ab90fdee23f1b69ad46837" id="r_a45c18e37c5ab90fdee23f1b69ad46837"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classOscilloscopeComponent.html">OscilloscopeComponent</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#a45c18e37c5ab90fdee23f1b69ad46837">oscilloscope</a></td></tr>
 <tr class="memdesc:a45c18e37c5ab90fdee23f1b69ad46837"><td class="mdescLeft">&#160;</td><td class="mdescRight">Audio waveform oscilloscope.  <br /></td></tr>
 <tr class="separator:a45c18e37c5ab90fdee23f1b69ad46837"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -432,6 +411,31 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a8583f3f10ddc81a2094d21533c031f58" name="a8583f3f10ddc81a2094d21533c031f58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8583f3f10ddc81a2094d21533c031f58">&#9670;&#160;</a></span>applyTheme()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainComponent::applyTheme </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a2cbd32d8f73439ce532b33a6c9ffa4ff" name="a2cbd32d8f73439ce532b33a6c9ffa4ff"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2cbd32d8f73439ce532b33a6c9ffa4ff">&#9670;&#160;</a></span>buildControls()</h2>
 
@@ -460,38 +464,6 @@ Private Attributes</h2></td></tr>
 <li>Knobs</li>
 <li>Selectors</li>
 <li>Modulation controls </li>
-</ul>
-
-</div>
-</div>
-<a id="a40e6f04d9ab058fb7a2fb5a765ca955f" name="a40e6f04d9ab058fb7a2fb5a765ca955f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a40e6f04d9ab058fb7a2fb5a765ca955f">&#9670;&#160;</a></span>buildHeader()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void MainComponent::buildHeader </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Builds the top header interface. </p>
-<p>Creates:</p><ul>
-<li>Labels</li>
-<li>Prompt field</li>
-<li>Action buttons </li>
 </ul>
 
 </div>
@@ -652,6 +624,32 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="aa6a6216b5a861cc2b25a5f3f60e4bc5a" name="aa6a6216b5a861cc2b25a5f3f60e4bc5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6a6216b5a861cc2b25a5f3f60e4bc5a">&#9670;&#160;</a></span>repaintAllChildren()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void MainComponent::repaintAllChildren </td>
+          <td>(</td>
+          <td class="paramtype">juce::Component &amp;&#160;</td>
+          <td class="paramname"><em>root</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a339148bc43089300e10d5883a0a80726" name="a339148bc43089300e10d5883a0a80726"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a339148bc43089300e10d5883a0a80726">&#9670;&#160;</a></span>resized()</h2>
 
@@ -686,8 +684,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a8ff963c88e776aed4d6cf8d705a65d88" name="a8ff963c88e776aed4d6cf8d705a65d88"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8ff963c88e776aed4d6cf8d705a65d88">&#9670;&#160;</a></span>wireButtons()</h2>
+<a id="a9b9a588d88f74a774c88f7456ca6da4a" name="a9b9a588d88f74a774c88f7456ca6da4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b9a588d88f74a774c88f7456ca6da4a">&#9670;&#160;</a></span>wireHeaderButtons()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -696,7 +694,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void MainComponent::wireButtons </td>
+          <td class="memname">void MainComponent::wireHeaderButtons </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -738,8 +736,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ae8277fbbfcd374c33f4fd3733a1dc0e0" name="ae8277fbbfcd374c33f4fd3733a1dc0e0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae8277fbbfcd374c33f4fd3733a1dc0e0">&#9670;&#160;</a></span>ampPanel</h2>
+<a id="a9871110a5f820fcb9856c5cc74ce7ec1" name="a9871110a5f820fcb9856c5cc74ce7ec1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9871110a5f820fcb9856c5cc74ce7ec1">&#9670;&#160;</a></span>ampPanel</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -748,7 +746,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classSectionPanel.html">SectionPanel</a> MainComponent::ampPanel { &quot;Amp Envelope&quot;, <a class="el" href="namespaceHarmoniaPalette.html#a2193c7f828985574c656832c6b1a9a25">HarmoniaPalette::sectionAmpEnv</a> }</td>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classSectionPanel.html">SectionPanel</a>&gt; MainComponent::ampPanel</td>
         </tr>
       </table>
   </td>
@@ -757,8 +755,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Amplitude envelope section panel. </p>
 
 </div>
 </div>
@@ -831,6 +827,28 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>File chooser used for preset loading/saving. </p>
+
+</div>
+</div>
+<a id="ac6574fc6bee9c3803680a994867965f1" name="ac6574fc6bee9c3803680a994867965f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6574fc6bee9c3803680a994867965f1">&#9670;&#160;</a></span>currentTheme</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceHarmoniaPalette.html#a48dd6f8d4570ed63402450e3ea1fba8c">HarmoniaPalette::Theme</a> MainComponent::currentTheme { <a class="el" href="namespaceHarmoniaPalette.html#a48dd6f8d4570ed63402450e3ea1fba8ca023c239d2f2538f140a20e72c7b73f20">HarmoniaPalette::Theme::Cyan</a> }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -978,8 +996,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a506f599c71431f550f350241c4d27cee" name="a506f599c71431f550f350241c4d27cee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a506f599c71431f550f350241c4d27cee">&#9670;&#160;</a></span>filterPanel</h2>
+<a id="add92cf268e07a1d6bceff3c184fb54b3" name="add92cf268e07a1d6bceff3c184fb54b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add92cf268e07a1d6bceff3c184fb54b3">&#9670;&#160;</a></span>filterPanel</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -988,7 +1006,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classSectionPanel.html">SectionPanel</a> MainComponent::filterPanel { &quot;Filter&quot;, <a class="el" href="namespaceHarmoniaPalette.html#ad096a22dd19079d1e5d3b43a902b61cd">HarmoniaPalette::sectionFilter</a> }</td>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classSectionPanel.html">SectionPanel</a>&gt; MainComponent::filterPanel</td>
         </tr>
       </table>
   </td>
@@ -997,8 +1015,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Filter section panel. </p>
 
 </div>
 </div>
@@ -1050,8 +1066,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ae43805c32b41c5f2b40bcd8b72bb007b" name="ae43805c32b41c5f2b40bcd8b72bb007b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae43805c32b41c5f2b40bcd8b72bb007b">&#9670;&#160;</a></span>fxPanel</h2>
+<a id="a11399c6fb851b0356fc0e10589078d13" name="a11399c6fb851b0356fc0e10589078d13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11399c6fb851b0356fc0e10589078d13">&#9670;&#160;</a></span>fxPanel</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1060,7 +1076,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classSectionPanel.html">SectionPanel</a> MainComponent::fxPanel { &quot;Effects&quot;, <a class="el" href="namespaceHarmoniaPalette.html#a8c0f1d7a91cc2656008eb28caf0536fd">HarmoniaPalette::sectionFx</a> }</td>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classSectionPanel.html">SectionPanel</a>&gt; MainComponent::fxPanel</td>
         </tr>
       </table>
   </td>
@@ -1070,12 +1086,10 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Effects section panel. </p>
-
 </div>
 </div>
-<a id="a96c90f693082f6c083aa1b3348dcc9a8" name="a96c90f693082f6c083aa1b3348dcc9a8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a96c90f693082f6c083aa1b3348dcc9a8">&#9670;&#160;</a></span>generateButton</h2>
+<a id="aa9588dcfca7c5dceb93eacde2b33fc73" name="aa9588dcfca7c5dceb93eacde2b33fc73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9588dcfca7c5dceb93eacde2b33fc73">&#9670;&#160;</a></span>headerComponent</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1084,7 +1098,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">juce::TextButton MainComponent::generateButton { &quot;Generate&quot; }</td>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classHeaderComponent.html">HeaderComponent</a>&gt; MainComponent::headerComponent</td>
         </tr>
       </table>
   </td>
@@ -1094,12 +1108,10 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>AI generation trigger button. </p>
-
 </div>
 </div>
-<a id="af5cfcd758d88757d296b07d6ba937f31" name="af5cfcd758d88757d296b07d6ba937f31"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af5cfcd758d88757d296b07d6ba937f31">&#9670;&#160;</a></span>lfoPanel</h2>
+<a id="a530e8164d33b1fb56dfda5521940d637" name="a530e8164d33b1fb56dfda5521940d637"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a530e8164d33b1fb56dfda5521940d637">&#9670;&#160;</a></span>lfoPanel</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1108,7 +1120,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classSectionPanel.html">SectionPanel</a> MainComponent::lfoPanel { &quot;LFO&quot;, <a class="el" href="namespaceHarmoniaPalette.html#a1009a8b6c927a851bd126247ce047d68">HarmoniaPalette::sectionLfo</a> }</td>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classSectionPanel.html">SectionPanel</a>&gt; MainComponent::lfoPanel</td>
         </tr>
       </table>
   </td>
@@ -1117,8 +1129,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>LFO section panel. </p>
 
 </div>
 </div>
@@ -1215,54 +1225,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>LFO waveform visualizer. </p>
-
-</div>
-</div>
-<a id="ae2d32febda2146cc9f77b608dc95b0de" name="ae2d32febda2146cc9f77b608dc95b0de"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae2d32febda2146cc9f77b608dc95b0de">&#9670;&#160;</a></span>loadButton</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">juce::TextButton MainComponent::loadButton { &quot;Load&quot; }</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Preset loading button. </p>
-
-</div>
-</div>
-<a id="a29f2491ba220a016babe5968233899bf" name="a29f2491ba220a016babe5968233899bf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a29f2491ba220a016babe5968233899bf">&#9670;&#160;</a></span>logoutButton</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">juce::TextButton MainComponent::logoutButton { &quot;Logout&quot; }</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Logout/sign-in button. </p>
 
 </div>
 </div>
@@ -1378,8 +1340,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a8dfc1ddacbd4c35f232817bf6698ac2a" name="a8dfc1ddacbd4c35f232817bf6698ac2a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8dfc1ddacbd4c35f232817bf6698ac2a">&#9670;&#160;</a></span>osc2Panel</h2>
+<a id="aa4809b3da3216c64ab5ff5c32b676d99" name="aa4809b3da3216c64ab5ff5c32b676d99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4809b3da3216c64ab5ff5c32b676d99">&#9670;&#160;</a></span>osc2Panel</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1388,7 +1350,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classSectionPanel.html">SectionPanel</a> MainComponent::osc2Panel { &quot;Osc 2&quot;, HarmoniaPalette::sectionOsc }</td>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classSectionPanel.html">SectionPanel</a>&gt; MainComponent::osc2Panel</td>
         </tr>
       </table>
   </td>
@@ -1397,8 +1359,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Oscillator 2 section panel. </p>
 
 </div>
 </div>
@@ -1474,8 +1434,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ab373b56a051d44010b71da6ff56ecbc9" name="ab373b56a051d44010b71da6ff56ecbc9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab373b56a051d44010b71da6ff56ecbc9">&#9670;&#160;</a></span>oscMixPanel</h2>
+<a id="a718c8d42b0e992aeb305a62c1b57b0b0" name="a718c8d42b0e992aeb305a62c1b57b0b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a718c8d42b0e992aeb305a62c1b57b0b0">&#9670;&#160;</a></span>oscMixPanel</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1484,7 +1444,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classSectionPanel.html">SectionPanel</a> MainComponent::oscMixPanel { &quot;Osc 1 / Mix&quot;, <a class="el" href="namespaceHarmoniaPalette.html#a5f8f7dc7f711e435a07418c582082585">HarmoniaPalette::sectionOsc</a> }</td>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classSectionPanel.html">SectionPanel</a>&gt; MainComponent::oscMixPanel</td>
         </tr>
       </table>
   </td>
@@ -1494,7 +1454,19 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Oscillator 1 / mixer section panel. </p>
+</div>
+</div>
+<a id="ad88331a5eb776241101871cd44650d17" name="ad88331a5eb776241101871cd44650d17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad88331a5eb776241101871cd44650d17">&#9670;&#160;</a></span>paletteSelector</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classPaletteSelector.html">PaletteSelector</a> MainComponent::paletteSelector</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -1522,30 +1494,6 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ac8863e619983776de537fab716e967f1" name="ac8863e619983776de537fab716e967f1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac8863e619983776de537fab716e967f1">&#9670;&#160;</a></span>presetLabel</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">juce::Label MainComponent::presetLabel</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Displays currently loaded preset name. </p>
-
-</div>
-</div>
 <a id="a8afb48f92180976d940c6a4f6c46ee10" name="a8afb48f92180976d940c6a4f6c46ee10"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8afb48f92180976d940c6a4f6c46ee10">&#9670;&#160;</a></span>processor</h2>
 
@@ -1567,30 +1515,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reference to the main audio processor. </p>
-
-</div>
-</div>
-<a id="af39c4f12e8c25be757ceb5e189d45e38" name="af39c4f12e8c25be757ceb5e189d45e38"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af39c4f12e8c25be757ceb5e189d45e38">&#9670;&#160;</a></span>promptEditor</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">juce::TextEditor MainComponent::promptEditor</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Prompt field used for AI preset generation. </p>
 
 </div>
 </div>
@@ -1642,8 +1566,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ab82be57733a9d54dab52cb78c086b78f" name="ab82be57733a9d54dab52cb78c086b78f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab82be57733a9d54dab52cb78c086b78f">&#9670;&#160;</a></span>saveButton</h2>
+<a id="aee45ca92ad9fe1417060839e3c10d1d0" name="aee45ca92ad9fe1417060839e3c10d1d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee45ca92ad9fe1417060839e3c10d1d0">&#9670;&#160;</a></span>screenPanel</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1652,7 +1576,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">juce::TextButton MainComponent::saveButton { &quot;Save&quot; }</td>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classSectionPanel.html">SectionPanel</a>&gt; MainComponent::screenPanel</td>
         </tr>
       </table>
   </td>
@@ -1661,32 +1585,6 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Preset saving button. </p>
-
-</div>
-</div>
-<a id="ae14787c639eac02ee159277d6501e6ad" name="ae14787c639eac02ee159277d6501e6ad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae14787c639eac02ee159277d6501e6ad">&#9670;&#160;</a></span>screenPanel</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classSectionPanel.html">SectionPanel</a> MainComponent::screenPanel { &quot;Display&quot;, <a class="el" href="namespaceHarmoniaPalette.html#ad4d8e1b4cea4cbc91ff2b3b40d61225f">HarmoniaPalette::sectionDisplay</a> }</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Display / oscilloscope section panel. </p>
 
 </div>
 </div>
@@ -1711,30 +1609,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Current authenticated user session. </p>
-
-</div>
-</div>
-<a id="aa4787314833300817169b4a5d481a3d8" name="aa4787314833300817169b4a5d481a3d8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa4787314833300817169b4a5d481a3d8">&#9670;&#160;</a></span>subtitleLabel</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">juce::Label MainComponent::subtitleLabel</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Displays plugin subtitle/tagline. </p>
 
 </div>
 </div>
@@ -1783,30 +1657,6 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>MIDI keyboard component. </p>
-
-</div>
-</div>
-<a id="a1f117d943804e5df2210a00f40967562" name="a1f117d943804e5df2210a00f40967562"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1f117d943804e5df2210a00f40967562">&#9670;&#160;</a></span>titleLabel</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">juce::Label MainComponent::titleLabel</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Displays connected username. </p>
 
 </div>
 </div>

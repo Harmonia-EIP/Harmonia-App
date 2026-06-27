@@ -1,14 +1,21 @@
 var searchData=
 [
-  ['textmuted_0',['textMuted',['../namespaceHarmoniaPalette.html#af84104e063dd74b0e7077d7b9516f7e0',1,'HarmoniaPalette']]],
-  ['textprimary_1',['textprimary',['../structThemePalette.html#a221bbd68978b99f33701eff01eed03eb',1,'ThemePalette::textPrimary'],['../namespaceHarmoniaPalette.html#a1925475b6d18ba079d5612c405bd071f',1,'HarmoniaPalette::textPrimary']]],
-  ['textsecondary_2',['textsecondary',['../structThemePalette.html#a421ac3d45c0036d9d234fd1063fd0065',1,'ThemePalette::textSecondary'],['../namespaceHarmoniaPalette.html#afc4e743d7c3c1152093456af0c9bfc28',1,'HarmoniaPalette::textSecondary']]],
-  ['theme_3',['Theme',['../namespaceStrings_1_1Buttons.html#ab83eb8e33da314f55eac7eeee6842af8',1,'Strings::Buttons']]],
-  ['themeid_4',['themeid',['../structUserSession.html#aa672f9f78e0b491b07d5deabb3d6dd2e',1,'UserSession::themeId'],['../structUserProfile.html#ad653cf20ab1a2b58a26573efeb1baa07',1,'UserProfile::themeId']]],
-  ['themeupdatefailed_5',['ThemeUpdateFailed',['../namespaceStrings_1_1Errors.html#a739a922113d6083a9862814f6e8f4c28',1,'Strings::Errors']]],
-  ['tint_6',['tint',['../classSectionPanel.html#aa621be963c3b49cd36acfc3661b51006',1,'SectionPanel']]],
-  ['title_7',['title',['../classSectionPanel.html#a3493379c96dd53e7671ddb8f0a9daf69',1,'SectionPanel']]],
-  ['titlelabel_8',['titlelabel',['../classSignupPage.html#a45a91e2876841839d278c9e8d0421367',1,'SignupPage::titleLabel'],['../classWelcomePage.html#a2d6dddcf5a14ba6ab661a31b4dae8601',1,'WelcomePage::titleLabel'],['../classLoginPage.html#a743dbe692a5203c6c1a766c409b99d08',1,'LoginPage::titleLabel'],['../classMainComponent.html#a1f117d943804e5df2210a00f40967562',1,'MainComponent::titleLabel']]],
-  ['titlesize_9',['TitleSize',['../namespaceUIStyle_1_1Fonts.html#a43deec8f09ea1c0e720940e883694be6',1,'UIStyle::Fonts']]],
-  ['triangle_10',['Triangle',['../namespaceStrings_1_1Waveform.html#aee5d0d9b8fec47a7b96e964eb7a04415',1,'Strings::Waveform']]]
+  ['text1_0',['text1',['../structHarmoniaPalette_1_1ThemeDef.html#aa81cf0532119f3b65f7f32506b61dc7e',1,'HarmoniaPalette::ThemeDef']]],
+  ['text2_1',['text2',['../structHarmoniaPalette_1_1ThemeDef.html#ac81ee63ca16dcd0ae5ee3ba3a0fffc11',1,'HarmoniaPalette::ThemeDef']]],
+  ['textmuted_2',['textmuted',['../namespaceHarmoniaPalette.html#a45b2890cc86176e285506a55d9864e10',1,'HarmoniaPalette::textMuted'],['../namespaceHarmoniaColours.html#acea1388526d5d6af8e29edad6a845435',1,'HarmoniaColours::textMuted']]],
+  ['textmutedcol_3',['textMutedCol',['../structHarmoniaPalette_1_1ThemeDef.html#a8745595301b68f381e39d91aefb3bf83',1,'HarmoniaPalette::ThemeDef']]],
+  ['textprimary_4',['textprimary',['../structThemePalette.html#a221bbd68978b99f33701eff01eed03eb',1,'ThemePalette::textPrimary'],['../namespaceHarmoniaPalette.html#a45b427b55cd94c6af0fa9cd6e9e739b1',1,'HarmoniaPalette::textPrimary'],['../namespaceHarmoniaColours.html#a73dd465c22a28ddfbb432af3cfccff89',1,'HarmoniaColours::textPrimary']]],
+  ['textsecondary_5',['textsecondary',['../structThemePalette.html#a421ac3d45c0036d9d234fd1063fd0065',1,'ThemePalette::textSecondary'],['../namespaceHarmoniaPalette.html#ae296b36c48c7f4936d8f46e6fcb6f613',1,'HarmoniaPalette::textSecondary']]],
+  ['textsubtitle_6',['textSubtitle',['../namespaceHarmoniaColours.html#a7aba9e7093ed123e9174393cef831545',1,'HarmoniaColours']]],
+  ['theme_7',['Theme',['../namespaceStrings_1_1Buttons.html#ab83eb8e33da314f55eac7eeee6842af8',1,'Strings::Buttons']]],
+  ['themeid_8',['themeid',['../structUserProfile.html#ad653cf20ab1a2b58a26573efeb1baa07',1,'UserProfile::themeId'],['../structUserSession.html#aa672f9f78e0b491b07d5deabb3d6dd2e',1,'UserSession::themeId']]],
+  ['themes_9',['themes',['../namespaceHarmoniaPalette.html#a1b7d683affafabf7bbbf016bf2c85829',1,'HarmoniaPalette::Themes'],['../classPaletteSelector.html#a82a24a6cea49a1c6ca8fe06ad99ea181',1,'PaletteSelector::themes']]],
+  ['themeupdatefailed_10',['ThemeUpdateFailed',['../namespaceStrings_1_1Errors.html#a739a922113d6083a9862814f6e8f4c28',1,'Strings::Errors']]],
+  ['tint_11',['tint',['../classSectionPanel.html#aa621be963c3b49cd36acfc3661b51006',1,'SectionPanel']]],
+  ['title_12',['title',['../classSectionPanel.html#a3493379c96dd53e7671ddb8f0a9daf69',1,'SectionPanel']]],
+  ['titlelabel_13',['titlelabel',['../classHeaderComponent.html#a66e50ad65c1c37690fd0edd6bd9301c0',1,'HeaderComponent::titleLabel'],['../classWelcomePage.html#a2d6dddcf5a14ba6ab661a31b4dae8601',1,'WelcomePage::titleLabel'],['../classSignupPage.html#a45a91e2876841839d278c9e8d0421367',1,'SignupPage::titleLabel'],['../classLoginPage.html#a743dbe692a5203c6c1a766c409b99d08',1,'LoginPage::titleLabel']]],
+  ['titlesize_14',['TitleSize',['../namespaceUIStyle_1_1Fonts.html#a43deec8f09ea1c0e720940e883694be6',1,'UIStyle::Fonts']]],
+  ['tocutoff_15',['ToCutoff',['../namespaceStrings_1_1Knobs.html#af906242ce5e0b5afe0d0b0defc47d18b',1,'Strings::Knobs']]],
+  ['topitch_16',['ToPitch',['../namespaceStrings_1_1Knobs.html#a6c355a9106906840def00c3b02594009',1,'Strings::Knobs']]],
+  ['triangle_17',['Triangle',['../namespaceStrings_1_1Waveform.html#aee5d0d9b8fec47a7b96e964eb7a04415',1,'Strings::Waveform']]]
 ];

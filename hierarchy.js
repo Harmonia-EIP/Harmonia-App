@@ -20,6 +20,7 @@ var hierarchy =
       [ "ComboControl", "classComboControl.html", null ],
       [ "DisplayScreen", "classDisplayScreen.html", null ],
       [ "EnvelopeVisualizer", "classEnvelopeVisualizer.html", null ],
+      [ "HeaderComponent", "classHeaderComponent.html", null ],
       [ "IconChoiceSelector", "classIconChoiceSelector.html", [
         [ "FilterTypeSelector", "classFilterTypeSelector.html", null ],
         [ "WaveformSelector", "classWaveformSelector.html", null ]
@@ -29,6 +30,7 @@ var hierarchy =
       [ "LoginPage", "classLoginPage.html", null ],
       [ "MainComponent", "classMainComponent.html", null ],
       [ "OscilloscopeComponent", "classOscilloscopeComponent.html", null ],
+      [ "PaletteSelector", "classPaletteSelector.html", null ],
       [ "ParticleField", "classParticleField.html", null ],
       [ "SectionPanel", "classSectionPanel.html", null ],
       [ "SignupPage", "classSignupPage.html", null ],
@@ -43,7 +45,9 @@ var hierarchy =
     [ "PresetLoader::LoadResult", "structPresetLoader_1_1LoadResult.html", null ],
     [ "juce::LookAndFeel_V4", null, [
       [ "AppLookAndFeel", "classAppLookAndFeel.html", null ],
-      [ "HiveLookAndFeel", "classHiveLookAndFeel.html", null ]
+      [ "AuthPageLookAndFeel", "classAuthPageLookAndFeel.html", null ],
+      [ "HiveLookAndFeel", "classHiveLookAndFeel.html", null ],
+      [ "WelcomeLookAndFeel", "classWelcomeLookAndFeel.html", null ]
     ] ],
     [ "ProfileResult", "structProfileResult.html", null ],
     [ "juce::SynthesiserSound", null, [
@@ -52,13 +56,19 @@ var hierarchy =
     [ "juce::SynthesiserVoice", null, [
       [ "HarmoniaVoice", "classHarmoniaVoice.html", null ]
     ] ],
+    [ "HarmoniaPalette::ThemeDef", "structHarmoniaPalette_1_1ThemeDef.html", null ],
     [ "ThemePalette", "structThemePalette.html", null ],
     [ "juce::Timer", null, [
       [ "LfoVisualizer", "classLfoVisualizer.html", null ],
+      [ "LoginPage", "classLoginPage.html", null ],
       [ "OscilloscopeComponent", "classOscilloscopeComponent.html", null ],
       [ "ParticleField", "classParticleField.html", null ],
+      [ "SignupPage", "classSignupPage.html", null ],
       [ "WelcomePage", "classWelcomePage.html", null ]
     ] ],
     [ "UserProfile", "structUserProfile.html", null ],
-    [ "UserSession", "structUserSession.html", null ]
+    [ "UserSession", "structUserSession.html", null ],
+    [ "LoginPage::WaveLayer", "structLoginPage_1_1WaveLayer.html", null ],
+    [ "SignupPage::WaveLayer", "structSignupPage_1_1WaveLayer.html", null ],
+    [ "WelcomePage::WaveLayer", "structWelcomePage_1_1WaveLayer.html", null ]
 ];

@@ -129,10 +129,12 @@ Collaboration diagram for EnvelopeVisualizer:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2f324c8b9df151f4a8cc0b4bdbf743c4" id="r_a2f324c8b9df151f4a8cc0b4bdbf743c4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvelopeVisualizer.html#a2f324c8b9df151f4a8cc0b4bdbf743c4">EnvelopeVisualizer</a> (juce::AudioProcessorValueTreeState &amp;apvts, juce::Colour tint=<a class="el" href="namespaceHarmoniaPalette.html#abdad5cf7511d7be0e47a8bd90fde5d38">HarmoniaPalette::amber</a>)</td></tr>
-<tr class="separator:a2f324c8b9df151f4a8cc0b4bdbf743c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acaeb40f8c4437e9c9c5f37dca38d6ce5" id="r_acaeb40f8c4437e9c9c5f37dca38d6ce5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvelopeVisualizer.html#acaeb40f8c4437e9c9c5f37dca38d6ce5">EnvelopeVisualizer</a> (juce::AudioProcessorValueTreeState &amp;apvts, juce::Colour tint=<a class="el" href="namespaceHarmoniaPalette.html#a4ad97abaeead6b528ec54673d6b136b0">HarmoniaPalette::sectionAmpEnv</a>)</td></tr>
+<tr class="separator:acaeb40f8c4437e9c9c5f37dca38d6ce5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a333b68fa1875afa76cdef8f602ef6151" id="r_a333b68fa1875afa76cdef8f602ef6151"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvelopeVisualizer.html#a333b68fa1875afa76cdef8f602ef6151">~EnvelopeVisualizer</a> () override</td></tr>
 <tr class="separator:a333b68fa1875afa76cdef8f602ef6151"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f450ce9261596a80b7c9c0bd054e467" id="r_a6f450ce9261596a80b7c9c0bd054e467"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvelopeVisualizer.html#a6f450ce9261596a80b7c9c0bd054e467">setAccentColour</a> (juce::Colour c)</td></tr>
+<tr class="separator:a6f450ce9261596a80b7c9c0bd054e467"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae83cc82aa425205597501d1e2b484d7d" id="r_ae83cc82aa425205597501d1e2b484d7d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvelopeVisualizer.html#ae83cc82aa425205597501d1e2b484d7d">paint</a> (juce::Graphics &amp;g) override</td></tr>
 <tr class="separator:ae83cc82aa425205597501d1e2b484d7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -163,8 +165,8 @@ Private Attributes</h2></td></tr>
 </ul>
 <p>The component is purely visual and does not process audio. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a2f324c8b9df151f4a8cc0b4bdbf743c4" name="a2f324c8b9df151f4a8cc0b4bdbf743c4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2f324c8b9df151f4a8cc0b4bdbf743c4">&#9670;&#160;</a></span>EnvelopeVisualizer()</h2>
+<a id="acaeb40f8c4437e9c9c5f37dca38d6ce5" name="acaeb40f8c4437e9c9c5f37dca38d6ce5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acaeb40f8c4437e9c9c5f37dca38d6ce5">&#9670;&#160;</a></span>EnvelopeVisualizer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -182,7 +184,7 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">juce::Colour&#160;</td>
-          <td class="paramname"><em>tint</em> = <code><a class="el" href="namespaceHarmoniaPalette.html#abdad5cf7511d7be0e47a8bd90fde5d38">HarmoniaPalette::amber</a></code>&#160;</td>
+          <td class="paramname"><em>tint</em> = <code><a class="el" href="namespaceHarmoniaPalette.html#a4ad97abaeead6b528ec54673d6b136b0">HarmoniaPalette::sectionAmpEnv</a></code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -333,6 +335,32 @@ Private Attributes</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6f450ce9261596a80b7c9c0bd054e467" name="a6f450ce9261596a80b7c9c0bd054e467"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f450ce9261596a80b7c9c0bd054e467">&#9670;&#160;</a></span>setAccentColour()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EnvelopeVisualizer::setAccentColour </td>
+          <td>(</td>
+          <td class="paramtype">juce::Colour&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

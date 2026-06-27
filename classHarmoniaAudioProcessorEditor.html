@@ -116,27 +116,15 @@ Collaboration diagram for HarmoniaAudioProcessorEditor:</div>
 <div class="dyncontent">
 <div class="center"><img src="classHarmoniaAudioProcessorEditor__coll__graph.png" border="0" usemap="#aHarmoniaAudioProcessorEditor_coll__map" alt="Collaboration graph"/></div>
 <map name="aHarmoniaAudioProcessorEditor_coll__map" id="aHarmoniaAudioProcessorEditor_coll__map">
-<area shape="rect" title="Root editor window of the Harmonia plugin." alt="" coords="1176,69,1400,95"/>
-<area shape="rect" title=" " alt="" coords="840,20,1035,45"/>
-<area shape="poly" title=" " alt="" coords="1046,45,1152,59,1203,67,1202,72,1152,65,1046,50"/>
-<area shape="rect" href="classHarmoniaAudioProcessor.html" title="Main JUCE audio processor for the Harmonia synthesizer." alt="" coords="537,135,724,160"/>
-<area shape="poly" title=" " alt="" coords="738,140,879,132,1034,118,1214,92,1215,97,1035,123,879,137,738,145"/>
-<area shape="rect" href="classAppController.html" title="Root UI controller of the Harmonia application." alt="" coords="882,69,993,95"/>
-<area shape="poly" title=" " alt="" coords="703,129,881,91,882,96,705,134"/>
-<area shape="rect" title=" " alt="" coords="217,205,374,231"/>
-<area shape="poly" title=" " alt="" coords="375,200,513,171,575,158,576,163,514,177,376,205"/>
-<area shape="rect" href="structHarmoniaParams_1_1AtomicRefs.html" title="Real&#45;time safe parameter access structure." alt="" coords="187,107,404,132"/>
-<area shape="poly" title=" " alt="" coords="418,127,537,137,537,142,418,132"/>
-<area shape="rect" href="classOscilloscopeComponent.html" title="Real&#45;time oscilloscope waveform display." alt="" coords="206,156,385,181"/>
-<area shape="poly" title=" " alt="" coords="398,166,513,161,545,157,545,163,514,166,399,171"/>
-<area shape="rect" title=" " alt="" coords="5,89,137,115"/>
-<area shape="poly" title=" " alt="" coords="119,117,187,141,235,153,234,159,186,146,117,122"/>
-<area shape="poly" title=" " alt="" coords="151,93,187,91,586,81,882,79,882,85,586,86,187,97,151,99"/>
-<area shape="rect" title=" " alt="" coords="24,156,119,181"/>
-<area shape="poly" title=" " alt="" coords="133,166,206,166,206,171,133,171"/>
-<area shape="poly" title=" " alt="" coords="1007,79,1176,79,1176,85,1007,85"/>
-<area shape="rect" href="classBackendManager.html" title="Central facade for all backend operations." alt="" coords="563,5,698,31"/>
-<area shape="poly" title=" " alt="" coords="712,28,817,47,841,54,888,67,886,72,839,59,815,53,711,33"/>
+<area shape="rect" title="Root editor window of the Harmonia plugin." alt="" coords="12,181,236,207"/>
+<area shape="rect" title=" " alt="" coords="5,93,200,119"/>
+<area shape="poly" title=" " alt="" coords="111,131,124,180,118,181,106,133"/>
+<area shape="rect" href="classHarmoniaAudioProcessor.html" title="Main JUCE audio processor for the Harmonia synthesizer." alt="" coords="224,93,411,119"/>
+<area shape="poly" title=" " alt="" coords="280,127,151,184,149,179,278,122"/>
+<area shape="rect" title=" " alt="" coords="133,5,291,31"/>
+<area shape="poly" title=" " alt="" coords="238,37,305,91,301,95,235,41"/>
+<area shape="rect" href="structHarmoniaParams_1_1AtomicRefs.html" title="Real&#45;time safe parameter access structure." alt="" coords="315,5,533,31"/>
+<area shape="poly" title=" " alt="" coords="401,41,333,95,330,91,397,37"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -160,9 +148,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a4d1af66222c0c6ec427a857cd922a84d" id="r_a4d1af66222c0c6ec427a857cd922a84d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classHarmoniaAudioProcessor.html">HarmoniaAudioProcessor</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessorEditor.html#a4d1af66222c0c6ec427a857cd922a84d">audioProcessor</a></td></tr>
 <tr class="memdesc:a4d1af66222c0c6ec427a857cd922a84d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reference to the audio processor instance.  <br /></td></tr>
 <tr class="separator:a4d1af66222c0c6ec427a857cd922a84d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af55e8505fb92115d8f79ec3b69b6d079" id="r_af55e8505fb92115d8f79ec3b69b6d079"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classAppController.html">AppController</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessorEditor.html#af55e8505fb92115d8f79ec3b69b6d079">appController</a></td></tr>
-<tr class="memdesc:af55e8505fb92115d8f79ec3b69b6d079"><td class="mdescLeft">&#160;</td><td class="mdescRight">Root application controller.  <br /></td></tr>
-<tr class="separator:af55e8505fb92115d8f79ec3b69b6d079"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a418b2c36fb2965a6b40a295731de99ae" id="r_a418b2c36fb2965a6b40a295731de99ae"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classAppController.html">AppController</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessorEditor.html#a418b2c36fb2965a6b40a295731de99ae">appController</a></td></tr>
+<tr class="memdesc:a418b2c36fb2965a6b40a295731de99ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Root application controller.  <br /></td></tr>
+<tr class="separator:a418b2c36fb2965a6b40a295731de99ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Root editor window of the Harmonia plugin. </p>
@@ -295,8 +283,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="af55e8505fb92115d8f79ec3b69b6d079" name="af55e8505fb92115d8f79ec3b69b6d079"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af55e8505fb92115d8f79ec3b69b6d079">&#9670;&#160;</a></span>appController</h2>
+<a id="a418b2c36fb2965a6b40a295731de99ae" name="a418b2c36fb2965a6b40a295731de99ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a418b2c36fb2965a6b40a295731de99ae">&#9670;&#160;</a></span>appController</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -305,7 +293,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classAppController.html">AppController</a> HarmoniaAudioProcessorEditor::appController</td>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classAppController.html">AppController</a>&gt; HarmoniaAudioProcessorEditor::appController</td>
         </tr>
       </table>
   </td>

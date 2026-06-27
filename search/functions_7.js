@@ -6,5 +6,6 @@ var searchData=
   ['harmoniaaudioprocessoreditor_3',['HarmoniaAudioProcessorEditor',['../classHarmoniaAudioProcessorEditor.html#a64a30dc9c3089d73ae496500748a13f2',1,'HarmoniaAudioProcessorEditor']]],
   ['harmoniavoice_4',['HarmoniaVoice',['../classHarmoniaVoice.html#aabdcc3cab0d00f66d76156348ba75d84',1,'HarmoniaVoice']]],
   ['haseditor_5',['hasEditor',['../classHarmoniaAudioProcessor.html#a5e4224f517d5858c382fb6f44485ed40',1,'HarmoniaAudioProcessor']]],
-  ['hivelookandfeel_6',['HiveLookAndFeel',['../classHiveLookAndFeel.html#ae9f303aab9beb762871e002b3c506d00',1,'HiveLookAndFeel']]]
+  ['headercomponent_6',['HeaderComponent',['../classHeaderComponent.html#ab197394165cd8bd0a3ccc0d06eba87f5',1,'HeaderComponent']]],
+  ['hivelookandfeel_7',['HiveLookAndFeel',['../classHiveLookAndFeel.html#ae9f303aab9beb762871e002b3c506d00',1,'HiveLookAndFeel']]]
 ];

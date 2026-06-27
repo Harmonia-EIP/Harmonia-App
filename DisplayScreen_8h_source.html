@@ -127,14 +127,14 @@ $(document).ready(function(){initNavTree('DisplayScreen_8h_source.html',''); ini
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        {</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            <span class="keyword">const</span> <span class="keywordtype">float</span> a = 0.06f - i * 0.005f;</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            <span class="keywordflow">if</span> (a &lt;= 0.0f) <span class="keywordflow">continue</span>;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            g.setColour (<a class="code hl_variable" href="namespaceHarmoniaPalette.html#af98351a9e2efbadfdfff9972921e9455">HarmoniaPalette::accent</a>.withAlpha (a));</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            g.setColour (<a class="code hl_variable" href="namespaceHarmoniaPalette.html#a0c04aca4dcf228ab423bd1fc8a2df4ae">HarmoniaPalette::accent</a>.withAlpha (a));</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            g.drawRoundedRectangle (r.expanded ((<span class="keywordtype">float</span>) i), corner + i, 1.0f);</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        }</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        g.setColour (<a class="code hl_variable" href="namespaceHarmoniaPalette.html#a2c84ea63e99b94e65cd68fc791a25c75">HarmoniaPalette::screenBg</a>);</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        g.fillRoundedRectangle (r, corner);</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        g.setColour (<a class="code hl_variable" href="namespaceHarmoniaPalette.html#af98351a9e2efbadfdfff9972921e9455">HarmoniaPalette::accent</a>.withAlpha (0.6f));</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        g.setColour (<a class="code hl_variable" href="namespaceHarmoniaPalette.html#a0c04aca4dcf228ab423bd1fc8a2df4ae">HarmoniaPalette::accent</a>.withAlpha (0.6f));</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        g.drawRoundedRectangle (r, corner, 1.0f);</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        g.setColour (<a class="code hl_variable" href="namespaceHarmoniaPalette.html#a0e67b81effa336709c9dc4c6732b5dac">HarmoniaPalette::screenGrid</a>.withAlpha (0.6f));</div>
@@ -145,7 +145,7 @@ $(document).ready(function(){initNavTree('DisplayScreen_8h_source.html',''); ini
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            g.drawHorizontalLine ((<span class="keywordtype">int</span>) y, r.getX() + 8.0f, r.getRight() - 8.0f);</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        }</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        g.setColour (<a class="code hl_variable" href="namespaceHarmoniaPalette.html#af98351a9e2efbadfdfff9972921e9455">HarmoniaPalette::accent</a>.withAlpha (0.5f));</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        g.setColour (<a class="code hl_variable" href="namespaceHarmoniaPalette.html#a0c04aca4dcf228ab423bd1fc8a2df4ae">HarmoniaPalette::accent</a>.withAlpha (0.5f));</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        g.setFont (juce::Font (juce::FontOptions (9.0f).withStyle (<span class="stringliteral">&quot;Bold&quot;</span>)));</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        g.drawText (<span class="stringliteral">&quot;OSCILLOSCOPE&quot;</span>,</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                    r.toNearestInt().reduced (10, 6).removeFromTop (12),</div>
@@ -171,9 +171,9 @@ $(document).ready(function(){initNavTree('DisplayScreen_8h_source.html',''); ini
 <div class="ttc" id="aclassDisplayScreen_html_a322d84f9951ade79058c6bee361507a0"><div class="ttname"><a href="classDisplayScreen.html#a322d84f9951ade79058c6bee361507a0">DisplayScreen::resized</a></div><div class="ttdeci">void resized() override</div><div class="ttdef"><b>Definition</b> DisplayScreen.h:71</div></div>
 <div class="ttc" id="aclassDisplayScreen_html_aeb4be29954e781ac72fd78b5e4fa7ac5"><div class="ttname"><a href="classDisplayScreen.html#aeb4be29954e781ac72fd78b5e4fa7ac5">DisplayScreen::oscilloscope</a></div><div class="ttdeci">OscilloscopeComponent &amp; oscilloscope</div><div class="ttdef"><b>Definition</b> DisplayScreen.h:77</div></div>
 <div class="ttc" id="aclassOscilloscopeComponent_html"><div class="ttname"><a href="classOscilloscopeComponent.html">OscilloscopeComponent</a></div><div class="ttdoc">Real-time oscilloscope waveform display.</div><div class="ttdef"><b>Definition</b> OscilloscopeComponent.h:73</div></div>
-<div class="ttc" id="anamespaceHarmoniaPalette_html_a0e67b81effa336709c9dc4c6732b5dac"><div class="ttname"><a href="namespaceHarmoniaPalette.html#a0e67b81effa336709c9dc4c6732b5dac">HarmoniaPalette::screenGrid</a></div><div class="ttdeci">const juce::Colour screenGrid</div><div class="ttdef"><b>Definition</b> HarmoniaPalette.h:42</div></div>
-<div class="ttc" id="anamespaceHarmoniaPalette_html_a2c84ea63e99b94e65cd68fc791a25c75"><div class="ttname"><a href="namespaceHarmoniaPalette.html#a2c84ea63e99b94e65cd68fc791a25c75">HarmoniaPalette::screenBg</a></div><div class="ttdeci">const juce::Colour screenBg</div><div class="ttdef"><b>Definition</b> HarmoniaPalette.h:41</div></div>
-<div class="ttc" id="anamespaceHarmoniaPalette_html_af98351a9e2efbadfdfff9972921e9455"><div class="ttname"><a href="namespaceHarmoniaPalette.html#af98351a9e2efbadfdfff9972921e9455">HarmoniaPalette::accent</a></div><div class="ttdeci">const juce::Colour accent</div><div class="ttdef"><b>Definition</b> HarmoniaPalette.h:24</div></div>
+<div class="ttc" id="anamespaceHarmoniaPalette_html_a0c04aca4dcf228ab423bd1fc8a2df4ae"><div class="ttname"><a href="namespaceHarmoniaPalette.html#a0c04aca4dcf228ab423bd1fc8a2df4ae">HarmoniaPalette::accent</a></div><div class="ttdeci">juce::Colour accent</div><div class="ttdef"><b>Definition</b> HarmoniaPalette.h:33</div></div>
+<div class="ttc" id="anamespaceHarmoniaPalette_html_a0e67b81effa336709c9dc4c6732b5dac"><div class="ttname"><a href="namespaceHarmoniaPalette.html#a0e67b81effa336709c9dc4c6732b5dac">HarmoniaPalette::screenGrid</a></div><div class="ttdeci">const juce::Colour screenGrid</div><div class="ttdef"><b>Definition</b> HarmoniaPalette.h:66</div></div>
+<div class="ttc" id="anamespaceHarmoniaPalette_html_a2c84ea63e99b94e65cd68fc791a25c75"><div class="ttname"><a href="namespaceHarmoniaPalette.html#a2c84ea63e99b94e65cd68fc791a25c75">HarmoniaPalette::screenBg</a></div><div class="ttdeci">const juce::Colour screenBg</div><div class="ttdef"><b>Definition</b> HarmoniaPalette.h:65</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

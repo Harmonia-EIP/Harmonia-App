@@ -1,5 +1,11 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" title=" " alt="" coords="5,5,179,31"/>
-<area shape="rect" id="Node000001" href="$classHarmoniaSound.html" title="Generic synthesizer sound definition." alt="" coords="227,5,353,31"/>
-<area shape="poly" id="edge28_Node000000_Node000001" title=" " alt="" coords="193,15,227,15,227,21,193,21"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,80,169,105"/>
+<area shape="rect" id="Node000001" href="$classAppLookAndFeel.html" title=" " alt="" coords="235,5,366,31"/>
+<area shape="poly" id="edge30_Node000000_Node000001" title=" " alt="" coords="131,72,216,39,252,28,254,33,218,45,133,77"/>
+<area shape="rect" id="Node000002" href="$classAuthPageLookAndFeel.html" title="Shared LookAndFeel for LoginPage and SignupPage buttons." alt="" coords="217,55,384,80"/>
+<area shape="poly" id="edge31_Node000000_Node000002" title=" " alt="" coords="183,79,217,75,218,80,183,84"/>
+<area shape="rect" id="Node000003" href="$classHiveLookAndFeel.html" title=" " alt="" coords="233,104,368,129"/>
+<area shape="poly" id="edge32_Node000000_Node000003" title=" " alt="" coords="183,101,233,106,233,112,183,106"/>
+<area shape="rect" id="Node000004" href="$classWelcomeLookAndFeel.html" title=" " alt="" coords="218,153,383,179"/>
+<area shape="poly" id="edge33_Node000000_Node000004" title=" " alt="" coords="135,108,218,138,257,151,256,156,216,143,133,113"/>
 </map>

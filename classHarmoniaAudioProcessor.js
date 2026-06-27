@@ -25,7 +25,7 @@ var classHarmoniaAudioProcessor =
     [ "setStateInformation", "classHarmoniaAudioProcessor.html#a7f21c2da410ae60d5936f26c12234f29", null ],
     [ "apvts", "classHarmoniaAudioProcessor.html#ad8768fee42b798a2fd476132d8295dc2", null ],
     [ "keyboardState", "classHarmoniaAudioProcessor.html#af0591acaf0cbf37c2fc24ef3ed6dafb1", null ],
-    [ "oscilloscope", "classHarmoniaAudioProcessor.html#a265c748989db26b655dec1ec635f2526", null ],
+    [ "oscilloscope", "classHarmoniaAudioProcessor.html#a7949413ae3bce514758b7441c0c3b056", null ],
     [ "oscLock", "classHarmoniaAudioProcessor.html#a61cf09b3ab1ddbc40d290414609adfe4", null ],
     [ "paramRefs", "classHarmoniaAudioProcessor.html#a12ec5f5c119393db248fa6cdb4ce56be", null ],
     [ "reverb", "classHarmoniaAudioProcessor.html#acfd3ec2052fd195f4ff63cbe74f938a1", null ],

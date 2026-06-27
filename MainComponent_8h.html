@@ -103,6 +103,7 @@ $(document).ready(function(){initNavTree('MainComponent_8h.html',''); initResiza
 <code>#include &quot;<a class="el" href="PluginProcessor_8h_source.html">PluginProcessor.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="HarmoniaPalette_8h_source.html">themes/HarmoniaPalette.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="HiveLookAndFeel_8h_source.html">themes/HiveLookAndFeel.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="PaletteSelector_8h_source.html">themes/PaletteSelector.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="BackendManager_8h_source.html">backendManagement/BackendManager.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="SynthComponent_8h_source.html">components/SynthComponent.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="OscilloscopeComponent_8h_source.html">components/OscilloscopeComponent.h</a>&quot;</code><br />
@@ -113,164 +114,176 @@ $(document).ready(function(){initNavTree('MainComponent_8h.html',''); initResiza
 <code>#include &quot;<a class="el" href="EnvelopeVisualizer_8h_source.html">components/EnvelopeVisualizer.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="LfoVisualizer_8h_source.html">components/LfoVisualizer.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="WaveformSelector_8h_source.html">components/WaveformSelector.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="HeaderComponent_8h_source.html">sections/HeaderComponent.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="AppConfig_8h_source.html">config/AppConfig.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="HarmoniaParameters_8h_source.html">parameters/HarmoniaParameters.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="PresetLoader_8h_source.html">tools/PresetLoader.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="Alert_8h_source.html">tools/Alert.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for MainComponent.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="MainComponent_8h__incl.png" border="0" usemap="#asrc_2MainComponent_8h" alt=""/></div>
 <map name="asrc_2MainComponent_8h" id="asrc_2MainComponent_8h">
-<area shape="rect" title="Main synthesizer interface component for Harmonia." alt="" coords="2541,5,2705,31"/>
-<area shape="rect" title=" " alt="" coords="3299,387,3453,427"/>
-<area shape="poly" title=" " alt="" coords="2705,19,3098,35,3634,64,3890,83,4105,106,4190,118,4254,132,4295,146,4306,154,4311,163,4311,240,4306,272,4292,295,4271,310,4244,319,4180,328,4109,341,4054,353,3982,364,3807,382,3468,404,3467,399,3806,377,3981,359,4053,348,4107,336,4179,323,4243,313,4269,305,4288,291,4301,270,4305,239,4305,164,4302,158,4293,151,4252,137,4189,124,4105,111,3890,89,3633,69,3098,40,2705,25"/>
-<area shape="rect" title=" " alt="" coords="1147,387,1295,427"/>
-<area shape="poly" title=" " alt="" coords="2540,25,2173,42,1679,72,1443,92,1245,114,1168,126,1110,139,1073,152,1064,158,1061,164,1061,239,1064,262,1072,283,1098,322,1134,353,1171,378,1168,382,1131,358,1094,325,1067,286,1059,263,1056,239,1056,163,1060,155,1071,147,1108,134,1167,121,1244,109,1442,87,1678,67,2173,37,2540,20"/>
-<area shape="rect" href="PluginProcessor_8h.html" title="Main audio processor of the Harmonia synthesizer plugin." alt="" coords="2075,79,2211,104"/>
-<area shape="poly" title=" " alt="" coords="2546,33,2225,81,2224,75,2545,28"/>
-<area shape="rect" href="HarmoniaParameters_8h.html" title="Centralized synthesizer parameter definitions and APVTS layout creation." alt="" coords="2297,306,2548,331"/>
-<area shape="poly" title=" " alt="" coords="2541,30,2476,48,2445,62,2416,81,2371,119,2337,158,2327,178,2323,199,2326,223,2336,249,2357,277,2386,297,2382,301,2354,281,2331,252,2321,224,2318,199,2322,176,2333,155,2367,115,2413,77,2442,57,2475,43,2540,25"/>
-<area shape="rect" href="OscilloscopeComponent_8h.html" title="Real&#45;time audio waveform visualization component." alt="" coords="1748,152,2023,177"/>
-<area shape="poly" title=" " alt="" coords="2540,22,2442,26,2322,35,2192,53,2063,81,2023,95,1983,113,1917,147,1914,143,1980,108,2021,90,2062,76,2191,47,2322,30,2442,20,2540,17"/>
-<area shape="rect" href="HarmoniaPalette_8h.html" title=" " alt="" coords="3029,306,3237,331"/>
-<area shape="poly" title=" " alt="" coords="2658,28,2732,56,2833,99,2944,155,2999,188,3051,223,3089,258,3119,293,3115,296,3085,262,3048,227,2996,192,2942,160,2831,104,2730,61,2656,33"/>
-<area shape="rect" href="BackendManager_8h.html" title="Main backend facade used to centralize all backend services." alt="" coords="590,299,765,339"/>
-<area shape="poly" title=" " alt="" coords="2540,22,2198,26,1730,36,1292,53,1133,66,1078,73,1041,81,989,101,939,125,845,183,766,243,709,292,705,287,762,238,842,179,936,121,987,96,1039,76,1077,68,1133,60,1292,48,1730,30,2198,21,2540,17"/>
-<area shape="rect" href="AppConfig_8h.html" title=" " alt="" coords="715,548,869,573"/>
-<area shape="poly" title=" " alt="" coords="2540,22,1957,27,1543,34,1106,46,690,64,339,89,202,104,97,122,30,143,13,153,8,164,8,407,13,419,28,431,86,455,171,476,276,496,505,528,701,549,700,554,504,533,275,501,170,482,84,460,25,436,9,423,3,409,3,163,9,150,28,138,95,117,201,99,339,83,690,58,1106,40,1543,29,1957,21,2540,17"/>
-<area shape="rect" href="HiveLookAndFeel_8h.html" title=" " alt="" coords="3391,225,3591,251"/>
-<area shape="poly" title=" " alt="" coords="2705,18,2796,23,2906,33,3025,50,3142,76,3236,108,3326,146,3461,216,3458,221,3323,151,3234,113,3141,81,3024,55,2905,38,2796,28,2705,24"/>
-<area shape="rect" href="SynthComponent_8h.html" title="Virtual MIDI keyboard UI component for Harmonia." alt="" coords="1493,152,1723,177"/>
-<area shape="poly" title=" " alt="" coords="2541,26,2294,45,2143,61,1991,81,1812,116,1665,151,1664,146,1811,111,1990,76,2142,55,2293,40,2540,21"/>
-<area shape="rect" href="SectionPanel_8h.html" title="Styled container panel used to group synthesizer controls." alt="" coords="3847,225,4049,251"/>
-<area shape="poly" title=" " alt="" coords="2705,19,3019,35,3218,52,3418,76,3591,103,3665,121,3760,149,3845,183,3916,217,3913,221,3843,188,3758,155,3664,126,3590,108,3417,81,3217,57,3018,41,2705,24"/>
-<area shape="rect" href="KnobControl_8h.html" title="Rotary knob UI component linked to an APVTS parameter." alt="" coords="4073,225,4271,251"/>
-<area shape="poly" title=" " alt="" coords="2705,17,2857,21,3060,31,3288,48,3518,76,3694,109,3865,148,4122,219,4121,224,3864,154,3692,114,3517,81,3287,53,3059,36,2857,27,2705,23"/>
-<area shape="rect" href="DisplayScreen_8h.html" title="Decorative oscilloscope display container component." alt="" coords="2447,79,2657,104"/>
-<area shape="poly" title=" " alt="" coords="2613,33,2575,71,2571,67,2609,29"/>
-<area shape="rect" href="ParticleField_8h.html" title="Animated particle background component." alt="" coords="2801,225,2999,251"/>
-<area shape="poly" title=" " alt="" coords="2639,29,2876,215,2873,219,2636,33"/>
-<area shape="rect" href="EnvelopeVisualizer_8h.html" title="ADSR envelope visualization component." alt="" coords="3125,225,3366,251"/>
-<area shape="poly" title=" " alt="" coords="2705,20,2808,26,2925,37,3031,53,3074,64,3107,76,3149,106,3185,143,3214,180,3235,212,3230,215,3210,183,3181,146,3146,110,3104,81,3073,69,3030,58,2924,42,2808,31,2705,25"/>
-<area shape="rect" href="LfoVisualizer_8h.html" title="Animated LFO waveform visualization component." alt="" coords="2575,225,2777,251"/>
-<area shape="poly" title=" " alt="" coords="2638,29,2656,50,2672,78,2681,113,2685,150,2682,212,2677,211,2679,150,2676,114,2667,80,2652,53,2634,33"/>
-<area shape="rect" href="WaveformSelector_8h.html" title="Specialized waveform and filter selector components." alt="" coords="3509,152,3747,177"/>
-<area shape="poly" title=" " alt="" coords="2705,18,2831,22,2992,31,3171,49,3350,76,3480,109,3586,145,3584,150,3478,114,3349,81,3170,54,2991,37,2830,27,2705,23"/>
-<area shape="rect" href="PresetLoader_8h.html" title=" " alt="" coords="2345,225,2500,251"/>
-<area shape="poly" title=" " alt="" coords="2541,27,2512,34,2484,45,2458,60,2437,80,2421,112,2415,147,2415,182,2419,212,2414,212,2410,183,2409,147,2416,110,2433,77,2455,56,2482,40,2511,29,2540,22"/>
-<area shape="rect" href="JuceHeader_8h.html" title=" " alt="" coords="1983,306,2089,331"/>
-<area shape="poly" title=" " alt="" coords="2135,106,2096,156,2074,190,2056,226,2046,260,2041,293,2035,292,2041,259,2051,224,2069,187,2091,153,2130,103"/>
-<area shape="poly" title=" " alt="" coords="2153,103,2207,169,2247,211,2291,249,2336,277,2381,298,2379,303,2334,281,2288,253,2243,214,2203,173,2149,106"/>
-<area shape="rect" href="Synth_8h.html" title="Core synthesizer voice and sound definitions for Harmonia." alt="" coords="2065,225,2220,251"/>
-<area shape="poly" title=" " alt="" coords="2145,104,2145,212,2140,212,2140,104"/>
-<area shape="poly" title=" " alt="" coords="2102,107,1941,151,1939,146,2101,101"/>
-<area shape="poly" title=" " alt="" coords="2079,329,2118,336,2292,355,2440,365,2571,367,2693,365,2946,363,3095,369,3270,384,3285,386,3284,391,3269,389,3094,374,2946,368,2693,370,2571,372,2440,370,2292,361,2117,341,2078,334"/>
-<area shape="poly" title=" " alt="" coords="1983,326,1697,347,1507,365,1315,389,1309,390,1308,385,1314,384,1507,360,1696,341,1982,320"/>
-<area shape="rect" title=" " alt="" coords="1028,621,1191,647"/>
-<area shape="poly" title=" " alt="" coords="1982,323,1842,328,1660,338,1485,358,1413,372,1361,389,1321,421,1256,484,1132,613,1128,609,1253,480,1318,417,1359,384,1412,367,1484,352,1660,333,1841,322,1982,318"/>
-<area shape="rect" title=" " alt="" coords="1731,394,1925,419"/>
-<area shape="poly" title=" " alt="" coords="2009,334,1869,391,1867,386,2007,329"/>
-<area shape="rect" title=" " alt="" coords="1949,387,2123,427"/>
-<area shape="poly" title=" " alt="" coords="2039,332,2039,373,2033,373,2033,332"/>
-<area shape="rect" title=" " alt="" coords="2722,387,2865,427"/>
-<area shape="poly" title=" " alt="" coords="2081,329,2118,336,2282,355,2411,360,2542,366,2709,384,2708,389,2542,371,2411,366,2281,360,2117,341,2080,334"/>
-<area shape="rect" title=" " alt="" coords="2147,387,2317,427"/>
-<area shape="poly" title=" " alt="" coords="2063,329,2178,379,2175,384,2061,334"/>
-<area shape="rect" title=" " alt="" coords="2341,387,2507,427"/>
-<area shape="poly" title=" " alt="" coords="2086,329,2118,336,2328,382,2327,387,2117,341,2084,334"/>
-<area shape="rect" title=" " alt="" coords="2531,387,2698,427"/>
-<area shape="poly" title=" " alt="" coords="2082,329,2118,336,2228,352,2315,361,2404,369,2518,384,2517,389,2404,374,2315,366,2227,358,2117,341,2081,334"/>
-<area shape="rect" title=" " alt="" coords="3071,387,3257,427"/>
-<area shape="poly" title=" " alt="" coords="2080,329,2118,336,2245,352,2352,362,2536,369,2721,372,2958,384,3058,392,3057,398,2957,389,2721,378,2536,375,2352,367,2244,357,2117,341,2079,334"/>
-<area shape="rect" title=" " alt="" coords="1371,387,1530,427"/>
-<area shape="poly" title=" " alt="" coords="1983,329,1793,352,1544,389,1544,384,1793,347,1982,323"/>
-<area shape="rect" title=" " alt="" coords="1555,394,1707,419"/>
-<area shape="poly" title=" " alt="" coords="1983,334,1719,389,1698,394,1697,388,1718,384,1982,329"/>
-<area shape="poly" title=" " alt="" coords="2522,329,3058,390,3057,396,2521,334"/>
-<area shape="rect" title=" " alt="" coords="2889,394,2945,419"/>
-<area shape="poly" title=" " alt="" coords="2510,329,2727,359,2878,384,2884,386,2882,391,2877,389,2726,364,2509,334"/>
-<area shape="poly" title=" " alt="" coords="2129,253,2064,300,2061,296,2125,249"/>
-<area shape="poly" title=" " alt="" coords="2184,248,2369,300,2368,305,2183,253"/>
-<area shape="rect" title=" " alt="" coords="2781,306,2853,331"/>
-<area shape="poly" title=" " alt="" coords="2220,246,2768,309,2768,314,2220,251"/>
-<area shape="rect" href="ComponentsIncludes_8h.html" title=" " alt="" coords="1523,225,1693,251"/>
-<area shape="poly" title=" " alt="" coords="1841,180,1667,224,1666,219,1840,175"/>
-<area shape="poly" title=" " alt="" coords="1671,248,1970,303,1969,308,1670,253"/>
-<area shape="poly" title=" " alt="" coords="1694,243,1955,265,2278,296,2326,302,2325,307,2277,301,1955,270,1693,249"/>
-<area shape="poly" title=" " alt="" coords="1694,240,2190,261,2865,296,3016,306,3015,311,2865,301,2190,267,1693,245"/>
-<area shape="poly" title=" " alt="" coords="1523,249,778,312,778,306,1522,244"/>
-<area shape="rect" href="BackendTypes_8h.html" title="Defines backend&#45;related data structures." alt="" coords="894,475,1021,500"/>
-<area shape="poly" title=" " alt="" coords="1580,253,1469,294,1327,341,1274,355,1231,363,1189,372,1137,389,1054,429,987,469,984,465,1052,425,1135,384,1188,367,1230,357,1272,350,1326,336,1468,289,1578,248"/>
-<area shape="rect" href="String_8h.html" title=" " alt="" coords="945,548,1071,573"/>
-<area shape="poly" title=" " alt="" coords="1523,243,1421,248,1308,257,1206,275,1166,286,1138,301,1115,335,1082,400,1021,536,1016,534,1077,398,1110,332,1134,297,1164,281,1204,269,1307,252,1420,242,1522,238"/>
-<area shape="poly" title=" " alt="" coords="1522,246,1295,265,1185,281,1140,290,1106,301,1058,325,1011,354,926,421,858,487,812,539,808,535,854,484,923,417,1008,350,1055,320,1104,296,1139,285,1184,276,1295,260,1522,241"/>
-<area shape="rect" href="UIStyle_8h.html" title=" " alt="" coords="2129,306,2265,331"/>
-<area shape="poly" title=" " alt="" coords="1694,245,1881,266,2102,296,2130,301,2129,306,2101,301,1881,271,1693,250"/>
-<area shape="rect" href="AudioConfig_8h.html" title=" " alt="" coords="1147,306,1314,331"/>
-<area shape="poly" title=" " alt="" coords="1554,253,1299,306,1298,301,1553,248"/>
-<area shape="poly" title=" " alt="" coords="3088,334,2879,387,2878,381,3087,329"/>
-<area shape="poly" title=" " alt="" coords="766,333,842,354,920,384,983,422,1035,473,1065,507,1086,547,1107,607,1102,609,1082,549,1060,510,1031,476,979,426,917,389,841,359,764,338"/>
-<area shape="rect" title=" " alt="" coords="43,394,93,419"/>
-<area shape="poly" title=" " alt="" coords="590,324,490,328,368,339,236,359,106,389,101,391,99,386,105,384,235,353,367,334,489,323,590,318"/>
-<area shape="rect" title=" " alt="" coords="117,394,176,419"/>
-<area shape="poly" title=" " alt="" coords="590,327,403,346,295,364,189,389,182,391,181,386,187,384,294,359,403,341,589,322"/>
-<area shape="rect" title=" " alt="" coords="400,394,475,419"/>
-<area shape="poly" title=" " alt="" coords="623,341,488,389,481,392,479,387,486,384,622,336"/>
-<area shape="poly" title=" " alt="" coords="766,334,826,354,883,384,903,402,921,422,947,461,943,464,917,425,899,406,880,389,824,359,764,339"/>
-<area shape="rect" title=" " alt="" coords="499,394,658,419"/>
-<area shape="poly" title=" " alt="" coords="657,341,604,387,601,383,654,337"/>
-<area shape="rect" href="BackendAuthManager_8h.html" title=" " alt="" coords="201,394,375,419"/>
-<area shape="poly" title=" " alt="" coords="592,341,354,394,353,388,591,336"/>
-<area shape="rect" href="BackendProfileManager_8h.html" title=" " alt="" coords="683,394,869,419"/>
-<area shape="poly" title=" " alt="" coords="701,337,754,383,750,387,697,341"/>
-<area shape="poly" title=" " alt="" coords="951,501,933,536,930,555,936,572,951,589,971,602,1015,620,1013,625,968,607,948,593,931,575,924,555,928,534,946,499"/>
-<area shape="rect" title=" " alt="" coords="2111,548,2257,573"/>
-<area shape="poly" title=" " alt="" coords="1021,490,2097,552,2097,557,1021,495"/>
-<area shape="poly" title=" " alt="" coords="968,499,994,535,990,538,964,502"/>
-<area shape="poly" title=" " alt="" coords="932,502,833,545,830,540,930,498"/>
-<area shape="poly" title=" " alt="" coords="1026,571,1083,611,1080,615,1023,576"/>
-<area shape="poly" title=" " alt="" coords="345,417,388,424,659,457,881,477,880,483,659,462,388,429,344,422"/>
-<area shape="poly" title=" " alt="" coords="803,417,919,467,917,472,801,422"/>
-<area shape="poly" title=" " alt="" coords="2247,329,2286,336,2403,352,2496,359,2589,368,2709,384,2708,389,2589,373,2495,365,2402,357,2285,341,2246,334"/>
-<area shape="poly" title=" " alt="" coords="3483,253,3446,300,3397,376,3392,373,3442,297,3479,249"/>
-<area shape="poly" title=" " alt="" coords="3439,253,3199,306,3198,300,3438,248"/>
-<area shape="poly" title=" " alt="" coords="1611,178,1611,212,1605,212,1605,178"/>
-<area shape="poly" title=" " alt="" coords="3947,252,3928,296,3911,321,3888,341,3855,356,3811,369,3700,388,3577,399,3467,405,3467,400,3577,394,3699,382,3810,364,3854,351,3885,336,3907,317,3923,294,3942,250"/>
-<area shape="poly" title=" " alt="" coords="3848,252,3835,253,3252,309,3251,304,3834,248,3847,247"/>
-<area shape="poly" title=" " alt="" coords="4165,253,4125,297,4096,322,4062,341,4013,357,3948,370,3786,389,3614,401,3467,406,3467,401,3613,395,3786,384,3947,365,4012,352,4060,336,4092,317,4121,294,4161,249"/>
-<area shape="poly" title=" " alt="" coords="4147,253,4036,297,3963,322,3887,341,3797,358,3720,368,3588,374,3456,377,3378,381,3287,389,3271,391,3270,386,3286,384,3378,375,3456,371,3588,369,3720,362,3796,353,3886,336,3961,317,4034,292,4145,248"/>
-<area shape="poly" title=" " alt="" coords="4073,252,4062,253,3613,288,3251,313,3251,307,3613,283,4061,248,4072,247"/>
-<area shape="poly" title=" " alt="" coords="2552,105,2546,133,2544,171,2549,213,2556,232,2566,249,2582,265,2597,274,2631,281,2669,283,2690,287,2713,296,2730,307,2742,318,2753,328,2770,336,2843,359,2905,372,2961,377,3015,378,3127,375,3193,377,3270,384,3286,386,3285,392,3269,389,3193,382,3127,380,3015,383,2961,382,2904,377,2841,364,2768,341,2751,332,2738,322,2727,311,2711,301,2689,293,2668,288,2630,286,2596,279,2578,269,2562,252,2551,234,2543,214,2538,172,2541,132,2546,104"/>
-<area shape="poly" title=" " alt="" coords="2447,107,2006,153,2006,148,2446,101"/>
-<area shape="poly" title=" " alt="" coords="2619,101,2701,119,2801,144,2908,179,3012,223,3068,258,3113,294,3109,299,3065,262,3009,228,2906,184,2799,149,2699,124,2618,107"/>
-<area shape="poly" title=" " alt="" coords="2914,249,2967,297,3018,336,3285,386,3284,392,3016,341,2963,302,2910,253"/>
-<area shape="poly" title=" " alt="" coords="2890,253,2841,298,2838,295,2886,249"/>
-<area shape="poly" title=" " alt="" coords="2935,248,3088,299,3086,304,2933,253"/>
-<area shape="poly" title=" " alt="" coords="3256,249,3355,374,3351,377,3252,252"/>
-<area shape="poly" title=" " alt="" coords="3252,251,3259,291,3259,316,3252,340,3235,363,3214,381,3211,377,3231,359,3247,338,3253,315,3254,292,3247,252"/>
-<area shape="poly" title=" " alt="" coords="3126,253,2556,307,2556,302,3125,248"/>
-<area shape="poly" title=" " alt="" coords="3230,253,3162,300,3159,296,3227,249"/>
-<area shape="poly" title=" " alt="" coords="2759,248,2836,266,2875,280,2913,296,2928,307,2938,317,2947,327,2961,336,3005,354,3043,365,3111,373,3181,375,3270,384,3286,387,3285,392,3269,389,3181,380,3111,378,3042,370,3003,359,2959,341,2944,331,2934,321,2925,311,2911,301,2873,285,2834,271,2758,253"/>
-<area shape="poly" title=" " alt="" coords="2727,248,2795,268,2867,296,2895,317,2924,336,2991,362,3058,382,3057,387,2989,367,2921,341,2892,321,2864,301,2793,273,2726,253"/>
-<area shape="poly" title=" " alt="" coords="2640,253,2473,304,2472,299,2638,248"/>
-<area shape="poly" title=" " alt="" coords="2743,248,3054,301,3053,306,2742,253"/>
-<area shape="rect" href="IconChoiceSelector_8h.html" title="Icon&#45;based selector component for choice parameters." alt="" coords="3665,225,3823,251"/>
-<area shape="poly" title=" " alt="" coords="3648,175,3715,216,3712,220,3645,180"/>
-<area shape="rect" href="IconRenderer_8h.html" title="Utility namespace used to render waveform and filter icons." alt="" coords="3455,306,3574,331"/>
-<area shape="poly" title=" " alt="" coords="3629,178,3622,213,3605,252,3579,280,3550,301,3547,297,3576,276,3600,249,3617,211,3624,177"/>
-<area shape="poly" title=" " alt="" coords="3736,253,3694,296,3664,320,3632,341,3592,360,3549,374,3467,395,3466,390,3548,369,3590,355,3629,336,3661,316,3690,292,3732,249"/>
-<area shape="poly" title=" " alt="" coords="3719,253,3677,274,3632,301,3611,322,3602,332,3588,341,3270,392,3270,386,3586,336,3599,328,3608,318,3629,297,3675,269,3717,248"/>
-<area shape="poly" title=" " alt="" coords="3665,252,3236,307,3235,302,3664,247"/>
-<area shape="poly" title=" " alt="" coords="3712,253,3562,304,3560,299,3710,248"/>
-<area shape="rect" title=" " alt="" coords="3701,306,3787,331"/>
-<area shape="poly" title=" " alt="" coords="3747,251,3747,292,3741,292,3741,251"/>
-<area shape="rect" title=" " alt="" coords="3811,306,3874,331"/>
-<area shape="poly" title=" " alt="" coords="3760,249,3819,295,3816,299,3757,253"/>
-<area shape="poly" title=" " alt="" coords="3455,327,3208,348,3046,366,2879,389,2878,384,3046,360,3208,342,3455,321"/>
-<area shape="poly" title=" " alt="" coords="2477,248,2543,267,2612,296,2627,307,2638,318,2647,327,2662,336,2718,352,2780,357,2903,354,2952,355,2987,364,2997,374,3001,388,2998,406,2988,428,2962,461,2934,479,2859,503,2793,521,2712,538,2514,567,2283,589,2035,606,1554,626,1205,634,1205,629,1554,621,2035,601,2283,584,2514,561,2711,533,2792,516,2858,497,2932,474,2959,457,2983,425,2993,404,2996,388,2993,377,2984,369,2951,360,2903,359,2780,362,2717,357,2660,341,2644,332,2634,321,2624,311,2609,301,2541,272,2475,253"/>
-<area shape="poly" title=" " alt="" coords="2494,248,2576,267,2662,296,2681,307,2695,317,2708,327,2726,336,2815,362,2886,370,2959,374,3052,384,3058,385,3057,390,3052,389,2959,379,2886,376,2814,367,2724,341,2705,332,2691,321,2678,311,2660,301,2574,272,2492,253"/>
-<area shape="poly" title=" " alt="" coords="2425,251,2425,292,2420,292,2420,251"/>
-<area shape="poly" title=" " alt="" coords="2454,248,2561,296,2593,318,2606,327,2625,336,2684,350,2751,355,2882,356,2934,359,2969,369,2978,378,2980,392,2974,408,2959,428,2939,447,2912,464,2840,493,2751,515,2651,532,2546,544,2444,552,2272,561,2271,555,2444,547,2546,539,2650,526,2750,510,2838,487,2909,459,2936,443,2955,425,2969,406,2975,391,2973,381,2966,373,2933,364,2882,361,2751,361,2683,355,2623,341,2604,332,2590,322,2559,301,2452,253"/>
+<area shape="rect" title="Main synthesizer interface component for Harmonia." alt="" coords="2089,5,2253,31"/>
+<area shape="rect" title=" " alt="" coords="2965,387,3120,427"/>
+<area shape="poly" title=" " alt="" coords="2253,16,2430,18,2650,26,2760,33,2861,44,2947,58,3012,76,3074,102,3122,129,3159,167,3193,224,3200,248,3198,272,3189,294,3174,315,3135,353,3092,382,3089,377,3131,349,3170,312,3184,292,3193,271,3194,249,3188,226,3155,170,3118,133,3072,107,3010,81,2946,63,2860,49,2759,39,2649,31,2429,23,2253,22"/>
+<area shape="rect" title=" " alt="" coords="1391,387,1539,427"/>
+<area shape="poly" title=" " alt="" coords="2088,22,1969,24,1832,33,1706,51,1657,64,1621,81,1610,91,1602,102,1595,126,1589,152,1582,166,1571,179,1556,190,1541,196,1512,201,1486,207,1474,214,1464,227,1449,263,1446,302,1450,340,1457,373,1452,374,1444,341,1440,302,1444,261,1459,224,1471,210,1484,202,1511,196,1540,191,1554,186,1568,175,1578,163,1584,151,1590,125,1598,100,1606,88,1619,76,1655,59,1705,45,1831,27,1969,19,2088,16"/>
+<area shape="rect" href="PluginProcessor_8h.html" title="Main audio processor of the Harmonia synthesizer plugin." alt="" coords="2581,79,2717,104"/>
+<area shape="poly" title=" " alt="" coords="2248,28,2568,75,2567,81,2247,33"/>
+<area shape="rect" href="HarmoniaParameters_8h.html" title="Centralized synthesizer parameter definitions and APVTS layout creation." alt="" coords="3497,306,3748,331"/>
+<area shape="poly" title=" " alt="" coords="2253,18,2489,23,2801,33,3108,50,3236,62,3332,76,3402,87,3464,92,3574,103,3623,115,3669,137,3713,172,3757,224,3763,238,3763,251,3757,262,3746,273,3716,291,3682,304,3680,299,3714,286,3743,269,3752,259,3758,249,3758,239,3752,227,3710,176,3666,142,3621,120,3573,108,3464,98,3401,92,3332,81,3235,67,3108,56,2801,39,2489,28,2253,23"/>
+<area shape="rect" href="OscilloscopeComponent_8h.html" title="Real&#45;time audio waveform visualization component." alt="" coords="1021,152,1296,177"/>
+<area shape="poly" title=" " alt="" coords="2089,26,1833,44,1676,60,1519,81,1351,116,1213,151,1211,146,1350,110,1518,76,1676,54,1833,38,2088,20"/>
+<area shape="rect" href="HarmoniaPalette_8h.html" title=" " alt="" coords="1687,306,1895,331"/>
+<area shape="poly" title=" " alt="" coords="2088,25,1823,38,1480,62,1314,80,1172,101,1066,126,1031,139,1011,154,1002,171,1005,187,1019,203,1044,217,1119,243,1219,264,1335,281,1456,293,1673,309,1673,315,1456,299,1335,286,1218,269,1117,248,1041,222,1016,207,1001,190,997,171,1007,150,1029,135,1064,120,1171,95,1314,74,1479,57,1822,32,2088,20"/>
+<area shape="rect" href="BackendManager_8h.html" title="Main backend facade used to centralize all backend services." alt="" coords="750,299,925,339"/>
+<area shape="poly" title=" " alt="" coords="2089,23,1834,27,1493,36,1155,54,1016,66,910,81,845,90,792,95,768,101,747,112,726,129,705,153,696,172,696,191,703,209,715,227,751,261,791,289,788,294,748,266,711,231,698,212,691,191,691,171,700,151,722,125,744,107,767,96,791,90,844,84,909,76,1015,61,1155,48,1493,31,1834,21,2088,17"/>
+<area shape="rect" href="AppConfig_8h.html" title=" " alt="" coords="5,548,160,573"/>
+<area shape="poly" title=" " alt="" coords="2088,23,1612,34,1284,44,940,59,615,78,342,101,235,115,154,131,102,147,89,156,85,164,85,408,85,534,80,534,80,408,80,163,85,152,100,143,152,125,234,110,341,96,615,72,940,53,1283,39,1611,29,2088,18"/>
+<area shape="rect" href="HiveLookAndFeel_8h.html" title=" " alt="" coords="1771,225,1971,251"/>
+<area shape="poly" title=" " alt="" coords="2128,33,2077,50,2019,75,1959,110,1932,131,1907,154,1889,182,1878,213,1873,211,1884,180,1903,150,1928,126,1956,105,2016,71,2075,45,2126,28"/>
+<area shape="rect" href="PaletteSelector_8h.html" title=" " alt="" coords="1995,225,2179,251"/>
+<area shape="poly" title=" " alt="" coords="2174,31,2170,96,2162,138,2146,179,2132,200,2114,218,2111,214,2128,197,2142,176,2156,136,2164,95,2168,31"/>
+<area shape="rect" href="SynthComponent_8h.html" title="Virtual MIDI keyboard UI component for Harmonia." alt="" coords="715,152,946,177"/>
+<area shape="poly" title=" " alt="" coords="2089,24,1472,42,1150,59,1034,69,966,81,935,94,905,111,856,145,853,141,902,106,932,89,965,76,1033,64,1150,54,1471,37,2089,18"/>
+<area shape="rect" href="SectionPanel_8h.html" title="Styled container panel used to group synthesizer controls." alt="" coords="2254,225,2455,251"/>
+<area shape="poly" title=" " alt="" coords="2183,29,2338,213,2334,216,2179,33"/>
+<area shape="rect" href="KnobControl_8h.html" title="Rotary knob UI component linked to an APVTS parameter." alt="" coords="2981,225,3179,251"/>
+<area shape="poly" title=" " alt="" coords="2253,19,2439,25,2664,36,2865,53,2936,63,2977,76,3013,106,3041,142,3061,180,3074,212,3070,214,3056,182,3036,145,3009,109,2975,81,2935,69,2864,58,2663,41,2438,30,2253,24"/>
+<area shape="rect" href="DisplayScreen_8h.html" title="Decorative oscilloscope display container component." alt="" coords="1632,79,1843,104"/>
+<area shape="poly" title=" " alt="" coords="2101,33,1821,79,1820,74,2101,28"/>
+<area shape="rect" href="ParticleField_8h.html" title="Animated particle background component." alt="" coords="2531,225,2728,251"/>
+<area shape="poly" title=" " alt="" coords="2196,28,2594,217,2592,222,2194,33"/>
+<area shape="rect" href="EnvelopeVisualizer_8h.html" title="ADSR envelope visualization component." alt="" coords="3254,225,3495,251"/>
+<area shape="poly" title=" " alt="" coords="2253,18,2493,22,2799,32,3078,49,3177,62,3236,76,3279,105,3315,142,3344,180,3364,212,3360,215,3340,183,3311,145,3276,109,3234,81,3177,67,3077,55,2799,37,2493,27,2253,23"/>
+<area shape="rect" href="LfoVisualizer_8h.html" title="Animated LFO waveform visualization component." alt="" coords="3519,225,3721,251"/>
+<area shape="poly" title=" " alt="" coords="2253,17,2479,20,2774,29,3064,47,3183,60,3274,76,3368,106,3458,145,3535,184,3591,216,3589,221,3532,189,3455,149,3366,111,3273,81,3183,65,3063,52,2773,35,2478,26,2253,22"/>
+<area shape="rect" href="WaveformSelector_8h.html" title="Specialized waveform and filter selector components." alt="" coords="1320,152,1557,177"/>
+<area shape="poly" title=" " alt="" coords="2089,26,1815,44,1676,60,1619,70,1577,81,1545,94,1515,111,1465,146,1462,141,1512,107,1543,90,1575,76,1618,65,1675,55,1814,39,2088,20"/>
+<area shape="rect" href="HeaderComponent_8h.html" title=" " alt="" coords="1918,152,2133,177"/>
+<area shape="poly" title=" " alt="" coords="2161,33,2049,144,2045,140,2157,29"/>
+<area shape="rect" href="PresetLoader_8h.html" title=" " alt="" coords="3847,225,4001,251"/>
+<area shape="poly" title=" " alt="" coords="2253,17,2627,22,3137,33,3599,50,3754,62,3803,69,3829,76,3864,105,3889,141,3908,179,3920,211,3915,213,3903,181,3885,144,3860,109,3827,81,3802,74,3754,67,3599,56,3137,38,2627,28,2253,23"/>
+<area shape="rect" href="Alert_8h.html" title=" " alt="" coords="2863,79,2964,104"/>
+<area shape="poly" title=" " alt="" coords="2253,25,2849,81,2849,87,2253,30"/>
+<area shape="rect" href="JuceHeader_8h.html" title=" " alt="" coords="1919,306,2025,331"/>
+<area shape="poly" title=" " alt="" coords="2642,106,2616,137,2576,177,2525,219,2468,253,2432,265,2385,276,2269,294,2039,316,2039,310,2268,289,2384,271,2431,260,2466,248,2522,215,2572,174,2612,133,2638,103"/>
+<area shape="poly" title=" " alt="" coords="2718,96,2970,119,3300,153,3593,190,3690,207,3720,215,3735,223,3742,236,3743,248,3728,270,3701,288,3670,303,3667,299,3698,284,3724,266,3738,247,3737,237,3731,227,3718,220,3689,212,3593,195,3300,158,2969,124,2717,101"/>
+<area shape="rect" href="Synth_8h.html" title="Core synthesizer voice and sound definitions for Harmonia." alt="" coords="2752,225,2907,251"/>
+<area shape="poly" title=" " alt="" coords="2666,102,2806,214,2803,219,2662,107"/>
+<area shape="poly" title=" " alt="" coords="2581,98,2059,117,1310,155,1310,149,2058,112,2581,92"/>
+<area shape="poly" title=" " alt="" coords="2011,329,2044,336,2181,354,2297,362,2399,365,2495,365,2693,364,2810,370,2947,384,2952,385,2951,390,2946,389,2809,376,2693,370,2495,370,2399,371,2296,368,2180,359,2044,341,2010,334"/>
+<area shape="poly" title=" " alt="" coords="1936,334,1907,341,1810,358,1733,367,1654,375,1553,389,1553,384,1653,370,1732,362,1809,353,1906,336,1935,329"/>
+<area shape="rect" title=" " alt="" coords="329,621,492,647"/>
+<area shape="poly" title=" " alt="" coords="2004,329,2032,336,2130,344,2267,344,2589,339,2736,342,2798,347,2850,355,2889,366,2913,381,2919,392,2919,403,2905,428,2884,445,2854,461,2771,489,2658,515,2520,537,2362,556,2187,572,1806,598,1413,616,1042,627,506,635,506,630,1041,621,1413,611,1806,593,2187,567,2361,551,2520,531,2657,509,2769,484,2852,456,2881,441,2901,425,2914,402,2914,393,2909,385,2887,371,2849,360,2797,352,2735,348,2588,345,2267,350,2130,349,2032,341,2003,334"/>
+<area shape="rect" title=" " alt="" coords="2304,394,2499,419"/>
+<area shape="poly" title=" " alt="" coords="2014,329,2045,336,2325,389,2324,394,2043,341,2013,334"/>
+<area shape="rect" title=" " alt="" coords="2523,387,2696,427"/>
+<area shape="poly" title=" " alt="" coords="2012,329,2044,336,2173,355,2274,363,2378,369,2509,384,2509,389,2377,374,2274,368,2172,360,2044,341,2011,334"/>
+<area shape="rect" title=" " alt="" coords="1225,387,1367,427"/>
+<area shape="poly" title=" " alt="" coords="1937,334,1907,341,1762,362,1646,368,1530,373,1381,389,1381,384,1529,367,1646,363,1761,356,1906,336,1936,329"/>
+<area shape="rect" title=" " alt="" coords="2720,387,2891,427"/>
+<area shape="poly" title=" " alt="" coords="2011,329,2044,336,2143,350,2228,358,2373,364,2520,367,2606,373,2707,384,2706,389,2605,378,2519,373,2373,369,2227,364,2143,355,2044,341,2010,334"/>
+<area shape="rect" title=" " alt="" coords="1564,387,1729,427"/>
+<area shape="poly" title=" " alt="" coords="1933,334,1907,341,1736,386,1734,381,1906,336,1932,329"/>
+<area shape="rect" title=" " alt="" coords="1754,387,1921,427"/>
+<area shape="poly" title=" " alt="" coords="1955,334,1880,382,1877,377,1952,329"/>
+<area shape="rect" title=" " alt="" coords="3317,387,3502,427"/>
+<area shape="poly" title=" " alt="" coords="2026,320,3132,384,3303,395,3303,401,3132,389,2026,326"/>
+<area shape="rect" title=" " alt="" coords="1945,387,2103,427"/>
+<area shape="poly" title=" " alt="" coords="1981,330,2008,373,2003,376,1977,333"/>
+<area shape="rect" title=" " alt="" coords="2128,394,2280,419"/>
+<area shape="poly" title=" " alt="" coords="2004,329,2161,387,2159,392,2002,334"/>
+<area shape="poly" title=" " alt="" coords="3595,334,3470,384,3468,379,3593,329"/>
+<area shape="rect" title=" " alt="" coords="3595,394,3651,419"/>
+<area shape="poly" title=" " alt="" coords="3625,332,3625,380,3620,380,3620,332"/>
+<area shape="poly" title=" " alt="" coords="2752,252,2740,253,2343,291,2039,315,2039,310,2342,285,2740,248,2752,247"/>
+<area shape="poly" title=" " alt="" coords="2907,244,3494,302,3493,307,2907,250"/>
+<area shape="rect" title=" " alt="" coords="2768,306,2840,331"/>
+<area shape="poly" title=" " alt="" coords="2828,252,2814,294,2809,292,2823,250"/>
+<area shape="rect" href="ComponentsIncludes_8h.html" title=" " alt="" coords="752,225,923,251"/>
+<area shape="poly" title=" " alt="" coords="1108,180,903,225,902,220,1106,175"/>
+<area shape="poly" title=" " alt="" coords="923,239,1426,258,1704,275,1820,285,1907,296,1925,300,1924,305,1906,301,1819,290,1704,280,1426,263,923,244"/>
+<area shape="poly" title=" " alt="" coords="923,239,3483,311,3483,316,923,244"/>
+<area shape="poly" title=" " alt="" coords="923,244,966,248,1673,305,1673,311,965,253,922,250"/>
+<area shape="poly" title=" " alt="" coords="840,251,840,285,835,285,835,251"/>
+<area shape="rect" href="BackendTypes_8h.html" title="Defines backend&#45;related data structures." alt="" coords="347,475,474,500"/>
+<area shape="poly" title=" " alt="" coords="752,253,633,272,500,301,437,319,383,340,340,363,313,388,306,406,313,425,335,450,363,467,360,471,331,454,308,428,301,406,308,385,337,359,381,335,436,314,498,296,632,267,751,248"/>
+<area shape="rect" href="String_8h.html" title=" " alt="" coords="185,548,311,573"/>
+<area shape="poly" title=" " alt="" coords="752,246,654,253,547,264,449,280,410,290,381,301,351,322,325,349,304,381,287,414,265,482,254,535,249,534,260,480,282,412,299,378,321,346,347,318,379,296,409,285,448,275,546,259,654,248,751,241"/>
+<area shape="poly" title=" " alt="" coords="752,245,643,251,520,262,408,278,363,289,329,301,289,325,251,354,185,420,133,486,99,538,94,535,128,483,181,417,248,350,286,321,327,296,361,283,407,273,520,256,643,246,752,240"/>
+<area shape="rect" href="UIStyle_8h.html" title=" " alt="" coords="1016,306,1152,331"/>
+<area shape="poly" title=" " alt="" coords="874,248,1036,299,1035,304,872,253"/>
+<area shape="rect" href="AudioConfig_8h.html" title=" " alt="" coords="559,306,726,331"/>
+<area shape="poly" title=" " alt="" coords="810,253,685,303,683,298,808,248"/>
+<area shape="poly" title=" " alt="" coords="1712,334,1562,357,1381,389,1381,384,1562,352,1711,329"/>
+<area shape="poly" title=" " alt="" coords="750,339,738,341,695,345,640,345,513,344,449,347,391,354,344,367,326,377,313,388,297,415,293,444,299,475,312,506,351,564,390,609,386,613,346,568,307,508,294,476,288,444,292,413,309,385,323,372,342,362,390,349,449,341,512,339,640,339,694,339,737,336,749,334"/>
+<area shape="rect" title=" " alt="" coords="733,394,784,419"/>
+<area shape="poly" title=" " alt="" coords="822,341,781,385,777,382,818,337"/>
+<area shape="rect" title=" " alt="" coords="808,394,867,419"/>
+<area shape="poly" title=" " alt="" coords="840,339,840,380,835,380,835,339"/>
+<area shape="rect" title=" " alt="" coords="891,394,965,419"/>
+<area shape="poly" title=" " alt="" coords="859,337,907,382,904,386,856,341"/>
+<area shape="poly" title=" " alt="" coords="925,330,1071,355,1131,370,1162,385,1171,407,1169,418,1162,429,1148,438,1126,446,1062,459,976,469,876,476,664,485,488,488,488,483,664,480,875,471,975,464,1061,454,1125,441,1146,433,1158,425,1164,416,1166,407,1158,389,1129,375,1070,360,925,335"/>
+<area shape="rect" title=" " alt="" coords="990,394,1149,419"/>
+<area shape="poly" title=" " alt="" coords="889,336,1026,387,1025,392,887,341"/>
+<area shape="rect" href="BackendAuthManager_8h.html" title=" " alt="" coords="323,394,498,419"/>
+<area shape="poly" title=" " alt="" coords="750,340,482,394,481,389,749,335"/>
+<area shape="rect" href="BackendProfileManager_8h.html" title=" " alt="" coords="523,394,709,419"/>
+<area shape="poly" title=" " alt="" coords="790,341,659,391,657,387,788,336"/>
+<area shape="poly" title=" " alt="" coords="413,500,413,608,408,608,408,500"/>
+<area shape="rect" title=" " alt="" coords="3372,548,3519,573"/>
+<area shape="poly" title=" " alt="" coords="474,487,3358,555,3358,560,474,493"/>
+<area shape="poly" title=" " alt="" coords="386,502,288,545,286,540,383,498"/>
+<area shape="poly" title=" " alt="" coords="359,503,149,548,148,542,357,497"/>
+<area shape="poly" title=" " alt="" coords="275,571,373,613,370,618,273,576"/>
+<area shape="poly" title=" " alt="" coords="413,420,413,461,408,461,408,420"/>
+<area shape="poly" title=" " alt="" coords="587,422,454,472,452,467,585,417"/>
+<area shape="poly" title=" " alt="" coords="1114,329,1238,379,1236,384,1112,334"/>
+<area shape="poly" title=" " alt="" coords="1968,248,2050,266,2093,279,2133,296,2149,307,2159,318,2169,328,2184,336,2255,355,2346,366,2450,372,2561,375,2778,376,2872,378,2947,384,2952,385,2951,390,2946,389,2872,384,2778,381,2561,380,2450,378,2345,371,2254,360,2182,341,2165,332,2155,321,2145,311,2131,301,2091,284,2049,271,1967,253"/>
+<area shape="poly" title=" " alt="" coords="1861,253,1814,298,1811,294,1857,249"/>
+<area shape="poly" title=" " alt="" coords="2106,248,2184,296,2215,319,2228,328,2248,336,2350,364,2438,378,2517,383,2592,381,2749,373,2840,374,2947,384,2952,385,2951,390,2946,389,2840,380,2749,378,2592,386,2517,388,2437,384,2349,369,2246,341,2226,333,2212,324,2181,301,2104,253"/>
+<area shape="poly" title=" " alt="" coords="2044,253,1848,305,1846,300,2043,248"/>
+<area shape="poly" title=" " alt="" coords="834,177,838,212,832,212,829,178"/>
+<area shape="poly" title=" " alt="" coords="2390,248,2522,289,2693,336,2819,362,2947,384,2952,385,2951,390,2946,389,2818,367,2691,341,2521,295,2389,253"/>
+<area shape="poly" title=" " alt="" coords="2264,253,1907,301,1873,306,1872,301,1906,296,2263,248"/>
+<area shape="poly" title=" " alt="" coords="3080,251,3052,374,3047,373,3075,250"/>
+<area shape="poly" title=" " alt="" coords="3104,248,3361,378,3359,383,3101,253"/>
+<area shape="poly" title=" " alt="" coords="2981,249,2919,253,2634,265,2412,270,2191,278,1907,301,1867,307,1866,301,1906,296,2190,273,2412,264,2634,260,2919,248,2980,244"/>
+<area shape="poly" title=" " alt="" coords="1737,105,1733,134,1732,173,1740,214,1748,233,1761,249,1798,278,1835,291,1872,293,1910,288,1950,282,1992,278,2038,281,2086,296,2101,306,2111,317,2119,328,2133,336,2168,348,2208,357,2305,369,2416,375,2535,377,2767,376,2867,378,2947,384,2952,385,2951,390,2946,389,2867,384,2767,382,2535,382,2416,380,2305,374,2207,362,2166,353,2131,341,2116,332,2106,321,2098,310,2084,301,2037,286,1992,283,1951,287,1911,294,1872,298,1834,296,1796,283,1757,253,1744,235,1735,216,1727,173,1728,133,1732,104"/>
+<area shape="poly" title=" " alt="" coords="1645,107,1266,153,1265,148,1644,101"/>
+<area shape="poly" title=" " alt="" coords="1725,106,1677,142,1615,180,1589,190,1560,197,1506,208,1485,214,1473,222,1470,233,1478,249,1490,259,1507,269,1555,285,1613,297,1674,305,1673,310,1612,302,1554,290,1505,274,1487,264,1474,252,1464,234,1468,219,1483,210,1505,203,1559,192,1587,185,1612,175,1674,137,1722,102"/>
+<area shape="poly" title=" " alt="" coords="2642,249,2690,292,2722,316,2757,336,2832,357,2953,384,2951,389,2831,362,2755,341,2719,320,2686,296,2639,253"/>
+<area shape="poly" title=" " alt="" coords="2656,248,2767,298,2765,303,2654,253"/>
+<area shape="poly" title=" " alt="" coords="2531,249,2200,275,1907,301,1869,307,1869,301,1906,296,2199,269,2530,244"/>
+<area shape="poly" title=" " alt="" coords="3360,253,3291,300,3227,341,3173,365,3119,385,3117,380,3171,360,3224,336,3288,296,3357,249"/>
+<area shape="poly" title=" " alt="" coords="3380,250,3405,373,3400,374,3374,251"/>
+<area shape="poly" title=" " alt="" coords="3412,248,3575,299,3573,304,3410,253"/>
+<area shape="poly" title=" " alt="" coords="3254,250,3191,253,2829,265,2548,267,2267,274,2102,284,1907,301,1866,307,1866,301,1906,296,2101,279,2267,269,2548,262,2829,260,3191,248,3254,245"/>
+<area shape="poly" title=" " alt="" coords="3581,253,3275,341,3121,386,3120,380,3274,336,3579,248"/>
+<area shape="poly" title=" " alt="" coords="3581,253,3534,272,3487,301,3453,337,3428,376,3423,373,3449,334,3484,297,3531,267,3579,248"/>
+<area shape="poly" title=" " alt="" coords="3623,251,3624,292,3619,292,3618,251"/>
+<area shape="poly" title=" " alt="" coords="3519,252,3507,253,3263,266,3057,271,2706,269,2537,269,2356,272,2150,282,1907,301,1866,307,1865,301,1906,296,2149,277,2356,267,2537,263,2706,264,3057,265,3263,261,3507,248,3519,247"/>
+<area shape="rect" href="IconChoiceSelector_8h.html" title="Icon&#45;based selector component for choice parameters." alt="" coords="1488,225,1645,251"/>
+<area shape="poly" title=" " alt="" coords="1461,175,1535,216,1532,221,1458,180"/>
+<area shape="rect" href="IconRenderer_8h.html" title="Utility namespace used to render waveform and filter icons." alt="" coords="1239,306,1358,331"/>
+<area shape="poly" title=" " alt="" coords="1429,180,1383,227,1320,297,1316,294,1379,224,1425,176"/>
+<area shape="poly" title=" " alt="" coords="1646,245,1875,270,1979,284,2038,296,2056,306,2068,317,2079,328,2096,336,2175,355,2277,366,2393,372,2517,374,2759,375,2864,378,2947,384,2952,385,2951,390,2946,389,2863,383,2759,381,2517,380,2393,378,2277,372,2175,360,2094,341,2076,332,2064,321,2053,310,2036,301,1978,289,1874,275,1645,250"/>
+<area shape="poly" title=" " alt="" coords="1646,244,3303,393,3303,398,1646,249"/>
+<area shape="poly" title=" " alt="" coords="1600,248,1746,299,1744,304,1598,253"/>
+<area shape="poly" title=" " alt="" coords="1528,253,1352,305,1350,300,1527,248"/>
+<area shape="poly" title=" " alt="" coords="1301,332,1300,373,1294,372,1296,331"/>
+<area shape="poly" title=" " alt="" coords="2062,175,2192,223,2242,248,2326,280,2393,301,2549,336,2660,355,2747,363,2835,370,2947,384,2952,385,2951,390,2946,389,2834,375,2747,368,2659,360,2547,341,2391,306,2325,285,2240,253,2190,228,2060,180"/>
+<area shape="poly" title=" " alt="" coords="1918,179,1822,197,1784,211,1761,227,1754,242,1756,260,1774,294,1770,297,1751,261,1749,242,1757,224,1782,206,1821,192,1917,174"/>
+<area shape="poly" title=" " alt="" coords="1918,179,1476,228,1183,268,939,304,938,299,1183,263,1476,223,1918,174"/>
+<area shape="poly" title=" " alt="" coords="2002,180,1909,222,1907,217,1999,175"/>
+<area shape="poly" title=" " alt="" coords="2037,176,2070,213,2066,217,2033,179"/>
+<area shape="poly" title=" " alt="" coords="3926,251,3924,405,3924,489,3922,519,3914,544,3902,562,3887,576,3867,585,3845,591,3792,593,3666,579,3598,574,3531,576,3333,589,2998,600,2087,617,506,635,506,629,2087,612,2998,594,3333,583,3531,571,3598,568,3666,574,3792,587,3844,585,3865,580,3884,572,3898,559,3909,541,3916,518,3919,489,3919,405,3921,251"/>
+<area shape="poly" title=" " alt="" coords="3907,253,3825,304,3761,341,3699,362,3635,377,3516,398,3515,392,3634,372,3698,356,3759,336,3822,300,3904,249"/>
+<area shape="poly" title=" " alt="" coords="3881,253,3680,305,3679,300,3880,248"/>
+<area shape="poly" title=" " alt="" coords="3914,253,3870,293,3812,341,3721,403,3628,461,3481,544,3478,539,3625,456,3718,399,3809,337,3867,289,3910,249"/>
+<area shape="poly" title=" " alt="" coords="2919,104,2940,166,2970,250,3029,373,3024,376,2966,252,2935,168,2914,105"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">

@@ -10,5 +10,6 @@ var classHiveLookAndFeel =
     [ "getLabelFont", "classHiveLookAndFeel.html#a41f019a184cfd5e3529ced3570fb10d2", null ],
     [ "getPopupMenuFont", "classHiveLookAndFeel.html#a837672018a073e5270d55cbf50219b0b", null ],
     [ "getTextButtonFont", "classHiveLookAndFeel.html#a3dd7d6c2031339db0c5ae7fd72f7008a", null ],
-    [ "positionComboBoxText", "classHiveLookAndFeel.html#aa11621f02164bb94cb84ec5603402042", null ]
+    [ "positionComboBoxText", "classHiveLookAndFeel.html#aa11621f02164bb94cb84ec5603402042", null ],
+    [ "refreshTheme", "classHiveLookAndFeel.html#af1214c543829a91d9afefe5e825eec97", null ]
 ];

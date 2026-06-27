@@ -1,5 +1,8 @@
 var annotated_dup =
 [
+    [ "HarmoniaPalette", "namespaceHarmoniaPalette.html", [
+      [ "ThemeDef", "structHarmoniaPalette_1_1ThemeDef.html", "structHarmoniaPalette_1_1ThemeDef" ]
+    ] ],
     [ "HarmoniaParams", "namespaceHarmoniaParams.html", [
       [ "AtomicRefs", "structHarmoniaParams_1_1AtomicRefs.html", "structHarmoniaParams_1_1AtomicRefs" ]
     ] ],
@@ -9,6 +12,7 @@ var annotated_dup =
     [ "AiResult", "structAiResult.html", "structAiResult" ],
     [ "AppController", "classAppController.html", "classAppController" ],
     [ "AppLookAndFeel", "classAppLookAndFeel.html", "classAppLookAndFeel" ],
+    [ "AuthPageLookAndFeel", "classAuthPageLookAndFeel.html", "classAuthPageLookAndFeel" ],
     [ "AuthResult", "structAuthResult.html", "structAuthResult" ],
     [ "BackendAiManager", "classBackendAiManager.html", "classBackendAiManager" ],
     [ "BackendAuthManager", "classBackendAuthManager.html", "classBackendAuthManager" ],
@@ -23,6 +27,7 @@ var annotated_dup =
     [ "HarmoniaAudioProcessorEditor", "classHarmoniaAudioProcessorEditor.html", "classHarmoniaAudioProcessorEditor" ],
     [ "HarmoniaSound", "classHarmoniaSound.html", "classHarmoniaSound" ],
     [ "HarmoniaVoice", "classHarmoniaVoice.html", "classHarmoniaVoice" ],
+    [ "HeaderComponent", "classHeaderComponent.html", "classHeaderComponent" ],
     [ "HiveLookAndFeel", "classHiveLookAndFeel.html", "classHiveLookAndFeel" ],
     [ "IconChoiceSelector", "classIconChoiceSelector.html", "classIconChoiceSelector" ],
     [ "KnobControl", "classKnobControl.html", "classKnobControl" ],
@@ -30,6 +35,7 @@ var annotated_dup =
     [ "LoginPage", "classLoginPage.html", "classLoginPage" ],
     [ "MainComponent", "classMainComponent.html", "classMainComponent" ],
     [ "OscilloscopeComponent", "classOscilloscopeComponent.html", "classOscilloscopeComponent" ],
+    [ "PaletteSelector", "classPaletteSelector.html", "classPaletteSelector" ],
     [ "ParticleField", "classParticleField.html", "classParticleField" ],
     [ "ProfileResult", "structProfileResult.html", "structProfileResult" ],
     [ "SectionPanel", "classSectionPanel.html", "classSectionPanel" ],
@@ -39,5 +45,6 @@ var annotated_dup =
     [ "UserProfile", "structUserProfile.html", "structUserProfile" ],
     [ "UserSession", "structUserSession.html", "structUserSession" ],
     [ "WaveformSelector", "classWaveformSelector.html", "classWaveformSelector" ],
+    [ "WelcomeLookAndFeel", "classWelcomeLookAndFeel.html", "classWelcomeLookAndFeel" ],
     [ "WelcomePage", "classWelcomePage.html", "classWelcomePage" ]
 ];

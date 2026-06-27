@@ -1,0 +1,22 @@
+<map id="src/themes/PaletteSelector.h" name="src/themes/PaletteSelector.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="238,5,445,31"/>
+<area shape="rect" id="Node000002" href="$MainComponent_8h.html" title="Main synthesizer interface component for Harmonia." alt="" coords="182,152,346,177"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="321,42,292,80,276,119,268,152,263,151,271,117,287,77,317,39"/>
+<area shape="rect" id="Node000009" href="$HeaderComponent_8h.html" title=" " alt="" coords="301,79,539,104"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="366,38,409,76,405,80,362,42"/>
+<area shape="rect" id="Node000003" href="$AppController_8h.html" title="Main application navigation controller." alt="" coords="98,225,243,251"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="240,188,188,227,184,223,237,183"/>
+<area shape="rect" id="Node000008" href="$MainComponent_8cpp.html" title=" " alt="" coords="268,225,447,251"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="291,183,344,223,340,227,288,188"/>
+<area shape="rect" id="Node000004" href="$AppController_8cpp.html" title=" " alt="" coords="5,299,165,324"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="148,261,101,300,98,296,145,257"/>
+<area shape="rect" id="Node000005" href="$PluginEditor_8h.html" title="Main graphical editor of the Harmonia plugin." alt="" coords="190,299,325,324"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="197,257,245,296,241,301,193,261"/>
+<area shape="rect" id="Node000006" href="$PluginEditor_8cpp.html" title=" " alt="" coords="89,372,239,397"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="233,334,181,374,178,370,230,330"/>
+<area shape="rect" id="Node000007" href="$PluginProcessor_8cpp.html" title=" " alt="" coords="263,372,438,397"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="285,330,337,370,334,374,281,334"/>
+<area shape="poly" id="edge9_Node000009_Node000002" title=" " alt="" coords="384,112,291,154,288,149,381,107"/>
+<area shape="rect" id="Node000010" href="$HeaderComponent_8cpp.html" title=" " alt="" coords="370,152,622,177"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="444,111,485,150,482,154,440,115"/>
+</map>

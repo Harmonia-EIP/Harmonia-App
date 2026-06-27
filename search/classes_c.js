@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['particlefield_0',['ParticleField',['../classParticleField.html',1,'']]],
-  ['profileresult_1',['ProfileResult',['../structProfileResult.html',1,'']]]
+  ['paletteselector_0',['PaletteSelector',['../classPaletteSelector.html',1,'']]],
+  ['particlefield_1',['ParticleField',['../classParticleField.html',1,'']]],
+  ['profileresult_2',['ProfileResult',['../structProfileResult.html',1,'']]]
 ];

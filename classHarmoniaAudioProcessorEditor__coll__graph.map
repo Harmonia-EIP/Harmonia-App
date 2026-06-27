@@ -1,23 +1,11 @@
 <map id="HarmoniaAudioProcessorEditor" name="HarmoniaAudioProcessorEditor">
-<area shape="rect" id="Node000001" title="Root editor window of the Harmonia plugin." alt="" coords="1176,69,1400,95"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="840,20,1035,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1046,45,1152,59,1203,67,1202,72,1152,65,1046,50"/>
-<area shape="rect" id="Node000003" href="$classHarmoniaAudioProcessor.html" title="Main JUCE audio processor for the Harmonia synthesizer." alt="" coords="537,135,724,160"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="738,140,879,132,1034,118,1214,92,1215,97,1035,123,879,137,738,145"/>
-<area shape="rect" id="Node000009" href="$classAppController.html" title="Root UI controller of the Harmonia application." alt="" coords="882,69,993,95"/>
-<area shape="poly" id="edge10_Node000009_Node000003" title=" " alt="" coords="703,129,881,91,882,96,705,134"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="217,205,374,231"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="375,200,513,171,575,158,576,163,514,177,376,205"/>
-<area shape="rect" id="Node000005" href="$structHarmoniaParams_1_1AtomicRefs.html" title="Real&#45;time safe parameter access structure." alt="" coords="187,107,404,132"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="418,127,537,137,537,142,418,132"/>
-<area shape="rect" id="Node000006" href="$classOscilloscopeComponent.html" title="Real&#45;time oscilloscope waveform display." alt="" coords="206,156,385,181"/>
-<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="398,166,513,161,545,157,545,163,514,166,399,171"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="5,89,137,115"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="119,117,187,141,235,153,234,159,186,146,117,122"/>
-<area shape="poly" id="edge9_Node000009_Node000007" title=" " alt="" coords="151,93,187,91,586,81,882,79,882,85,586,86,187,97,151,99"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="24,156,119,181"/>
-<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="133,166,206,166,206,171,133,171"/>
-<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="1007,79,1176,79,1176,85,1007,85"/>
-<area shape="rect" id="Node000010" href="$classBackendManager.html" title="Central facade for all backend operations." alt="" coords="563,5,698,31"/>
-<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="712,28,817,47,841,54,888,67,886,72,839,59,815,53,711,33"/>
+<area shape="rect" id="Node000001" title="Root editor window of the Harmonia plugin." alt="" coords="12,181,236,207"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,200,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="111,131,124,180,118,181,106,133"/>
+<area shape="rect" id="Node000003" href="$classHarmoniaAudioProcessor.html" title="Main JUCE audio processor for the Harmonia synthesizer." alt="" coords="224,93,411,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="280,127,151,184,149,179,278,122"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="133,5,291,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="238,37,305,91,301,95,235,41"/>
+<area shape="rect" id="Node000005" href="$structHarmoniaParams_1_1AtomicRefs.html" title="Real&#45;time safe parameter access structure." alt="" coords="315,5,533,31"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="401,41,333,95,330,91,397,37"/>
 </map>

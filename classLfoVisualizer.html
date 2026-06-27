@@ -129,8 +129,10 @@ Collaboration diagram for LfoVisualizer:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a57c2c7f0943154979834c70030380127" id="r_a57c2c7f0943154979834c70030380127"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLfoVisualizer.html#a57c2c7f0943154979834c70030380127">LfoVisualizer</a> (juce::AudioProcessorValueTreeState &amp;apvts, juce::Colour tint=<a class="el" href="namespaceHarmoniaPalette.html#ab12e74cb1129389759a6cb229c042b9f">HarmoniaPalette::mint</a>)</td></tr>
-<tr class="separator:a57c2c7f0943154979834c70030380127"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b9f528f29113ac1e15a527122578b1d" id="r_a9b9f528f29113ac1e15a527122578b1d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLfoVisualizer.html#a9b9f528f29113ac1e15a527122578b1d">LfoVisualizer</a> (juce::AudioProcessorValueTreeState &amp;apvts, juce::Colour tint=<a class="el" href="namespaceHarmoniaPalette.html#a572c9db09757d09be1976d94b352e0b2">HarmoniaPalette::sectionLfo</a>)</td></tr>
+<tr class="separator:a9b9f528f29113ac1e15a527122578b1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f8dcf83b74d5211f59acf9025611080" id="r_a2f8dcf83b74d5211f59acf9025611080"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLfoVisualizer.html#a2f8dcf83b74d5211f59acf9025611080">setAccentColour</a> (juce::Colour c)</td></tr>
+<tr class="separator:a2f8dcf83b74d5211f59acf9025611080"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a78bfb3f521e4d0c310c265047a37c329" id="r_a78bfb3f521e4d0c310c265047a37c329"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLfoVisualizer.html#a78bfb3f521e4d0c310c265047a37c329">paint</a> (juce::Graphics &amp;g) override</td></tr>
 <tr class="separator:a78bfb3f521e4d0c310c265047a37c329"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -155,8 +157,8 @@ Private Attributes</h2></td></tr>
 <p>The component periodically repaints itself using a timer to simulate waveform motion.</p>
 <p>The animation speed is derived from the current LFO rate parameter. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a57c2c7f0943154979834c70030380127" name="a57c2c7f0943154979834c70030380127"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a57c2c7f0943154979834c70030380127">&#9670;&#160;</a></span>LfoVisualizer()</h2>
+<a id="a9b9f528f29113ac1e15a527122578b1d" name="a9b9f528f29113ac1e15a527122578b1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b9f528f29113ac1e15a527122578b1d">&#9670;&#160;</a></span>LfoVisualizer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -174,7 +176,7 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">juce::Colour&#160;</td>
-          <td class="paramname"><em>tint</em> = <code><a class="el" href="namespaceHarmoniaPalette.html#ab12e74cb1129389759a6cb229c042b9f">HarmoniaPalette::mint</a></code>&#160;</td>
+          <td class="paramname"><em>tint</em> = <code><a class="el" href="namespaceHarmoniaPalette.html#a572c9db09757d09be1976d94b352e0b2">HarmoniaPalette::sectionLfo</a></code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -238,6 +240,32 @@ Private Attributes</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2f8dcf83b74d5211f59acf9025611080" name="a2f8dcf83b74d5211f59acf9025611080"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f8dcf83b74d5211f59acf9025611080">&#9670;&#160;</a></span>setAccentColour()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LfoVisualizer::setAccentColour </td>
+          <td>(</td>
+          <td class="paramtype">juce::Colour&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

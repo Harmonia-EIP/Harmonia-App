@@ -1,13 +1,15 @@
 <map id="SignupPage" name="SignupPage">
-<area shape="rect" id="Node000001" title="User interface for account creation." alt="" coords="179,181,276,207"/>
+<area shape="rect" id="Node000001" title="Authentication page — create a new Harmonia account." alt="" coords="205,181,303,207"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,93,137,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="105,123,207,179,205,183,103,128"/>
-<area shape="rect" id="Node000003" href="$classAppLookAndFeel.html" title=" " alt="" coords="162,93,293,119"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="230,133,230,181,225,181,225,133"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="64,5,228,31"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="168,39,218,91,214,95,164,43"/>
-<area shape="rect" id="Node000005" href="$structThemePalette.html" title=" " alt="" coords="253,5,365,31"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="290,43,241,95,237,91,286,39"/>
-<area shape="rect" id="Node000006" href="$classBackendManager.html" title="Central facade for all backend operations." alt="" coords="317,93,452,119"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="375,133,365,147,352,160,315,178,277,189,275,184,313,173,348,155,361,143,371,129"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,122,230,179,228,183,107,127"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="161,93,256,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="224,130,250,180,245,182,219,132"/>
+<area shape="rect" id="Node000004" href="$classAppLookAndFeel.html" title=" " alt="" coords="281,93,411,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="325,130,269,183,265,179,322,126"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="183,5,347,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="287,39,337,91,333,95,283,43"/>
+<area shape="rect" id="Node000006" href="$structThemePalette.html" title=" " alt="" coords="371,5,483,31"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="409,43,359,95,355,91,405,39"/>
+<area shape="rect" id="Node000007" href="$classBackendManager.html" title="Central facade for all backend operations." alt="" coords="436,93,571,119"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="480,130,456,146,428,160,364,180,303,190,302,185,363,174,426,155,453,141,477,125"/>
 </map>

@@ -116,17 +116,11 @@ Collaboration diagram for HarmoniaAudioProcessor:</div>
 <div class="dyncontent">
 <div class="center"><img src="classHarmoniaAudioProcessor__coll__graph.png" border="0" usemap="#aHarmoniaAudioProcessor_coll__map" alt="Collaboration graph"/></div>
 <map name="aHarmoniaAudioProcessor_coll__map" id="aHarmoniaAudioProcessor_coll__map">
-<area shape="rect" title="Main JUCE audio processor for the Harmonia synthesizer." alt="" coords="203,168,389,193"/>
-<area shape="rect" title=" " alt="" coords="5,80,163,105"/>
-<area shape="poly" title=" " alt="" coords="126,108,269,165,267,170,124,113"/>
-<area shape="rect" href="structHarmoniaParams_1_1AtomicRefs.html" title="Real&#45;time safe parameter access structure." alt="" coords="187,80,405,105"/>
-<area shape="poly" title=" " alt="" coords="299,119,299,167,293,167,293,119"/>
-<area shape="rect" href="classOscilloscopeComponent.html" title="Real&#45;time oscilloscope waveform display." alt="" coords="429,80,608,105"/>
-<area shape="poly" title=" " alt="" coords="477,113,327,170,325,165,475,108"/>
-<area shape="rect" title=" " alt="" coords="385,5,517,31"/>
-<area shape="poly" title=" " alt="" coords="473,39,510,78,506,81,469,43"/>
-<area shape="rect" title=" " alt="" coords="541,5,635,31"/>
-<area shape="poly" title=" " alt="" coords="569,43,532,82,528,78,565,39"/>
+<area shape="rect" title="Main JUCE audio processor for the Harmonia synthesizer." alt="" coords="96,93,283,119"/>
+<area shape="rect" title=" " alt="" coords="5,5,163,31"/>
+<area shape="poly" title=" " alt="" coords="110,37,177,91,173,95,107,41"/>
+<area shape="rect" href="structHarmoniaParams_1_1AtomicRefs.html" title="Real&#45;time safe parameter access structure." alt="" coords="187,5,405,31"/>
+<area shape="poly" title=" " alt="" coords="273,41,205,95,202,91,269,37"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -222,9 +216,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:ab266dad1a196b29d73132351985cf964" id="r_ab266dad1a196b29d73132351985cf964"><td class="memItemLeft" align="right" valign="top">juce::dsp::Reverb::Parameters&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#ab266dad1a196b29d73132351985cf964">reverbParams</a></td></tr>
 <tr class="memdesc:ab266dad1a196b29d73132351985cf964"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current reverb parameter configuration.  <br /></td></tr>
 <tr class="separator:ab266dad1a196b29d73132351985cf964"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a265c748989db26b655dec1ec635f2526" id="r_a265c748989db26b655dec1ec635f2526"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classOscilloscopeComponent.html">OscilloscopeComponent</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#a265c748989db26b655dec1ec635f2526">oscilloscope</a> = nullptr</td></tr>
-<tr class="memdesc:a265c748989db26b655dec1ec635f2526"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optional oscilloscope visualization target.  <br /></td></tr>
-<tr class="separator:a265c748989db26b655dec1ec635f2526"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7949413ae3bce514758b7441c0c3b056" id="r_a7949413ae3bce514758b7441c0c3b056"><td class="memItemLeft" align="right" valign="top">juce::Component::SafePointer&lt; <a class="el" href="classOscilloscopeComponent.html">OscilloscopeComponent</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#a7949413ae3bce514758b7441c0c3b056">oscilloscope</a> = nullptr</td></tr>
+<tr class="memdesc:a7949413ae3bce514758b7441c0c3b056"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optional oscilloscope visualization target.  <br /></td></tr>
+<tr class="separator:a7949413ae3bce514758b7441c0c3b056"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61cf09b3ab1ddbc40d290414609adfe4" id="r_a61cf09b3ab1ddbc40d290414609adfe4"><td class="memItemLeft" align="right" valign="top">juce::CriticalSection&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#a61cf09b3ab1ddbc40d290414609adfe4">oscLock</a></td></tr>
 <tr class="memdesc:a61cf09b3ab1ddbc40d290414609adfe4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Synchronization lock protecting oscilloscope access.  <br /></td></tr>
 <tr class="separator:a61cf09b3ab1ddbc40d290414609adfe4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1025,8 +1019,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a265c748989db26b655dec1ec635f2526" name="a265c748989db26b655dec1ec635f2526"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a265c748989db26b655dec1ec635f2526">&#9670;&#160;</a></span>oscilloscope</h2>
+<a id="a7949413ae3bce514758b7441c0c3b056" name="a7949413ae3bce514758b7441c0c3b056"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7949413ae3bce514758b7441c0c3b056">&#9670;&#160;</a></span>oscilloscope</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1035,7 +1029,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classOscilloscopeComponent.html">OscilloscopeComponent</a>* HarmoniaAudioProcessor::oscilloscope = nullptr</td>
+          <td class="memname">juce::Component::SafePointer&lt;<a class="el" href="classOscilloscopeComponent.html">OscilloscopeComponent</a>&gt; HarmoniaAudioProcessor::oscilloscope = nullptr</td>
         </tr>
       </table>
   </td>

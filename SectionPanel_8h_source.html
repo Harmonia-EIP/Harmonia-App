@@ -109,90 +109,99 @@ $(document).ready(function(){initNavTree('SectionPanel_8h_source.html',''); init
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">public</span>:</div>
 <div class="foldopen" id="foldopen00034" data-start="{" data-end="}">
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classSectionPanel.html#a32902f9aa038869acc81af783768eecf">   34</a></span>    <a class="code hl_function" href="classSectionPanel.html#a32902f9aa038869acc81af783768eecf">SectionPanel</a> (<span class="keyword">const</span> juce::String&amp; titleText,</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>                  juce::Colour tintCol = <a class="code hl_variable" href="namespaceHarmoniaPalette.html#af98351a9e2efbadfdfff9972921e9455">HarmoniaPalette::accent</a>)</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>                  juce::Colour tintCol = <a class="code hl_variable" href="namespaceHarmoniaPalette.html#a0c04aca4dcf228ab423bd1fc8a2df4ae">HarmoniaPalette::accent</a>)</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        : <a class="code hl_variable" href="classSectionPanel.html#a3493379c96dd53e7671ddb8f0a9daf69">title</a> (titleText), <a class="code hl_variable" href="classSectionPanel.html#aa621be963c3b49cd36acfc3661b51006">tint</a> (tintCol)</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    {</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    }</div>
 </div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
 <div class="foldopen" id="foldopen00040" data-start="{" data-end="}">
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classSectionPanel.html#a6776fb3ae339ac1836e8e14aa53e0631">   40</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSectionPanel.html#a6776fb3ae339ac1836e8e14aa53e0631">paint</a> (juce::Graphics&amp; g)<span class="keyword"> override</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keyword">    </span>{</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keyword">const</span> <span class="keyword">auto</span> r = getLocalBounds().toFloat().reduced (1.0f);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> corner = 10.0f;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        {</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            juce::Path shadowPath;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            shadowPath.addRoundedRectangle (r.translated (0.0f, 1.5f), corner);</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            juce::DropShadow ds (juce::Colours::black.withAlpha (0.30f), 8, { 0, 2 });</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            ds.drawForPath (g, shadowPath);</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        }</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        juce::ColourGradient bg (<a class="code hl_variable" href="namespaceHarmoniaPalette.html#a48b64ac1637bfcafd09a1f614e4065b6">HarmoniaPalette::panelTop</a>, r.getX(), r.getY(),</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                                 <a class="code hl_variable" href="namespaceHarmoniaPalette.html#a67ac2053947817478017967601b343e7">HarmoniaPalette::panel</a>,    r.getX(), r.getBottom(), <span class="keyword">false</span>);</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        g.setGradientFill (bg);</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        g.fillRoundedRectangle (r, corner);</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        g.setColour (juce::Colours::white.withAlpha (0.06f));</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        g.drawLine (r.getX() + corner, r.getY() + 1.0f,</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                    r.getRight() - corner, r.getY() + 1.0f, 1.0f);</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        g.setColour (<a class="code hl_variable" href="namespaceHarmoniaPalette.html#a76db180530cfde516855be231f17d7c2">HarmoniaPalette::border</a>);</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        g.drawRoundedRectangle (r, corner, 1.0f);</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keyword">const</span> <span class="keyword">auto</span> titleArea = juce::Rectangle&lt;int&gt; (16, 9, getWidth() - 32, 14);</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> ledR = 3.0f;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> ledX = (float) titleArea.getX();</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> ledY = (float) titleArea.getCentreY();</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classSectionPanel.html#a040d57c157032b57112f96377ab62f6d">   40</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSectionPanel.html#a040d57c157032b57112f96377ab62f6d">setAccentColour</a> (juce::Colour newColour)</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    {</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <a class="code hl_variable" href="classSectionPanel.html#aa621be963c3b49cd36acfc3661b51006">tint</a> = newColour;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        repaint();</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    }</div>
+</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="foldopen" id="foldopen00046" data-start="{" data-end="}">
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classSectionPanel.html#a6776fb3ae339ac1836e8e14aa53e0631">   46</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classSectionPanel.html#a6776fb3ae339ac1836e8e14aa53e0631">paint</a> (juce::Graphics&amp; g)<span class="keyword"> override</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keyword">const</span> <span class="keyword">auto</span> r = getLocalBounds().toFloat().reduced (1.0f);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> corner = 10.0f;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        {</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            juce::Path shadowPath;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            shadowPath.addRoundedRectangle (r.translated (0.0f, 1.5f), corner);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            juce::DropShadow ds (juce::Colours::black.withAlpha (0.30f), 8, { 0, 2 });</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            ds.drawForPath (g, shadowPath);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        }</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        juce::ColourGradient bg (<a class="code hl_variable" href="namespaceHarmoniaPalette.html#a48b64ac1637bfcafd09a1f614e4065b6">HarmoniaPalette::panelTop</a>, r.getX(), r.getY(),</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                                 <a class="code hl_variable" href="namespaceHarmoniaPalette.html#a67ac2053947817478017967601b343e7">HarmoniaPalette::panel</a>,    r.getX(), r.getBottom(), <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        g.setGradientFill (bg);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        g.fillRoundedRectangle (r, corner);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        g.setColour (juce::Colours::white.withAlpha (0.06f));</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        g.drawLine (r.getX() + corner, r.getY() + 1.0f,</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                    r.getRight() - corner, r.getY() + 1.0f, 1.0f);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        g.setColour (<a class="code hl_variable" href="namespaceHarmoniaPalette.html#a76db180530cfde516855be231f17d7c2">HarmoniaPalette::border</a>);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        g.drawRoundedRectangle (r, corner, 1.0f);</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        g.setColour (<a class="code hl_variable" href="classSectionPanel.html#aa621be963c3b49cd36acfc3661b51006">tint</a>.withAlpha (0.40f));</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        g.fillEllipse (ledX - ledR * 1.6f, ledY - ledR * 1.6f, ledR * 3.2f, ledR * 3.2f);</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        g.setColour (<a class="code hl_variable" href="classSectionPanel.html#aa621be963c3b49cd36acfc3661b51006">tint</a>);</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        g.fillEllipse (ledX - ledR, ledY - ledR, ledR * 2.0f, ledR * 2.0f);</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        g.setColour (<a class="code hl_variable" href="classSectionPanel.html#aa621be963c3b49cd36acfc3661b51006">tint</a>);</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        g.setFont (juce::Font (juce::FontOptions (10.0f).withStyle (<span class="stringliteral">&quot;Bold&quot;</span>))</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                       .withExtraKerningFactor (0.20f));</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        g.drawText (<a class="code hl_variable" href="classSectionPanel.html#a3493379c96dd53e7671ddb8f0a9daf69">title</a>.toUpperCase(),</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>                    titleArea.withTrimmedLeft (12),</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>                    juce::Justification::centredLeft);</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        g.setColour (<a class="code hl_variable" href="classSectionPanel.html#aa621be963c3b49cd36acfc3661b51006">tint</a>.withAlpha (0.30f));</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        g.fillRect (juce::Rectangle&lt;float&gt; (16.0f, 24.0f,</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                                            (<span class="keywordtype">float</span>) getWidth() - 32.0f, 1.0f));</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    }</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keyword">const</span> <span class="keyword">auto</span> titleArea = juce::Rectangle&lt;int&gt; (16, 9, getWidth() - 32, 14);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> ledR = 3.0f;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> ledX = (float) titleArea.getX();</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> ledY = (float) titleArea.getCentreY();</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        g.setColour (<a class="code hl_variable" href="classSectionPanel.html#aa621be963c3b49cd36acfc3661b51006">tint</a>.withAlpha (0.40f));</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        g.fillEllipse (ledX - ledR * 1.6f, ledY - ledR * 1.6f, ledR * 3.2f, ledR * 3.2f);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        g.setColour (<a class="code hl_variable" href="classSectionPanel.html#aa621be963c3b49cd36acfc3661b51006">tint</a>);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        g.fillEllipse (ledX - ledR, ledY - ledR, ledR * 2.0f, ledR * 2.0f);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        g.setColour (<a class="code hl_variable" href="classSectionPanel.html#aa621be963c3b49cd36acfc3661b51006">tint</a>);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        g.setFont (juce::Font (juce::FontOptions (10.0f).withStyle (<span class="stringliteral">&quot;Bold&quot;</span>))</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                       .withExtraKerningFactor (0.20f));</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        g.drawText (<a class="code hl_variable" href="classSectionPanel.html#a3493379c96dd53e7671ddb8f0a9daf69">title</a>.toUpperCase(),</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                    titleArea.withTrimmedLeft (12),</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                    juce::Justification::centredLeft);</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        g.setColour (<a class="code hl_variable" href="classSectionPanel.html#aa621be963c3b49cd36acfc3661b51006">tint</a>.withAlpha (0.30f));</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        g.fillRect (juce::Rectangle&lt;float&gt; (16.0f, 24.0f,</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>                                            (<span class="keywordtype">float</span>) getWidth() - 32.0f, 1.0f));</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    }</div>
 </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
-<div class="foldopen" id="foldopen00087" data-start="{" data-end="}">
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="classSectionPanel.html#a1d98d0ffc6c7955e6c68478415dcb7f9">   87</a></span>    juce::Rectangle&lt;int&gt; <a class="code hl_function" href="classSectionPanel.html#a1d98d0ffc6c7955e6c68478415dcb7f9">getContentBounds</a>()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="keyword">    </span>{</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <span class="keywordflow">return</span> getLocalBounds()</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>            .withTrimmedTop (32)</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>            .withTrimmedLeft (12)</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>            .withTrimmedRight (12)</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>            .withTrimmedBottom (12);</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    }</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="foldopen" id="foldopen00093" data-start="{" data-end="}">
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="classSectionPanel.html#a1d98d0ffc6c7955e6c68478415dcb7f9">   93</a></span>    juce::Rectangle&lt;int&gt; <a class="code hl_function" href="classSectionPanel.html#a1d98d0ffc6c7955e6c68478415dcb7f9">getContentBounds</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        <span class="keywordflow">return</span> getLocalBounds()</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>            .withTrimmedTop (32)</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>            .withTrimmedLeft (12)</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>            .withTrimmedRight (12)</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>            .withTrimmedBottom (12);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    }</div>
 </div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="classSectionPanel.html#af0485eb5dfdfb907bf08ce8c0ad0a1d4">   96</a></span>    juce::Colour <a class="code hl_function" href="classSectionPanel.html#af0485eb5dfdfb907bf08ce8c0ad0a1d4">getTint</a>() const noexcept { <span class="keywordflow">return</span> <a class="code hl_variable" href="classSectionPanel.html#aa621be963c3b49cd36acfc3661b51006">tint</a>; }</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="classSectionPanel.html#a3493379c96dd53e7671ddb8f0a9daf69">   99</a></span>    juce::String <a class="code hl_variable" href="classSectionPanel.html#a3493379c96dd53e7671ddb8f0a9daf69">title</a>;</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="classSectionPanel.html#aa621be963c3b49cd36acfc3661b51006">  100</a></span>    juce::Colour <a class="code hl_variable" href="classSectionPanel.html#aa621be963c3b49cd36acfc3661b51006">tint</a>;</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>};</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="classSectionPanel.html#af0485eb5dfdfb907bf08ce8c0ad0a1d4">  102</a></span>    juce::Colour <a class="code hl_function" href="classSectionPanel.html#af0485eb5dfdfb907bf08ce8c0ad0a1d4">getTint</a>() const noexcept { <span class="keywordflow">return</span> <a class="code hl_variable" href="classSectionPanel.html#aa621be963c3b49cd36acfc3661b51006">tint</a>; }</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="classSectionPanel.html#a3493379c96dd53e7671ddb8f0a9daf69">  105</a></span>    juce::String <a class="code hl_variable" href="classSectionPanel.html#a3493379c96dd53e7671ddb8f0a9daf69">title</a>;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="classSectionPanel.html#aa621be963c3b49cd36acfc3661b51006">  106</a></span>    juce::Colour <a class="code hl_variable" href="classSectionPanel.html#aa621be963c3b49cd36acfc3661b51006">tint</a>;</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>};</div>
 </div>
 <div class="ttc" id="aclassSectionPanel_html"><div class="ttname"><a href="classSectionPanel.html">SectionPanel</a></div><div class="ttdoc">Visual container for synthesizer UI sections.</div><div class="ttdef"><b>Definition</b> SectionPanel.h:32</div></div>
-<div class="ttc" id="aclassSectionPanel_html_a1d98d0ffc6c7955e6c68478415dcb7f9"><div class="ttname"><a href="classSectionPanel.html#a1d98d0ffc6c7955e6c68478415dcb7f9">SectionPanel::getContentBounds</a></div><div class="ttdeci">juce::Rectangle&lt; int &gt; getContentBounds() const</div><div class="ttdef"><b>Definition</b> SectionPanel.h:87</div></div>
+<div class="ttc" id="aclassSectionPanel_html_a040d57c157032b57112f96377ab62f6d"><div class="ttname"><a href="classSectionPanel.html#a040d57c157032b57112f96377ab62f6d">SectionPanel::setAccentColour</a></div><div class="ttdeci">void setAccentColour(juce::Colour newColour)</div><div class="ttdef"><b>Definition</b> SectionPanel.h:40</div></div>
+<div class="ttc" id="aclassSectionPanel_html_a1d98d0ffc6c7955e6c68478415dcb7f9"><div class="ttname"><a href="classSectionPanel.html#a1d98d0ffc6c7955e6c68478415dcb7f9">SectionPanel::getContentBounds</a></div><div class="ttdeci">juce::Rectangle&lt; int &gt; getContentBounds() const</div><div class="ttdef"><b>Definition</b> SectionPanel.h:93</div></div>
 <div class="ttc" id="aclassSectionPanel_html_a32902f9aa038869acc81af783768eecf"><div class="ttname"><a href="classSectionPanel.html#a32902f9aa038869acc81af783768eecf">SectionPanel::SectionPanel</a></div><div class="ttdeci">SectionPanel(const juce::String &amp;titleText, juce::Colour tintCol=HarmoniaPalette::accent)</div><div class="ttdef"><b>Definition</b> SectionPanel.h:34</div></div>
-<div class="ttc" id="aclassSectionPanel_html_a3493379c96dd53e7671ddb8f0a9daf69"><div class="ttname"><a href="classSectionPanel.html#a3493379c96dd53e7671ddb8f0a9daf69">SectionPanel::title</a></div><div class="ttdeci">juce::String title</div><div class="ttdef"><b>Definition</b> SectionPanel.h:99</div></div>
-<div class="ttc" id="aclassSectionPanel_html_a6776fb3ae339ac1836e8e14aa53e0631"><div class="ttname"><a href="classSectionPanel.html#a6776fb3ae339ac1836e8e14aa53e0631">SectionPanel::paint</a></div><div class="ttdeci">void paint(juce::Graphics &amp;g) override</div><div class="ttdef"><b>Definition</b> SectionPanel.h:40</div></div>
-<div class="ttc" id="aclassSectionPanel_html_aa621be963c3b49cd36acfc3661b51006"><div class="ttname"><a href="classSectionPanel.html#aa621be963c3b49cd36acfc3661b51006">SectionPanel::tint</a></div><div class="ttdeci">juce::Colour tint</div><div class="ttdef"><b>Definition</b> SectionPanel.h:100</div></div>
-<div class="ttc" id="aclassSectionPanel_html_af0485eb5dfdfb907bf08ce8c0ad0a1d4"><div class="ttname"><a href="classSectionPanel.html#af0485eb5dfdfb907bf08ce8c0ad0a1d4">SectionPanel::getTint</a></div><div class="ttdeci">juce::Colour getTint() const noexcept</div><div class="ttdef"><b>Definition</b> SectionPanel.h:96</div></div>
-<div class="ttc" id="anamespaceHarmoniaPalette_html_a48b64ac1637bfcafd09a1f614e4065b6"><div class="ttname"><a href="namespaceHarmoniaPalette.html#a48b64ac1637bfcafd09a1f614e4065b6">HarmoniaPalette::panelTop</a></div><div class="ttdeci">const juce::Colour panelTop</div><div class="ttdef"><b>Definition</b> HarmoniaPalette.h:14</div></div>
-<div class="ttc" id="anamespaceHarmoniaPalette_html_a67ac2053947817478017967601b343e7"><div class="ttname"><a href="namespaceHarmoniaPalette.html#a67ac2053947817478017967601b343e7">HarmoniaPalette::panel</a></div><div class="ttdeci">const juce::Colour panel</div><div class="ttdef"><b>Definition</b> HarmoniaPalette.h:12</div></div>
-<div class="ttc" id="anamespaceHarmoniaPalette_html_a76db180530cfde516855be231f17d7c2"><div class="ttname"><a href="namespaceHarmoniaPalette.html#a76db180530cfde516855be231f17d7c2">HarmoniaPalette::border</a></div><div class="ttdeci">const juce::Colour border</div><div class="ttdef"><b>Definition</b> HarmoniaPalette.h:15</div></div>
-<div class="ttc" id="anamespaceHarmoniaPalette_html_af98351a9e2efbadfdfff9972921e9455"><div class="ttname"><a href="namespaceHarmoniaPalette.html#af98351a9e2efbadfdfff9972921e9455">HarmoniaPalette::accent</a></div><div class="ttdeci">const juce::Colour accent</div><div class="ttdef"><b>Definition</b> HarmoniaPalette.h:24</div></div>
+<div class="ttc" id="aclassSectionPanel_html_a3493379c96dd53e7671ddb8f0a9daf69"><div class="ttname"><a href="classSectionPanel.html#a3493379c96dd53e7671ddb8f0a9daf69">SectionPanel::title</a></div><div class="ttdeci">juce::String title</div><div class="ttdef"><b>Definition</b> SectionPanel.h:105</div></div>
+<div class="ttc" id="aclassSectionPanel_html_a6776fb3ae339ac1836e8e14aa53e0631"><div class="ttname"><a href="classSectionPanel.html#a6776fb3ae339ac1836e8e14aa53e0631">SectionPanel::paint</a></div><div class="ttdeci">void paint(juce::Graphics &amp;g) override</div><div class="ttdef"><b>Definition</b> SectionPanel.h:46</div></div>
+<div class="ttc" id="aclassSectionPanel_html_aa621be963c3b49cd36acfc3661b51006"><div class="ttname"><a href="classSectionPanel.html#aa621be963c3b49cd36acfc3661b51006">SectionPanel::tint</a></div><div class="ttdeci">juce::Colour tint</div><div class="ttdef"><b>Definition</b> SectionPanel.h:106</div></div>
+<div class="ttc" id="aclassSectionPanel_html_af0485eb5dfdfb907bf08ce8c0ad0a1d4"><div class="ttname"><a href="classSectionPanel.html#af0485eb5dfdfb907bf08ce8c0ad0a1d4">SectionPanel::getTint</a></div><div class="ttdeci">juce::Colour getTint() const noexcept</div><div class="ttdef"><b>Definition</b> SectionPanel.h:102</div></div>
+<div class="ttc" id="anamespaceHarmoniaPalette_html_a0c04aca4dcf228ab423bd1fc8a2df4ae"><div class="ttname"><a href="namespaceHarmoniaPalette.html#a0c04aca4dcf228ab423bd1fc8a2df4ae">HarmoniaPalette::accent</a></div><div class="ttdeci">juce::Colour accent</div><div class="ttdef"><b>Definition</b> HarmoniaPalette.h:33</div></div>
+<div class="ttc" id="anamespaceHarmoniaPalette_html_a48b64ac1637bfcafd09a1f614e4065b6"><div class="ttname"><a href="namespaceHarmoniaPalette.html#a48b64ac1637bfcafd09a1f614e4065b6">HarmoniaPalette::panelTop</a></div><div class="ttdeci">const juce::Colour panelTop</div><div class="ttdef"><b>Definition</b> HarmoniaPalette.h:56</div></div>
+<div class="ttc" id="anamespaceHarmoniaPalette_html_a67ac2053947817478017967601b343e7"><div class="ttname"><a href="namespaceHarmoniaPalette.html#a67ac2053947817478017967601b343e7">HarmoniaPalette::panel</a></div><div class="ttdeci">const juce::Colour panel</div><div class="ttdef"><b>Definition</b> HarmoniaPalette.h:54</div></div>
+<div class="ttc" id="anamespaceHarmoniaPalette_html_a76db180530cfde516855be231f17d7c2"><div class="ttname"><a href="namespaceHarmoniaPalette.html#a76db180530cfde516855be231f17d7c2">HarmoniaPalette::border</a></div><div class="ttdeci">const juce::Colour border</div><div class="ttdef"><b>Definition</b> HarmoniaPalette.h:57</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

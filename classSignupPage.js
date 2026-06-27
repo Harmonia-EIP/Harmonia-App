@@ -1,19 +1,30 @@
 var classSignupPage =
 [
+    [ "WaveLayer", "structSignupPage_1_1WaveLayer.html", "structSignupPage_1_1WaveLayer" ],
     [ "SignupPage", "classSignupPage.html#ae9ff59544a0df1f565d2cf456df6fa30", null ],
+    [ "~SignupPage", "classSignupPage.html#a98bde77d5c610c0c434451e5aa113e4f", null ],
+    [ "drawLogoIcon", "classSignupPage.html#a0bdbc039b32839d015c499f03c752899", null ],
+    [ "drawWaveLayer", "classSignupPage.html#a58e21dbd49ce12f3c05a83c5d430651a", null ],
     [ "handleSignup", "classSignupPage.html#abc904e743fc11f944fc2e997dbf79bd9", null ],
     [ "paint", "classSignupPage.html#a2922d5fdeedfdfe83b03643dbe65c5ab", null ],
     [ "resized", "classSignupPage.html#a6894d15b213b7b0f1f2a927723ec3b46", null ],
+    [ "timerCallback", "classSignupPage.html#a753a6579dbc6e6f356c2254f207fd97e", null ],
+    [ "animationPhase", "classSignupPage.html#ab9de2289466fa8c6281deaa7c9b36a6d", null ],
     [ "authLookAndFeel", "classSignupPage.html#ab4514f953719c65c348406039345a90d", null ],
     [ "backButton", "classSignupPage.html#a3c8d4626499ab361ef15d7dc3978b00c", null ],
     [ "backend", "classSignupPage.html#a4d9b97ef56922877a2326617e75fdbbc", null ],
     [ "emailField", "classSignupPage.html#a84a5b563c0f3cd6e491f431df2bd6b89", null ],
     [ "firstnameField", "classSignupPage.html#a59f3751fa9e90de20e3dbb0e69d24195", null ],
+    [ "lafBack", "classSignupPage.html#a661cc663c84f1ccca15a3b1be8f4e76e", null ],
+    [ "lafSignup", "classSignupPage.html#a0a22f49fdd24e942df3242f3acb32967", null ],
     [ "lastnameField", "classSignupPage.html#a348d6106b42624d41bd078d439dba391", null ],
+    [ "logoIconBounds", "classSignupPage.html#a979c5d64d1131e1abe28e41048535d32", null ],
     [ "onBack", "classSignupPage.html#a77af3eb5be603ca6d35d673f7b2fc900", null ],
     [ "onSuccess", "classSignupPage.html#ad1df05ebbc966f63e2099e8aaa435cb5", null ],
     [ "passwordField", "classSignupPage.html#a47382a8d19ea8e0c388c711625eb6a3f", null ],
     [ "signupButton", "classSignupPage.html#a7514b7746eafb02fa458d3877c18e788", null ],
+    [ "subtitleLabel", "classSignupPage.html#a2d15c141a6f745b98524bebdff2a7e7c", null ],
     [ "titleLabel", "classSignupPage.html#a45a91e2876841839d278c9e8d0421367", null ],
-    [ "usernameField", "classSignupPage.html#a199949519dbb9b95fd4f88cb743a5a2e", null ]
+    [ "usernameField", "classSignupPage.html#a199949519dbb9b95fd4f88cb743a5a2e", null ],
+    [ "waveLayers", "classSignupPage.html#a78994c73e911e46eeed3f282e9c207c6", null ]
 ];

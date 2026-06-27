@@ -1,0 +1,19 @@
+<map id="src/sections/HeaderComponent.h" name="src/sections/HeaderComponent.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="261,5,499,31"/>
+<area shape="rect" id="Node000002" href="$MainComponent_8h.html" title="Main synthesizer interface component for Harmonia." alt="" coords="182,79,346,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="351,40,284,81,282,76,348,35"/>
+<area shape="rect" id="Node000009" href="$HeaderComponent_8cpp.html" title=" " alt="" coords="370,79,622,104"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="412,35,478,76,476,81,409,40"/>
+<area shape="rect" id="Node000003" href="$AppController_8h.html" title="Main application navigation controller." alt="" coords="98,152,243,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="240,114,188,154,184,150,237,110"/>
+<area shape="rect" id="Node000008" href="$MainComponent_8cpp.html" title=" " alt="" coords="268,152,447,177"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="291,110,344,150,340,154,288,114"/>
+<area shape="rect" id="Node000004" href="$AppController_8cpp.html" title=" " alt="" coords="5,225,165,251"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="148,188,101,227,98,223,145,184"/>
+<area shape="rect" id="Node000005" href="$PluginEditor_8h.html" title="Main graphical editor of the Harmonia plugin." alt="" coords="190,225,325,251"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="197,184,245,223,241,227,193,188"/>
+<area shape="rect" id="Node000006" href="$PluginEditor_8cpp.html" title=" " alt="" coords="89,299,239,324"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="233,261,181,301,178,296,230,257"/>
+<area shape="rect" id="Node000007" href="$PluginProcessor_8cpp.html" title=" " alt="" coords="263,299,438,324"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="285,257,337,296,334,301,281,261"/>
+</map>

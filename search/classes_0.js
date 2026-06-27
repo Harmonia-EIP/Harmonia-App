@@ -5,5 +5,6 @@ var searchData=
   ['appcontroller_2',['AppController',['../classAppController.html',1,'']]],
   ['applookandfeel_3',['AppLookAndFeel',['../classAppLookAndFeel.html',1,'']]],
   ['atomicrefs_4',['AtomicRefs',['../structHarmoniaParams_1_1AtomicRefs.html',1,'HarmoniaParams']]],
-  ['authresult_5',['AuthResult',['../structAuthResult.html',1,'']]]
+  ['authpagelookandfeel_5',['AuthPageLookAndFeel',['../classAuthPageLookAndFeel.html',1,'']]],
+  ['authresult_6',['AuthResult',['../structAuthResult.html',1,'']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['themepreset_0',['ThemePreset',['../classAppLookAndFeel.html#a7e966ad29d8634970a167de96d1a6b87',1,'AppLookAndFeel']]]
+  ['filtershape_0',['FilterShape',['../namespaceIconRenderer.html#a14d6d88133735f5ae17e33d01948ca8b',1,'IconRenderer']]]
 ];

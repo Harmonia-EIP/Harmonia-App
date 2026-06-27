@@ -4,7 +4,7 @@ var searchData=
   ['emailfield_1',['emailField',['../classSignupPage.html#a84a5b563c0f3cd6e491f431df2bd6b89',1,'SignupPage']]],
   ['emitburst_2',['emitBurst',['../classParticleField.html#aaa6c65ceda1f2514a2b14a2ae97c6ddb',1,'ParticleField']]],
   ['emptyprompt_3',['EmptyPrompt',['../namespaceStrings_1_1Errors.html#a0292e61dbb28ae81461daffdce12aaba',1,'Strings::Errors']]],
-  ['envelopevisualizer_4',['envelopevisualizer',['../classEnvelopeVisualizer.html#a2f324c8b9df151f4a8cc0b4bdbf743c4',1,'EnvelopeVisualizer::EnvelopeVisualizer()'],['../classEnvelopeVisualizer.html',1,'EnvelopeVisualizer']]],
+  ['envelopevisualizer_4',['envelopevisualizer',['../classEnvelopeVisualizer.html#acaeb40f8c4437e9c9c5f37dca38d6ce5',1,'EnvelopeVisualizer::EnvelopeVisualizer()'],['../classEnvelopeVisualizer.html',1,'EnvelopeVisualizer']]],
   ['envelopevisualizer_2eh_5',['EnvelopeVisualizer.h',['../EnvelopeVisualizer_8h.html',1,'']]],
   ['error_6',['error',['../structProfileResult.html#a6bcb9390a86d1a8948d9aa85cdc7d974',1,'ProfileResult::error()'],['../structAiResult.html#a7fb346b62410d11b76c9eb172af2e883',1,'AiResult::error()'],['../classHarmoniaAlert.html#afe8688bd623fa800a5fe2b0a73189e47',1,'HarmoniaAlert::error()']]],
   ['errorhttp_7',['ErrorHTTP',['../namespaceStrings_1_1Errors.html#a48e54dffc8d3531ed489f96e2c019598',1,'Strings::Errors']]],
