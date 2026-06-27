@@ -6,7 +6,7 @@ WelcomePage::WelcomePage()
     setLookAndFeel(&authLookAndFeel);
 
     waveLayers = { {
-        { 3.f, 0.006f, 0.0f, 0.20f, 0.78f, HarmoniaColours::waveIndigo },
+        { 36.f, 0.006f, 0.0f, 0.20f, 0.78f, HarmoniaColours::waveIndigo },
         { 28.f, 0.010f, 1.1f, 0.18f, 0.68f, HarmoniaColours::waveBlue   },
         { 22.f, 0.014f, 2.3f, 0.14f, 0.58f, HarmoniaColours::waveSlate  },
         { 14.f, 0.020f, 0.7f, 0.10f, 0.48f, HarmoniaColours::waveCyan   },
