@@ -41,7 +41,9 @@ jobs:
           path: release/vst3
 
       - name: Check files
-        run: ls -R release/vst3
+        run: |
+          ls -R release/vst3
+          test -d release/vst3/HarmoniaPlugin.vst3 || (echo "VST3 bundle manquant!" && exit 1)
 
       - name: Create ZIP
         run: |
@@ -55,7 +57,7 @@ jobs:
           username: ${{ secrets.VPS_USERNAME }}
           key: ${{ secrets.VPS_SSH_KEY }}
           source: "HarmoniaPlugin.vst3.zip"
-          target: "/var/www/harmonia-downloads/HarmoniaPlugin.vst3.zip.tmp"
+          target: "/var/www/harmonia-downloads/tmp/"
 
       - name: Replace ZIP atomically
         uses: appleboy/ssh-action@v1.0.3
@@ -64,5 +66,5 @@ jobs:
           username: ${{ secrets.VPS_USERNAME }}
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
-            mv /var/www/harmonia-downloads/HarmoniaPlugin.vst3.zip.tmp \
+            mv /var/www/harmonia-downloads/tmp/HarmoniaPlugin.vst3.zip \
                /var/www/harmonia-downloads/HarmoniaPlugin.vst3.zip
