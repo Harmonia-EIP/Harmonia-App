@@ -27,7 +27,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Harmonia-VST3
-          path: build/HarmoniaPlugin_artefacts/VST3/HarmoniaPlugin.vst3
+          path: build/HarmoniaPlugin_artefacts/Release/VST3/
 
   deploy:
     needs: build
