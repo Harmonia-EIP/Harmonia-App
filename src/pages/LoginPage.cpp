@@ -13,28 +13,19 @@ LoginPage::LoginPage(BackendManager& be,
         { 12.f, 0.018f, 2.4f, 0.04f, 0.72f, HarmoniaColours::waveCyan   }
     } };
 
-    // -------------------------------------------------------------------------
-    // Title
-    // -------------------------------------------------------------------------
     titleLabel.setText(Strings::Titles::SignIn, juce::dontSendNotification);
     titleLabel.setFont(UIStyle::Fonts::SubTitle());
     titleLabel.setColour(juce::Label::textColourId, HarmoniaColours::textPrimary);
     titleLabel.setJustificationType(juce::Justification::centred);
     addAndMakeVisible(titleLabel);
 
-    // -------------------------------------------------------------------------
-    // Subtitle
-    // -------------------------------------------------------------------------
-    subtitleLabel.setText("HARMONIA \xc2\xb7 AI SYNTH", juce::dontSendNotification);
+    subtitleLabel.setText(Strings::Titles::HarmoniaAiTitle, juce::dontSendNotification);
     subtitleLabel.setFont(juce::Font("Inter", 10.5f, juce::Font::plain));
     subtitleLabel.setColour(juce::Label::textColourId,
                             HarmoniaColours::textPrimary.withAlpha(0.28f));
     subtitleLabel.setJustificationType(juce::Justification::centred);
     addAndMakeVisible(subtitleLabel);
 
-    // -------------------------------------------------------------------------
-    // Text fields
-    // -------------------------------------------------------------------------
     auto placeholder = findColour(AppColourIds::textSecondaryId);
 
     identifierField.setTextToShowWhenEmpty(Strings::Placeholders::identifier, placeholder);
@@ -54,9 +45,6 @@ LoginPage::LoginPage(BackendManager& be,
         addAndMakeVisible(*field);
     }
 
-    // -------------------------------------------------------------------------
-    // Buttons + their LookAndFeels
-    // -------------------------------------------------------------------------
     lafLogin = std::make_unique<AuthPageLookAndFeel>(AuthPageLookAndFeel::Style::Primary);
     lafBack  = std::make_unique<AuthPageLookAndFeel>(AuthPageLookAndFeel::Style::Back);
 
@@ -80,14 +68,12 @@ LoginPage::~LoginPage()
     setLookAndFeel(nullptr);
 }
 
-// =============================================================================
 void LoginPage::timerCallback()
 {
     animationPhase += 0.012f;
     repaint();
 }
 
-// =============================================================================
 void LoginPage::paint(juce::Graphics& g)
 {
     const float w = (float) getWidth();
@@ -120,7 +106,6 @@ void LoginPage::paint(juce::Graphics& g)
     drawLogoIcon(g, logoIconBounds);
 }
 
-// =============================================================================
 void LoginPage::drawWaveLayer(juce::Graphics& g,
                                const WaveLayer& layer,
                                float width, float height, float phase) const
@@ -145,7 +130,6 @@ void LoginPage::drawWaveLayer(juce::Graphics& g,
     g.fillPath(path);
 }
 
-// =============================================================================
 void LoginPage::drawLogoIcon(juce::Graphics& g, juce::Rectangle<float> bounds) const
 {
     g.setColour(HarmoniaColours::iconBg);
@@ -159,33 +143,27 @@ void LoginPage::drawLogoIcon(juce::Graphics& g, juce::Rectangle<float> bounds) c
     g.drawText("~", bounds, juce::Justification::centred, false);
 }
 
-// =============================================================================
 void LoginPage::resized()
 {
     const int   panelW = 300;
     const float cx     = (float) getWidth()  * 0.5f;
     const float cy     = (float) getHeight() * 0.44f;
 
-    // Block height: 44(icon)+16+44(title)+14(sub)+28(gap)+38(field)+9+38+22+40(btn)+9+34(back)
     const float blockH = 336.f;
     float y = cy - blockH * 0.5f;
 
-    // Logo icon
     const float iconSize = 44.f;
     logoIconBounds = { cx - iconSize * 0.5f, y, iconSize, iconSize };
     y += iconSize + 16.f;
 
-    // Title
     titleLabel.setBounds(juce::Rectangle<float>(
         cx - panelW * 0.5f, y, (float) panelW, 44.f).toNearestInt());
     y += 44.f;
 
-    // Subtitle
     subtitleLabel.setBounds(juce::Rectangle<float>(
         cx - panelW * 0.5f, y, (float) panelW, 18.f).toNearestInt());
     y += 18.f + 28.f;
 
-    // Fields
     identifierField.setBounds(juce::Rectangle<float>(
         cx - panelW * 0.5f, y, (float) panelW, 38.f).toNearestInt());
     y += 38.f + 9.f;
@@ -194,18 +172,15 @@ void LoginPage::resized()
         cx - panelW * 0.5f, y, (float) panelW, 38.f).toNearestInt());
     y += 38.f + 22.f;
 
-    // Primary button
     loginButton.setBounds(juce::Rectangle<float>(
         cx - panelW * 0.5f, y, (float) panelW, 40.f).toNearestInt());
     y += 40.f + 9.f;
 
-    // Back button (narrower, ghost)
     const int backW = 140;
     backButton.setBounds(juce::Rectangle<float>(
         cx - backW * 0.5f, y, (float) backW, 34.f).toNearestInt());
 }
 
-// =============================================================================
 void LoginPage::handleLogin()
 {
     auto identifier = identifierField.getText().trim();
@@ -222,7 +197,7 @@ void LoginPage::handleLogin()
 
     if (!result.success)
     {
-        HarmoniaAlert::error(Strings::Errors::ErrorTitle, result.errorMessage);
+        HarmoniaAlert::error(Strings::Errors::AuthenticationError, result.errorMessage);
         return;
     }
 

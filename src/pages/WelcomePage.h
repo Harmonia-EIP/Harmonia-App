@@ -2,6 +2,87 @@
 
 #include "PagesIncludes.h"
 
+// =============================================================================
+// Custom LookAndFeel for the WelcomePage buttons
+// =============================================================================
+class WelcomeLookAndFeel : public juce::LookAndFeel_V4
+{
+public:
+    enum class BtnStyle { Filled, Outlined, Ghost };
+
+    explicit WelcomeLookAndFeel(BtnStyle style) : m_style(style) {}
+
+    void drawButtonBackground(juce::Graphics& g,
+                               juce::Button& button,
+                               const juce::Colour&,
+                               bool isHighlighted,
+                               bool) override
+    {
+        auto bounds = button.getLocalBounds().toFloat().reduced(0.5f);
+        const float radius = 10.f;
+
+        if (m_style == BtnStyle::Filled)
+        {
+            float bgAlpha     = isHighlighted ? 0.12f : 0.06f;
+            float borderAlpha = isHighlighted ? 0.35f : 0.15f;
+
+            g.setColour(juce::Colours::white.withAlpha(bgAlpha));
+            g.fillRoundedRectangle(bounds, radius);
+
+            if (isHighlighted)
+            {
+                g.setColour(HarmoniaColours::waveBlue.withAlpha(0.18f));
+                g.drawRoundedRectangle(bounds.expanded(2.f), radius + 2.f, 3.f);
+            }
+
+            g.setColour(HarmoniaColours::waveBlue.withAlpha(borderAlpha));
+            g.drawRoundedRectangle(bounds, radius, 1.f);
+        }
+        else if (m_style == BtnStyle::Outlined)
+        {
+            float fillAlpha   = isHighlighted ? 0.06f : 0.03f;
+            float borderAlpha = isHighlighted ? 0.22f : 0.12f;
+
+            g.setColour(juce::Colours::white.withAlpha(fillAlpha));
+            g.fillRoundedRectangle(bounds, radius);
+
+            g.setColour(juce::Colours::white.withAlpha(borderAlpha));
+            g.drawRoundedRectangle(bounds, radius, 1.f);
+        }
+    }
+
+    void drawButtonText(juce::Graphics& g,
+                    juce::TextButton& button,
+                    bool isHighlighted,
+                    bool /*isDown*/) override
+    {
+        juce::Colour colour;
+
+        if (m_style == BtnStyle::Ghost)
+        {
+            colour = isHighlighted
+                ? HarmoniaColours::waveCyan.withAlpha(0.95f)
+                : HarmoniaColours::textMuted;
+        }
+        else
+        {
+            colour = isHighlighted
+                ? HarmoniaColours::textPrimary
+                : HarmoniaColours::textPrimary.withAlpha(0.85f);
+        }
+
+        g.setColour(colour);
+        g.setFont(juce::Font("Inter", 15.f, juce::Font::plain));
+        g.drawFittedText(button.getButtonText(),
+                        button.getLocalBounds(),
+                        juce::Justification::centred,
+                        1);
+    }
+
+private:
+    BtnStyle m_style;
+};
+
 /**
  * @class WelcomePage
  * @brief Initial landing page allowing the user to choose between sign-in and sign-up.
@@ -77,8 +158,8 @@ private:
         float amplitude   = 20.f;
         float frequency   = 0.015f;
         float phaseOffset = 0.f;
-        float alphaFill   = 0.12f;    ///< fill alpha for the filled region below
-        float yRatio      = 0.55f;    ///< vertical centre (0–1 of component height)
+        float alphaFill   = 0.12f;
+        float yRatio      = 0.55f;
         juce::Colour colour;
     };
 

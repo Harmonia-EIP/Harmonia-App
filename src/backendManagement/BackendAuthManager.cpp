@@ -104,8 +104,65 @@ AuthResult BackendAuthManager::signupUser(
         try
         {
             auto body = json::parse(response.text);
+
             if (body.contains("detail"))
-                message = body["detail"].get<std::string>();
+            {
+                auto detail = body["detail"];
+
+                if (detail.is_array() && !detail.empty())
+                {
+                    auto error = detail[0];
+
+                    std::string type = error.value("type", "");
+                    std::string field = "";
+
+                    if (error.contains("loc") && error["loc"].is_array())
+                    {
+                        for (auto& item : error["loc"])
+                        {
+                            if (item.is_string() && item != "body")
+                            {
+                                field = item.get<std::string>();
+                            }
+                        }
+                    }
+
+                    // Invalid email
+                    if (field == "email")
+                    {
+                        message = "Please enter a valid email address.";
+                    }
+                    // Password too short
+                    else if (field == "password" &&
+                            type == "string_too_short")
+                    {
+                        int minLength = 0;
+
+                        if (error.contains("ctx") &&
+                            error["ctx"].contains("min_length"))
+                        {
+                            minLength = error["ctx"]["min_length"];
+                        }
+
+                        message = "Password must contain at least "
+                                + juce::String(minLength)
+                                + " characters.";
+                    }
+                    // Missing field
+                    else if (type == "missing")
+                    {
+                        message = "A required field is missing.";
+                    }
+                    else
+                    {
+                        message = "Invalid input.";
+                    }
+                }
+                else if (detail.is_string())
+                {
+                    message = detail.get<std::string>();
+                }
+            }
         }
         catch (...)
         {

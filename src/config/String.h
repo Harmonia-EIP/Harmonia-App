@@ -19,6 +19,11 @@ namespace Strings
         inline const juce::String UnreadableAIResponse = "Unreadable AI response.";
         inline const juce::String ThemeUpdateFailed = "Failed to update theme.";
         inline const juce::String LayoutUpdateFailed = "Failed to update layout.";
+        inline const juce::String AiGuestError = "AI generation is not available in guest mode.";
+        inline const juce::String AiGuestAdvice = "Please create an account or sign in to use the AI generation feature.";
+        inline const juce::String AiServerError = "The AI service is temporarily unavailable.";
+        inline const juce::String PleaseTryAgainLater = "Please try again later.";
+        inline const juce::String AuthenticationError = "Authentication error";
     }
 
     namespace Success
@@ -34,6 +39,8 @@ namespace Strings
         inline const juce::String CreateAccount = "Create your Harmonia account";
         inline const juce::String SignIn = "Sign in to your account";
         inline const juce::String Subtitle = "AI SUBTRACTIVE SYNTHESIZER  -  CHARTER V1";
+        inline const juce::String HarmoniaAiTitle = "HARMONIA AI SYNTH";
+        inline const juce::String Harmonia = "Harmonia";
     }
 
     namespace Labels

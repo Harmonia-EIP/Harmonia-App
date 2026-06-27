@@ -69,6 +69,7 @@
 #include "config/AppConfig.h"
 #include "parameters/HarmoniaParameters.h"
 #include "tools/PresetLoader.h"
+#include "tools/Alert.h"
 
 class MainComponent : public juce::Component
 {

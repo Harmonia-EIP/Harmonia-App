@@ -162,50 +162,6 @@ void HeaderComponent::paint (juce::Graphics& g)
         1);
 }
 
-void HeaderComponent::refreshTheme()
-{
-    titleLabel.setColour(
-        juce::Label::textColourId,
-        HarmoniaPalette::textPrimary);
-
-    subtitleLabel.setColour(
-        juce::Label::textColourId,
-        HarmoniaPalette::textMuted);
-
-    presetLabel.setColour(
-        juce::Label::textColourId,
-        HarmoniaPalette::textSecondary);
-
-
-    promptEditor.setColour(
-        juce::TextEditor::textColourId,
-        HarmoniaPalette::textPrimary);
-
-    promptEditor.setTextToShowWhenEmpty (
-        Strings::Placeholders::Prompt,
-        HarmoniaPalette::textMuted);
-
-
-    for (auto* b :
-        {
-            &generateButton,
-            &loadButton,
-            &saveButton,
-            &logoutButton
-        })
-    {
-        b->setColour(
-            juce::TextButton::textColourOffId,
-            HarmoniaPalette::textMuted);
-
-        b->setColour(
-            juce::TextButton::textColourOnId,
-            HarmoniaPalette::background);
-    }
-
-    repaint();
-}
-
 void HeaderComponent::resized()
 {
     auto header =

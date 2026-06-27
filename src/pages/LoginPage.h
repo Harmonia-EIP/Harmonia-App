@@ -19,7 +19,6 @@ public:
 
     ~LoginPage() override;
 
-    /** Triggered when the user taps the back arrow. */
     std::function<void()> onBack;
 
     void paint(juce::Graphics&) override;

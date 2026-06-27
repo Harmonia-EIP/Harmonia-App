@@ -40,7 +40,6 @@ MainComponent::MainComponent (HarmoniaAudioProcessor& p,
         applyTheme();
 
         lookAndFeel.refreshTheme();
-        headerComponent->refreshTheme();
 
         sendLookAndFeelChange();
 
@@ -261,6 +260,16 @@ void MainComponent::doSavePreset()
 
 void MainComponent::doGenerateWithAi()
 {
+    if (session.isGuest)
+    {
+        juce::AlertWindow::showMessageBoxAsync(
+            juce::AlertWindow::WarningIcon,
+            Strings::Errors::AiGuestError,
+            Strings::Errors::AiGuestAdvice
+        );
+        return;
+    }
+
     const auto prompt = headerComponent->getPromptEditor().getText();
 
     if (prompt.trim().isEmpty())
@@ -283,18 +292,33 @@ void MainComponent::doGenerateWithAi()
         {
             if (!result.success)
             {
-                juce::AlertWindow::showMessageBoxAsync(
-                    juce::AlertWindow::WarningIcon,
-                    Strings::Errors::AiError,
-                    result.errorMessage.isNotEmpty()
+                juce::String message;
+                juce::String advice;
+
+                if (result.errorMessage.contains("502"))
+                {
+                    message = Strings::Errors::AiServerError;
+                    advice = Strings::Errors::PleaseTryAgainLater;
+                }
+                else
+                {
+                    message = result.errorMessage.isNotEmpty()
                         ? result.errorMessage
-                        : Strings::Errors::UnknownError
+                        : Strings::Errors::UnknownError;
+
+                    advice = Strings::Errors::PleaseTryAgainLater;
+                }
+
+                HarmoniaAlert::error(
+                    Strings::Errors::AiError,
+                    message + "\n\n" + advice
                 );
 
                 headerComponent->getPresetLabel().setText(
                     Strings::Labels::UnsetPreset.toUpperCase(),
                     juce::dontSendNotification
                 );
+
                 return;
             }
 
@@ -305,18 +329,19 @@ void MainComponent::doGenerateWithAi()
 
             if (!r.success)
             {
-                juce::AlertWindow::showMessageBoxAsync(
-                    juce::AlertWindow::WarningIcon,
+                HarmoniaAlert::error(
                     Strings::Errors::ErrorTitle,
-                    r.errorMessage.isNotEmpty()
+                    (r.errorMessage.isNotEmpty()
                         ? r.errorMessage
-                        : Strings::Errors::UnreadableAIResponse
+                        : Strings::Errors::UnreadableAIResponse)
+                    + "\n\n" + Strings::Errors::PleaseTryAgainLater
                 );
 
                 headerComponent->getPresetLabel().setText(
                     Strings::Labels::UnsetPreset.toUpperCase(),
                     juce::dontSendNotification
                 );
+
                 return;
             }
 
