@@ -30,6 +30,23 @@ AuthResult BackendAuthManager::loginUser(
         cpr::Body{ payload.dump() }
     );
 
+    // Erreur réseau (pas d'Internet, DNS, serveur inaccessible, etc.)
+    if (response.error.code != cpr::ErrorCode::OK)
+    {
+        backend.writeLog(
+            "CPR error: "
+            + juce::String((int)response.error.code)
+            + " - "
+            + juce::String(response.error.message));
+
+        return AuthResult{
+            false,
+            {},
+            Strings::Errors::NetworkError
+        };
+    }
+
+    // Erreur HTTP
     if (response.status_code != 200)
     {
         juce::String message = Strings::Errors::UnknownError;
@@ -37,6 +54,7 @@ AuthResult BackendAuthManager::loginUser(
         try
         {
             auto body = json::parse(response.text);
+
             if (body.contains("detail"))
                 message = body["detail"].get<std::string>();
         }
@@ -48,6 +66,7 @@ AuthResult BackendAuthManager::loginUser(
         return AuthResult{ false, {}, message };
     }
 
+    // Succès
     auto body = json::parse(response.text);
 
     UserSession session;
@@ -93,6 +112,21 @@ AuthResult BackendAuthManager::signupUser(
         cpr::Header{ { "Content-Type", "application/json" } },
         cpr::Body{ payload.dump() }
     );
+
+    if (response.error.code != cpr::ErrorCode::OK)
+    {
+        backend.writeLog(
+            "CPR error: "
+            + juce::String((int)response.error.code)
+            + " - "
+            + juce::String(response.error.message));
+
+        return AuthResult{
+            false,
+            {},
+            Strings::Errors::NetworkError
+        };
+    }
 
     backend.writeLog("Status signup: " + juce::String(response.status_code));
     backend.writeLog("Réponse brute signup: " + juce::String(response.text.c_str()));

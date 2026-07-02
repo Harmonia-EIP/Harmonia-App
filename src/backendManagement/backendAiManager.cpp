@@ -36,6 +36,17 @@ AiResult BackendAiManager::generatePreset(const juce::String& prompt)
         cpr::Body{ payload.dump() }
     );
 
+    if (response.error.code != cpr::ErrorCode::OK)
+    {
+        backend.writeLog(
+            "CPR error: "
+            + juce::String((int)response.error.code)
+            + " - "
+            + juce::String(response.error.message));
+
+        return AiResult::error(Strings::Errors::NetworkError);
+    }
+
     if (response.status_code != 200)
         return AiResult::error("HTTP " + juce::String(response.status_code));
 
