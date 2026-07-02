@@ -76,17 +76,40 @@ struct ProfileResult
 
 struct AiResult
 {
-    bool success = false;
-    juce::String json;          
-    juce::String errorMessage;
-    
-    static AiResult ok(const juce::String& json)
+    enum class Error
     {
-        return { true, json, {} };
+        None,
+        EmptyPrompt,
+        NoSession,
+        SessionExpired,
+        Network,
+        HttpError,
+        EmptyResponse,
+        Unknown
+    };
+
+    bool success = false;
+    juce::String json;
+    juce::String errorMessage;
+    Error error = Error::Unknown;
+
+    static inline AiResult ok(const juce::String& json)
+    {
+        return AiResult{
+            true,
+            json,
+            {},
+            Error::None
+        };
     }
 
-    static AiResult error(const juce::String& message)
+    static inline AiResult failure(Error e, const juce::String& message)
     {
-        return { false, {}, message };
+        return AiResult{
+            false,
+            {},
+            message,
+            e
+        };
     }
 };

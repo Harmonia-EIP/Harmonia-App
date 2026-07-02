@@ -14,16 +14,25 @@ BackendAiManager::BackendAiManager(BackendManager& b)
 AiResult BackendAiManager::generatePreset(const juce::String& prompt)
 {
     if (prompt.trim().isEmpty())
-        return AiResult::error("Prompt is empty");
+        return AiResult::failure(
+            AiResult::Error::EmptyPrompt,
+            "Prompt is empty"
+        );
 
     auto sessionOpt = backend.loadSession();
     if (!sessionOpt.has_value())
-        return AiResult::error("No user connected");
+        return AiResult::failure(
+            AiResult::Error::NoSession,
+            "No user connected"
+        );
 
     auto session = sessionOpt.value();
 
     if (session.expiresAt < juce::Time::getCurrentTime())
-        return AiResult::error("Session expired");
+        return AiResult::failure(
+            AiResult::Error::SessionExpired,
+            "Session expired"
+        );
 
     json payload{ { "prompt", prompt.toStdString() } };
 
@@ -39,19 +48,29 @@ AiResult BackendAiManager::generatePreset(const juce::String& prompt)
     if (response.error.code != cpr::ErrorCode::OK)
     {
         backend.writeLog(
-            "CPR error: "
-            + juce::String((int)response.error.code)
-            + " - "
-            + juce::String(response.error.message));
+            "CPR error: " +
+            juce::String((int)response.error.code) +
+            " - " +
+            juce::String(response.error.message)
+        );
 
-        return AiResult::error(Strings::Errors::NetworkError);
+        return AiResult::failure(
+            AiResult::Error::Network,
+            Strings::Errors::NetworkError
+        );
     }
 
     if (response.status_code != 200)
-        return AiResult::error("HTTP " + juce::String(response.status_code));
+        return AiResult::failure(
+            AiResult::Error::HttpError,
+            "HTTP " + juce::String(response.status_code)
+        );
 
     if (response.text.empty())
-        return AiResult::error("Empty response");
+        return AiResult::failure(
+            AiResult::Error::EmptyResponse,
+            "Empty response"
+        );
 
     return AiResult::ok(juce::String(response.text));
 }

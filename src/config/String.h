@@ -24,7 +24,8 @@ namespace Strings
         inline const juce::String AiServerError = "The AI service is temporarily unavailable.";
         inline const juce::String PleaseTryAgainLater = "Please try again later.";
         inline const juce::String AuthenticationError = "Authentication error";
-        inline const juce::String NetworkError = "Network error";
+        inline const juce::String NetworkError = "Network connection failed";
+        inline const juce::String NetworkErrorAdvice = "Check your internet connection and try again.";
     }
 
     namespace Success

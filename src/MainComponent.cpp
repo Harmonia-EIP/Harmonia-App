@@ -282,31 +282,57 @@ void MainComponent::doGenerateWithAi()
         return;
     }
 
-    headerComponent->getPresetLabel().setText (Strings::Labels::GeneratingPreset, juce::dontSendNotification);
+    headerComponent->getPresetLabel().setText(
+        Strings::Labels::GeneratingPreset,
+        juce::dontSendNotification
+    );
 
-    juce::Thread::launch ([this, prompt]
+    juce::Thread::launch([this, prompt]
     {
         auto result = backend.generatePreset(prompt);
 
-        juce::MessageManager::callAsync ([this, result]
+        juce::MessageManager::callAsync([this, result]
         {
             if (!result.success)
             {
                 juce::String message;
-                juce::String advice;
+                juce::String advice = Strings::Errors::PleaseTryAgainLater;
 
-                if (result.errorMessage.contains("502"))
+                switch (result.error)
                 {
-                    message = Strings::Errors::AiServerError;
-                    advice = Strings::Errors::PleaseTryAgainLater;
-                }
-                else
-                {
-                    message = result.errorMessage.isNotEmpty()
-                        ? result.errorMessage
-                        : Strings::Errors::UnknownError;
+                    case AiResult::Error::Network:
+                        message = Strings::Errors::NetworkError;
+                        advice  = Strings::Errors::NetworkErrorAdvice;
+                        break;
 
-                    advice = Strings::Errors::PleaseTryAgainLater;
+                    case AiResult::Error::HttpError:
+                        message = Strings::Errors::AiServerError;
+                        break;
+
+                    case AiResult::Error::SessionExpired:
+                        message = "Session expired";
+                        advice  = "Please log in again.";
+                        break;
+
+                    case AiResult::Error::NoSession:
+                        message = "Not connected";
+                        advice  = "Please sign in.";
+                        break;
+
+                    case AiResult::Error::EmptyResponse:
+                        message = Strings::Errors::UnknownError;
+                        break;
+
+                    case AiResult::Error::EmptyPrompt:
+                        message = Strings::Errors::MissingPrompt;
+                        advice  = Strings::Errors::MissingPromptAdvice;
+                        break;
+
+                    default:
+                        message = result.errorMessage.isNotEmpty()
+                            ? result.errorMessage
+                            : Strings::Errors::UnknownError;
+                        break;
                 }
 
                 HarmoniaAlert::error(
