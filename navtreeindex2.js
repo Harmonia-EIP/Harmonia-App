@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"classHarmoniaVoice.html":[1,0,20],
 "classHarmoniaVoice.html#a04a40630d0ff05dc4be1088dd89ece59":[1,0,20,22],
 "classHarmoniaVoice.html#a0662dbda7765053e8a6aa26d88f00a37":[1,0,20,20],
 "classHarmoniaVoice.html#a29d2c9affcd14d31950e8d47b0660544":[1,0,20,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX2 =
 "classSignupPage.html#abc904e743fc11f944fc2e997dbf79bd9":[1,0,33,5],
 "classSignupPage.html#ad1df05ebbc966f63e2099e8aaa435cb5":[1,0,33,20],
 "classSignupPage.html#ae9ff59544a0df1f565d2cf456df6fa30":[1,0,33,1],
-"classSynthComponent.html":[1,0,34],
-"classSynthComponent.html#a104a0c1ed6d8bdd1849e69279415e55e":[1,0,34,6]
+"classSynthComponent.html":[1,0,34]
 };

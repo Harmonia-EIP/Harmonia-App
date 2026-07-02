@@ -50,5 +50,5 @@ var searchData=
   ['logout_47',['Logout',['../namespaceStrings_1_1Buttons.html#a88c7345786593c9818697d00ccdfa9d9',1,'Strings::Buttons']]],
   ['logoutbutton_48',['logoutButton',['../classHeaderComponent.html#a5bc6965e338bf18d7b8aee8e30f82541',1,'HeaderComponent']]],
   ['lookandfeel_49',['lookAndFeel',['../classMainComponent.html#aedafc666fd4c8705179d0c1ea154903a',1,'MainComponent']]],
-  ['lowpass_50',['lowpass',['../namespaceIconRenderer.html#a14d6d88133735f5ae17e33d01948ca8ba97ed1c13cd79855adc19c2b8a96dfa41',1,'IconRenderer::Lowpass'],['../namespaceStrings_1_1Filter.html#a10d03eded3d9e92bfff2802400eae8d8',1,'Strings::Filter::LowPass']]]
+  ['lowpass_50',['lowpass',['../namespaceStrings_1_1Filter.html#a10d03eded3d9e92bfff2802400eae8d8',1,'Strings::Filter::LowPass'],['../namespaceIconRenderer.html#a14d6d88133735f5ae17e33d01948ca8ba97ed1c13cd79855adc19c2b8a96dfa41',1,'IconRenderer::Lowpass']]]
 ];

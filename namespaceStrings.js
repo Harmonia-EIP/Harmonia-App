@@ -29,6 +29,7 @@ var namespaceStrings =
       [ "MissingFieldsAdvice", "namespaceStrings_1_1Errors.html#af25d8becf717bd60d4bd9edd69a4b486", null ],
       [ "MissingPrompt", "namespaceStrings_1_1Errors.html#a5f2731490bab2c1a5abf5964a215f68e", null ],
       [ "MissingPromptAdvice", "namespaceStrings_1_1Errors.html#a39cf1aafde4290a4622b66872c85d203", null ],
+      [ "NetworkError", "namespaceStrings_1_1Errors.html#ac81e6704cacf1cdbab6f72caf42002e1", null ],
       [ "NoUserConnected", "namespaceStrings_1_1Errors.html#ab0129bf31f8264b04ebdc61ddc995aa6", null ],
       [ "PleaseTryAgainLater", "namespaceStrings_1_1Errors.html#a30bd8d1bd13483cb7f7b7820236a377c", null ],
       [ "SessionExpired", "namespaceStrings_1_1Errors.html#ab0f12251e9e15b8154bdb9809feb3817", null ],

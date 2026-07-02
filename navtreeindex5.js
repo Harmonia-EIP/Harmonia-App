@@ -1,5 +1,7 @@
 var NAVTREEINDEX5 =
 {
+"structHarmoniaParams_1_1AtomicRefs.html#a1c37c6374c1d7811fb5d94f20c75e670":[0,0,5,1,1],
+"structHarmoniaParams_1_1AtomicRefs.html#a32b128626b9be206020b4da504d45a5c":[0,0,5,1,18],
 "structHarmoniaParams_1_1AtomicRefs.html#a32b128626b9be206020b4da504d45a5c":[1,0,1,0,18],
 "structHarmoniaParams_1_1AtomicRefs.html#a4a92138ef12a9efa548dd8ccce2e2895":[1,0,1,0,8],
 "structHarmoniaParams_1_1AtomicRefs.html#a4a92138ef12a9efa548dd8ccce2e2895":[0,0,5,1,8],

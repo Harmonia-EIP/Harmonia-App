@@ -1,5 +1,6 @@
 var NAVTREEINDEX3 =
 {
+"classSynthComponent.html#a104a0c1ed6d8bdd1849e69279415e55e":[1,0,34,6],
 "classSynthComponent.html#a4cec9f95fa7ea465e9a59d03a9176a2b":[1,0,34,1],
 "classSynthComponent.html#a6662afe1715848385730219a77dbe9e5":[1,0,34,2],
 "classSynthComponent.html#a79d6389010f8ca2ad067822511846ddd":[1,0,34,3],
@@ -248,6 +249,5 @@ var NAVTREEINDEX3 =
 "namespaceHarmoniaParams_1_1IDs.html":[0,0,5,0],
 "namespaceHarmoniaParams_1_1IDs.html#a050c95e728c8c4c589cc77364fabc249":[0,0,5,0,3],
 "namespaceHarmoniaParams_1_1IDs.html#a0b386a6548e97d6fd0a34b9c2a7f3e08":[0,0,5,0,11],
-"namespaceHarmoniaParams_1_1IDs.html#a17a0372a6ebc3482c2e67da999fc63d3":[0,0,5,0,1],
-"namespaceHarmoniaParams_1_1IDs.html#a1ebb36f99a1b6e8bcb4dfe543c8e0b18":[0,0,5,0,7]
+"namespaceHarmoniaParams_1_1IDs.html#a17a0372a6ebc3482c2e67da999fc63d3":[0,0,5,0,1]
 };
