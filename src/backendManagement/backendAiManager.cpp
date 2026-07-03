@@ -34,7 +34,7 @@ AiResult BackendAiManager::generatePreset(const juce::String& prompt, int modelI
             "Session expired"
         );
 
-    json payload{ { "prompt", prompt.toStdString() }, { "model_id", modelId }, { "backend_name", backendName.toStdString() } };
+    json payload{ { "prompt", prompt.toStdString() }, { "model_id", modelId }, { "model_name", backendName.toStdString() } };
 
     backend.writeLog("Payload built: " + juce::String(payload.dump()));
 
