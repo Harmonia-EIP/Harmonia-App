@@ -11,7 +11,7 @@ BackendAiManager::BackendAiManager(BackendManager& b)
 {
 }
 
-AiResult BackendAiManager::generatePreset(const juce::String& prompt)
+AiResult BackendAiManager::generatePreset(const juce::String& prompt, int modelId, const juce::String& backendName)
 {
     if (prompt.trim().isEmpty())
         return AiResult::failure(
@@ -34,7 +34,9 @@ AiResult BackendAiManager::generatePreset(const juce::String& prompt)
             "Session expired"
         );
 
-    json payload{ { "prompt", prompt.toStdString() } };
+    json payload{ { "prompt", prompt.toStdString() }, { "model_id", modelId }, { "backend_name", backendName.toStdString() } };
+
+    backend.writeLog("Payload built: " + juce::String(payload.dump()));
 
     auto response = cpr::Post(
         cpr::Url{ (backend.getApiUrl() + "/ai/generate-preset").toStdString() },

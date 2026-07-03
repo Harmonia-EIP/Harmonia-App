@@ -86,7 +86,7 @@ public:
      * - HTTP request failure
      * - Empty backend response
      */
-    AiResult generatePreset(const juce::String& prompt);
+    AiResult generatePreset(const juce::String& prompt, int modelId, const juce::String& backendName);
 
 private:
 

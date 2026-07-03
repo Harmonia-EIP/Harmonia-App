@@ -139,7 +139,7 @@ public:
      *
      * @return AiResult Generated preset result.
      */
-    AiResult generatePreset(const juce::String& prompt);
+    AiResult generatePreset(const juce::String& prompt, int modelId, const juce::String& backendName);
 
     // =========================================================
     // CONFIGURATION

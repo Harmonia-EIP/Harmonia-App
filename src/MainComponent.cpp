@@ -282,14 +282,17 @@ void MainComponent::doGenerateWithAi()
         return;
     }
 
+    int modelId = headerComponent->getSelectedModelId();
+    juce::String backendName = headerComponent->getSelectedBackendName();
+
     headerComponent->getPresetLabel().setText(
         Strings::Labels::GeneratingPreset,
         juce::dontSendNotification
     );
 
-    juce::Thread::launch([this, prompt]
+    juce::Thread::launch([this, prompt, modelId, backendName]
     {
-        auto result = backend.generatePreset(prompt);
+        auto result = backend.generatePreset(prompt, modelId, backendName);
 
         juce::MessageManager::callAsync([this, result]
         {

@@ -34,6 +34,15 @@ HeaderComponent::HeaderComponent (const UserSession& s)
 
     addAndMakeVisible (subtitleLabel);
 
+    for (const auto& m : aiModels)
+    {
+        modelSelector.addItem(m.name, (int) m.id);
+    }
+
+    modelSelector.setSelectedId((int) AIModel::Model1);
+
+    addAndMakeVisible(modelSelector);
+
     promptEditor.setMultiLine (false);
 
     promptEditor.setReturnKeyStartsNewLine (false);
@@ -117,6 +126,38 @@ HeaderComponent::HeaderComponent (const UserSession& s)
     };
 }
 
+AIModel HeaderComponent::getSelectedModel() const
+{
+    return static_cast<AIModel>(modelSelector.getSelectedId());
+}
+
+int HeaderComponent::getSelectedModelId() const
+{
+    return modelSelector.getSelectedId();
+}
+
+juce::String HeaderComponent::getSelectedModelName() const
+{
+    auto id = getSelectedModel();
+
+    for (const auto& m : aiModels)
+        if (m.id == id)
+            return m.name;
+
+    return {};
+}
+
+juce::String HeaderComponent::getSelectedBackendName() const
+{
+    auto id = getSelectedModel();
+
+    for (const auto& m : aiModels)
+        if (m.id == id)
+            return m.backendname;
+
+    return {};
+}
+
 void HeaderComponent::paint (juce::Graphics& g)
 {
     auto header = getLocalBounds();
@@ -174,7 +215,11 @@ void HeaderComponent::resized()
         leftHeader.removeFromTop (28));
 
     subtitleLabel.setBounds (
-        leftHeader.removeFromTop (16));
+        leftHeader.removeFromTop (25));
+
+    subtitleLabel.setSize(
+        subtitleLabel.getFont().getStringWidth(subtitleLabel.getText()),
+        subtitleLabel.getHeight());
 
     const int palW = 110;
     const int palH = 20;
@@ -186,6 +231,15 @@ void HeaderComponent::resized()
             + (titleLabel.getHeight() - palH) / 2,
         palW,
         palH);
+
+    const int modelW = palW;
+    const int modelH = palH;
+
+    modelSelector.setBounds (
+        subtitleLabel.getRight() + 20,
+        paletteSelector.getY() + paletteSelector.getHeight() + 6,
+        modelW,
+        modelH);
 
     const int buttonW = 72;
     const int buttonH = 28;
@@ -231,7 +285,6 @@ void HeaderComponent::resized()
         place (loadArea));
 
     header.removeFromTop (8);
-
     header.removeFromRight (12);
 
     auto promptRow =

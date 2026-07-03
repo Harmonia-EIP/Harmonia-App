@@ -6,6 +6,7 @@
 #include "../themes/HiveLookAndFeel.h"
 #include "../themes/PaletteSelector.h"
 #include "../backendManagement/BackendManager.h"
+#include "../config/AiConfig.h"
 
 class HeaderComponent : public juce::Component
 {
@@ -14,8 +15,6 @@ public:
 
     void paint (juce::Graphics&) override;
     void resized() override;
-
-    // void applyTheme();
 
     juce::TextButton& getGenerateButton() { return generateButton; }
     juce::TextButton& getLoadButton()     { return loadButton; }
@@ -29,7 +28,11 @@ public:
     PaletteSelector& getPaletteSelector() { return paletteSelector; }
 
     std::function<void(HarmoniaPalette::Theme)> onThemeChanged;
-    void refreshTheme();
+
+    AIModel getSelectedModel() const;
+    juce::String getSelectedModelName() const;
+    juce::String getSelectedBackendName() const;
+    int getSelectedModelId() const;
 
 private:
     UserSession session;
@@ -37,6 +40,8 @@ private:
     juce::Label titleLabel;
     juce::Label subtitleLabel;
     juce::Label presetLabel;
+
+    juce::ComboBox modelSelector;
 
     juce::TextEditor promptEditor;
 
