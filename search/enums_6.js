@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['wave_0',['wave',['../classHarmoniaVoice.html#a29d2c9affcd14d31950e8d47b0660544',1,'HarmoniaVoice::Wave'],['../namespaceIconRenderer.html#a11c788c1c3827c6f0932fcfecfc97d25',1,'IconRenderer::Wave']]]
+  ['style_0',['Style',['../classAuthPageLookAndFeel.html#a7e20376b27ead7b897276e0523ce4e8c',1,'AuthPageLookAndFeel']]]
 ];

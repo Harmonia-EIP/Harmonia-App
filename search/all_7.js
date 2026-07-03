@@ -19,8 +19,9 @@ var searchData=
   ['headercomponent_16',['headercomponent',['../classHeaderComponent.html',1,'HeaderComponent'],['../classMainComponent.html#aa9588dcfca7c5dceb93eacde2b33fc73',1,'MainComponent::headerComponent'],['../classHeaderComponent.html#ab197394165cd8bd0a3ccc0d06eba87f5',1,'HeaderComponent::HeaderComponent()']]],
   ['headercomponent_2ecpp_17',['HeaderComponent.cpp',['../HeaderComponent_8cpp.html',1,'']]],
   ['headercomponent_2eh_18',['HeaderComponent.h',['../HeaderComponent_8h.html',1,'']]],
-  ['highpass_19',['highpass',['../namespaceStrings_1_1Filter.html#a65375f1f176f5817629087f1d21ab2f3',1,'Strings::Filter::HighPass'],['../namespaceIconRenderer.html#a14d6d88133735f5ae17e33d01948ca8ba124600c5e81d846f402aab6727296cd5',1,'IconRenderer::Highpass']]],
+  ['highpass_19',['highpass',['../namespaceIconRenderer.html#a14d6d88133735f5ae17e33d01948ca8ba124600c5e81d846f402aab6727296cd5',1,'IconRenderer::Highpass'],['../namespaceStrings_1_1Filter.html#a65375f1f176f5817629087f1d21ab2f3',1,'Strings::Filter::HighPass']]],
   ['hivelookandfeel_20',['hivelookandfeel',['../classHiveLookAndFeel.html#ae9f303aab9beb762871e002b3c506d00',1,'HiveLookAndFeel::HiveLookAndFeel()'],['../classHiveLookAndFeel.html',1,'HiveLookAndFeel']]],
   ['hivelookandfeel_2eh_21',['HiveLookAndFeel.h',['../HiveLookAndFeel_8h.html',1,'']]],
-  ['hoveredindex_22',['hoveredIndex',['../classIconChoiceSelector.html#a2d49f9f20b9ce1829b5406e713b3e978',1,'IconChoiceSelector']]]
+  ['hoveredindex_22',['hoveredIndex',['../classIconChoiceSelector.html#a2d49f9f20b9ce1829b5406e713b3e978',1,'IconChoiceSelector']]],
+  ['httperror_23',['HttpError',['../structAiResult.html#a30c52302f0a3eac9c5db7d39f380586ba2feb6ea3db3fd8eb9ec285f21f1ef868',1,'AiResult']]]
 ];

@@ -1,10 +1,11 @@
 var searchData=
 [
-  ['airesult_0',['AiResult',['../structAiResult.html',1,'']]],
-  ['ambient_1',['Ambient',['../structParticleField_1_1Ambient.html',1,'ParticleField']]],
-  ['appcontroller_2',['AppController',['../classAppController.html',1,'']]],
-  ['applookandfeel_3',['AppLookAndFeel',['../classAppLookAndFeel.html',1,'']]],
-  ['atomicrefs_4',['AtomicRefs',['../structHarmoniaParams_1_1AtomicRefs.html',1,'HarmoniaParams']]],
-  ['authpagelookandfeel_5',['AuthPageLookAndFeel',['../classAuthPageLookAndFeel.html',1,'']]],
-  ['authresult_6',['AuthResult',['../structAuthResult.html',1,'']]]
+  ['aimodeldata_0',['AIModelData',['../structAIModelData.html',1,'']]],
+  ['airesult_1',['AiResult',['../structAiResult.html',1,'']]],
+  ['ambient_2',['Ambient',['../structParticleField_1_1Ambient.html',1,'ParticleField']]],
+  ['appcontroller_3',['AppController',['../classAppController.html',1,'']]],
+  ['applookandfeel_4',['AppLookAndFeel',['../classAppLookAndFeel.html',1,'']]],
+  ['atomicrefs_5',['AtomicRefs',['../structHarmoniaParams_1_1AtomicRefs.html',1,'HarmoniaParams']]],
+  ['authpagelookandfeel_6',['AuthPageLookAndFeel',['../classAuthPageLookAndFeel.html',1,'']]],
+  ['authresult_7',['AuthResult',['../structAuthResult.html',1,'']]]
 ];

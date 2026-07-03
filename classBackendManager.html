@@ -126,9 +126,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a022a7ce81088cec16dbe4a5abda31dd4" id="r_a022a7ce81088cec16dbe4a5abda31dd4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a022a7ce81088cec16dbe4a5abda31dd4">clearSession</a> ()</td></tr>
 <tr class="memdesc:a022a7ce81088cec16dbe4a5abda31dd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears the locally stored session.  <br /></td></tr>
 <tr class="separator:a022a7ce81088cec16dbe4a5abda31dd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adecf94d9ebd3cf8c931f67089683bb08" id="r_adecf94d9ebd3cf8c931f67089683bb08"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structAiResult.html">AiResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#adecf94d9ebd3cf8c931f67089683bb08">generatePreset</a> (const juce::String &amp;prompt)</td></tr>
-<tr class="memdesc:adecf94d9ebd3cf8c931f67089683bb08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates an AI preset from a text prompt.  <br /></td></tr>
-<tr class="separator:adecf94d9ebd3cf8c931f67089683bb08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4251b60db7c83f6591b73240f33d7b76" id="r_a4251b60db7c83f6591b73240f33d7b76"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structAiResult.html">AiResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a4251b60db7c83f6591b73240f33d7b76">generatePreset</a> (const juce::String &amp;prompt, int modelId, const juce::String &amp;backendName)</td></tr>
+<tr class="memdesc:a4251b60db7c83f6591b73240f33d7b76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates an AI preset from a text prompt.  <br /></td></tr>
+<tr class="separator:a4251b60db7c83f6591b73240f33d7b76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abfaf058d370332559ca2a79da994e72f" id="r_abfaf058d370332559ca2a79da994e72f"><td class="memItemLeft" align="right" valign="top">const juce::String &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#abfaf058d370332559ca2a79da994e72f">getApiUrl</a> () const</td></tr>
 <tr class="memdesc:abfaf058d370332559ca2a79da994e72f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the backend API base URL.  <br /></td></tr>
 <tr class="separator:abfaf058d370332559ca2a79da994e72f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -266,8 +266,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="adecf94d9ebd3cf8c931f67089683bb08" name="adecf94d9ebd3cf8c931f67089683bb08"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adecf94d9ebd3cf8c931f67089683bb08">&#9670;&#160;</a></span>generatePreset()</h2>
+<a id="a4251b60db7c83f6591b73240f33d7b76" name="a4251b60db7c83f6591b73240f33d7b76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4251b60db7c83f6591b73240f33d7b76">&#9670;&#160;</a></span>generatePreset()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -276,8 +276,24 @@ Private Attributes</h2></td></tr>
           <td class="memname"><a class="el" href="structAiResult.html">AiResult</a> BackendManager::generatePreset </td>
           <td>(</td>
           <td class="paramtype">const juce::String &amp;&#160;</td>
-          <td class="paramname"><em>prompt</em></td><td>)</td>
+          <td class="paramname"><em>prompt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>modelId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const juce::String &amp;&#160;</td>
+          <td class="paramname"><em>backendName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">

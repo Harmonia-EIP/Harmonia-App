@@ -31,7 +31,7 @@ var searchData=
   ['lfoviz_28',['lfoViz',['../classMainComponent.html#a18b1b58c5de2bafb360f43b7eab0d5a9',1,'MainComponent']]],
   ['life_29',['life',['../structParticleField_1_1Burst.html#a10d919461c845d861686bc3921e73bd9',1,'ParticleField::Burst']]],
   ['lifemax_30',['lifeMax',['../structParticleField_1_1Burst.html#a1b2e95739c6ea536c09948b4287c02b6',1,'ParticleField::Burst']]],
-  ['light_31',['light',['../namespaceStrings_1_1Themes.html#ace72922cebb3e7ac7508df28723dde0c',1,'Strings::Themes::Light'],['../structThemePalette.html#a86b2c82b1d6d3f3293fd3d847038d05e',1,'ThemePalette::light()'],['../classAppLookAndFeel.html#a7e966ad29d8634970a167de96d1a6b87a9914a0ce04a7b7b6a8e39bec55064b82',1,'AppLookAndFeel::Light']]],
+  ['light_31',['light',['../namespaceStrings_1_1Themes.html#ace72922cebb3e7ac7508df28723dde0c',1,'Strings::Themes::Light'],['../classAppLookAndFeel.html#a7e966ad29d8634970a167de96d1a6b87a9914a0ce04a7b7b6a8e39bec55064b82',1,'AppLookAndFeel::Light'],['../structThemePalette.html#a86b2c82b1d6d3f3293fd3d847038d05e',1,'ThemePalette::light()']]],
   ['load_32',['Load',['../namespaceStrings_1_1Buttons.html#a295eb1be1d7ae3e8be7e015e74884296',1,'Strings::Buttons']]],
   ['loadbutton_33',['loadButton',['../classHeaderComponent.html#ae8237f81cd59415f1fdc37982b78181e',1,'HeaderComponent']]],
   ['loadfromfile_34',['loadFromFile',['../namespacePresetLoader.html#a56f2feb76c7d6882a5d53ebd15f51427',1,'PresetLoader']]],
@@ -50,5 +50,5 @@ var searchData=
   ['logout_47',['Logout',['../namespaceStrings_1_1Buttons.html#a88c7345786593c9818697d00ccdfa9d9',1,'Strings::Buttons']]],
   ['logoutbutton_48',['logoutButton',['../classHeaderComponent.html#a5bc6965e338bf18d7b8aee8e30f82541',1,'HeaderComponent']]],
   ['lookandfeel_49',['lookAndFeel',['../classMainComponent.html#aedafc666fd4c8705179d0c1ea154903a',1,'MainComponent']]],
-  ['lowpass_50',['lowpass',['../namespaceStrings_1_1Filter.html#a10d03eded3d9e92bfff2802400eae8d8',1,'Strings::Filter::LowPass'],['../namespaceIconRenderer.html#a14d6d88133735f5ae17e33d01948ca8ba97ed1c13cd79855adc19c2b8a96dfa41',1,'IconRenderer::Lowpass']]]
+  ['lowpass_50',['lowpass',['../namespaceIconRenderer.html#a14d6d88133735f5ae17e33d01948ca8ba97ed1c13cd79855adc19c2b8a96dfa41',1,'IconRenderer::Lowpass'],['../namespaceStrings_1_1Filter.html#a10d03eded3d9e92bfff2802400eae8d8',1,'Strings::Filter::LowPass']]]
 ];

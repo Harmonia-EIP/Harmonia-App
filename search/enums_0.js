@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['btnstyle_0',['BtnStyle',['../classWelcomeLookAndFeel.html#ac83601167effce449a8c86426818ecf6',1,'WelcomeLookAndFeel']]]
+  ['aimodel_0',['AIModel',['../AiConfig_8h.html#a2d2cc27efdb798fd0ab36692c4ad2b1c',1,'AiConfig.h']]]
 ];

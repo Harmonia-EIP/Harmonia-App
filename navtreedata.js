@@ -52,7 +52,9 @@ var NAVTREE =
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
+        [ "Variables", "globals_vars.html", null ],
         [ "Typedefs", "globals_type.html", null ],
+        [ "Enumerations", "globals_enum.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ]
@@ -61,12 +63,12 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"Alert_8h.html",
-"String_8h.html#a55cfa6b21cf9d3b31bd4cb7fedd5c86f",
-"classHarmoniaVoice.html",
-"classSynthComponent.html#a104a0c1ed6d8bdd1849e69279415e55e",
-"namespaceHarmoniaParams_1_1IDs.html#a1ebb36f99a1b6e8bcb4dfe543c8e0b18",
-"structHarmoniaParams_1_1AtomicRefs.html#a1c37c6374c1d7811fb5d94f20c75e670"
+"AiConfig_8h.html",
+"String_8h.html#a4bd19e81521295d5c2d6f852cb140fe4",
+"classHarmoniaAudioProcessorEditor.html#a434f958e609ed0a35c8260458e7457a6",
+"classSignupPage.html#a77af3eb5be603ca6d35d673f7b2fc900",
+"namespaceHarmoniaPalette.html#ab563e0968c67dcbd8a4b93e62d66c50b",
+"structHarmoniaPalette_1_1ThemeDef.html#a5f14a9df47c686b622a8e13d6285c60e"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

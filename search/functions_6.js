@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['generatepreset_0',['generatepreset',['../classBackendManager.html#adecf94d9ebd3cf8c931f67089683bb08',1,'BackendManager::generatePreset()'],['../classBackendAiManager.html#ab9256e309d981d2cb2feb7d610fee367',1,'BackendAiManager::generatePreset()']]],
+  ['generatepreset_0',['generatepreset',['../classBackendManager.html#a4251b60db7c83f6591b73240f33d7b76',1,'BackendManager::generatePreset()'],['../classBackendAiManager.html#a54d8b1ba950c129f7f967b0a715c5c89',1,'BackendAiManager::generatePreset()']]],
   ['getapiurl_1',['getApiUrl',['../classBackendManager.html#abfaf058d370332559ca2a79da994e72f',1,'BackendManager']]],
   ['getappdatadir_2',['getAppDataDir',['../classBackendManager.html#a8676914547b9934d0ef6d2aa1ade0823',1,'BackendManager']]],
   ['getapvts_3',['getAPVTS',['../classHarmoniaAudioProcessor.html#aaaae53b13f5a6000288df71faa2b63ed',1,'HarmoniaAudioProcessor']]],
@@ -9,7 +9,7 @@ var searchData=
   ['getcurrentprogram_6',['getCurrentProgram',['../classHarmoniaAudioProcessor.html#af7fead5b20f7ff059b4fdbc112ef069b',1,'HarmoniaAudioProcessor']]],
   ['getcurrenttheme_7',['getCurrentTheme',['../classPaletteSelector.html#a9cab59c955187122f86323d1ac50c4c9',1,'PaletteSelector']]],
   ['getgeneratebutton_8',['getGenerateButton',['../classHeaderComponent.html#a5fb7342f50a5738ba61dfa8121af1bb6',1,'HeaderComponent']]],
-  ['getkeyboardstate_9',['getkeyboardstate',['../classSynthComponent.html#a6662afe1715848385730219a77dbe9e5',1,'SynthComponent::getKeyboardState()'],['../classHarmoniaAudioProcessor.html#a9ee856de444282ab01de375d3afabaec',1,'HarmoniaAudioProcessor::getKeyboardState()']]],
+  ['getkeyboardstate_9',['getkeyboardstate',['../classHarmoniaAudioProcessor.html#a9ee856de444282ab01de375d3afabaec',1,'HarmoniaAudioProcessor::getKeyboardState()'],['../classSynthComponent.html#a6662afe1715848385730219a77dbe9e5',1,'SynthComponent::getKeyboardState()']]],
   ['getlabelfont_10',['getLabelFont',['../classHiveLookAndFeel.html#a41f019a184cfd5e3529ced3570fb10d2',1,'HiveLookAndFeel']]],
   ['getloadbutton_11',['getLoadButton',['../classHeaderComponent.html#a14c9a57cc504cc81133a373c5f6b037f',1,'HeaderComponent']]],
   ['getlogoutbutton_12',['getLogoutButton',['../classHeaderComponent.html#ae4283f73c46bc7011931b3c960db6528',1,'HeaderComponent']]],
@@ -25,9 +25,13 @@ var searchData=
   ['getprompteditor_22',['getPromptEditor',['../classHeaderComponent.html#ac68112add0b0d8a2cc9a9d934f306ede',1,'HeaderComponent']]],
   ['getraw_23',['getraw',['../classEnvelopeVisualizer.html#ab2e3e10199bae8fd686594d8d561d213',1,'EnvelopeVisualizer::getRaw()'],['../classLfoVisualizer.html#aa5968bdef06ab095ad04a3778b8a5a7d',1,'LfoVisualizer::getRaw()']]],
   ['getsavebutton_24',['getSaveButton',['../classHeaderComponent.html#a0fe01f0c0181df90840879cedea4e41b',1,'HeaderComponent']]],
-  ['getsessionfile_25',['getSessionFile',['../classBackendManager.html#a75e5015d05b4a9bf67492b95936a03f9',1,'BackendManager']]],
-  ['getstateinformation_26',['getStateInformation',['../classHarmoniaAudioProcessor.html#af6a2fb3818fcae9d9e24d71f98f1b889',1,'HarmoniaAudioProcessor']]],
-  ['gettaillengthseconds_27',['getTailLengthSeconds',['../classHarmoniaAudioProcessor.html#a79396f41b4a7bfc342de98eff0b4074e',1,'HarmoniaAudioProcessor']]],
-  ['gettextbuttonfont_28',['getTextButtonFont',['../classHiveLookAndFeel.html#a3dd7d6c2031339db0c5ae7fd72f7008a',1,'HiveLookAndFeel']]],
-  ['gettint_29',['getTint',['../classSectionPanel.html#af0485eb5dfdfb907bf08ce8c0ad0a1d4',1,'SectionPanel']]]
+  ['getselectedbackendname_25',['getSelectedBackendName',['../classHeaderComponent.html#a88f67cd1407827067dbe43d74de0e176',1,'HeaderComponent']]],
+  ['getselectedmodel_26',['getSelectedModel',['../classHeaderComponent.html#abd9ef82ea3ba96b70f661738f0a5f7c3',1,'HeaderComponent']]],
+  ['getselectedmodelid_27',['getSelectedModelId',['../classHeaderComponent.html#a332eec1beb5e96ac42f00d834830cc48',1,'HeaderComponent']]],
+  ['getselectedmodelname_28',['getSelectedModelName',['../classHeaderComponent.html#a4195fceac91f2ab4bf54a3d7c79c3002',1,'HeaderComponent']]],
+  ['getsessionfile_29',['getSessionFile',['../classBackendManager.html#a75e5015d05b4a9bf67492b95936a03f9',1,'BackendManager']]],
+  ['getstateinformation_30',['getStateInformation',['../classHarmoniaAudioProcessor.html#af6a2fb3818fcae9d9e24d71f98f1b889',1,'HarmoniaAudioProcessor']]],
+  ['gettaillengthseconds_31',['getTailLengthSeconds',['../classHarmoniaAudioProcessor.html#a79396f41b4a7bfc342de98eff0b4074e',1,'HarmoniaAudioProcessor']]],
+  ['gettextbuttonfont_32',['getTextButtonFont',['../classHiveLookAndFeel.html#a3dd7d6c2031339db0c5ae7fd72f7008a',1,'HiveLookAndFeel']]],
+  ['gettint_33',['getTint',['../classSectionPanel.html#af0485eb5dfdfb907bf08ce8c0ad0a1d4',1,'SectionPanel']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['style_0',['Style',['../classAuthPageLookAndFeel.html#a7e20376b27ead7b897276e0523ce4e8c',1,'AuthPageLookAndFeel']]]
+  ['filtershape_0',['FilterShape',['../namespaceIconRenderer.html#a14d6d88133735f5ae17e33d01948ca8b',1,'IconRenderer']]]
 ];

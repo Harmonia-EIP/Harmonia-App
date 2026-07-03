@@ -1,5 +1,6 @@
 var hierarchy =
 [
+    [ "AIModelData", "structAIModelData.html", null ],
     [ "AiResult", "structAiResult.html", null ],
     [ "ParticleField::Ambient", "structParticleField_1_1Ambient.html", null ],
     [ "HarmoniaParams::AtomicRefs", "structHarmoniaParams_1_1AtomicRefs.html", null ],

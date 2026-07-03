@@ -2,7 +2,7 @@ var searchData=
 [
   ['readindex_0',['readIndex',['../classIconChoiceSelector.html#ad15d87d74d6a38624633b0942c04e6ea',1,'IconChoiceSelector']]],
   ['red_1',['red',['../structThemePalette.html#ab898e8330dcace2fe984615e69ebd64f',1,'ThemePalette']]],
-  ['refreshtheme_2',['refreshtheme',['../classHeaderComponent.html#a26da71110ed3764dd3568e3f0d94731b',1,'HeaderComponent::refreshTheme()'],['../classHiveLookAndFeel.html#af1214c543829a91d9afefe5e825eec97',1,'HiveLookAndFeel::refreshTheme()']]],
+  ['refreshtheme_2',['refreshTheme',['../classHiveLookAndFeel.html#af1214c543829a91d9afefe5e825eec97',1,'HiveLookAndFeel']]],
   ['registerjuicefor_3',['registerJuiceFor',['../classMainComponent.html#aa55b0d777b42f9a2b5a0fb7a2ce9260f',1,'MainComponent']]],
   ['releaseresources_4',['releaseResources',['../classHarmoniaAudioProcessor.html#a81b28881353f8f7fad2607b44767ac08',1,'HarmoniaAudioProcessor']]],
   ['rendernextblock_5',['renderNextBlock',['../classHarmoniaVoice.html#ae3a6622eab744cb5d177aa051b683ec2',1,'HarmoniaVoice']]],

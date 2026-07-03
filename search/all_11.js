@@ -17,8 +17,8 @@ var searchData=
   ['sectionosc2_14',['sectionOsc2',['../namespaceHarmoniaPalette.html#aa4e853f80720eca3b01b3997b26cc39e',1,'HarmoniaPalette']]],
   ['sectionpanel_15',['sectionpanel',['../classSectionPanel.html',1,'SectionPanel'],['../classSectionPanel.html#a32902f9aa038869acc81af783768eecf',1,'SectionPanel::SectionPanel()']]],
   ['sectionpanel_2eh_16',['SectionPanel.h',['../SectionPanel_8h.html',1,'']]],
-  ['session_17',['session',['../classHeaderComponent.html#ab65c20be7ce6572d9a7347f5a927ab66',1,'HeaderComponent::session'],['../classMainComponent.html#a762cd4f7488c6b378edb40080882ccb7',1,'MainComponent::session'],['../structAuthResult.html#a2d0c65cf5c8e0f7a1ea4aa6c12ff0620',1,'AuthResult::session']]],
-  ['sessionexpired_18',['SessionExpired',['../namespaceStrings_1_1Errors.html#ab0f12251e9e15b8154bdb9809feb3817',1,'Strings::Errors']]],
+  ['session_17',['session',['../classHeaderComponent.html#ab65c20be7ce6572d9a7347f5a927ab66',1,'HeaderComponent::session'],['../structAuthResult.html#a2d0c65cf5c8e0f7a1ea4aa6c12ff0620',1,'AuthResult::session'],['../classMainComponent.html#a762cd4f7488c6b378edb40080882ccb7',1,'MainComponent::session']]],
+  ['sessionexpired_18',['sessionexpired',['../namespaceStrings_1_1Errors.html#ab0f12251e9e15b8154bdb9809feb3817',1,'Strings::Errors::SessionExpired'],['../structAiResult.html#a30c52302f0a3eac9c5db7d39f380586ba6dce5c5e5103a68c8b614613db57b3a5',1,'AiResult::SessionExpired']]],
   ['sessionfile_19',['sessionFile',['../classBackendManager.html#aaf2b056ac6c42db83b6f51edacf68b74',1,'BackendManager']]],
   ['setaccentcolour_20',['setaccentcolour',['../classSectionPanel.html#a040d57c157032b57112f96377ab62f6d',1,'SectionPanel::setAccentColour()'],['../classLfoVisualizer.html#a2f8dcf83b74d5211f59acf9025611080',1,'LfoVisualizer::setAccentColour()'],['../classEnvelopeVisualizer.html#a6f450ce9261596a80b7c9c0bd054e467',1,'EnvelopeVisualizer::setAccentColour()']]],
   ['setcurrentprogram_21',['setCurrentProgram',['../classHarmoniaAudioProcessor.html#a1b4b7b679ecfa0b689425aa36400cc60',1,'HarmoniaAudioProcessor']]],
@@ -64,7 +64,7 @@ var searchData=
   ['strings_3a_3atitles_61',['Titles',['../namespaceStrings_1_1Titles.html',1,'Strings']]],
   ['strings_3a_3awaveform_62',['Waveform',['../namespaceStrings_1_1Waveform.html',1,'Strings']]],
   ['style_63',['style',['../classAuthPageLookAndFeel.html#a7e20376b27ead7b897276e0523ce4e8c',1,'AuthPageLookAndFeel::Style'],['../classAuthPageLookAndFeel.html#abc74af3e830f3f51b9fac56d5c21ca6f',1,'AuthPageLookAndFeel::style']]],
-  ['subtitle_64',['subtitle',['../namespaceStrings_1_1Titles.html#a62133f45f4433c7db29411f2b28b3344',1,'Strings::Titles::Subtitle'],['../namespaceUIStyle_1_1Fonts.html#a8220b8886eca0151060bdce3dbf991fc',1,'UIStyle::Fonts::SubTitle()']]],
+  ['subtitle_64',['subtitle',['../namespaceUIStyle_1_1Fonts.html#a8220b8886eca0151060bdce3dbf991fc',1,'UIStyle::Fonts::SubTitle()'],['../namespaceStrings_1_1Titles.html#a62133f45f4433c7db29411f2b28b3344',1,'Strings::Titles::Subtitle']]],
   ['subtitlelabel_65',['subtitlelabel',['../classHeaderComponent.html#a27fd6db02c972348cc37b9f75ecaf17d',1,'HeaderComponent::subtitleLabel'],['../classWelcomePage.html#af48ad9565e7ce5fda485d5d5a1e135c7',1,'WelcomePage::subtitleLabel'],['../classSignupPage.html#a2d15c141a6f745b98524bebdff2a7e7c',1,'SignupPage::subtitleLabel'],['../classLoginPage.html#af7cfa0b9e5fe711d5b08492c064564c7',1,'LoginPage::subtitleLabel']]],
   ['subtitlesize_66',['SubTitleSize',['../namespaceUIStyle_1_1Fonts.html#ae979357aa834b8d751644d9486741d21',1,'UIStyle::Fonts']]],
   ['success_67',['success',['../structAiResult.html#ab5a09e050b480b44a9a41a1afcc60415',1,'AiResult::success'],['../structAuthResult.html#aa940ee4d1310ea31b071bc03e84e8960',1,'AuthResult::success'],['../structPresetLoader_1_1LoadResult.html#a2aa10aae52a54bc579562cf6674765e4',1,'PresetLoader::LoadResult::success'],['../structProfileResult.html#af4dd36daebc4ba9ca9e79298ec2c6d10',1,'ProfileResult::success']]],
@@ -75,7 +75,7 @@ var searchData=
   ['synth_72',['synth',['../classHarmoniaAudioProcessor.html#a398de85fb71b63459c0e2286aae2c8b5',1,'HarmoniaAudioProcessor']]],
   ['synth_2ecpp_73',['Synth.cpp',['../Synth_8cpp.html',1,'']]],
   ['synth_2eh_74',['Synth.h',['../Synth_8h.html',1,'']]],
-  ['synthcomponent_75',['synthcomponent',['../classSynthComponent.html#a7f10dd6de5e0b53fd888c788d5385bc9',1,'SynthComponent::SynthComponent()'],['../classMainComponent.html#a6ef85e5f5ab289e3affb1bc63ad1176c',1,'MainComponent::synthComponent'],['../classSynthComponent.html',1,'SynthComponent']]],
+  ['synthcomponent_75',['synthcomponent',['../classMainComponent.html#a6ef85e5f5ab289e3affb1bc63ad1176c',1,'MainComponent::synthComponent'],['../classSynthComponent.html#a7f10dd6de5e0b53fd888c788d5385bc9',1,'SynthComponent::SynthComponent()'],['../classSynthComponent.html',1,'SynthComponent']]],
   ['synthcomponent_2ecpp_76',['SynthComponent.cpp',['../SynthComponent_8cpp.html',1,'']]],
   ['synthcomponent_2eh_77',['SynthComponent.h',['../SynthComponent_8h.html',1,'']]]
 ];

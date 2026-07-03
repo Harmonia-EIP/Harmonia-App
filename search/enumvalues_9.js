@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['oscilloscopegridid_0',['oscilloscopeGridId',['../namespaceAppColourIds.html#a395e668d95f8775e059d210c51399489a554483b5abc284f2ef7324eb8536c9f1',1,'AppColourIds']]],
-  ['oscilloscopewaveid_1',['oscilloscopeWaveId',['../namespaceAppColourIds.html#a395e668d95f8775e059d210c51399489a16535a10a34be17fafdc1286602a5c44',1,'AppColourIds']]],
-  ['outlined_2',['Outlined',['../classWelcomeLookAndFeel.html#ac83601167effce449a8c86426818ecf6abfc3d9f0c2a204bb4783a26de1b895d6',1,'WelcomeLookAndFeel']]]
+  ['layout1_0',['Layout1',['../classAppLookAndFeel.html#a49a9340f3d5b5f90635f6c10385659b4a4820e68a1157319c4e06d24f78fc52ab',1,'AppLookAndFeel']]],
+  ['layout2_1',['Layout2',['../classAppLookAndFeel.html#a49a9340f3d5b5f90635f6c10385659b4a59a061a44f961f7f8cc2d10b3d14de96',1,'AppLookAndFeel']]],
+  ['layout3_2',['Layout3',['../classAppLookAndFeel.html#a49a9340f3d5b5f90635f6c10385659b4aa77a887b5e340da4edc103ddb5f381c6',1,'AppLookAndFeel']]],
+  ['layout4_3',['Layout4',['../classAppLookAndFeel.html#a49a9340f3d5b5f90635f6c10385659b4aa9babb889278f4dad59b2884f295482c',1,'AppLookAndFeel']]],
+  ['light_4',['Light',['../classAppLookAndFeel.html#a7e966ad29d8634970a167de96d1a6b87a9914a0ce04a7b7b6a8e39bec55064b82',1,'AppLookAndFeel']]],
+  ['lowpass_5',['Lowpass',['../namespaceIconRenderer.html#a14d6d88133735f5ae17e33d01948ca8ba97ed1c13cd79855adc19c2b8a96dfa41',1,'IconRenderer']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['filtershape_0',['FilterShape',['../namespaceIconRenderer.html#a14d6d88133735f5ae17e33d01948ca8b',1,'IconRenderer']]]
+  ['choice_0',['Choice',['../classWelcomePage.html#a7dba8b108ada028113b6ba3321825c92',1,'WelcomePage']]]
 ];

@@ -9,7 +9,7 @@ var searchData=
   ['defaultwidth_6',['DefaultWidth',['../namespaceAppConfig.html#a1e76beb80618f44021e31283449da112',1,'AppConfig']]],
   ['detune_7',['Detune',['../namespaceStrings_1_1Knobs.html#acc9c22ef517e0f490e8ee6917e725bce',1,'Strings::Knobs']]],
   ['display_8',['display',['../structHarmoniaPalette_1_1ThemeDef.html#aa27a2065fc3fe8f323a3c39c317f48eb',1,'HarmoniaPalette::ThemeDef::display'],['../namespaceStrings_1_1Sections.html#a2f77f41076e72933e2bffcd26bcfe4fe',1,'Strings::Sections::Display']]],
-  ['displayscreen_9',['displayscreen',['../classMainComponent.html#a7affeccc712877912e551479b74094be',1,'MainComponent::displayScreen'],['../classDisplayScreen.html#a0a7bf0e9d2d4fc3dfc8c7351250ec3c4',1,'DisplayScreen::DisplayScreen()'],['../classDisplayScreen.html',1,'DisplayScreen']]],
+  ['displayscreen_9',['displayscreen',['../classDisplayScreen.html#a0a7bf0e9d2d4fc3dfc8c7351250ec3c4',1,'DisplayScreen::DisplayScreen()'],['../classMainComponent.html#a7affeccc712877912e551479b74094be',1,'MainComponent::displayScreen'],['../classDisplayScreen.html',1,'DisplayScreen']]],
   ['displayscreen_2eh_10',['DisplayScreen.h',['../DisplayScreen_8h.html',1,'']]],
   ['distortionknob_11',['distortionKnob',['../classMainComponent.html#afd07484897bcd9eb5c9ea021a653b296',1,'MainComponent']]],
   ['distortionmix_12',['distortionmix',['../structHarmoniaParams_1_1AtomicRefs.html#a13e3593dea674b90da95e35ead702311',1,'HarmoniaParams::AtomicRefs::distortionMix'],['../namespaceHarmoniaParams_1_1IDs.html#ac43b6320bb83ac38d1d90446ddcc555b',1,'HarmoniaParams::IDs::distortionMix']]],

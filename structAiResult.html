@@ -90,6 +90,7 @@ $(document).ready(function(){initNavTree('structAiResult.html',''); initResizabl
 
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="structAiResult-members.html">List of all members</a>  </div>
@@ -99,12 +100,28 @@ $(document).ready(function(){initNavTree('structAiResult.html',''); initResizabl
 
 <p><code>#include &lt;<a class="el" href="BackendTypes_8h_source.html">BackendTypes.h</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a30c52302f0a3eac9c5db7d39f380586b" id="r_a30c52302f0a3eac9c5db7d39f380586b"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structAiResult.html#a30c52302f0a3eac9c5db7d39f380586b">Error</a> { <br />
+&#160;&#160;<a class="el" href="structAiResult.html#a30c52302f0a3eac9c5db7d39f380586ba6adf97f83acf6453d4a6a4b1070f3754">None</a>
+, <a class="el" href="structAiResult.html#a30c52302f0a3eac9c5db7d39f380586baa1f3533477430e1d11e718b203bdd100">EmptyPrompt</a>
+, <a class="el" href="structAiResult.html#a30c52302f0a3eac9c5db7d39f380586ba0f58fb16979a19a531cfb8db74a9c5e2">NoSession</a>
+, <a class="el" href="structAiResult.html#a30c52302f0a3eac9c5db7d39f380586ba6dce5c5e5103a68c8b614613db57b3a5">SessionExpired</a>
+, <br />
+&#160;&#160;<a class="el" href="structAiResult.html#a30c52302f0a3eac9c5db7d39f380586baeec89088ee408b80387155272b113256">Network</a>
+, <a class="el" href="structAiResult.html#a30c52302f0a3eac9c5db7d39f380586ba2feb6ea3db3fd8eb9ec285f21f1ef868">HttpError</a>
+, <a class="el" href="structAiResult.html#a30c52302f0a3eac9c5db7d39f380586ba661add46d791482293481cefba4b1903">EmptyResponse</a>
+, <a class="el" href="structAiResult.html#a30c52302f0a3eac9c5db7d39f380586ba88183b946cc5f0e8c96b2e66e1c74a7e">Unknown</a>
+<br />
+ }</td></tr>
+<tr class="separator:a30c52302f0a3eac9c5db7d39f380586b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ad91b640d7997cb4e582f11e758256acc" id="r_ad91b640d7997cb4e582f11e758256acc"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structAiResult.html">AiResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structAiResult.html#ad91b640d7997cb4e582f11e758256acc">ok</a> (const juce::String &amp;<a class="el" href="backendAiManager_8cpp.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a>)</td></tr>
 <tr class="separator:ad91b640d7997cb4e582f11e758256acc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7fb346b62410d11b76c9eb172af2e883" id="r_a7fb346b62410d11b76c9eb172af2e883"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structAiResult.html">AiResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structAiResult.html#a7fb346b62410d11b76c9eb172af2e883">error</a> (const juce::String &amp;message)</td></tr>
-<tr class="separator:a7fb346b62410d11b76c9eb172af2e883"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad88305cf1ad07ef4376f9b5ea03073e3" id="r_ad88305cf1ad07ef4376f9b5ea03073e3"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structAiResult.html">AiResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structAiResult.html#ad88305cf1ad07ef4376f9b5ea03073e3">failure</a> (<a class="el" href="structAiResult.html#a30c52302f0a3eac9c5db7d39f380586b">Error</a> e, const juce::String &amp;message)</td></tr>
+<tr class="separator:ad88305cf1ad07ef4376f9b5ea03073e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -114,10 +131,12 @@ Public Attributes</h2></td></tr>
 <tr class="separator:ad28a929a2a1eb416e1ff8881b57904bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf5e13dc9827a5400f8764d268395f56" id="r_adf5e13dc9827a5400f8764d268395f56"><td class="memItemLeft" align="right" valign="top">juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structAiResult.html#adf5e13dc9827a5400f8764d268395f56">errorMessage</a></td></tr>
 <tr class="separator:adf5e13dc9827a5400f8764d268395f56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fa170e75f1ac9bf5c2d4415851b5fe1" id="r_a4fa170e75f1ac9bf5c2d4415851b5fe1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structAiResult.html#a30c52302f0a3eac9c5db7d39f380586b">Error</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structAiResult.html#a4fa170e75f1ac9bf5c2d4415851b5fe1">error</a> = <a class="el" href="structAiResult.html#a30c52302f0a3eac9c5db7d39f380586ba88183b946cc5f0e8c96b2e66e1c74a7e">Error::Unknown</a></td></tr>
+<tr class="separator:a4fa170e75f1ac9bf5c2d4415851b5fe1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="a7fb346b62410d11b76c9eb172af2e883" name="a7fb346b62410d11b76c9eb172af2e883"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7fb346b62410d11b76c9eb172af2e883">&#9670;&#160;</a></span>error()</h2>
+<h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="a30c52302f0a3eac9c5db7d39f380586b" name="a30c52302f0a3eac9c5db7d39f380586b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30c52302f0a3eac9c5db7d39f380586b">&#9670;&#160;</a></span>Error</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -126,11 +145,54 @@ Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static <a class="el" href="structAiResult.html">AiResult</a> AiResult::error </td>
+          <td class="memname">enum class <a class="el" href="structAiResult.html#a30c52302f0a3eac9c5db7d39f380586b">AiResult::Error</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a30c52302f0a3eac9c5db7d39f380586ba6adf97f83acf6453d4a6a4b1070f3754" name="a30c52302f0a3eac9c5db7d39f380586ba6adf97f83acf6453d4a6a4b1070f3754"></a>None&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a30c52302f0a3eac9c5db7d39f380586baa1f3533477430e1d11e718b203bdd100" name="a30c52302f0a3eac9c5db7d39f380586baa1f3533477430e1d11e718b203bdd100"></a>EmptyPrompt&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a30c52302f0a3eac9c5db7d39f380586ba0f58fb16979a19a531cfb8db74a9c5e2" name="a30c52302f0a3eac9c5db7d39f380586ba0f58fb16979a19a531cfb8db74a9c5e2"></a>NoSession&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a30c52302f0a3eac9c5db7d39f380586ba6dce5c5e5103a68c8b614613db57b3a5" name="a30c52302f0a3eac9c5db7d39f380586ba6dce5c5e5103a68c8b614613db57b3a5"></a>SessionExpired&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a30c52302f0a3eac9c5db7d39f380586baeec89088ee408b80387155272b113256" name="a30c52302f0a3eac9c5db7d39f380586baeec89088ee408b80387155272b113256"></a>Network&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a30c52302f0a3eac9c5db7d39f380586ba2feb6ea3db3fd8eb9ec285f21f1ef868" name="a30c52302f0a3eac9c5db7d39f380586ba2feb6ea3db3fd8eb9ec285f21f1ef868"></a>HttpError&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a30c52302f0a3eac9c5db7d39f380586ba661add46d791482293481cefba4b1903" name="a30c52302f0a3eac9c5db7d39f380586ba661add46d791482293481cefba4b1903"></a>EmptyResponse&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a30c52302f0a3eac9c5db7d39f380586ba88183b946cc5f0e8c96b2e66e1c74a7e" name="a30c52302f0a3eac9c5db7d39f380586ba88183b946cc5f0e8c96b2e66e1c74a7e"></a>Unknown&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ad88305cf1ad07ef4376f9b5ea03073e3" name="ad88305cf1ad07ef4376f9b5ea03073e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad88305cf1ad07ef4376f9b5ea03073e3">&#9670;&#160;</a></span>failure()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="structAiResult.html">AiResult</a> AiResult::failure </td>
           <td>(</td>
-          <td class="paramtype">const juce::String &amp;&#160;</td>
-          <td class="paramname"><em>message</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structAiResult.html#a30c52302f0a3eac9c5db7d39f380586b">Error</a>&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const juce::String &amp;&#160;</td>
+          <td class="paramname"><em>message</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -169,6 +231,20 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a4fa170e75f1ac9bf5c2d4415851b5fe1" name="a4fa170e75f1ac9bf5c2d4415851b5fe1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fa170e75f1ac9bf5c2d4415851b5fe1">&#9670;&#160;</a></span>error</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structAiResult.html#a30c52302f0a3eac9c5db7d39f380586b">Error</a> AiResult::error = <a class="el" href="structAiResult.html#a30c52302f0a3eac9c5db7d39f380586ba88183b946cc5f0e8c96b2e66e1c74a7e">Error::Unknown</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="adf5e13dc9827a5400f8764d268395f56" name="adf5e13dc9827a5400f8764d268395f56"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adf5e13dc9827a5400f8764d268395f56">&#9670;&#160;</a></span>errorMessage</h2>
 

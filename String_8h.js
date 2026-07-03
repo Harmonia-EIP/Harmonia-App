@@ -60,6 +60,7 @@ var String_8h =
     [ "MissingPromptAdvice", "String_8h.html#a39cf1aafde4290a4622b66872c85d203", null ],
     [ "Mix", "String_8h.html#ac8c7d5671c48c953afee179119e83520", null ],
     [ "NetworkError", "String_8h.html#ac81e6704cacf1cdbab6f72caf42002e1", null ],
+    [ "NetworkErrorAdvice", "String_8h.html#adf3c9e3bb81d98e2e863588c7d64a476", null ],
     [ "Noise", "String_8h.html#ac2c4121922f5342b2bce00cfc11cee7f", null ],
     [ "NoUserConnected", "String_8h.html#ab0129bf31f8264b04ebdc61ddc995aa6", null ],
     [ "Osc1", "String_8h.html#accf6f37f6df5789c40dde807362c85b7", null ],

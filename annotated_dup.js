@@ -9,6 +9,7 @@ var annotated_dup =
     [ "PresetLoader", "namespacePresetLoader.html", [
       [ "LoadResult", "structPresetLoader_1_1LoadResult.html", "structPresetLoader_1_1LoadResult" ]
     ] ],
+    [ "AIModelData", "structAIModelData.html", "structAIModelData" ],
     [ "AiResult", "structAiResult.html", "structAiResult" ],
     [ "AppController", "classAppController.html", "classAppController" ],
     [ "AppLookAndFeel", "classAppLookAndFeel.html", "classAppLookAndFeel" ],

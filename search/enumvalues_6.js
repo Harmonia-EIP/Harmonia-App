@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['highpass_0',['Highpass',['../namespaceIconRenderer.html#a14d6d88133735f5ae17e33d01948ca8ba124600c5e81d846f402aab6727296cd5',1,'IconRenderer']]]
+  ['ghost_0',['Ghost',['../classWelcomeLookAndFeel.html#ac83601167effce449a8c86426818ecf6a401357e57c765967393ba391a338e89b',1,'WelcomeLookAndFeel']]],
+  ['guest_1',['Guest',['../classWelcomePage.html#a7dba8b108ada028113b6ba3321825c92aadb831a7fdd83dd1e2a309ce7591dff8',1,'WelcomePage']]]
 ];
