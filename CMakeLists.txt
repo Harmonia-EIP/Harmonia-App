@@ -5,13 +5,12 @@ project(Harmonia VERSION 1.0.0)
 set(CMAKE_CXX_STANDARD 17)
 
 # =========================
-# macOS: Universal2 pour compatibilité Apple Silicon + Rosetta
-# (Rosetta c'est le mode émulation x86_64 sur Apple Silicon M1/M2/M3....)
+# macOS: x86_64 pour FL Studio Rosetta
 # =========================
 if(APPLE)
-    set(CMAKE_OSX_ARCHITECTURES "arm64;x86_64" CACHE STRING "Build universal binaries" FORCE)
-    set(CMAKE_IGNORE_PATH "/opt/homebrew;/usr/local" CACHE STRING "Paths ignored by CMake when searching for packages" FORCE)
-    set(CMAKE_FIND_USE_PACKAGE_ROOT_PATH OFF CACHE BOOL "" FORCE)
+    set(CMAKE_OSX_ARCHITECTURES "x86_64" CACHE STRING "Build for x86_64 (Rosetta)" FORCE)
+    # Pointer vers Homebrew x86_64
+    set(CMAKE_PREFIX_PATH "/usr/local" CACHE STRING "" FORCE)
 endif()
 
 # =========================
