@@ -16,5 +16,5 @@ struct AIModelData
 static constexpr AIModelData aiModels[] =
 {
     { AIModel::Model1, "Model 1", "model-1" },
-    { AIModel::Model2, "Model 2", "model-2" }
+    { AIModel::Model2, "Charter v1", "charter_v1" }
 };
