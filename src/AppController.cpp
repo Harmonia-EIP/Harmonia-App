@@ -11,31 +11,30 @@ AppController::AppController(HarmoniaAudioProcessor& p) : processor(p)
 
         juce::Component::SafePointer<AppController> safeThis(this);
 
-        juce::Thread::launch([safeThis, session]
+        // Captured by value (not `this`/`backend`): the network request below
+        // can take seconds, and the user may close the plugin window (which
+        // destroys this AppController and its BackendManager) well before it
+        // returns. `safeThis` is only ever checked-then-used on the message
+        // thread via callAsync, where the check and the use happen
+        // atomically - checking it from this background thread and then
+        // dereferencing `backend` afterwards would be a TOCTOU race.
+        const auto apiUrl      = backend.getApiUrl();
+        const auto sessionFile = backend.getSessionFile();
+
+        juce::Thread::launch([safeThis, session, apiUrl, sessionFile]
         {
-            if (safeThis == nullptr)
-                return;
+            auto synced = BackendAuthManager::syncProfileParamsFromServer(apiUrl, sessionFile, *session);
 
-            auto synced = safeThis->backend.syncProfileParams(*session);
-
-            if (safeThis == nullptr)
-                return;
-
-            if (synced)
+            juce::MessageManager::callAsync([safeThis, synced]
             {
-                juce::MessageManager::callAsync([safeThis, synced]
-                {
-                    if (safeThis == nullptr)
-                        return;
+                if (safeThis == nullptr)
+                    return;
 
+                if (synced)
                     safeThis->currentSession = *synced;
-                });
-            }
-            else
-            {
-                if (safeThis != nullptr)
+                else
                     safeThis->backend.clearSession();
-            }
+            });
         });
         return;
     }

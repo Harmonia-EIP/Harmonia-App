@@ -131,6 +131,25 @@ public:
      */
     static void saveSessionToFile(const juce::File& sessionFile, const UserSession& session);
 
+    /**
+     * @brief Stateless GET /profile/me + session refresh implementation.
+     *
+     * @details
+     * No dependency on a BackendManager/BackendAuthManager instance, so it can
+     * safely run on a background thread whose lifetime outlives (or races
+     * with) the owning BackendManager - e.g. the plugin editor's startup
+     * profile resync, which must not touch `this`/`backend` once the editor
+     * window may have already closed.
+     *
+     * @param apiUrl Backend API base URL.
+     * @param sessionFile Session file to update on success.
+     * @param session Session to refresh.
+     * @return Updated session on success, std::nullopt on failure.
+     */
+    static std::optional<UserSession> syncProfileParamsFromServer(const juce::String& apiUrl,
+                                                                   const juce::File& sessionFile,
+                                                                   const UserSession& session);
+
 private:
     BackendManager& backend; ///< Reference to main backend manager
 };

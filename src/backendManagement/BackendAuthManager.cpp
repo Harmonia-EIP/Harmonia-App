@@ -346,7 +346,17 @@ void BackendAuthManager::syncProfileParamsInBackground(const UserSession& sessio
 
 std::optional<UserSession> BackendAuthManager::syncProfileParams(const UserSession& session)
 {
-    auto url = backend.getApiUrl() + "/profile/me";
+    auto updated = syncProfileParamsFromServer(backend.getApiUrl(), backend.getSessionFile(), session);
+    backend.writeLog(updated ? "Session synced (blocking) from backend."
+                              : "Blocking sync failed.");
+    return updated;
+}
+
+std::optional<UserSession> BackendAuthManager::syncProfileParamsFromServer(const juce::String& apiUrl,
+                                                                            const juce::File& sessionFile,
+                                                                            const UserSession& session)
+{
+    auto url = apiUrl + "/profile/me";
 
     auto response = cpr::Get(
         cpr::Url{ url.toStdString() },
@@ -356,10 +366,7 @@ std::optional<UserSession> BackendAuthManager::syncProfileParams(const UserSessi
     );
 
     if (response.status_code != 200)
-    {
-        backend.writeLog("Blocking sync failed, status: " + std::to_string(response.status_code));
         return std::nullopt;
-    }
 
     try
     {
@@ -372,20 +379,12 @@ std::optional<UserSession> BackendAuthManager::syncProfileParams(const UserSessi
         updated.layoutId = body.value("layout_id", session.layoutId);
         updated.themeId  = body.value("theme_id", session.themeId);
 
-        saveSession(updated);
-
-        backend.writeLog("Session synced (blocking) from backend.");
+        saveSessionToFile(sessionFile, updated);
 
         return updated;
     }
-    catch (const std::exception& e)
-    {
-        backend.writeLog("Blocking sync JSON parse error: " + std::string(e.what()));
-        return std::nullopt;
-    }
     catch (...)
     {
-        backend.writeLog("Blocking sync unknown error");
         return std::nullopt;
     }
 }
