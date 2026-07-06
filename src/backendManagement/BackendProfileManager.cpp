@@ -1,5 +1,6 @@
 #include "BackendProfileManager.h"
 #include "BackendManager.h"
+#include "BackendAuthManager.h"
 #include <cpr/cpr.h>
 
 using json = nlohmann::json;
@@ -99,25 +100,40 @@ void BackendProfileManager::updateLocalTheme(int themeId)
 
 void BackendProfileManager::updateThemeAsync(int themeId)
 {
-    std::thread([this, themeId]()
+    // Captured by value (not `this`/`backend`): the owning BackendManager is
+    // destroyed every time the plugin editor window closes, but this thread
+    // is detached and may still be in flight when that happens.
+    const auto apiUrl      = backend.getApiUrl();
+    const auto sessionFile = backend.getSessionFile();
+    const auto logFile     = backend.getLogFile();
+
+    std::thread([apiUrl, sessionFile, logFile, themeId]()
     {
-        auto result = updateTheme(themeId);
+        auto result = putThemeToServer(apiUrl, sessionFile, themeId);
 
-        if (!result.success)
+        if (!result.success && logFile != juce::File())
         {
-            backend.writeLog(
-                "Erreur update theme : "
-                + juce::String(result.errorMessage));
+            logFile.appendText(
+                "[Backend] Erreur update theme : "
+                + juce::String(result.errorMessage) + "\n");
         }
-
     }).detach();
 }
 
 ProfileResult BackendProfileManager::updateTheme(int themeId)
 {
+    auto result = putThemeToServer(backend.getApiUrl(), backend.getSessionFile(), themeId);
+    backend.writeLog("PUT /theme : " + juce::String(result.success ? "200" : "error"));
+    return result;
+}
+
+ProfileResult BackendProfileManager::putThemeToServer(const juce::String& apiUrl,
+                                                       const juce::File& sessionFile,
+                                                       int themeId)
+{
     ProfileResult result;
 
-    auto sessionOpt = backend.loadSession();
+    auto sessionOpt = BackendAuthManager::loadSessionFromFile(sessionFile);
     if (!sessionOpt.has_value())
     {
         result.success = false;
@@ -130,8 +146,8 @@ ProfileResult BackendProfileManager::updateTheme(int themeId)
     json body;
     body["theme_id"] = themeId;
 
-    auto url = backend.getApiUrl() + "/profile/" 
-               + juce::String(session.userId) 
+    auto url = apiUrl + "/profile/"
+               + juce::String(session.userId)
                + "/theme";
 
     auto response = cpr::Put(
@@ -142,8 +158,6 @@ ProfileResult BackendProfileManager::updateTheme(int themeId)
         },
         cpr::Body{ body.dump() }
     );
-
-    backend.writeLog("PUT /theme : " + juce::String(response.status_code));
 
     if (response.status_code != 200)
     {

@@ -230,7 +230,12 @@ AuthResult BackendAuthManager::signupUser(
 void BackendAuthManager::saveSession(const UserSession& session)
 {
     backend.writeLog("saveSession()");
+    saveSessionToFile(backend.getSessionFile(), session);
+    backend.writeLog("Session écrite.");
+}
 
+void BackendAuthManager::saveSessionToFile(const juce::File& sessionFile, const UserSession& session)
+{
     json j{
         { "isGuest",     session.isGuest },
         { "userId",      session.userId },
@@ -242,8 +247,7 @@ void BackendAuthManager::saveSession(const UserSession& session)
         { "themeId",     session.themeId }
     };
 
-    backend.getSessionFile().replaceWithText(j.dump(4));
-    backend.writeLog("Session écrite.");
+    sessionFile.replaceWithText(j.dump(4));
 }
 
 std::optional<UserSession> BackendAuthManager::loadSession()
@@ -258,6 +262,14 @@ std::optional<UserSession> BackendAuthManager::loadSession()
         backend.writeLog("no session found");
         return std::nullopt;
     }
+
+    return loadSessionFromFile(sessionFile);
+}
+
+std::optional<UserSession> BackendAuthManager::loadSessionFromFile(const juce::File& sessionFile)
+{
+    if (!sessionFile.existsAsFile())
+        return std::nullopt;
 
     auto content = sessionFile.loadFileAsString();
     auto j = json::parse(content.toStdString());
@@ -291,9 +303,16 @@ void BackendAuthManager::clearSession()
 
 void BackendAuthManager::syncProfileParamsInBackground(const UserSession& session)
 {
-    std::thread([this, session]()
+    // Captured by value (not `this`/`backend`): the owning BackendManager is
+    // destroyed every time the plugin editor window closes, but this thread
+    // is detached and may still be in flight when that happens.
+    const auto apiUrl      = backend.getApiUrl();
+    const auto sessionFile = backend.getSessionFile();
+    const auto logFile     = backend.getLogFile();
+
+    std::thread([apiUrl, sessionFile, logFile, session]()
     {
-        auto url = backend.getApiUrl() + "/profile/me";
+        auto url = apiUrl + "/profile/me";
 
         auto response = cpr::Get(
             cpr::Url{ url.toStdString() },
@@ -316,9 +335,10 @@ void BackendAuthManager::syncProfileParamsInBackground(const UserSession& sessio
             updated.layoutId = body.value("layout_id", session.layoutId);
             updated.themeId  = body.value("theme_id", session.themeId);
 
-            saveSession(updated);
+            saveSessionToFile(sessionFile, updated);
 
-            backend.writeLog("Session sync depuis backend.");
+            if (logFile != juce::File())
+                logFile.appendText("[Backend] Session sync depuis backend.\n");
         }
         catch (...) {}
     }).detach();

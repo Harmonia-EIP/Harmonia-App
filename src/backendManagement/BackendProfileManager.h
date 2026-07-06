@@ -63,4 +63,17 @@ public:
 
 private:
     BackendManager& backend; ///< Reference to main backend manager
+
+    /**
+     * @brief Stateless PUT /profile/{id}/theme implementation.
+     *
+     * @details
+     * No dependency on a BackendManager/BackendProfileManager instance, so it
+     * can safely run on a detached background thread after the owning
+     * BackendManager (and the plugin editor it belongs to) may already have
+     * been destroyed.
+     */
+    static ProfileResult putThemeToServer(const juce::String& apiUrl,
+                                          const juce::File& sessionFile,
+                                          int themeId);
 };

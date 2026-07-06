@@ -160,6 +160,13 @@ public:
     const juce::File& getSessionFile() const;
 
     /**
+     * @brief Returns the backend log file location.
+     *
+     * @return Log file path.
+     */
+    const juce::File& getLogFile() const;
+
+    /**
      * @brief Writes a message into the backend log file.
      *
      * @param message Message to append.

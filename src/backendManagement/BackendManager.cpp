@@ -153,3 +153,8 @@ const juce::File& BackendManager::getSessionFile() const
 {
     return sessionFile;
 }
+
+const juce::File& BackendManager::getLogFile() const
+{
+    return logFile;
+}

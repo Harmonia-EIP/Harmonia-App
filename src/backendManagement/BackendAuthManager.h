@@ -107,6 +107,30 @@ public:
      */
     void clearSession();
 
+    /**
+     * @brief Load a session directly from a given file.
+     *
+     * @details
+     * Stateless helper (no dependency on a BackendManager instance) so it can
+     * safely be called from a detached background thread that must not touch
+     * `this` or the owning BackendManager after the plugin editor has closed.
+     *
+     * @param sessionFile Session file to read.
+     * @return UserSession if available, otherwise std::nullopt
+     */
+    static std::optional<UserSession> loadSessionFromFile(const juce::File& sessionFile);
+
+    /**
+     * @brief Save a session directly to a given file.
+     *
+     * @details
+     * Stateless helper, see loadSessionFromFile() for why this matters.
+     *
+     * @param sessionFile Session file to write.
+     * @param session Session to persist.
+     */
+    static void saveSessionToFile(const juce::File& sessionFile, const UserSession& session);
+
 private:
     BackendManager& backend; ///< Reference to main backend manager
 };
