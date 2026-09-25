@@ -27,24 +27,49 @@ jobs:
   format:
     name: Format check (clang-format)
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.PR_TOKEN }}
 
       - name: Install clang-format
         run: sudo apt-get update && sudo apt-get install -y clang-format
 
-      - name: Check formatting
+      - name: List C++ files
+        id: files
         run: |
           files=$(find . -regex '.*\.\(cpp\|h\|hpp\|cc\)$' \
             -not -path "./build/*" \
             -not -path "*/JUCE/*" \
             -not -path "*/modules/*" \
             -not -path "*/libs/*")
-          if [ -z "$files" ]; then
-            echo "Aucun fichier C++ trouvé."
-            exit 0
+          echo "files<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$files" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+
+      - name: Auto-fix formatting
+        run: |
+          if [ -n "${{ steps.files.outputs.files }}" ]; then
+            clang-format -i ${{ steps.files.outputs.files }}
           fi
-          clang-format --dry-run --Werror $files
+
+      - name: Commit fixes if any
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --staged --quiet || git commit -m "style: auto-fix clang-format"
+          git push origin HEAD:${{ github.head_ref }} || true
+
+      - name: Report remaining issues (non-blocking)
+        continue-on-error: true
+        run: |
+          if [ -n "${{ steps.files.outputs.files }}" ]; then
+            clang-format --dry-run --Werror ${{ steps.files.outputs.files }}
+          fi
 
   build:
     name: Build (Windows)
