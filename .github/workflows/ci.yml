@@ -1,0 +1,69 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [dev, main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Sur main, seule la branche dev est autorisée à être mergée
+  check-source:
+    name: Check source branch
+    if: github.base_ref == 'main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Only dev -> main
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+        run: |
+          if [ "$HEAD_REF" != "dev" ]; then
+            echo "::error::Seule la branche dev peut être mergée dans main (source: $HEAD_REF)"
+            exit 1
+          fi
+
+  format:
+    name: Format check (clang-format)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install clang-format
+        run: sudo apt-get update && sudo apt-get install -y clang-format
+
+      - name: Check formatting
+        run: |
+          files=$(find . -regex '.*\.\(cpp\|h\|hpp\|cc\)$' \
+            -not -path "./build/*" \
+            -not -path "*/JUCE/*" \
+            -not -path "*/modules/*" \
+            -not -path "*/libs/*")
+          if [ -z "$files" ]; then
+            echo "Aucun fichier C++ trouvé."
+            exit 0
+          fi
+          clang-format --dry-run --Werror $files
+
+  build:
+    name: Build (Windows)
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Setup MSVC
+        uses: ilammy/msvc-dev-cmd@v1
+
+      - name: Configure
+        run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build
+        run: cmake --build build
+
+      - name: Run unit tests
+        working-directory: build
+        run: ctest -C Release --output-on-failure
+        continue-on-error: true # passe à false quand des tests seront réellement en place

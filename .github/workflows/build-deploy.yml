@@ -5,10 +5,13 @@ on:
     branches:
       - main
 
+concurrency:
+  group: deploy-plugin
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: windows-2022
-
     steps:
       - uses: actions/checkout@v4
         with:
@@ -32,7 +35,7 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-
+    environment: production
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v4
