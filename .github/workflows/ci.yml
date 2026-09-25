@@ -67,3 +67,4 @@ jobs:
             if [ -s files.txt ]; then
               xargs -a files.txt -d '\n' clang-format --dry-run --Werror
             fi
+            
