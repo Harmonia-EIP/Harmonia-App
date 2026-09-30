@@ -50,7 +50,7 @@ add_subdirectory(external/json)
 # =========================
 # PLUGIN JUCE
 # =========================
-juce_add_plugin(HarmoniaPlugin
+juce_add_plugin(Harmonia
     VERSION 1.0.0
     COMPANY_NAME "Harmonia"
 
@@ -63,14 +63,14 @@ juce_add_plugin(HarmoniaPlugin
 
     FORMATS VST3 Standalone
 
-    PRODUCT_NAME "HarmoniaPlugin"
+    PRODUCT_NAME "Harmonia"
 )
 
-target_compile_definitions(HarmoniaPlugin PUBLIC
+target_compile_definitions(Harmonia PUBLIC
     JUCE_VST3_CAN_REPLACE_VST2=0
 )
 
-juce_generate_juce_header(HarmoniaPlugin)
+juce_generate_juce_header(Harmonia)
 
 # =========================
 # SOURCES
@@ -80,15 +80,15 @@ file(GLOB_RECURSE PLUGIN_SOURCES CONFIGURE_DEPENDS
     src/*.h
 )
 
-target_sources(HarmoniaPlugin PRIVATE
+target_sources(Harmonia PRIVATE
     ${PLUGIN_SOURCES}
 )
 
-target_include_directories(HarmoniaPlugin PRIVATE
+target_include_directories(Harmonia PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
 
-target_link_libraries(HarmoniaPlugin PRIVATE
+target_link_libraries(Harmonia PRIVATE
     cpr::cpr
     nlohmann_json::nlohmann_json
 
