@@ -5,13 +5,13 @@
     <key>CFBundleDevelopmentRegion</key>
     <string>en</string>
     <key>CFBundleExecutable</key>
-    <string>HarmoniaPlugin</string>
+    <string>Harmonia</string>
     <key>CFBundleIdentifier</key>
-    <string>com.harmonia.plugin.vst3</string>
+    <string>com.harmonia.vst3</string>
     <key>CFBundleInfoDictionaryVersion</key>
     <string>6.0</string>
     <key>CFBundleName</key>
-    <string>HarmoniaPlugin</string>
+    <string>Harmonia</string>
     <key>CFBundlePackageType</key>
     <string>BNDL</string>
     <key>CFBundleShortVersionString</key>

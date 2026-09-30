@@ -219,7 +219,7 @@ cmake --build build --config Release
 ## Standalone Application
 
 ```text
-build/HarmoniaPlugin_artefacts/Release/Standalone/HarmoniaPlugin.exe
+build/Harmonia_artefacts/Release/Standalone/Harmonia.exe
 ```
 
 ---
@@ -227,10 +227,10 @@ build/HarmoniaPlugin_artefacts/Release/Standalone/HarmoniaPlugin.exe
 ## VST3 Plugin
 
 ```text
-build/HarmoniaPlugin_artefacts/Release/VST3/HarmoniaPlugin.vst3
+build/Harmonia_artefacts/Release/VST3/Harmonia.vst3
 ```
 
-Copy the `.vst3` file into your DAW VST3 folder.
+Copy the `.vst3` folder into your DAW VST3 folder.
 
 ---
 
@@ -241,7 +241,7 @@ Copy the `.vst3` file into your DAW VST3 folder.
 Launch:
 
 ```bash
-build/Release/HarmoniaPlugin.exe
+build/Release/Harmonia.exe
 ```
 
 ---
