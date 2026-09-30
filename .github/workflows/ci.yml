@@ -1,0 +1,110 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [dev, main]
+
+concurrency:
+  group: ci-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  # Vers main, seules les PR venant de dev sont acceptées
+  check-source:
+    name: Check source branch
+    if: github.base_ref == 'main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Only dev -> main
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+        run: |
+          if [ "$HEAD_REF" != "dev" ]; then
+            echo "::error::Seule la branche dev peut être mergée dans main (source: $HEAD_REF)"
+            exit 1
+          fi
+
+  format:
+    name: Format (clang-format)
+    runs-on: ubuntu-latest
+    # Pas pour les forks : pas d'accès au PAT ni d'écriture sur leur branche
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          # PAT : le commit poussé relance la CI (l'ancien run est annulé)
+          token: ${{ secrets.PR_TOKEN }}
+
+      - name: Install clang-format
+        run: sudo apt-get update && sudo apt-get install -y clang-format
+
+      - name: List C++ files
+        run: |
+          # Liste hors du workspace pour ne pas la commiter
+          find . -regex '.*\.\(cpp\|h\|hpp\|cc\)$' \
+            -not -path "./build/*" \
+            -not -path "*/JUCE/*" \
+            -not -path "*/modules/*" \
+            -not -path "*/libs/*" > "$RUNNER_TEMP/files.txt"
+          echo "Found $(wc -l < "$RUNNER_TEMP/files.txt") files"
+
+      - name: Auto-fix formatting
+        run: |
+          if [ -s "$RUNNER_TEMP/files.txt" ]; then
+            xargs -a "$RUNNER_TEMP/files.txt" -d '\n' clang-format -i
+          fi
+
+      - name: Commit fixes if any
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          # -u : uniquement les fichiers déjà suivis par git
+          git add -u
+          if ! git diff --staged --quiet; then
+            git commit -m "style: auto-fix clang-format"
+            git push origin "HEAD:$HEAD_REF"
+          fi
+
+      - name: Report remaining issues (non-blocking)
+        continue-on-error: true
+        run: |
+          if [ -s "$RUNNER_TEMP/files.txt" ]; then
+            xargs -a "$RUNNER_TEMP/files.txt" -d '\n' clang-format --dry-run --Werror
+          fi
+
+  build:
+    name: Build
+    runs-on: windows-2022
+    env:
+      SCCACHE_GHA_ENABLED: "true"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Setup sccache
+        uses: mozilla-actions/sccache-action@v0.0.9
+
+      - name: Setup MSVC
+        uses: ilammy/msvc-dev-cmd@v1
+
+      - name: Configure
+        run: >
+          cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+          -DCMAKE_C_COMPILER_LAUNCHER=sccache
+          -DCMAKE_CXX_COMPILER_LAUNCHER=sccache
+          -DCMAKE_POLICY_DEFAULT_CMP0141=NEW
+          -DCMAKE_MSVC_DEBUG_INFORMATION_FORMAT=Embedded
+
+      - name: Build
+        run: cmake --build build
+
+      - name: Cache stats
+        if: always()
+        run: sccache --show-stats
