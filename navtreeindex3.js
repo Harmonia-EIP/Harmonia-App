@@ -1,5 +1,10 @@
 var NAVTREEINDEX3 =
 {
+"classSignupPage.html#a59f3751fa9e90de20e3dbb0e69d24195":[1,0,34,14],
+"classSignupPage.html#a661cc663c84f1ccca15a3b1be8f4e76e":[1,0,34,15],
+"classSignupPage.html#a6894d15b213b7b0f1f2a927723ec3b46":[1,0,34,7],
+"classSignupPage.html#a7514b7746eafb02fa458d3877c18e788":[1,0,34,22],
+"classSignupPage.html#a753a6579dbc6e6f356c2254f207fd97e":[1,0,34,8],
 "classSignupPage.html#a77af3eb5be603ca6d35d673f7b2fc900":[1,0,34,19],
 "classSignupPage.html#a78994c73e911e46eeed3f282e9c207c6":[1,0,34,26],
 "classSignupPage.html#a84a5b563c0f3cd6e491f431df2bd6b89":[1,0,34,13],
@@ -244,10 +249,5 @@ var NAVTREEINDEX3 =
 "namespaceHarmoniaPalette.html#a75aa6566fb7735ff6a6fd569130645ed":[0,0,4,14],
 "namespaceHarmoniaPalette.html#a76db180530cfde516855be231f17d7c2":[0,0,4,10],
 "namespaceHarmoniaPalette.html#a7d0506f4dab4d8f8a708964a908c5e6e":[0,0,4,12],
-"namespaceHarmoniaPalette.html#a7d0900a6a6121d55f5175f00a673db80":[0,0,4,13],
-"namespaceHarmoniaPalette.html#a7f40b33084bd5cc2bd888890d596ed59":[0,0,4,31],
-"namespaceHarmoniaPalette.html#a890e90be7fad6633bd1d922c7c305d0c":[0,0,4,7],
-"namespaceHarmoniaPalette.html#a976d252f4f5a97411f4428f8d6416812":[0,0,4,16],
-"namespaceHarmoniaPalette.html#aa0143081bde4c24a8a531b9c7ff0dc49":[0,0,4,25],
-"namespaceHarmoniaPalette.html#aa4e853f80720eca3b01b3997b26cc39e":[0,0,4,26]
+"namespaceHarmoniaPalette.html#a7d0900a6a6121d55f5175f00a673db80":[0,0,4,13]
 };

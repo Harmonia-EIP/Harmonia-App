@@ -1,5 +1,10 @@
 var NAVTREEINDEX4 =
 {
+"namespaceHarmoniaPalette.html#a7f40b33084bd5cc2bd888890d596ed59":[0,0,4,31],
+"namespaceHarmoniaPalette.html#a890e90be7fad6633bd1d922c7c305d0c":[0,0,4,7],
+"namespaceHarmoniaPalette.html#a976d252f4f5a97411f4428f8d6416812":[0,0,4,16],
+"namespaceHarmoniaPalette.html#aa0143081bde4c24a8a531b9c7ff0dc49":[0,0,4,25],
+"namespaceHarmoniaPalette.html#aa4e853f80720eca3b01b3997b26cc39e":[0,0,4,26],
 "namespaceHarmoniaPalette.html#ab563e0968c67dcbd8a4b93e62d66c50b":[0,0,4,3],
 "namespaceHarmoniaPalette.html#ac8fdbc1e0a95261de32da129ce7da8cd":[0,0,4,4],
 "namespaceHarmoniaPalette.html#ad2026db093ac5af582d45a1a0a13350f":[0,0,4,8],
@@ -244,10 +249,5 @@ var NAVTREEINDEX4 =
 "structAuthResult.html#a57ebc92e8eb0dc628052888cf2dcead8":[1,0,8,0],
 "structAuthResult.html#aa940ee4d1310ea31b071bc03e84e8960":[1,0,8,2],
 "structHarmoniaPalette_1_1ThemeDef.html":[1,0,0,0],
-"structHarmoniaPalette_1_1ThemeDef.html":[0,0,4,0],
-"structHarmoniaPalette_1_1ThemeDef.html#a3c42c1f75aac95641632f0dda090bb76":[1,0,0,0,8],
-"structHarmoniaPalette_1_1ThemeDef.html#a3c42c1f75aac95641632f0dda090bb76":[0,0,4,0,8],
-"structHarmoniaPalette_1_1ThemeDef.html#a544ab3a3fadfb1d567bad5326ed4c721":[1,0,0,0,0],
-"structHarmoniaPalette_1_1ThemeDef.html#a544ab3a3fadfb1d567bad5326ed4c721":[0,0,4,0,0],
-"structHarmoniaPalette_1_1ThemeDef.html#a5f14a9df47c686b622a8e13d6285c60e":[1,0,0,0,1]
+"structHarmoniaPalette_1_1ThemeDef.html":[0,0,4,0]
 };

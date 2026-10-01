@@ -52,5 +52,6 @@ var searchData=
   ['pseudo_49',['pseudo',['../structUserSession.html#a9ca9989c7778b4c5ec5ab2bb20950ad8',1,'UserSession::pseudo'],['../namespaceUIStyle_1_1Fonts.html#a9d096a8abf2841189aa9ea399a89ebc1',1,'UIStyle::Fonts::Pseudo()']]],
   ['pseudosize_50',['PseudoSize',['../namespaceUIStyle_1_1Fonts.html#ac3c84dc8d5d0cbbafd5ea344c5db7a27',1,'UIStyle::Fonts']]],
   ['purple_51',['Purple',['../namespaceHarmoniaPalette.html#a48dd6f8d4570ed63402450e3ea1fba8cab9ba865fec061c9706d2fd7ce49c0cc7',1,'HarmoniaPalette']]],
-  ['pushbuffer_52',['pushBuffer',['../classOscilloscopeComponent.html#a1b6e24909b991c40cedaf240d4b48d3b',1,'OscilloscopeComponent']]]
+  ['pushbuffer_52',['pushBuffer',['../classOscilloscopeComponent.html#a1b6e24909b991c40cedaf240d4b48d3b',1,'OscilloscopeComponent']]],
+  ['putthemetoserver_53',['putThemeToServer',['../classBackendProfileManager.html#a5125c6d7bc5a461813306a1461379df2',1,'BackendProfileManager']]]
 ];

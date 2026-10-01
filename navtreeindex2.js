@@ -1,5 +1,10 @@
 var NAVTREEINDEX2 =
 {
+"classHarmoniaAudioProcessor.html#af7ed2bb8caf041ebc9127c06f758907e":[1,0,18,0],
+"classHarmoniaAudioProcessor.html#af7fead5b20f7ff059b4fdbc112ef069b":[1,0,18,6],
+"classHarmoniaAudioProcessorEditor.html":[1,0,19],
+"classHarmoniaAudioProcessorEditor.html#a09c5f219a1b3a001b3d62c0c93909439":[1,0,19,2],
+"classHarmoniaAudioProcessorEditor.html#a418b2c36fb2965a6b40a295731de99ae":[1,0,19,4],
 "classHarmoniaAudioProcessorEditor.html#a434f958e609ed0a35c8260458e7457a6":[1,0,19,1],
 "classHarmoniaAudioProcessorEditor.html#a4d1af66222c0c6ec427a857cd922a84d":[1,0,19,5],
 "classHarmoniaAudioProcessorEditor.html#a64a30dc9c3089d73ae496500748a13f2":[1,0,19,0],
@@ -244,10 +249,5 @@ var NAVTREEINDEX2 =
 "classSignupPage.html#a45a91e2876841839d278c9e8d0421367":[1,0,34,24],
 "classSignupPage.html#a47382a8d19ea8e0c388c711625eb6a3f":[1,0,34,21],
 "classSignupPage.html#a4d9b97ef56922877a2326617e75fdbbc":[1,0,34,12],
-"classSignupPage.html#a58e21dbd49ce12f3c05a83c5d430651a":[1,0,34,4],
-"classSignupPage.html#a59f3751fa9e90de20e3dbb0e69d24195":[1,0,34,14],
-"classSignupPage.html#a661cc663c84f1ccca15a3b1be8f4e76e":[1,0,34,15],
-"classSignupPage.html#a6894d15b213b7b0f1f2a927723ec3b46":[1,0,34,7],
-"classSignupPage.html#a7514b7746eafb02fa458d3877c18e788":[1,0,34,22],
-"classSignupPage.html#a753a6579dbc6e6f356c2254f207fd97e":[1,0,34,8]
+"classSignupPage.html#a58e21dbd49ce12f3c05a83c5d430651a":[1,0,34,4]
 };

@@ -1,5 +1,10 @@
 var NAVTREEINDEX5 =
 {
+"structHarmoniaPalette_1_1ThemeDef.html#a3c42c1f75aac95641632f0dda090bb76":[1,0,0,0,8],
+"structHarmoniaPalette_1_1ThemeDef.html#a3c42c1f75aac95641632f0dda090bb76":[0,0,4,0,8],
+"structHarmoniaPalette_1_1ThemeDef.html#a544ab3a3fadfb1d567bad5326ed4c721":[1,0,0,0,0],
+"structHarmoniaPalette_1_1ThemeDef.html#a544ab3a3fadfb1d567bad5326ed4c721":[0,0,4,0,0],
+"structHarmoniaPalette_1_1ThemeDef.html#a5f14a9df47c686b622a8e13d6285c60e":[1,0,0,0,1],
 "structHarmoniaPalette_1_1ThemeDef.html#a5f14a9df47c686b622a8e13d6285c60e":[0,0,4,0,1],
 "structHarmoniaPalette_1_1ThemeDef.html#a6ea3de89e94841e0b6e8355c1db585ea":[0,0,4,0,5],
 "structHarmoniaPalette_1_1ThemeDef.html#a6ea3de89e94841e0b6e8355c1db585ea":[1,0,0,0,5],

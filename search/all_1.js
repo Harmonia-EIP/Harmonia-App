@@ -25,7 +25,7 @@ var searchData=
   ['bgmid_22',['bgMid',['../namespaceHarmoniaColours.html#af0b36e1d9803d0bbc5d0d9dc60d2f831',1,'HarmoniaColours']]],
   ['bgpanel_23',['bgPanel',['../namespaceHarmoniaColours.html#a1fbaaa0ce0eb58d7654b1e3342b5f9da',1,'HarmoniaColours']]],
   ['bind_24',['bind',['../structHarmoniaParams_1_1AtomicRefs.html#aa24308cfaf5f44d7881a97e2afe943df',1,'HarmoniaParams::AtomicRefs']]],
-  ['blue_25',['blue',['../classAppLookAndFeel.html#a7e966ad29d8634970a167de96d1a6b87a9594eec95be70e7b1710f730fdda33d9',1,'AppLookAndFeel::Blue'],['../namespaceHarmoniaPalette.html#a48dd6f8d4570ed63402450e3ea1fba8ca9594eec95be70e7b1710f730fdda33d9',1,'HarmoniaPalette::Blue'],['../namespaceStrings_1_1Themes.html#a4ebc3e26048af9d77dfd68e97985fe39',1,'Strings::Themes::Blue'],['../structThemePalette.html#ae5956eb3e300efa8b9e49c512e2aa324',1,'ThemePalette::blue()']]],
+  ['blue_25',['blue',['../structThemePalette.html#ae5956eb3e300efa8b9e49c512e2aa324',1,'ThemePalette::blue()'],['../namespaceHarmoniaPalette.html#a48dd6f8d4570ed63402450e3ea1fba8ca9594eec95be70e7b1710f730fdda33d9',1,'HarmoniaPalette::Blue'],['../namespaceStrings_1_1Themes.html#a4ebc3e26048af9d77dfd68e97985fe39',1,'Strings::Themes::Blue'],['../classAppLookAndFeel.html#a7e966ad29d8634970a167de96d1a6b87a9594eec95be70e7b1710f730fdda33d9',1,'AppLookAndFeel::Blue']]],
   ['border_26',['border',['../namespaceHarmoniaPalette.html#a76db180530cfde516855be231f17d7c2',1,'HarmoniaPalette']]],
   ['borderhi_27',['borderHi',['../namespaceHarmoniaPalette.html#a2bb316d27757a2ed6ebcb0c650f78f0c',1,'HarmoniaPalette']]],
   ['btnborder_28',['btnBorder',['../namespaceHarmoniaColours.html#a771e51e8b5017893f95c481eb51f0a0a',1,'HarmoniaColours']]],

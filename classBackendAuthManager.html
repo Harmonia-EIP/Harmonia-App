@@ -91,6 +91,7 @@ $(document).ready(function(){initNavTree('classBackendAuthManager.html',''); ini
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classBackendAuthManager-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BackendAuthManager Class Reference</div></div>
@@ -138,6 +139,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a78823d218c58a3941b4e7f512ebe3122" id="r_a78823d218c58a3941b4e7f512ebe3122"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendAuthManager.html#a78823d218c58a3941b4e7f512ebe3122">clearSession</a> ()</td></tr>
 <tr class="memdesc:a78823d218c58a3941b4e7f512ebe3122"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear stored session.  <br /></td></tr>
 <tr class="separator:a78823d218c58a3941b4e7f512ebe3122"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a23d6d3ec8573746da22e8aaa4c88a530" id="r_a23d6d3ec8573746da22e8aaa4c88a530"><td class="memItemLeft" align="right" valign="top">static std::optional&lt; <a class="el" href="structUserSession.html">UserSession</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendAuthManager.html#a23d6d3ec8573746da22e8aaa4c88a530">loadSessionFromFile</a> (const juce::File &amp;sessionFile)</td></tr>
+<tr class="memdesc:a23d6d3ec8573746da22e8aaa4c88a530"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a session directly from a given file.  <br /></td></tr>
+<tr class="separator:a23d6d3ec8573746da22e8aaa4c88a530"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc76b4b62f8f1fddf3efd77bf000bf83" id="r_acc76b4b62f8f1fddf3efd77bf000bf83"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendAuthManager.html#acc76b4b62f8f1fddf3efd77bf000bf83">saveSessionToFile</a> (const juce::File &amp;sessionFile, const <a class="el" href="structUserSession.html">UserSession</a> &amp;session)</td></tr>
+<tr class="memdesc:acc76b4b62f8f1fddf3efd77bf000bf83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save a session directly to a given file.  <br /></td></tr>
+<tr class="separator:acc76b4b62f8f1fddf3efd77bf000bf83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb0acb9186dd666d166c9c4ebecdeafc" id="r_aeb0acb9186dd666d166c9c4ebecdeafc"><td class="memItemLeft" align="right" valign="top">static std::optional&lt; <a class="el" href="structUserSession.html">UserSession</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendAuthManager.html#aeb0acb9186dd666d166c9c4ebecdeafc">syncProfileParamsFromServer</a> (const juce::String &amp;apiUrl, const juce::File &amp;sessionFile, const <a class="el" href="structUserSession.html">UserSession</a> &amp;session)</td></tr>
+<tr class="memdesc:aeb0acb9186dd666d166c9c4ebecdeafc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stateless GET /profile/me + session refresh implementation.  <br /></td></tr>
+<tr class="separator:aeb0acb9186dd666d166c9c4ebecdeafc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -235,6 +248,42 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a23d6d3ec8573746da22e8aaa4c88a530" name="a23d6d3ec8573746da22e8aaa4c88a530"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23d6d3ec8573746da22e8aaa4c88a530">&#9670;&#160;</a></span>loadSessionFromFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; <a class="el" href="structUserSession.html">UserSession</a> &gt; BackendAuthManager::loadSessionFromFile </td>
+          <td>(</td>
+          <td class="paramtype">const juce::File &amp;&#160;</td>
+          <td class="paramname"><em>sessionFile</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Load a session directly from a given file. </p>
+<p>Stateless helper (no dependency on a <a class="el" href="classBackendManager.html" title="Central facade for all backend operations.">BackendManager</a> instance) so it can safely be called from a detached background thread that must not touch <code>this</code> or the owning <a class="el" href="classBackendManager.html" title="Central facade for all backend operations.">BackendManager</a> after the plugin editor has closed.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sessionFile</td><td>Session file to read. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structUserSession.html">UserSession</a> if available, otherwise std::nullopt </dd></dl>
+
+</div>
+</div>
 <a id="a8250fd7e65876e662252a9279e843c3b" name="a8250fd7e65876e662252a9279e843c3b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8250fd7e65876e662252a9279e843c3b">&#9670;&#160;</a></span>loginUser()</h2>
 
@@ -294,6 +343,52 @@ Private Attributes</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">session</td><td>Session to persist </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="acc76b4b62f8f1fddf3efd77bf000bf83" name="acc76b4b62f8f1fddf3efd77bf000bf83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc76b4b62f8f1fddf3efd77bf000bf83">&#9670;&#160;</a></span>saveSessionToFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BackendAuthManager::saveSessionToFile </td>
+          <td>(</td>
+          <td class="paramtype">const juce::File &amp;&#160;</td>
+          <td class="paramname"><em>sessionFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structUserSession.html">UserSession</a> &amp;&#160;</td>
+          <td class="paramname"><em>session</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Save a session directly to a given file. </p>
+<p>Stateless helper, see <a class="el" href="classBackendAuthManager.html#a23d6d3ec8573746da22e8aaa4c88a530" title="Load a session directly from a given file.">loadSessionFromFile()</a> for why this matters.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sessionFile</td><td>Session file to write. </td></tr>
+    <tr><td class="paramname">session</td><td>Session to persist. </td></tr>
   </table>
   </dd>
 </dl>
@@ -384,6 +479,60 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Updated session or std::nullopt on failure </dd></dl>
+
+</div>
+</div>
+<a id="aeb0acb9186dd666d166c9c4ebecdeafc" name="aeb0acb9186dd666d166c9c4ebecdeafc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb0acb9186dd666d166c9c4ebecdeafc">&#9670;&#160;</a></span>syncProfileParamsFromServer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; <a class="el" href="structUserSession.html">UserSession</a> &gt; BackendAuthManager::syncProfileParamsFromServer </td>
+          <td>(</td>
+          <td class="paramtype">const juce::String &amp;&#160;</td>
+          <td class="paramname"><em>apiUrl</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const juce::File &amp;&#160;</td>
+          <td class="paramname"><em>sessionFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structUserSession.html">UserSession</a> &amp;&#160;</td>
+          <td class="paramname"><em>session</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Stateless GET /profile/me + session refresh implementation. </p>
+<p>No dependency on a BackendManager/BackendAuthManager instance, so it can safely run on a background thread whose lifetime outlives (or races with) the owning <a class="el" href="classBackendManager.html" title="Central facade for all backend operations.">BackendManager</a> - e.g. the plugin editor's startup profile resync, which must not touch <code>this</code>/<code>backend</code> once the editor window may have already closed.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">apiUrl</td><td>Backend API base URL. </td></tr>
+    <tr><td class="paramname">sessionFile</td><td>Session file to update on success. </td></tr>
+    <tr><td class="paramname">session</td><td>Session to refresh. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Updated session on success, std::nullopt on failure. </dd></dl>
 
 </div>
 </div>

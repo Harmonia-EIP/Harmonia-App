@@ -11,5 +11,6 @@ var searchData=
   ['processblock_8',['processBlock',['../classHarmoniaAudioProcessor.html#ab27fa8266e17700fd481991f59f2f1ad',1,'HarmoniaAudioProcessor']]],
   ['producesmidi_9',['producesMidi',['../classHarmoniaAudioProcessor.html#ac7cf47b7562b4fb53ccb8e3f03228e70',1,'HarmoniaAudioProcessor']]],
   ['pseudo_10',['Pseudo',['../namespaceUIStyle_1_1Fonts.html#a9d096a8abf2841189aa9ea399a89ebc1',1,'UIStyle::Fonts']]],
-  ['pushbuffer_11',['pushBuffer',['../classOscilloscopeComponent.html#a1b6e24909b991c40cedaf240d4b48d3b',1,'OscilloscopeComponent']]]
+  ['pushbuffer_11',['pushBuffer',['../classOscilloscopeComponent.html#a1b6e24909b991c40cedaf240d4b48d3b',1,'OscilloscopeComponent']]],
+  ['putthemetoserver_12',['putThemeToServer',['../classBackendProfileManager.html#a5125c6d7bc5a461813306a1461379df2',1,'BackendProfileManager']]]
 ];
