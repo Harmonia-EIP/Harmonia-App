@@ -53,6 +53,9 @@ juce_add_plugin(Harmonia
     VERSION 1.0.0
     COMPANY_NAME "Harmonia"
 
+    ICON_BIG   "${CMAKE_CURRENT_SOURCE_DIR}/assets/harmonia_logo.png"
+    ICON_SMALL "${CMAKE_CURRENT_SOURCE_DIR}/assets/harmonia_logo.png"
+
     IS_SYNTH TRUE
     NEEDS_MIDI_INPUT TRUE
     NEEDS_MIDI_OUTPUT TRUE
@@ -63,6 +66,10 @@ juce_add_plugin(Harmonia
     FORMATS VST3 Standalone
 
     PRODUCT_NAME "Harmonia"
+)
+
+juce_add_binary_data(HarmoniaAssets SOURCES
+    assets/harmonia_logo.png
 )
 
 target_compile_definitions(Harmonia PUBLIC
@@ -88,6 +95,7 @@ target_include_directories(Harmonia PRIVATE
 )
 
 target_link_libraries(Harmonia PRIVATE
+    HarmoniaAssets
     cpr::cpr
     nlohmann_json::nlohmann_json
 
