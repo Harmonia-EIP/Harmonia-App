@@ -19,3 +19,5 @@
 
 // DSP
 #include <juce_dsp/juce_dsp.h>
+
+#include <BinaryData.h>

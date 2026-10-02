@@ -2,13 +2,12 @@
 
 #include "PagesIncludes.h"
 #include "AuthPageLookAndFeel.h"
-
 /**
  * @class LoginPage
  * @brief Authentication page — sign in with identifier + password.
  *
- * Visual design mirrors the WelcomePage (dark gradient, animated waves).
- * Buttons use AuthPageLookAndFeel for a unified auth-flow aesthetic.
+ * Visual design mirrors the WelcomePage (dark gradient, animated waves,
+ * logo PNG without container). Buttons use AuthPageLookAndFeel.
  */
 class LoginPage : public juce::Component,
                   private juce::Timer
@@ -39,6 +38,7 @@ private:
 
     // -------------------------------------------------------------------------
     AppLookAndFeel authLookAndFeel;
+    AuthPageLookAndFeel fieldLaf;
     BackendManager& backend;
     std::function<void(const UserSession&)> onSuccess;
 
@@ -51,6 +51,10 @@ private:
     // -------------------------------------------------------------------------
     // Widgets
     // -------------------------------------------------------------------------
+
+    /** Logo image loaded from binary resources (PNG). */
+    juce::Image logoImage;
+
     juce::Rectangle<float> logoIconBounds;
 
     juce::Label      titleLabel;
@@ -73,6 +77,7 @@ private:
                        float height,
                        float phase) const;
 
+    /** Draws the logo image only (no container, no border). */
     void drawLogoIcon(juce::Graphics& g,
                       juce::Rectangle<float> bounds) const;
 

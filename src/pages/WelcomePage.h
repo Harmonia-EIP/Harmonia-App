@@ -90,7 +90,7 @@ private:
  * @details
  * This component represents the entry point of the authentication flow.
  * It displays:
- * - Application title and subtitle
+ * - Application logo, title and subtitle
  * - Animated wave background (blue/cyan theme)
  * - A "Sign in" button
  * - A "Create account" button
@@ -111,7 +111,8 @@ public:
      *
      * @details
      * - Applies a dark LookAndFeel preset
-     * - Initializes UI elements (logo icon, title, subtitle, buttons)
+     * - Loads the logo image from binary resources
+     * - Initializes UI elements (title, subtitle, buttons)
      * - Sets up wave layer data and button callbacks
      * - Starts the 60 Hz animation timer
      */
@@ -181,6 +182,9 @@ private:
     // Widgets
     // -------------------------------------------------------------------------
 
+    /** Logo image loaded from binary resources (PNG). */
+    juce::Image logoImage;
+
     /** Rounded-square logo icon drawn in paint(). */
     juce::Rectangle<float> logoIconBounds;
 
@@ -190,10 +194,10 @@ private:
     /** "AI SYNTH PRESET GENERATOR" subtitle. */
     juce::Label subtitleLabel;
 
-    /** Primary "Sign in" button (filled accent style). */
+    /** "Sign in" button (outlined style). */
     juce::TextButton signinButton;
 
-    /** Secondary "Create account" button (outlined style). */
+    /** "Create account" button (outlined style). */
     juce::TextButton signupButton;
 
     /** Ghost "Continue as guest" button (no border). */
@@ -226,7 +230,7 @@ private:
                        float phase) const;
 
     /**
-     * @brief Draws the tilde (~) logo icon.
+     * @brief Draws the logo icon box with the logo image inside.
      *
      * @param g      Graphics context
      * @param bounds Bounding rectangle for the icon box

@@ -7,8 +7,8 @@
  * @class SignupPage
  * @brief Authentication page — create a new Harmonia account.
  *
- * Visual design mirrors LoginPage and WelcomePage (dark gradient, animated waves).
- * Buttons use AuthPageLookAndFeel for a unified auth-flow aesthetic.
+ * Visual design mirrors LoginPage and WelcomePage (dark gradient, animated waves,
+ * logo PNG without container). Buttons use AuthPageLookAndFeel.
  */
 class SignupPage : public juce::Component,
                    private juce::Timer
@@ -40,6 +40,7 @@ private:
 
     // -------------------------------------------------------------------------
     AppLookAndFeel authLookAndFeel;
+    AuthPageLookAndFeel fieldLaf;
     BackendManager& backend;
     std::function<void(const UserSession&)> onSuccess;
 
@@ -52,6 +53,10 @@ private:
     // -------------------------------------------------------------------------
     // Widgets
     // -------------------------------------------------------------------------
+
+    /** Logo image loaded from binary resources (PNG). */
+    juce::Image logoImage;
+
     juce::Rectangle<float> logoIconBounds;
 
     juce::Label      titleLabel;
@@ -77,6 +82,7 @@ private:
                        float height,
                        float phase) const;
 
+    /** Draws the logo image only (no container, no border). */
     void drawLogoIcon(juce::Graphics& g,
                       juce::Rectangle<float> bounds) const;
 

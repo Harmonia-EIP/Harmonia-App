@@ -1,9 +1,13 @@
 #include "WelcomePage.h"
+#include <BinaryData.h>
 
 WelcomePage::WelcomePage()
 {
     authLookAndFeel.setThemePreset(AppLookAndFeel::ThemePreset::Dark);
     setLookAndFeel(&authLookAndFeel);
+
+    logoImage = juce::ImageCache::getFromMemory(BinaryData::harmonia_logo_png,
+                                                BinaryData::harmonia_logo_pngSize);
 
     waveLayers = { {
         { 36.f, 0.006f, 0.0f, 0.20f, 0.78f, HarmoniaColours::waveIndigo },
@@ -13,14 +17,18 @@ WelcomePage::WelcomePage()
     } };
 
     titleLabel.setText(Strings::Titles::Harmonia, juce::dontSendNotification);
-    titleLabel.setFont(juce::Font("Space Grotesk", 40.f, juce::Font::bold));
+    titleLabel.setFont(juce::Font("Space Grotesk", 40.f, juce::Font::bold)
+                           .withExtraKerningFactor(-0.02f));
     titleLabel.setColour(juce::Label::textColourId, HarmoniaColours::textPrimary);
     titleLabel.setJustificationType(juce::Justification::centred);
     addAndMakeVisible(titleLabel);
 
-    subtitleLabel.setText(Strings::Titles::HarmoniaAiTitle, juce::dontSendNotification);
-    subtitleLabel.setFont(juce::Font("Inter", 11.f, juce::Font::plain));
-    subtitleLabel.setColour(juce::Label::textColourId, HarmoniaColours::textSubtitle);
+    subtitleLabel.setText(Strings::Titles::HarmoniaAiTitle.toUpperCase(),
+                          juce::dontSendNotification);
+    subtitleLabel.setFont(juce::Font("Inter", 11.f, juce::Font::plain)
+                              .withExtraKerningFactor(0.30f));
+    subtitleLabel.setColour(juce::Label::textColourId,
+                            HarmoniaColours::waveBlue.withAlpha(0.65f));
     subtitleLabel.setJustificationType(juce::Justification::centred);
     addAndMakeVisible(subtitleLabel);
 
@@ -95,6 +103,21 @@ void WelcomePage::paint(juce::Graphics& g)
         drawWaveLayer(g, layer, w, h, animationPhase);
 
     drawLogoIcon(g, logoIconBounds);
+
+    // Fine ligne décorative sous le sous-titre
+    {
+        const float lineW = 56.f;
+        const float lx    = w * 0.5f - lineW * 0.5f;
+        const float ly    = (float) subtitleLabel.getBottom() + 12.f;
+
+        juce::ColourGradient line(
+            HarmoniaColours::waveBlue.withAlpha(0.0f), lx,         ly,
+            HarmoniaColours::waveBlue.withAlpha(0.0f), lx + lineW, ly,
+            false);
+        line.addColour(0.5, HarmoniaColours::waveBlue.withAlpha(0.7f));
+        g.setGradientFill(line);
+        g.fillRect(lx, ly, lineW, 1.f);
+    }
 }
 
 void WelcomePage::drawWaveLayer(juce::Graphics& g,
@@ -151,17 +174,16 @@ void WelcomePage::drawWaveLayer(juce::Graphics& g,
 void WelcomePage::drawLogoIcon(juce::Graphics& g,
                                 juce::Rectangle<float> bounds) const
 {
-    g.setColour(HarmoniaColours::iconBg);
-    g.fillRoundedRectangle(bounds, 14.f);
-
-    g.setColour(HarmoniaColours::iconBorder);
-    g.drawRoundedRectangle(bounds, 14.f, 1.f);
-
-    g.setColour(HarmoniaColours::iconTilde);
-    g.setFont(juce::Font("Inter", bounds.getHeight() * 0.42f, juce::Font::bold));
-    g.drawText("~", bounds, juce::Justification::centred, false);
+    if (logoImage.isValid())
+    {
+        g.setOpacity(1.0f);
+        g.setImageResamplingQuality(juce::Graphics::highResamplingQuality);
+        g.drawImageWithin(logoImage,
+                          (int) bounds.getX(), (int) bounds.getY(),
+                          (int) bounds.getWidth(), (int) bounds.getHeight(),
+                          juce::RectanglePlacement::centred);
+    }
 }
-
 
 void WelcomePage::resized()
 {
@@ -169,10 +191,11 @@ void WelcomePage::resized()
     const float cx     = (float) getWidth()  * 0.5f;
     const float cy     = (float) getHeight() * 0.43f;
 
-    const float blockH = 356.f;
+    const float iconSize = 120.f;
+
+    const float blockH = iconSize + 300.f;
     float y = cy - blockH * 0.5f;
 
-    const float iconSize = 56.f;
     logoIconBounds = juce::Rectangle<float>(
         cx - iconSize * 0.5f, y, iconSize, iconSize);
     y += iconSize + 20.f;
@@ -194,6 +217,6 @@ void WelcomePage::resized()
     y += 50.f + 14.f;
 
     const int guestW = 170;
-        guestButton.setBounds(juce::Rectangle<float>(
-            cx - guestW * 0.5f, y, (float) guestW, 40.f).toNearestInt());
+    guestButton.setBounds(juce::Rectangle<float>(
+        cx - guestW * 0.5f, y, (float) guestW, 40.f).toNearestInt());
 }

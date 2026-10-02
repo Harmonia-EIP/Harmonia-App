@@ -1,4 +1,5 @@
 #include "LoginPage.h"
+#include <BinaryData.h>
 
 LoginPage::LoginPage(BackendManager& be,
                      std::function<void(const UserSession&)> onSuccessCallback)
@@ -7,6 +8,9 @@ LoginPage::LoginPage(BackendManager& be,
     authLookAndFeel.setThemePreset(AppLookAndFeel::ThemePreset::Dark);
     setLookAndFeel(&authLookAndFeel);
 
+    logoImage = juce::ImageCache::getFromMemory(BinaryData::harmonia_logo_png,
+                                                BinaryData::harmonia_logo_pngSize);
+
     waveLayers = { {
         { 24.f, 0.007f, 0.0f, 0.06f, 0.88f, HarmoniaColours::waveIndigo },
         { 18.f, 0.012f, 1.2f, 0.05f, 0.80f, HarmoniaColours::waveBlue   },
@@ -14,36 +18,31 @@ LoginPage::LoginPage(BackendManager& be,
     } };
 
     titleLabel.setText(Strings::Titles::SignIn, juce::dontSendNotification);
-    titleLabel.setFont(UIStyle::Fonts::SubTitle());
+    titleLabel.setFont(juce::Font("Space Grotesk", 24.f, juce::Font::bold)
+                           .withExtraKerningFactor(-0.01f));
     titleLabel.setColour(juce::Label::textColourId, HarmoniaColours::textPrimary);
     titleLabel.setJustificationType(juce::Justification::centred);
     addAndMakeVisible(titleLabel);
 
-    subtitleLabel.setText(Strings::Titles::HarmoniaAiTitle, juce::dontSendNotification);
-    subtitleLabel.setFont(juce::Font("Inter", 10.5f, juce::Font::plain));
+    subtitleLabel.setText(Strings::Titles::HarmoniaAiTitle.toUpperCase(),
+                          juce::dontSendNotification);
+    subtitleLabel.setFont(juce::Font("Inter", 10.f, juce::Font::plain)
+                              .withExtraKerningFactor(0.30f));
     subtitleLabel.setColour(juce::Label::textColourId,
-                            HarmoniaColours::textPrimary.withAlpha(0.28f));
+                            HarmoniaColours::waveBlue.withAlpha(0.65f));
     subtitleLabel.setJustificationType(juce::Justification::centred);
     addAndMakeVisible(subtitleLabel);
 
-    auto placeholder = findColour(AppColourIds::textSecondaryId);
+    const auto placeholder = HarmoniaColours::textPrimary.withAlpha(0.35f);
 
     identifierField.setTextToShowWhenEmpty(Strings::Placeholders::identifier, placeholder);
     passwordField.setTextToShowWhenEmpty(Strings::Placeholders::Password, placeholder);
     passwordField.setPasswordCharacter(Strings::Placeholders::PasswordChar);
 
-    for (auto* field : { &identifierField, &passwordField })
-    {
-        field->setColour(juce::TextEditor::backgroundColourId,
-                         juce::Colours::white.withAlpha(0.04f));
-        field->setColour(juce::TextEditor::outlineColourId,
-                         juce::Colours::white.withAlpha(0.08f));
-        field->setColour(juce::TextEditor::focusedOutlineColourId,
-                         HarmoniaColours::waveBlue.withAlpha(0.35f));
-        field->setColour(juce::TextEditor::textColourId,
-                         HarmoniaColours::textPrimary);
-        addAndMakeVisible(*field);
-    }
+    fieldLaf.applyTo(identifierField, "user");
+    fieldLaf.applyTo(passwordField,   "lock");
+    addAndMakeVisible(identifierField);
+    addAndMakeVisible(passwordField);
 
     lafLogin = std::make_unique<AuthPageLookAndFeel>(AuthPageLookAndFeel::Style::Primary);
     lafBack  = std::make_unique<AuthPageLookAndFeel>(AuthPageLookAndFeel::Style::Back);
@@ -63,6 +62,8 @@ LoginPage::LoginPage(BackendManager& be,
 LoginPage::~LoginPage()
 {
     stopTimer();
+    identifierField.setLookAndFeel(nullptr);
+    passwordField.setLookAndFeel(nullptr);
     loginButton.setLookAndFeel(nullptr);
     backButton.setLookAndFeel(nullptr);
     setLookAndFeel(nullptr);
@@ -104,6 +105,20 @@ void LoginPage::paint(juce::Graphics& g)
         drawWaveLayer(g, layer, w, h, animationPhase);
 
     drawLogoIcon(g, logoIconBounds);
+
+    {
+        const float lineW = 56.f;
+        const float lx    = w * 0.5f - lineW * 0.5f;
+        const float ly    = (float) subtitleLabel.getBottom() + 10.f;
+
+        juce::ColourGradient line(
+            HarmoniaColours::waveBlue.withAlpha(0.0f), lx,         ly,
+            HarmoniaColours::waveBlue.withAlpha(0.0f), lx + lineW, ly,
+            false);
+        line.addColour(0.5, HarmoniaColours::waveBlue.withAlpha(0.7f));
+        g.setGradientFill(line);
+        g.fillRect(lx, ly, lineW, 1.f);
+    }
 }
 
 void LoginPage::drawWaveLayer(juce::Graphics& g,
@@ -132,15 +147,15 @@ void LoginPage::drawWaveLayer(juce::Graphics& g,
 
 void LoginPage::drawLogoIcon(juce::Graphics& g, juce::Rectangle<float> bounds) const
 {
-    g.setColour(HarmoniaColours::iconBg);
-    g.fillRoundedRectangle(bounds, 12.f);
+    if (! logoImage.isValid())
+        return;
 
-    g.setColour(HarmoniaColours::iconBorder);
-    g.drawRoundedRectangle(bounds, 12.f, 1.f);
-
-    g.setColour(HarmoniaColours::iconTilde);
-    g.setFont(juce::Font("Inter", bounds.getHeight() * 0.42f, juce::Font::bold));
-    g.drawText("~", bounds, juce::Justification::centred, false);
+    g.setOpacity(1.0f);
+    g.setImageResamplingQuality(juce::Graphics::highResamplingQuality);
+    g.drawImageWithin(logoImage,
+                      (int) bounds.getX(), (int) bounds.getY(),
+                      (int) bounds.getWidth(), (int) bounds.getHeight(),
+                      juce::RectanglePlacement::centred);
 }
 
 void LoginPage::resized()
@@ -149,10 +164,11 @@ void LoginPage::resized()
     const float cx     = (float) getWidth()  * 0.5f;
     const float cy     = (float) getHeight() * 0.44f;
 
-    const float blockH = 336.f;
+    const float iconSize = 80.f;
+    const float blockH   = 344.f + (iconSize - 44.f);
+
     float y = cy - blockH * 0.5f;
 
-    const float iconSize = 44.f;
     logoIconBounds = { cx - iconSize * 0.5f, y, iconSize, iconSize };
     y += iconSize + 16.f;
 
@@ -165,12 +181,12 @@ void LoginPage::resized()
     y += 18.f + 28.f;
 
     identifierField.setBounds(juce::Rectangle<float>(
-        cx - panelW * 0.5f, y, (float) panelW, 38.f).toNearestInt());
-    y += 38.f + 9.f;
+        cx - panelW * 0.5f, y, (float) panelW, 42.f).toNearestInt());
+    y += 42.f + 9.f;
 
     passwordField.setBounds(juce::Rectangle<float>(
-        cx - panelW * 0.5f, y, (float) panelW, 38.f).toNearestInt());
-    y += 38.f + 22.f;
+        cx - panelW * 0.5f, y, (float) panelW, 42.f).toNearestInt());
+    y += 42.f + 22.f;
 
     loginButton.setBounds(juce::Rectangle<float>(
         cx - panelW * 0.5f, y, (float) panelW, 40.f).toNearestInt());
