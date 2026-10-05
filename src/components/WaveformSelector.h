@@ -19,18 +19,17 @@
  *
  * Displays selectable waveform icons using IconRenderer.
  */
-class WaveformSelector : public IconChoiceSelector
-{
+class WaveformSelector : public IconChoiceSelector {
 public:
-    WaveformSelector (juce::AudioProcessorValueTreeState& apvts,
-                      const juce::String& paramId)
-        : IconChoiceSelector (apvts, paramId,
-            [] (juce::Graphics& g, juce::Rectangle<float> area, int idx, juce::Colour col)
-            {
-                IconRenderer::drawWave (g, area,
-                                        static_cast<IconRenderer::Wave> (idx), col, 1.7f);
-            })
-    {}
+  WaveformSelector(juce::AudioProcessorValueTreeState &apvts,
+                   const juce::String &paramId)
+      : IconChoiceSelector(apvts, paramId,
+                           [](juce::Graphics &g, juce::Rectangle<float> area,
+                              int idx, juce::Colour col) {
+                             IconRenderer::drawWave(
+                                 g, area, static_cast<IconRenderer::Wave>(idx),
+                                 col, 1.7f);
+                           }) {}
 };
 
 /**
@@ -39,16 +38,16 @@ public:
  *
  * Displays selectable filter response icons.
  */
-class FilterTypeSelector : public IconChoiceSelector
-{
+class FilterTypeSelector : public IconChoiceSelector {
 public:
-    FilterTypeSelector (juce::AudioProcessorValueTreeState& apvts,
-                        const juce::String& paramId)
-        : IconChoiceSelector (apvts, paramId,
-            [] (juce::Graphics& g, juce::Rectangle<float> area, int idx, juce::Colour col)
-            {
-                IconRenderer::drawFilterShape (g, area,
-                                               static_cast<IconRenderer::FilterShape> (idx), col, 1.7f);
-            })
-    {}
+  FilterTypeSelector(juce::AudioProcessorValueTreeState &apvts,
+                     const juce::String &paramId)
+      : IconChoiceSelector(apvts, paramId,
+                           [](juce::Graphics &g, juce::Rectangle<float> area,
+                              int idx, juce::Colour col) {
+                             IconRenderer::drawFilterShape(
+                                 g, area,
+                                 static_cast<IconRenderer::FilterShape>(idx),
+                                 col, 1.7f);
+                           }) {}
 };
