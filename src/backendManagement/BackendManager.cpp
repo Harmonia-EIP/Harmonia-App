@@ -75,8 +75,9 @@ void BackendManager::clearSession() { authManager->clearSession(); }
 // AI : retourne le JSON brut (format charter) pour que le caller le passe à
 // PresetLoader.
 AiResult BackendManager::generatePreset(const juce::String &prompt, int modelId,
-                                        const juce::String &backendName) {
-  return aiManager->generatePreset(prompt, modelId, backendName);
+                                        const juce::String &backendName,
+                                        int variation) {
+  return aiManager->generatePreset(prompt, modelId, backendName, variation);
 }
 
 //================================================

@@ -285,11 +285,18 @@ void MainComponent::doGenerateWithAi() {
   int modelId = headerComponent->getSelectedModelId();
   juce::String backendName = headerComponent->getSelectedBackendName();
 
+  // Same prompt and model again: ask for another preset instead of the same one.
+  const auto request = backendName + "|" + prompt.trim();
+  aiVariation = request == lastAiRequest ? aiVariation + 1 : 0;
+  lastAiRequest = request;
+  const int variation = aiVariation;
+
   headerComponent->getPresetLabel().setText(Strings::Labels::GeneratingPreset,
                                             juce::dontSendNotification);
 
-  juce::Thread::launch([this, prompt, modelId, backendName] {
-    auto result = backend.generatePreset(prompt, modelId, backendName);
+  juce::Thread::launch([this, prompt, modelId, backendName, variation] {
+    auto result =
+        backend.generatePreset(prompt, modelId, backendName, variation);
 
     juce::MessageManager::callAsync([this, result] {
       if (!result.success) {

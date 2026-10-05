@@ -133,11 +133,14 @@ public:
    * be parsed by the preset loader.
    *
    * @param prompt User prompt.
+   * @param modelId Selected model (AIModel value).
+   * @param backendName Model name expected by the AI service.
+   * @param variation 0 for the best preset, 1, 2... for alternatives.
    *
    * @return AiResult Generated preset result.
    */
   AiResult generatePreset(const juce::String &prompt, int modelId,
-                          const juce::String &backendName);
+                          const juce::String &backendName, int variation = 0);
 
   // =========================================================
   // CONFIGURATION

@@ -65,11 +65,18 @@ public:
    * Request body format:
    * @code
    * {
-   *     "prompt": "user input"
+   *     "prompt": "user input",
+   *     "model_id": 3,
+   *     "model_name": "harmonia_v2",
+   *     "variation": 0
    * }
    * @endcode
    *
    * @param prompt User text prompt describing the preset to generate.
+   * @param modelId Selected model (AIModel value).
+   * @param backendName Model name expected by the AI service.
+   * @param variation 0 for the best preset; 1, 2... ask harmonia_v2 for
+   *        alternatives (ignored by the v1 models).
    *
    * @return AiResult
    * - success = true:
@@ -85,7 +92,7 @@ public:
    * - Empty backend response
    */
   AiResult generatePreset(const juce::String &prompt, int modelId,
-                          const juce::String &backendName);
+                          const juce::String &backendName, int variation = 0);
 
 private:
   /**

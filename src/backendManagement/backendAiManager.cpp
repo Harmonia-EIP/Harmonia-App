@@ -10,7 +10,8 @@ BackendAiManager::BackendAiManager(BackendManager &b) : backend(b) {}
 
 AiResult BackendAiManager::generatePreset(const juce::String &prompt,
                                           int modelId,
-                                          const juce::String &backendName) {
+                                          const juce::String &backendName,
+                                          int variation) {
   if (prompt.trim().isEmpty())
     return AiResult::failure(AiResult::Error::EmptyPrompt, "Prompt is empty");
 
@@ -26,7 +27,8 @@ AiResult BackendAiManager::generatePreset(const juce::String &prompt,
 
   json payload{{"prompt", prompt.toStdString()},
                {"model_id", modelId},
-               {"model_name", backendName.toStdString()}};
+               {"model_name", backendName.toStdString()},
+               {"variation", variation}};
 
   backend.writeLog("Payload built: " + juce::String(payload.dump()));
 
