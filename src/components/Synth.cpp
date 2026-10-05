@@ -128,7 +128,9 @@ void HarmoniaVoice::renderNextBlock (juce::AudioBuffer<float>& buffer,
         case 2:  filter.setType (juce::dsp::StateVariableTPTFilterType::highpass); break;
         default: filter.setType (juce::dsp::StateVariableTPTFilterType::lowpass);  break;
     }
-    filter.setResonance (resonance);
+    // The SVF expects a Q factor (0.707 = flat response, 0 = division by zero):
+    // map the 0..0.95 resonance amount onto Q = 0.707..~12.
+    filter.setResonance (0.707f * std::pow (17.0f, resonance / 0.95f));
 
     const float detuneRatio = centsToRatio (detune);
     const float lfoPhaseInc = lfoRateHz / (float) currentSampleRate;
