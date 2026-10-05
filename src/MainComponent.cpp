@@ -285,7 +285,8 @@ void MainComponent::doGenerateWithAi() {
   int modelId = headerComponent->getSelectedModelId();
   juce::String backendName = headerComponent->getSelectedBackendName();
 
-  // Same prompt and model again: ask for another preset instead of the same one.
+  // Same prompt and model again: ask for another preset instead of the same
+  // one.
   const auto request = backendName + "|" + prompt.trim();
   aiVariation = request == lastAiRequest ? aiVariation + 1 : 0;
   lastAiRequest = request;

@@ -151,7 +151,8 @@ private:
   /** Current authenticated user session. */
   UserSession session;
 
-  /** Prompt and model of the last AI request, to detect "Generate" re-clicks. */
+  /** Prompt and model of the last AI request, to detect "Generate" re-clicks.
+   */
   juce::String lastAiRequest;
 
   /** Variation sent to the AI: 0 on a new request, +1 on each re-click. */
