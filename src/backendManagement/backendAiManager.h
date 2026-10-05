@@ -15,8 +15,8 @@
 
 #pragma once
 
-#include <juce_core/juce_core.h>
 #include "BackendTypes.h"
+#include <juce_core/juce_core.h>
 
 class BackendManager;
 
@@ -35,68 +35,73 @@ class BackendManager;
  * The generated preset is returned as raw JSON,
  * which can later be parsed by the preset loader.
  */
-class BackendAiManager
-{
+class BackendAiManager {
 public:
+  /**
+   * @brief Creates a BackendAiManager instance.
+   *
+   * @param backend Reference to the main BackendManager.
+   *
+   * The BackendManager is used to:
+   * - Access user sessions
+   * - Retrieve API configuration
+   * - Centralize backend communication
+   */
+  explicit BackendAiManager(BackendManager &backend);
 
-    /**
-     * @brief Creates a BackendAiManager instance.
-     *
-     * @param backend Reference to the main BackendManager.
-     *
-     * The BackendManager is used to:
-     * - Access user sessions
-     * - Retrieve API configuration
-     * - Centralize backend communication
-     */
-    explicit BackendAiManager(BackendManager& backend);
-
-    /**
-     * @brief Sends a prompt to the backend AI service.
-     *
-     * This method:
-     * - Validates the prompt
-     * - Checks whether a user session exists
-     * - Verifies session expiration
-     * - Sends an authenticated HTTP POST request
-     * - Returns the generated preset JSON
-     *
-     * Backend endpoint:
-     * POST /ai/generate-preset
-     *
-     * Request body format:
-     * @code
-     * {
-     *     "prompt": "user input"
-     * }
-     * @endcode
-     *
-     * @param prompt User text prompt describing the preset to generate.
-     *
-     * @return AiResult
-     * - success = true:
-     *      contains generated preset JSON
-     * - success = false:
-     *      contains an error message
-     *
-     * Possible errors:
-     * - Empty prompt
-     * - No active session
-     * - Expired session
-     * - HTTP request failure
-     * - Empty backend response
-     */
-    AiResult generatePreset(const juce::String& prompt, int modelId, const juce::String& backendName);
+  /**
+   * @brief Sends a prompt to the backend AI service.
+   *
+   * This method:
+   * - Validates the prompt
+   * - Checks whether a user session exists
+   * - Verifies session expiration
+   * - Sends an authenticated HTTP POST request
+   * - Returns the generated preset JSON
+   *
+   * Backend endpoint:
+   * POST /ai/generate-preset
+   *
+   * Request body format:
+   * @code
+   * {
+   *     "prompt": "user input",
+   *     "model_id": 3,
+   *     "model_name": "harmonia_v2",
+   *     "variation": 0
+   * }
+   * @endcode
+   *
+   * @param prompt User text prompt describing the preset to generate.
+   * @param modelId Selected model (AIModel value).
+   * @param backendName Model name expected by the AI service.
+   * @param variation 0 for the best preset; 1, 2... ask harmonia_v2 for
+   *        alternatives (ignored by the v1 models).
+   *
+   * @return AiResult
+   * - success = true:
+   *      contains generated preset JSON
+   * - success = false:
+   *      contains an error message
+   *
+   * Possible errors:
+   * - Empty prompt
+   * - No active session
+   * - Expired session
+   * - HTTP request failure
+   * - Empty backend response
+   */
+  AiResult generatePreset(const juce::String &prompt, int modelId,
+                          const juce::String &backendName, int variation = 0);
 
 private:
-
-    /**
-     * @brief Reference to the main backend manager.
-     *
-     * Used to:
-     * - Access session information
-     * - Retrieve API configuration
-     * - Centralize backend services
-     */
-    BackendManager& backend;
+  /**
+   * @brief Reference to the main backend manager.
+   *
+   * Used to:
+   * - Access session information
+   * - Retrieve API configuration
+   * - Centralize backend services
+   */
+  BackendManager &backend;
 };

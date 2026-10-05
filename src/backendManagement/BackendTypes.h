@@ -15,101 +15,81 @@
  */
 #pragma once
 
-#include <nlohmann/json.hpp>
-#include "../config/String.h"
 #include "../config/AppConfig.h"
+#include "../config/String.h"
 #include <juce_core/juce_core.h>
+#include <nlohmann/json.hpp>
 
-struct UserSession
-{
-    bool isGuest = true;
+struct UserSession {
+  bool isGuest = true;
 
-    int userId = 0;
+  int userId = 0;
 
-    juce::String pseudo;
-    juce::String email;
-    juce::String accessToken;
-    juce::Time   expiresAt;
+  juce::String pseudo;
+  juce::String email;
+  juce::String accessToken;
+  juce::Time expiresAt;
 
-    int layoutId = 0;
-    int themeId  = 0;
+  int layoutId = 0;
+  int themeId = 0;
 };
 
-struct AuthResult
-{
-    bool success = false;
-    UserSession session;
-    juce::String errorMessage;
+struct AuthResult {
+  bool success = false;
+  UserSession session;
+  juce::String errorMessage;
 };
 
-struct UserProfile
-{
-    int         id = 0;
-    std::string username;
-    std::string email;
-    std::string firstName;
-    std::string lastName;
-    std::string createdAt;
-    std::string role;
-    bool        isActive = true;
+struct UserProfile {
+  int id = 0;
+  std::string username;
+  std::string email;
+  std::string firstName;
+  std::string lastName;
+  std::string createdAt;
+  std::string role;
+  bool isActive = true;
 
-    int layoutId = 1;
-    int themeId  = 1;
+  int layoutId = 1;
+  int themeId = 1;
 };
 
-struct ProfileResult
-{
-    bool success = false;
-    std::string errorMessage;
-    UserProfile profile;
+struct ProfileResult {
+  bool success = false;
+  std::string errorMessage;
+  UserProfile profile;
 
-    static ProfileResult ok(const UserProfile& profile)
-    {
-        return { true, "", profile };
-    }
+  static ProfileResult ok(const UserProfile &profile) {
+    return {true, "", profile};
+  }
 
-    static ProfileResult error(const std::string& message)
-    {
-        return { false, message, {} };
-    }
+  static ProfileResult error(const std::string &message) {
+    return {false, message, {}};
+  }
 };
 
-struct AiResult
-{
-    enum class Error
-    {
-        None,
-        EmptyPrompt,
-        NoSession,
-        SessionExpired,
-        Network,
-        HttpError,
-        EmptyResponse,
-        Unknown
-    };
+struct AiResult {
+  enum class Error {
+    None,
+    EmptyPrompt,
+    NoSession,
+    SessionExpired,
+    Network,
+    HttpError,
+    EmptyResponse,
+    Unknown
+  };
 
-    bool success = false;
-    juce::String json;
-    juce::String errorMessage;
-    Error error = Error::Unknown;
+  bool success = false;
+  juce::String json;
+  juce::String errorMessage;
+  Error error = Error::Unknown;
 
-    static inline AiResult ok(const juce::String& json)
-    {
-        return AiResult{
-            true,
-            json,
-            {},
-            Error::None
-        };
-    }
+  static inline AiResult ok(const juce::String &json) {
+    return AiResult{true, json, {}, Error::None};
+  }
 
-    static inline AiResult failure(Error e, const juce::String& message)
-    {
-        return AiResult{
-            false,
-            {},
-            message,
-            e
-        };
-    }
+  static inline AiResult failure(Error e, const juce::String &message) {
+    return AiResult{false, {}, message, e};
+  }
 };

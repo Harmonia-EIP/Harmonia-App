@@ -6,73 +6,53 @@
 
 using json = nlohmann::json;
 
-BackendAiManager::BackendAiManager(BackendManager& b)
-    : backend(b)
-{
-}
+BackendAiManager::BackendAiManager(BackendManager &b) : backend(b) {}
 
-AiResult BackendAiManager::generatePreset(const juce::String& prompt, int modelId, const juce::String& backendName)
-{
-    if (prompt.trim().isEmpty())
-        return AiResult::failure(
-            AiResult::Error::EmptyPrompt,
-            "Prompt is empty"
-        );
+AiResult BackendAiManager::generatePreset(const juce::String &prompt,
+                                          int modelId,
+                                          const juce::String &backendName,
+                                          int variation) {
+  if (prompt.trim().isEmpty())
+    return AiResult::failure(AiResult::Error::EmptyPrompt, "Prompt is empty");
 
-    auto sessionOpt = backend.loadSession();
-    if (!sessionOpt.has_value())
-        return AiResult::failure(
-            AiResult::Error::NoSession,
-            "No user connected"
-        );
+  auto sessionOpt = backend.loadSession();
+  if (!sessionOpt.has_value())
+    return AiResult::failure(AiResult::Error::NoSession, "No user connected");
 
-    auto session = sessionOpt.value();
+  auto session = sessionOpt.value();
 
-    if (session.expiresAt < juce::Time::getCurrentTime())
-        return AiResult::failure(
-            AiResult::Error::SessionExpired,
-            "Session expired"
-        );
+  if (session.expiresAt < juce::Time::getCurrentTime())
+    return AiResult::failure(AiResult::Error::SessionExpired,
+                             "Session expired");
 
-    json payload{ { "prompt", prompt.toStdString() }, { "model_id", modelId }, { "model_name", backendName.toStdString() } };
+  json payload{{"prompt", prompt.toStdString()},
+               {"model_id", modelId},
+               {"model_name", backendName.toStdString()},
+               {"variation", variation}};
 
-    backend.writeLog("Payload built: " + juce::String(payload.dump()));
+  backend.writeLog("Payload built: " + juce::String(payload.dump()));
 
-    auto response = cpr::Post(
-        cpr::Url{ (backend.getApiUrl() + "/ai/generate-preset").toStdString() },
-        cpr::Header{
-            { "Content-Type", "application/json" },
-            { "Authorization", "Bearer " + session.accessToken.toStdString() }
-        },
-        cpr::Body{ payload.dump() }
-    );
+  auto response = cpr::Post(
+      cpr::Url{(backend.getApiUrl() + "/ai/generate-preset").toStdString()},
+      cpr::Header{
+          {"Content-Type", "application/json"},
+          {"Authorization", "Bearer " + session.accessToken.toStdString()}},
+      cpr::Body{payload.dump()});
 
-    if (response.error.code != cpr::ErrorCode::OK)
-    {
-        backend.writeLog(
-            "CPR error: " +
-            juce::String((int)response.error.code) +
-            " - " +
-            juce::String(response.error.message)
-        );
+  if (response.error.code != cpr::ErrorCode::OK) {
+    backend.writeLog("CPR error: " + juce::String((int)response.error.code) +
+                     " - " + juce::String(response.error.message));
 
-        return AiResult::failure(
-            AiResult::Error::Network,
-            Strings::Errors::NetworkError
-        );
-    }
+    return AiResult::failure(AiResult::Error::Network,
+                             Strings::Errors::NetworkError);
+  }
 
-    if (response.status_code != 200)
-        return AiResult::failure(
-            AiResult::Error::HttpError,
-            "HTTP " + juce::String(response.status_code)
-        );
+  if (response.status_code != 200)
+    return AiResult::failure(AiResult::Error::HttpError,
+                             "HTTP " + juce::String(response.status_code));
 
-    if (response.text.empty())
-        return AiResult::failure(
-            AiResult::Error::EmptyResponse,
-            "Empty response"
-        );
+  if (response.text.empty())
+    return AiResult::failure(AiResult::Error::EmptyResponse, "Empty response");
 
-    return AiResult::ok(juce::String(response.text));
+  return AiResult::ok(juce::String(response.text));
 }
