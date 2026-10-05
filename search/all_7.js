@@ -16,7 +16,7 @@ var searchData=
   ['harmoniasound_13',['HarmoniaSound',['../classHarmoniaSound.html',1,'']]],
   ['harmoniavoice_14',['harmoniavoice',['../classHarmoniaVoice.html',1,'HarmoniaVoice'],['../classHarmoniaVoice.html#aabdcc3cab0d00f66d76156348ba75d84',1,'HarmoniaVoice::HarmoniaVoice()']]],
   ['haseditor_15',['hasEditor',['../classHarmoniaAudioProcessor.html#a5e4224f517d5858c382fb6f44485ed40',1,'HarmoniaAudioProcessor']]],
-  ['headercomponent_16',['headercomponent',['../classHeaderComponent.html',1,'HeaderComponent'],['../classMainComponent.html#aa9588dcfca7c5dceb93eacde2b33fc73',1,'MainComponent::headerComponent'],['../classHeaderComponent.html#ab197394165cd8bd0a3ccc0d06eba87f5',1,'HeaderComponent::HeaderComponent()']]],
+  ['headercomponent_16',['headercomponent',['../classHeaderComponent.html',1,'HeaderComponent'],['../classHeaderComponent.html#ab197394165cd8bd0a3ccc0d06eba87f5',1,'HeaderComponent::HeaderComponent()'],['../classMainComponent.html#aa9588dcfca7c5dceb93eacde2b33fc73',1,'MainComponent::headerComponent']]],
   ['headercomponent_2ecpp_17',['HeaderComponent.cpp',['../HeaderComponent_8cpp.html',1,'']]],
   ['headercomponent_2eh_18',['HeaderComponent.h',['../HeaderComponent_8h.html',1,'']]],
   ['highpass_19',['highpass',['../namespaceIconRenderer.html#a14d6d88133735f5ae17e33d01948ca8ba124600c5e81d846f402aab6727296cd5',1,'IconRenderer::Highpass'],['../namespaceStrings_1_1Filter.html#a65375f1f176f5817629087f1d21ab2f3',1,'Strings::Filter::HighPass']]],

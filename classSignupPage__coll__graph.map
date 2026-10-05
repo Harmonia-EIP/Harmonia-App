@@ -1,15 +1,18 @@
 <map id="SignupPage" name="SignupPage">
-<area shape="rect" id="Node000001" title="Authentication page — create a new Harmonia account." alt="" coords="205,181,303,207"/>
+<area shape="rect" id="Node000001" title="Authentication page — create a new Harmonia account." alt="" coords="315,181,412,207"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,93,137,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,122,230,179,228,183,107,127"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,120,325,179,323,184,123,125"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="161,93,256,119"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="224,130,250,180,245,182,219,132"/>
-<area shape="rect" id="Node000004" href="$classAppLookAndFeel.html" title=" " alt="" coords="281,93,411,119"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="325,130,269,183,265,179,322,126"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="183,5,347,31"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="287,39,337,91,333,95,283,43"/>
-<area shape="rect" id="Node000006" href="$structThemePalette.html" title=" " alt="" coords="371,5,483,31"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="409,43,359,95,355,91,405,39"/>
-<area shape="rect" id="Node000007" href="$classBackendManager.html" title="Central facade for all backend operations." alt="" coords="436,93,571,119"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="480,130,456,146,428,160,364,180,303,190,302,185,363,174,426,155,453,141,477,125"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="243,123,344,179,341,183,240,128"/>
+<area shape="rect" id="Node000004" href="$classAppLookAndFeel.html" title=" " alt="" coords="471,93,602,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="502,127,388,183,386,179,500,122"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="289,5,453,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="407,35,515,91,513,95,404,39"/>
+<area shape="rect" id="Node000007" href="$classAuthPageLookAndFeel.html" title="Shared LookAndFeel for LoginPage and SignupPage (buttons + text fields)." alt="" coords="280,93,447,119"/>
+<area shape="poly" id="edge7_Node000007_Node000005" title=" " alt="" coords="372,45,367,93,362,93,366,44"/>
+<area shape="rect" id="Node000006" href="$structThemePalette.html" title=" " alt="" coords="481,5,593,31"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="539,45,539,93,534,93,534,45"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="366,133,366,181,361,181,361,133"/>
+<area shape="rect" id="Node000008" href="$classBackendManager.html" title="Central facade for all backend operations." alt="" coords="627,93,761,119"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="662,127,625,145,583,160,493,180,413,191,412,186,492,175,581,155,623,140,660,122"/>
 </map>

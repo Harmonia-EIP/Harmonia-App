@@ -1,11 +1,12 @@
 var searchData=
 [
-  ['iconbg_0',['iconBg',['../namespaceHarmoniaColours.html#a1dc65fc924ea45f59e6b3612d89ce8f7',1,'HarmoniaColours']]],
-  ['iconborder_1',['iconBorder',['../namespaceHarmoniaColours.html#ac3989f2c4d82d51da0199c3841bc99b0',1,'HarmoniaColours']]],
-  ['icontilde_2',['iconTilde',['../namespaceHarmoniaColours.html#ac9c85435d8ef23b5d4205ac834263512',1,'HarmoniaColours']]],
-  ['id_3',['id',['../structUserProfile.html#a19793d5b1162f3835370cc215c29d055',1,'UserProfile::id'],['../structAIModelData.html#a05b5a1ecfe38c9c8161891efca92166e',1,'AIModelData::id']]],
-  ['identifier_4',['identifier',['../namespaceStrings_1_1Placeholders.html#a3a633e92f89a1c63e09e5131cef2d2bf',1,'Strings::Placeholders']]],
-  ['identifierfield_5',['identifierField',['../classLoginPage.html#a45dbf3ac1b6f55261bf3010cb0fe70c8',1,'LoginPage']]],
-  ['isactive_6',['isActive',['../structUserProfile.html#a455bca4ab27148750c7c10dc729806dc',1,'UserProfile']]],
-  ['isguest_7',['isGuest',['../structUserSession.html#a5bd5660bcff32a44eff9ccb4061bf08e',1,'UserSession']]]
+  ['iconareaw_0',['iconAreaW',['../classAuthPageLookAndFeel.html#a621336f2a74916651326cc8e4f97862b',1,'AuthPageLookAndFeel']]],
+  ['iconbg_1',['iconBg',['../namespaceHarmoniaColours.html#a1dc65fc924ea45f59e6b3612d89ce8f7',1,'HarmoniaColours']]],
+  ['iconborder_2',['iconBorder',['../namespaceHarmoniaColours.html#ac3989f2c4d82d51da0199c3841bc99b0',1,'HarmoniaColours']]],
+  ['icontilde_3',['iconTilde',['../namespaceHarmoniaColours.html#ac9c85435d8ef23b5d4205ac834263512',1,'HarmoniaColours']]],
+  ['id_4',['id',['../structUserProfile.html#a19793d5b1162f3835370cc215c29d055',1,'UserProfile::id'],['../structAIModelData.html#a05b5a1ecfe38c9c8161891efca92166e',1,'AIModelData::id']]],
+  ['identifier_5',['identifier',['../namespaceStrings_1_1Placeholders.html#a3a633e92f89a1c63e09e5131cef2d2bf',1,'Strings::Placeholders']]],
+  ['identifierfield_6',['identifierField',['../classLoginPage.html#a45dbf3ac1b6f55261bf3010cb0fe70c8',1,'LoginPage']]],
+  ['isactive_7',['isActive',['../structUserProfile.html#a455bca4ab27148750c7c10dc729806dc',1,'UserProfile']]],
+  ['isguest_8',['isGuest',['../structUserSession.html#a5bd5660bcff32a44eff9ccb4061bf08e',1,'UserSession']]]
 ];

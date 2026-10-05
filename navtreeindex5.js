@@ -1,5 +1,17 @@
 var NAVTREEINDEX5 =
 {
+"structAiResult.html#a4fa170e75f1ac9bf5c2d4415851b5fe1":[1,0,4,3],
+"structAiResult.html#ab5a09e050b480b44a9a41a1afcc60415":[1,0,4,6],
+"structAiResult.html#ad28a929a2a1eb416e1ff8881b57904bc":[1,0,4,5],
+"structAiResult.html#ad88305cf1ad07ef4376f9b5ea03073e3":[1,0,4,1],
+"structAiResult.html#ad91b640d7997cb4e582f11e758256acc":[1,0,4,2],
+"structAiResult.html#adf5e13dc9827a5400f8764d268395f56":[1,0,4,4],
+"structAuthResult.html":[1,0,8],
+"structAuthResult.html#a2d0c65cf5c8e0f7a1ea4aa6c12ff0620":[1,0,8,1],
+"structAuthResult.html#a57ebc92e8eb0dc628052888cf2dcead8":[1,0,8,0],
+"structAuthResult.html#aa940ee4d1310ea31b071bc03e84e8960":[1,0,8,2],
+"structHarmoniaPalette_1_1ThemeDef.html":[1,0,0,0],
+"structHarmoniaPalette_1_1ThemeDef.html":[0,0,4,0],
 "structHarmoniaPalette_1_1ThemeDef.html#a3c42c1f75aac95641632f0dda090bb76":[1,0,0,0,8],
 "structHarmoniaPalette_1_1ThemeDef.html#a3c42c1f75aac95641632f0dda090bb76":[0,0,4,0,8],
 "structHarmoniaPalette_1_1ThemeDef.html#a544ab3a3fadfb1d567bad5326ed4c721":[1,0,0,0,0],

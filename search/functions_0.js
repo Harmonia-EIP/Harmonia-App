@@ -7,5 +7,6 @@ var searchData=
   ['applookandfeel_4',['AppLookAndFeel',['../classAppLookAndFeel.html#a33609aa64c87c432bfa979a4ac6c7f15',1,'AppLookAndFeel']]],
   ['applypalette_5',['applyPalette',['../classAppLookAndFeel.html#abc97465a7510b22333de4e45073e51a6',1,'AppLookAndFeel']]],
   ['applytheme_6',['applyTheme',['../classMainComponent.html#a8583f3f10ddc81a2094d21533c031f58',1,'MainComponent']]],
-  ['authpagelookandfeel_7',['AuthPageLookAndFeel',['../classAuthPageLookAndFeel.html#ae053426c0fe67c05e4bf759cf91e2897',1,'AuthPageLookAndFeel']]]
+  ['applyto_7',['applyTo',['../classAuthPageLookAndFeel.html#a31a0416314773f1f0543c654d6040964',1,'AuthPageLookAndFeel']]],
+  ['authpagelookandfeel_8',['AuthPageLookAndFeel',['../classAuthPageLookAndFeel.html#a90841ba2d1c6bbbf72349bf2eb647d15',1,'AuthPageLookAndFeel']]]
 ];

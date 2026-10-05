@@ -4,7 +4,7 @@ var searchData=
   ['lafguest_1',['lafGuest',['../classWelcomePage.html#a78f4003b4302f33c67c75e38daa15516',1,'WelcomePage']]],
   ['laflogin_2',['lafLogin',['../classLoginPage.html#afb077fe232ad2f4b878f486e7e967f45',1,'LoginPage']]],
   ['lafsignin_3',['lafSignIn',['../classWelcomePage.html#adbdc9be1470ee6f73a0877b189d745b2',1,'WelcomePage']]],
-  ['lafsignup_4',['lafsignup',['../classWelcomePage.html#a423c2e00df0978bce12c8b394f0cd80c',1,'WelcomePage::lafSignUp'],['../classSignupPage.html#a0a22f49fdd24e942df3242f3acb32967',1,'SignupPage::lafSignup']]],
+  ['lafsignup_4',['lafsignup',['../classSignupPage.html#a0a22f49fdd24e942df3242f3acb32967',1,'SignupPage::lafSignup'],['../classWelcomePage.html#a423c2e00df0978bce12c8b394f0cd80c',1,'WelcomePage::lafSignUp']]],
   ['lastname_5',['lastname',['../namespaceStrings_1_1Placeholders.html#aa06b732789d24055187f3d199858a7ec',1,'Strings::Placeholders::LastName'],['../structUserProfile.html#af3d8118d173b31467957e6d65c63a27f',1,'UserProfile::lastName']]],
   ['lastnamefield_6',['lastnameField',['../classSignupPage.html#a348d6106b42624d41bd078d439dba391',1,'SignupPage']]],
   ['lasttickms_7',['lastTickMs',['../classKnobControl.html#ab1416d10c00410b6792c567c776b8056',1,'KnobControl']]],
@@ -46,10 +46,11 @@ var searchData=
   ['loginpage_43',['loginpage',['../classLoginPage.html#a50436cb2261e60d9bc286f0bf3dc0bac',1,'LoginPage::LoginPage()'],['../classLoginPage.html',1,'LoginPage']]],
   ['loginpage_2ecpp_44',['LoginPage.cpp',['../LoginPage_8cpp.html',1,'']]],
   ['loginpage_2eh_45',['LoginPage.h',['../LoginPage_8h.html',1,'']]],
-  ['loginuser_46',['loginuser',['../classBackendAuthManager.html#a8250fd7e65876e662252a9279e843c3b',1,'BackendAuthManager::loginUser()'],['../classBackendManager.html#a27675e6f46e70bcbae60c9cbefba8fd6',1,'BackendManager::loginUser()']]],
-  ['logoiconbounds_47',['logoiconbounds',['../classLoginPage.html#a2dea95348fdea0ad0c47c0deef15c51c',1,'LoginPage::logoIconBounds'],['../classSignupPage.html#a979c5d64d1131e1abe28e41048535d32',1,'SignupPage::logoIconBounds'],['../classWelcomePage.html#a075d023012e97b2345e392d46d36b381',1,'WelcomePage::logoIconBounds']]],
-  ['logout_48',['Logout',['../namespaceStrings_1_1Buttons.html#a88c7345786593c9818697d00ccdfa9d9',1,'Strings::Buttons']]],
-  ['logoutbutton_49',['logoutButton',['../classHeaderComponent.html#a5bc6965e338bf18d7b8aee8e30f82541',1,'HeaderComponent']]],
-  ['lookandfeel_50',['lookAndFeel',['../classMainComponent.html#aedafc666fd4c8705179d0c1ea154903a',1,'MainComponent']]],
-  ['lowpass_51',['lowpass',['../namespaceIconRenderer.html#a14d6d88133735f5ae17e33d01948ca8ba97ed1c13cd79855adc19c2b8a96dfa41',1,'IconRenderer::Lowpass'],['../namespaceStrings_1_1Filter.html#a10d03eded3d9e92bfff2802400eae8d8',1,'Strings::Filter::LowPass']]]
+  ['loginuser_46',['loginuser',['../classBackendManager.html#a27675e6f46e70bcbae60c9cbefba8fd6',1,'BackendManager::loginUser()'],['../classBackendAuthManager.html#a8250fd7e65876e662252a9279e843c3b',1,'BackendAuthManager::loginUser()']]],
+  ['logoiconbounds_47',['logoiconbounds',['../classSignupPage.html#a979c5d64d1131e1abe28e41048535d32',1,'SignupPage::logoIconBounds'],['../classLoginPage.html#a2dea95348fdea0ad0c47c0deef15c51c',1,'LoginPage::logoIconBounds'],['../classWelcomePage.html#a075d023012e97b2345e392d46d36b381',1,'WelcomePage::logoIconBounds']]],
+  ['logoimage_48',['logoimage',['../classSignupPage.html#a55d79442a1f15f27108efe80def7dab0',1,'SignupPage::logoImage'],['../classWelcomePage.html#a243abee1bc0faf815ef4085b5d30642d',1,'WelcomePage::logoImage'],['../classLoginPage.html#a9e62882269b18778e829e4161ce880bc',1,'LoginPage::logoImage']]],
+  ['logout_49',['Logout',['../namespaceStrings_1_1Buttons.html#a88c7345786593c9818697d00ccdfa9d9',1,'Strings::Buttons']]],
+  ['logoutbutton_50',['logoutButton',['../classHeaderComponent.html#a5bc6965e338bf18d7b8aee8e30f82541',1,'HeaderComponent']]],
+  ['lookandfeel_51',['lookAndFeel',['../classMainComponent.html#aedafc666fd4c8705179d0c1ea154903a',1,'MainComponent']]],
+  ['lowpass_52',['lowpass',['../namespaceIconRenderer.html#a14d6d88133735f5ae17e33d01948ca8ba97ed1c13cd79855adc19c2b8a96dfa41',1,'IconRenderer::Lowpass'],['../namespaceStrings_1_1Filter.html#a10d03eded3d9e92bfff2802400eae8d8',1,'Strings::Filter::LowPass']]]
 ];

@@ -176,7 +176,7 @@ Private Member Functions</h2></td></tr>
 <tr class="memdesc:aa400c11a388e18e709dde22cc6239361"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws a single animated wave layer.  <br /></td></tr>
 <tr class="separator:aa400c11a388e18e709dde22cc6239361"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf50a204141dfc4f1741c51f3af3e2a5" id="r_abf50a204141dfc4f1741c51f3af3e2a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWelcomePage.html#abf50a204141dfc4f1741c51f3af3e2a5">drawLogoIcon</a> (juce::Graphics &amp;g, juce::Rectangle&lt; float &gt; bounds) const</td></tr>
-<tr class="memdesc:abf50a204141dfc4f1741c51f3af3e2a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws the tilde (~) logo icon.  <br /></td></tr>
+<tr class="memdesc:abf50a204141dfc4f1741c51f3af3e2a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws the logo icon box with the logo image inside.  <br /></td></tr>
 <tr class="separator:abf50a204141dfc4f1741c51f3af3e2a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
@@ -191,6 +191,9 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a423c2e00df0978bce12c8b394f0cd80c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a78f4003b4302f33c67c75e38daa15516" id="r_a78f4003b4302f33c67c75e38daa15516"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; juce::LookAndFeel &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWelcomePage.html#a78f4003b4302f33c67c75e38daa15516">lafGuest</a></td></tr>
 <tr class="separator:a78f4003b4302f33c67c75e38daa15516"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a243abee1bc0faf815ef4085b5d30642d" id="r_a243abee1bc0faf815ef4085b5d30642d"><td class="memItemLeft" align="right" valign="top">juce::Image&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWelcomePage.html#a243abee1bc0faf815ef4085b5d30642d">logoImage</a></td></tr>
+<tr class="memdesc:a243abee1bc0faf815ef4085b5d30642d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logo image loaded from binary resources (PNG).  <br /></td></tr>
+<tr class="separator:a243abee1bc0faf815ef4085b5d30642d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a075d023012e97b2345e392d46d36b381" id="r_a075d023012e97b2345e392d46d36b381"><td class="memItemLeft" align="right" valign="top">juce::Rectangle&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWelcomePage.html#a075d023012e97b2345e392d46d36b381">logoIconBounds</a></td></tr>
 <tr class="memdesc:a075d023012e97b2345e392d46d36b381"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rounded-square logo icon drawn in <a class="el" href="classWelcomePage.html#a6c8b3ff6c7a1b394e18f1a863474f0a6" title="Paints the component background and wave animation.">paint()</a>.  <br /></td></tr>
 <tr class="separator:a075d023012e97b2345e392d46d36b381"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -201,10 +204,10 @@ Private Attributes</h2></td></tr>
 <tr class="memdesc:af48ad9565e7ce5fda485d5d5a1e135c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">"AI SYNTH PRESET GENERATOR" subtitle.  <br /></td></tr>
 <tr class="separator:af48ad9565e7ce5fda485d5d5a1e135c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acffa09e6d8f81b137802ec17e43fd6e7" id="r_acffa09e6d8f81b137802ec17e43fd6e7"><td class="memItemLeft" align="right" valign="top">juce::TextButton&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWelcomePage.html#acffa09e6d8f81b137802ec17e43fd6e7">signinButton</a></td></tr>
-<tr class="memdesc:acffa09e6d8f81b137802ec17e43fd6e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Primary "Sign in" button (filled accent style).  <br /></td></tr>
+<tr class="memdesc:acffa09e6d8f81b137802ec17e43fd6e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">"Sign in" button (outlined style).  <br /></td></tr>
 <tr class="separator:acffa09e6d8f81b137802ec17e43fd6e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6a9d4102ba8f13f507e298be862dc67" id="r_aa6a9d4102ba8f13f507e298be862dc67"><td class="memItemLeft" align="right" valign="top">juce::TextButton&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWelcomePage.html#aa6a9d4102ba8f13f507e298be862dc67">signupButton</a></td></tr>
-<tr class="memdesc:aa6a9d4102ba8f13f507e298be862dc67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Secondary "Create account" button (outlined style).  <br /></td></tr>
+<tr class="memdesc:aa6a9d4102ba8f13f507e298be862dc67"><td class="mdescLeft">&#160;</td><td class="mdescRight">"Create account" button (outlined style).  <br /></td></tr>
 <tr class="separator:aa6a9d4102ba8f13f507e298be862dc67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae80a7c5d276a3a437eb84a4d65f65e8b" id="r_ae80a7c5d276a3a437eb84a4d65f65e8b"><td class="memItemLeft" align="right" valign="top">juce::TextButton&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWelcomePage.html#ae80a7c5d276a3a437eb84a4d65f65e8b">guestButton</a></td></tr>
 <tr class="memdesc:ae80a7c5d276a3a437eb84a4d65f65e8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ghost "Continue as guest" button (no border).  <br /></td></tr>
@@ -215,7 +218,7 @@ Private Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Initial landing page allowing the user to choose between sign-in and sign-up. </p>
 <p>This component represents the entry point of the authentication flow. It displays:</p><ul>
-<li>Application title and subtitle</li>
+<li>Application logo, title and subtitle</li>
 <li>Animated wave background (blue/cyan theme)</li>
 <li>A "Sign in" button</li>
 <li>A "Create account" button</li>
@@ -270,7 +273,8 @@ Private Attributes</h2></td></tr>
 <p>Constructs the <a class="el" href="classWelcomePage.html" title="Initial landing page allowing the user to choose between sign-in and sign-up.">WelcomePage</a>. </p>
 <ul>
 <li>Applies a dark LookAndFeel preset</li>
-<li>Initializes UI elements (logo icon, title, subtitle, buttons)</li>
+<li>Loads the logo image from binary resources</li>
+<li>Initializes UI elements (title, subtitle, buttons)</li>
 <li>Sets up wave layer data and button callbacks</li>
 <li>Starts the 60 Hz animation timer </li>
 </ul>
@@ -337,7 +341,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Draws the tilde (~) logo icon. </p>
+<p>Draws the logo icon box with the logo image inside. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">g</td><td>Graphics context </td></tr>
@@ -661,6 +665,30 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a243abee1bc0faf815ef4085b5d30642d" name="a243abee1bc0faf815ef4085b5d30642d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a243abee1bc0faf815ef4085b5d30642d">&#9670;&#160;</a></span>logoImage</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">juce::Image WelcomePage::logoImage</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Logo image loaded from binary resources (PNG). </p>
+
+</div>
+</div>
 <a id="add04df4cc5e0644f00063cd695dfce9a" name="add04df4cc5e0644f00063cd695dfce9a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#add04df4cc5e0644f00063cd695dfce9a">&#9670;&#160;</a></span>onChoice</h2>
 
@@ -695,7 +723,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Primary "Sign in" button (filled accent style). </p>
+<p>"Sign in" button (outlined style). </p>
 
 </div>
 </div>
@@ -719,7 +747,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Secondary "Create account" button (outlined style). </p>
+<p>"Create account" button (outlined style). </p>
 
 </div>
 </div>

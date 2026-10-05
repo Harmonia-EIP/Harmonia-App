@@ -20,6 +20,7 @@ var classWelcomePage =
     [ "lafSignIn", "classWelcomePage.html#adbdc9be1470ee6f73a0877b189d745b2", null ],
     [ "lafSignUp", "classWelcomePage.html#a423c2e00df0978bce12c8b394f0cd80c", null ],
     [ "logoIconBounds", "classWelcomePage.html#a075d023012e97b2345e392d46d36b381", null ],
+    [ "logoImage", "classWelcomePage.html#a243abee1bc0faf815ef4085b5d30642d", null ],
     [ "onChoice", "classWelcomePage.html#add04df4cc5e0644f00063cd695dfce9a", null ],
     [ "signinButton", "classWelcomePage.html#acffa09e6d8f81b137802ec17e43fd6e7", null ],
     [ "signupButton", "classWelcomePage.html#aa6a9d4102ba8f13f507e298be862dc67", null ],

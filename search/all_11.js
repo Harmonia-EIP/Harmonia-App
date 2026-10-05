@@ -64,7 +64,7 @@ var searchData=
   ['strings_3a_3athemes_61',['Themes',['../namespaceStrings_1_1Themes.html',1,'Strings']]],
   ['strings_3a_3atitles_62',['Titles',['../namespaceStrings_1_1Titles.html',1,'Strings']]],
   ['strings_3a_3awaveform_63',['Waveform',['../namespaceStrings_1_1Waveform.html',1,'Strings']]],
-  ['style_64',['style',['../classAuthPageLookAndFeel.html#a7e20376b27ead7b897276e0523ce4e8c',1,'AuthPageLookAndFeel::Style'],['../classAuthPageLookAndFeel.html#abc74af3e830f3f51b9fac56d5c21ca6f',1,'AuthPageLookAndFeel::style']]],
+  ['style_64',['style',['../classAuthPageLookAndFeel.html#abc74af3e830f3f51b9fac56d5c21ca6f',1,'AuthPageLookAndFeel::style'],['../classAuthPageLookAndFeel.html#a7e20376b27ead7b897276e0523ce4e8c',1,'AuthPageLookAndFeel::Style']]],
   ['subtitle_65',['subtitle',['../namespaceUIStyle_1_1Fonts.html#a8220b8886eca0151060bdce3dbf991fc',1,'UIStyle::Fonts::SubTitle()'],['../namespaceStrings_1_1Titles.html#a62133f45f4433c7db29411f2b28b3344',1,'Strings::Titles::Subtitle']]],
   ['subtitlelabel_66',['subtitlelabel',['../classHeaderComponent.html#a27fd6db02c972348cc37b9f75ecaf17d',1,'HeaderComponent::subtitleLabel'],['../classWelcomePage.html#af48ad9565e7ce5fda485d5d5a1e135c7',1,'WelcomePage::subtitleLabel'],['../classSignupPage.html#a2d15c141a6f745b98524bebdff2a7e7c',1,'SignupPage::subtitleLabel'],['../classLoginPage.html#af7cfa0b9e5fe711d5b08492c064564c7',1,'LoginPage::subtitleLabel']]],
   ['subtitlesize_67',['SubTitleSize',['../namespaceUIStyle_1_1Fonts.html#ae979357aa834b8d751644d9486741d21',1,'UIStyle::Fonts']]],

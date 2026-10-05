@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['radius_0',['radius',['../structParticleField_1_1Ambient.html#a08b8858a18bdc0b2555b02f2000c0213',1,'ParticleField::Ambient']]],
+  ['radius_0',['radius',['../classAuthPageLookAndFeel.html#a0de9baec751db48b591f5735bee36997',1,'AuthPageLookAndFeel::radius'],['../structParticleField_1_1Ambient.html#a08b8858a18bdc0b2555b02f2000c0213',1,'ParticleField::Ambient::radius']]],
   ['rate_1',['Rate',['../namespaceStrings_1_1Knobs.html#a7cbc56b7521d09ddffbced154cdd30c1',1,'Strings::Knobs']]],
   ['readouth_2',['readoutH',['../classKnobControl.html#a1216338b4dc104ecadc394bf9b63c17c',1,'KnobControl']]],
   ['red_3',['Red',['../namespaceStrings_1_1Themes.html#a2a697e5d72c465787ddbca73d3965779',1,'Strings::Themes']]],
