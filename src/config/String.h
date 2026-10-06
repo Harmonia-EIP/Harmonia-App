@@ -65,7 +65,8 @@ namespace Strings
         inline const juce::String Email     = "Email";
         inline const juce::String Password  = "Password";
         inline const juce::juce_wchar PasswordChar = '*';
-        inline const juce::String Prompt = "Describe a sound and press GENERATE...";
+        inline const juce::String Prompt = "Describe your sound";
+        inline const juce::String Refine = "Refine the current sound...";
     }
 
     namespace Buttons
@@ -83,6 +84,7 @@ namespace Strings
         inline const juce::String Layout = "Layout";
         inline const juce::String ResetMissingParams = "Default if missing";
         inline const juce::String GuestMode = "Continue as Guest";
+        inline const juce::String Refine = "Refine";
     }
 
     namespace Filter
