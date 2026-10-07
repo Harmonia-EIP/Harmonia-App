@@ -22,7 +22,7 @@
 
 #include "JuceHeader.h"
 
-#include "backendManagement/BackendManager.h"
+#include "backend/BackendManager.h"
 #include "pages/WelcomePage.h"
 #include "pages/LoginPage.h"
 #include "pages/SignupPage.h"
@@ -67,7 +67,7 @@ private:
     HarmoniaAudioProcessor& processor;
 
     /** Backend manager handling authentication and sessions. */
-    BackendManager backend;
+    BackendManager &backend;
 
     /**
      * Currently displayed screen component.

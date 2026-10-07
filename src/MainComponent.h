@@ -15,6 +15,7 @@
  * - Session-aware user interface
  * - Animated particle background effects
  * - Responsive layout management
+ * - Per-user 3-colour palette synced with the backend
  *
  * UI Sections:
  * - Oscillator 1 / Mix
@@ -33,6 +34,7 @@
  *
  * Threading:
  * - AI preset generation is executed asynchronously
+ * - Palette sync is debounced and executed asynchronously by the backend
  * - UI updates are dispatched safely through JUCE message thread callbacks
  *
  * Lifetime:
@@ -52,7 +54,7 @@
 #include "themes/HiveLookAndFeel.h"
 #include "themes/PaletteSelector.h"
 
-#include "backendManagement/BackendManager.h"
+#include "backend/BackendManager.h"
 
 #include "components/SynthComponent.h"
 #include "components/OscilloscopeComponent.h"
@@ -71,6 +73,15 @@
 #include "tools/PresetLoader.h"
 #include "tools/Alert.h"
 
+namespace UiState
+{
+    inline const juce::Identifier identity     { "ui_identity" };
+    inline const juce::Identifier themeId      { "ui_theme_id" };
+    inline const juce::Identifier customColour { "ui_custom_colour" };
+    inline const juce::Identifier paletteSlot  { "ui_palette_slot" };
+    inline const juce::Identifier presetName   { "ui_preset_name" };
+}
+
 class MainComponent : public juce::Component
 {
 public:
@@ -84,6 +95,7 @@ public:
      * - Oscilloscope routing
      * - Preset management
      * - AI generation tools
+     * - Palette restoration / sync callbacks
      *
      * @param p Reference to the audio processor.
      * @param be Backend manager used for AI and session communication.
@@ -129,13 +141,16 @@ public:
      * @brief Callback triggered when user logs out.
      */
     std::function<void()> onLogout;
-
-    // in the private section, near the other header widgets:
-    PaletteSelector paletteSelector;
+ 
 
 private:
 
-    HarmoniaPalette::Theme currentTheme { HarmoniaPalette::Theme::Cyan };
+    /**
+     * Custom by default: the header restores the user palette (setSlots)
+     * in its constructor, and applyTheme() must not overwrite it with a
+     * built-in theme.
+     */
+    HarmoniaPalette::Theme currentTheme { HarmoniaPalette::Theme::Custom };
 
     void applyTheme();
 
@@ -160,6 +175,15 @@ private:
 
     /** Custom Harmonia look-and-feel implementation. */
     HiveLookAndFeel lookAndFeel;
+
+    void saveThemeToState (int slot = -1);
+    void setPresetName (const juce::String& name);
+    void restorePresetLabel();
+
+    void activatePalette();
+
+
+    juce::TooltipWindow tooltipWindow { this, 3000 };
 
     /** Animated particle background layer. */
     ParticleField particles;
@@ -276,6 +300,10 @@ private:
     /** Envelope release control. */
     std::unique_ptr<KnobControl> releaseKnob;
 
+    std::vector<LockableControl*> lockables;
+    void setRefineUi (bool refine);
+    juce::StringArray getLockedParamIds() const;
+
     //==========================================================================
     // Utilities
 
@@ -319,13 +347,11 @@ private:
      */
     void doSavePreset();
 
-    /**
-     * @brief Generates a new preset using AI backend services.
-     *
-     * Sends user prompt to backend, parses generated preset,
-     * and applies parameters to the synthesizer.
-     */
     void doGenerateWithAi();
+    void doRefineWithAi();
+    bool getAiPrompt (juce::String& prompt);
+    void runAiRequest (std::function<AiResult()> request, juce::StringArray lockedIds);
+    void showAiError (const AiResult& result);
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

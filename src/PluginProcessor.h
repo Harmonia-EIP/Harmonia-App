@@ -17,13 +17,18 @@
  * - Oscilloscope audio streaming
  * - Plugin state serialization
  *
+ * Backend responsibilities:
+ * - Owns the BackendManager (auth, session, AI, palette sync), so that it lives
+ *   as long as the plugin and not as long as the editor window
+ *
  * Internal architecture:
  * HarmoniaAudioProcessor
  * ├── APVTS parameters
  * ├── Harmonia synthesizer voices
  * ├── Reverb DSP processor
  * ├── MIDI keyboard state
- * └── Oscilloscope audio monitor
+ * ├── Oscilloscope audio monitor
+ * └── BackendManager
  */
 #pragma once
 
@@ -31,6 +36,7 @@
 #include "parameters/HarmoniaParameters.h"
 #include "components/Synth.h"
 #include "components/OscilloscopeComponent.h"
+#include "backend/BackendManager.h"
 
 /**
  * @class HarmoniaAudioProcessor
@@ -64,11 +70,14 @@ public:
      * - Audio buses
      * - Parameter tree state
      * - Parameter references
+     * - Backend (no disk or network access in its constructor)
      */
     HarmoniaAudioProcessor();
 
     /**
      * @brief Destroys the processor.
+     *
+     * Sends any pending palette change to the server (non blocking).
      */
     ~HarmoniaAudioProcessor() override;
 
@@ -114,6 +123,8 @@ public:
      * - Synth rendering
      * - Reverb processing
      * - Oscilloscope monitoring
+     *
+     * The backend must NEVER be called from here (locks, files, HTTP).
      *
      * @param buffer Audio buffer to process.
      * @param midiMessages MIDI event buffer.
@@ -202,6 +213,9 @@ public:
      * - Parameter values
      * - Automation state
      *
+     * Never store the session or the access token here: it would end up
+     * in the project files.
+     *
      * @param destData Destination memory block.
      */
     void getStateInformation(juce::MemoryBlock& destData) override;
@@ -226,6 +240,20 @@ public:
     juce::AudioProcessorValueTreeState& getAPVTS()
     {
         return apvts;
+    }
+
+    /**
+     * @brief Returns the backend (auth, session, AI, palette sync).
+     *
+     * Lives as long as the processor. Call it from the message thread
+     * or from background threads, never from processBlock().
+     * Callbacks to UI components must go through
+     * juce::Component::SafePointer + MessageManager::callAsync, because
+     * the editor can be closed while a request is in flight.
+     */
+    BackendManager& getBackend()
+    {
+        return backend;
     }
 
     /**
@@ -280,6 +308,12 @@ private:
      * Synchronization lock protecting oscilloscope access.
      */
     juce::CriticalSection oscLock;
+
+    /**
+     * Backend facade (auth, session, AI, palette sync).
+     * Owned here so it survives the editor being closed and reopened.
+     */
+    BackendManager backend;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(HarmoniaAudioProcessor)
 };

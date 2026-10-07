@@ -1,4 +1,3 @@
-
 /**
  * @file BackendTypes.h
  * @brief Defines backend-related data structures.
@@ -31,8 +30,8 @@ struct UserSession
     juce::String accessToken;
     juce::Time   expiresAt;
 
-    int layoutId = 0;
-    int themeId  = 0;
+    juce::StringArray paletteColours;   // 3 hex "#RRGGBB", vide = pas encore reçu du backend
+    int paletteSlot = 0;                // 0..2 côté front (backend : last_color_id 1..3)
 };
 
 struct AuthResult
@@ -53,8 +52,8 @@ struct UserProfile
     std::string role;
     bool        isActive = true;
 
-    int layoutId = 1;
-    int themeId  = 1;
+    juce::StringArray paletteColours;   // 3 hex "#RRGGBB"
+    int paletteSlot = 0;                // 0..2
 };
 
 struct ProfileResult

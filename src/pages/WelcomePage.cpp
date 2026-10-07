@@ -9,11 +9,12 @@ WelcomePage::WelcomePage()
     logoImage = juce::ImageCache::getFromMemory(BinaryData::harmonia_logo_png,
                                                 BinaryData::harmonia_logo_pngSize);
 
+    // yRatio a bit lower: the buttons no longer sit on the wave crests
     waveLayers = { {
-        { 36.f, 0.006f, 0.0f, 0.20f, 0.78f, HarmoniaColours::waveIndigo },
-        { 28.f, 0.010f, 1.1f, 0.18f, 0.68f, HarmoniaColours::waveBlue   },
-        { 22.f, 0.014f, 2.3f, 0.14f, 0.58f, HarmoniaColours::waveSlate  },
-        { 14.f, 0.020f, 0.7f, 0.10f, 0.48f, HarmoniaColours::waveCyan   },
+        { 36.f, 0.006f, 0.0f, 0.24f, 0.82f, HarmoniaColours::waveIndigo },
+        { 28.f, 0.010f, 1.1f, 0.22f, 0.74f, HarmoniaColours::waveBlue   },
+        { 22.f, 0.014f, 2.3f, 0.18f, 0.66f, HarmoniaColours::waveSlate  },
+        { 14.f, 0.020f, 0.7f, 0.12f, 0.58f, HarmoniaColours::waveCyan   },
     } };
 
     titleLabel.setText(Strings::Titles::Harmonia, juce::dontSendNotification);
@@ -44,8 +45,24 @@ WelcomePage::WelcomePage()
     signupButton.setLookAndFeel(lafSignUp.get());
     guestButton.setLookAndFeel(lafGuest.get());
 
+    // Navigation clavier : Tab / Shift+Tab restent dans cette page, dans
+    // l'ordre Sign in -> Create account -> Guest. Entrée / Espace cliquent
+    // le bouton qui a le focus (comportement natif de juce::Button).
+    setFocusContainerType(juce::Component::FocusContainerType::keyboardFocusContainer);
+
+    int focusOrder = 1;
+
     for (auto* b : { &signinButton, &signupButton, &guestButton })
+    {
+        b->setMouseCursor(juce::MouseCursor::PointingHandCursor);
+        b->setWantsKeyboardFocus(true);
+        b->setExplicitFocusOrder(focusOrder++);
+
+        // Un clic souris ne laisse pas de halo de focus resté affiché
+        b->setMouseClickGrabsKeyboardFocus(false);
+
         addAndMakeVisible(b);
+    }
 
     signinButton.onClick = [this] { if (onChoice) onChoice(Choice::SignIn); };
     signupButton.onClick = [this] { if (onChoice) onChoice(Choice::SignUp); };
@@ -65,6 +82,43 @@ WelcomePage::~WelcomePage()
     setLookAndFeel(nullptr);
 }
 
+void WelcomePage::visibilityChanged()
+{
+    if (! isVisible())
+        return;
+
+    // Différé : à ce stade la page n'est pas forcément encore rattachée à une
+    // fenêtre. SafePointer car la page peut être détruite avant l'exécution.
+    juce::Component::SafePointer<juce::Component> first (&signinButton);
+
+    juce::MessageManager::callAsync([first]
+    {
+        if (first != nullptr && first->isShowing())
+            first->grabKeyboardFocus();
+    });
+}
+
+bool WelcomePage::keyPressed(const juce::KeyPress& key)
+{
+    // Les boutons ne gèrent pas les flèches : elles remontent jusqu'ici.
+    const bool down = (key == juce::KeyPress::downKey);
+    const bool up   = (key == juce::KeyPress::upKey);
+
+    if (down || up)
+    {
+        if (auto* focused = juce::Component::getCurrentlyFocusedComponent())
+        {
+            if (isParentOf(focused))
+            {
+                focused->moveKeyboardFocusToSibling(down);
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+
 void WelcomePage::timerCallback()
 {
     animationPhase += 0.018f;
@@ -77,24 +131,22 @@ void WelcomePage::paint(juce::Graphics& g)
     const float h = (float) getHeight();
 
     juce::ColourGradient bg(
-        HarmoniaColours::bgDeep,  0.f,  0.f,
-        HarmoniaColours::bgMid,   0.f,  h,
-        false
-    );
+        HarmoniaColours::bgDeep, 0.f, 0.f,
+        HarmoniaColours::bgMid,  0.f, h,
+        false);
     bg.addColour(0.5, juce::Colour(0xff0f1923));
     g.setGradientFill(bg);
     g.fillAll();
 
     {
-        const float cx = w * 0.5f;
-        const float cy = h * 0.30f;
+        const float cx     = w * 0.5f;
+        const float cy     = h * 0.30f;
         const float radius = w * 0.55f;
 
         juce::ColourGradient glow(
             HarmoniaColours::waveBlue.withAlpha(0.08f), cx, cy,
             juce::Colours::transparentBlack,            cx + radius, cy,
-            true
-        );
+            true);
         g.setGradientFill(glow);
         g.fillEllipse(cx - radius, cy - radius * 0.6f, radius * 2.f, radius * 1.2f);
     }
@@ -121,27 +173,29 @@ void WelcomePage::paint(juce::Graphics& g)
 }
 
 void WelcomePage::drawWaveLayer(juce::Graphics& g,
-                                 const WaveLayer& layer,
-                                 float width,
-                                 float height,
-                                 float phase) const
+                                const WaveLayer& layer,
+                                float width,
+                                float height,
+                                float phase) const
 {
-    const float cx  = height * layer.yRatio;
-    const float amp = layer.amplitude;
+    const float cy   = height * layer.yRatio;
+    const float amp  = layer.amplitude;
     const float freq = layer.frequency;
     const float phi  = phase + layer.phaseOffset;
 
-    juce::Path filled;
+    juce::Path filled, stroke;
     filled.startNewSubPath(0.f, height);
 
     for (int x = 0; x <= (int) width; ++x)
     {
-        float y = cx + std::sin((float) x * freq + phi) * amp
-                      + std::sin((float) x * freq * 0.53f + phi * 1.3f) * amp * 0.4f;
-        if (x == 0)
-            filled.lineTo(0.f, y);
-        else
-            filled.lineTo((float) x, y);
+        const float fx = (float) x;
+        const float y  = cy + std::sin(fx * freq + phi) * amp
+                            + std::sin(fx * freq * 0.53f + phi * 1.3f) * amp * 0.4f;
+
+        filled.lineTo(fx, y);
+
+        if (x == 0) stroke.startNewSubPath(fx, y);
+        else        stroke.lineTo(fx, y);
     }
 
     filled.lineTo(width, height);
@@ -149,16 +203,6 @@ void WelcomePage::drawWaveLayer(juce::Graphics& g,
 
     g.setColour(layer.colour.withAlpha(layer.alphaFill));
     g.fillPath(filled);
-
-    juce::Path stroke;
-    bool started = false;
-    for (int x = 0; x <= (int) width; ++x)
-    {
-        float y = cx + std::sin((float) x * freq + phi) * amp
-                      + std::sin((float) x * freq * 0.53f + phi * 1.3f) * amp * 0.4f;
-        if (!started) { stroke.startNewSubPath(0.f, y); started = true; }
-        else           stroke.lineTo((float) x, y);
-    }
 
     g.setColour(layer.colour.withAlpha(0.08f));
     g.strokePath(stroke, juce::PathStrokeType(14.f));
@@ -170,34 +214,34 @@ void WelcomePage::drawWaveLayer(juce::Graphics& g,
     g.strokePath(stroke, juce::PathStrokeType(1.4f));
 }
 
-
 void WelcomePage::drawLogoIcon(juce::Graphics& g,
-                                juce::Rectangle<float> bounds) const
+                               juce::Rectangle<float> bounds) const
 {
-    if (logoImage.isValid())
-    {
-        g.setOpacity(1.0f);
-        g.setImageResamplingQuality(juce::Graphics::highResamplingQuality);
-        g.drawImageWithin(logoImage,
-                          (int) bounds.getX(), (int) bounds.getY(),
-                          (int) bounds.getWidth(), (int) bounds.getHeight(),
-                          juce::RectanglePlacement::centred);
-    }
+    if (! logoImage.isValid())
+        return;
+
+    g.setOpacity(1.0f);
+    g.setImageResamplingQuality(juce::Graphics::highResamplingQuality);
+    g.drawImageWithin(logoImage,
+                      (int) bounds.getX(), (int) bounds.getY(),
+                      (int) bounds.getWidth(), (int) bounds.getHeight(),
+                      juce::RectanglePlacement::centred);
 }
 
 void WelcomePage::resized()
 {
-    const int   panelW = 340;
+    const int   panelW = 340;   // title / subtitle
+    const int   btnW   = 220;   // buttons: narrower, sized to the text
+    const int   btnH   = 48;    // includes 4 px of glow margin on each side
+    const int   guestW = 170;
     const float cx     = (float) getWidth()  * 0.5f;
-    const float cy     = (float) getHeight() * 0.43f;
+    const float cy     = (float) getHeight() * 0.42f;
 
     const float iconSize = 120.f;
-
-    const float blockH = iconSize + 300.f;
+    const float blockH   = iconSize + 280.f;
     float y = cy - blockH * 0.5f;
 
-    logoIconBounds = juce::Rectangle<float>(
-        cx - iconSize * 0.5f, y, iconSize, iconSize);
+    logoIconBounds = juce::Rectangle<float>(cx - iconSize * 0.5f, y, iconSize, iconSize);
     y += iconSize + 20.f;
 
     titleLabel.setBounds(juce::Rectangle<float>(
@@ -206,17 +250,16 @@ void WelcomePage::resized()
 
     subtitleLabel.setBounds(juce::Rectangle<float>(
         cx - panelW * 0.5f, y, (float) panelW, 20.f).toNearestInt());
-    y += 20.f + 44.f;
+    y += 20.f + 40.f;
 
     signinButton.setBounds(juce::Rectangle<float>(
-        cx - panelW * 0.5f, y, (float) panelW, 50.f).toNearestInt());
-    y += 50.f + 14.f;
+        cx - btnW * 0.5f, y, (float) btnW, (float) btnH).toNearestInt());
+    y += btnH + 6.f;
 
     signupButton.setBounds(juce::Rectangle<float>(
-        cx - panelW * 0.5f, y, (float) panelW, 50.f).toNearestInt());
-    y += 50.f + 14.f;
+        cx - btnW * 0.5f, y, (float) btnW, (float) btnH).toNearestInt());
+    y += btnH + 12.f;
 
-    const int guestW = 170;
     guestButton.setBounds(juce::Rectangle<float>(
-        cx - guestW * 0.5f, y, (float) guestW, 40.f).toNearestInt());
+        cx - guestW * 0.5f, y, (float) guestW, 36.f).toNearestInt());
 }

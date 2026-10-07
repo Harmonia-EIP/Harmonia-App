@@ -43,15 +43,17 @@ public:
         repaint();
     }
 
+    static constexpr int shadowMargin = 6;
+
     void paint (juce::Graphics& g) override
     {
-        const auto r = getLocalBounds().toFloat().reduced (1.0f);
+        const auto r = getLocalBounds().toFloat().reduced ((float) shadowMargin);
         const float corner = 10.0f;
 
         {
             juce::Path shadowPath;
             shadowPath.addRoundedRectangle (r.translated (0.0f, 1.5f), corner);
-            juce::DropShadow ds (juce::Colours::black.withAlpha (0.30f), 8, { 0, 2 });
+            juce::DropShadow ds (juce::Colours::black.withAlpha (0.30f), 5, { 0, 2 });
             ds.drawForPath (g, shadowPath);
         }
 

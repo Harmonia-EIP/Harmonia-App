@@ -4,8 +4,8 @@
 
 #include "../themes/HarmoniaPalette.h"
 
-#include "../backendManagement/BackendManager.h"
-#include "../backendManagement/BackendTypes.h"
+#include "../backend/BackendManager.h"
+#include "../backend/BackendTypes.h"
 
 #include "../parameters/HarmoniaParameters.h"
 
