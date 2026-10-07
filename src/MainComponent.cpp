@@ -8,13 +8,13 @@ MainComponent::MainComponent (HarmoniaAudioProcessor& p,
       session (s),
       oscilloscope (AppConfig::Oscilloscope::BufferSize,
                     AppConfig::Oscilloscope::RefreshRate),
-      currentTheme (static_cast<HarmoniaPalette::Theme>(s.themeId)),
       displayScreen (oscilloscope),
       synthComponent (p.getKeyboardState()),
       ampEnvViz (p.getAPVTS(), HarmoniaPalette::sectionAmpEnv),
       lfoViz   (p.getAPVTS(), HarmoniaPalette::sectionLfo)
 {
     setLookAndFeel (&lookAndFeel);
+    tooltipWindow.setOpaque (false);
 
     oscMixPanel  = std::make_unique<SectionPanel> ("Osc 1 / Mix",  HarmoniaPalette::sectionOsc1);
     filterPanel  = std::make_unique<SectionPanel> ("Filter",       HarmoniaPalette::sectionFilter);
@@ -29,29 +29,56 @@ MainComponent::MainComponent (HarmoniaAudioProcessor& p,
     addAndMakeVisible (particles);
     particles.toBack();
 
+    // Référence « état serveur » pour le filtre anti-PUT inutile (vide = invité).
+    backend.resetPaletteSyncState (session.isGuest ? juce::StringArray()
+                                                   : session.paletteColours,
+                                   session.paletteSlot);
+
+    // Le header restaure la palette (setSlots) depuis la session dans son
+    // constructeur, avant HarmoniaPalette::setTheme. applyTheme() doit donc
+    // venir APRES sa creation.
     headerComponent = std::make_unique<HeaderComponent> (session);
     addAndMakeVisible (*headerComponent);
 
-    headerComponent->onThemeChanged =
-        [this](HarmoniaPalette::Theme theme)
+    // Restauration depuis le state de CETTE instance (avant les callbacks)
+        // Restauration depuis le state de CETTE instance (avant les callbacks)
+    {
+        const juce::String identity = session.isGuest ? juce::String ("guest")
+                                                      : "user_" + juce::String (session.userId);
+        auto& st = processor.getAPVTS().state;
+
+        // Identité différente de la dernière fois : on oublie l'état de l'ancienne
+        if (st.getProperty (UiState::identity).toString() != identity)
+        {
+            st.removeProperty (UiState::presetName,   nullptr);
+            st.removeProperty (UiState::paletteSlot,  nullptr);
+            st.removeProperty (UiState::themeId,      nullptr);
+            st.removeProperty (UiState::customColour, nullptr);
+        }
+
+        st.setProperty (UiState::identity, identity, nullptr);
+
+        // Restauration (ne trouvera rien si on vient d'effacer)
+        if (st.hasProperty (UiState::paletteSlot))
+        {
+            headerComponent->restoreSlot ((int) st[UiState::paletteSlot]);
+            currentTheme = headerComponent->getPaletteSelector().getCurrentTheme();
+        }
+
+        restorePresetLabel();
+    }
+
+    headerComponent->onThemeChanged = [this] (HarmoniaPalette::Theme theme)
     {
         currentTheme = theme;
-
+        saveThemeToState();
         applyTheme();
+    };
 
-        lookAndFeel.refreshTheme();
-
-        sendLookAndFeelChange();
-
-        repaint();
-
-
-        backend.updateLocalTheme(
-            static_cast<int>(theme));
-
-        if (!session.isGuest)
-            backend.updateThemeAsync(
-                static_cast<int>(theme));
+    headerComponent->onPaletteChanged = [this] (const juce::StringArray& colours, int slot)
+    {
+        saveThemeToState (slot);
+        backend.updatePaletteAsync (colours, slot);
     };
 
     applyTheme();
@@ -71,6 +98,11 @@ MainComponent::MainComponent (HarmoniaAudioProcessor& p,
     buildControls();
     wireHeaderButtons();
 
+    headerComponent->onModeChanged = [this] (HeaderComponent::Mode m)
+    {
+        setRefineUi (m == HeaderComponent::Mode::Refine);
+    };
+
     addAndMakeVisible (synthComponent);
 
     setSize (AppConfig::DefaultWidth, AppConfig::DefaultHeight);
@@ -78,21 +110,46 @@ MainComponent::MainComponent (HarmoniaAudioProcessor& p,
 
 MainComponent::~MainComponent()
 {
+    // Envoie la palette en attente (debounce non expiré) sans bloquer :
+    // le backend copie tout par valeur et lance un PUT court détaché.
+    backend.flushPaletteIfPending();
+
     processor.setOscilloscope (nullptr);
     setLookAndFeel(nullptr);
-    
-    HarmoniaPalette::setTheme(
-        HarmoniaPalette::Theme::Dark);
+}
+
+void MainComponent::activatePalette()
+{
+    if (headerComponent != nullptr)
+        HarmoniaPalette::setCustomAccent (headerComponent->getPaletteSelector().getActiveColour());
+}
+
+void MainComponent::setRefineUi (bool refine)
+{
+    for (auto* l : lockables)
+        l->setLockUiVisible (refine);
+}
+
+juce::StringArray MainComponent::getLockedParamIds() const
+{
+    juce::StringArray ids;
+    for (auto* l : lockables)
+        if (l->isLocked())
+            ids.add (l->getParamId());
+    return ids;
 }
 
 void MainComponent::applyTheme()
 {
+    activatePalette();
     HarmoniaPalette::setTheme (currentTheme);
 
+    oscMixPanel->setAccentColour (HarmoniaPalette::sectionOsc1);
+    osc2Panel->setAccentColour   (HarmoniaPalette::sectionOsc2);
+    screenPanel->setAccentColour (HarmoniaPalette::sectionDisplay);
+
     lookAndFeel.refreshTheme();
-
     sendLookAndFeelChange();
-
     repaint();
 }
 
@@ -105,7 +162,8 @@ void MainComponent::registerJuiceFor (juce::Component* c)
             const auto centreInK = juce::Point<float> ((float) c->getWidth(), (float) c->getHeight()) * 0.5f;
             const auto centreInScreen = c->localPointToGlobal (centreInK);
             const auto centreInParticles = particles.getLocalPoint (nullptr, centreInScreen);
-            particles.emitBurst (centreInParticles, 4, HarmoniaPalette::accent);
+            particles.emitBurst (centreInParticles, 4,
+                     headerComponent->getPaletteSelector().getActiveColour());
         };
     }
 }
@@ -115,6 +173,7 @@ void MainComponent::buildControls()
     auto& a = processor.getAPVTS();
 
     osc1WaveSel    = std::make_unique<WaveformSelector>(a, HarmoniaParams::IDs::osc1Waveform);
+    osc1WaveSel->setLockStripHeight (IconChoiceSelector::defaultLockStripH);
     oscMixKnob     = std::make_unique<KnobControl>     (a, HarmoniaParams::IDs::oscMix,     "Mix");
     noiseLevelKnob = std::make_unique<KnobControl>     (a, HarmoniaParams::IDs::noiseLevel, "Noise");
     oscMixPanel->addAndMakeVisible (*osc1WaveSel);
@@ -124,6 +183,7 @@ void MainComponent::buildControls()
     filterCutoffKnob   = std::make_unique<KnobControl>      (a, HarmoniaParams::IDs::filterCutoff,    "Cutoff");
     filterResoKnob     = std::make_unique<KnobControl>      (a, HarmoniaParams::IDs::filterResonance, "Reso");
     filterTypeSel      = std::make_unique<FilterTypeSelector>(a, HarmoniaParams::IDs::filterType);
+    filterTypeSel->setLockStripHeight (IconChoiceSelector::defaultLockStripH);
     filterEnvAmtKnob   = std::make_unique<KnobControl>      (a, HarmoniaParams::IDs::filterEnvAmount, "F.Env Amt", true);
     filterEnvDecayKnob = std::make_unique<KnobControl>      (a, HarmoniaParams::IDs::filterEnvDecay,  "F.Env Dec");
     velocityFilterKnob = std::make_unique<KnobControl>      (a, HarmoniaParams::IDs::velocityToFilter,"Vel >Flt");
@@ -142,6 +202,7 @@ void MainComponent::buildControls()
     lfoPanel->addAndMakeVisible (*lfoToCutoffKnob);
 
     osc2WaveSel    = std::make_unique<WaveformSelector>(a, HarmoniaParams::IDs::osc2Waveform);
+    osc2WaveSel->setLockStripHeight (IconChoiceSelector::defaultLockStripH);
     osc2DetuneKnob = std::make_unique<KnobControl>     (a, HarmoniaParams::IDs::osc2Detune, "Detune");
     osc2Panel->addAndMakeVisible (*osc2WaveSel);
     osc2Panel->addAndMakeVisible (*osc2DetuneKnob);
@@ -161,6 +222,9 @@ void MainComponent::buildControls()
     ampPanel->addAndMakeVisible (*releaseKnob);
 
     for (auto* c : {
+            (juce::Component*) osc1WaveSel.get(),        // <-- ajoute
+            (juce::Component*) osc2WaveSel.get(),        // <-- ajoute
+            (juce::Component*) filterTypeSel.get(), 
             (juce::Component*) oscMixKnob.get(),
             (juce::Component*) noiseLevelKnob.get(),
             (juce::Component*) filterCutoffKnob.get(),
@@ -181,6 +245,8 @@ void MainComponent::buildControls()
         })
     {
         registerJuiceFor (c);
+        if (auto* l = dynamic_cast<LockableControl*> (c))
+            lockables.push_back (l);
     }
 }
 
@@ -192,13 +258,30 @@ void MainComponent::wireHeaderButtons()
     headerComponent->getSaveButton().onClick =
         [this] { doSavePreset(); };
 
-    headerComponent->getGenerateButton().onClick =
-        [this] { doGenerateWithAi(); };
+    headerComponent->getGenerateButton().onClick = [this]
+    {
+        if (headerComponent->getMode() == HeaderComponent::Mode::Refine)
+            doRefineWithAi();
+        else
+            doGenerateWithAi();
+    };
 
     headerComponent->getLogoutButton().onClick =
         [this]
         {
+            // AVANT clearSession() : sinon le token est effacé et le flush
+            // ne peut plus s'authentifier.
+            backend.flushPaletteIfPending();
+
             backend.clearSession();
+
+            // Déconnexion explicite : on oublie tout l'état d'UI de cette identité
+            auto& st = processor.getAPVTS().state;
+            st.removeProperty (UiState::identity,     nullptr);
+            st.removeProperty (UiState::presetName,   nullptr);
+            st.removeProperty (UiState::paletteSlot,  nullptr);
+            st.removeProperty (UiState::themeId,      nullptr);
+            st.removeProperty (UiState::customColour, nullptr);
 
             if (onLogout)
                 onLogout();
@@ -224,11 +307,52 @@ void MainComponent::doLoadPreset()
         {
             auto file = fc.getResult();
             if (! file.existsAsFile()) return;
-            auto result = PresetLoader::loadFromFile (file, processor.getAPVTS());
-            headerComponent->getPresetLabel().setText (result.success ? result.presetName.toUpperCase()
-                                                : ("ERR: " + result.errorMessage),
-                                 juce::dontSendNotification);
+
+            // Les cadenas ne comptent qu'en mode Refine (en Generate ils sont masques)
+            const auto locked = headerComponent->getMode() == HeaderComponent::Mode::Refine
+                                    ? getLockedParamIds()
+                                    : juce::StringArray();
+
+            auto result = PresetLoader::loadFromFile (file, processor.getAPVTS(), locked);
+            if (result.success)
+                setPresetName (result.presetName);
+            else
+                headerComponent->getPresetLabel().setText ("ERR: " + result.errorMessage,
+                                                        juce::dontSendNotification);
         });
+}
+
+void MainComponent::saveThemeToState (int slot)
+{
+    if (slot < 0)
+        slot = headerComponent->getPaletteSelector().getActiveSlot();
+
+    auto& st = processor.getAPVTS().state;
+    st.setProperty (UiState::themeId,      (int) currentTheme, nullptr);
+    st.setProperty (UiState::customColour,
+                headerComponent->getPaletteSelector().getActiveColour().toString(), nullptr);
+    st.setProperty (UiState::paletteSlot,  slot, nullptr);
+}
+
+void MainComponent::setPresetName (const juce::String& name)
+{
+    const auto up = name.toUpperCase();
+
+    // 1. affichage
+    headerComponent->getPresetLabel().setText (up, juce::dontSendNotification);
+
+    // 2. sauvegarde dans le state du processor
+    processor.getAPVTS().state.setProperty (UiState::presetName, up, nullptr);
+}
+
+void MainComponent::restorePresetLabel()
+{
+    auto& st = processor.getAPVTS().state;
+
+    headerComponent->getPresetLabel().setText (
+        st.hasProperty (UiState::presetName) ? st[UiState::presetName].toString()
+                                             : Strings::Labels::UnsetPreset.toUpperCase(),
+        juce::dontSendNotification);
 }
 
 void MainComponent::doSavePreset()
@@ -253,137 +377,195 @@ void MainComponent::doSavePreset()
 
             const auto json = PresetLoader::saveToJsonString (processor.getAPVTS(), presetName, pseudo);
             file.replaceWithText (json);
-            headerComponent->getPresetLabel().setText (file.getFileNameWithoutExtension().toUpperCase(),
-                                 juce::dontSendNotification);
+            setPresetName (file.getFileNameWithoutExtension());
         });
 }
 
-void MainComponent::doGenerateWithAi()
+// =============================================================================
+// A remplacer dans MainComponent.cpp : l'ancienne doGenerateWithAi() en entier.
+// =============================================================================
+ 
+//------------------------------------------------------------------------------
+// Verifie invite + prompt vide. Remplit `prompt`, renvoie false si on doit s'arreter.
+bool MainComponent::getAiPrompt (juce::String& prompt)
 {
     if (session.isGuest)
     {
-        juce::AlertWindow::showMessageBoxAsync(
+        juce::AlertWindow::showMessageBoxAsync (
             juce::AlertWindow::WarningIcon,
             Strings::Errors::AiGuestError,
-            Strings::Errors::AiGuestAdvice
-        );
-        return;
+            Strings::Errors::AiGuestAdvice);
+        return false;
     }
-
-    const auto prompt = headerComponent->getPromptEditor().getText();
-
+ 
+    prompt = headerComponent->getPromptEditor().getText();
+ 
     if (prompt.trim().isEmpty())
     {
-        juce::AlertWindow::showMessageBoxAsync(
+        juce::AlertWindow::showMessageBoxAsync (
             juce::AlertWindow::WarningIcon,
             Strings::Errors::MissingPrompt,
-            Strings::Errors::MissingPromptAdvice
-        );
-        return;
+            Strings::Errors::MissingPromptAdvice);
+        return false;
     }
-
-    int modelId = headerComponent->getSelectedModelId();
-    juce::String backendName = headerComponent->getSelectedBackendName();
-
-    headerComponent->getPresetLabel().setText(
-        Strings::Labels::GeneratingPreset,
-        juce::dontSendNotification
-    );
-
-    juce::Thread::launch([this, prompt, modelId, backendName]
+ 
+    return true;
+}
+ 
+//------------------------------------------------------------------------------
+// GENERATE : on repart de zero, aucun parametre protege.
+void MainComponent::doGenerateWithAi()
+{
+    juce::String prompt;
+    if (! getAiPrompt (prompt))
+        return;
+ 
+    const int          modelId     = headerComponent->getSelectedModelId();
+    const juce::String backendName = headerComponent->getSelectedBackendName();
+ 
+    runAiRequest ([this, prompt, modelId, backendName]
+                  {
+                      return backend.generatePreset (prompt, modelId, backendName);
+                  },
+                  {});
+}
+ 
+//------------------------------------------------------------------------------
+// REFINE : on envoie le preset actuel + les parametres verrouilles.
+// -> backend.refinePreset(...) est a creer dans BackendManager (voir plus bas).
+void MainComponent::doRefineWithAi()
+{
+    juce::String prompt;
+    if (! getAiPrompt (prompt))
+        return;
+ 
+    const int          modelId     = headerComponent->getSelectedModelId();
+    const juce::String backendName = headerComponent->getSelectedBackendName();
+ 
+    const auto locked = getLockedParamIds();
+ 
+    const juce::String pseudo = session.pseudo.isNotEmpty() ? session.pseudo : "Unknown";
+    const juce::String currentJson =
+        PresetLoader::saveToJsonString (processor.getAPVTS(), "current", pseudo);
+ 
+    runAiRequest ([this, prompt, currentJson, locked, modelId, backendName]
+                  {
+                      return backend.refinePreset (prompt, currentJson, locked,
+                                                   modelId, backendName);
+                  },
+                  locked);
+}
+ 
+//------------------------------------------------------------------------------
+// Partage entre Generate et Refine :
+// thread -> requete -> chargement du preset -> restauration des verrous.
+void MainComponent::runAiRequest (std::function<AiResult()> request,
+                                  juce::StringArray lockedIds)
+{
+    // Valeurs des parametres verrouilles AVANT la requete (thread UI)
+    std::vector<std::pair<juce::String, float>> keep;
+ 
+    for (const auto& id : lockedIds)
+        if (auto* prm = processor.getAPVTS().getParameter (id))
+            keep.push_back ({ id, prm->getValue() });
+ 
+    headerComponent->getPresetLabel().setText (Strings::Labels::GeneratingPreset,
+                                               juce::dontSendNotification);
+ 
+    juce::Thread::launch ([safe = juce::Component::SafePointer<MainComponent> (this),
+                           request = std::move (request),
+                           keep = std::move (keep)]
     {
-        auto result = backend.generatePreset(prompt, modelId, backendName);
-
-        juce::MessageManager::callAsync([this, result]
+        const auto result = request();
+ 
+        juce::MessageManager::callAsync ([safe, result, keep]
         {
-            if (!result.success)
+            if (safe == nullptr)
+                return;
+ 
+            if (! result.success)
             {
-                juce::String message;
-                juce::String advice = Strings::Errors::PleaseTryAgainLater;
-
-                switch (result.error)
-                {
-                    case AiResult::Error::Network:
-                        message = Strings::Errors::NetworkError;
-                        advice  = Strings::Errors::NetworkErrorAdvice;
-                        break;
-
-                    case AiResult::Error::HttpError:
-                        message = Strings::Errors::AiServerError;
-                        break;
-
-                    case AiResult::Error::SessionExpired:
-                        message = "Session expired";
-                        advice  = "Please log in again.";
-                        break;
-
-                    case AiResult::Error::NoSession:
-                        message = "Not connected";
-                        advice  = "Please sign in.";
-                        break;
-
-                    case AiResult::Error::EmptyResponse:
-                        message = Strings::Errors::UnknownError;
-                        break;
-
-                    case AiResult::Error::EmptyPrompt:
-                        message = Strings::Errors::MissingPrompt;
-                        advice  = Strings::Errors::MissingPromptAdvice;
-                        break;
-
-                    default:
-                        message = result.errorMessage.isNotEmpty()
-                            ? result.errorMessage
-                            : Strings::Errors::UnknownError;
-                        break;
-                }
-
-                HarmoniaAlert::error(
-                    Strings::Errors::AiError,
-                    message + "\n\n" + advice
-                );
-
-                headerComponent->getPresetLabel().setText(
-                    Strings::Labels::UnsetPreset.toUpperCase(),
-                    juce::dontSendNotification
-                );
-
+                safe->showAiError (result);
                 return;
             }
-
-            auto r = PresetLoader::loadFromJsonString(
-                result.json,
-                processor.getAPVTS()
-            );
-
-            if (!r.success)
+ 
+            auto r = PresetLoader::loadFromJsonString (result.json,
+                                                       safe->processor.getAPVTS());
+ 
+            if (! r.success)
             {
-                HarmoniaAlert::error(
+                HarmoniaAlert::error (
                     Strings::Errors::ErrorTitle,
-                    (r.errorMessage.isNotEmpty()
-                        ? r.errorMessage
-                        : Strings::Errors::UnreadableAIResponse)
-                    + "\n\n" + Strings::Errors::PleaseTryAgainLater
-                );
-
-                headerComponent->getPresetLabel().setText(
-                    Strings::Labels::UnsetPreset.toUpperCase(),
-                    juce::dontSendNotification
-                );
-
+                    (r.errorMessage.isNotEmpty() ? r.errorMessage
+                                                 : Strings::Errors::UnreadableAIResponse)
+                        + "\n\n" + Strings::Errors::PleaseTryAgainLater);
+ 
+                safe->restorePresetLabel();
                 return;
             }
-
-            headerComponent->getPresetLabel().setText(
-                r.presetName.toUpperCase(),
-                juce::dontSendNotification
-            );
+ 
+            // Filet de securite : meme si l'IA a touche a un parametre verrouille,
+            // on remet la valeur d'origine.
+            for (const auto& [id, value] : keep)
+                if (auto* prm = safe->processor.getAPVTS().getParameter (id))
+                    prm->setValueNotifyingHost (value);
+ 
+            safe->setPresetName (r.presetName);
         });
     });
+}
+ 
+//------------------------------------------------------------------------------
+void MainComponent::showAiError (const AiResult& result)
+{
+    juce::String message;
+    juce::String advice = Strings::Errors::PleaseTryAgainLater;
+ 
+    switch (result.error)
+    {
+        case AiResult::Error::Network:
+            message = Strings::Errors::NetworkError;
+            advice  = Strings::Errors::NetworkErrorAdvice;
+            break;
+ 
+        case AiResult::Error::HttpError:
+            message = Strings::Errors::AiServerError;
+            break;
+ 
+        case AiResult::Error::SessionExpired:
+            message = "Session expired";
+            advice  = "Please log in again.";
+            break;
+ 
+        case AiResult::Error::NoSession:
+            message = "Not connected";
+            advice  = "Please sign in.";
+            break;
+ 
+        case AiResult::Error::EmptyResponse:
+            message = Strings::Errors::UnknownError;
+            break;
+ 
+        case AiResult::Error::EmptyPrompt:
+            message = Strings::Errors::MissingPrompt;
+            advice  = Strings::Errors::MissingPromptAdvice;
+            break;
+ 
+        default:
+            message = result.errorMessage.isNotEmpty()
+                        ? result.errorMessage
+                        : Strings::Errors::UnknownError;
+            break;
+    }
+ 
+    HarmoniaAlert::error (Strings::Errors::AiError, message + "\n\n" + advice);
+ 
+    restorePresetLabel();
 }
 
 void MainComponent::paint (juce::Graphics& g)
 {
+    activatePalette();
     g.fillAll (HarmoniaPalette::background);
 }
 
@@ -466,7 +648,7 @@ void MainComponent::resized()
     // =========================================================
 
     {
-        const int osc1H = (int) (leftCol.getHeight() * 0.40f);
+        const int osc1H = (int) (leftCol.getHeight() * 0.48f);
 
         auto osc1Box = leftCol.removeFromTop (osc1H);
 
@@ -478,15 +660,14 @@ void MainComponent::resized()
         filterPanel->setBounds (filterBox);
 
         {
-            auto inner = oscMixPanel->getContentBounds();
+           auto inner = oscMixPanel->getContentBounds();
 
-            const int selH = juce::jmin (28, inner.getHeight() / 2);
+            // boite d'icones (28) + bande du cadenas : taille fixe
+            const int selRowH = 28 + IconChoiceSelector::defaultLockStripH;
 
-            auto selRow = inner.removeFromTop (selH);
+            osc1WaveSel->setBounds (inner.removeFromTop (selRowH));
 
-            inner.removeFromTop (4);
-
-            osc1WaveSel->setBounds (selRow);
+            inner.removeFromTop (1);
 
             const int cellW = inner.getWidth() / 2;
 
@@ -495,14 +676,14 @@ void MainComponent::resized()
                     inner.getX(),
                     inner.getY(),
                     cellW,
-                    inner.getHeight()).reduced (4));
+                    inner.getHeight()).reduced (4, 0));
 
             noiseLevelKnob->setBounds (
                 juce::Rectangle<int> (
                     inner.getX() + cellW,
                     inner.getY(),
                     cellW,
-                    inner.getHeight()).reduced (4));
+                    inner.getHeight()).reduced (4, 0));
         }
 
         {
@@ -512,18 +693,11 @@ void MainComponent::resized()
             const int cellW = inner.getWidth() / 3;
 
             filterCutoffKnob->setBounds (
-                juce::Rectangle<int> (
-                    inner.getX(),
-                    inner.getY(),
-                    cellW,
-                    rowH).reduced (4));
+                juce::Rectangle<int> (inner.getX(), inner.getY(), cellW, rowH).reduced (0, 2));
 
             filterResoKnob->setBounds (
-                juce::Rectangle<int> (
-                    inner.getX() + cellW,
-                    inner.getY(),
-                    cellW,
-                    rowH).reduced (4));
+                juce::Rectangle<int> (inner.getX() + cellW, inner.getY(), cellW, rowH).reduced (0, 2));
+
 
             auto typeCell = juce::Rectangle<int> (
                 inner.getX() + 2 * cellW,
@@ -531,7 +705,9 @@ void MainComponent::resized()
                 cellW,
                 rowH).reduced (4);
 
-            const int selH = 28;
+            // boite d'icones (28) + bande du cadenas (14)
+            const int selH = juce::jmin (28 + IconChoiceSelector::defaultLockStripH,
+                                        typeCell.getHeight());
 
             typeCell = typeCell.withSizeKeepingCentre (
                 typeCell.getWidth(),
@@ -540,25 +716,13 @@ void MainComponent::resized()
             filterTypeSel->setBounds (typeCell);
 
             filterEnvAmtKnob->setBounds (
-                juce::Rectangle<int> (
-                    inner.getX(),
-                    inner.getY() + rowH,
-                    cellW,
-                    rowH).reduced (4));
+                juce::Rectangle<int> (inner.getX(), inner.getY() + rowH, cellW, rowH).reduced (0, 2));
 
             filterEnvDecayKnob->setBounds (
-                juce::Rectangle<int> (
-                    inner.getX() + cellW,
-                    inner.getY() + rowH,
-                    cellW,
-                    rowH).reduced (4));
+                juce::Rectangle<int> (inner.getX() + cellW, inner.getY() + rowH, cellW, rowH).reduced (0, 2));
 
             velocityFilterKnob->setBounds (
-                juce::Rectangle<int> (
-                    inner.getX() + 2 * cellW,
-                    inner.getY() + rowH,
-                    cellW,
-                    rowH).reduced (4));
+                juce::Rectangle<int> (inner.getX() + 2 * cellW, inner.getY() + rowH, cellW, rowH).reduced (0, 2));
         }
     }
 
@@ -635,9 +799,9 @@ void MainComponent::resized()
             const int selH = 28;
 
             osc2WaveSel->setBounds (
-                inner.removeFromTop (selH));
+                inner.removeFromTop (selH + IconChoiceSelector::defaultLockStripH));
 
-            inner.removeFromTop (4);
+            inner.removeFromTop (2);
 
             osc2DetuneKnob->setBounds (
                 inner.reduced (4));

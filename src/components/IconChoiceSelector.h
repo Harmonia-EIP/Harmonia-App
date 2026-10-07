@@ -11,6 +11,9 @@
  * - Active state visualization
  * - APVTS parameter synchronization
  * - Mouse interaction support
+ * - Lock state (Refine mode):
+ *     * lockStripH == 0 : padlock drawn on the selected icon, click the active cell to toggle
+ *     * lockStripH  > 0 : padlock centred in a strip BELOW the icon box, click the strip to toggle
  */
 #pragma once
 
@@ -18,27 +21,19 @@
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../themes/HarmoniaPalette.h"
 #include "IconRenderer.h"
+#include "LockableControl.h"
 #include <functional>
 #include <vector>
 
-/**
- * @class IconChoiceSelector
- * @brief Generic icon-based parameter selector.
- *
- * This component displays multiple selectable icons,
- * each representing one parameter choice.
- *
- * The selected value is synchronized with a
- * juce::AudioProcessorValueTreeState parameter.
- *
- * Rendering is delegated through a custom callback
- * allowing waveform, filter, or other icon types.
- */
 class IconChoiceSelector : public juce::Component,
+                           public LockableControl,
                            private juce::AudioProcessorValueTreeState::Listener
 {
 public:
     using IconDrawer = std::function<void (juce::Graphics&, juce::Rectangle<float>, int, juce::Colour)>;
+
+    /** Hauteur recommandee de la bande cadenas (a ajouter a la hauteur du selecteur). */
+    static constexpr int defaultLockStripH = 14;
 
     IconChoiceSelector (juce::AudioProcessorValueTreeState& apvts,
                         const juce::String& paramId,
@@ -57,10 +52,43 @@ public:
         state.removeParameterListener (paramID, this);
     }
 
+    /** Reserve une bande en bas du composant pour le cadenas (0 = cadenas sur l'icone). */
+    void setLockStripHeight (int h)
+    {
+        lockStripH = juce::jmax (0, h);
+        repaint();
+    }
+
+    void setLockUiVisible (bool visible) override
+    {
+        lockUiVisible = visible;
+
+        if (! visible)
+            setMouseCursor (juce::MouseCursor::NormalCursor);
+
+        repaint();
+    }
+
+    void setLocked (bool shouldLock) override
+    {
+        if (locked == shouldLock)
+            return;
+
+        locked = shouldLock;
+        repaint();
+
+        if (onLockChanged)
+            onLockChanged();
+    }
+
+    bool isLocked() const override              { return locked; }
+    juce::String getParamId() const override    { return paramID; }
+
     void paint (juce::Graphics& g) override
     {
         if (numChoices <= 0) return;
-        const auto r = getLocalBounds().toFloat().reduced (1.0f);
+
+        const auto r = boxBounds().toFloat().reduced (1.0f);
         const float corner = 6.0f;
 
         g.setColour (HarmoniaPalette::knobTrack);
@@ -96,11 +124,32 @@ public:
             const auto iconArea = cell.reduced (cell.getWidth() * 0.18f, cell.getHeight() * 0.20f);
             drawIcon (g, iconArea, i, iconCol);
         }
+
+        if (lockUiVisible)
+        {
+            LockableControl::drawPadlock (g, padlockRect(), locked,
+                locked ? HarmoniaPalette::textPrimary
+                       : HarmoniaPalette::textPrimary.withAlpha (0.45f),
+                false);
+        }
     }
 
     void mouseDown (const juce::MouseEvent& e) override
     {
+        if (lockUiVisible && isInLockStrip (e.position))
+        {
+            setLocked (! locked);
+            return;
+        }
+
         const int idx = indexAt (e.position);
+
+        if (lockUiVisible && lockStripH == 0 && idx == currentIndex)
+        {
+            setLocked (! locked);
+            return;
+        }
+
         if (idx >= 0 && idx != currentIndex)
             writeIndex (idx);
     }
@@ -109,20 +158,61 @@ public:
     {
         const int idx = indexAt (e.position);
         if (idx != hoveredIndex) { hoveredIndex = idx; repaint(); }
+
+        const bool overLock = lockUiVisible
+                              && (isInLockStrip (e.position)
+                                  || (lockStripH == 0 && idx == currentIndex));
+
+        setMouseCursor (overLock ? juce::MouseCursor::PointingHandCursor
+                                 : juce::MouseCursor::NormalCursor);
     }
 
     void mouseExit (const juce::MouseEvent&) override
     {
+        setMouseCursor (juce::MouseCursor::NormalCursor);
         if (hoveredIndex != -1) { hoveredIndex = -1; repaint(); }
     }
 
 private:
+
+    juce::Rectangle<int> boxBounds() const
+    {
+        return getLocalBounds().withTrimmedBottom (lockStripH);
+    }
+
+    bool isInLockStrip (juce::Point<float> p) const
+    {
+        return lockStripH > 0 && p.y >= (float) (getHeight() - lockStripH);
+    }
+
     int indexAt (juce::Point<float> p) const
     {
         if (numChoices <= 0) return -1;
+        if (isInLockStrip (p)) return -1;
+
         const float cellW = (float) getWidth() / (float) numChoices;
         const int idx = (int) (p.x / cellW);
         return juce::jlimit (0, numChoices - 1, idx);
+    }
+
+    juce::Rectangle<float> padlockRect() const
+    {
+        const juce::Rectangle<float> padlock (9.0f, 11.0f);
+
+        if (lockStripH > 0)
+        {
+            const auto strip = getLocalBounds().toFloat().removeFromBottom ((float) lockStripH);
+
+            const float gap = 3.0f;
+            return padlock.withCentre ({ strip.getCentreX(),
+                                        strip.getCentreY() + gap * 0.5f });
+        }
+
+        const auto r = boxBounds().toFloat().reduced (1.0f);
+        const float cellW = r.getWidth() / (float) juce::jmax (1, numChoices);
+        const auto cell = juce::Rectangle<float> (r.getX() + currentIndex * cellW,
+                                                  r.getY(), cellW, r.getHeight());
+        return padlock.withCentre (cell.getCentre());
     }
 
     int readIndex() const
@@ -158,4 +248,8 @@ private:
     int numChoices    = 0;
     int currentIndex  = 0;
     int hoveredIndex  = -1;
+
+    int  lockStripH    = 0;
+    bool locked        = false;
+    bool lockUiVisible = false;
 };

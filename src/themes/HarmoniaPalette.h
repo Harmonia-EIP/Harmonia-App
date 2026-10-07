@@ -4,17 +4,19 @@
 namespace HarmoniaPalette
 {
     enum class Theme
-    { 
+    {
         Cyan = 0,
         Blue,
         Red,
         Purple,
-        Dark
+        Dark,
+        Green,
+        Custom
     };
 
-    static HarmoniaPalette::Theme themeFromId (int id)
+    inline Theme themeFromId (int id)
     {
-        using T = HarmoniaPalette::Theme;
+        using T = Theme;
 
         switch (id)
         {
@@ -23,6 +25,8 @@ namespace HarmoniaPalette
             case 2: return T::Red;
             case 3: return T::Purple;
             case 4: return T::Dark;
+            case 5: return T::Green;
+            case 6: return T::Custom;
 
             default:
                 return T::Cyan;
@@ -64,6 +68,8 @@ namespace HarmoniaPalette
     inline const juce::Colour knobTrack   { 0xFF15181C };
     inline const juce::Colour screenBg    { 0xFF0A0D11 };
     inline const juce::Colour screenGrid  { 0xFF1F2730 };
+
+    inline const juce::Colour locked { 0xFFE8C872 };
 
     // ──────────────────────────────────────────────────────────────────────
 
@@ -118,6 +124,7 @@ namespace HarmoniaPalette
     }
 
     // ── THEMES ────────────────────────────────────────────────────────────
+    // 6 entrées : Custom (index 6) n'est PAS dans ce tableau.
 
     inline const ThemeDef Themes[] =
     {
@@ -204,14 +211,73 @@ namespace HarmoniaPalette
 
             0xFFE0E5EA,
             0xFFA0A5AB,
-            0xFF6B7178)
+            0xFF6B7178),
+
+        // GREEN
+        makeTheme (
+            0xFF22E58A,
+            0xFF14B86B,
+            0xFF6DFFB5,
+
+            0xFF22E58A,
+            0xFFA78BFA,
+            0xFF22E58A,
+            0xFF5EC8FF,
+            0xFFEB6F92,
+            0xFFFBBF24,
+
+            0xFFDFFFEE,
+            0xFF8FE8B8,
+            0xFF4F886A)
     };
+
+    // ── COULEURS PAR DÉFAUT DES 3 PASTILLES (guest + premier démarrage) ───
+    inline const std::array<juce::Colour, 3> defaultSlots
+    {
+        juce::Colour (0xFF00D4FF),   // 1 : bleu cyan
+        juce::Colour (0xFF7B8CFF),   // 2 : violet / bleu foncé
+        juce::Colour (0xFF9AA5B8)    // 3 : gris bleuté
+    };
+
+    // ── CUSTOM ACCENT ─────────────────────────────────────────────────────
+
+    inline juce::Colour customAccent { 0xFF00D4FF };
+
+    inline void setCustomAccent (juce::Colour c)
+    {
+        customAccent = c;
+
+        accent        = c;
+        accentSecond  = c.darker (0.25f);
+        accentHover   = c.brighter (0.35f);
+
+        sectionOsc1    = c;
+        sectionOsc2    = c;
+        sectionDisplay = c;
+
+        // couleurs de sections fixes (comme le thème Dark)
+        sectionFilter = juce::Colour (0xFFA78BFA);
+        sectionLfo    = juce::Colour (0xFF34D399);
+        sectionFx     = juce::Colour (0xFFEB6F92);
+        sectionAmpEnv = juce::Colour (0xFFFBBF24);
+
+        // textes teintés par l'accent
+        textPrimary   = c.interpolatedWith (juce::Colours::white, 0.88f);
+        textSecondary = c.interpolatedWith (juce::Colours::white, 0.55f);
+        textMuted     = c.withSaturation (c.getSaturation() * 0.5f).withBrightness (0.5f);
+    }
 
     // ── APPLY THEME ───────────────────────────────────────────────────────
 
     inline void setTheme (Theme t)
     {
-        const auto& d = Themes[static_cast<int>(t)];
+        if (t == Theme::Custom)
+        {
+            setCustomAccent (customAccent);
+            return;
+        }
+
+        const auto& d = Themes[static_cast<int> (t)];
 
         accent         = d.accent;
         accentSecond   = d.accentSecond;
@@ -233,6 +299,9 @@ namespace HarmoniaPalette
 
     inline juce::Colour themePreviewColour (Theme t)
     {
-        return Themes[static_cast<int>(t)].accent;
+        if (t == Theme::Custom)
+            return customAccent;
+
+        return Themes[static_cast<int> (t)].accent;
     }
-};
+}
