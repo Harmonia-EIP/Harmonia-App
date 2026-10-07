@@ -69,6 +69,54 @@ public:
         return juce::Font (juce::FontOptions (12.0f));
     }
 
+    // ---- Tooltips : fond opaque + coins droits (evite les artefacts aux angles) ----
+        // ---- Tooltips : style pill, contour neutre ----
+    static constexpr int tipPadX   = 13;
+    static constexpr int tipHeight = 24;
+
+    static juce::Font tooltipFont()
+    {
+        return juce::Font (juce::FontOptions (11.0f).withStyle ("Bold"));
+    }
+
+    juce::Rectangle<int> getTooltipBounds (const juce::String& tipText,
+                                           juce::Point<int> screenPos,
+                                           juce::Rectangle<int> parentArea) override
+    {
+        juce::GlyphArrangement ga;
+        ga.addLineOfText (tooltipFont(), tipText, 0.0f, 0.0f);
+
+        const int textW = (int) std::ceil (ga.getBoundingBox (0, -1, true).getWidth());
+        const int w = textW + tipPadX * 2 + 6;   // +6 de sécurité
+        const int h = tipHeight;
+
+        const int x = screenPos.x > parentArea.getCentreX() ? screenPos.x - (w + 12)
+                                                            : screenPos.x + 24;
+        const int y = screenPos.y > parentArea.getCentreY() ? screenPos.y - (h + 6)
+                                                            : screenPos.y + 6;
+
+        return juce::Rectangle<int> (x, y, w, h).constrainedWithin (parentArea);
+    }
+
+    void drawTooltip (juce::Graphics& g, const juce::String& text,
+                      int width, int height) override
+    {
+        // Pas de fillAll : les coins restent transparents
+        auto r = juce::Rectangle<float> (0.0f, 0.0f, (float) width, (float) height).reduced (0.5f);
+        const float corner = r.getHeight() * 0.5f;   // pill
+
+        g.setColour (HarmoniaPalette::panel);
+        g.fillRoundedRectangle (r, corner);
+
+        g.setColour (HarmoniaPalette::border);
+        g.drawRoundedRectangle (r, corner, 1.0f);
+
+        g.setColour (HarmoniaPalette::textPrimary);
+        g.setFont (tooltipFont());
+        g.drawText (text, r.toNearestInt().reduced (tipPadX, 0),
+                    juce::Justification::centred, false);
+    }
+
     // ---- Buttons ---------------------------------------------------------
     void drawButtonBackground (juce::Graphics& g, juce::Button& button,
                                const juce::Colour& backgroundColour,
@@ -371,6 +419,15 @@ public:
         label.setBounds (box.getLocalBounds().reduced (8, 1).withTrimmedRight (14));
         label.setFont (juce::Font (juce::FontOptions (11.0f).withStyle ("Bold")));
         label.setMinimumHorizontalScale (0.7f); // évite le crop tonky
+    }
+
+    // ---- Menus déroulants : fond opaque partout (pas de coins blancs) ----
+    void drawPopupMenuBackground (juce::Graphics& g, int width, int height) override
+    {
+        g.fillAll (HarmoniaPalette::panel);
+
+        g.setColour (HarmoniaPalette::border);
+        g.drawRect (0, 0, width, height, 1);
     }
 
     void drawPopupMenuItem (juce::Graphics& g, const juce::Rectangle<int>& area,

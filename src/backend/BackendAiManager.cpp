@@ -92,6 +92,9 @@ AiResult BackendAiManager::refinePreset(const juce::String& prompt,
     if (current.is_discarded())
         return AiResult::failure(AiResult::Error::Unknown,
                                  "Current preset is not valid JSON");
+    
+    if (current.contains("values"))
+        current.erase("values");
 
     json locked = json::array();
     for (const auto& id : lockedParamIds)

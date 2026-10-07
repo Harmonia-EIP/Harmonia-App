@@ -14,6 +14,7 @@ MainComponent::MainComponent (HarmoniaAudioProcessor& p,
       lfoViz   (p.getAPVTS(), HarmoniaPalette::sectionLfo)
 {
     setLookAndFeel (&lookAndFeel);
+    tooltipWindow.setOpaque (false);
 
     oscMixPanel  = std::make_unique<SectionPanel> ("Osc 1 / Mix",  HarmoniaPalette::sectionOsc1);
     filterPanel  = std::make_unique<SectionPanel> ("Filter",       HarmoniaPalette::sectionFilter);
@@ -141,6 +142,7 @@ void MainComponent::buildControls()
     auto& a = processor.getAPVTS();
 
     osc1WaveSel    = std::make_unique<WaveformSelector>(a, HarmoniaParams::IDs::osc1Waveform);
+    osc1WaveSel->setLockStripHeight (IconChoiceSelector::defaultLockStripH);
     oscMixKnob     = std::make_unique<KnobControl>     (a, HarmoniaParams::IDs::oscMix,     "Mix");
     noiseLevelKnob = std::make_unique<KnobControl>     (a, HarmoniaParams::IDs::noiseLevel, "Noise");
     oscMixPanel->addAndMakeVisible (*osc1WaveSel);
@@ -150,6 +152,7 @@ void MainComponent::buildControls()
     filterCutoffKnob   = std::make_unique<KnobControl>      (a, HarmoniaParams::IDs::filterCutoff,    "Cutoff");
     filterResoKnob     = std::make_unique<KnobControl>      (a, HarmoniaParams::IDs::filterResonance, "Reso");
     filterTypeSel      = std::make_unique<FilterTypeSelector>(a, HarmoniaParams::IDs::filterType);
+    filterTypeSel->setLockStripHeight (IconChoiceSelector::defaultLockStripH);
     filterEnvAmtKnob   = std::make_unique<KnobControl>      (a, HarmoniaParams::IDs::filterEnvAmount, "F.Env Amt", true);
     filterEnvDecayKnob = std::make_unique<KnobControl>      (a, HarmoniaParams::IDs::filterEnvDecay,  "F.Env Dec");
     velocityFilterKnob = std::make_unique<KnobControl>      (a, HarmoniaParams::IDs::velocityToFilter,"Vel >Flt");
@@ -168,6 +171,7 @@ void MainComponent::buildControls()
     lfoPanel->addAndMakeVisible (*lfoToCutoffKnob);
 
     osc2WaveSel    = std::make_unique<WaveformSelector>(a, HarmoniaParams::IDs::osc2Waveform);
+    osc2WaveSel->setLockStripHeight (IconChoiceSelector::defaultLockStripH);
     osc2DetuneKnob = std::make_unique<KnobControl>     (a, HarmoniaParams::IDs::osc2Detune, "Detune");
     osc2Panel->addAndMakeVisible (*osc2WaveSel);
     osc2Panel->addAndMakeVisible (*osc2DetuneKnob);
@@ -187,6 +191,9 @@ void MainComponent::buildControls()
     ampPanel->addAndMakeVisible (*releaseKnob);
 
     for (auto* c : {
+            (juce::Component*) osc1WaveSel.get(),        // <-- ajoute
+            (juce::Component*) osc2WaveSel.get(),        // <-- ajoute
+            (juce::Component*) filterTypeSel.get(), 
             (juce::Component*) oscMixKnob.get(),
             (juce::Component*) noiseLevelKnob.get(),
             (juce::Component*) filterCutoffKnob.get(),
@@ -261,7 +268,13 @@ void MainComponent::doLoadPreset()
         {
             auto file = fc.getResult();
             if (! file.existsAsFile()) return;
-            auto result = PresetLoader::loadFromFile (file, processor.getAPVTS());
+
+            // Les cadenas ne comptent qu'en mode Refine (en Generate ils sont masques)
+            const auto locked = headerComponent->getMode() == HeaderComponent::Mode::Refine
+                                    ? getLockedParamIds()
+                                    : juce::StringArray();
+
+            auto result = PresetLoader::loadFromFile (file, processor.getAPVTS(), locked);
             headerComponent->getPresetLabel().setText (result.success ? result.presetName.toUpperCase()
                                                 : ("ERR: " + result.errorMessage),
                                  juce::dontSendNotification);
@@ -566,7 +579,7 @@ void MainComponent::resized()
     // =========================================================
 
     {
-        const int osc1H = (int) (leftCol.getHeight() * 0.40f);
+        const int osc1H = (int) (leftCol.getHeight() * 0.48f);
 
         auto osc1Box = leftCol.removeFromTop (osc1H);
 
@@ -578,15 +591,14 @@ void MainComponent::resized()
         filterPanel->setBounds (filterBox);
 
         {
-            auto inner = oscMixPanel->getContentBounds();
+           auto inner = oscMixPanel->getContentBounds();
 
-            const int selH = juce::jmin (28, inner.getHeight() / 2);
+            // boite d'icones (28) + bande du cadenas : taille fixe
+            const int selRowH = 28 + IconChoiceSelector::defaultLockStripH;
 
-            auto selRow = inner.removeFromTop (selH);
+            osc1WaveSel->setBounds (inner.removeFromTop (selRowH));
 
-            inner.removeFromTop (4);
-
-            osc1WaveSel->setBounds (selRow);
+            inner.removeFromTop (1);
 
             const int cellW = inner.getWidth() / 2;
 
@@ -595,14 +607,14 @@ void MainComponent::resized()
                     inner.getX(),
                     inner.getY(),
                     cellW,
-                    inner.getHeight()).reduced (4));
+                    inner.getHeight()).reduced (4, 0));
 
             noiseLevelKnob->setBounds (
                 juce::Rectangle<int> (
                     inner.getX() + cellW,
                     inner.getY(),
                     cellW,
-                    inner.getHeight()).reduced (4));
+                    inner.getHeight()).reduced (4, 0));
         }
 
         {
@@ -612,18 +624,11 @@ void MainComponent::resized()
             const int cellW = inner.getWidth() / 3;
 
             filterCutoffKnob->setBounds (
-                juce::Rectangle<int> (
-                    inner.getX(),
-                    inner.getY(),
-                    cellW,
-                    rowH).reduced (4));
+                juce::Rectangle<int> (inner.getX(), inner.getY(), cellW, rowH).reduced (0, 2));
 
             filterResoKnob->setBounds (
-                juce::Rectangle<int> (
-                    inner.getX() + cellW,
-                    inner.getY(),
-                    cellW,
-                    rowH).reduced (4));
+                juce::Rectangle<int> (inner.getX() + cellW, inner.getY(), cellW, rowH).reduced (0, 2));
+
 
             auto typeCell = juce::Rectangle<int> (
                 inner.getX() + 2 * cellW,
@@ -631,7 +636,9 @@ void MainComponent::resized()
                 cellW,
                 rowH).reduced (4);
 
-            const int selH = 28;
+            // boite d'icones (28) + bande du cadenas (14)
+            const int selH = juce::jmin (28 + IconChoiceSelector::defaultLockStripH,
+                                        typeCell.getHeight());
 
             typeCell = typeCell.withSizeKeepingCentre (
                 typeCell.getWidth(),
@@ -640,25 +647,13 @@ void MainComponent::resized()
             filterTypeSel->setBounds (typeCell);
 
             filterEnvAmtKnob->setBounds (
-                juce::Rectangle<int> (
-                    inner.getX(),
-                    inner.getY() + rowH,
-                    cellW,
-                    rowH).reduced (4));
+                juce::Rectangle<int> (inner.getX(), inner.getY() + rowH, cellW, rowH).reduced (0, 2));
 
             filterEnvDecayKnob->setBounds (
-                juce::Rectangle<int> (
-                    inner.getX() + cellW,
-                    inner.getY() + rowH,
-                    cellW,
-                    rowH).reduced (4));
+                juce::Rectangle<int> (inner.getX() + cellW, inner.getY() + rowH, cellW, rowH).reduced (0, 2));
 
             velocityFilterKnob->setBounds (
-                juce::Rectangle<int> (
-                    inner.getX() + 2 * cellW,
-                    inner.getY() + rowH,
-                    cellW,
-                    rowH).reduced (4));
+                juce::Rectangle<int> (inner.getX() + 2 * cellW, inner.getY() + rowH, cellW, rowH).reduced (0, 2));
         }
     }
 
@@ -735,9 +730,9 @@ void MainComponent::resized()
             const int selH = 28;
 
             osc2WaveSel->setBounds (
-                inner.removeFromTop (selH));
+                inner.removeFromTop (selH + IconChoiceSelector::defaultLockStripH));
 
-            inner.removeFromTop (4);
+            inner.removeFromTop (2);
 
             osc2DetuneKnob->setBounds (
                 inner.reduced (4));

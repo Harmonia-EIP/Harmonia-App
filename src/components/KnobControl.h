@@ -8,7 +8,8 @@
  * - Value readout display
  * - Fast tweak detection
  * - APVTS synchronization
- * - Lock state (Refine mode): padlock next to the caption, click the caption to toggle
+ * - Lock state (Refine mode): padlock next to the caption, click the caption to toggle.
+ *   Locked = brighter padlock + slightly brighter caption (no layout shift, no hue change).
  */
 #pragma once
 
@@ -57,9 +58,6 @@ public:
         };
     }
 
-    //==========================================================================
-    // LockableControl
-
     void setLockUiVisible (bool visible) override
     {
         lockUiVisible = visible;
@@ -85,48 +83,46 @@ public:
     bool isLocked() const override              { return locked; }
     juce::String getParamId() const override    { return parameterId; }
 
-    //==========================================================================
     void paint (juce::Graphics& g) override
     {
         const auto r = getLocalBounds();
-
-        // Rendu "verrouille" seulement si l'UI de lock est visible (mode Refine)
-        const bool lit = lockUiVisible && locked;
+        const bool lockedShown = lockUiVisible && locked;
 
         const auto font = juce::Font (juce::FontOptions (9.5f).withStyle ("Bold"))
                               .withExtraKerningFactor (0.14f);
+
         const auto text    = caption.toUpperCase();
         const auto capArea = r.withHeight (captionH).toFloat();
 
+        juce::GlyphArrangement ga;
+        ga.addLineOfText (font, text, 0.0f, 0.0f);
+        const float textW = ga.getBoundingBox (0, -1, true).getWidth();
+        const float textX = capArea.getCentreX() - textW * 0.5f;
+
+        const auto textCol = lockedShown
+                               ? HarmoniaPalette::textMuted.interpolatedWith (HarmoniaPalette::textPrimary, 0.35f)
+                               : HarmoniaPalette::textMuted;
+
+        g.setColour (textCol);
+        g.setFont (font);
+        g.drawText (text,
+                    juce::Rectangle<float> (textX, capArea.getY(), textW + 6.0f, capArea.getHeight()),
+                    juce::Justification::centredLeft, false);
+
         if (lockUiVisible)
         {
-            juce::GlyphArrangement ga;
-            ga.addLineOfText (font, text, 0.0f, 0.0f);
-            const float textW = ga.getBoundingBox (0, -1, true).getWidth();
-
             const float iconW = 8.0f, iconH = 10.0f, gap = 4.0f;
-            const float x0 = capArea.getCentreX() - (iconW + gap + textW) * 0.5f;
+
+            const float padX = juce::jmax (0.0f, textX - gap - iconW);
 
             LockableControl::drawPadlock (g,
-                { x0, capArea.getCentreY() - iconH * 0.5f, iconW, iconH },
+                { padX, capArea.getCentreY() - iconH * 0.5f, iconW, iconH },
                 locked,
-                lit ? HarmoniaPalette::locked : HarmoniaPalette::textMuted.withAlpha (0.55f));
-
-            g.setColour (lit ? HarmoniaPalette::locked : HarmoniaPalette::textMuted);
-            g.setFont (font);
-            g.drawText (text,
-                        juce::Rectangle<float> (x0 + iconW + gap, capArea.getY(),
-                                                textW + 4.0f, capArea.getHeight()),
-                        juce::Justification::centredLeft, false);
-        }
-        else
-        {
-            g.setColour (HarmoniaPalette::textMuted);
-            g.setFont (font);
-            g.drawText (text, capArea, juce::Justification::centred);
+                locked ? HarmoniaPalette::textPrimary
+                    : HarmoniaPalette::textMuted.withAlpha (0.55f));
         }
 
-        g.setColour (lit ? HarmoniaPalette::locked : HarmoniaPalette::accent);
+        g.setColour (HarmoniaPalette::accent);
         g.setFont (juce::Font (juce::FontOptions (10.0f)));
         g.drawText (slider.getTextFromValue (slider.getValue()),
                     r.withTop (r.getBottom() - readoutH),
@@ -141,7 +137,6 @@ public:
         slider.setBounds (r.reduced (2));
     }
 
-    // Le slider couvre le centre : seuls les clics sur la zone du label arrivent ici
     void mouseDown (const juce::MouseEvent& e) override
     {
         if (lockUiVisible && e.y < captionH)
@@ -160,9 +155,6 @@ public:
 private:
     void refreshLockVisual()
     {
-        // lu par HiveLookAndFeel::drawRotarySlider
-        slider.getProperties().set ("locked", lockUiVisible && locked);
-        slider.repaint();
         repaint();
     }
 

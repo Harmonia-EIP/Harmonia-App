@@ -132,11 +132,9 @@ class ModelMenuLookAndFeel : public juce::LookAndFeel_V4
 public:
     ModelMenuLookAndFeel()
     {
-        // Fond non opaque => la fenêtre du menu est transparente, donc coins arrondis possibles
         setColour (juce::PopupMenu::backgroundColourId, juce::Colours::transparentBlack);
     }
 
-    // marge intérieure entre le bord du menu et les items
     int getPopupMenuBorderSize() override { return 6; }
 
     void drawPopupMenuBackground (juce::Graphics& g, int w, int h) override
@@ -181,7 +179,6 @@ public:
         auto r = area.toFloat().reduced (1.0f, 1.0f);
         const auto acc = HarmoniaPalette::accent;
 
-        // survol : lueur qui part de la gauche
         if (isHighlighted && isActive)
         {
             juce::ColourGradient glow (acc.withAlpha (0.24f), r.getX(),     r.getCentreY(),
@@ -207,7 +204,6 @@ public:
             g.drawEllipse (juce::Rectangle<float> (6.0f, 6.0f).withCentre (dot), 1.2f);
         }
 
-        // texte
         auto col = isTicked || isHighlighted ? acc.brighter (0.3f) : HarmoniaPalette::textPrimary;
         if (! isActive)
             col = col.withAlpha (0.4f);
@@ -349,14 +345,15 @@ public:
 private:
     void timerCallback() override;
 
+        // Passe a true quand le Refine est pret cote IA
+    bool refineEnabled = false;
+
     juce::Colour modeColour() const;
     void applyColours();
     void updateModeTexts();
     void paintPromptBar (juce::Graphics&);
 
     UserSession session;
-
-    juce::TooltipWindow tooltipWindow { this, 450 };
 
     juce::Label titleLabel;
     juce::Label presetLabel;

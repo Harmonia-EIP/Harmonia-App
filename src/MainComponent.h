@@ -166,6 +166,8 @@ private:
     /** Custom Harmonia look-and-feel implementation. */
     HiveLookAndFeel lookAndFeel;
 
+    juce::TooltipWindow tooltipWindow { this, 3000 };
+
     /** Animated particle background layer. */
     ParticleField particles;
 

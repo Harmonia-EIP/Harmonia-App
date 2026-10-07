@@ -418,13 +418,28 @@ HeaderComponent::HeaderComponent (const UserSession& s)
     promptEditor.onFocusChanged = [this] { startTimerHz (60); };
     addAndMakeVisible (promptEditor);
 
-    // Logo = switch de mode
+    // when refine mode is available with ai
+    // logoButton.onClick = [this]
+    // {
+    //     setMode (mode == Mode::Generate ? Mode::Refine : Mode::Generate);
+    // };
+    // ____________________________________________
+
     logoButton.onClick = [this]
     {
+        if (! refineEnabled)
+        {
+            juce::AlertWindow::showMessageBoxAsync (
+                juce::AlertWindow::InfoIcon,
+                "Refine mode",
+                "Refine mode is coming soon.");
+            return;
+        }
+
         setMode (mode == Mode::Generate ? Mode::Refine : Mode::Generate);
     };
     addAndMakeVisible (logoButton);
-
+    logoButton.setTooltip ("Refine mode (coming soon)");
     addAndMakeVisible (actionButton);
 
     // Logo chargé directement ici (plus besoin de setLogo depuis le parent)

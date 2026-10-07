@@ -15,12 +15,15 @@ namespace PresetLoader
     };
 
     // Charge un fichier hel.json (schéma : metadata + parameters{name:value} + values[])
-    // et applique les 20 valeurs normalisées sur l'APVTS.
+    // et applique les valeurs normalisées sur l'APVTS.
     // Accepte deux formes :
     //   1. parameters: { "osc_1_waveform": 0.5, ... }     (recommandée)
     //   2. values: [0.5, 0.3, ...]  (fallback ; ordre = HarmoniaParams::orderedIds())
+    //
+    // lockedIds : paramètres verrouillés, ils ne sont jamais modifiés.
     inline LoadResult loadFromJsonString (const juce::String& jsonText,
-                                          juce::AudioProcessorValueTreeState& apvts)
+                                          juce::AudioProcessorValueTreeState& apvts,
+                                          const juce::StringArray& lockedIds = {})
     {
         LoadResult r;
 
@@ -35,8 +38,11 @@ namespace PresetLoader
         if (doc.contains ("metadata") && doc["metadata"].contains ("name"))
             r.presetName = juce::String (doc["metadata"].value ("name", std::string("Preset")));
 
-        auto applyNorm = [&apvts] (const juce::String& id, float normValue)
+        auto applyNorm = [&apvts, &lockedIds] (const juce::String& id, float normValue)
         {
+            if (lockedIds.contains (id))
+                return;   // verrouille : on ne touche pas
+
             if (auto* p = apvts.getParameter (id))
             {
                 normValue = juce::jlimit (0.0f, 1.0f, normValue);
@@ -82,11 +88,12 @@ namespace PresetLoader
     }
 
     inline LoadResult loadFromFile (const juce::File& file,
-                                    juce::AudioProcessorValueTreeState& apvts)
+                                    juce::AudioProcessorValueTreeState& apvts,
+                                    const juce::StringArray& lockedIds = {})
     {
         if (! file.existsAsFile())
             return { false, {}, "File not found" };
-        return loadFromJsonString (file.loadFileAsString(), apvts);
+        return loadFromJsonString (file.loadFileAsString(), apvts, lockedIds);
     }
 
     // Sérialise l'état actuel de l'APVTS au format hel.json (avec parameters + values).
