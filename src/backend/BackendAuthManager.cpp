@@ -1,5 +1,6 @@
 #include "BackendAuthManager.h"
 #include "BackendManager.h"
+#include "BackendPalette.h"
 
 #include <cpr/cpr.h>
 #include <nlohmann/json.hpp>
@@ -75,8 +76,9 @@ AuthResult BackendAuthManager::loginUser(
     session.accessToken = body.value("token", "");
     session.pseudo      = body.value("username", "");
     session.email       = body.value("email", "");
-    session.layoutId    = body.value("layout_id", 0);
-    session.themeId     = body.value("theme_id", 0);
+
+    // La palette vient uniquement de la réponse du backend
+    BackendPalette::readFromJson(body, session.paletteColours, session.paletteSlot);
 
     session.expiresAt = juce::Time::getCurrentTime()
                         + juce::RelativeTime::hours(1);
@@ -214,8 +216,9 @@ AuthResult BackendAuthManager::signupUser(
     session.accessToken = body.value("token", "");
     session.pseudo      = body.value("username", "");
     session.email       = body.value("email", "");
-    session.layoutId    = body.value("layout_id", 0);
-    session.themeId     = body.value("theme_id", 0);
+
+    // La palette vient uniquement de la réponse du backend
+    BackendPalette::readFromJson(body, session.paletteColours, session.paletteSlot);
 
     session.expiresAt = juce::Time::getCurrentTime()
                         + juce::RelativeTime::hours(1);
@@ -236,15 +239,19 @@ void BackendAuthManager::saveSession(const UserSession& session)
 
 void BackendAuthManager::saveSessionToFile(const juce::File& sessionFile, const UserSession& session)
 {
+    json colours = json::array();
+    for (const auto& c : session.paletteColours)
+        colours.push_back(c.toStdString());
+
     json j{
-        { "isGuest",     session.isGuest },
-        { "userId",      session.userId },
-        { "pseudo",      session.pseudo.toStdString() },
-        { "email",       session.email.toStdString() },
-        { "accessToken", session.accessToken.toStdString() },
-        { "expiresAt",   (long long) session.expiresAt.toMilliseconds() },
-        { "layoutId",    session.layoutId },
-        { "themeId",     session.themeId }
+        { "isGuest",        session.isGuest },
+        { "userId",         session.userId },
+        { "pseudo",         session.pseudo.toStdString() },
+        { "email",          session.email.toStdString() },
+        { "accessToken",    session.accessToken.toStdString() },
+        { "expiresAt",      (long long) session.expiresAt.toMilliseconds() },
+        { "paletteColours", colours },
+        { "paletteSlot",    session.paletteSlot }
     };
 
     sessionFile.replaceWithText(j.dump(4));
@@ -280,8 +287,17 @@ std::optional<UserSession> BackendAuthManager::loadSessionFromFile(const juce::F
     session.email       = j.value("email", "");
     session.accessToken = j.value("accessToken", "");
     session.isGuest     = j.value("isGuest", false);
-    session.layoutId = j.value("layoutId", 0);
-    session.themeId  = j.value("themeId", 0);
+
+    session.paletteSlot = j.value("paletteSlot", 0);
+
+    if (j.contains("paletteColours") && j["paletteColours"].is_array())
+        for (const auto& c : j["paletteColours"])
+            if (c.is_string())
+                session.paletteColours.add(c.get<std::string>());
+
+    // Ancien fichier de session ou données invalides : on repart de zéro
+    if (session.paletteColours.size() != 3)
+        session.paletteColours.clear();
 
     auto expiresMs = j.value("expiresAt", static_cast<int64_t>(0));
     session.expiresAt = juce::Time(expiresMs);
@@ -332,8 +348,8 @@ void BackendAuthManager::syncProfileParamsInBackground(const UserSession& sessio
             updated.userId   = body.value("user_id", session.userId);
             updated.pseudo   = body.value("username", session.pseudo.toStdString()).c_str();
             updated.email    = body.value("email", session.email.toStdString()).c_str();
-            updated.layoutId = body.value("layout_id", session.layoutId);
-            updated.themeId  = body.value("theme_id", session.themeId);
+
+            BackendPalette::readFromJson(body, updated.paletteColours, updated.paletteSlot);
 
             saveSessionToFile(sessionFile, updated);
 
@@ -376,8 +392,8 @@ std::optional<UserSession> BackendAuthManager::syncProfileParamsFromServer(const
         updated.userId   = body.value("user_id", session.userId);
         updated.pseudo   = body.value("username", session.pseudo.toStdString()).c_str();
         updated.email    = body.value("email", session.email.toStdString()).c_str();
-        updated.layoutId = body.value("layout_id", session.layoutId);
-        updated.themeId  = body.value("theme_id", session.themeId);
+
+        BackendPalette::readFromJson(body, updated.paletteColours, updated.paletteSlot);
 
         saveSessionToFile(sessionFile, updated);
 

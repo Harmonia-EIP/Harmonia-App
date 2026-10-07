@@ -8,7 +8,7 @@
 
 //==============================================================================
 // 3 pastilles de couleur libres + icône crayon pour éditer la pastille active.
-// Nécessite HarmoniaPalette::Theme::Custom, HarmoniaPalette::customAccent
+// Nécessite HarmoniaPalette::defaultSlots, HarmoniaPalette::customAccent
 // et HarmoniaPalette::setCustomAccent (juce::Colour).
 //==============================================================================
 class PaletteSelector : public juce::Component
@@ -16,11 +16,8 @@ class PaletteSelector : public juce::Component
 public:
     PaletteSelector()
     {
-        // couleurs par défaut des 3 slots (modifiables par l'utilisateur)
-        using T = HarmoniaPalette::Theme;
-        slotColours = { HarmoniaPalette::themePreviewColour (T::Cyan),
-                        HarmoniaPalette::themePreviewColour (T::Blue),
-                        HarmoniaPalette::themePreviewColour (T::Dark) };
+        // couleurs par défaut des 3 slots (guest + premier démarrage)
+        slotColours = HarmoniaPalette::defaultSlots;
 
         HarmoniaPalette::setCustomAccent (slotColours[0]);
 
@@ -105,6 +102,12 @@ public:
         activeSlot  = juce::jlimit (0, 2, active);
         HarmoniaPalette::setCustomAccent (slotColours[(size_t) activeSlot]);
         repaint();
+    }
+
+    // Guest / nouvel utilisateur : retour aux 3 couleurs par défaut
+    void resetToDefaults()
+    {
+        setSlots (HarmoniaPalette::defaultSlots, 0);
     }
 
     HarmoniaPalette::Theme getCurrentTheme() const { return HarmoniaPalette::Theme::Custom; }

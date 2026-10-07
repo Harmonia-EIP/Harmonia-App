@@ -8,7 +8,6 @@ MainComponent::MainComponent (HarmoniaAudioProcessor& p,
       session (s),
       oscilloscope (AppConfig::Oscilloscope::BufferSize,
                     AppConfig::Oscilloscope::RefreshRate),
-      currentTheme (static_cast<HarmoniaPalette::Theme>(s.themeId)),
       displayScreen (oscilloscope),
       synthComponent (p.getKeyboardState()),
       ampEnvViz (p.getAPVTS(), HarmoniaPalette::sectionAmpEnv),
@@ -29,29 +28,32 @@ MainComponent::MainComponent (HarmoniaAudioProcessor& p,
     addAndMakeVisible (particles);
     particles.toBack();
 
+    // Référence « état serveur » pour le filtre anti-PUT inutile (vide = invité).
+    backend.resetPaletteSyncState (session.isGuest ? juce::StringArray()
+                                                   : session.paletteColours,
+                                   session.paletteSlot);
+
+    // Le header restaure la palette (setSlots) depuis la session dans son
+    // constructeur, avant HarmoniaPalette::setTheme. applyTheme() doit donc
+    // venir APRES sa creation.
     headerComponent = std::make_unique<HeaderComponent> (session);
     addAndMakeVisible (*headerComponent);
 
+    // Application visuelle uniquement : la synchro backend passe par
+    // onPaletteChanged.
     headerComponent->onThemeChanged =
-        [this](HarmoniaPalette::Theme theme)
+        [this] (HarmoniaPalette::Theme theme)
     {
         currentTheme = theme;
-
         applyTheme();
+    };
 
-        lookAndFeel.refreshTheme();
-
-        sendLookAndFeelChange();
-
-        repaint();
-
-
-        backend.updateLocalTheme(
-            static_cast<int>(theme));
-
-        if (!session.isGuest)
-            backend.updateThemeAsync(
-                static_cast<int>(theme));
+    // Palette complete + pastille active (slot 0..2). Le header ne l'emet pas
+    // pour un invité, et le backend ignore de toute façon les invités.
+    headerComponent->onPaletteChanged =
+        [this] (const juce::StringArray& colours, int slot)
+    {
+        backend.updatePaletteAsync (colours, slot);
     };
 
     applyTheme();
@@ -71,6 +73,11 @@ MainComponent::MainComponent (HarmoniaAudioProcessor& p,
     buildControls();
     wireHeaderButtons();
 
+    headerComponent->onModeChanged = [this] (HeaderComponent::Mode m)
+    {
+        setRefineUi (m == HeaderComponent::Mode::Refine);
+    };
+
     addAndMakeVisible (synthComponent);
 
     setSize (AppConfig::DefaultWidth, AppConfig::DefaultHeight);
@@ -78,11 +85,30 @@ MainComponent::MainComponent (HarmoniaAudioProcessor& p,
 
 MainComponent::~MainComponent()
 {
+    // Envoie la palette en attente (debounce non expiré) sans bloquer :
+    // le backend copie tout par valeur et lance un PUT court détaché.
+    backend.flushPaletteIfPending();
+
     processor.setOscilloscope (nullptr);
     setLookAndFeel(nullptr);
-    
+
     HarmoniaPalette::setTheme(
         HarmoniaPalette::Theme::Dark);
+}
+
+void MainComponent::setRefineUi (bool refine)
+{
+    for (auto* l : lockables)
+        l->setLockUiVisible (refine);
+}
+
+juce::StringArray MainComponent::getLockedParamIds() const
+{
+    juce::StringArray ids;
+    for (auto* l : lockables)
+        if (l->isLocked())
+            ids.add (l->getParamId());
+    return ids;
 }
 
 void MainComponent::applyTheme()
@@ -181,6 +207,8 @@ void MainComponent::buildControls()
         })
     {
         registerJuiceFor (c);
+        if (auto* l = dynamic_cast<LockableControl*> (c))
+            lockables.push_back (l);
     }
 }
 
@@ -192,12 +220,21 @@ void MainComponent::wireHeaderButtons()
     headerComponent->getSaveButton().onClick =
         [this] { doSavePreset(); };
 
-    headerComponent->getGenerateButton().onClick =
-        [this] { doGenerateWithAi(); };
+    headerComponent->getGenerateButton().onClick = [this]
+    {
+        if (headerComponent->getMode() == HeaderComponent::Mode::Refine)
+            doRefineWithAi();
+        else
+            doGenerateWithAi();
+    };
 
     headerComponent->getLogoutButton().onClick =
         [this]
         {
+            // AVANT clearSession() : sinon le token est effacé et le flush
+            // ne peut plus s'authentifier.
+            backend.flushPaletteIfPending();
+
             backend.clearSession();
 
             if (onLogout)
@@ -258,128 +295,191 @@ void MainComponent::doSavePreset()
         });
 }
 
-void MainComponent::doGenerateWithAi()
+// =============================================================================
+// A remplacer dans MainComponent.cpp : l'ancienne doGenerateWithAi() en entier.
+// =============================================================================
+ 
+//------------------------------------------------------------------------------
+// Verifie invite + prompt vide. Remplit `prompt`, renvoie false si on doit s'arreter.
+bool MainComponent::getAiPrompt (juce::String& prompt)
 {
     if (session.isGuest)
     {
-        juce::AlertWindow::showMessageBoxAsync(
+        juce::AlertWindow::showMessageBoxAsync (
             juce::AlertWindow::WarningIcon,
             Strings::Errors::AiGuestError,
-            Strings::Errors::AiGuestAdvice
-        );
-        return;
+            Strings::Errors::AiGuestAdvice);
+        return false;
     }
-
-    const auto prompt = headerComponent->getPromptEditor().getText();
-
+ 
+    prompt = headerComponent->getPromptEditor().getText();
+ 
     if (prompt.trim().isEmpty())
     {
-        juce::AlertWindow::showMessageBoxAsync(
+        juce::AlertWindow::showMessageBoxAsync (
             juce::AlertWindow::WarningIcon,
             Strings::Errors::MissingPrompt,
-            Strings::Errors::MissingPromptAdvice
-        );
-        return;
+            Strings::Errors::MissingPromptAdvice);
+        return false;
     }
-
-    int modelId = headerComponent->getSelectedModelId();
-    juce::String backendName = headerComponent->getSelectedBackendName();
-
-    headerComponent->getPresetLabel().setText(
-        Strings::Labels::GeneratingPreset,
-        juce::dontSendNotification
-    );
-
-    juce::Thread::launch([this, prompt, modelId, backendName]
+ 
+    return true;
+}
+ 
+//------------------------------------------------------------------------------
+// GENERATE : on repart de zero, aucun parametre protege.
+void MainComponent::doGenerateWithAi()
+{
+    juce::String prompt;
+    if (! getAiPrompt (prompt))
+        return;
+ 
+    const int          modelId     = headerComponent->getSelectedModelId();
+    const juce::String backendName = headerComponent->getSelectedBackendName();
+ 
+    runAiRequest ([this, prompt, modelId, backendName]
+                  {
+                      return backend.generatePreset (prompt, modelId, backendName);
+                  },
+                  {});
+}
+ 
+//------------------------------------------------------------------------------
+// REFINE : on envoie le preset actuel + les parametres verrouilles.
+// -> backend.refinePreset(...) est a creer dans BackendManager (voir plus bas).
+void MainComponent::doRefineWithAi()
+{
+    juce::String prompt;
+    if (! getAiPrompt (prompt))
+        return;
+ 
+    const int          modelId     = headerComponent->getSelectedModelId();
+    const juce::String backendName = headerComponent->getSelectedBackendName();
+ 
+    const auto locked = getLockedParamIds();
+ 
+    const juce::String pseudo = session.pseudo.isNotEmpty() ? session.pseudo : "Unknown";
+    const juce::String currentJson =
+        PresetLoader::saveToJsonString (processor.getAPVTS(), "current", pseudo);
+ 
+    runAiRequest ([this, prompt, currentJson, locked, modelId, backendName]
+                  {
+                      return backend.refinePreset (prompt, currentJson, locked,
+                                                   modelId, backendName);
+                  },
+                  locked);
+}
+ 
+//------------------------------------------------------------------------------
+// Partage entre Generate et Refine :
+// thread -> requete -> chargement du preset -> restauration des verrous.
+void MainComponent::runAiRequest (std::function<AiResult()> request,
+                                  juce::StringArray lockedIds)
+{
+    // Valeurs des parametres verrouilles AVANT la requete (thread UI)
+    std::vector<std::pair<juce::String, float>> keep;
+ 
+    for (const auto& id : lockedIds)
+        if (auto* prm = processor.getAPVTS().getParameter (id))
+            keep.push_back ({ id, prm->getValue() });
+ 
+    headerComponent->getPresetLabel().setText (Strings::Labels::GeneratingPreset,
+                                               juce::dontSendNotification);
+ 
+    juce::Thread::launch ([safe = juce::Component::SafePointer<MainComponent> (this),
+                           request = std::move (request),
+                           keep = std::move (keep)]
     {
-        auto result = backend.generatePreset(prompt, modelId, backendName);
-
-        juce::MessageManager::callAsync([this, result]
+        const auto result = request();
+ 
+        juce::MessageManager::callAsync ([safe, result, keep]
         {
-            if (!result.success)
+            if (safe == nullptr)
+                return;
+ 
+            if (! result.success)
             {
-                juce::String message;
-                juce::String advice = Strings::Errors::PleaseTryAgainLater;
-
-                switch (result.error)
-                {
-                    case AiResult::Error::Network:
-                        message = Strings::Errors::NetworkError;
-                        advice  = Strings::Errors::NetworkErrorAdvice;
-                        break;
-
-                    case AiResult::Error::HttpError:
-                        message = Strings::Errors::AiServerError;
-                        break;
-
-                    case AiResult::Error::SessionExpired:
-                        message = "Session expired";
-                        advice  = "Please log in again.";
-                        break;
-
-                    case AiResult::Error::NoSession:
-                        message = "Not connected";
-                        advice  = "Please sign in.";
-                        break;
-
-                    case AiResult::Error::EmptyResponse:
-                        message = Strings::Errors::UnknownError;
-                        break;
-
-                    case AiResult::Error::EmptyPrompt:
-                        message = Strings::Errors::MissingPrompt;
-                        advice  = Strings::Errors::MissingPromptAdvice;
-                        break;
-
-                    default:
-                        message = result.errorMessage.isNotEmpty()
-                            ? result.errorMessage
-                            : Strings::Errors::UnknownError;
-                        break;
-                }
-
-                HarmoniaAlert::error(
-                    Strings::Errors::AiError,
-                    message + "\n\n" + advice
-                );
-
-                headerComponent->getPresetLabel().setText(
-                    Strings::Labels::UnsetPreset.toUpperCase(),
-                    juce::dontSendNotification
-                );
-
+                safe->showAiError (result);
                 return;
             }
-
-            auto r = PresetLoader::loadFromJsonString(
-                result.json,
-                processor.getAPVTS()
-            );
-
-            if (!r.success)
+ 
+            auto r = PresetLoader::loadFromJsonString (result.json,
+                                                       safe->processor.getAPVTS());
+ 
+            if (! r.success)
             {
-                HarmoniaAlert::error(
+                HarmoniaAlert::error (
                     Strings::Errors::ErrorTitle,
-                    (r.errorMessage.isNotEmpty()
-                        ? r.errorMessage
-                        : Strings::Errors::UnreadableAIResponse)
-                    + "\n\n" + Strings::Errors::PleaseTryAgainLater
-                );
-
-                headerComponent->getPresetLabel().setText(
+                    (r.errorMessage.isNotEmpty() ? r.errorMessage
+                                                 : Strings::Errors::UnreadableAIResponse)
+                        + "\n\n" + Strings::Errors::PleaseTryAgainLater);
+ 
+                safe->headerComponent->getPresetLabel().setText (
                     Strings::Labels::UnsetPreset.toUpperCase(),
-                    juce::dontSendNotification
-                );
-
+                    juce::dontSendNotification);
                 return;
             }
-
-            headerComponent->getPresetLabel().setText(
-                r.presetName.toUpperCase(),
-                juce::dontSendNotification
-            );
+ 
+            // Filet de securite : meme si l'IA a touche a un parametre verrouille,
+            // on remet la valeur d'origine.
+            for (const auto& [id, value] : keep)
+                if (auto* prm = safe->processor.getAPVTS().getParameter (id))
+                    prm->setValueNotifyingHost (value);
+ 
+            safe->headerComponent->getPresetLabel().setText (r.presetName.toUpperCase(),
+                                                             juce::dontSendNotification);
         });
     });
+}
+ 
+//------------------------------------------------------------------------------
+void MainComponent::showAiError (const AiResult& result)
+{
+    juce::String message;
+    juce::String advice = Strings::Errors::PleaseTryAgainLater;
+ 
+    switch (result.error)
+    {
+        case AiResult::Error::Network:
+            message = Strings::Errors::NetworkError;
+            advice  = Strings::Errors::NetworkErrorAdvice;
+            break;
+ 
+        case AiResult::Error::HttpError:
+            message = Strings::Errors::AiServerError;
+            break;
+ 
+        case AiResult::Error::SessionExpired:
+            message = "Session expired";
+            advice  = "Please log in again.";
+            break;
+ 
+        case AiResult::Error::NoSession:
+            message = "Not connected";
+            advice  = "Please sign in.";
+            break;
+ 
+        case AiResult::Error::EmptyResponse:
+            message = Strings::Errors::UnknownError;
+            break;
+ 
+        case AiResult::Error::EmptyPrompt:
+            message = Strings::Errors::MissingPrompt;
+            advice  = Strings::Errors::MissingPromptAdvice;
+            break;
+ 
+        default:
+            message = result.errorMessage.isNotEmpty()
+                        ? result.errorMessage
+                        : Strings::Errors::UnknownError;
+            break;
+    }
+ 
+    HarmoniaAlert::error (Strings::Errors::AiError, message + "\n\n" + advice);
+ 
+    headerComponent->getPresetLabel().setText (
+        Strings::Labels::UnsetPreset.toUpperCase(),
+        juce::dontSendNotification);
 }
 
 void MainComponent::paint (juce::Graphics& g)

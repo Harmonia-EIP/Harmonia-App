@@ -92,6 +92,14 @@ AiResult BackendManager::generatePreset(const juce::String& prompt, int modelId,
     return aiManager->generatePreset(prompt, modelId, backendName);
 }
 
+AiResult BackendManager::refinePreset(const juce::String& prompt,
+                                      const juce::String& currentJson,
+                                      const juce::StringArray& lockedParamIds,
+                                      int modelId,
+                                      const juce::String& backendName)
+{
+    return aiManager->refinePreset(prompt, currentJson, lockedParamIds, modelId, backendName);
+}
 //================================================
 // PROFILE
 ProfileResult BackendManager::getProfile()
@@ -102,32 +110,30 @@ ProfileResult BackendManager::getProfile()
     return ProfileResult::error("Profile manager not initialized");
 }
 
-ProfileResult BackendManager::updateTheme(int themeId)
+ProfileResult BackendManager::updatePalette(const juce::StringArray& colours, int slot)
 {
     if (profileManager)
-        return profileManager->updateTheme(themeId);
+        return profileManager->updatePalette(colours, slot);
 
     return ProfileResult::error("Profile manager not initialized");
 }
 
-ProfileResult BackendManager::updateLayout(int layoutId)
+void BackendManager::updatePaletteAsync(const juce::StringArray& colours, int slot)
 {
     if (profileManager)
-        return profileManager->updateLayout(layoutId);
-
-    return ProfileResult::error("Profile manager not initialized");
+        profileManager->updatePaletteAsync(colours, slot);
 }
 
-void BackendManager::updateLocalTheme(int themeId)
+void BackendManager::flushPaletteIfPending()
 {
     if (profileManager)
-        profileManager->updateLocalTheme(themeId);
+        profileManager->flushPaletteIfPending();
 }
 
-void BackendManager::updateThemeAsync(int themeId)
+void BackendManager::resetPaletteSyncState(const juce::StringArray& colours, int slot)
 {
     if (profileManager)
-        profileManager->updateThemeAsync(themeId);
+        profileManager->resetPaletteSyncState(colours, slot);
 }
 
 //================================================

@@ -9,6 +9,14 @@
  *
  * Visual design mirrors LoginPage and WelcomePage (dark gradient, animated waves,
  * logo PNG without container). Buttons use AuthPageLookAndFeel.
+ *
+ * Keyboard navigation:
+ * - Tab / Shift+Tab : username -> first name -> last name -> email -> password
+ *                     -> Create account -> Back (loops)
+ * - Enter in a field : jumps to the next field
+ * - Enter in the password field : submits the form
+ * - Enter / Space on a focused button : presses it
+ * The username field takes the focus when the page is shown.
  */
 class SignupPage : public juce::Component,
                    private juce::Timer
@@ -23,7 +31,14 @@ public:
     std::function<void()> onBack;
 
     void paint(juce::Graphics&) override;
+
+    /** Draws a focus ring around the button that has the keyboard focus. */
+    void paintOverChildren(juce::Graphics&) override;
+
     void resized() override;
+
+    /** Gives the keyboard focus to the first field when the page appears. */
+    void visibilityChanged() override;
 
 private:
     struct WaveLayer

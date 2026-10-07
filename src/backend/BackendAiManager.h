@@ -88,6 +88,12 @@ public:
      */
     AiResult generatePreset(const juce::String& prompt, int modelId, const juce::String& backendName);
 
+    AiResult refinePreset(const juce::String& prompt,
+                          const juce::String& currentJson,
+                          const juce::StringArray& lockedParamIds,
+                          int modelId,
+                          const juce::String& backendName);
+
 private:
 
     /**
@@ -99,4 +105,7 @@ private:
      * - Centralize backend services
      */
     BackendManager& backend;
+
+    AiResult postAuthenticated(const juce::String& endpoint,
+                               const nlohmann::json& payload);
 };

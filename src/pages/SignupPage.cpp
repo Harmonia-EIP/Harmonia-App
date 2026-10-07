@@ -69,6 +69,40 @@ SignupPage::SignupPage(BackendManager& be,
     signupButton.onClick = [this]() { handleSignup(); };
     backButton.onClick   = [this]() { if (onBack) onBack(); };
 
+    // -------------------------------------------------------------------------
+    // Navigation clavier
+    // Tab / Shift+Tab restent dans la page, dans l'ordre :
+    // pseudo -> prénom -> nom -> email -> mot de passe -> Create account -> Back.
+    // -------------------------------------------------------------------------
+    setFocusContainerType(juce::Component::FocusContainerType::keyboardFocusContainer);
+
+    {
+        int focusOrder = 1;
+
+        for (juce::Component* c : { (juce::Component*) &usernameField,
+                                    (juce::Component*) &firstnameField,
+                                    (juce::Component*) &lastnameField,
+                                    (juce::Component*) &emailField,
+                                    (juce::Component*) &passwordField,
+                                    (juce::Component*) &signupButton,
+                                    (juce::Component*) &backButton })
+        {
+            c->setWantsKeyboardFocus(true);
+            c->setExplicitFocusOrder(focusOrder++);
+        }
+
+        // Un clic souris sur un bouton ne laisse pas de halo de focus affiché
+        signupButton.setMouseClickGrabsKeyboardFocus(false);
+        backButton.setMouseClickGrabsKeyboardFocus(false);
+    }
+
+    // Entrée : champ suivant, puis validation depuis le mot de passe
+    usernameField.onReturnKey  = [this]() { firstnameField.grabKeyboardFocus(); };
+    firstnameField.onReturnKey = [this]() { lastnameField.grabKeyboardFocus(); };
+    lastnameField.onReturnKey  = [this]() { emailField.grabKeyboardFocus(); };
+    emailField.onReturnKey     = [this]() { passwordField.grabKeyboardFocus(); };
+    passwordField.onReturnKey  = [this]() { handleSignup(); };
+
     startTimerHz(60);
 }
 
@@ -81,6 +115,22 @@ SignupPage::~SignupPage()
     signupButton.setLookAndFeel(nullptr);
     backButton.setLookAndFeel(nullptr);
     setLookAndFeel(nullptr);
+}
+
+void SignupPage::visibilityChanged()
+{
+    if (! isVisible())
+        return;
+
+    // Différé : la page n'est pas forcément encore rattachée à une fenêtre.
+    // SafePointer car la page peut être détruite avant l'exécution.
+    juce::Component::SafePointer<juce::Component> first (&usernameField);
+
+    juce::MessageManager::callAsync([first]
+    {
+        if (first != nullptr && first->isShowing())
+            first->grabKeyboardFocus();
+    });
 }
 
 void SignupPage::timerCallback()
@@ -132,6 +182,22 @@ void SignupPage::paint(juce::Graphics& g)
         line.addColour(0.5, HarmoniaColours::waveBlue.withAlpha(0.7f));
         g.setGradientFill(line);
         g.fillRect(lx, ly, lineW, 1.f);
+    }
+}
+
+void SignupPage::paintOverChildren(juce::Graphics& g)
+{
+    // Halo autour du bouton qui a le focus clavier (Tab). La page se repeint
+    // déjà à 60 Hz (animation), donc pas besoin d'écouter les changements de focus.
+    for (auto* b : { &signupButton, &backButton })
+    {
+        if (b->hasKeyboardFocus(true))
+        {
+            const auto r = b->getBounds().toFloat().expanded(2.f);
+
+            g.setColour(HarmoniaColours::waveCyan.withAlpha(0.9f));
+            g.drawRoundedRectangle(r, r.getHeight() * 0.5f, 1.5f);
+        }
     }
 }
 

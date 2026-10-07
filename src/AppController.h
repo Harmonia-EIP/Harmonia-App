@@ -22,7 +22,7 @@
 
 #include "JuceHeader.h"
 
-#include "backendManagement/BackendManager.h"
+#include "backend/BackendManager.h"
 #include "pages/WelcomePage.h"
 #include "pages/LoginPage.h"
 #include "pages/SignupPage.h"

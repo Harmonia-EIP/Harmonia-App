@@ -4,15 +4,10 @@
 
 // =============================================================================
 // Custom LookAndFeel for the WelcomePage buttons
-//  - Filled   : cyan -> indigo gradient pill, glow on hover (Sign in)
-//  - Outlined : smoked glass + waveBlue border (Create account)
-//  - Ghost    : text only, shadowed to stay readable over the waves (Guest)
-// =============================================================================
-// =============================================================================
-// Custom LookAndFeel for the WelcomePage buttons
 //  - Outlined : smoked-glass pill, gradient cyan -> indigo border,
-//               glow on hover (Sign in + Create account)
-//  - Ghost    : text only, shadowed to stay readable over the waves (Guest)
+//               glow on hover or keyboard focus (Sign in + Create account)
+//  - Ghost    : text only, shadowed to stay readable over the waves (Guest),
+//               underlined on hover or keyboard focus
 // =============================================================================
 class WelcomeLookAndFeel : public juce::LookAndFeel_V4
 {
@@ -24,11 +19,14 @@ public:
     void drawButtonBackground(juce::Graphics& g,
                               juce::Button& button,
                               const juce::Colour&,
-                              bool isHighlighted,
+                              bool isMouseOver,
                               bool isDown) override
     {
         if (m_style == BtnStyle::Ghost)
             return;
+
+        // Souris OU focus clavier (Tab) : même retour visuel
+        const bool isHighlighted = isMouseOver || button.hasKeyboardFocus(true);
 
         // 4 px margin so the glow is not clipped
         auto area = button.getLocalBounds().toFloat().reduced(4.f);
@@ -42,7 +40,7 @@ public:
                                                           : isHighlighted ? 0.07f : 0.035f));
         g.fillRoundedRectangle(area, r);
 
-        // Soft glow on hover
+        // Soft glow on hover / focus
         if (isHighlighted || isDown)
         {
             g.setColour(HarmoniaColours::waveCyan.withAlpha(0.10f));
@@ -65,9 +63,10 @@ public:
 
     void drawButtonText(juce::Graphics& g,
                         juce::TextButton& button,
-                        bool isHighlighted,
+                        bool isMouseOver,
                         bool /*isDown*/) override
     {
+        const bool isHighlighted = isMouseOver || button.hasKeyboardFocus(true);
         const auto b = button.getLocalBounds();
 
         if (m_style == BtnStyle::Ghost)
@@ -113,12 +112,18 @@ private:
  * Entry point of the authentication flow. Displays:
  * - Application logo, title and subtitle
  * - Animated wave background (blue/cyan theme)
- * - A "Sign in" button (filled pill)
+ * - A "Sign in" button (outlined pill)
  * - A "Create account" button (outlined pill)
  * - A "Continue as guest" text button
  *
  * Uses a dedicated dark blue theme independent from user preferences.
  * Interaction is delegated through the `onChoice` callback.
+ *
+ * Keyboard navigation:
+ * - Tab / Shift+Tab : move between the three buttons (stays inside the page)
+ * - Up / Down arrows : same, as a convenience
+ * - Enter / Space : press the focused button
+ * The "Sign in" button takes the focus when the page is shown.
  */
 class WelcomePage : public juce::Component,
                     private juce::Timer
@@ -129,6 +134,12 @@ public:
 
     void paint(juce::Graphics& g) override;
     void resized() override;
+
+    /** Up/Down arrows move the focus between buttons (Tab is handled by JUCE). */
+    bool keyPressed(const juce::KeyPress& key) override;
+
+    /** Gives the keyboard focus to the first button when the page appears. */
+    void visibilityChanged() override;
 
     enum class Choice
     {
@@ -166,7 +177,7 @@ private:
     juce::Label titleLabel;
     juce::Label subtitleLabel;
 
-    juce::TextButton signinButton;   // filled
+    juce::TextButton signinButton;   // outlined
     juce::TextButton signupButton;   // outlined
     juce::TextButton guestButton;    // ghost
 

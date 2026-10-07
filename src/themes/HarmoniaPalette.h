@@ -69,6 +69,8 @@ namespace HarmoniaPalette
     inline const juce::Colour screenBg    { 0xFF0A0D11 };
     inline const juce::Colour screenGrid  { 0xFF1F2730 };
 
+    inline const juce::Colour locked { 0xFFE8C872 };
+
     // ──────────────────────────────────────────────────────────────────────
 
     struct ThemeDef
@@ -227,6 +229,14 @@ namespace HarmoniaPalette
             0xFFDFFFEE,
             0xFF8FE8B8,
             0xFF4F886A)
+    };
+
+    // ── COULEURS PAR DÉFAUT DES 3 PASTILLES (guest + premier démarrage) ───
+    inline const std::array<juce::Colour, 3> defaultSlots
+    {
+        juce::Colour (0xFF00D4FF),   // 1 : bleu cyan
+        juce::Colour (0xFF7B8CFF),   // 2 : violet / bleu foncé
+        juce::Colour (0xFF9AA5B8)    // 3 : gris bleuté
     };
 
     // ── CUSTOM ACCENT ─────────────────────────────────────────────────────

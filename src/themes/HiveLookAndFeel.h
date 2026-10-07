@@ -142,9 +142,11 @@ public:
         const bool   bipolar  = slider.getProperties().getWithDefault ("bipolar", false);
         const bool   hover    = slider.isMouseOverOrDragging();
         const auto   tintProp = slider.getProperties().getWithDefault ("tint", juce::var());
-        const auto   tint     = tintProp.isVoid()
-                                  ? HarmoniaPalette::accent
-                                  : juce::Colour::fromString (tintProp.toString());
+        const bool locked = slider.getProperties().getWithDefault ("locked", false);
+        const auto tint   = locked ? HarmoniaPalette::locked
+                           : (tintProp.isVoid() ? HarmoniaPalette::accent
+                                                : juce::Colour::fromString (tintProp.toString()));
+
 
         // 2) Track sombre
         {
@@ -199,14 +201,14 @@ public:
             arc.addCentredArc (centre.x, centre.y, arcRadius, arcRadius, 0.0f, startAngle, currentAngle, true);
         }
 
-        const auto arcCol = onLeftSide ? HarmoniaPalette::warm : tint;
+        const auto arcCol = (onLeftSide && ! locked) ? HarmoniaPalette::warm : tint;
         g.setColour (arcCol);
         g.strokePath (arc, juce::PathStrokeType (arcThick,
                                                   juce::PathStrokeType::curved,
                                                   juce::PathStrokeType::butt));
 
         // Glow toujours visible
-        const float glowAlpha = hover ? 0.32f : 0.16f;
+        const float glowAlpha = locked ? 0.06f : (hover ? 0.32f : 0.16f);
         g.setColour (arcCol.withAlpha (glowAlpha));
         g.strokePath (arc, juce::PathStrokeType (arcThick + 5.0f,
                                                  juce::PathStrokeType::curved,

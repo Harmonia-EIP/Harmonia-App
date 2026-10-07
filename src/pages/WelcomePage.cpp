@@ -38,16 +38,29 @@ WelcomePage::WelcomePage()
     guestButton.setButtonText(Strings::Buttons::GuestMode);
 
     lafSignIn = std::make_unique<WelcomeLookAndFeel>(WelcomeLookAndFeel::BtnStyle::Outlined);
-lafSignUp = std::make_unique<WelcomeLookAndFeel>(WelcomeLookAndFeel::BtnStyle::Outlined);
-lafGuest  = std::make_unique<WelcomeLookAndFeel>(WelcomeLookAndFeel::BtnStyle::Ghost);
+    lafSignUp = std::make_unique<WelcomeLookAndFeel>(WelcomeLookAndFeel::BtnStyle::Outlined);
+    lafGuest  = std::make_unique<WelcomeLookAndFeel>(WelcomeLookAndFeel::BtnStyle::Ghost);
 
     signinButton.setLookAndFeel(lafSignIn.get());
     signupButton.setLookAndFeel(lafSignUp.get());
     guestButton.setLookAndFeel(lafGuest.get());
 
+    // Navigation clavier : Tab / Shift+Tab restent dans cette page, dans
+    // l'ordre Sign in -> Create account -> Guest. Entrée / Espace cliquent
+    // le bouton qui a le focus (comportement natif de juce::Button).
+    setFocusContainerType(juce::Component::FocusContainerType::keyboardFocusContainer);
+
+    int focusOrder = 1;
+
     for (auto* b : { &signinButton, &signupButton, &guestButton })
     {
         b->setMouseCursor(juce::MouseCursor::PointingHandCursor);
+        b->setWantsKeyboardFocus(true);
+        b->setExplicitFocusOrder(focusOrder++);
+
+        // Un clic souris ne laisse pas de halo de focus resté affiché
+        b->setMouseClickGrabsKeyboardFocus(false);
+
         addAndMakeVisible(b);
     }
 
@@ -67,6 +80,43 @@ WelcomePage::~WelcomePage()
     guestButton.setLookAndFeel(nullptr);
 
     setLookAndFeel(nullptr);
+}
+
+void WelcomePage::visibilityChanged()
+{
+    if (! isVisible())
+        return;
+
+    // Différé : à ce stade la page n'est pas forcément encore rattachée à une
+    // fenêtre. SafePointer car la page peut être détruite avant l'exécution.
+    juce::Component::SafePointer<juce::Component> first (&signinButton);
+
+    juce::MessageManager::callAsync([first]
+    {
+        if (first != nullptr && first->isShowing())
+            first->grabKeyboardFocus();
+    });
+}
+
+bool WelcomePage::keyPressed(const juce::KeyPress& key)
+{
+    // Les boutons ne gèrent pas les flèches : elles remontent jusqu'ici.
+    const bool down = (key == juce::KeyPress::downKey);
+    const bool up   = (key == juce::KeyPress::upKey);
+
+    if (down || up)
+    {
+        if (auto* focused = juce::Component::getCurrentlyFocusedComponent())
+        {
+            if (isParentOf(focused))
+            {
+                focused->moveKeyboardFocusToSibling(down);
+                return true;
+            }
+        }
+    }
+
+    return false;
 }
 
 void WelcomePage::timerCallback()

@@ -56,6 +56,34 @@ LoginPage::LoginPage(BackendManager& be,
     loginButton.onClick = [this]() { handleLogin(); };
     backButton.onClick  = [this]() { if (onBack) onBack(); };
 
+    // -------------------------------------------------------------------------
+    // Navigation clavier
+    // Tab / Shift+Tab restent dans la page, dans l'ordre :
+    // identifiant -> mot de passe -> Sign in -> Back.
+    // -------------------------------------------------------------------------
+    setFocusContainerType(juce::Component::FocusContainerType::keyboardFocusContainer);
+
+    {
+        int focusOrder = 1;
+
+        for (juce::Component* c : { (juce::Component*) &identifierField,
+                                    (juce::Component*) &passwordField,
+                                    (juce::Component*) &loginButton,
+                                    (juce::Component*) &backButton })
+        {
+            c->setWantsKeyboardFocus(true);
+            c->setExplicitFocusOrder(focusOrder++);
+        }
+
+        // Un clic souris sur un bouton ne laisse pas de halo de focus affiché
+        loginButton.setMouseClickGrabsKeyboardFocus(false);
+        backButton.setMouseClickGrabsKeyboardFocus(false);
+    }
+
+    // Entrée : identifiant -> mot de passe, puis mot de passe -> validation
+    identifierField.onReturnKey = [this]() { passwordField.grabKeyboardFocus(); };
+    passwordField.onReturnKey   = [this]() { handleLogin(); };
+
     startTimerHz(60);
 }
 
@@ -67,6 +95,22 @@ LoginPage::~LoginPage()
     loginButton.setLookAndFeel(nullptr);
     backButton.setLookAndFeel(nullptr);
     setLookAndFeel(nullptr);
+}
+
+void LoginPage::visibilityChanged()
+{
+    if (! isVisible())
+        return;
+
+    // Différé : la page n'est pas forcément encore rattachée à une fenêtre.
+    // SafePointer car la page peut être détruite avant l'exécution.
+    juce::Component::SafePointer<juce::Component> first (&identifierField);
+
+    juce::MessageManager::callAsync([first]
+    {
+        if (first != nullptr && first->isShowing())
+            first->grabKeyboardFocus();
+    });
 }
 
 void LoginPage::timerCallback()
@@ -118,6 +162,22 @@ void LoginPage::paint(juce::Graphics& g)
         line.addColour(0.5, HarmoniaColours::waveBlue.withAlpha(0.7f));
         g.setGradientFill(line);
         g.fillRect(lx, ly, lineW, 1.f);
+    }
+}
+
+void LoginPage::paintOverChildren(juce::Graphics& g)
+{
+    // Halo autour du bouton qui a le focus clavier (Tab). La page se repeint
+    // déjà à 60 Hz (animation), donc pas besoin d'écouter les changements de focus.
+    for (auto* b : { &loginButton, &backButton })
+    {
+        if (b->hasKeyboardFocus(true))
+        {
+            const auto r = b->getBounds().toFloat().expanded(2.f);
+
+            g.setColour(HarmoniaColours::waveCyan.withAlpha(0.9f));
+            g.drawRoundedRectangle(r, r.getHeight() * 0.5f, 1.5f);
+        }
     }
 }
 

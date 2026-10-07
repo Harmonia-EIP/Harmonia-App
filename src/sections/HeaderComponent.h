@@ -5,8 +5,10 @@
 #include "../themes/HarmoniaPalette.h"
 #include "../themes/HiveLookAndFeel.h"
 #include "../themes/PaletteSelector.h"
-#include "../backendManagement/BackendManager.h"
+#include "../backend/BackendManager.h"
 #include "../config/AiConfig.h"
+#include "../backend/BackendPalette.h"
+#include <BinaryData.h>
 
 //==============================================================================
 namespace HeaderColours
@@ -334,6 +336,10 @@ public:
 
     std::function<void (HarmoniaPalette::Theme)> onThemeChanged;
     std::function<void (Mode)> onModeChanged;
+
+    // Palette modifiée (couleur ou pastille active) : 3 hex "#RRGGBB" + slot 0..2.
+    // Jamais appelé pour un invité.
+    std::function<void (const juce::StringArray&, int)> onPaletteChanged;
 
     AIModel getSelectedModel() const;
     juce::String getSelectedModelName() const;

@@ -73,8 +73,10 @@ void AppController::showWelcomeScreen()
                 guest.isGuest = true;
                 guest.userId = 0;
                 guest.pseudo = Strings::Labels::GuestMode;
-                guest.themeId = 0;
-                guest.layoutId = 0;
+
+                // Invité : pas de palette backend, le header utilise les couleurs par défaut
+                guest.paletteColours.clear();
+                guest.paletteSlot = 0;
 
                 currentSession = guest;
 
@@ -119,7 +121,7 @@ void AppController::showSignupScreen()
     auto signup = std::make_unique<SignupPage>(backend,
         [this](const UserSession& session)
         {
-            backend.writeLog("Signup successful for user: " + session.themeId);
+            backend.writeLog("Signup successful for user: " + session.pseudo);
             currentSession = session;
             showMainScreen(session);
         });

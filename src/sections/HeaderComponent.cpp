@@ -1,5 +1,4 @@
 #include "HeaderComponent.h"
-#include <BinaryData.h>   // si l'include échoue, utilise le même que dans ton composant parent
 
 //==============================================================================
 // IconButton
@@ -366,9 +365,22 @@ HeaderComponent::HeaderComponent (const UserSession& s)
     // Palette : 3 pastilles libres (le thème est toujours Custom)
     addAndMakeVisible (paletteSelector);
 
-    // Restauration depuis la session (à activer quand UserSession a ces champs) :
-    // paletteSelector.setSlots (session.paletteColours, session.paletteSlot);
+    // Restauration : uniquement depuis ce que le backend a renvoyé (stocké dans la session)
+    if (! session.isGuest && session.paletteColours.size() == 3)
+    {
+        std::array<juce::Colour, 3> cols;
 
+        for (int i = 0; i < 3; ++i)
+            cols[(size_t) i] = BackendPalette::fromHex (session.paletteColours[i]);
+
+        paletteSelector.setSlots (cols, session.paletteSlot);
+    }
+    else
+    {
+        paletteSelector.resetToDefaults();   // invité, ou pas encore de palette backend
+    }
+
+    // Doit venir APRÈS la restauration
     HarmoniaPalette::setTheme (paletteSelector.getCurrentTheme());
 
     paletteSelector.onThemeUpdated = [this]
@@ -380,6 +392,17 @@ HeaderComponent::HeaderComponent (const UserSession& s)
 
         if (onThemeChanged)
             onThemeChanged (theme);
+
+        // Un compte connecté synchronise à chaque changement (couleur OU pastille)
+        if (! session.isGuest && onPaletteChanged)
+        {
+            juce::StringArray hex;
+
+            for (auto c : paletteSelector.getSlotColours())
+                hex.add (BackendPalette::toHex (c));
+
+            onPaletteChanged (hex, paletteSelector.getActiveSlot());
+        }
 
         repaint();
     };
@@ -642,7 +665,7 @@ void HeaderComponent::paintPromptBar (juce::Graphics& g)
                 const auto eb = promptEditor.getBounds().toFloat();
                 const float now = (float) (juce::Time::getMillisecondCounterHiRes() / 1000.0);
 
-                constexpr int   nBars = 16;
+                constexpr int   nBars = 10;
                 constexpr float step  = 5.0f;
                 const float x0   = eb.getRight() - nBars * step - 6.0f;
                 const float maxH = b.getHeight() * 0.5f;

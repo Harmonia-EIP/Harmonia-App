@@ -141,6 +141,11 @@ public:
      */
     AiResult generatePreset(const juce::String& prompt, int modelId, const juce::String& backendName);
 
+    AiResult refinePreset(const juce::String& prompt,
+                          const juce::String& currentJson,
+                          const juce::StringArray& lockedParamIds,
+                          int modelId,
+                          const juce::String& backendName);
     // =========================================================
     // CONFIGURATION
     // =========================================================
@@ -201,26 +206,45 @@ public:
     std::optional<UserSession> syncProfileParams(const UserSession& session);
 
     /**
-     * @brief Updates the current UI theme.
+     * @brief Updates the palette immediately (blocking).
      *
-     * @param themeId Theme identifier.
+     * @param colours 3 hex colours "#RRGGBB".
+     * @param slot Selected slot, 0..2.
      *
      * @return ProfileResult Operation result.
      */
-    ProfileResult updateTheme(int themeId);
+    ProfileResult updatePalette(const juce::StringArray& colours, int slot);
 
     /**
-     * @brief Updates the current UI layout.
+     * @brief Updates the palette in the background (long debounce).
      *
-     * @param layoutId Layout identifier.
+     * Refreshes the local session file immediately, then sends a single PUT
+     * after 2.5 s without change, only if the state differs from the last one
+     * known by the server. Guests are ignored.
      *
-     * @return ProfileResult Operation result.
+     * @param colours 3 hex colours "#RRGGBB".
+     * @param slot Selected slot, 0..2.
      */
-    ProfileResult updateLayout(int layoutId);
+    void updatePaletteAsync(const juce::StringArray& colours, int slot);
 
-    void updateLocalTheme(int themeId);
+    /**
+     * @brief Sends the pending palette change now, without blocking.
+     *
+     * Call it when the plugin window closes and on logout (BEFORE
+     * clearSession()). Does nothing if nothing is pending.
+     */
+    void flushPaletteIfPending();
 
-    void updateThemeAsync(int themeId);
+    /**
+     * @brief Sets the reference "server state" used to skip useless PUTs.
+     *
+     * Call it when the main screen opens, with the palette of the session
+     * (empty array for a guest). Drops any pending change.
+     *
+     * @param colours 3 hex colours "#RRGGBB", or empty.
+     * @param slot Selected slot, 0..2.
+     */
+    void resetPaletteSyncState(const juce::StringArray& colours, int slot);
 
 private:
 
