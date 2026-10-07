@@ -73,6 +73,15 @@
 #include "tools/PresetLoader.h"
 #include "tools/Alert.h"
 
+namespace UiState
+{
+    inline const juce::Identifier identity     { "ui_identity" };
+    inline const juce::Identifier themeId      { "ui_theme_id" };
+    inline const juce::Identifier customColour { "ui_custom_colour" };
+    inline const juce::Identifier paletteSlot  { "ui_palette_slot" };
+    inline const juce::Identifier presetName   { "ui_preset_name" };
+}
+
 class MainComponent : public juce::Component
 {
 public:
@@ -132,6 +141,7 @@ public:
      * @brief Callback triggered when user logs out.
      */
     std::function<void()> onLogout;
+ 
 
 private:
 
@@ -165,6 +175,13 @@ private:
 
     /** Custom Harmonia look-and-feel implementation. */
     HiveLookAndFeel lookAndFeel;
+
+    void saveThemeToState (int slot = -1);
+    void setPresetName (const juce::String& name);
+    void restorePresetLabel();
+
+    void activatePalette();
+
 
     juce::TooltipWindow tooltipWindow { this, 3000 };
 

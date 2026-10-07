@@ -19,7 +19,12 @@ HarmoniaAudioProcessor::HarmoniaAudioProcessor()
     paramRefs.bind (apvts);
 }
 
-HarmoniaAudioProcessor::~HarmoniaAudioProcessor() {}
+HarmoniaAudioProcessor::~HarmoniaAudioProcessor()
+{
+    // Projet fermé / plugin déchargé : envoie le changement de palette en attente
+    // (non bloquant, thread détaché avec timeout court).
+    backend.flushPaletteIfPending();
+}
 
 const juce::String HarmoniaAudioProcessor::getName() const   { return "HarmoniaPlugin"; }
 bool HarmoniaAudioProcessor::acceptsMidi() const             { return true; }

@@ -329,6 +329,8 @@ public:
 
     Mode getMode() const { return mode; }
     void setMode (Mode m, bool notify = true);
+    void restoreSlot (int slot);
+    void reapplyTheme();
 
     std::function<void (HarmoniaPalette::Theme)> onThemeChanged;
     std::function<void (Mode)> onModeChanged;

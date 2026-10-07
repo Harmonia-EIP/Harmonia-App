@@ -67,7 +67,7 @@ private:
     HarmoniaAudioProcessor& processor;
 
     /** Backend manager handling authentication and sessions. */
-    BackendManager backend;
+    BackendManager &backend;
 
     /**
      * Currently displayed screen component.

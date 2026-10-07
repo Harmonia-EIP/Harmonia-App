@@ -1,166 +1,144 @@
 #include "BackendManager.h"
-#include "BackendAuthManager.h"
-#include "BackendProfileManager.h"
 
-#include <cpr/cpr.h>
-#include <nlohmann/json.hpp>
-
-using json = nlohmann::json;
-
-
-juce::File BackendManager::getAppDataDir() const
-{
-    auto appData = juce::File::getSpecialLocation(
-        juce::File::userApplicationDataDirectory);
-
-    auto harmoniaDir = appData.getChildFile("Harmonia");
-
-    if (!harmoniaDir.exists())
-        harmoniaDir.createDirectory();
-
-    return harmoniaDir;
-}
-
+#include "services/AiService.h"
+#include "services/AuthService.h"
+#include "services/ProfileService.h"
 
 BackendManager::BackendManager()
+    : http (juce::String (AppConfig::ApiUrl))
 {
-    apiUrl = AppConfig::ApiUrl;
-    writeLog("API_URL = " + apiUrl);
+    // Le logger existe déjà ici : ces deux lignes sont enfin écrites
+    // (avant, logFile était assigné après les premiers writeLog).
+    logger->info ("API_URL = " + http.getBaseUrl());
+    logger->info ("SESSION PATH = " + sessionStore->getSessionFile().getFullPathName());
 
-    auto dir = getAppDataDir();
-    sessionFile = dir.getChildFile("HarmoniaSession.json");
-    writeLog("SESSION PATH = " + sessionFile.getFullPathName());
-
-    logFile = dir.getChildFile("HarmoniaLogs.txt");
-
-    authManager    = std::make_unique<BackendAuthManager>(*this);
-    profileManager = std::make_unique<BackendProfileManager>(*this);
-    aiManager = std::make_unique<BackendAiManager>(*this);
+    authService    = std::make_unique<AuthService>    (http, sessionStore.get(), logger.get());
+    profileService = std::make_unique<ProfileService> (http, sessionStore.get(), logger.get());
+    aiService      = std::make_unique<AiService>      (http, sessionStore.get(), logger.get());
 }
 
-
-BackendManager::~BackendManager()
-{
-    authManager.reset();
-    profileManager.reset();
-    aiManager.reset();
-}
-
-
-void BackendManager::writeLog(const juce::String& message) const
-{
-    if (logFile != juce::File())
-        logFile.appendText("[Backend] " + message + "\n");
-}
+BackendManager::~BackendManager() = default;
 
 //================================================
 // AUTH
-AuthResult BackendManager::loginUser(const juce::String& usernameOrEmail,
-                                     const juce::String& password)
-{
-    return authManager->loginUser(usernameOrEmail, password);
-}
 
-AuthResult BackendManager::signupUser(const juce::String& username,
-                                      const juce::String& firstname,
-                                      const juce::String& lastname,
-                                      const juce::String& email,
+AuthResult BackendManager::loginUser (const juce::String& usernameOrEmail,
                                       const juce::String& password)
 {
-    return authManager->signupUser(username, firstname, lastname, email, password);
+    auto result = authService->loginUser (usernameOrEmail, password);
+
+    if (result.success)
+        profileService->refreshSessionAsync (result.session);
+
+    return result;
+}
+
+AuthResult BackendManager::signupUser (const juce::String& username,
+                                       const juce::String& firstname,
+                                       const juce::String& lastname,
+                                       const juce::String& email,
+                                       const juce::String& password)
+{
+    auto result = authService->signupUser (username, firstname, lastname, email, password);
+
+    if (result.success)
+        profileService->refreshSessionAsync (result.session);
+
+    return result;
 }
 
 std::optional<UserSession> BackendManager::loadSession()
 {
-    return authManager->loadSession();
+    return sessionStore->load();
 }
 
-void BackendManager::saveSession(const UserSession& session)
+void BackendManager::saveSession (const UserSession& session)
 {
-    authManager->saveSession(session);
+    sessionStore->save (session);
 }
 
 void BackendManager::clearSession()
 {
-    authManager->clearSession();
+    authService->logout();
 }
 
 //================================================
 // AI : retourne le JSON brut (format charter) pour que le caller le passe à PresetLoader.
-AiResult BackendManager::generatePreset(const juce::String& prompt, int modelId, const juce::String& backendName)
+
+AiResult BackendManager::generatePreset (const juce::String& prompt, int modelId, const juce::String& backendName)
 {
-    return aiManager->generatePreset(prompt, modelId, backendName);
+    return aiService->generatePreset (prompt, modelId, backendName);
 }
 
-AiResult BackendManager::refinePreset(const juce::String& prompt,
-                                      const juce::String& currentJson,
-                                      const juce::StringArray& lockedParamIds,
-                                      int modelId,
-                                      const juce::String& backendName)
+AiResult BackendManager::refinePreset (const juce::String& prompt,
+                                       const juce::String& currentJson,
+                                       const juce::StringArray& lockedParamIds,
+                                       int modelId,
+                                       const juce::String& backendName)
 {
-    return aiManager->refinePreset(prompt, currentJson, lockedParamIds, modelId, backendName);
+    return aiService->refinePreset (prompt, currentJson, lockedParamIds, modelId, backendName);
 }
+
 //================================================
 // PROFILE
+
 ProfileResult BackendManager::getProfile()
 {
-    if (profileManager)
-        return profileManager->getProfile();
-
-    return ProfileResult::error("Profile manager not initialized");
+    return profileService->getProfile();
 }
 
-ProfileResult BackendManager::updatePalette(const juce::StringArray& colours, int slot)
+ProfileResult BackendManager::updatePalette (const juce::StringArray& colours, int slot)
 {
-    if (profileManager)
-        return profileManager->updatePalette(colours, slot);
-
-    return ProfileResult::error("Profile manager not initialized");
+    return profileService->updatePalette (colours, slot);
 }
 
-void BackendManager::updatePaletteAsync(const juce::StringArray& colours, int slot)
+void BackendManager::updatePaletteAsync (const juce::StringArray& colours, int slot)
 {
-    if (profileManager)
-        profileManager->updatePaletteAsync(colours, slot);
+    profileService->updatePaletteAsync (colours, slot);
 }
 
 void BackendManager::flushPaletteIfPending()
 {
-    if (profileManager)
-        profileManager->flushPaletteIfPending();
+    profileService->flushPaletteIfPending();
 }
 
-void BackendManager::resetPaletteSyncState(const juce::StringArray& colours, int slot)
+void BackendManager::resetPaletteSyncState (const juce::StringArray& colours, int slot)
 {
-    if (profileManager)
-        profileManager->resetPaletteSyncState(colours, slot);
+    profileService->resetPaletteSyncState (colours, slot);
 }
 
 //================================================
 // SYNC
-void BackendManager::syncProfileParamsInBackground(const UserSession& session)
+
+void BackendManager::syncProfileParamsInBackground (const UserSession& session)
 {
-    authManager->syncProfileParamsInBackground(session);
+    profileService->refreshSessionAsync (session);
 }
 
-std::optional<UserSession> BackendManager::syncProfileParams(const UserSession& session)
+std::optional<UserSession> BackendManager::syncProfileParams (const UserSession& session)
 {
-    return authManager->syncProfileParams(session);
+    return profileService->refreshSession (session);
 }
 
 //================================================
-// GETTERS
+// GETTERS / LOGS
+
 const juce::String& BackendManager::getApiUrl() const
 {
-    return apiUrl;
+    return http.getBaseUrl();
 }
 
 const juce::File& BackendManager::getSessionFile() const
 {
-    return sessionFile;
+    return sessionStore->getSessionFile();
 }
 
 const juce::File& BackendManager::getLogFile() const
 {
-    return logFile;
+    return logger->getLogFile();
+}
+
+void BackendManager::writeLog (const juce::String& message) const
+{
+    logger->info (message);
 }

@@ -1,7 +1,15 @@
 #include "AppController.h"
 
-AppController::AppController(HarmoniaAudioProcessor& p) : processor(p)
+// `backend` est maintenant une RÉFÉRENCE vers le BackendManager du processor
+// (voir AppController.h : `BackendManager& backend;`, déclaré après `processor`).
+AppController::AppController(HarmoniaAudioProcessor& p)
+    : processor(p), backend(p.getBackend())
 {
+    // Écrits ici (ouverture de l'éditeur) et plus dans le constructeur du backend :
+    // un DAW instancie le plugin sans éditeur pendant le scan, et ça ne doit pas toucher au disque.
+    backend.writeLog("API_URL = " + backend.getApiUrl());
+    backend.writeLog("SESSION PATH = " + backend.getSessionFile().getFullPathName());
+
     auto session = backend.loadSession();
 
     if (session && session->expiresAt > juce::Time::getCurrentTime())
@@ -11,31 +19,12 @@ AppController::AppController(HarmoniaAudioProcessor& p) : processor(p)
 
         juce::Component::SafePointer<AppController> safeThis(this);
 
-        // Captured by value (not `this`/`backend`): the network request below
-        // can take seconds, and the user may close the plugin window (which
-        // destroys this AppController and its BackendManager) well before it
-        // returns. `safeThis` is only ever checked-then-used on the message
-        // thread via callAsync, where the check and the use happen
-        // atomically - checking it from this background thread and then
-        // dereferencing `backend` afterwards would be a TOCTOU race.
-        const auto apiUrl      = backend.getApiUrl();
-        const auto sessionFile = backend.getSessionFile();
+        // Le backend vit dans le processor : il survit à cet AppController (donc à l'éditeur).
+        // La requête tourne en arrière-plan ; son résultat revient sur le message thread,
+        // où `safeThis` est vérifié puis utilisé de façon atomique : si l'utilisateur a fermé
+        // la fenêtre entre-temps, le callback ne fait rien.
+        backend.syncProfileParamsInBackground(*session);
 
-        juce::Thread::launch([safeThis, session, apiUrl, sessionFile]
-        {
-            auto synced = BackendAuthManager::syncProfileParamsFromServer(apiUrl, sessionFile, *session);
-
-            juce::MessageManager::callAsync([safeThis, synced]
-            {
-                if (safeThis == nullptr)
-                    return;
-
-                if (synced)
-                    safeThis->currentSession = *synced;
-                else
-                    safeThis->backend.clearSession();
-            });
-        });
         return;
     }
 

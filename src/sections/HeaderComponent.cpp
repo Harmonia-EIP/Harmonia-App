@@ -472,6 +472,24 @@ HeaderComponent::~HeaderComponent()
     juce::Desktop::getInstance().removeGlobalMouseListener (this);
 }
 
+void HeaderComponent::restoreSlot (int slot)
+{
+    paletteSelector.setSlots (paletteSelector.getSlotColours(),
+                              juce::jlimit (0, 2, slot));
+    reapplyTheme();
+}
+
+void HeaderComponent::reapplyTheme()
+{
+    // remet la couleur globale à celle de la pastille active de CETTE instance
+    paletteSelector.setSlots (paletteSelector.getSlotColours(),
+                              paletteSelector.getActiveSlot());
+
+    HarmoniaPalette::setTheme (paletteSelector.getCurrentTheme());
+    applyColours();
+    repaint();
+}
+
 void HeaderComponent::mouseDown (const juce::MouseEvent& e)
 {
     if (e.originalComponent != &promptEditor && ! promptEditor.isParentOf (e.originalComponent))
@@ -482,7 +500,7 @@ void HeaderComponent::mouseDown (const juce::MouseEvent& e)
 // La couleur ne dépend plus du mode : seul le style de la barre change
 juce::Colour HeaderComponent::modeColour() const
 {
-    return HarmoniaPalette::accent;
+    return paletteSelector.getActiveColour();
 }
 
 void HeaderComponent::setMode (Mode m, bool notify)

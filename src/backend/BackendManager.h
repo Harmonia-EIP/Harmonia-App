@@ -1,289 +1,122 @@
 /**
  * @file BackendManager.h
- * @brief Main backend facade used to centralize all backend services.
+ * @brief Façade du backend : point d'entrée unique pour l'UI.
  *
- * BackendManager acts as the application's main entry point
- * for all backend-related operations.
- *
- * Managed services:
- * - Authentication
- * - User profile management
- * - AI preset generation
- * - Session persistence
- * - User preference synchronization
- * - Backend configuration
- *
- * This architecture simplifies communication between
- * the UI layer and backend services.
+ * L'API publique est identique à l'ancienne version : l'UI n'a pas à changer.
+ * Tout le travail est délégué à :
+ *   - AuthService     login / signup / logout
+ *   - ProfileService  profil, sync de session, palette
+ *   - AiService       génération / affinage de presets
+ * qui utilisent HttpClient (réseau), SessionStore (fichier de session) et
+ * BackendLogger (logs), et ne connaissent jamais BackendManager.
  */
 
 #pragma once
 
 #include <juce_core/juce_core.h>
-#include <map>
-#include <string>
+
+#include <memory>
 #include <optional>
 
 #include "BackendTypes.h"
+#include "core/BackendLogger.h"
+#include "net/HttpClient.h"
+#include "storage/SessionStore.h"
 
-#include "BackendAiManager.h"
+// Shim de compatibilité (voir le fichier) : l'ancien BackendManager.h incluait les managers.
 #include "BackendAuthManager.h"
-#include "BackendProfileManager.h"
 
-class BackendAuthManager;
-class BackendProfileManager;
-class BackendAiManager;
+class AuthService;
+class ProfileService;
+class AiService;
 
-/**
- * @class BackendManager
- * @brief Central facade for all backend operations.
- *
- * BackendManager encapsulates specialized backend modules:
- * - BackendAuthManager
- * - BackendProfileManager
- * - BackendAiManager
- *
- * Responsibilities:
- * - Manage user authentication
- * - Handle local session storage
- * - Synchronize profile settings
- * - Load backend configuration
- * - Provide logging utilities
- * - Delegate backend requests
- *
- * This class follows the Facade design pattern
- * to provide a simplified API for the application.
- */
 class BackendManager
 {
 public:
-
-    /**
-     * @brief Creates and initializes the backend manager.
-     *
-     * During initialization:
-     * - Configuration is loaded
-     * - Application directories are created
-     * - Backend managers are instantiated
-     * - Session file paths are initialized
-     */
     BackendManager();
-
-    /**
-     * @brief Destroys the backend manager and releases resources.
-     */
     ~BackendManager();
 
+    BackendManager (const BackendManager&) = delete;
+    BackendManager& operator= (const BackendManager&) = delete;
+
     // =========================================================
-    // AUTHENTICATION
+    // AUTHENTIFICATION
     // =========================================================
 
-    /**
-     * @brief Authenticates a user using username/email and password.
-     *
-     * @param usernameOrEmail Username or email address.
-     * @param password User password.
-     *
-     * @return AuthResult Authentication result.
-     */
-    AuthResult loginUser(const juce::String& usernameOrEmail,
-                         const juce::String& password);
-
-    /**
-     * @brief Creates a new user account.
-     *
-     * @param username User username.
-     * @param firstname User first name.
-     * @param lastname User last name.
-     * @param email User email address.
-     * @param password User password.
-     *
-     * @return AuthResult Registration result.
-     */
-    AuthResult signupUser(const juce::String& username,
-                          const juce::String& firstname,
-                          const juce::String& lastname,
-                          const juce::String& email,
+    /** Login. En cas de succès, la session est sauvegardée et la resync du profil part en arrière-plan. */
+    AuthResult loginUser (const juce::String& usernameOrEmail,
                           const juce::String& password);
 
-    /**
-     * @brief Loads the locally stored user session.
-     *
-     * @return Optional UserSession if available.
-     */
+    /** Création de compte. Même comportement que loginUser en cas de succès. */
+    AuthResult signupUser (const juce::String& username,
+                           const juce::String& firstname,
+                           const juce::String& lastname,
+                           const juce::String& email,
+                           const juce::String& password);
+
     std::optional<UserSession> loadSession();
+    void saveSession (const UserSession& session);
 
-    /**
-     * @brief Saves the current user session locally.
-     *
-     * @param session Session data to save.
-     */
-    void saveSession(const UserSession& session);
-
-    /**
-     * @brief Clears the locally stored session.
-     */
+    /** Supprime la session locale. Appeler flushPaletteIfPending() AVANT. */
     void clearSession();
 
     // =========================================================
-    // AI
+    // IA
     // =========================================================
 
-    /**
-     * @brief Generates an AI preset from a text prompt.
-     *
-     * The backend returns raw JSON data that can later
-     * be parsed by the preset loader.
-     *
-     * @param prompt User prompt.
-     *
-     * @return AiResult Generated preset result.
-     */
-    AiResult generatePreset(const juce::String& prompt, int modelId, const juce::String& backendName);
+    /** Retourne le JSON brut (format charter), à passer au PresetLoader. Invités refusés. */
+    AiResult generatePreset (const juce::String& prompt, int modelId, const juce::String& backendName);
 
-    AiResult refinePreset(const juce::String& prompt,
-                          const juce::String& currentJson,
-                          const juce::StringArray& lockedParamIds,
-                          int modelId,
-                          const juce::String& backendName);
-    // =========================================================
-    // CONFIGURATION
-    // =========================================================
-
-    /**
-     * @brief Returns the backend API base URL.
-     *
-     * @return API URL string.
-     */
-    const juce::String& getApiUrl() const;
-
-    /**
-     * @brief Returns the session file location.
-     *
-     * @return Session file path.
-     */
-    const juce::File& getSessionFile() const;
-
-    /**
-     * @brief Returns the backend log file location.
-     *
-     * @return Log file path.
-     */
-    const juce::File& getLogFile() const;
-
-    /**
-     * @brief Writes a message into the backend log file.
-     *
-     * @param message Message to append.
-     */
-    void writeLog(const juce::String& message) const;
+    AiResult refinePreset (const juce::String& prompt,
+                           const juce::String& currentJson,
+                           const juce::StringArray& lockedParamIds,
+                           int modelId,
+                           const juce::String& backendName);
 
     // =========================================================
-    // PROFILE
+    // PROFIL
     // =========================================================
 
-    /**
-     * @brief Retrieves the current user profile.
-     *
-     * @return ProfileResult User profile data.
-     */
     ProfileResult getProfile();
 
-    /**
-     * @brief Synchronizes profile parameters asynchronously.
-     *
-     * @param session Current user session.
-     */
-    void syncProfileParamsInBackground(const UserSession& session);
+    /** Resync de la session depuis GET /profile/me, sur un thread de fond. */
+    void syncProfileParamsInBackground (const UserSession& session);
 
-    /**
-     * @brief Synchronizes profile parameters immediately.
-     *
-     * @param session Current user session.
-     *
-     * @return Updated session if synchronization succeeds.
-     */
-    std::optional<UserSession> syncProfileParams(const UserSession& session);
+    /** Resync bloquante. nullopt si échec. */
+    std::optional<UserSession> syncProfileParams (const UserSession& session);
 
-    /**
-     * @brief Updates the palette immediately (blocking).
-     *
-     * @param colours 3 hex colours "#RRGGBB".
-     * @param slot Selected slot, 0..2.
-     *
-     * @return ProfileResult Operation result.
-     */
-    ProfileResult updatePalette(const juce::StringArray& colours, int slot);
+    /** Palette, bloquant. Refuse invités et palettes invalides. */
+    ProfileResult updatePalette (const juce::StringArray& colours, int slot);
 
-    /**
-     * @brief Updates the palette in the background (long debounce).
-     *
-     * Refreshes the local session file immediately, then sends a single PUT
-     * after 2.5 s without change, only if the state differs from the last one
-     * known by the server. Guests are ignored.
-     *
-     * @param colours 3 hex colours "#RRGGBB".
-     * @param slot Selected slot, 0..2.
-     */
-    void updatePaletteAsync(const juce::StringArray& colours, int slot);
+    /** Palette, en arrière-plan (debounce 2,5 s, ignore les PUT inutiles, invités ignorés). */
+    void updatePaletteAsync (const juce::StringArray& colours, int slot);
 
-    /**
-     * @brief Sends the pending palette change now, without blocking.
-     *
-     * Call it when the plugin window closes and on logout (BEFORE
-     * clearSession()). Does nothing if nothing is pending.
-     */
+    /** Envoie le changement de palette en attente, sans bloquer. */
     void flushPaletteIfPending();
 
-    /**
-     * @brief Sets the reference "server state" used to skip useless PUTs.
-     *
-     * Call it when the main screen opens, with the palette of the session
-     * (empty array for a guest). Drops any pending change.
-     *
-     * @param colours 3 hex colours "#RRGGBB", or empty.
-     * @param slot Selected slot, 0..2.
-     */
-    void resetPaletteSyncState(const juce::StringArray& colours, int slot);
+    /** Définit l'état "connu du serveur" (palette de la session, vide pour un invité). */
+    void resetPaletteSyncState (const juce::StringArray& colours, int slot);
+
+    // =========================================================
+    // CONFIGURATION / LOGS
+    // (détails internes : à retirer de l'API publique une fois que l'UI ne les utilise plus,
+    //  cf. étape 4.2 du plan)
+    // =========================================================
+
+    const juce::String& getApiUrl() const;
+    const juce::File&   getSessionFile() const;
+    const juce::File&   getLogFile() const;
+
+    void writeLog (const juce::String& message) const;
 
 private:
+    // L'ordre de déclaration compte : les membres sont détruits en sens inverse,
+    // donc les services (en dernier) disparaissent avant ce qu'ils utilisent.
+    juce::SharedResourcePointer<BackendLogger> logger;
+    juce::SharedResourcePointer<SessionStore>  sessionStore;
+    HttpClient                                 http;
 
-    /**
-     * @brief Returns the application data directory.
-     *
-     * Creates the directory if it does not already exist.
-     *
-     * @return Application data folder.
-     */
-    juce::File getAppDataDir() const;
-
-    /**
-     * @brief Backend log file.
-     */
-    juce::File logFile;
-
-    /**
-     * @brief Backend API base URL.
-     */
-    juce::String apiUrl;
-
-    /**
-     * @brief Local session file path.
-     */
-    juce::File sessionFile;
-
-    /**
-     * @brief Authentication manager instance.
-     */
-    std::unique_ptr<BackendAuthManager> authManager;
-
-    /**
-     * @brief Profile manager instance.
-     */
-    std::unique_ptr<BackendProfileManager> profileManager;
-
-    /**
-     * @brief AI manager instance.
-     */
-    std::unique_ptr<BackendAiManager> aiManager;
+    std::unique_ptr<AuthService>    authService;
+    std::unique_ptr<ProfileService> profileService;
+    std::unique_ptr<AiService>      aiService;
 };

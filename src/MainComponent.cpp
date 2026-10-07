@@ -40,20 +40,44 @@ MainComponent::MainComponent (HarmoniaAudioProcessor& p,
     headerComponent = std::make_unique<HeaderComponent> (session);
     addAndMakeVisible (*headerComponent);
 
-    // Application visuelle uniquement : la synchro backend passe par
-    // onPaletteChanged.
-    headerComponent->onThemeChanged =
-        [this] (HarmoniaPalette::Theme theme)
+    // Restauration depuis le state de CETTE instance (avant les callbacks)
+        // Restauration depuis le state de CETTE instance (avant les callbacks)
+    {
+        const juce::String identity = session.isGuest ? juce::String ("guest")
+                                                      : "user_" + juce::String (session.userId);
+        auto& st = processor.getAPVTS().state;
+
+        // Identité différente de la dernière fois : on oublie l'état de l'ancienne
+        if (st.getProperty (UiState::identity).toString() != identity)
+        {
+            st.removeProperty (UiState::presetName,   nullptr);
+            st.removeProperty (UiState::paletteSlot,  nullptr);
+            st.removeProperty (UiState::themeId,      nullptr);
+            st.removeProperty (UiState::customColour, nullptr);
+        }
+
+        st.setProperty (UiState::identity, identity, nullptr);
+
+        // Restauration (ne trouvera rien si on vient d'effacer)
+        if (st.hasProperty (UiState::paletteSlot))
+        {
+            headerComponent->restoreSlot ((int) st[UiState::paletteSlot]);
+            currentTheme = headerComponent->getPaletteSelector().getCurrentTheme();
+        }
+
+        restorePresetLabel();
+    }
+
+    headerComponent->onThemeChanged = [this] (HarmoniaPalette::Theme theme)
     {
         currentTheme = theme;
+        saveThemeToState();
         applyTheme();
     };
 
-    // Palette complete + pastille active (slot 0..2). Le header ne l'emet pas
-    // pour un invité, et le backend ignore de toute façon les invités.
-    headerComponent->onPaletteChanged =
-        [this] (const juce::StringArray& colours, int slot)
+    headerComponent->onPaletteChanged = [this] (const juce::StringArray& colours, int slot)
     {
+        saveThemeToState (slot);
         backend.updatePaletteAsync (colours, slot);
     };
 
@@ -92,9 +116,12 @@ MainComponent::~MainComponent()
 
     processor.setOscilloscope (nullptr);
     setLookAndFeel(nullptr);
+}
 
-    HarmoniaPalette::setTheme(
-        HarmoniaPalette::Theme::Dark);
+void MainComponent::activatePalette()
+{
+    if (headerComponent != nullptr)
+        HarmoniaPalette::setCustomAccent (headerComponent->getPaletteSelector().getActiveColour());
 }
 
 void MainComponent::setRefineUi (bool refine)
@@ -114,12 +141,15 @@ juce::StringArray MainComponent::getLockedParamIds() const
 
 void MainComponent::applyTheme()
 {
+    activatePalette();
     HarmoniaPalette::setTheme (currentTheme);
 
+    oscMixPanel->setAccentColour (HarmoniaPalette::sectionOsc1);
+    osc2Panel->setAccentColour   (HarmoniaPalette::sectionOsc2);
+    screenPanel->setAccentColour (HarmoniaPalette::sectionDisplay);
+
     lookAndFeel.refreshTheme();
-
     sendLookAndFeelChange();
-
     repaint();
 }
 
@@ -132,7 +162,8 @@ void MainComponent::registerJuiceFor (juce::Component* c)
             const auto centreInK = juce::Point<float> ((float) c->getWidth(), (float) c->getHeight()) * 0.5f;
             const auto centreInScreen = c->localPointToGlobal (centreInK);
             const auto centreInParticles = particles.getLocalPoint (nullptr, centreInScreen);
-            particles.emitBurst (centreInParticles, 4, HarmoniaPalette::accent);
+            particles.emitBurst (centreInParticles, 4,
+                     headerComponent->getPaletteSelector().getActiveColour());
         };
     }
 }
@@ -244,6 +275,14 @@ void MainComponent::wireHeaderButtons()
 
             backend.clearSession();
 
+            // Déconnexion explicite : on oublie tout l'état d'UI de cette identité
+            auto& st = processor.getAPVTS().state;
+            st.removeProperty (UiState::identity,     nullptr);
+            st.removeProperty (UiState::presetName,   nullptr);
+            st.removeProperty (UiState::paletteSlot,  nullptr);
+            st.removeProperty (UiState::themeId,      nullptr);
+            st.removeProperty (UiState::customColour, nullptr);
+
             if (onLogout)
                 onLogout();
         };
@@ -275,10 +314,45 @@ void MainComponent::doLoadPreset()
                                     : juce::StringArray();
 
             auto result = PresetLoader::loadFromFile (file, processor.getAPVTS(), locked);
-            headerComponent->getPresetLabel().setText (result.success ? result.presetName.toUpperCase()
-                                                : ("ERR: " + result.errorMessage),
-                                 juce::dontSendNotification);
+            if (result.success)
+                setPresetName (result.presetName);
+            else
+                headerComponent->getPresetLabel().setText ("ERR: " + result.errorMessage,
+                                                        juce::dontSendNotification);
         });
+}
+
+void MainComponent::saveThemeToState (int slot)
+{
+    if (slot < 0)
+        slot = headerComponent->getPaletteSelector().getActiveSlot();
+
+    auto& st = processor.getAPVTS().state;
+    st.setProperty (UiState::themeId,      (int) currentTheme, nullptr);
+    st.setProperty (UiState::customColour,
+                headerComponent->getPaletteSelector().getActiveColour().toString(), nullptr);
+    st.setProperty (UiState::paletteSlot,  slot, nullptr);
+}
+
+void MainComponent::setPresetName (const juce::String& name)
+{
+    const auto up = name.toUpperCase();
+
+    // 1. affichage
+    headerComponent->getPresetLabel().setText (up, juce::dontSendNotification);
+
+    // 2. sauvegarde dans le state du processor
+    processor.getAPVTS().state.setProperty (UiState::presetName, up, nullptr);
+}
+
+void MainComponent::restorePresetLabel()
+{
+    auto& st = processor.getAPVTS().state;
+
+    headerComponent->getPresetLabel().setText (
+        st.hasProperty (UiState::presetName) ? st[UiState::presetName].toString()
+                                             : Strings::Labels::UnsetPreset.toUpperCase(),
+        juce::dontSendNotification);
 }
 
 void MainComponent::doSavePreset()
@@ -303,8 +377,7 @@ void MainComponent::doSavePreset()
 
             const auto json = PresetLoader::saveToJsonString (processor.getAPVTS(), presetName, pseudo);
             file.replaceWithText (json);
-            headerComponent->getPresetLabel().setText (file.getFileNameWithoutExtension().toUpperCase(),
-                                 juce::dontSendNotification);
+            setPresetName (file.getFileNameWithoutExtension());
         });
 }
 
@@ -427,9 +500,7 @@ void MainComponent::runAiRequest (std::function<AiResult()> request,
                                                  : Strings::Errors::UnreadableAIResponse)
                         + "\n\n" + Strings::Errors::PleaseTryAgainLater);
  
-                safe->headerComponent->getPresetLabel().setText (
-                    Strings::Labels::UnsetPreset.toUpperCase(),
-                    juce::dontSendNotification);
+                safe->restorePresetLabel();
                 return;
             }
  
@@ -439,8 +510,7 @@ void MainComponent::runAiRequest (std::function<AiResult()> request,
                 if (auto* prm = safe->processor.getAPVTS().getParameter (id))
                     prm->setValueNotifyingHost (value);
  
-            safe->headerComponent->getPresetLabel().setText (r.presetName.toUpperCase(),
-                                                             juce::dontSendNotification);
+            safe->setPresetName (r.presetName);
         });
     });
 }
@@ -490,13 +560,12 @@ void MainComponent::showAiError (const AiResult& result)
  
     HarmoniaAlert::error (Strings::Errors::AiError, message + "\n\n" + advice);
  
-    headerComponent->getPresetLabel().setText (
-        Strings::Labels::UnsetPreset.toUpperCase(),
-        juce::dontSendNotification);
+    restorePresetLabel();
 }
 
 void MainComponent::paint (juce::Graphics& g)
 {
+    activatePalette();
     g.fillAll (HarmoniaPalette::background);
 }
 

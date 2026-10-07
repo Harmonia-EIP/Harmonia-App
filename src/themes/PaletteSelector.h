@@ -95,6 +95,7 @@ public:
     // Pour la sauvegarde / restauration (UserSession)
     std::array<juce::Colour, 3> getSlotColours() const { return slotColours; }
     int getActiveSlot() const                          { return activeSlot; }
+    juce::Colour getActiveColour() const { return slotColours[(size_t) activeSlot]; }
 
     void setSlots (const std::array<juce::Colour, 3>& colours, int active)
     {
