@@ -107,3 +107,12 @@ target_link_libraries(Harmonia PRIVATE
     juce::juce_core
     juce::juce_dsp
 )
+
+# =========================
+# TESTS (désactivés par défaut)
+# =========================
+option(HARMONIA_BUILD_TESTS "Build unit tests" OFF)
+if(HARMONIA_BUILD_TESTS)
+    enable_testing()
+    add_subdirectory(tests)
+endif()

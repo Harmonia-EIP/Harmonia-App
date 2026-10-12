@@ -66,6 +66,8 @@ void HarmoniaVoice::startNote (int midiNoteNumber, float velocity,
     phase2 = 0.0f;
     lfoPhase = 0.0f;
 
+    filter.reset();   // vide l'état interne du filtre (une valeur non finie ne survit pas à la note)
+
     ampEnv.reset();
     filterEnv.reset();
     ampEnv.noteOn();
@@ -93,13 +95,16 @@ void HarmoniaVoice::renderNextBlock (juce::AudioBuffer<float>& buffer,
     if (! isVoiceActive())
         return;
 
+    // Au-delà de ~0.45 * sr, le filtre TPT devient instable / imprécis
+    const float maxCutoff = 0.45f * (float) currentSampleRate;
+
     const Wave  w1     = (Wave) (int) params.osc1Waveform->load();
     const Wave  w2     = (Wave) (int) params.osc2Waveform->load();
     const float mix    = juce::jlimit (0.0f, 1.0f, params.oscMix->load());
     const float detune = params.osc2Detune->load();
     const float noise  = juce::jlimit (0.0f, 1.0f, params.noiseLevel->load());
 
-    const float baseCutoff = juce::jlimit (20.0f, 20000.0f, params.filterCutoff->load());
+    const float baseCutoff = juce::jlimit (20.0f, maxCutoff, params.filterCutoff->load());
     const float resonance  = juce::jlimit (0.0f, 0.95f, params.filterResonance->load());
     const int   ftype      = (int) params.filterType->load();
 
@@ -128,7 +133,11 @@ void HarmoniaVoice::renderNextBlock (juce::AudioBuffer<float>& buffer,
         case 2:  filter.setType (juce::dsp::StateVariableTPTFilterType::highpass); break;
         default: filter.setType (juce::dsp::StateVariableTPTFilterType::lowpass);  break;
     }
-    filter.setResonance (resonance);
+
+    // setResonance attend un Q strictement positif (il sert de diviseur) :
+    // résonance 0 -> Q 0.707 (neutre), 0.95 -> Q ~11.3. Ne jamais passer 0.
+    const float q = 0.707f * std::pow (16.0f, resonance / 0.95f);
+    filter.setResonance (q);
 
     const float detuneRatio = centsToRatio (detune);
     const float lfoPhaseInc = lfoRateHz / (float) currentSampleRate;
@@ -165,7 +174,7 @@ void HarmoniaVoice::renderNextBlock (juce::AudioBuffer<float>& buffer,
         const float octavesFromVel = velToFilter * (noteVelocity - 0.5f) * 4.0f;
 
         float modCutoff = baseCutoff * std::pow (2.0f, octavesFromEnv + octavesFromLfo + octavesFromVel);
-        modCutoff = juce::jlimit (20.0f, 20000.0f, modCutoff);
+        modCutoff = juce::jlimit (20.0f, maxCutoff, modCutoff);
         filter.setCutoffFrequency (modCutoff);
 
         sample = filter.processSample (0, sample);

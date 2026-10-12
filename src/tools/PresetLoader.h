@@ -35,8 +35,14 @@ namespace PresetLoader
             return r;
         }
 
-        if (doc.contains ("metadata") && doc["metadata"].contains ("name"))
-            r.presetName = juce::String (doc["metadata"].value ("name", std::string("Preset")));
+        
+        if (doc.contains ("metadata")
+            && doc["metadata"].is_object()
+            && doc["metadata"].contains ("name")
+            && doc["metadata"]["name"].is_string())
+        {
+            r.presetName = juce::String (doc["metadata"]["name"].get<std::string>());
+        }
 
         auto applyNorm = [&apvts, &lockedIds] (const juce::String& id, float normValue)
         {
@@ -64,15 +70,45 @@ namespace PresetLoader
                 applied = true;
             }
         }
+        
+        
         else if (doc.contains ("values") && doc["values"].is_array())
         {
             const auto& ids = HarmoniaParams::orderedIds();
             const auto& arr = doc["values"];
-            const size_t n  = std::min (arr.size(), ids.size());
-            for (size_t i = 0; i < n; ++i)
-                if (arr[i].is_number())
-                    applyNorm (ids[i], (float) arr[i].get<double>());
-            applied = n > 0;
+
+            // Le tableau doit correspondre exactement aux paramètres attendus.
+            if (arr.size() != ids.size())
+            {
+                r.errorMessage = "Invalid preset: incorrect number of values";
+                return r;
+            }
+
+            // Valider toutes les valeurs avant de modifier le moindre paramètre.
+            for (const auto& value : arr)
+            {
+                if (!value.is_number())
+                {
+                    r.errorMessage = "Invalid preset: 'values' must contain only numbers";
+                    return r;
+                }
+
+                const double number = value.get<double>();
+
+                if (!std::isfinite(number)
+                    || number < 0.0
+                    || number > 1.0)
+                {
+                    r.errorMessage = "Invalid preset: value out of range";
+                    return r;
+                }
+            }
+
+            // Le preset est valide : appliquer toutes les valeurs.
+            for (size_t i = 0; i < ids.size(); ++i)
+                applyNorm (ids[i], static_cast<float> (arr[i].get<double>()));
+
+            applied = true;
         }
 
         if (! applied)
