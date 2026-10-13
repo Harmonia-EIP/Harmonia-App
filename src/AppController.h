@@ -22,11 +22,11 @@
 
 #include "JuceHeader.h"
 
+#include "MainComponent.h"
 #include "backendManagement/BackendManager.h"
-#include "pages/WelcomePage.h"
 #include "pages/LoginPage.h"
 #include "pages/SignupPage.h"
-#include "MainComponent.h"
+#include "pages/WelcomePage.h"
 
 /**
  * @class AppController
@@ -41,69 +41,68 @@
  * It also manages persistent sessions and backend
  * synchronization during application startup.
  */
-class AppController : public juce::Component
-{
+class AppController : public juce::Component {
 public:
-    /**
-     * @brief Creates the application controller.
-     *
-     * On startup:
-     * - Attempts to restore a saved session
-     * - Verifies session expiration
-     * - Opens the main interface if authenticated
-     * - Otherwise shows the welcome screen
-     *
-     * @param p Reference to the audio processor.
-     */
-    AppController(HarmoniaAudioProcessor& p);
+  /**
+   * @brief Creates the application controller.
+   *
+   * On startup:
+   * - Attempts to restore a saved session
+   * - Verifies session expiration
+   * - Opens the main interface if authenticated
+   * - Otherwise shows the welcome screen
+   *
+   * @param p Reference to the audio processor.
+   */
+  AppController(HarmoniaAudioProcessor &p);
 
-    /**
-     * @brief Updates the bounds of the active screen.
-     */
-    void resized() override;
+  /**
+   * @brief Updates the bounds of the active screen.
+   */
+  void resized() override;
 
 private:
-    /** Reference to the audio processor instance. */
-    HarmoniaAudioProcessor& processor;
+  /** Reference to the audio processor instance. */
+  HarmoniaAudioProcessor &processor;
 
-    /** Backend manager handling authentication and sessions. */
-    BackendManager backend;
+  /** Backend manager handling authentication and sessions. */
+  BackendManager backend;
 
-    /**
-     * Currently displayed screen component.
-     *
-     * Can contain:
-     * - WelcomePage
-     * - LoginPage
-     * - SignupPage
-     * - MainComponent
-     */
-    std::unique_ptr<juce::Component> currentComponent;
+  /**
+   * Currently displayed screen component.
+   *
+   * Can contain:
+   * - WelcomePage
+   * - LoginPage
+   * - SignupPage
+   * - MainComponent
+   */
+  std::unique_ptr<juce::Component> currentComponent;
 
-    /** Active authenticated user session. */
-    std::optional<UserSession> currentSession;
+  /** Active authenticated user session. */
+  std::optional<UserSession> currentSession;
 
-    /**
-     * @brief Displays the welcome page.
-     *
-     * Entry point for authentication navigation.
-     */
-    void showWelcomeScreen();
+  /**
+   * @brief Displays the welcome page.
+   *
+   * Entry point for authentication navigation.
+   */
+  void showWelcomeScreen();
 
-    /**
-     * @brief Displays the login page.
-     */
-    void showLoginScreen();
+  /**
+   * @brief Displays the login page.
+   */
+  void showLoginScreen();
 
-    /**
-     * @brief Displays the signup page.
-     */
-    void showSignupScreen();
+  /**
+   * @brief Displays the signup page.
+   */
+  void showSignupScreen();
 
-    /**
-     * @brief Displays the main application interface.
-     *
-     * @param session Authenticated user session.
-     */
-    void showMainScreen(const UserSession& session);
+  /**
+   * @brief Displays the main application interface.
+   *
+   * @param session Authenticated user session.
+   */
+  void showMainScreen(const UserSession &session);
 };

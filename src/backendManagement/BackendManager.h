@@ -21,8 +21,8 @@
 
 #include <juce_core/juce_core.h>
 #include <map>
-#include <string>
 #include <optional>
+#include <string>
 
 #include "BackendTypes.h"
 
@@ -54,212 +54,209 @@ class BackendAiManager;
  * This class follows the Facade design pattern
  * to provide a simplified API for the application.
  */
-class BackendManager
-{
+class BackendManager {
 public:
+  /**
+   * @brief Creates and initializes the backend manager.
+   *
+   * During initialization:
+   * - Configuration is loaded
+   * - Application directories are created
+   * - Backend managers are instantiated
+   * - Session file paths are initialized
+   */
+  BackendManager();
 
-    /**
-     * @brief Creates and initializes the backend manager.
-     *
-     * During initialization:
-     * - Configuration is loaded
-     * - Application directories are created
-     * - Backend managers are instantiated
-     * - Session file paths are initialized
-     */
-    BackendManager();
+  /**
+   * @brief Destroys the backend manager and releases resources.
+   */
+  ~BackendManager();
 
-    /**
-     * @brief Destroys the backend manager and releases resources.
-     */
-    ~BackendManager();
+  // =========================================================
+  // AUTHENTICATION
+  // =========================================================
 
-    // =========================================================
-    // AUTHENTICATION
-    // =========================================================
+  /**
+   * @brief Authenticates a user using username/email and password.
+   *
+   * @param usernameOrEmail Username or email address.
+   * @param password User password.
+   *
+   * @return AuthResult Authentication result.
+   */
+  AuthResult loginUser(const juce::String &usernameOrEmail,
+                       const juce::String &password);
 
-    /**
-     * @brief Authenticates a user using username/email and password.
-     *
-     * @param usernameOrEmail Username or email address.
-     * @param password User password.
-     *
-     * @return AuthResult Authentication result.
-     */
-    AuthResult loginUser(const juce::String& usernameOrEmail,
-                         const juce::String& password);
+  /**
+   * @brief Creates a new user account.
+   *
+   * @param username User username.
+   * @param firstname User first name.
+   * @param lastname User last name.
+   * @param email User email address.
+   * @param password User password.
+   *
+   * @return AuthResult Registration result.
+   */
+  AuthResult signupUser(const juce::String &username,
+                        const juce::String &firstname,
+                        const juce::String &lastname, const juce::String &email,
+                        const juce::String &password);
 
-    /**
-     * @brief Creates a new user account.
-     *
-     * @param username User username.
-     * @param firstname User first name.
-     * @param lastname User last name.
-     * @param email User email address.
-     * @param password User password.
-     *
-     * @return AuthResult Registration result.
-     */
-    AuthResult signupUser(const juce::String& username,
-                          const juce::String& firstname,
-                          const juce::String& lastname,
-                          const juce::String& email,
-                          const juce::String& password);
+  /**
+   * @brief Loads the locally stored user session.
+   *
+   * @return Optional UserSession if available.
+   */
+  std::optional<UserSession> loadSession();
 
-    /**
-     * @brief Loads the locally stored user session.
-     *
-     * @return Optional UserSession if available.
-     */
-    std::optional<UserSession> loadSession();
+  /**
+   * @brief Saves the current user session locally.
+   *
+   * @param session Session data to save.
+   */
+  void saveSession(const UserSession &session);
 
-    /**
-     * @brief Saves the current user session locally.
-     *
-     * @param session Session data to save.
-     */
-    void saveSession(const UserSession& session);
+  /**
+   * @brief Clears the locally stored session.
+   */
+  void clearSession();
 
-    /**
-     * @brief Clears the locally stored session.
-     */
-    void clearSession();
+  // =========================================================
+  // AI
+  // =========================================================
 
-    // =========================================================
-    // AI
-    // =========================================================
+  /**
+   * @brief Generates an AI preset from a text prompt.
+   *
+   * The backend returns raw JSON data that can later
+   * be parsed by the preset loader.
+   *
+   * @param prompt User prompt.
+   *
+   * @return AiResult Generated preset result.
+   */
+  AiResult generatePreset(const juce::String &prompt, int modelId,
+                          const juce::String &backendName);
 
-    /**
-     * @brief Generates an AI preset from a text prompt.
-     *
-     * The backend returns raw JSON data that can later
-     * be parsed by the preset loader.
-     *
-     * @param prompt User prompt.
-     *
-     * @return AiResult Generated preset result.
-     */
-    AiResult generatePreset(const juce::String& prompt, int modelId, const juce::String& backendName);
+  // =========================================================
+  // CONFIGURATION
+  // =========================================================
 
-    // =========================================================
-    // CONFIGURATION
-    // =========================================================
+  /**
+   * @brief Returns the backend API base URL.
+   *
+   * @return API URL string.
+   */
+  const juce::String &getApiUrl() const;
 
-    /**
-     * @brief Returns the backend API base URL.
-     *
-     * @return API URL string.
-     */
-    const juce::String& getApiUrl() const;
+  /**
+   * @brief Returns the session file location.
+   *
+   * @return Session file path.
+   */
+  const juce::File &getSessionFile() const;
 
-    /**
-     * @brief Returns the session file location.
-     *
-     * @return Session file path.
-     */
-    const juce::File& getSessionFile() const;
+  /**
+   * @brief Returns the backend log file location.
+   *
+   * @return Log file path.
+   */
+  const juce::File &getLogFile() const;
 
-    /**
-     * @brief Returns the backend log file location.
-     *
-     * @return Log file path.
-     */
-    const juce::File& getLogFile() const;
+  /**
+   * @brief Writes a message into the backend log file.
+   *
+   * @param message Message to append.
+   */
+  void writeLog(const juce::String &message) const;
 
-    /**
-     * @brief Writes a message into the backend log file.
-     *
-     * @param message Message to append.
-     */
-    void writeLog(const juce::String& message) const;
+  // =========================================================
+  // PROFILE
+  // =========================================================
 
-    // =========================================================
-    // PROFILE
-    // =========================================================
+  /**
+   * @brief Retrieves the current user profile.
+   *
+   * @return ProfileResult User profile data.
+   */
+  ProfileResult getProfile();
 
-    /**
-     * @brief Retrieves the current user profile.
-     *
-     * @return ProfileResult User profile data.
-     */
-    ProfileResult getProfile();
+  /**
+   * @brief Synchronizes profile parameters asynchronously.
+   *
+   * @param session Current user session.
+   */
+  void syncProfileParamsInBackground(const UserSession &session);
 
-    /**
-     * @brief Synchronizes profile parameters asynchronously.
-     *
-     * @param session Current user session.
-     */
-    void syncProfileParamsInBackground(const UserSession& session);
+  /**
+   * @brief Synchronizes profile parameters immediately.
+   *
+   * @param session Current user session.
+   *
+   * @return Updated session if synchronization succeeds.
+   */
+  std::optional<UserSession> syncProfileParams(const UserSession &session);
 
-    /**
-     * @brief Synchronizes profile parameters immediately.
-     *
-     * @param session Current user session.
-     *
-     * @return Updated session if synchronization succeeds.
-     */
-    std::optional<UserSession> syncProfileParams(const UserSession& session);
+  /**
+   * @brief Updates the current UI theme.
+   *
+   * @param themeId Theme identifier.
+   *
+   * @return ProfileResult Operation result.
+   */
+  ProfileResult updateTheme(int themeId);
 
-    /**
-     * @brief Updates the current UI theme.
-     *
-     * @param themeId Theme identifier.
-     *
-     * @return ProfileResult Operation result.
-     */
-    ProfileResult updateTheme(int themeId);
+  /**
+   * @brief Updates the current UI layout.
+   *
+   * @param layoutId Layout identifier.
+   *
+   * @return ProfileResult Operation result.
+   */
+  ProfileResult updateLayout(int layoutId);
 
-    /**
-     * @brief Updates the current UI layout.
-     *
-     * @param layoutId Layout identifier.
-     *
-     * @return ProfileResult Operation result.
-     */
-    ProfileResult updateLayout(int layoutId);
+  void updateLocalTheme(int themeId);
 
-    void updateLocalTheme(int themeId);
-
-    void updateThemeAsync(int themeId);
+  void updateThemeAsync(int themeId);
 
 private:
+  /**
+   * @brief Returns the application data directory.
+   *
+   * Creates the directory if it does not already exist.
+   *
+   * @return Application data folder.
+   */
+  juce::File getAppDataDir() const;
 
-    /**
-     * @brief Returns the application data directory.
-     *
-     * Creates the directory if it does not already exist.
-     *
-     * @return Application data folder.
-     */
-    juce::File getAppDataDir() const;
+  /**
+   * @brief Backend log file.
+   */
+  juce::File logFile;
 
-    /**
-     * @brief Backend log file.
-     */
-    juce::File logFile;
+  /**
+   * @brief Backend API base URL.
+   */
+  juce::String apiUrl;
 
-    /**
-     * @brief Backend API base URL.
-     */
-    juce::String apiUrl;
+  /**
+   * @brief Local session file path.
+   */
+  juce::File sessionFile;
 
-    /**
-     * @brief Local session file path.
-     */
-    juce::File sessionFile;
+  /**
+   * @brief Authentication manager instance.
+   */
+  std::unique_ptr<BackendAuthManager> authManager;
 
-    /**
-     * @brief Authentication manager instance.
-     */
-    std::unique_ptr<BackendAuthManager> authManager;
+  /**
+   * @brief Profile manager instance.
+   */
+  std::unique_ptr<BackendProfileManager> profileManager;
 
-    /**
-     * @brief Profile manager instance.
-     */
-    std::unique_ptr<BackendProfileManager> profileManager;
-
-    /**
-     * @brief AI manager instance.
-     */
-    std::unique_ptr<BackendAiManager> aiManager;
+  /**
+   * @brief AI manager instance.
+   */
+  std::unique_ptr<BackendAiManager> aiManager;
 };
