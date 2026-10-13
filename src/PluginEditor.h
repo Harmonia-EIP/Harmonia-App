@@ -21,11 +21,11 @@
  */
 #pragma once
 
-#include "PluginProcessor.h"
-#include "JuceHeader.h"
-#include "config/AppConfig.h"
-#include "components/SynthComponent.h"
 #include "AppController.h"
+#include "JuceHeader.h"
+#include "PluginProcessor.h"
+#include "components/SynthComponent.h"
+#include "config/AppConfig.h"
 
 /**
  * @class HarmoniaAudioProcessorEditor
@@ -42,51 +42,50 @@
  * The editor acts as the entry point of the
  * entire Harmonia graphical interface.
  */
-class HarmoniaAudioProcessorEditor : public juce::AudioProcessorEditor
-{
+class HarmoniaAudioProcessorEditor : public juce::AudioProcessorEditor {
 public:
-    /**
-     * @brief Creates the plugin editor.
-     *
-     * Initializes:
-     * - The root application controller
-     * - The MIDI keyboard component
-     * - Default window dimensions
-     *
-     * @param p Reference to the audio processor.
-     */
-    HarmoniaAudioProcessorEditor(HarmoniaAudioProcessor& p);
+  /**
+   * @brief Creates the plugin editor.
+   *
+   * Initializes:
+   * - The root application controller
+   * - The MIDI keyboard component
+   * - Default window dimensions
+   *
+   * @param p Reference to the audio processor.
+   */
+  HarmoniaAudioProcessorEditor(HarmoniaAudioProcessor &p);
 
-    /**
-     * @brief Destructor.
-     */
-    ~HarmoniaAudioProcessorEditor() override;
+  /**
+   * @brief Destructor.
+   */
+  ~HarmoniaAudioProcessorEditor() override;
 
-    /**
-     * @brief Paints the editor background.
-     *
-     * @param g Graphics context.
-     */
-    void paint(juce::Graphics& g) override;
+  /**
+   * @brief Paints the editor background.
+   *
+   * @param g Graphics context.
+   */
+  void paint(juce::Graphics &g) override;
 
-    /**
-     * @brief Updates child component layout.
-     */
-    void resized() override;
+  /**
+   * @brief Updates child component layout.
+   */
+  void resized() override;
 
 private:
-    /** Reference to the audio processor instance. */
-    HarmoniaAudioProcessor& audioProcessor;
+  /** Reference to the audio processor instance. */
+  HarmoniaAudioProcessor &audioProcessor;
 
-    /**
-     * Root application controller.
-     *
-     * Handles:
-     * - Navigation
-     * - Authentication screens
-     * - Main application interface
-     */
-    std::unique_ptr<AppController> appController;
+  /**
+   * Root application controller.
+   *
+   * Handles:
+   * - Navigation
+   * - Authentication screens
+   * - Main application interface
+   */
+  std::unique_ptr<AppController> appController;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(HarmoniaAudioProcessorEditor)
+  JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(HarmoniaAudioProcessorEditor)
 };

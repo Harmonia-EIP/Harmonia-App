@@ -9,7 +9,7 @@
 
 #include "../parameters/HarmoniaParameters.h"
 
-#include "../config/String.h"
 #include "../config/AppConfig.h"
-#include "../config/UIStyle.h"
 #include "../config/AudioConfig.h"
+#include "../config/String.h"
+#include "../config/UIStyle.h"

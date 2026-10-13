@@ -1,304 +1,215 @@
 #include "HeaderComponent.h"
 
-HeaderComponent::HeaderComponent (const UserSession& s)
-    : session (s)
-{
-    juce::String username = session.pseudo.isNotEmpty()
-        ? session.pseudo
-        : Strings::Errors::NoUserConnected;
+HeaderComponent::HeaderComponent(const UserSession &s) : session(s) {
+  juce::String username = session.pseudo.isNotEmpty()
+                              ? session.pseudo
+                              : Strings::Errors::NoUserConnected;
 
-    titleLabel.setText (
-        username.toUpperCase(),
-        juce::dontSendNotification);
+  titleLabel.setText(username.toUpperCase(), juce::dontSendNotification);
 
-    titleLabel.setFont (
-        juce::Font (
-            juce::FontOptions (22.0f)
-                .withStyle ("Bold"))
-            .withExtraKerningFactor (0.10f));
+  titleLabel.setFont(juce::Font(juce::FontOptions(22.0f).withStyle("Bold"))
+                         .withExtraKerningFactor(0.10f));
 
-    addAndMakeVisible (titleLabel);
+  addAndMakeVisible(titleLabel);
 
-    subtitleLabel.setText (
-        Strings::Titles::Subtitle,
-        juce::dontSendNotification);
+  subtitleLabel.setText(Strings::Titles::Subtitle, juce::dontSendNotification);
 
-    subtitleLabel.setFont (
-        juce::Font (
-            juce::FontOptions (9.5f))
-                .withExtraKerningFactor (0.20f));
+  subtitleLabel.setFont(
+      juce::Font(juce::FontOptions(9.5f)).withExtraKerningFactor(0.20f));
 
-    subtitleLabel.setColour (
-        juce::Label::textColourId,
-        juce::Colour (0xff8a8a8a));
+  subtitleLabel.setColour(juce::Label::textColourId, juce::Colour(0xff8a8a8a));
 
-    addAndMakeVisible (subtitleLabel);
+  addAndMakeVisible(subtitleLabel);
 
-    for (const auto& m : aiModels)
-    {
-        modelSelector.addItem(m.name, (int) m.id);
-    }
+  for (const auto &m : aiModels) {
+    modelSelector.addItem(m.name, (int)m.id);
+  }
 
-    modelSelector.setSelectedId((int) AIModel::Model1);
+  modelSelector.setSelectedId((int)AIModel::Model1);
 
-    addAndMakeVisible(modelSelector);
+  addAndMakeVisible(modelSelector);
 
-    promptEditor.setMultiLine (false);
+  promptEditor.setMultiLine(false);
 
-    promptEditor.setReturnKeyStartsNewLine (false);
+  promptEditor.setReturnKeyStartsNewLine(false);
 
-    promptEditor.setTextToShowWhenEmpty (
-        Strings::Placeholders::Prompt,
-        HarmoniaPalette::textMuted);
+  promptEditor.setTextToShowWhenEmpty(Strings::Placeholders::Prompt,
+                                      HarmoniaPalette::textMuted);
 
-    promptEditor.setFont (
-        juce::Font (
-            juce::FontOptions (12.5f)));
+  promptEditor.setFont(juce::Font(juce::FontOptions(12.5f)));
 
-    promptEditor.setIndents (10, 6);
+  promptEditor.setIndents(10, 6);
 
-    addAndMakeVisible (promptEditor);
+  addAndMakeVisible(promptEditor);
 
-    generateButton.getProperties().set (
-        "accent",
-        true);
+  generateButton.getProperties().set("accent", true);
 
-    addAndMakeVisible (generateButton);
+  addAndMakeVisible(generateButton);
 
-    presetLabel.setText (
-        Strings::Labels::UnsetPreset.toUpperCase(),
-        juce::dontSendNotification);
+  presetLabel.setText(Strings::Labels::UnsetPreset.toUpperCase(),
+                      juce::dontSendNotification);
 
-    presetLabel.setFont (
-        juce::Font (
-            juce::FontOptions (10.5f)
-                .withStyle ("Bold"))
-            .withExtraKerningFactor (0.18f));
+  presetLabel.setFont(juce::Font(juce::FontOptions(10.5f).withStyle("Bold"))
+                          .withExtraKerningFactor(0.18f));
 
-    presetLabel.setJustificationType (
-        juce::Justification::centredLeft);
+  presetLabel.setJustificationType(juce::Justification::centredLeft);
 
-    generateButton.setButtonText (Strings::Buttons::Generate);
-    loadButton.setButtonText     (Strings::Buttons::Load);
-    saveButton.setButtonText     (Strings::Buttons::Export);
-    if (session.isGuest)
-    {
-        logoutButton.setButtonText(Strings::Buttons::Back);
-    }
-    else
-    {
-        logoutButton.setButtonText(Strings::Buttons::Logout);
-    }
+  generateButton.setButtonText(Strings::Buttons::Generate);
+  loadButton.setButtonText(Strings::Buttons::Load);
+  saveButton.setButtonText(Strings::Buttons::Export);
+  if (session.isGuest) {
+    logoutButton.setButtonText(Strings::Buttons::Back);
+  } else {
+    logoutButton.setButtonText(Strings::Buttons::Logout);
+  }
 
-    for (auto* b : {
-            &generateButton,
-            &loadButton,
-            &saveButton,
-            &logoutButton
-        })
-    {
-        b->setColour (
-            juce::TextButton::textColourOffId,
-            HarmoniaPalette::textMuted);
-    }
+  for (auto *b : {&generateButton, &loadButton, &saveButton, &logoutButton}) {
+    b->setColour(juce::TextButton::textColourOffId, HarmoniaPalette::textMuted);
+  }
 
-    addAndMakeVisible (presetLabel);
+  addAndMakeVisible(presetLabel);
 
-    addAndMakeVisible (loadButton);
-    addAndMakeVisible (saveButton);
-    addAndMakeVisible (logoutButton);
-    addAndMakeVisible (paletteSelector);
+  addAndMakeVisible(loadButton);
+  addAndMakeVisible(saveButton);
+  addAndMakeVisible(logoutButton);
+  addAndMakeVisible(paletteSelector);
 
-    paletteSelector.setCurrentTheme(
-        HarmoniaPalette::themeFromId(session.themeId));
+  paletteSelector.setCurrentTheme(
+      HarmoniaPalette::themeFromId(session.themeId));
 
-    paletteSelector.onThemeUpdated =
-        [this]
-    {
-        auto theme = paletteSelector.getCurrentTheme();
+  paletteSelector.onThemeUpdated = [this] {
+    auto theme = paletteSelector.getCurrentTheme();
 
-        HarmoniaPalette::setTheme(theme);
+    HarmoniaPalette::setTheme(theme);
 
-        if (onThemeChanged)
-            onThemeChanged(theme);
+    if (onThemeChanged)
+      onThemeChanged(theme);
 
-        repaint();
-    };
+    repaint();
+  };
 }
 
-AIModel HeaderComponent::getSelectedModel() const
-{
-    return static_cast<AIModel>(modelSelector.getSelectedId());
+AIModel HeaderComponent::getSelectedModel() const {
+  return static_cast<AIModel>(modelSelector.getSelectedId());
 }
 
-int HeaderComponent::getSelectedModelId() const
-{
-    return modelSelector.getSelectedId();
+int HeaderComponent::getSelectedModelId() const {
+  return modelSelector.getSelectedId();
 }
 
-juce::String HeaderComponent::getSelectedModelName() const
-{
-    auto id = getSelectedModel();
+juce::String HeaderComponent::getSelectedModelName() const {
+  auto id = getSelectedModel();
 
-    for (const auto& m : aiModels)
-        if (m.id == id)
-            return m.name;
+  for (const auto &m : aiModels)
+    if (m.id == id)
+      return m.name;
 
-    return {};
+  return {};
 }
 
-juce::String HeaderComponent::getSelectedBackendName() const
-{
-    auto id = getSelectedModel();
+juce::String HeaderComponent::getSelectedBackendName() const {
+  auto id = getSelectedModel();
 
-    for (const auto& m : aiModels)
-        if (m.id == id)
-            return m.backendname;
+  for (const auto &m : aiModels)
+    if (m.id == id)
+      return m.backendname;
 
-    return {};
+  return {};
 }
 
-void HeaderComponent::paint (juce::Graphics& g)
-{
-    auto header = getLocalBounds();
+void HeaderComponent::paint(juce::Graphics &g) {
+  auto header = getLocalBounds();
 
-    juce::ColourGradient hbg (
-        HarmoniaPalette::panelTop,
-        0,
-        0,
-        HarmoniaPalette::panel,
-        0,
-        (float) header.getHeight(),
-        false);
+  juce::ColourGradient hbg(HarmoniaPalette::panelTop, 0, 0,
+                           HarmoniaPalette::panel, 0, (float)header.getHeight(),
+                           false);
 
-    g.setGradientFill (hbg);
+  g.setGradientFill(hbg);
 
-    g.fillRect (header);
+  g.fillRect(header);
 
-    g.setColour (
-        juce::Colours::white.withAlpha (0.04f));
+  g.setColour(juce::Colours::white.withAlpha(0.04f));
 
-    g.fillRect (
-        header.getX(),
-        header.getY() + 1,
-        header.getWidth(),
-        1);
+  g.fillRect(header.getX(), header.getY() + 1, header.getWidth(), 1);
 
-    g.setColour (
-        HarmoniaPalette::border);
+  g.setColour(HarmoniaPalette::border);
 
-    g.fillRect (
-        header.getX(),
-        header.getBottom() - 1,
-        header.getWidth(),
-        1);
+  g.fillRect(header.getX(), header.getBottom() - 1, header.getWidth(), 1);
 
-    g.setColour (
-        HarmoniaPalette::accent.withAlpha (0.40f));
+  g.setColour(HarmoniaPalette::accent.withAlpha(0.40f));
 
-    g.fillRect (
-        header.getX(),
-        header.getBottom(),
-        header.getWidth(),
-        1);
+  g.fillRect(header.getX(), header.getBottom(), header.getWidth(), 1);
 }
 
-void HeaderComponent::resized()
-{
-    auto header =
-        getLocalBounds().reduced (16, 10);
+void HeaderComponent::resized() {
+  auto header = getLocalBounds().reduced(16, 10);
 
-    auto leftHeader =
-        header.removeFromLeft (260);
+  auto leftHeader = header.removeFromLeft(260);
 
-    titleLabel.setBounds (
-        leftHeader.removeFromTop (28));
+  titleLabel.setBounds(leftHeader.removeFromTop(28));
 
-    subtitleLabel.setBounds (
-        leftHeader.removeFromTop (25));
+  subtitleLabel.setBounds(leftHeader.removeFromTop(25));
 
-    subtitleLabel.setSize(
-        subtitleLabel.getFont().getStringWidth(subtitleLabel.getText()),
-        subtitleLabel.getHeight());
+  subtitleLabel.setSize(
+      subtitleLabel.getFont().getStringWidth(subtitleLabel.getText()),
+      subtitleLabel.getHeight());
 
-    const int palW = 110;
-    const int palH = 20;
-    const int offsetX = 35;
+  const int palW = 110;
+  const int palH = 20;
+  const int offsetX = 35;
 
-    paletteSelector.setBounds (
-        titleLabel.getRight() - palW - offsetX,
-        titleLabel.getY()
-            + (titleLabel.getHeight() - palH) / 2,
-        palW,
-        palH);
+  paletteSelector.setBounds(
+      titleLabel.getRight() - palW - offsetX,
+      titleLabel.getY() + (titleLabel.getHeight() - palH) / 2, palW, palH);
 
-    const int modelW = palW;
-    const int modelH = palH;
+  const int modelW = palW;
+  const int modelH = palH;
 
-    modelSelector.setBounds (
-        subtitleLabel.getRight() + 20,
-        paletteSelector.getY() + paletteSelector.getHeight() + 6,
-        modelW,
-        modelH);
+  modelSelector.setBounds(
+      subtitleLabel.getRight() + 20,
+      paletteSelector.getY() + paletteSelector.getHeight() + 6, modelW, modelH);
 
-    const int buttonW = 72;
-    const int buttonH = 28;
-    const int gap = 8;
+  const int buttonW = 72;
+  const int buttonH = 28;
+  const int gap = 8;
 
-    auto buttonsArea =
-        header.removeFromRight (
-            buttonW * 3 + gap * 2);
+  auto buttonsArea = header.removeFromRight(buttonW * 3 + gap * 2);
 
-    auto logoutArea =
-        buttonsArea.removeFromRight (buttonW);
+  auto logoutArea = buttonsArea.removeFromRight(buttonW);
 
-    buttonsArea.removeFromRight (gap);
+  buttonsArea.removeFromRight(gap);
 
-    auto saveArea =
-        buttonsArea.removeFromRight (buttonW);
+  auto saveArea = buttonsArea.removeFromRight(buttonW);
 
-    buttonsArea.removeFromRight (gap);
+  buttonsArea.removeFromRight(gap);
 
-    auto loadArea =
-        buttonsArea.removeFromRight (buttonW);
+  auto loadArea = buttonsArea.removeFromRight(buttonW);
 
-    auto centerY =
-        header.getCentreY();
+  auto centerY = header.getCentreY();
 
-    auto place =
-        [&] (juce::Rectangle<int> area)
-    {
-        return juce::Rectangle<int> (
-            area.getX(),
-            centerY - buttonH / 2,
-            buttonW,
-            buttonH);
-    };
+  auto place = [&](juce::Rectangle<int> area) {
+    return juce::Rectangle<int>(area.getX(), centerY - buttonH / 2, buttonW,
+                                buttonH);
+  };
 
-    logoutButton.setBounds (
-        place (logoutArea));
+  logoutButton.setBounds(place(logoutArea));
 
-    saveButton.setBounds (
-        place (saveArea));
+  saveButton.setBounds(place(saveArea));
 
-    loadButton.setBounds (
-        place (loadArea));
+  loadButton.setBounds(place(loadArea));
 
-    header.removeFromTop (8);
-    header.removeFromRight (12);
+  header.removeFromTop(8);
+  header.removeFromRight(12);
 
-    auto promptRow =
-        header.removeFromTop (32);
+  auto promptRow = header.removeFromTop(32);
 
-    auto generateArea =
-        promptRow.removeFromRight (104);
+  auto generateArea = promptRow.removeFromRight(104);
 
-    promptRow.removeFromRight (8);
+  promptRow.removeFromRight(8);
 
-    promptEditor.setBounds (promptRow);
+  promptEditor.setBounds(promptRow);
 
-    generateButton.setBounds (generateArea);
+  generateButton.setBounds(generateArea);
 
-    presetLabel.setBounds (
-        header.removeFromTop (16));
+  presetLabel.setBounds(header.removeFromTop(16));
 }
