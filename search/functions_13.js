@@ -1,13 +1,13 @@
 var searchData=
 [
-  ['_7ebackendmanager_0',['~BackendManager',['../classBackendManager.html#a55c06c26ce2b9ca7fd923ccb5088a37e',1,'BackendManager']]],
-  ['_7eenvelopevisualizer_1',['~EnvelopeVisualizer',['../classEnvelopeVisualizer.html#a333b68fa1875afa76cdef8f602ef6151',1,'EnvelopeVisualizer']]],
-  ['_7eharmoniaaudioprocessor_2',['~HarmoniaAudioProcessor',['../classHarmoniaAudioProcessor.html#ae89ea737b85e0670de703ca671c3c417',1,'HarmoniaAudioProcessor']]],
-  ['_7eharmoniaaudioprocessoreditor_3',['~HarmoniaAudioProcessorEditor',['../classHarmoniaAudioProcessorEditor.html#a434f958e609ed0a35c8260458e7457a6',1,'HarmoniaAudioProcessorEditor']]],
-  ['_7eiconchoiceselector_4',['~IconChoiceSelector',['../classIconChoiceSelector.html#aeaa4b62966fe0c7c779935df5d549a57',1,'IconChoiceSelector']]],
-  ['_7eloginpage_5',['~LoginPage',['../classLoginPage.html#acf5b30835039b07dd9075c7f81402077',1,'LoginPage']]],
-  ['_7emaincomponent_6',['~MainComponent',['../classMainComponent.html#afc7d0481eafa95da42e728443102f92e',1,'MainComponent']]],
-  ['_7esignuppage_7',['~SignupPage',['../classSignupPage.html#a98bde77d5c610c0c434451e5aa113e4f',1,'SignupPage']]],
-  ['_7esynthcomponent_8',['~SynthComponent',['../classSynthComponent.html#a4cec9f95fa7ea465e9a59d03a9176a2b',1,'SynthComponent']]],
-  ['_7ewelcomepage_9',['~WelcomePage',['../classWelcomePage.html#a7a336327432db29913ae5ed4eb61075b',1,'WelcomePage']]]
+  ['warn_0',['warn',['../classBackendLogger.html#ab0a3b0e08ef2e962cb74f51751d9a0c0',1,'BackendLogger']]],
+  ['warning_1',['warning',['../classHarmoniaAlert.html#abfa578092b0f095cbb1decb9ac231a36',1,'HarmoniaAlert']]],
+  ['waveformselector_2',['WaveformSelector',['../classWaveformSelector.html#aa774789084f986c195256b48674ca4f2',1,'WaveformSelector']]],
+  ['welcomelookandfeel_3',['WelcomeLookAndFeel',['../classWelcomeLookAndFeel.html#ae257f6b3510231cc8cadcf3abce7ef82',1,'WelcomeLookAndFeel']]],
+  ['welcomepage_4',['WelcomePage',['../classWelcomePage.html#a9a7dad9a04f5a6b94c721e49a9d006d5',1,'WelcomePage']]],
+  ['wireheaderbuttons_5',['wireHeaderButtons',['../classMainComponent.html#a9b9a588d88f74a774c88f7456ca6da4a',1,'MainComponent']]],
+  ['withtoken_6',['withToken',['../structHttpOptions.html#a88ebb9e98d48822ed99d355714c55478',1,'HttpOptions']]],
+  ['writeindex_7',['writeIndex',['../classIconChoiceSelector.html#aaeb11e1a2f6a7a1dd53ab02e7a0fa377',1,'IconChoiceSelector']]],
+  ['writelocked_8',['writeLocked',['../classSessionStore.html#a7a392ae973952c9511bcdd1183c175fb',1,'SessionStore']]],
+  ['writelog_9',['writeLog',['../classBackendManager.html#a9ee33036fd962fa87dbedecfc3e8c259',1,'BackendManager']]]
 ];

@@ -1,0 +1,9 @@
+<map id="AuthService" name="AuthService">
+<area shape="rect" id="Node000001" title="Authentification : login, signup, logout." alt="" coords="121,93,221,119"/>
+<area shape="rect" id="Node000002" href="$classHttpClient.html" title="Sans état modifiable : copiable, utilisable depuis n&#39;importe quel thread." alt="" coords="5,5,93,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="79,37,156,91,153,95,76,41"/>
+<area shape="rect" id="Node000003" href="$classSessionStore.html" title="Seul propriétaire du fichier de session." alt="" coords="117,5,224,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="173,45,173,93,168,93,168,45"/>
+<area shape="rect" id="Node000004" href="$classBackendLogger.html" title="Log fichier thread&#45;safe avec niveaux, horodatage et rotation (~1 Mo)." alt="" coords="249,5,370,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="280,40,191,95,188,91,278,36"/>
+</map>

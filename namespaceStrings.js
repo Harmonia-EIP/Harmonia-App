@@ -10,6 +10,7 @@ var namespaceStrings =
       [ "Layout", "namespaceStrings_1_1Buttons.html#a8af85ae18cde4c75ce8edfc77826f937", null ],
       [ "Load", "namespaceStrings_1_1Buttons.html#a295eb1be1d7ae3e8be7e015e74884296", null ],
       [ "Logout", "namespaceStrings_1_1Buttons.html#a88c7345786593c9818697d00ccdfa9d9", null ],
+      [ "Refine", "namespaceStrings_1_1Buttons.html#aa9235c360dd771d977f6811679315eb3", null ],
       [ "ResetMissingParams", "namespaceStrings_1_1Buttons.html#a632005a1710f25370383d2cc41d7e347", null ],
       [ "SignIn", "namespaceStrings_1_1Buttons.html#a3825148a29dbe84f25a3bea0d98bd405", null ],
       [ "SignUp", "namespaceStrings_1_1Buttons.html#ac8738ac8efba46b17ce72cc80712d29e", null ],
@@ -91,6 +92,7 @@ var namespaceStrings =
       [ "Password", "namespaceStrings_1_1Placeholders.html#a78685f8486cd09c7c8fa653348c07059", null ],
       [ "PasswordChar", "namespaceStrings_1_1Placeholders.html#a87b805d3aaa27a6c81ef95b61673e7bb", null ],
       [ "Prompt", "namespaceStrings_1_1Placeholders.html#aff04d4054aca28ecc2c4684579efe8b4", null ],
+      [ "Refine", "namespaceStrings_1_1Placeholders.html#a82c31238c30a5f976df2a4d6f324f2d5", null ],
       [ "Username", "namespaceStrings_1_1Placeholders.html#af916636856101bf67ea61c3a7b9027e6", null ]
     ] ],
     [ "Sections", "namespaceStrings_1_1Sections.html", [

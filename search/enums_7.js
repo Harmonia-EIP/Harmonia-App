@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['theme_0',['Theme',['../namespaceHarmoniaPalette.html#a48dd6f8d4570ed63402450e3ea1fba8c',1,'HarmoniaPalette']]],
-  ['themepreset_1',['ThemePreset',['../classAppLookAndFeel.html#a7e966ad29d8634970a167de96d1a6b87',1,'AppLookAndFeel']]]
+  ['layoutpreset_0',['LayoutPreset',['../classAppLookAndFeel.html#a49a9340f3d5b5f90635f6c10385659b4',1,'AppLookAndFeel']]],
+  ['level_1',['Level',['../classBackendLogger.html#aae70cd25bd5ca009c1ce0309b1abfe98',1,'BackendLogger']]]
 ];

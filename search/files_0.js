@@ -1,12 +1,19 @@
 var searchData=
 [
   ['aiconfig_2eh_0',['AiConfig.h',['../AiConfig_8h.html',1,'']]],
-  ['alert_2eh_1',['Alert.h',['../Alert_8h.html',1,'']]],
-  ['appcolourids_2eh_2',['AppColourIds.h',['../AppColourIds_8h.html',1,'']]],
-  ['appconfig_2eh_3',['AppConfig.h',['../AppConfig_8h.html',1,'']]],
-  ['appcontroller_2ecpp_4',['AppController.cpp',['../AppController_8cpp.html',1,'']]],
-  ['appcontroller_2eh_5',['AppController.h',['../AppController_8h.html',1,'']]],
-  ['applookandfeel_2eh_6',['AppLookAndFeel.h',['../AppLookAndFeel_8h.html',1,'']]],
-  ['audioconfig_2eh_7',['AudioConfig.h',['../AudioConfig_8h.html',1,'']]],
-  ['authpagelookandfeel_2eh_8',['AuthPageLookAndFeel.h',['../AuthPageLookAndFeel_8h.html',1,'']]]
+  ['aiservice_2ecpp_1',['AiService.cpp',['../AiService_8cpp.html',1,'']]],
+  ['aiservice_2eh_2',['AiService.h',['../AiService_8h.html',1,'']]],
+  ['alert_2eh_3',['Alert.h',['../Alert_8h.html',1,'']]],
+  ['apierror_2ecpp_4',['ApiError.cpp',['../ApiError_8cpp.html',1,'']]],
+  ['apierror_2eh_5',['ApiError.h',['../ApiError_8h.html',1,'']]],
+  ['appcolourids_2eh_6',['AppColourIds.h',['../AppColourIds_8h.html',1,'']]],
+  ['appconfig_2eh_7',['AppConfig.h',['../AppConfig_8h.html',1,'']]],
+  ['appcontroller_2ecpp_8',['AppController.cpp',['../AppController_8cpp.html',1,'']]],
+  ['appcontroller_2eh_9',['AppController.h',['../AppController_8h.html',1,'']]],
+  ['applookandfeel_2eh_10',['AppLookAndFeel.h',['../AppLookAndFeel_8h.html',1,'']]],
+  ['apppaths_2eh_11',['AppPaths.h',['../AppPaths_8h.html',1,'']]],
+  ['audioconfig_2eh_12',['AudioConfig.h',['../AudioConfig_8h.html',1,'']]],
+  ['authpagelookandfeel_2eh_13',['AuthPageLookAndFeel.h',['../AuthPageLookAndFeel_8h.html',1,'']]],
+  ['authservice_2ecpp_14',['AuthService.cpp',['../AuthService_8cpp.html',1,'']]],
+  ['authservice_2eh_15',['AuthService.h',['../AuthService_8h.html',1,'']]]
 ];

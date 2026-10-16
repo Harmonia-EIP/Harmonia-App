@@ -112,10 +112,10 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a1ddcbc4766e84e222fa78e6ae72bf997"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c69a7e91dd44b84477decd3352eb954" id="r_a8c69a7e91dd44b84477decd3352eb954"><td class="memItemLeft" align="right" valign="top">juce::Time&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUserSession.html#a8c69a7e91dd44b84477decd3352eb954">expiresAt</a></td></tr>
 <tr class="separator:a8c69a7e91dd44b84477decd3352eb954"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7d3c006ea68de6e5b4e2c9e31e0ec371" id="r_a7d3c006ea68de6e5b4e2c9e31e0ec371"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUserSession.html#a7d3c006ea68de6e5b4e2c9e31e0ec371">layoutId</a> = 0</td></tr>
-<tr class="separator:a7d3c006ea68de6e5b4e2c9e31e0ec371"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa672f9f78e0b491b07d5deabb3d6dd2e" id="r_aa672f9f78e0b491b07d5deabb3d6dd2e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUserSession.html#aa672f9f78e0b491b07d5deabb3d6dd2e">themeId</a> = 0</td></tr>
-<tr class="separator:aa672f9f78e0b491b07d5deabb3d6dd2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a370dd2638180d92189dc112f31c0a97c" id="r_a370dd2638180d92189dc112f31c0a97c"><td class="memItemLeft" align="right" valign="top">juce::StringArray&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUserSession.html#a370dd2638180d92189dc112f31c0a97c">paletteColours</a></td></tr>
+<tr class="separator:a370dd2638180d92189dc112f31c0a97c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28a4bfd370d13aa13c44082d2b902514" id="r_a28a4bfd370d13aa13c44082d2b902514"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUserSession.html#a28a4bfd370d13aa13c44082d2b902514">paletteSlot</a> = 0</td></tr>
+<tr class="separator:a28a4bfd370d13aa13c44082d2b902514"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="a1ddcbc4766e84e222fa78e6ae72bf997" name="a1ddcbc4766e84e222fa78e6ae72bf997"></a>
@@ -174,14 +174,28 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a7d3c006ea68de6e5b4e2c9e31e0ec371" name="a7d3c006ea68de6e5b4e2c9e31e0ec371"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7d3c006ea68de6e5b4e2c9e31e0ec371">&#9670;&#160;</a></span>layoutId</h2>
+<a id="a370dd2638180d92189dc112f31c0a97c" name="a370dd2638180d92189dc112f31c0a97c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a370dd2638180d92189dc112f31c0a97c">&#9670;&#160;</a></span>paletteColours</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int UserSession::layoutId = 0</td>
+          <td class="memname">juce::StringArray UserSession::paletteColours</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a28a4bfd370d13aa13c44082d2b902514" name="a28a4bfd370d13aa13c44082d2b902514"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28a4bfd370d13aa13c44082d2b902514">&#9670;&#160;</a></span>paletteSlot</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int UserSession::paletteSlot = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -196,20 +210,6 @@ Public Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">juce::String UserSession::pseudo</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aa672f9f78e0b491b07d5deabb3d6dd2e" name="aa672f9f78e0b491b07d5deabb3d6dd2e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa672f9f78e0b491b07d5deabb3d6dd2e">&#9670;&#160;</a></span>themeId</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int UserSession::themeId = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -231,7 +231,7 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>src/backendManagement/<a class="el" href="BackendTypes_8h_source.html">BackendTypes.h</a></li>
+<li>src/backend/<a class="el" href="BackendTypes_8h_source.html">BackendTypes.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

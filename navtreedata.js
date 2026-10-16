@@ -31,6 +31,7 @@ var NAVTREE =
         [ "All", "namespacemembers.html", "namespacemembers_dup" ],
         [ "Functions", "namespacemembers_func.html", null ],
         [ "Variables", "namespacemembers_vars.html", "namespacemembers_vars" ],
+        [ "Typedefs", "namespacemembers_type.html", null ],
         [ "Enumerations", "namespacemembers_enum.html", null ],
         [ "Enumerator", "namespacemembers_eval.html", null ]
       ] ]
@@ -64,11 +65,13 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "AiConfig_8h.html",
-"String_8h.html#a4bd19e81521295d5c2d6f852cb140fe4",
-"classHarmoniaAudioProcessor.html#acfd3ec2052fd195f4ff63cbe74f938a1",
-"classSignupPage.html#a199949519dbb9b95fd4f88cb743a5a2e",
-"namespaceHarmoniaPalette.html#a48dd6f8d4570ed63402450e3ea1fba8caa18366b217ebf811ad1886e4f4f865b2",
-"structAiResult.html#a4fa170e75f1ac9bf5c2d4415851b5fe1"
+"PagesIncludes_8h.html#a036145178424c4940773bc8c4de9ded6",
+"classAuthPageLookAndFeel.html#ac690521a8615bb1d0e74b970889882a7",
+"classIconButton.html#a6df7acee0a5691f3e627ce0d32eb5877",
+"classParticleField.html#a4a8fc1cad1db79df248caaefb60860d8",
+"namespaceAudioConfig_1_1ADSR_1_1Attack.html#a6496bb16efcbeed7869271bd2ede0a1e",
+"namespaceStrings_1_1Labels.html#abd181faebc7d19d02236170f0883943f",
+"structParticleField_1_1Ambient.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

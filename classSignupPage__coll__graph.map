@@ -13,6 +13,8 @@
 <area shape="rect" id="Node000006" href="$structThemePalette.html" title=" " alt="" coords="481,5,593,31"/>
 <area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="539,45,539,93,534,93,534,45"/>
 <area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="366,133,366,181,361,181,361,133"/>
-<area shape="rect" id="Node000008" href="$classBackendManager.html" title="Central facade for all backend operations." alt="" coords="627,93,761,119"/>
-<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="662,127,625,145,583,160,493,180,413,191,412,186,492,175,581,155,623,140,660,122"/>
+<area shape="rect" id="Node000008" href="$classBackendManager.html" title=" " alt="" coords="627,93,761,119"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="662,128,625,145,584,160,494,180,413,191,412,186,493,175,583,155,623,140,660,123"/>
+<area shape="rect" id="Node000009" href="$classHttpClient.html" title="Sans état modifiable : copiable, utilisable depuis n&#39;importe quel thread." alt="" coords="650,5,738,31"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="697,45,697,93,691,93,691,45"/>
 </map>

@@ -73,6 +73,8 @@ var String_8h =
     [ "Prompt", "String_8h.html#aff04d4054aca28ecc2c4684579efe8b4", null ],
     [ "Rate", "String_8h.html#a7cbc56b7521d09ddffbced154cdd30c1", null ],
     [ "Red", "String_8h.html#a2a697e5d72c465787ddbca73d3965779", null ],
+    [ "Refine", "String_8h.html#a82c31238c30a5f976df2a4d6f324f2d5", null ],
+    [ "Refine", "String_8h.html#aa9235c360dd771d977f6811679315eb3", null ],
     [ "Release", "String_8h.html#a3f5e12e9ec64e3239b9acc6aceda1f23", null ],
     [ "ResetMissingParams", "String_8h.html#a632005a1710f25370383d2cc41d7e347", null ],
     [ "Reso", "String_8h.html#a3f07378afeb067e0a9f97154f04ff7e6", null ],

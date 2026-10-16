@@ -91,122 +91,99 @@ $(document).ready(function(){initNavTree('classBackendManager.html',''); initRes
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classBackendManager-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">BackendManager Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Central facade for all backend operations.  
- <a href="classBackendManager.html#details">More...</a></p>
-
 <p><code>#include &lt;<a class="el" href="BackendManager_8h_source.html">BackendManager.h</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for BackendManager:</div>
+<div class="dyncontent">
+<div class="center"><img src="classBackendManager__coll__graph.png" border="0" usemap="#aBackendManager_coll__map" alt="Collaboration graph"/></div>
+<map name="aBackendManager_coll__map" id="aBackendManager_coll__map">
+<area shape="rect" title=" " alt="" coords="5,93,140,119"/>
+<area shape="rect" href="classHttpClient.html" title="Sans état modifiable : copiable, utilisable depuis n&#39;importe quel thread." alt="" coords="29,5,117,31"/>
+<area shape="poly" title=" " alt="" coords="75,45,75,93,70,93,70,45"/>
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ab9ef9e48bbc4984d1ea3ab0724be4f96" id="r_ab9ef9e48bbc4984d1ea3ab0724be4f96"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#ab9ef9e48bbc4984d1ea3ab0724be4f96">BackendManager</a> ()</td></tr>
-<tr class="memdesc:ab9ef9e48bbc4984d1ea3ab0724be4f96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates and initializes the backend manager.  <br /></td></tr>
 <tr class="separator:ab9ef9e48bbc4984d1ea3ab0724be4f96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55c06c26ce2b9ca7fd923ccb5088a37e" id="r_a55c06c26ce2b9ca7fd923ccb5088a37e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a55c06c26ce2b9ca7fd923ccb5088a37e">~BackendManager</a> ()</td></tr>
-<tr class="memdesc:a55c06c26ce2b9ca7fd923ccb5088a37e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the backend manager and releases resources.  <br /></td></tr>
 <tr class="separator:a55c06c26ce2b9ca7fd923ccb5088a37e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe4a4c71da613428b1e6823266482976" id="r_abe4a4c71da613428b1e6823266482976"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#abe4a4c71da613428b1e6823266482976">BackendManager</a> (const <a class="el" href="classBackendManager.html">BackendManager</a> &amp;)=delete</td></tr>
+<tr class="separator:abe4a4c71da613428b1e6823266482976"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a219e4768a45bc25e2af14c598b3b5050" id="r_a219e4768a45bc25e2af14c598b3b5050"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classBackendManager.html">BackendManager</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a219e4768a45bc25e2af14c598b3b5050">operator=</a> (const <a class="el" href="classBackendManager.html">BackendManager</a> &amp;)=delete</td></tr>
+<tr class="separator:a219e4768a45bc25e2af14c598b3b5050"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a27675e6f46e70bcbae60c9cbefba8fd6" id="r_a27675e6f46e70bcbae60c9cbefba8fd6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structAuthResult.html">AuthResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a27675e6f46e70bcbae60c9cbefba8fd6">loginUser</a> (const juce::String &amp;usernameOrEmail, const juce::String &amp;password)</td></tr>
-<tr class="memdesc:a27675e6f46e70bcbae60c9cbefba8fd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Authenticates a user using username/email and password.  <br /></td></tr>
+<tr class="memdesc:a27675e6f46e70bcbae60c9cbefba8fd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Login.  <br /></td></tr>
 <tr class="separator:a27675e6f46e70bcbae60c9cbefba8fd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3fa4aa3de9a580bcdfa5d37816bbdec4" id="r_a3fa4aa3de9a580bcdfa5d37816bbdec4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structAuthResult.html">AuthResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a3fa4aa3de9a580bcdfa5d37816bbdec4">signupUser</a> (const juce::String &amp;username, const juce::String &amp;firstname, const juce::String &amp;lastname, const juce::String &amp;email, const juce::String &amp;password)</td></tr>
-<tr class="memdesc:a3fa4aa3de9a580bcdfa5d37816bbdec4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new user account.  <br /></td></tr>
+<tr class="memdesc:a3fa4aa3de9a580bcdfa5d37816bbdec4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Création de compte.  <br /></td></tr>
 <tr class="separator:a3fa4aa3de9a580bcdfa5d37816bbdec4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf262702909c9686548e84aa3bc9e40c" id="r_acf262702909c9686548e84aa3bc9e40c"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="structUserSession.html">UserSession</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#acf262702909c9686548e84aa3bc9e40c">loadSession</a> ()</td></tr>
-<tr class="memdesc:acf262702909c9686548e84aa3bc9e40c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the locally stored user session.  <br /></td></tr>
 <tr class="separator:acf262702909c9686548e84aa3bc9e40c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa1b7b42c72d7e0293566eea70d004b0e" id="r_aa1b7b42c72d7e0293566eea70d004b0e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#aa1b7b42c72d7e0293566eea70d004b0e">saveSession</a> (const <a class="el" href="structUserSession.html">UserSession</a> &amp;session)</td></tr>
-<tr class="memdesc:aa1b7b42c72d7e0293566eea70d004b0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves the current user session locally.  <br /></td></tr>
 <tr class="separator:aa1b7b42c72d7e0293566eea70d004b0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a022a7ce81088cec16dbe4a5abda31dd4" id="r_a022a7ce81088cec16dbe4a5abda31dd4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a022a7ce81088cec16dbe4a5abda31dd4">clearSession</a> ()</td></tr>
-<tr class="memdesc:a022a7ce81088cec16dbe4a5abda31dd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears the locally stored session.  <br /></td></tr>
+<tr class="memdesc:a022a7ce81088cec16dbe4a5abda31dd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Supprime la session locale.  <br /></td></tr>
 <tr class="separator:a022a7ce81088cec16dbe4a5abda31dd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4251b60db7c83f6591b73240f33d7b76" id="r_a4251b60db7c83f6591b73240f33d7b76"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structAiResult.html">AiResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a4251b60db7c83f6591b73240f33d7b76">generatePreset</a> (const juce::String &amp;prompt, int modelId, const juce::String &amp;backendName)</td></tr>
-<tr class="memdesc:a4251b60db7c83f6591b73240f33d7b76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates an AI preset from a text prompt.  <br /></td></tr>
+<tr class="memdesc:a4251b60db7c83f6591b73240f33d7b76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le JSON brut (format charter), à passer au <a class="el" href="namespacePresetLoader.html">PresetLoader</a>.  <br /></td></tr>
 <tr class="separator:a4251b60db7c83f6591b73240f33d7b76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abfaf058d370332559ca2a79da994e72f" id="r_abfaf058d370332559ca2a79da994e72f"><td class="memItemLeft" align="right" valign="top">const juce::String &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#abfaf058d370332559ca2a79da994e72f">getApiUrl</a> () const</td></tr>
-<tr class="memdesc:abfaf058d370332559ca2a79da994e72f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the backend API base URL.  <br /></td></tr>
-<tr class="separator:abfaf058d370332559ca2a79da994e72f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a75e5015d05b4a9bf67492b95936a03f9" id="r_a75e5015d05b4a9bf67492b95936a03f9"><td class="memItemLeft" align="right" valign="top">const juce::File &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a75e5015d05b4a9bf67492b95936a03f9">getSessionFile</a> () const</td></tr>
-<tr class="memdesc:a75e5015d05b4a9bf67492b95936a03f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the session file location.  <br /></td></tr>
-<tr class="separator:a75e5015d05b4a9bf67492b95936a03f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab233b3a4310ecf235a9898b4e7849aba" id="r_ab233b3a4310ecf235a9898b4e7849aba"><td class="memItemLeft" align="right" valign="top">const juce::File &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#ab233b3a4310ecf235a9898b4e7849aba">getLogFile</a> () const</td></tr>
-<tr class="memdesc:ab233b3a4310ecf235a9898b4e7849aba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the backend log file location.  <br /></td></tr>
-<tr class="separator:ab233b3a4310ecf235a9898b4e7849aba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ee33036fd962fa87dbedecfc3e8c259" id="r_a9ee33036fd962fa87dbedecfc3e8c259"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a9ee33036fd962fa87dbedecfc3e8c259">writeLog</a> (const juce::String &amp;message) const</td></tr>
-<tr class="memdesc:a9ee33036fd962fa87dbedecfc3e8c259"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a message into the backend log file.  <br /></td></tr>
-<tr class="separator:a9ee33036fd962fa87dbedecfc3e8c259"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefbccfaae792dc33309b0d24d6a663e3" id="r_aefbccfaae792dc33309b0d24d6a663e3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structAiResult.html">AiResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#aefbccfaae792dc33309b0d24d6a663e3">refinePreset</a> (const juce::String &amp;prompt, const juce::String &amp;currentJson, const juce::StringArray &amp;lockedParamIds, int modelId, const juce::String &amp;backendName)</td></tr>
+<tr class="separator:aefbccfaae792dc33309b0d24d6a663e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45da484953210bee5b8baa2fafd463f6" id="r_a45da484953210bee5b8baa2fafd463f6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structProfileResult.html">ProfileResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a45da484953210bee5b8baa2fafd463f6">getProfile</a> ()</td></tr>
-<tr class="memdesc:a45da484953210bee5b8baa2fafd463f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the current user profile.  <br /></td></tr>
 <tr class="separator:a45da484953210bee5b8baa2fafd463f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61203ae58e04ff22c866acb5dc602c23" id="r_a61203ae58e04ff22c866acb5dc602c23"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a61203ae58e04ff22c866acb5dc602c23">syncProfileParamsInBackground</a> (const <a class="el" href="structUserSession.html">UserSession</a> &amp;session)</td></tr>
-<tr class="memdesc:a61203ae58e04ff22c866acb5dc602c23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Synchronizes profile parameters asynchronously.  <br /></td></tr>
+<tr class="memdesc:a61203ae58e04ff22c866acb5dc602c23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resync de la session depuis GET /profile/me, sur un thread de fond.  <br /></td></tr>
 <tr class="separator:a61203ae58e04ff22c866acb5dc602c23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa869d21bab03453f69e0cc4e0dfa7a5a" id="r_aa869d21bab03453f69e0cc4e0dfa7a5a"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="structUserSession.html">UserSession</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#aa869d21bab03453f69e0cc4e0dfa7a5a">syncProfileParams</a> (const <a class="el" href="structUserSession.html">UserSession</a> &amp;session)</td></tr>
-<tr class="memdesc:aa869d21bab03453f69e0cc4e0dfa7a5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Synchronizes profile parameters immediately.  <br /></td></tr>
+<tr class="memdesc:aa869d21bab03453f69e0cc4e0dfa7a5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resync bloquante.  <br /></td></tr>
 <tr class="separator:aa869d21bab03453f69e0cc4e0dfa7a5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad143924eb6fd00d2c65ed7f9e572c818" id="r_ad143924eb6fd00d2c65ed7f9e572c818"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structProfileResult.html">ProfileResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#ad143924eb6fd00d2c65ed7f9e572c818">updateTheme</a> (int themeId)</td></tr>
-<tr class="memdesc:ad143924eb6fd00d2c65ed7f9e572c818"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the current UI theme.  <br /></td></tr>
-<tr class="separator:ad143924eb6fd00d2c65ed7f9e572c818"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea6d9fd0fcb7a047dd5c693535b0de7b" id="r_aea6d9fd0fcb7a047dd5c693535b0de7b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structProfileResult.html">ProfileResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#aea6d9fd0fcb7a047dd5c693535b0de7b">updateLayout</a> (int layoutId)</td></tr>
-<tr class="memdesc:aea6d9fd0fcb7a047dd5c693535b0de7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the current UI layout.  <br /></td></tr>
-<tr class="separator:aea6d9fd0fcb7a047dd5c693535b0de7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac723c32565f732073356e10f9577f622" id="r_ac723c32565f732073356e10f9577f622"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#ac723c32565f732073356e10f9577f622">updateLocalTheme</a> (int themeId)</td></tr>
-<tr class="separator:ac723c32565f732073356e10f9577f622"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85c58266d226f9d8be5d02c0d38e9192" id="r_a85c58266d226f9d8be5d02c0d38e9192"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a85c58266d226f9d8be5d02c0d38e9192">updateThemeAsync</a> (int themeId)</td></tr>
-<tr class="separator:a85c58266d226f9d8be5d02c0d38e9192"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:a8676914547b9934d0ef6d2aa1ade0823" id="r_a8676914547b9934d0ef6d2aa1ade0823"><td class="memItemLeft" align="right" valign="top">juce::File&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a8676914547b9934d0ef6d2aa1ade0823">getAppDataDir</a> () const</td></tr>
-<tr class="memdesc:a8676914547b9934d0ef6d2aa1ade0823"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the application data directory.  <br /></td></tr>
-<tr class="separator:a8676914547b9934d0ef6d2aa1ade0823"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46f9b491d0d3adc079a3d75192fb2bfb" id="r_a46f9b491d0d3adc079a3d75192fb2bfb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structProfileResult.html">ProfileResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a46f9b491d0d3adc079a3d75192fb2bfb">updatePalette</a> (const juce::StringArray &amp;colours, int slot)</td></tr>
+<tr class="memdesc:a46f9b491d0d3adc079a3d75192fb2bfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Palette, bloquant.  <br /></td></tr>
+<tr class="separator:a46f9b491d0d3adc079a3d75192fb2bfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa1882520bf0d605dabfd018742ac11c" id="r_aaa1882520bf0d605dabfd018742ac11c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#aaa1882520bf0d605dabfd018742ac11c">updatePaletteAsync</a> (const juce::StringArray &amp;colours, int slot)</td></tr>
+<tr class="memdesc:aaa1882520bf0d605dabfd018742ac11c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Palette, en arrière-plan (debounce 2,5 s, ignore les PUT inutiles, invités ignorés).  <br /></td></tr>
+<tr class="separator:aaa1882520bf0d605dabfd018742ac11c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70e8894ed6ef9c092ddddef0f401cc7e" id="r_a70e8894ed6ef9c092ddddef0f401cc7e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a70e8894ed6ef9c092ddddef0f401cc7e">flushPaletteIfPending</a> ()</td></tr>
+<tr class="memdesc:a70e8894ed6ef9c092ddddef0f401cc7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envoie le changement de palette en attente, sans bloquer.  <br /></td></tr>
+<tr class="separator:a70e8894ed6ef9c092ddddef0f401cc7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1d9fc37565b10858d52bac65fda2f54" id="r_ab1d9fc37565b10858d52bac65fda2f54"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#ab1d9fc37565b10858d52bac65fda2f54">resetPaletteSyncState</a> (const juce::StringArray &amp;colours, int slot)</td></tr>
+<tr class="memdesc:ab1d9fc37565b10858d52bac65fda2f54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Définit l'état "connu du serveur" (palette de la session, vide pour un invité).  <br /></td></tr>
+<tr class="separator:ab1d9fc37565b10858d52bac65fda2f54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfaf058d370332559ca2a79da994e72f" id="r_abfaf058d370332559ca2a79da994e72f"><td class="memItemLeft" align="right" valign="top">const juce::String &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#abfaf058d370332559ca2a79da994e72f">getApiUrl</a> () const</td></tr>
+<tr class="separator:abfaf058d370332559ca2a79da994e72f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75e5015d05b4a9bf67492b95936a03f9" id="r_a75e5015d05b4a9bf67492b95936a03f9"><td class="memItemLeft" align="right" valign="top">const juce::File &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a75e5015d05b4a9bf67492b95936a03f9">getSessionFile</a> () const</td></tr>
+<tr class="separator:a75e5015d05b4a9bf67492b95936a03f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab233b3a4310ecf235a9898b4e7849aba" id="r_ab233b3a4310ecf235a9898b4e7849aba"><td class="memItemLeft" align="right" valign="top">const juce::File &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#ab233b3a4310ecf235a9898b4e7849aba">getLogFile</a> () const</td></tr>
+<tr class="separator:ab233b3a4310ecf235a9898b4e7849aba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ee33036fd962fa87dbedecfc3e8c259" id="r_a9ee33036fd962fa87dbedecfc3e8c259"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a9ee33036fd962fa87dbedecfc3e8c259">writeLog</a> (const juce::String &amp;message) const</td></tr>
+<tr class="separator:a9ee33036fd962fa87dbedecfc3e8c259"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:aee247266ceecc3335b46d0ca7cd93af1" id="r_aee247266ceecc3335b46d0ca7cd93af1"><td class="memItemLeft" align="right" valign="top">juce::File&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#aee247266ceecc3335b46d0ca7cd93af1">logFile</a></td></tr>
-<tr class="memdesc:aee247266ceecc3335b46d0ca7cd93af1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Backend log file.  <br /></td></tr>
-<tr class="separator:aee247266ceecc3335b46d0ca7cd93af1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0bef3209241177f810c26fc771299900" id="r_a0bef3209241177f810c26fc771299900"><td class="memItemLeft" align="right" valign="top">juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a0bef3209241177f810c26fc771299900">apiUrl</a></td></tr>
-<tr class="memdesc:a0bef3209241177f810c26fc771299900"><td class="mdescLeft">&#160;</td><td class="mdescRight">Backend API base URL.  <br /></td></tr>
-<tr class="separator:a0bef3209241177f810c26fc771299900"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf2b056ac6c42db83b6f51edacf68b74" id="r_aaf2b056ac6c42db83b6f51edacf68b74"><td class="memItemLeft" align="right" valign="top">juce::File&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#aaf2b056ac6c42db83b6f51edacf68b74">sessionFile</a></td></tr>
-<tr class="memdesc:aaf2b056ac6c42db83b6f51edacf68b74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Local session file path.  <br /></td></tr>
-<tr class="separator:aaf2b056ac6c42db83b6f51edacf68b74"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1ccef5b4d24ef3205a6a487380506f86" id="r_a1ccef5b4d24ef3205a6a487380506f86"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classBackendAuthManager.html">BackendAuthManager</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a1ccef5b4d24ef3205a6a487380506f86">authManager</a></td></tr>
-<tr class="memdesc:a1ccef5b4d24ef3205a6a487380506f86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Authentication manager instance.  <br /></td></tr>
-<tr class="separator:a1ccef5b4d24ef3205a6a487380506f86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee6460cdacda4829b65e362b145c6bfa" id="r_aee6460cdacda4829b65e362b145c6bfa"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classBackendProfileManager.html">BackendProfileManager</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#aee6460cdacda4829b65e362b145c6bfa">profileManager</a></td></tr>
-<tr class="memdesc:aee6460cdacda4829b65e362b145c6bfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Profile manager instance.  <br /></td></tr>
-<tr class="separator:aee6460cdacda4829b65e362b145c6bfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a79b635e8fdad51b3f510ac4a2206eb1e" id="r_a79b635e8fdad51b3f510ac4a2206eb1e"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classBackendAiManager.html">BackendAiManager</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a79b635e8fdad51b3f510ac4a2206eb1e">aiManager</a></td></tr>
-<tr class="memdesc:a79b635e8fdad51b3f510ac4a2206eb1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">AI manager instance.  <br /></td></tr>
-<tr class="separator:a79b635e8fdad51b3f510ac4a2206eb1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74eeaa7a5a2efca7cc2e9c0b47a38acc" id="r_a74eeaa7a5a2efca7cc2e9c0b47a38acc"><td class="memItemLeft" align="right" valign="top">juce::SharedResourcePointer&lt; <a class="el" href="classBackendLogger.html">BackendLogger</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a74eeaa7a5a2efca7cc2e9c0b47a38acc">logger</a></td></tr>
+<tr class="separator:a74eeaa7a5a2efca7cc2e9c0b47a38acc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1ed8cf9e64775544e144d82808c9175" id="r_ac1ed8cf9e64775544e144d82808c9175"><td class="memItemLeft" align="right" valign="top">juce::SharedResourcePointer&lt; <a class="el" href="classSessionStore.html">SessionStore</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#ac1ed8cf9e64775544e144d82808c9175">sessionStore</a></td></tr>
+<tr class="separator:ac1ed8cf9e64775544e144d82808c9175"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e044fcc4310c1f171da8208ee6cda09" id="r_a1e044fcc4310c1f171da8208ee6cda09"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classHttpClient.html">HttpClient</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a1e044fcc4310c1f171da8208ee6cda09">http</a></td></tr>
+<tr class="separator:a1e044fcc4310c1f171da8208ee6cda09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a866da3ff1f66933df44f520cc708ab9e" id="r_a866da3ff1f66933df44f520cc708ab9e"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classAuthService.html">AuthService</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a866da3ff1f66933df44f520cc708ab9e">authService</a></td></tr>
+<tr class="separator:a866da3ff1f66933df44f520cc708ab9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a9d9602e4ac1ee75aaa190864c921ad" id="r_a3a9d9602e4ac1ee75aaa190864c921ad"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classProfileService.html">ProfileService</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a3a9d9602e4ac1ee75aaa190864c921ad">profileService</a></td></tr>
+<tr class="separator:a3a9d9602e4ac1ee75aaa190864c921ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bfa8aaac3f39d9a58cb78334d7704b0" id="r_a7bfa8aaac3f39d9a58cb78334d7704b0"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classAiService.html">AiService</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a7bfa8aaac3f39d9a58cb78334d7704b0">aiService</a></td></tr>
+<tr class="separator:a7bfa8aaac3f39d9a58cb78334d7704b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Central facade for all backend operations. </p>
-<p><a class="el" href="classBackendManager.html" title="Central facade for all backend operations.">BackendManager</a> encapsulates specialized backend modules:</p><ul>
-<li><a class="el" href="classBackendAuthManager.html" title="Handles authentication and session persistence.">BackendAuthManager</a></li>
-<li><a class="el" href="classBackendProfileManager.html" title="Handles user profile retrieval and updates.">BackendProfileManager</a></li>
-<li><a class="el" href="classBackendAiManager.html" title="Handles AI preset generation through the backend API.">BackendAiManager</a></li>
-</ul>
-<p>Responsibilities:</p><ul>
-<li>Manage user authentication</li>
-<li>Handle local session storage</li>
-<li>Synchronize profile settings</li>
-<li>Load backend configuration</li>
-<li>Provide logging utilities</li>
-<li>Delegate backend requests</li>
-</ul>
-<p>This class follows the Facade design pattern to provide a simplified API for the application. </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ab9ef9e48bbc4984d1ea3ab0724be4f96" name="ab9ef9e48bbc4984d1ea3ab0724be4f96"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab9ef9e48bbc4984d1ea3ab0724be4f96">&#9670;&#160;</a></span>BackendManager()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9ef9e48bbc4984d1ea3ab0724be4f96">&#9670;&#160;</a></span>BackendManager() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -220,14 +197,6 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Creates and initializes the backend manager. </p>
-<p>During initialization:</p><ul>
-<li>Configuration is loaded</li>
-<li>Application directories are created</li>
-<li>Backend managers are instantiated</li>
-<li>Session file paths are initialized </li>
-</ul>
-
 </div>
 </div>
 <a id="a55c06c26ce2b9ca7fd923ccb5088a37e" name="a55c06c26ce2b9ca7fd923ccb5088a37e"></a>
@@ -235,6 +204,9 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">BackendManager::~BackendManager </td>
@@ -243,9 +215,38 @@ Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p>Destroys the backend manager and releases resources. </p>
+</div>
+</div>
+<a id="abe4a4c71da613428b1e6823266482976" name="abe4a4c71da613428b1e6823266482976"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe4a4c71da613428b1e6823266482976">&#9670;&#160;</a></span>BackendManager() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">BackendManager::BackendManager </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classBackendManager.html">BackendManager</a> &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -265,7 +266,27 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Clears the locally stored session. </p>
+<p>Supprime la session locale. </p>
+<p>Appeler <a class="el" href="classBackendManager.html#a70e8894ed6ef9c092ddddef0f401cc7e" title="Envoie le changement de palette en attente, sans bloquer.">flushPaletteIfPending()</a> AVANT. </p>
+
+</div>
+</div>
+<a id="a70e8894ed6ef9c092ddddef0f401cc7e" name="a70e8894ed6ef9c092ddddef0f401cc7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70e8894ed6ef9c092ddddef0f401cc7e">&#9670;&#160;</a></span>flushPaletteIfPending()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BackendManager::flushPaletteIfPending </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Envoie le changement de palette en attente, sans bloquer. </p>
 
 </div>
 </div>
@@ -301,15 +322,8 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Generates an AI preset from a text prompt. </p>
-<p>The backend returns raw JSON data that can later be parsed by the preset loader.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">prompt</td><td>User prompt.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structAiResult.html">AiResult</a> Generated preset result. </dd></dl>
+<p>Retourne le JSON brut (format charter), à passer au <a class="el" href="namespacePresetLoader.html">PresetLoader</a>. </p>
+<p>Invités refusés. </p>
 
 </div>
 </div>
@@ -328,38 +342,6 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Returns the backend API base URL. </p>
-<dl class="section return"><dt>Returns</dt><dd>API URL string. </dd></dl>
-
-</div>
-</div>
-<a id="a8676914547b9934d0ef6d2aa1ade0823" name="a8676914547b9934d0ef6d2aa1ade0823"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8676914547b9934d0ef6d2aa1ade0823">&#9670;&#160;</a></span>getAppDataDir()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">juce::File BackendManager::getAppDataDir </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Returns the application data directory. </p>
-<p>Creates the directory if it does not already exist.</p>
-<dl class="section return"><dt>Returns</dt><dd>Application data folder. </dd></dl>
-
 </div>
 </div>
 <a id="ab233b3a4310ecf235a9898b4e7849aba" name="ab233b3a4310ecf235a9898b4e7849aba"></a>
@@ -376,9 +358,6 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Returns the backend log file location. </p>
-<dl class="section return"><dt>Returns</dt><dd>Log file path. </dd></dl>
 
 </div>
 </div>
@@ -397,9 +376,6 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Retrieves the current user profile. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structProfileResult.html">ProfileResult</a> User profile data. </dd></dl>
-
 </div>
 </div>
 <a id="a75e5015d05b4a9bf67492b95936a03f9" name="a75e5015d05b4a9bf67492b95936a03f9"></a>
@@ -417,9 +393,6 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Returns the session file location. </p>
-<dl class="section return"><dt>Returns</dt><dd>Session file path. </dd></dl>
-
 </div>
 </div>
 <a id="acf262702909c9686548e84aa3bc9e40c" name="acf262702909c9686548e84aa3bc9e40c"></a>
@@ -436,9 +409,6 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Loads the locally stored user session. </p>
-<dl class="section return"><dt>Returns</dt><dd>Optional <a class="el" href="structUserSession.html">UserSession</a> if available. </dd></dl>
 
 </div>
 </div>
@@ -468,15 +438,110 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Authenticates a user using username/email and password. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">usernameOrEmail</td><td>Username or email address. </td></tr>
-    <tr><td class="paramname">password</td><td>User password.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structAuthResult.html">AuthResult</a> Authentication result. </dd></dl>
+<p>Login. </p>
+<p>En cas de succès, la session est sauvegardée et la resync du profil part en arrière-plan. </p>
+
+</div>
+</div>
+<a id="a219e4768a45bc25e2af14c598b3b5050" name="a219e4768a45bc25e2af14c598b3b5050"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a219e4768a45bc25e2af14c598b3b5050">&#9670;&#160;</a></span>operator=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classBackendManager.html">BackendManager</a> &amp; BackendManager::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classBackendManager.html">BackendManager</a> &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aefbccfaae792dc33309b0d24d6a663e3" name="aefbccfaae792dc33309b0d24d6a663e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefbccfaae792dc33309b0d24d6a663e3">&#9670;&#160;</a></span>refinePreset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structAiResult.html">AiResult</a> BackendManager::refinePreset </td>
+          <td>(</td>
+          <td class="paramtype">const juce::String &amp;&#160;</td>
+          <td class="paramname"><em>prompt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const juce::String &amp;&#160;</td>
+          <td class="paramname"><em>currentJson</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const juce::StringArray &amp;&#160;</td>
+          <td class="paramname"><em>lockedParamIds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>modelId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const juce::String &amp;&#160;</td>
+          <td class="paramname"><em>backendName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab1d9fc37565b10858d52bac65fda2f54" name="ab1d9fc37565b10858d52bac65fda2f54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1d9fc37565b10858d52bac65fda2f54">&#9670;&#160;</a></span>resetPaletteSyncState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BackendManager::resetPaletteSyncState </td>
+          <td>(</td>
+          <td class="paramtype">const juce::StringArray &amp;&#160;</td>
+          <td class="paramname"><em>colours</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>slot</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Définit l'état "connu du serveur" (palette de la session, vide pour un invité). </p>
 
 </div>
 </div>
@@ -495,14 +560,6 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Saves the current user session locally. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">session</td><td>Session data to save. </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
@@ -550,18 +607,8 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Creates a new user account. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">username</td><td>User username. </td></tr>
-    <tr><td class="paramname">firstname</td><td>User first name. </td></tr>
-    <tr><td class="paramname">lastname</td><td>User last name. </td></tr>
-    <tr><td class="paramname">email</td><td>User email address. </td></tr>
-    <tr><td class="paramname">password</td><td>User password.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structAuthResult.html">AuthResult</a> Registration result. </dd></dl>
+<p>Création de compte. </p>
+<p>Même comportement que loginUser en cas de succès. </p>
 
 </div>
 </div>
@@ -581,14 +628,8 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Synchronizes profile parameters immediately. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">session</td><td>Current user session.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Updated session if synchronization succeeds. </dd></dl>
+<p>Resync bloquante. </p>
+<p>nullopt si échec. </p>
 
 </div>
 </div>
@@ -608,103 +649,68 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Synchronizes profile parameters asynchronously. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">session</td><td>Current user session. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Resync de la session depuis GET /profile/me, sur un thread de fond. </p>
 
 </div>
 </div>
-<a id="aea6d9fd0fcb7a047dd5c693535b0de7b" name="aea6d9fd0fcb7a047dd5c693535b0de7b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aea6d9fd0fcb7a047dd5c693535b0de7b">&#9670;&#160;</a></span>updateLayout()</h2>
+<a id="a46f9b491d0d3adc079a3d75192fb2bfb" name="a46f9b491d0d3adc079a3d75192fb2bfb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46f9b491d0d3adc079a3d75192fb2bfb">&#9670;&#160;</a></span>updatePalette()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structProfileResult.html">ProfileResult</a> BackendManager::updateLayout </td>
+          <td class="memname"><a class="el" href="structProfileResult.html">ProfileResult</a> BackendManager::updatePalette </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>layoutId</em></td><td>)</td>
+          <td class="paramtype">const juce::StringArray &amp;&#160;</td>
+          <td class="paramname"><em>colours</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>slot</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Updates the current UI layout. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">layoutId</td><td>Layout identifier.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structProfileResult.html">ProfileResult</a> Operation result. </dd></dl>
+<p>Palette, bloquant. </p>
+<p>Refuse invités et palettes invalides. </p>
 
 </div>
 </div>
-<a id="ac723c32565f732073356e10f9577f622" name="ac723c32565f732073356e10f9577f622"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac723c32565f732073356e10f9577f622">&#9670;&#160;</a></span>updateLocalTheme()</h2>
+<a id="aaa1882520bf0d605dabfd018742ac11c" name="aaa1882520bf0d605dabfd018742ac11c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa1882520bf0d605dabfd018742ac11c">&#9670;&#160;</a></span>updatePaletteAsync()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void BackendManager::updateLocalTheme </td>
+          <td class="memname">void BackendManager::updatePaletteAsync </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>themeId</em></td><td>)</td>
-          <td></td>
+          <td class="paramtype">const juce::StringArray &amp;&#160;</td>
+          <td class="paramname"><em>colours</em>, </td>
         </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ad143924eb6fd00d2c65ed7f9e572c818" name="ad143924eb6fd00d2c65ed7f9e572c818"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad143924eb6fd00d2c65ed7f9e572c818">&#9670;&#160;</a></span>updateTheme()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structProfileResult.html">ProfileResult</a> BackendManager::updateTheme </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>themeId</em></td><td>)</td>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>slot</em>&#160;</td>
         </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Updates the current UI theme. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">themeId</td><td>Theme identifier.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structProfileResult.html">ProfileResult</a> Operation result. </dd></dl>
-
-</div>
-</div>
-<a id="a85c58266d226f9d8be5d02c0d38e9192" name="a85c58266d226f9d8be5d02c0d38e9192"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a85c58266d226f9d8be5d02c0d38e9192">&#9670;&#160;</a></span>updateThemeAsync()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
         <tr>
-          <td class="memname">void BackendManager::updateThemeAsync </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>themeId</em></td><td>)</td>
           <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Palette, en arrière-plan (debounce 2,5 s, ignore les PUT inutiles, invités ignorés). </p>
 
 </div>
 </div>
@@ -724,19 +730,11 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Writes a message into the backend log file. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">message</td><td>Message to append. </td></tr>
-  </table>
-  </dd>
-</dl>
-
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a79b635e8fdad51b3f510ac4a2206eb1e" name="a79b635e8fdad51b3f510ac4a2206eb1e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a79b635e8fdad51b3f510ac4a2206eb1e">&#9670;&#160;</a></span>aiManager</h2>
+<a id="a7bfa8aaac3f39d9a58cb78334d7704b0" name="a7bfa8aaac3f39d9a58cb78334d7704b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bfa8aaac3f39d9a58cb78334d7704b0">&#9670;&#160;</a></span>aiService</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -745,7 +743,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::unique_ptr&lt;<a class="el" href="classBackendAiManager.html">BackendAiManager</a>&gt; BackendManager::aiManager</td>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classAiService.html">AiService</a>&gt; BackendManager::aiService</td>
         </tr>
       </table>
   </td>
@@ -755,12 +753,10 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>AI manager instance. </p>
-
 </div>
 </div>
-<a id="a0bef3209241177f810c26fc771299900" name="a0bef3209241177f810c26fc771299900"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0bef3209241177f810c26fc771299900">&#9670;&#160;</a></span>apiUrl</h2>
+<a id="a866da3ff1f66933df44f520cc708ab9e" name="a866da3ff1f66933df44f520cc708ab9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a866da3ff1f66933df44f520cc708ab9e">&#9670;&#160;</a></span>authService</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -769,7 +765,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">juce::String BackendManager::apiUrl</td>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classAuthService.html">AuthService</a>&gt; BackendManager::authService</td>
         </tr>
       </table>
   </td>
@@ -779,12 +775,10 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Backend API base URL. </p>
-
 </div>
 </div>
-<a id="a1ccef5b4d24ef3205a6a487380506f86" name="a1ccef5b4d24ef3205a6a487380506f86"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1ccef5b4d24ef3205a6a487380506f86">&#9670;&#160;</a></span>authManager</h2>
+<a id="a1e044fcc4310c1f171da8208ee6cda09" name="a1e044fcc4310c1f171da8208ee6cda09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e044fcc4310c1f171da8208ee6cda09">&#9670;&#160;</a></span>http</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -793,7 +787,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::unique_ptr&lt;<a class="el" href="classBackendAuthManager.html">BackendAuthManager</a>&gt; BackendManager::authManager</td>
+          <td class="memname"><a class="el" href="classHttpClient.html">HttpClient</a> BackendManager::http</td>
         </tr>
       </table>
   </td>
@@ -803,12 +797,10 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Authentication manager instance. </p>
-
 </div>
 </div>
-<a id="aee247266ceecc3335b46d0ca7cd93af1" name="aee247266ceecc3335b46d0ca7cd93af1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aee247266ceecc3335b46d0ca7cd93af1">&#9670;&#160;</a></span>logFile</h2>
+<a id="a74eeaa7a5a2efca7cc2e9c0b47a38acc" name="a74eeaa7a5a2efca7cc2e9c0b47a38acc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74eeaa7a5a2efca7cc2e9c0b47a38acc">&#9670;&#160;</a></span>logger</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -817,7 +809,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">juce::File BackendManager::logFile</td>
+          <td class="memname">juce::SharedResourcePointer&lt;<a class="el" href="classBackendLogger.html">BackendLogger</a>&gt; BackendManager::logger</td>
         </tr>
       </table>
   </td>
@@ -827,12 +819,10 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Backend log file. </p>
-
 </div>
 </div>
-<a id="aee6460cdacda4829b65e362b145c6bfa" name="aee6460cdacda4829b65e362b145c6bfa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aee6460cdacda4829b65e362b145c6bfa">&#9670;&#160;</a></span>profileManager</h2>
+<a id="a3a9d9602e4ac1ee75aaa190864c921ad" name="a3a9d9602e4ac1ee75aaa190864c921ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a9d9602e4ac1ee75aaa190864c921ad">&#9670;&#160;</a></span>profileService</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -841,7 +831,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::unique_ptr&lt;<a class="el" href="classBackendProfileManager.html">BackendProfileManager</a>&gt; BackendManager::profileManager</td>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classProfileService.html">ProfileService</a>&gt; BackendManager::profileService</td>
         </tr>
       </table>
   </td>
@@ -851,12 +841,10 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Profile manager instance. </p>
-
 </div>
 </div>
-<a id="aaf2b056ac6c42db83b6f51edacf68b74" name="aaf2b056ac6c42db83b6f51edacf68b74"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaf2b056ac6c42db83b6f51edacf68b74">&#9670;&#160;</a></span>sessionFile</h2>
+<a id="ac1ed8cf9e64775544e144d82808c9175" name="ac1ed8cf9e64775544e144d82808c9175"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1ed8cf9e64775544e144d82808c9175">&#9670;&#160;</a></span>sessionStore</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -865,7 +853,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">juce::File BackendManager::sessionFile</td>
+          <td class="memname">juce::SharedResourcePointer&lt;<a class="el" href="classSessionStore.html">SessionStore</a>&gt; BackendManager::sessionStore</td>
         </tr>
       </table>
   </td>
@@ -874,14 +862,12 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Local session file path. </p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/backendManagement/<a class="el" href="BackendManager_8h_source.html">BackendManager.h</a></li>
-<li>src/backendManagement/<a class="el" href="BackendManager_8cpp.html">BackendManager.cpp</a></li>
+<li>src/backend/<a class="el" href="BackendManager_8h_source.html">BackendManager.h</a></li>
+<li>src/backend/<a class="el" href="BackendManager_8cpp.html">BackendManager.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -135,8 +135,10 @@ Collaboration diagram for SignupPage:</div>
 <area shape="rect" href="structThemePalette.html" title=" " alt="" coords="481,5,593,31"/>
 <area shape="poly" title=" " alt="" coords="539,45,539,93,534,93,534,45"/>
 <area shape="poly" title=" " alt="" coords="366,133,366,181,361,181,361,133"/>
-<area shape="rect" href="classBackendManager.html" title="Central facade for all backend operations." alt="" coords="627,93,761,119"/>
-<area shape="poly" title=" " alt="" coords="662,127,625,145,583,160,493,180,413,191,412,186,492,175,581,155,623,140,660,122"/>
+<area shape="rect" href="classBackendManager.html" title=" " alt="" coords="627,93,761,119"/>
+<area shape="poly" title=" " alt="" coords="662,128,625,145,584,160,494,180,413,191,412,186,493,175,583,155,623,140,660,123"/>
+<area shape="rect" href="classHttpClient.html" title="Sans état modifiable : copiable, utilisable depuis n&#39;importe quel thread." alt="" coords="650,5,738,31"/>
+<area shape="poly" title=" " alt="" coords="697,45,697,93,691,93,691,45"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -153,8 +155,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a98bde77d5c610c0c434451e5aa113e4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2922d5fdeedfdfe83b03643dbe65c5ab" id="r_a2922d5fdeedfdfe83b03643dbe65c5ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSignupPage.html#a2922d5fdeedfdfe83b03643dbe65c5ab">paint</a> (juce::Graphics &amp;) override</td></tr>
 <tr class="separator:a2922d5fdeedfdfe83b03643dbe65c5ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5e9981e1fbc699cd1380db910f756ef" id="r_ae5e9981e1fbc699cd1380db910f756ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSignupPage.html#ae5e9981e1fbc699cd1380db910f756ef">paintOverChildren</a> (juce::Graphics &amp;) override</td></tr>
+<tr class="memdesc:ae5e9981e1fbc699cd1380db910f756ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws a focus ring around the button that has the keyboard focus.  <br /></td></tr>
+<tr class="separator:ae5e9981e1fbc699cd1380db910f756ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6894d15b213b7b0f1f2a927723ec3b46" id="r_a6894d15b213b7b0f1f2a927723ec3b46"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSignupPage.html#a6894d15b213b7b0f1f2a927723ec3b46">resized</a> () override</td></tr>
 <tr class="separator:a6894d15b213b7b0f1f2a927723ec3b46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c7e1998bb2162d7f57c1e07b8387cdc" id="r_a6c7e1998bb2162d7f57c1e07b8387cdc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSignupPage.html#a6c7e1998bb2162d7f57c1e07b8387cdc">visibilityChanged</a> () override</td></tr>
+<tr class="memdesc:a6c7e1998bb2162d7f57c1e07b8387cdc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gives the keyboard focus to the first field when the page appears.  <br /></td></tr>
+<tr class="separator:a6c7e1998bb2162d7f57c1e07b8387cdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -218,7 +226,13 @@ Private Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Authentication page — create a new Harmonia account. </p>
-<p>Visual design mirrors <a class="el" href="classLoginPage.html" title="Authentication page — sign in with identifier + password.">LoginPage</a> and <a class="el" href="classWelcomePage.html" title="Initial landing page allowing the user to choose between sign-in and sign-up.">WelcomePage</a> (dark gradient, animated waves, logo PNG without container). Buttons use <a class="el" href="classAuthPageLookAndFeel.html" title="Shared LookAndFeel for LoginPage and SignupPage (buttons + text fields).">AuthPageLookAndFeel</a>. </p>
+<p>Visual design mirrors <a class="el" href="classLoginPage.html" title="Authentication page — sign in with identifier + password.">LoginPage</a> and <a class="el" href="classWelcomePage.html" title="Initial landing page allowing the user to choose between sign-in and sign-up.">WelcomePage</a> (dark gradient, animated waves, logo PNG without container). Buttons use <a class="el" href="classAuthPageLookAndFeel.html" title="Shared LookAndFeel for LoginPage and SignupPage (buttons + text fields).">AuthPageLookAndFeel</a>.</p>
+<p>Keyboard navigation:</p><ul>
+<li>Tab / Shift+Tab : username -&gt; first name -&gt; last name -&gt; email -&gt; password -&gt; Create account -&gt; Back (loops)</li>
+<li>Enter in a field : jumps to the next field</li>
+<li>Enter in the password field : submits the form</li>
+<li>Enter / Space on a focused button : presses it The username field takes the focus when the page is shown. </li>
+</ul>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae9ff59544a0df1f565d2cf456df6fa30" name="ae9ff59544a0df1f565d2cf456df6fa30"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae9ff59544a0df1f565d2cf456df6fa30">&#9670;&#160;</a></span>SignupPage()</h2>
@@ -417,6 +431,34 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="ae5e9981e1fbc699cd1380db910f756ef" name="ae5e9981e1fbc699cd1380db910f756ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5e9981e1fbc699cd1380db910f756ef">&#9670;&#160;</a></span>paintOverChildren()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SignupPage::paintOverChildren </td>
+          <td>(</td>
+          <td class="paramtype">juce::Graphics &amp;&#160;</td>
+          <td class="paramname"><em>g</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Draws a focus ring around the button that has the keyboard focus. </p>
+
+</div>
+</div>
 <a id="a6894d15b213b7b0f1f2a927723ec3b46" name="a6894d15b213b7b0f1f2a927723ec3b46"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6894d15b213b7b0f1f2a927723ec3b46">&#9670;&#160;</a></span>resized()</h2>
 
@@ -464,6 +506,33 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6c7e1998bb2162d7f57c1e07b8387cdc" name="a6c7e1998bb2162d7f57c1e07b8387cdc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c7e1998bb2162d7f57c1e07b8387cdc">&#9670;&#160;</a></span>visibilityChanged()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SignupPage::visibilityChanged </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gives the keyboard focus to the first field when the page appears. </p>
 
 </div>
 </div>

@@ -1,0 +1,11 @@
+<map id="src/backend/net/HttpClient.cpp" name="src/backend/net/HttpClient.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="99,5,320,31"/>
+<area shape="rect" id="Node000002" href="$HttpClient_8h.html" title=" " alt="" coords="103,79,203,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="202,33,173,69,169,66,198,29"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="227,79,304,104"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="221,29,250,66,246,69,216,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,152,168,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="144,106,109,144,105,140,140,103"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="192,152,251,177"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="166,102,203,140,199,144,163,106"/>
+</map>

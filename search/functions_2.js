@@ -1,11 +1,14 @@
 var searchData=
 [
   ['canplaysound_0',['canPlaySound',['../classHarmoniaVoice.html#ac20388f945bd7b63c9edc0fa07c15870',1,'HarmoniaVoice']]],
-  ['changeprogramname_1',['changeProgramName',['../classHarmoniaAudioProcessor.html#aecb41de829b3b9910f964a45d39bc946',1,'HarmoniaAudioProcessor']]],
-  ['clearsession_2',['clearsession',['../classBackendAuthManager.html#a78823d218c58a3941b4e7f512ebe3122',1,'BackendAuthManager::clearSession()'],['../classBackendManager.html#a022a7ce81088cec16dbe4a5abda31dd4',1,'BackendManager::clearSession()']]],
-  ['combocontrol_3',['ComboControl',['../classComboControl.html#a99d2aa7a07b64ee49c2f235541c15349',1,'ComboControl']]],
-  ['controllermoved_4',['controllerMoved',['../classHarmoniaVoice.html#aae9c7ac7d723cb832d03204ef6bc8fe4',1,'HarmoniaVoice']]],
-  ['createeditor_5',['createEditor',['../classHarmoniaAudioProcessor.html#a20d2e2bcbd3a744433fe1d35a233088e',1,'HarmoniaAudioProcessor']]],
-  ['createlayout_6',['createLayout',['../namespaceHarmoniaParams.html#a277e6f97c0c232c719467c6198da41be',1,'HarmoniaParams']]],
-  ['createpluginfilter_7',['createPluginFilter',['../PluginProcessor_8cpp.html#a62f69a86baff96d3ee5c287e100adc66',1,'PluginProcessor.cpp']]]
+  ['changelistenercallback_1',['changeListenerCallback',['../classPaletteSelector_1_1Picker.html#a5f12c7326c1c73515aa38e623276a3d0',1,'PaletteSelector::Picker']]],
+  ['changeprogramname_2',['changeProgramName',['../classHarmoniaAudioProcessor.html#aecb41de829b3b9910f964a45d39bc946',1,'HarmoniaAudioProcessor']]],
+  ['clear_3',['clear',['../classSessionStore.html#a8dfb4f3026ead4dbbd2415a8c6679bfe',1,'SessionStore']]],
+  ['clearsession_4',['clearSession',['../classBackendManager.html#a022a7ce81088cec16dbe4a5abda31dd4',1,'BackendManager']]],
+  ['clicked_5',['clicked',['../classLogoButton.html#a964d0b6b6048b33191fb800c4f1f59a3',1,'LogoButton']]],
+  ['combocontrol_6',['ComboControl',['../classComboControl.html#a99d2aa7a07b64ee49c2f235541c15349',1,'ComboControl']]],
+  ['controllermoved_7',['controllerMoved',['../classHarmoniaVoice.html#aae9c7ac7d723cb832d03204ef6bc8fe4',1,'HarmoniaVoice']]],
+  ['createeditor_8',['createEditor',['../classHarmoniaAudioProcessor.html#a20d2e2bcbd3a744433fe1d35a233088e',1,'HarmoniaAudioProcessor']]],
+  ['createlayout_9',['createLayout',['../namespaceHarmoniaParams.html#a277e6f97c0c232c719467c6198da41be',1,'HarmoniaParams']]],
+  ['createpluginfilter_10',['createPluginFilter',['../PluginProcessor_8cpp.html#a62f69a86baff96d3ee5c287e100adc66',1,'PluginProcessor.cpp']]]
 ];

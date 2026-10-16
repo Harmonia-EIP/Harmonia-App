@@ -1,0 +1,11 @@
+<map id="LockableControl" name="LockableControl">
+<area shape="rect" id="Node000001" title=" " alt="" coords="169,5,295,31"/>
+<area shape="rect" id="Node000002" href="$classIconChoiceSelector.html" title=" " alt="" coords="84,79,231,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="212,42,171,80,168,77,208,38"/>
+<area shape="rect" id="Node000005" href="$classKnobControl.html" title=" " alt="" coords="255,79,358,104"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="256,38,296,77,293,80,252,42"/>
+<area shape="rect" id="Node000003" href="$classFilterTypeSelector.html" title="Icon&#45;based filter type selector component." alt="" coords="5,152,144,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="135,115,90,154,86,150,132,111"/>
+<area shape="rect" id="Node000004" href="$classWaveformSelector.html" title="Icon&#45;based waveform selection component." alt="" coords="169,152,311,177"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="183,111,228,150,225,154,179,115"/>
+</map>

@@ -1,0 +1,10 @@
+<map id="src/backend/net/ApiError.h" name="src/backend/net/ApiError.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="35,5,226,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,152,168,177"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="130,32,97,140,92,138,125,30"/>
+<area shape="rect" id="Node000003" href="$HttpClient_8h.html" title=" " alt="" coords="125,79,225,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="140,30,163,66,158,68,136,32"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="162,106,113,145,110,141,159,102"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="192,152,251,177"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="185,103,208,139,204,142,180,106"/>
+</map>

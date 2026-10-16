@@ -1,5 +1,7 @@
 <map id="KnobControl" name="KnobControl">
-<area shape="rect" id="Node000001" title="Rotary parameter control component." alt="" coords="20,79,123,104"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="96,79,199,104"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,5,137,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="74,44,74,79,69,79,69,44"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,38,137,76,133,80,92,42"/>
+<area shape="rect" id="Node000003" href="$classLockableControl.html" title=" " alt="" coords="161,5,288,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="204,42,162,80,158,76,200,38"/>
 </map>

@@ -1,12 +1,20 @@
 var searchData=
 [
-  ['iconareaw_0',['iconAreaW',['../classAuthPageLookAndFeel.html#a621336f2a74916651326cc8e4f97862b',1,'AuthPageLookAndFeel']]],
-  ['iconbg_1',['iconBg',['../namespaceHarmoniaColours.html#a1dc65fc924ea45f59e6b3612d89ce8f7',1,'HarmoniaColours']]],
-  ['iconborder_2',['iconBorder',['../namespaceHarmoniaColours.html#ac3989f2c4d82d51da0199c3841bc99b0',1,'HarmoniaColours']]],
-  ['icontilde_3',['iconTilde',['../namespaceHarmoniaColours.html#ac9c85435d8ef23b5d4205ac834263512',1,'HarmoniaColours']]],
-  ['id_4',['id',['../structUserProfile.html#a19793d5b1162f3835370cc215c29d055',1,'UserProfile::id'],['../structAIModelData.html#a05b5a1ecfe38c9c8161891efca92166e',1,'AIModelData::id']]],
-  ['identifier_5',['identifier',['../namespaceStrings_1_1Placeholders.html#a3a633e92f89a1c63e09e5131cef2d2bf',1,'Strings::Placeholders']]],
-  ['identifierfield_6',['identifierField',['../classLoginPage.html#a45dbf3ac1b6f55261bf3010cb0fe70c8',1,'LoginPage']]],
-  ['isactive_7',['isActive',['../structUserProfile.html#a455bca4ab27148750c7c10dc729806dc',1,'UserProfile']]],
-  ['isguest_8',['isGuest',['../structUserSession.html#a5bd5660bcff32a44eff9ccb4061bf08e',1,'UserSession']]]
+  ['icon_0',['icon',['../classIconButton.html#a3ab25028bc129f8569d57554516304b4',1,'IconButton']]],
+  ['iconareaw_1',['iconAreaW',['../classAuthPageLookAndFeel.html#a621336f2a74916651326cc8e4f97862b',1,'AuthPageLookAndFeel']]],
+  ['iconbg_2',['iconBg',['../namespaceHarmoniaColours.html#a1dc65fc924ea45f59e6b3612d89ce8f7',1,'HarmoniaColours']]],
+  ['iconborder_3',['iconBorder',['../namespaceHarmoniaColours.html#ac3989f2c4d82d51da0199c3841bc99b0',1,'HarmoniaColours']]],
+  ['icontilde_4',['iconTilde',['../namespaceHarmoniaColours.html#ac9c85435d8ef23b5d4205ac834263512',1,'HarmoniaColours']]],
+  ['id_5',['id',['../structAIModelData.html#a05b5a1ecfe38c9c8161891efca92166e',1,'AIModelData::id'],['../structModelPicker_1_1Item.html#a59cad9c9a4a66400bdc0cbd7188d1c07',1,'ModelPicker::Item::id'],['../structUserProfile.html#a19793d5b1162f3835370cc215c29d055',1,'UserProfile::id']]],
+  ['identifier_6',['identifier',['../namespaceStrings_1_1Placeholders.html#a3a633e92f89a1c63e09e5131cef2d2bf',1,'Strings::Placeholders']]],
+  ['identifierfield_7',['identifierField',['../classLoginPage.html#a45dbf3ac1b6f55261bf3010cb0fe70c8',1,'LoginPage']]],
+  ['identity_8',['identity',['../namespaceUiState.html#a5b51a6b9ddade700aea386c2a29e6e0b',1,'UiState']]],
+  ['invalidcurrentpreset_9',['InvalidCurrentPreset',['../namespaceBackendStrings.html#a94e1371cd78f77d579477472f4876f55',1,'BackendStrings']]],
+  ['invalidemail_10',['InvalidEmail',['../namespaceBackendStrings.html#a674eed41ade440d28c52564a516ad93a',1,'BackendStrings']]],
+  ['invalidinput_11',['InvalidInput',['../namespaceBackendStrings.html#a1cfdaa484450f281b36bfefe8c1ced19',1,'BackendStrings']]],
+  ['invalidpalette_12',['InvalidPalette',['../namespaceBackendStrings.html#af62f9fdd52521ecc4c86bb9f2abb5154',1,'BackendStrings']]],
+  ['invalidserverresponse_13',['InvalidServerResponse',['../namespaceBackendStrings.html#a5b8d7de3a51c45b1dac28c7b7b83b003',1,'BackendStrings']]],
+  ['isactive_14',['isActive',['../structUserProfile.html#a455bca4ab27148750c7c10dc729806dc',1,'UserProfile']]],
+  ['isguest_15',['isGuest',['../structUserSession.html#a5bd5660bcff32a44eff9ccb4061bf08e',1,'UserSession']]],
+  ['items_16',['items',['../classModelPicker.html#a299659ea24a94f728e8e29d1572db42f',1,'ModelPicker']]]
 ];

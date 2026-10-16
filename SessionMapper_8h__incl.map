@@ -1,0 +1,17 @@
+<map id="src/backend/storage/SessionMapper.h" name="src/backend/storage/SessionMapper.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="77,5,229,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,167,152,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,47,106,95,94,125,86,154,81,152,89,123,102,92,135,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="116,93,191,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="156,46,156,79,151,79,151,46"/>
+<area shape="rect" id="Node000004" href="$BackendTypes_8h.html" title="Defines backend&#45;related data structures." alt="" coords="215,93,353,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="186,43,254,84,252,88,184,48"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="252,121,126,165,124,160,250,116"/>
+<area shape="rect" id="Node000005" href="$String_8h.html" title=" " alt="" coords="177,167,303,192"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="279,120,257,156,252,154,274,118"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="209,240,372,265"/>
+<area shape="poly" id="edge8_Node000004_Node000006" title=" " alt="" coords="294,118,307,139,317,166,319,183,317,199,307,229,302,227,312,198,314,183,312,167,302,142,290,120"/>
+<area shape="rect" id="Node000007" href="$AppConfig_8h.html" title=" " alt="" coords="379,167,533,192"/>
+<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="313,116,416,159,414,164,311,121"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="251,191,277,227,272,230,246,194"/>
+</map>

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['presetloader_0',['PresetLoader',['../namespacePresetLoader.html',1,'']]]
+  ['iconrenderer_0',['IconRenderer',['../namespaceIconRenderer.html',1,'']]],
+  ['ids_1',['IDs',['../namespaceIDs.html',1,'']]]
 ];

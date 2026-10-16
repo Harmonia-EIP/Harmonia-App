@@ -8,6 +8,7 @@ var dir_3c4c7c1a85608ccd561c026bec818e51 =
     [ "IconRenderer.h", "IconRenderer_8h.html", "IconRenderer_8h" ],
     [ "KnobControl.h", "KnobControl_8h.html", "KnobControl_8h" ],
     [ "LfoVisualizer.h", "LfoVisualizer_8h.html", "LfoVisualizer_8h" ],
+    [ "LockableControl.h", "LockableControl_8h.html", "LockableControl_8h" ],
     [ "OscilloscopeComponent.cpp", "OscilloscopeComponent_8cpp.html", null ],
     [ "OscilloscopeComponent.h", "OscilloscopeComponent_8h.html", "OscilloscopeComponent_8h" ],
     [ "ParticleField.h", "ParticleField_8h.html", "ParticleField_8h" ],

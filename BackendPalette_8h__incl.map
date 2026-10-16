@@ -1,0 +1,15 @@
+<map id="src/backend/BackendPalette.h" name="src/backend/BackendPalette.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="326,5,541,31"/>
+<area shape="rect" id="Node000002" href="$PaletteMapper_8h.html" title=" " alt="" coords="343,79,523,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="436,31,436,65,431,65,431,31"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,159,168,185"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="384,107,151,159,150,154,382,101"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="193,152,335,192"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="410,106,318,149,316,144,408,102"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="360,159,507,185"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="436,104,436,145,431,145,431,104"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="531,159,589,185"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="453,102,531,150,528,154,451,106"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="614,159,677,185"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="469,102,602,150,607,151,605,156,600,154,467,107"/>
+</map>

@@ -1,21 +1,26 @@
 <map id="src/components/WaveformSelector.h" name="src/components/WaveformSelector.h">
-<area shape="rect" id="Node000001" title="Specialized waveform and filter selector components." alt="" coords="597,5,857,31"/>
-<area shape="rect" id="Node000002" href="$IconChoiceSelector_8h.html" title="Icon&#45;based selector component for choice parameters." alt="" coords="591,79,749,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="720,33,690,70,686,66,716,29"/>
-<area shape="rect" id="Node000007" href="$IconRenderer_8h.html" title="Utility namespace used to render waveform and filter icons." alt="" coords="824,159,943,185"/>
-<area shape="poly" id="edge10_Node000001_Node000007" title=" " alt="" coords="741,29,864,148,860,152,737,33"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="5,152,191,192"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="591,104,418,125,205,155,204,149,418,120,591,99"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="215,152,370,192"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="615,107,384,154,383,149,614,101"/>
-<area shape="rect" id="Node000005" href="$HarmoniaPalette_8h.html" title=" " alt="" coords="394,159,602,185"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="646,106,537,156,534,151,644,102"/>
-<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="702,102,841,152,839,157,700,107"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="627,159,713,185"/>
-<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="673,104,673,145,667,145,667,104"/>
-<area shape="rect" id="Node000009" title=" " alt="" coords="737,159,800,185"/>
-<area shape="poly" id="edge9_Node000002_Node000009" title=" " alt="" coords="686,102,745,149,742,153,683,106"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="619,240,761,280"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="525,182,636,232,634,237,523,187"/>
-<area shape="poly" id="edge7_Node000007_Node000006" title=" " alt="" coords="858,187,746,237,744,232,856,182"/>
+<area shape="rect" id="Node000001" title="Specialized waveform and filter selector components." alt="" coords="309,5,569,31"/>
+<area shape="rect" id="Node000002" href="$IconChoiceSelector_8h.html" title="Icon&#45;based selector component for choice parameters." alt="" coords="303,79,460,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="431,33,401,70,397,66,427,29"/>
+<area shape="rect" id="Node000007" href="$IconRenderer_8h.html" title="Utility namespace used to render waveform and filter icons." alt="" coords="589,159,707,185"/>
+<area shape="poly" id="edge14_Node000001_Node000007" title=" " alt="" coords="456,29,622,149,619,153,453,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="26,152,211,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="344,107,196,151,194,145,342,101"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="197,240,352,280"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="341,107,305,125,289,138,277,153,270,171,267,189,269,226,264,226,262,189,265,169,272,151,286,134,302,120,339,102"/>
+<area shape="rect" id="Node000005" href="$HarmoniaPalette_8h.html" title=" " alt="" coords="403,247,611,273"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="452,102,494,119,512,133,528,151,536,172,535,195,522,236,517,234,530,194,530,173,523,153,509,137,491,124,450,107"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="421,101,597,153,595,158,419,107"/>
+<area shape="rect" id="Node000008" href="$LockableControl_8h.html" title="Interface commune aux controles dont le parametre peut etre verrouille en mode Refine (KnobControl,..." alt="" coords="375,159,513,185"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="393,103,428,147,424,150,388,106"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="29,247,115,273"/>
+<area shape="poly" id="edge12_Node000002_Node000009" title=" " alt="" coords="303,97,222,101,136,111,61,128,34,140,15,154,10,163,8,173,15,196,30,217,49,237,45,240,26,221,10,198,3,174,5,162,11,150,31,135,59,123,135,106,221,96,302,91"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="287,159,350,185"/>
+<area shape="poly" id="edge13_Node000002_Node000010" title=" " alt="" coords="374,106,338,150,334,147,370,103"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="506,328,649,368"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="518,271,555,315,551,319,514,275"/>
+<area shape="poly" id="edge7_Node000007_Node000006" title=" " alt="" coords="649,185,642,228,625,281,603,319,598,316,620,279,636,227,644,185"/>
+<area shape="poly" id="edge9_Node000008_Node000004" title=" " alt="" coords="422,187,325,236,323,231,420,182"/>
+<area shape="poly" id="edge10_Node000008_Node000005" title=" " alt="" coords="455,183,492,234,488,237,450,186"/>
+<area shape="poly" id="edge11_Node000008_Node000009" title=" " alt="" coords="395,187,130,248,128,243,394,182"/>
 </map>

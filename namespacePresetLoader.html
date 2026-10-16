@@ -103,16 +103,16 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a99a8ac571f29575259e50f4e089217c2" id="r_a99a8ac571f29575259e50f4e089217c2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPresetLoader_1_1LoadResult.html">LoadResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacePresetLoader.html#a99a8ac571f29575259e50f4e089217c2">loadFromJsonString</a> (const juce::String &amp;jsonText, juce::AudioProcessorValueTreeState &amp;apvts)</td></tr>
-<tr class="separator:a99a8ac571f29575259e50f4e089217c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a56f2feb76c7d6882a5d53ebd15f51427" id="r_a56f2feb76c7d6882a5d53ebd15f51427"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPresetLoader_1_1LoadResult.html">LoadResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacePresetLoader.html#a56f2feb76c7d6882a5d53ebd15f51427">loadFromFile</a> (const juce::File &amp;file, juce::AudioProcessorValueTreeState &amp;apvts)</td></tr>
-<tr class="separator:a56f2feb76c7d6882a5d53ebd15f51427"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcb03b24dbaa666d5aefdb6f7b962b0a" id="r_abcb03b24dbaa666d5aefdb6f7b962b0a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPresetLoader_1_1LoadResult.html">LoadResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacePresetLoader.html#abcb03b24dbaa666d5aefdb6f7b962b0a">loadFromJsonString</a> (const juce::String &amp;jsonText, juce::AudioProcessorValueTreeState &amp;apvts, const juce::StringArray &amp;lockedIds={})</td></tr>
+<tr class="separator:abcb03b24dbaa666d5aefdb6f7b962b0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fc5b750bd11d24b47bfec6b734ccc3f" id="r_a8fc5b750bd11d24b47bfec6b734ccc3f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPresetLoader_1_1LoadResult.html">LoadResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacePresetLoader.html#a8fc5b750bd11d24b47bfec6b734ccc3f">loadFromFile</a> (const juce::File &amp;file, juce::AudioProcessorValueTreeState &amp;apvts, const juce::StringArray &amp;lockedIds={})</td></tr>
+<tr class="separator:a8fc5b750bd11d24b47bfec6b734ccc3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa61c647476cdc8ae94dbdedb6e78bb44" id="r_aa61c647476cdc8ae94dbdedb6e78bb44"><td class="memItemLeft" align="right" valign="top">juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacePresetLoader.html#aa61c647476cdc8ae94dbdedb6e78bb44">saveToJsonString</a> (juce::AudioProcessorValueTreeState &amp;apvts, const juce::String &amp;presetName, const juce::String &amp;generatedBy)</td></tr>
 <tr class="separator:aa61c647476cdc8ae94dbdedb6e78bb44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a56f2feb76c7d6882a5d53ebd15f51427" name="a56f2feb76c7d6882a5d53ebd15f51427"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a56f2feb76c7d6882a5d53ebd15f51427">&#9670;&#160;</a></span>loadFromFile()</h2>
+<a id="a8fc5b750bd11d24b47bfec6b734ccc3f" name="a8fc5b750bd11d24b47bfec6b734ccc3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8fc5b750bd11d24b47bfec6b734ccc3f">&#9670;&#160;</a></span>loadFromFile()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -130,7 +130,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">juce::AudioProcessorValueTreeState &amp;&#160;</td>
-          <td class="paramname"><em>apvts</em>&#160;</td>
+          <td class="paramname"><em>apvts</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const juce::StringArray &amp;&#160;</td>
+          <td class="paramname"><em>lockedIds</em> = <code>{}</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -147,8 +153,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a99a8ac571f29575259e50f4e089217c2" name="a99a8ac571f29575259e50f4e089217c2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a99a8ac571f29575259e50f4e089217c2">&#9670;&#160;</a></span>loadFromJsonString()</h2>
+<a id="abcb03b24dbaa666d5aefdb6f7b962b0a" name="abcb03b24dbaa666d5aefdb6f7b962b0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abcb03b24dbaa666d5aefdb6f7b962b0a">&#9670;&#160;</a></span>loadFromJsonString()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -166,7 +172,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">juce::AudioProcessorValueTreeState &amp;&#160;</td>
-          <td class="paramname"><em>apvts</em>&#160;</td>
+          <td class="paramname"><em>apvts</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const juce::StringArray &amp;&#160;</td>
+          <td class="paramname"><em>lockedIds</em> = <code>{}</code>&#160;</td>
         </tr>
         <tr>
           <td></td>

@@ -7,5 +7,7 @@ var searchData=
   ['harmoniavoice_4',['HarmoniaVoice',['../classHarmoniaVoice.html#aabdcc3cab0d00f66d76156348ba75d84',1,'HarmoniaVoice']]],
   ['haseditor_5',['hasEditor',['../classHarmoniaAudioProcessor.html#a5e4224f517d5858c382fb6f44485ed40',1,'HarmoniaAudioProcessor']]],
   ['headercomponent_6',['HeaderComponent',['../classHeaderComponent.html#ab197394165cd8bd0a3ccc0d06eba87f5',1,'HeaderComponent']]],
-  ['hivelookandfeel_7',['HiveLookAndFeel',['../classHiveLookAndFeel.html#ae9f303aab9beb762871e002b3c506d00',1,'HiveLookAndFeel']]]
+  ['hivelookandfeel_7',['HiveLookAndFeel',['../classHiveLookAndFeel.html#ae9f303aab9beb762871e002b3c506d00',1,'HiveLookAndFeel']]],
+  ['httpclient_8',['HttpClient',['../classHttpClient.html#a9332a9e3049a67d717b54a70a02b8208',1,'HttpClient']]],
+  ['httpoptions_9',['httpoptions',['../structHttpOptions.html#abd300fdadac252255df3f83a412716b8',1,'HttpOptions::HttpOptions()=default'],['../structHttpOptions.html#ad94f4a499a16df011e40b6b958da6ffc',1,'HttpOptions::HttpOptions(int totalTimeoutMs)']]]
 ];

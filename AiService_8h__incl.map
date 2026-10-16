@@ -1,0 +1,16 @@
+<map id="src/backend/services/AiService.h" name="src/backend/services/AiService.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="23,5,181,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="131,240,294,265"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="81,48,51,77,23,114,13,134,9,153,10,172,19,190,39,211,63,226,90,237,118,244,117,249,88,242,61,231,35,215,14,194,5,174,3,153,8,132,18,111,47,73,77,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="29,167,175,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="105,46,105,153,99,153,99,46"/>
+<area shape="rect" id="Node000004" href="$BackendTypes_8h.html" title="Defines backend&#45;related data structures." alt="" coords="143,93,282,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="130,43,186,83,183,87,127,48"/>
+<area shape="poly" id="edge8_Node000004_Node000002" title=" " alt="" coords="215,119,215,226,210,226,210,119"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="196,121,133,161,130,157,193,116"/>
+<area shape="rect" id="Node000005" href="$String_8h.html" title=" " alt="" coords="251,167,377,192"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="230,116,288,156,285,161,227,121"/>
+<area shape="rect" id="Node000006" href="$AppConfig_8h.html" title=" " alt="" coords="402,167,557,192"/>
+<area shape="poly" id="edge7_Node000004_Node000006" title=" " alt="" coords="256,116,423,160,422,166,255,121"/>
+<area shape="poly" id="edge6_Node000005_Node000002" title=" " alt="" coords="299,194,242,234,239,230,296,190"/>
+</map>

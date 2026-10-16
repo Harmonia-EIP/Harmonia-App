@@ -91,6 +91,8 @@ $(document).ready(function(){initNavTree('classHiveLookAndFeel.html',''); initRe
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="classHiveLookAndFeel-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">HiveLookAndFeel Class Reference</div></div>
 </div><!--header-->
@@ -130,6 +132,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab4cb21706901f606987087bfad2a4e27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a837672018a073e5270d55cbf50219b0b" id="r_a837672018a073e5270d55cbf50219b0b"><td class="memItemLeft" align="right" valign="top">juce::Font&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHiveLookAndFeel.html#a837672018a073e5270d55cbf50219b0b">getPopupMenuFont</a> () override</td></tr>
 <tr class="separator:a837672018a073e5270d55cbf50219b0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acddecb1547df06a2a2f4769f196de870" id="r_acddecb1547df06a2a2f4769f196de870"><td class="memItemLeft" align="right" valign="top">juce::Rectangle&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHiveLookAndFeel.html#acddecb1547df06a2a2f4769f196de870">getTooltipBounds</a> (const juce::String &amp;tipText, juce::Point&lt; int &gt; screenPos, juce::Rectangle&lt; int &gt; parentArea) override</td></tr>
+<tr class="separator:acddecb1547df06a2a2f4769f196de870"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31ea7114854853571fdad1fd8e5e9c98" id="r_a31ea7114854853571fdad1fd8e5e9c98"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHiveLookAndFeel.html#a31ea7114854853571fdad1fd8e5e9c98">drawTooltip</a> (juce::Graphics &amp;g, const juce::String &amp;text, int width, int height) override</td></tr>
+<tr class="separator:a31ea7114854853571fdad1fd8e5e9c98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f1d7cdec7979303ec7744190b5461eb" id="r_a4f1d7cdec7979303ec7744190b5461eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHiveLookAndFeel.html#a4f1d7cdec7979303ec7744190b5461eb">drawButtonBackground</a> (juce::Graphics &amp;g, juce::Button &amp;button, const juce::Colour &amp;backgroundColour, bool isHighlighted, bool isDown) override</td></tr>
 <tr class="separator:a4f1d7cdec7979303ec7744190b5461eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe43050b3454637feaee7d04b7efb266" id="r_afe43050b3454637feaee7d04b7efb266"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHiveLookAndFeel.html#afe43050b3454637feaee7d04b7efb266">drawRotarySlider</a> (juce::Graphics &amp;g, int x, int y, int width, int height, float sliderPos, float startAngle, float endAngle, juce::Slider &amp;slider) override</td></tr>
@@ -140,10 +146,24 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ae6b5edc4aadf8eee26dc1bf5d7ba1833"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa11621f02164bb94cb84ec5603402042" id="r_aa11621f02164bb94cb84ec5603402042"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHiveLookAndFeel.html#aa11621f02164bb94cb84ec5603402042">positionComboBoxText</a> (juce::ComboBox &amp;box, juce::Label &amp;label) override</td></tr>
 <tr class="separator:aa11621f02164bb94cb84ec5603402042"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d2e825596b2c8826af9fb1f3b80e2d5" id="r_a4d2e825596b2c8826af9fb1f3b80e2d5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHiveLookAndFeel.html#a4d2e825596b2c8826af9fb1f3b80e2d5">drawPopupMenuBackground</a> (juce::Graphics &amp;g, int width, int height) override</td></tr>
+<tr class="separator:a4d2e825596b2c8826af9fb1f3b80e2d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b15cbace33004b18c4fbeb8983a86c6" id="r_a5b15cbace33004b18c4fbeb8983a86c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHiveLookAndFeel.html#a5b15cbace33004b18c4fbeb8983a86c6">drawPopupMenuItem</a> (juce::Graphics &amp;g, const juce::Rectangle&lt; int &gt; &amp;area, const bool isSeparator, const bool isActive, const bool isHighlighted, const bool isTicked, const bool hasSubMenu, const juce::String &amp;text, const juce::String &amp;shortcutKeyText, const juce::Drawable *icon, const juce::Colour *textColour) override</td></tr>
 <tr class="separator:a5b15cbace33004b18c4fbeb8983a86c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1214c543829a91d9afefe5e825eec97" id="r_af1214c543829a91d9afefe5e825eec97"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHiveLookAndFeel.html#af1214c543829a91d9afefe5e825eec97">refreshTheme</a> ()</td></tr>
 <tr class="separator:af1214c543829a91d9afefe5e825eec97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:afae841772fbe255aed8ff99c7fc4beaa" id="r_afae841772fbe255aed8ff99c7fc4beaa"><td class="memItemLeft" align="right" valign="top">static juce::Font&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHiveLookAndFeel.html#afae841772fbe255aed8ff99c7fc4beaa">tooltipFont</a> ()</td></tr>
+<tr class="separator:afae841772fbe255aed8ff99c7fc4beaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:ae75ec8a754564cf419f64b9196ed663e" id="r_ae75ec8a754564cf419f64b9196ed663e"><td class="memItemLeft" align="right" valign="top">static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHiveLookAndFeel.html#ae75ec8a754564cf419f64b9196ed663e">tipPadX</a> = 13</td></tr>
+<tr class="separator:ae75ec8a754564cf419f64b9196ed663e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad83fbb03108e0d0f8bbfe1f49d275cac" id="r_ad83fbb03108e0d0f8bbfe1f49d275cac"><td class="memItemLeft" align="right" valign="top">static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHiveLookAndFeel.html#ad83fbb03108e0d0f8bbfe1f49d275cac">tipHeight</a> = 24</td></tr>
+<tr class="separator:ad83fbb03108e0d0f8bbfe1f49d275cac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae9f303aab9beb762871e002b3c506d00" name="ae9f303aab9beb762871e002b3c506d00"></a>
@@ -388,6 +408,48 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a4d2e825596b2c8826af9fb1f3b80e2d5" name="a4d2e825596b2c8826af9fb1f3b80e2d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d2e825596b2c8826af9fb1f3b80e2d5">&#9670;&#160;</a></span>drawPopupMenuBackground()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HiveLookAndFeel::drawPopupMenuBackground </td>
+          <td>(</td>
+          <td class="paramtype">juce::Graphics &amp;&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a5b15cbace33004b18c4fbeb8983a86c6" name="a5b15cbace33004b18c4fbeb8983a86c6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5b15cbace33004b18c4fbeb8983a86c6">&#9670;&#160;</a></span>drawPopupMenuItem()</h2>
 
@@ -556,6 +618,54 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a31ea7114854853571fdad1fd8e5e9c98" name="a31ea7114854853571fdad1fd8e5e9c98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31ea7114854853571fdad1fd8e5e9c98">&#9670;&#160;</a></span>drawTooltip()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HiveLookAndFeel::drawTooltip </td>
+          <td>(</td>
+          <td class="paramtype">juce::Graphics &amp;&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const juce::String &amp;&#160;</td>
+          <td class="paramname"><em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ab4cb21706901f606987087bfad2a4e27" name="ab4cb21706901f606987087bfad2a4e27"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab4cb21706901f606987087bfad2a4e27">&#9670;&#160;</a></span>getComboBoxFont()</h2>
 
@@ -669,6 +779,48 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="acddecb1547df06a2a2f4769f196de870" name="acddecb1547df06a2a2f4769f196de870"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acddecb1547df06a2a2f4769f196de870">&#9670;&#160;</a></span>getTooltipBounds()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">juce::Rectangle&lt; int &gt; HiveLookAndFeel::getTooltipBounds </td>
+          <td>(</td>
+          <td class="paramtype">const juce::String &amp;&#160;</td>
+          <td class="paramname"><em>tipText</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">juce::Point&lt; int &gt;&#160;</td>
+          <td class="paramname"><em>screenPos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">juce::Rectangle&lt; int &gt;&#160;</td>
+          <td class="paramname"><em>parentArea</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="aa11621f02164bb94cb84ec5603402042" name="aa11621f02164bb94cb84ec5603402042"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa11621f02164bb94cb84ec5603402042">&#9670;&#160;</a></span>positionComboBoxText()</h2>
 
@@ -724,6 +876,76 @@ Public Member Functions</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afae841772fbe255aed8ff99c7fc4beaa" name="afae841772fbe255aed8ff99c7fc4beaa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afae841772fbe255aed8ff99c7fc4beaa">&#9670;&#160;</a></span>tooltipFont()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static juce::Font HiveLookAndFeel::tooltipFont </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ad83fbb03108e0d0f8bbfe1f49d275cac" name="ad83fbb03108e0d0f8bbfe1f49d275cac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad83fbb03108e0d0f8bbfe1f49d275cac">&#9670;&#160;</a></span>tipHeight</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr int HiveLookAndFeel::tipHeight = 24</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae75ec8a754564cf419f64b9196ed663e" name="ae75ec8a754564cf419f64b9196ed663e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae75ec8a754564cf419f64b9196ed663e">&#9670;&#160;</a></span>tipPadX</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr int HiveLookAndFeel::tipPadX = 13</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

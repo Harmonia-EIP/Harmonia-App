@@ -116,11 +116,15 @@ Collaboration diagram for HarmoniaAudioProcessor:</div>
 <div class="dyncontent">
 <div class="center"><img src="classHarmoniaAudioProcessor__coll__graph.png" border="0" usemap="#aHarmoniaAudioProcessor_coll__map" alt="Collaboration graph"/></div>
 <map name="aHarmoniaAudioProcessor_coll__map" id="aHarmoniaAudioProcessor_coll__map">
-<area shape="rect" title="Main JUCE audio processor for the Harmonia synthesizer." alt="" coords="96,93,283,119"/>
-<area shape="rect" title=" " alt="" coords="5,5,163,31"/>
-<area shape="poly" title=" " alt="" coords="110,37,177,91,173,95,107,41"/>
-<area shape="rect" href="structHarmoniaParams_1_1AtomicRefs.html" title="Real&#45;time safe parameter access structure." alt="" coords="187,5,405,31"/>
-<area shape="poly" title=" " alt="" coords="273,41,205,95,202,91,269,37"/>
+<area shape="rect" title="Main JUCE audio processor for the Harmonia synthesizer." alt="" coords="203,181,389,207"/>
+<area shape="rect" title=" " alt="" coords="5,93,163,119"/>
+<area shape="poly" title=" " alt="" coords="126,122,269,179,267,184,124,126"/>
+<area shape="rect" href="structHarmoniaParams_1_1AtomicRefs.html" title="Real&#45;time safe parameter access structure." alt="" coords="187,93,405,119"/>
+<area shape="poly" title=" " alt="" coords="299,133,299,181,293,181,293,133"/>
+<area shape="rect" href="classBackendManager.html" title=" " alt="" coords="429,93,563,119"/>
+<area shape="poly" title=" " alt="" coords="458,127,324,184,322,179,455,122"/>
+<area shape="rect" href="classHttpClient.html" title="Sans état modifiable : copiable, utilisable depuis n&#39;importe quel thread." alt="" coords="452,5,540,31"/>
+<area shape="poly" title=" " alt="" coords="499,45,499,93,493,93,493,45"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -192,6 +196,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aaaae53b13f5a6000288df71faa2b63ed" id="r_aaaae53b13f5a6000288df71faa2b63ed"><td class="memItemLeft" align="right" valign="top">juce::AudioProcessorValueTreeState &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#aaaae53b13f5a6000288df71faa2b63ed">getAPVTS</a> ()</td></tr>
 <tr class="memdesc:aaaae53b13f5a6000288df71faa2b63ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the parameter tree state.  <br /></td></tr>
 <tr class="separator:aaaae53b13f5a6000288df71faa2b63ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f94642a2ed0c19c7dede26b58fc4ff4" id="r_a6f94642a2ed0c19c7dede26b58fc4ff4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classBackendManager.html">BackendManager</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#a6f94642a2ed0c19c7dede26b58fc4ff4">getBackend</a> ()</td></tr>
+<tr class="memdesc:a6f94642a2ed0c19c7dede26b58fc4ff4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the backend (auth, session, AI, palette sync).  <br /></td></tr>
+<tr class="separator:a6f94642a2ed0c19c7dede26b58fc4ff4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37f4f276d331c7fcaccb602aaad1626c" id="r_a37f4f276d331c7fcaccb602aaad1626c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#a37f4f276d331c7fcaccb602aaad1626c">setOscilloscope</a> (<a class="el" href="classOscilloscopeComponent.html">OscilloscopeComponent</a> *osc)</td></tr>
 <tr class="memdesc:a37f4f276d331c7fcaccb602aaad1626c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attaches an oscilloscope component.  <br /></td></tr>
 <tr class="separator:a37f4f276d331c7fcaccb602aaad1626c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -222,6 +229,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a61cf09b3ab1ddbc40d290414609adfe4" id="r_a61cf09b3ab1ddbc40d290414609adfe4"><td class="memItemLeft" align="right" valign="top">juce::CriticalSection&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#a61cf09b3ab1ddbc40d290414609adfe4">oscLock</a></td></tr>
 <tr class="memdesc:a61cf09b3ab1ddbc40d290414609adfe4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Synchronization lock protecting oscilloscope access.  <br /></td></tr>
 <tr class="separator:a61cf09b3ab1ddbc40d290414609adfe4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47a0a01923f264a9ffc7e471fe532047" id="r_a47a0a01923f264a9ffc7e471fe532047"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classBackendManager.html">BackendManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAudioProcessor.html#a47a0a01923f264a9ffc7e471fe532047">backend</a></td></tr>
+<tr class="memdesc:a47a0a01923f264a9ffc7e471fe532047"><td class="mdescLeft">&#160;</td><td class="mdescRight">Backend facade (auth, session, AI, palette sync).  <br /></td></tr>
+<tr class="separator:a47a0a01923f264a9ffc7e471fe532047"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Main JUCE audio processor for the Harmonia synthesizer. </p>
@@ -255,7 +265,8 @@ Private Attributes</h2></td></tr>
 <p>Initializes:</p><ul>
 <li>Audio buses</li>
 <li>Parameter tree state</li>
-<li>Parameter references </li>
+<li>Parameter references</li>
+<li>Backend (no disk or network access in its constructor) </li>
 </ul>
 
 </div>
@@ -284,6 +295,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Destroys the processor. </p>
+<p>Sends any pending palette change to the server (non blocking). </p>
 
 </div>
 </div>
@@ -412,6 +424,34 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Returns the parameter tree state. </p>
+
+</div>
+</div>
+<a id="a6f94642a2ed0c19c7dede26b58fc4ff4" name="a6f94642a2ed0c19c7dede26b58fc4ff4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f94642a2ed0c19c7dede26b58fc4ff4">&#9670;&#160;</a></span>getBackend()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classBackendManager.html">BackendManager</a> &amp; HarmoniaAudioProcessor::getBackend </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the backend (auth, session, AI, palette sync). </p>
+<p>Lives as long as the processor. Call it from the message thread or from background threads, never from <a class="el" href="classHarmoniaAudioProcessor.html#ab27fa8266e17700fd481991f59f2f1ad" title="Main real-time audio processing callback.">processBlock()</a>. Callbacks to UI components must go through juce::Component::SafePointer + MessageManager::callAsync, because the editor can be closed while a request is in flight. </p>
 
 </div>
 </div>
@@ -578,6 +618,7 @@ Private Attributes</h2></td></tr>
 <li>Parameter values</li>
 <li>Automation state</li>
 </ul>
+<p>Never store the session or the access token here: it would end up in the project files.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">destData</td><td>Destination memory block. </td></tr>
@@ -800,6 +841,7 @@ Private Attributes</h2></td></tr>
 <li>Reverb processing</li>
 <li>Oscilloscope monitoring</li>
 </ul>
+<p>The backend must NEVER be called from here (locks, files, HTTP).</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">buffer</td><td>Audio buffer to process. </td></tr>
@@ -992,6 +1034,31 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>AudioProcessorValueTreeState storing all plugin parameters. </p>
+
+</div>
+</div>
+<a id="a47a0a01923f264a9ffc7e471fe532047" name="a47a0a01923f264a9ffc7e471fe532047"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47a0a01923f264a9ffc7e471fe532047">&#9670;&#160;</a></span>backend</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classBackendManager.html">BackendManager</a> HarmoniaAudioProcessor::backend</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Backend facade (auth, session, AI, palette sync). </p>
+<p>Owned here so it survives the editor being closed and reopened. </p>
 
 </div>
 </div>

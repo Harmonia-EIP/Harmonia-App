@@ -101,6 +101,7 @@ $(document).ready(function(){initNavTree('IconChoiceSelector_8h.html',''); initR
 <code>#include &lt;juce_gui_basics/juce_gui_basics.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="HarmoniaPalette_8h_source.html">../themes/HarmoniaPalette.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="IconRenderer_8h_source.html">IconRenderer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="LockableControl_8h_source.html">LockableControl.h</a>&quot;</code><br />
 <code>#include &lt;functional&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -108,22 +109,27 @@ Include dependency graph for IconChoiceSelector.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="IconChoiceSelector_8h__incl.png" border="0" usemap="#asrc_2components_2IconChoiceSelector_8h" alt=""/></div>
 <map name="asrc_2components_2IconChoiceSelector_8h" id="asrc_2components_2IconChoiceSelector_8h">
-<area shape="rect" title="Icon&#45;based selector component for choice parameters." alt="" coords="491,5,691,45"/>
+<area shape="rect" title="Icon&#45;based selector component for choice parameters." alt="" coords="286,5,486,45"/>
 <area shape="rect" title=" " alt="" coords="5,93,191,133"/>
-<area shape="poly" title=" " alt="" coords="492,46,205,96,204,90,491,41"/>
-<area shape="rect" title=" " alt="" coords="215,93,370,133"/>
-<area shape="poly" title=" " alt="" coords="527,48,372,92,371,87,525,43"/>
-<area shape="rect" href="HarmoniaPalette_8h.html" title=" " alt="" coords="394,101,602,126"/>
-<area shape="poly" title=" " alt="" coords="572,48,523,93,519,89,569,44"/>
-<area shape="rect" href="IconRenderer_8h.html" title="Utility namespace used to render waveform and filter icons." alt="" coords="627,101,745,126"/>
-<area shape="poly" title=" " alt="" coords="614,44,664,89,661,93,611,48"/>
-<area shape="rect" title=" " alt="" coords="769,101,856,126"/>
-<area shape="poly" title=" " alt="" coords="641,43,771,93,769,98,639,48"/>
-<area shape="rect" title=" " alt="" coords="880,101,943,126"/>
-<area shape="poly" title=" " alt="" coords="688,43,777,64,869,91,875,93,874,98,868,96,775,69,687,48"/>
-<area shape="rect" title=" " alt="" coords="520,181,663,221"/>
-<area shape="poly" title=" " alt="" coords="512,124,562,170,559,174,509,128"/>
-<area shape="poly" title=" " alt="" coords="675,128,624,174,621,170,671,124"/>
+<area shape="poly" title=" " alt="" coords="324,48,175,92,174,87,322,43"/>
+<area shape="rect" title=" " alt="" coords="38,181,193,221"/>
+<area shape="poly" title=" " alt="" coords="358,48,158,176,155,172,355,43"/>
+<area shape="rect" href="HarmoniaPalette_8h.html" title=" " alt="" coords="217,189,425,214"/>
+<area shape="poly" title=" " alt="" coords="352,48,327,68,307,94,302,115,302,136,312,175,307,177,297,136,296,114,302,92,323,64,349,43"/>
+<area shape="rect" href="IconRenderer_8h.html" title="Utility namespace used to render waveform and filter icons." alt="" coords="560,189,679,214"/>
+<area shape="poly" title=" " alt="" coords="421,43,496,91,552,136,599,177,595,181,549,140,492,96,418,48"/>
+<area shape="rect" href="LockableControl_8h.html" title="Interface commune aux controles dont le parametre peut etre verrouille en mode Refine (KnobControl,..." alt="" coords="317,101,455,126"/>
+<area shape="poly" title=" " alt="" coords="389,46,389,87,383,87,383,46"/>
+<area shape="rect" title=" " alt="" coords="449,189,536,214"/>
+<area shape="poly" title=" " alt="" coords="419,43,446,64,470,92,487,134,494,174,489,175,482,136,465,95,443,68,416,48"/>
+<area shape="rect" title=" " alt="" coords="581,101,644,126"/>
+<area shape="poly" title=" " alt="" coords="437,43,571,93,569,98,435,48"/>
+<area shape="rect" title=" " alt="" coords="399,269,541,309"/>
+<area shape="poly" title=" " alt="" coords="342,212,426,260,424,265,339,216"/>
+<area shape="poly" title=" " alt="" coords="601,216,516,265,514,260,598,212"/>
+<area shape="poly" title=" " alt="" coords="350,129,189,180,187,175,349,124"/>
+<area shape="poly" title=" " alt="" coords="379,128,340,179,336,176,375,125"/>
+<area shape="poly" title=" " alt="" coords="402,124,469,178,466,182,399,128"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -156,18 +162,22 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIconChoiceSelector.html">IconChoiceSelector</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generic icon-based parameter selector.  <a href="classIconChoiceSelector.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Icon-based selector component for choice parameters. </p>
-<p><a class="el" href="classIconChoiceSelector.html" title="Generic icon-based parameter selector.">IconChoiceSelector</a> provides a custom graphical alternative to traditional combo boxes by rendering selectable icons.</p>
+<p><a class="el" href="classIconChoiceSelector.html">IconChoiceSelector</a> provides a custom graphical alternative to traditional combo boxes by rendering selectable icons.</p>
 <p>Features:</p><ul>
 <li>Icon rendering callbacks</li>
 <li>Hover highlighting</li>
 <li>Active state visualization</li>
 <li>APVTS parameter synchronization</li>
-<li>Mouse interaction support </li>
+<li>Mouse interaction support</li>
+<li>Lock state (Refine mode):<ul>
+<li>lockStripH == 0 : padlock drawn on the selected icon, click the active cell to toggle</li>
+<li>lockStripH &gt; 0 : padlock centred in a strip BELOW the icon box, click the strip to toggle </li>
+</ul>
+</li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- doc-content -->

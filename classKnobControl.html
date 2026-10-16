@@ -92,6 +92,7 @@ $(document).ready(function(){initNavTree('classKnobControl.html',''); initResiza
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="classKnobControl-members.html">List of all members</a>  </div>
@@ -99,18 +100,17 @@ $(document).ready(function(){initNavTree('classKnobControl.html',''); initResiza
 </div><!--header-->
 <div class="contents">
 
-<p>Rotary parameter control component.  
- <a href="classKnobControl.html#details">More...</a></p>
-
 <p><code>#include &lt;<a class="el" href="KnobControl_8h_source.html">KnobControl.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for KnobControl:</div>
 <div class="dyncontent">
 <div class="center"><img src="classKnobControl__inherit__graph.png" border="0" usemap="#aKnobControl_inherit__map" alt="Inheritance graph"/></div>
 <map name="aKnobControl_inherit__map" id="aKnobControl_inherit__map">
-<area shape="rect" title="Rotary parameter control component." alt="" coords="20,79,123,104"/>
+<area shape="rect" title=" " alt="" coords="96,79,199,104"/>
 <area shape="rect" title=" " alt="" coords="5,5,137,31"/>
-<area shape="poly" title=" " alt="" coords="74,44,74,79,69,79,69,44"/>
+<area shape="poly" title=" " alt="" coords="95,38,137,76,133,80,92,42"/>
+<area shape="rect" href="classLockableControl.html" title=" " alt="" coords="161,5,288,31"/>
+<area shape="poly" title=" " alt="" coords="204,42,162,80,158,76,200,38"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -118,9 +118,11 @@ Collaboration diagram for KnobControl:</div>
 <div class="dyncontent">
 <div class="center"><img src="classKnobControl__coll__graph.png" border="0" usemap="#aKnobControl_coll__map" alt="Collaboration graph"/></div>
 <map name="aKnobControl_coll__map" id="aKnobControl_coll__map">
-<area shape="rect" title="Rotary parameter control component." alt="" coords="20,79,123,104"/>
+<area shape="rect" title=" " alt="" coords="96,79,199,104"/>
 <area shape="rect" title=" " alt="" coords="5,5,137,31"/>
-<area shape="poly" title=" " alt="" coords="74,44,74,79,69,79,69,44"/>
+<area shape="poly" title=" " alt="" coords="95,38,137,76,133,80,92,42"/>
+<area shape="rect" href="classLockableControl.html" title=" " alt="" coords="161,5,288,31"/>
+<area shape="poly" title=" " alt="" coords="204,42,162,80,158,76,200,38"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -128,15 +130,38 @@ Collaboration diagram for KnobControl:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a216f26ff85f35d26656b40c5d3f8d3e9" id="r_a216f26ff85f35d26656b40c5d3f8d3e9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKnobControl.html#a216f26ff85f35d26656b40c5d3f8d3e9">KnobControl</a> (juce::AudioProcessorValueTreeState &amp;apvts, const juce::String &amp;paramId, const juce::String &amp;displayName, bool bipolar=false)</td></tr>
 <tr class="separator:a216f26ff85f35d26656b40c5d3f8d3e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa54ec6ad77472d2a51f7a1f7ecdac31c" id="r_aa54ec6ad77472d2a51f7a1f7ecdac31c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKnobControl.html#aa54ec6ad77472d2a51f7a1f7ecdac31c">setLockUiVisible</a> (bool visible) override</td></tr>
+<tr class="separator:aa54ec6ad77472d2a51f7a1f7ecdac31c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8fd0ff2378670fd696e6698879d7a1b" id="r_ae8fd0ff2378670fd696e6698879d7a1b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKnobControl.html#ae8fd0ff2378670fd696e6698879d7a1b">setLocked</a> (bool shouldLock) override</td></tr>
+<tr class="separator:ae8fd0ff2378670fd696e6698879d7a1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a564580581d3fc36ab36eac1bdaa49fc4" id="r_a564580581d3fc36ab36eac1bdaa49fc4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKnobControl.html#a564580581d3fc36ab36eac1bdaa49fc4">isLocked</a> () const override</td></tr>
+<tr class="separator:a564580581d3fc36ab36eac1bdaa49fc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4158a4afe24426a62bcf058eaa46b928" id="r_a4158a4afe24426a62bcf058eaa46b928"><td class="memItemLeft" align="right" valign="top">juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKnobControl.html#a4158a4afe24426a62bcf058eaa46b928">getParamId</a> () const override</td></tr>
+<tr class="separator:a4158a4afe24426a62bcf058eaa46b928"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa4426246288fc83c43e2016db8f9ba9e" id="r_aa4426246288fc83c43e2016db8f9ba9e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKnobControl.html#aa4426246288fc83c43e2016db8f9ba9e">paint</a> (juce::Graphics &amp;g) override</td></tr>
 <tr class="separator:aa4426246288fc83c43e2016db8f9ba9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3497c1b173e4c553b507a97e8649edeb" id="r_a3497c1b173e4c553b507a97e8649edeb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKnobControl.html#a3497c1b173e4c553b507a97e8649edeb">resized</a> () override</td></tr>
 <tr class="separator:a3497c1b173e4c553b507a97e8649edeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae22297a684ec562a669956215462bc71" id="r_ae22297a684ec562a669956215462bc71"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKnobControl.html#ae22297a684ec562a669956215462bc71">mouseDown</a> (const juce::MouseEvent &amp;e) override</td></tr>
+<tr class="separator:ae22297a684ec562a669956215462bc71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b8e79a2b6ee62be6d05d3ee0221967a" id="r_a5b8e79a2b6ee62be6d05d3ee0221967a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKnobControl.html#a5b8e79a2b6ee62be6d05d3ee0221967a">mouseMove</a> (const juce::MouseEvent &amp;e) override</td></tr>
+<tr class="separator:a5b8e79a2b6ee62be6d05d3ee0221967a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classLockableControl"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classLockableControl')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classLockableControl.html">LockableControl</a></td></tr>
+<tr class="memitem:a6d7615ea6aa8911baf87984e779f3d87 inherit pub_methods_classLockableControl" id="r_a6d7615ea6aa8911baf87984e779f3d87"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLockableControl.html#a6d7615ea6aa8911baf87984e779f3d87">~LockableControl</a> ()=default</td></tr>
+<tr class="separator:a6d7615ea6aa8911baf87984e779f3d87 inherit pub_methods_classLockableControl"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a0511f7c878923177c8eca0aea91ad878" id="r_a0511f7c878923177c8eca0aea91ad878"><td class="memItemLeft" align="right" valign="top">std::function&lt; void()&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKnobControl.html#a0511f7c878923177c8eca0aea91ad878">onFastTweak</a></td></tr>
 <tr class="separator:a0511f7c878923177c8eca0aea91ad878"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_attribs_classLockableControl"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_classLockableControl')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="classLockableControl.html">LockableControl</a></td></tr>
+<tr class="memitem:afc2ab4e36f7db08e88bb068b7629de2c inherit pub_attribs_classLockableControl" id="r_afc2ab4e36f7db08e88bb068b7629de2c"><td class="memItemLeft" align="right" valign="top">std::function&lt; void()&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLockableControl.html#afc2ab4e36f7db08e88bb068b7629de2c">onLockChanged</a></td></tr>
+<tr class="separator:afc2ab4e36f7db08e88bb068b7629de2c inherit pub_attribs_classLockableControl"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a23586c5b2b6ec09c9b764f564c7ba0b5" id="r_a23586c5b2b6ec09c9b764f564c7ba0b5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKnobControl.html#a23586c5b2b6ec09c9b764f564c7ba0b5">refreshLockVisual</a> ()</td></tr>
+<tr class="separator:a23586c5b2b6ec09c9b764f564c7ba0b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -144,8 +169,14 @@ Private Attributes</h2></td></tr>
 <tr class="separator:ac948d414bbe62a9a6d359cc1693878b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c1717ea01510e2630d5569294d52f33" id="r_a8c1717ea01510e2630d5569294d52f33"><td class="memItemLeft" align="right" valign="top">juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKnobControl.html#a8c1717ea01510e2630d5569294d52f33">caption</a></td></tr>
 <tr class="separator:a8c1717ea01510e2630d5569294d52f33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae317ab14e449c366366dcdd53d1551a5" id="r_ae317ab14e449c366366dcdd53d1551a5"><td class="memItemLeft" align="right" valign="top">const juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKnobControl.html#ae317ab14e449c366366dcdd53d1551a5">parameterId</a></td></tr>
+<tr class="separator:ae317ab14e449c366366dcdd53d1551a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afaa083fb3e295fd23ce87a031430b2ef" id="r_afaa083fb3e295fd23ce87a031430b2ef"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; juce::AudioProcessorValueTreeState::SliderAttachment &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKnobControl.html#afaa083fb3e295fd23ce87a031430b2ef">attachment</a></td></tr>
 <tr class="separator:afaa083fb3e295fd23ce87a031430b2ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0caf956bc14f2e2cdf0251fc476f9308" id="r_a0caf956bc14f2e2cdf0251fc476f9308"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKnobControl.html#a0caf956bc14f2e2cdf0251fc476f9308">locked</a> = false</td></tr>
+<tr class="separator:a0caf956bc14f2e2cdf0251fc476f9308"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92f7422bd9a6cf92c0e68bc7eb91ab27" id="r_a92f7422bd9a6cf92c0e68bc7eb91ab27"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKnobControl.html#a92f7422bd9a6cf92c0e68bc7eb91ab27">lockUiVisible</a> = false</td></tr>
+<tr class="separator:a92f7422bd9a6cf92c0e68bc7eb91ab27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab1416d10c00410b6792c567c776b8056" id="r_ab1416d10c00410b6792c567c776b8056"><td class="memItemLeft" align="right" valign="top">juce::uint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKnobControl.html#ab1416d10c00410b6792c567c776b8056">lastTickMs</a> = 0</td></tr>
 <tr class="separator:ab1416d10c00410b6792c567c776b8056"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50459ea9c999e1373e1ac895dce39be1" id="r_a50459ea9c999e1373e1ac895dce39be1"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKnobControl.html#a50459ea9c999e1373e1ac895dce39be1">lastValue</a> = 0.0f</td></tr>
@@ -159,17 +190,15 @@ Static Private Attributes</h2></td></tr>
 <tr class="separator:a1216338b4dc104ecadc394bf9b63c17c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf6894b823f5157bc952650be31e0ecc" id="r_abf6894b823f5157bc952650be31e0ecc"><td class="memItemLeft" align="right" valign="top">static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classKnobControl.html#abf6894b823f5157bc952650be31e0ecc">fastSpeedThreshold</a> = 0.0025f</td></tr>
 <tr class="separator:abf6894b823f5157bc952650be31e0ecc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pub_static_methods_classLockableControl"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_classLockableControl')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="classLockableControl.html">LockableControl</a></td></tr>
+<tr class="memitem:a91fe45d2a85709e868721c3d4d97291f inherit pub_static_methods_classLockableControl" id="r_a91fe45d2a85709e868721c3d4d97291f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLockableControl.html#a91fe45d2a85709e868721c3d4d97291f">drawPadlock</a> (juce::Graphics &amp;g, juce::Rectangle&lt; float &gt; a, bool closed, juce::Colour colour, bool glow=true)</td></tr>
+<tr class="memdesc:a91fe45d2a85709e868721c3d4d97291f inherit pub_static_methods_classLockableControl"><td class="mdescLeft">&#160;</td><td class="mdescRight">Petit cadenas vectoriel.  <br /></td></tr>
+<tr class="separator:a91fe45d2a85709e868721c3d4d97291f inherit pub_static_methods_classLockableControl"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Rotary parameter control component. </p>
-<p>This component wraps a JUCE rotary slider and automatically synchronizes it with an AudioProcessorValueTreeState parameter.</p>
-<p>Additional features:</p><ul>
-<li>Velocity-sensitive movement</li>
-<li>Fast movement callback</li>
-<li>Custom Harmonia rendering</li>
-<li>Parameter text display </li>
-</ul>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a216f26ff85f35d26656b40c5d3f8d3e9" name="a216f26ff85f35d26656b40c5d3f8d3e9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a216f26ff85f35d26656b40c5d3f8d3e9">&#9670;&#160;</a></span>KnobControl()</h2>
 
@@ -219,6 +248,112 @@ Static Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a4158a4afe24426a62bcf058eaa46b928" name="a4158a4afe24426a62bcf058eaa46b928"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4158a4afe24426a62bcf058eaa46b928">&#9670;&#160;</a></span>getParamId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">juce::String KnobControl::getParamId </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="classLockableControl.html#a4d28111e6df7559efbf968bfdb58efe9">LockableControl</a>.</p>
+
+</div>
+</div>
+<a id="a564580581d3fc36ab36eac1bdaa49fc4" name="a564580581d3fc36ab36eac1bdaa49fc4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a564580581d3fc36ab36eac1bdaa49fc4">&#9670;&#160;</a></span>isLocked()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool KnobControl::isLocked </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="classLockableControl.html#ae8546d530b6112548b52d25e3b3710d4">LockableControl</a>.</p>
+
+</div>
+</div>
+<a id="ae22297a684ec562a669956215462bc71" name="ae22297a684ec562a669956215462bc71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae22297a684ec562a669956215462bc71">&#9670;&#160;</a></span>mouseDown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KnobControl::mouseDown </td>
+          <td>(</td>
+          <td class="paramtype">const juce::MouseEvent &amp;&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5b8e79a2b6ee62be6d05d3ee0221967a" name="a5b8e79a2b6ee62be6d05d3ee0221967a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b8e79a2b6ee62be6d05d3ee0221967a">&#9670;&#160;</a></span>mouseMove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KnobControl::mouseMove </td>
+          <td>(</td>
+          <td class="paramtype">const juce::MouseEvent &amp;&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="aa4426246288fc83c43e2016db8f9ba9e" name="aa4426246288fc83c43e2016db8f9ba9e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa4426246288fc83c43e2016db8f9ba9e">&#9670;&#160;</a></span>paint()</h2>
 
@@ -239,6 +374,31 @@ Static Private Attributes</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a23586c5b2b6ec09c9b764f564c7ba0b5" name="a23586c5b2b6ec09c9b764f564c7ba0b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23586c5b2b6ec09c9b764f564c7ba0b5">&#9670;&#160;</a></span>refreshLockVisual()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KnobControl::refreshLockVisual </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -267,6 +427,62 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae8fd0ff2378670fd696e6698879d7a1b" name="ae8fd0ff2378670fd696e6698879d7a1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8fd0ff2378670fd696e6698879d7a1b">&#9670;&#160;</a></span>setLocked()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KnobControl::setLocked </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>shouldLock</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="classLockableControl.html#ae14b719c0e14502f471647e502930084">LockableControl</a>.</p>
+
+</div>
+</div>
+<a id="aa54ec6ad77472d2a51f7a1f7ecdac31c" name="aa54ec6ad77472d2a51f7a1f7ecdac31c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa54ec6ad77472d2a51f7a1f7ecdac31c">&#9670;&#160;</a></span>setLockUiVisible()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KnobControl::setLockUiVisible </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>visible</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="classLockableControl.html#ad2a684d7b041fbf0eb6cb6591c473e9d">LockableControl</a>.</p>
 
 </div>
 </div>
@@ -403,6 +619,50 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a0caf956bc14f2e2cdf0251fc476f9308" name="a0caf956bc14f2e2cdf0251fc476f9308"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0caf956bc14f2e2cdf0251fc476f9308">&#9670;&#160;</a></span>locked</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool KnobControl::locked = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a92f7422bd9a6cf92c0e68bc7eb91ab27" name="a92f7422bd9a6cf92c0e68bc7eb91ab27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92f7422bd9a6cf92c0e68bc7eb91ab27">&#9670;&#160;</a></span>lockUiVisible</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool KnobControl::lockUiVisible = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a0511f7c878923177c8eca0aea91ad878" name="a0511f7c878923177c8eca0aea91ad878"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0511f7c878923177c8eca0aea91ad878">&#9670;&#160;</a></span>onFastTweak</h2>
 
@@ -413,6 +673,28 @@ Static Private Attributes</h2></td></tr>
           <td class="memname">std::function&lt;void()&gt; KnobControl::onFastTweak</td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae317ab14e449c366366dcdd53d1551a5" name="ae317ab14e449c366366dcdd53d1551a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae317ab14e449c366366dcdd53d1551a5">&#9670;&#160;</a></span>parameterId</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const juce::String KnobControl::parameterId</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>

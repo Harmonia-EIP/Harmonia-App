@@ -6,5 +6,8 @@ var searchData=
   ['harmoniasound_3',['HarmoniaSound',['../classHarmoniaSound.html',1,'']]],
   ['harmoniavoice_4',['HarmoniaVoice',['../classHarmoniaVoice.html',1,'']]],
   ['headercomponent_5',['HeaderComponent',['../classHeaderComponent.html',1,'']]],
-  ['hivelookandfeel_6',['HiveLookAndFeel',['../classHiveLookAndFeel.html',1,'']]]
+  ['hivelookandfeel_6',['HiveLookAndFeel',['../classHiveLookAndFeel.html',1,'']]],
+  ['httpclient_7',['HttpClient',['../classHttpClient.html',1,'']]],
+  ['httpoptions_8',['HttpOptions',['../structHttpOptions.html',1,'']]],
+  ['httpresponse_9',['HttpResponse',['../structHttpResponse.html',1,'']]]
 ];

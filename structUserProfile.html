@@ -116,10 +116,10 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a79cc90d5e09f1f2c13ac3d2a956022db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a455bca4ab27148750c7c10dc729806dc" id="r_a455bca4ab27148750c7c10dc729806dc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUserProfile.html#a455bca4ab27148750c7c10dc729806dc">isActive</a> = true</td></tr>
 <tr class="separator:a455bca4ab27148750c7c10dc729806dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad7330008a3a3461610fa22b1b7ab689e" id="r_ad7330008a3a3461610fa22b1b7ab689e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUserProfile.html#ad7330008a3a3461610fa22b1b7ab689e">layoutId</a> = 1</td></tr>
-<tr class="separator:ad7330008a3a3461610fa22b1b7ab689e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad653cf20ab1a2b58a26573efeb1baa07" id="r_ad653cf20ab1a2b58a26573efeb1baa07"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUserProfile.html#ad653cf20ab1a2b58a26573efeb1baa07">themeId</a> = 1</td></tr>
-<tr class="separator:ad653cf20ab1a2b58a26573efeb1baa07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58fd12e398c876f9e51d943ff8293c8e" id="r_a58fd12e398c876f9e51d943ff8293c8e"><td class="memItemLeft" align="right" valign="top">juce::StringArray&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUserProfile.html#a58fd12e398c876f9e51d943ff8293c8e">paletteColours</a></td></tr>
+<tr class="separator:a58fd12e398c876f9e51d943ff8293c8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad23d23b7e3b4ffa46e65c6436eafa651" id="r_ad23d23b7e3b4ffa46e65c6436eafa651"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUserProfile.html#ad23d23b7e3b4ffa46e65c6436eafa651">paletteSlot</a> = 0</td></tr>
+<tr class="separator:ad23d23b7e3b4ffa46e65c6436eafa651"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="aa82e5f4b2d0065aff0c5ce6c15622883" name="aa82e5f4b2d0065aff0c5ce6c15622883"></a>
@@ -206,14 +206,28 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ad7330008a3a3461610fa22b1b7ab689e" name="ad7330008a3a3461610fa22b1b7ab689e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad7330008a3a3461610fa22b1b7ab689e">&#9670;&#160;</a></span>layoutId</h2>
+<a id="a58fd12e398c876f9e51d943ff8293c8e" name="a58fd12e398c876f9e51d943ff8293c8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58fd12e398c876f9e51d943ff8293c8e">&#9670;&#160;</a></span>paletteColours</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int UserProfile::layoutId = 1</td>
+          <td class="memname">juce::StringArray UserProfile::paletteColours</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad23d23b7e3b4ffa46e65c6436eafa651" name="ad23d23b7e3b4ffa46e65c6436eafa651"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad23d23b7e3b4ffa46e65c6436eafa651">&#9670;&#160;</a></span>paletteSlot</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int UserProfile::paletteSlot = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -228,20 +242,6 @@ Public Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">std::string UserProfile::role</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ad653cf20ab1a2b58a26573efeb1baa07" name="ad653cf20ab1a2b58a26573efeb1baa07"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad653cf20ab1a2b58a26573efeb1baa07">&#9670;&#160;</a></span>themeId</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int UserProfile::themeId = 1</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -263,7 +263,7 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>src/backendManagement/<a class="el" href="BackendTypes_8h_source.html">BackendTypes.h</a></li>
+<li>src/backend/<a class="el" href="BackendTypes_8h_source.html">BackendTypes.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
