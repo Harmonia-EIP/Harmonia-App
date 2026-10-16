@@ -11,6 +11,7 @@ add_executable(Harmonia_Tests EXCLUDE_FROM_ALL
     ProcessorAudioTests.cpp
     ParametersTests.cpp
     PresetsTests.cpp
+    UiTests.cpp
     ${PLUGIN_SOURCES})
 
 target_include_directories(Harmonia_Tests PRIVATE

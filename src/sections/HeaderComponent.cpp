@@ -423,8 +423,6 @@ HeaderComponent::HeaderComponent (const UserSession& s)
     // {
     //     setMode (mode == Mode::Generate ? Mode::Refine : Mode::Generate);
     // };
-    // ____________________________________________
-
     logoButton.onClick = [this]
     {
         if (! refineEnabled)

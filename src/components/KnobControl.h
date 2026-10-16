@@ -134,6 +134,13 @@ public:
         auto r = getLocalBounds();
         r.removeFromTop (captionH);
         r.removeFromBottom (readoutH);
+
+        if (r.getHeight() <= 4 || r.getWidth() <= 4)   // trop petit pour afficher le slider
+        {
+            slider.setBounds ({});
+            return;
+        }
+
         slider.setBounds (r.reduced (2));
     }
 
