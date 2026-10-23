@@ -53,9 +53,7 @@ var NAVTREE =
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
-        [ "Variables", "globals_vars.html", null ],
         [ "Typedefs", "globals_type.html", null ],
-        [ "Enumerations", "globals_enum.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ]
@@ -65,13 +63,13 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "AiConfig_8h.html",
-"PagesIncludes_8h.html#a036145178424c4940773bc8c4de9ded6",
-"classAuthPageLookAndFeel.html#ac690521a8615bb1d0e74b970889882a7",
-"classIconButton.html#a6df7acee0a5691f3e627ce0d32eb5877",
-"classParticleField.html#a4a8fc1cad1db79df248caaefb60860d8",
-"namespaceAudioConfig_1_1ADSR_1_1Attack.html#a6496bb16efcbeed7869271bd2ede0a1e",
-"namespaceStrings_1_1Labels.html#abd181faebc7d19d02236170f0883943f",
-"structParticleField_1_1Ambient.html"
+"PagesIncludes_8h.html#a32e6df81b4dee1beda2f90e74e919899",
+"classAuthPageLookAndFeel.html#affcf662bb60b541336222f8ee79055d0",
+"classIconButton.html#a654c56365d01581483bf694ac36221c3a8cf04a9734132302f96da8e113e80ce5",
+"classPaletteSelector_1_1Picker.html#a6f6dc99b9936553c9e3159628288cb61",
+"namespaceAppPaths.html#a092e1a94862fb5b0636134c49b273b3a",
+"namespaceStrings_1_1Labels.html#a1fc08bf6e82405f90f62cc72d602bbd0",
+"structHttpResponse.html#af437cbe87aead2a55f49b9c112dfc6af"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

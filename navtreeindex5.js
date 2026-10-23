@@ -1,5 +1,10 @@
 var NAVTREEINDEX5 =
 {
+"namespaceAppPaths.html#a092e1a94862fb5b0636134c49b273b3a":[0,0,2,2],
+"namespaceAppPaths.html#af0c336bc5b17d5373a88cfcd957b9fe4":[0,0,2,1],
+"namespaceAudioConfig.html":[0,0,3],
+"namespaceAudioConfig_1_1ADSR.html":[0,0,3,0],
+"namespaceAudioConfig_1_1ADSR_1_1Attack.html":[0,0,3,0,0],
 "namespaceAudioConfig_1_1ADSR_1_1Attack.html#a6496bb16efcbeed7869271bd2ede0a1e":[0,0,3,0,0,1],
 "namespaceAudioConfig_1_1ADSR_1_1Attack.html#a66221594221407326cfa1835d29f38e8":[0,0,3,0,0,2],
 "namespaceAudioConfig_1_1ADSR_1_1Attack.html#add5dfd596b0e3bd004e122f731314e8e":[0,0,3,0,0,0],
@@ -244,10 +249,5 @@ var NAVTREEINDEX5 =
 "namespaceStrings_1_1Knobs.html#ade3ec7c43217524ac79d8bb2e2327b7f":[0,0,17,3,12],
 "namespaceStrings_1_1Knobs.html#aec632b4a4308868b3d048dd774dd5f79":[0,0,17,3,9],
 "namespaceStrings_1_1Knobs.html#af906242ce5e0b5afe0d0b0defc47d18b":[0,0,17,3,10],
-"namespaceStrings_1_1Labels.html":[0,0,17,4],
-"namespaceStrings_1_1Labels.html#a1fc08bf6e82405f90f62cc72d602bbd0":[0,0,17,4,1],
-"namespaceStrings_1_1Labels.html#a2524bd98d38c85ae86a5929853c34d75":[0,0,17,4,4],
-"namespaceStrings_1_1Labels.html#a50553d7cccce8f2cab6aeabeb99a3020":[0,0,17,4,2],
-"namespaceStrings_1_1Labels.html#a5c4bfdb651f59c16cbc0925c7d9b35f2":[0,0,17,4,5],
-"namespaceStrings_1_1Labels.html#a63eb8e427dad0960646b1a357be709b2":[0,0,17,4,0]
+"namespaceStrings_1_1Labels.html":[0,0,17,4]
 };

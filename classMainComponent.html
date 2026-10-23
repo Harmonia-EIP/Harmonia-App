@@ -166,9 +166,9 @@ Collaboration diagram for MainComponent:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a0b7eace3b84e1cb74fb65a93fd281835" id="r_a0b7eace3b84e1cb74fb65a93fd281835"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#a0b7eace3b84e1cb74fb65a93fd281835">MainComponent</a> (<a class="el" href="classHarmoniaAudioProcessor.html">HarmoniaAudioProcessor</a> &amp;p, <a class="el" href="classBackendManager.html">BackendManager</a> &amp;be, const <a class="el" href="structUserSession.html">UserSession</a> &amp;<a class="el" href="classMainComponent.html#a762cd4f7488c6b378edb40080882ccb7">session</a>)</td></tr>
-<tr class="memdesc:a0b7eace3b84e1cb74fb65a93fd281835"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the main plugin interface.  <br /></td></tr>
-<tr class="separator:a0b7eace3b84e1cb74fb65a93fd281835"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fb060c9bfc2f92e39e69e2305266c1c" id="r_a1fb060c9bfc2f92e39e69e2305266c1c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#a1fb060c9bfc2f92e39e69e2305266c1c">MainComponent</a> (<a class="el" href="classHarmoniaAudioProcessor.html">HarmoniaAudioProcessor</a> &amp;p, <a class="el" href="classBackendManager.html">BackendManager</a> &amp;be, const <a class="el" href="structUserSession.html">UserSession</a> &amp;<a class="el" href="classMainComponent.html#a762cd4f7488c6b378edb40080882ccb7">session</a>, const <a class="el" href="AiConfig_8h.html#a2a0cefbb9fa717ffd560776e4ae2cb0d">AIModelList</a> &amp;models={})</td></tr>
+<tr class="memdesc:a1fb060c9bfc2f92e39e69e2305266c1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the main plugin interface.  <br /></td></tr>
+<tr class="separator:a1fb060c9bfc2f92e39e69e2305266c1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc7d0481eafa95da42e728443102f92e" id="r_afc7d0481eafa95da42e728443102f92e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#afc7d0481eafa95da42e728443102f92e">~MainComponent</a> () override</td></tr>
 <tr class="memdesc:afc7d0481eafa95da42e728443102f92e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <br /></td></tr>
 <tr class="separator:afc7d0481eafa95da42e728443102f92e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -216,6 +216,9 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a899a28b83547847b6b273f5941b19302" id="r_a899a28b83547847b6b273f5941b19302"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#a899a28b83547847b6b273f5941b19302">doSavePreset</a> ()</td></tr>
 <tr class="memdesc:a899a28b83547847b6b273f5941b19302"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves current synthesizer state as a preset.  <br /></td></tr>
 <tr class="separator:a899a28b83547847b6b273f5941b19302"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a340504f7f9f556b0b535016e23a4465f" id="r_a340504f7f9f556b0b535016e23a4465f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#a340504f7f9f556b0b535016e23a4465f">refreshModelsAsync</a> ()</td></tr>
+<tr class="memdesc:a340504f7f9f556b0b535016e23a4465f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches the AI model list (GET /ai/models) on a background thread and updates the header menu when it arrives.  <br /></td></tr>
+<tr class="separator:a340504f7f9f556b0b535016e23a4465f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b2d15db289b800286c3be022860766e" id="r_a2b2d15db289b800286c3be022860766e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#a2b2d15db289b800286c3be022860766e">doGenerateWithAi</a> ()</td></tr>
 <tr class="separator:a2b2d15db289b800286c3be022860766e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a03f16107d70ff311798f650560374fac" id="r_a03f16107d70ff311798f650560374fac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#a03f16107d70ff311798f650560374fac">doRefineWithAi</a> ()</td></tr>
@@ -352,8 +355,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a4d2ce165efd97892b439bcf2ece48c02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a0b7eace3b84e1cb74fb65a93fd281835" name="a0b7eace3b84e1cb74fb65a93fd281835"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0b7eace3b84e1cb74fb65a93fd281835">&#9670;&#160;</a></span>MainComponent()</h2>
+<a id="a1fb060c9bfc2f92e39e69e2305266c1c" name="a1fb060c9bfc2f92e39e69e2305266c1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fb060c9bfc2f92e39e69e2305266c1c">&#9670;&#160;</a></span>MainComponent()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -374,7 +377,13 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const <a class="el" href="structUserSession.html">UserSession</a> &amp;&#160;</td>
-          <td class="paramname"><em>session</em>&#160;</td>
+          <td class="paramname"><em>session</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="AiConfig_8h.html#a2a0cefbb9fa717ffd560776e4ae2cb0d">AIModelList</a> &amp;&#160;</td>
+          <td class="paramname"><em>models</em> = <code>{}</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -399,6 +408,7 @@ Private Attributes</h2></td></tr>
     <tr><td class="paramname">p</td><td>Reference to the audio processor. </td></tr>
     <tr><td class="paramname">be</td><td>Backend manager used for AI and session communication. </td></tr>
     <tr><td class="paramname">session</td><td>Current authenticated user session. </td></tr>
+    <tr><td class="paramname">models</td><td>Optional initial AI model list. Usually empty: the list is fetched asynchronously by <a class="el" href="classMainComponent.html#a340504f7f9f556b0b535016e23a4465f" title="Fetches the AI model list (GET /ai/models) on a background thread and updates the header menu when it...">refreshModelsAsync()</a> right after construction (connected users only). </td></tr>
   </table>
   </dd>
 </dl>
@@ -707,6 +717,34 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a340504f7f9f556b0b535016e23a4465f" name="a340504f7f9f556b0b535016e23a4465f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a340504f7f9f556b0b535016e23a4465f">&#9670;&#160;</a></span>refreshModelsAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainComponent::refreshModelsAsync </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Fetches the AI model list (GET /ai/models) on a background thread and updates the header menu when it arrives. </p>
+<p>Does nothing for guests. On network failure the header keeps its current state and generation still works through the "latest" model. </p>
 
 </div>
 </div>

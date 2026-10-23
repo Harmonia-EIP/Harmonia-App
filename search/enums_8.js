@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mode_0',['Mode',['../classHeaderComponent.html#a3a1ad7c3ffcaf7a88c11ef0326297eb5',1,'HeaderComponent']]]
+  ['style_0',['Style',['../classAuthPageLookAndFeel.html#a7e20376b27ead7b897276e0523ce4e8c',1,'AuthPageLookAndFeel']]]
 ];

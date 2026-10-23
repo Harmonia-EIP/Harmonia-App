@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['icon_0',['Icon',['../classIconButton.html#a654c56365d01581483bf694ac36221c3',1,'IconButton']]]
+  ['kind_0',['Kind',['../structApiError.html#a3395681759a0b17abe3979f60e507ea3',1,'ApiError']]]
 ];

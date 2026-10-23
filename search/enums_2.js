@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['choice_0',['Choice',['../classWelcomePage.html#a7dba8b108ada028113b6ba3321825c92',1,'WelcomePage']]]
+  ['error_0',['Error',['../structAiResult.html#a30c52302f0a3eac9c5db7d39f380586b',1,'AiResult']]]
 ];

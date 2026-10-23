@@ -11,6 +11,7 @@ var annotated_dup =
     ] ],
     [ "ActionButton", "classActionButton.html", "classActionButton" ],
     [ "AIModelData", "structAIModelData.html", "structAIModelData" ],
+    [ "AiModelsResult", "structAiModelsResult.html", "structAiModelsResult" ],
     [ "AiResult", "structAiResult.html", "structAiResult" ],
     [ "AiService", "classAiService.html", "classAiService" ],
     [ "ApiError", "structApiError.html", "structApiError" ],

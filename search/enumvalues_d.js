@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['oscilloscopegridid_0',['oscilloscopeGridId',['../namespaceAppColourIds.html#a395e668d95f8775e059d210c51399489a554483b5abc284f2ef7324eb8536c9f1',1,'AppColourIds']]],
-  ['oscilloscopewaveid_1',['oscilloscopeWaveId',['../namespaceAppColourIds.html#a395e668d95f8775e059d210c51399489a16535a10a34be17fafdc1286602a5c44',1,'AppColourIds']]],
-  ['outlined_2',['Outlined',['../classWelcomeLookAndFeel.html#ac83601167effce449a8c86426818ecf6abfc3d9f0c2a204bb4783a26de1b895d6',1,'WelcomeLookAndFeel']]]
+  ['panelbgid_0',['panelBgId',['../namespaceAppColourIds.html#a395e668d95f8775e059d210c51399489aa86f48c1fac4d9044d9c393b58057180',1,'AppColourIds']]],
+  ['paneloutlineid_1',['panelOutlineId',['../namespaceAppColourIds.html#a395e668d95f8775e059d210c51399489aa16c3b446fc025e027cd2f54253969d0',1,'AppColourIds']]],
+  ['parse_2',['Parse',['../structApiError.html#a3395681759a0b17abe3979f60e507ea3ac9ad95228aa735bdda1aebf38da022af',1,'ApiError']]],
+  ['primary_3',['Primary',['../classAuthPageLookAndFeel.html#a7e20376b27ead7b897276e0523ce4e8ca074de7e7c226d5c60f8af14c20725352',1,'AuthPageLookAndFeel']]],
+  ['purple_4',['Purple',['../namespaceHarmoniaPalette.html#a48dd6f8d4570ed63402450e3ea1fba8cab9ba865fec061c9706d2fd7ce49c0cc7',1,'HarmoniaPalette']]]
 ];

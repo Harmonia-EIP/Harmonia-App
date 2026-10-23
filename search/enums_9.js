@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['style_0',['Style',['../classAuthPageLookAndFeel.html#a7e20376b27ead7b897276e0523ce4e8c',1,'AuthPageLookAndFeel']]]
+  ['theme_0',['Theme',['../namespaceHarmoniaPalette.html#a48dd6f8d4570ed63402450e3ea1fba8c',1,'HarmoniaPalette']]],
+  ['themepreset_1',['ThemePreset',['../classAppLookAndFeel.html#a7e966ad29d8634970a167de96d1a6b87',1,'AppLookAndFeel']]]
 ];

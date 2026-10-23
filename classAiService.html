@@ -98,7 +98,7 @@ $(document).ready(function(){initNavTree('classAiService.html',''); initResizabl
 </div><!--header-->
 <div class="contents">
 
-<p>Génération / affinage de presets par l'IA.  
+<p>Génération / affinage de presets par l'IA + liste des modèles disponibles.  
  <a href="classAiService.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="AiService_8h_source.html">AiService.h</a>&gt;</code></p>
@@ -107,7 +107,7 @@ Collaboration diagram for AiService:</div>
 <div class="dyncontent">
 <div class="center"><img src="classAiService__coll__graph.png" border="0" usemap="#aAiService_coll__map" alt="Collaboration graph"/></div>
 <map name="aAiService_coll__map" id="aAiService_coll__map">
-<area shape="rect" title="Génération / affinage de presets par l&#39;IA." alt="" coords="129,93,212,119"/>
+<area shape="rect" title="Génération / affinage de presets par l&#39;IA + liste des modèles disponibles." alt="" coords="129,93,212,119"/>
 <area shape="rect" href="classHttpClient.html" title="Sans état modifiable : copiable, utilisable depuis n&#39;importe quel thread." alt="" coords="5,5,93,31"/>
 <area shape="poly" title=" " alt="" coords="79,37,156,91,153,95,76,41"/>
 <area shape="rect" href="classSessionStore.html" title="Seul propriétaire du fichier de session." alt="" coords="117,5,224,31"/>
@@ -121,10 +121,12 @@ Collaboration diagram for AiService:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:afa5b070e69ccc78e69e0b07df2483d0c" id="r_afa5b070e69ccc78e69e0b07df2483d0c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAiService.html#afa5b070e69ccc78e69e0b07df2483d0c">AiService</a> (<a class="el" href="classHttpClient.html">HttpClient</a> &amp;<a class="el" href="classAiService.html#a1bb26c06cb5668234bc805aa64cdf478">http</a>, <a class="el" href="classSessionStore.html">SessionStore</a> &amp;<a class="el" href="classAiService.html#ab31877bb34eb0f45319468127cb93b38">store</a>, <a class="el" href="classBackendLogger.html">BackendLogger</a> &amp;<a class="el" href="classAiService.html#ae94a1b21d3c9de304a49634da054ca30">logger</a>)</td></tr>
 <tr class="separator:afa5b070e69ccc78e69e0b07df2483d0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad68a10cb50906cd8eb8448443885aa65" id="r_ad68a10cb50906cd8eb8448443885aa65"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structAiResult.html">AiResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAiService.html#ad68a10cb50906cd8eb8448443885aa65">generatePreset</a> (const juce::String &amp;prompt, int modelId, const juce::String &amp;backendName)</td></tr>
-<tr class="separator:ad68a10cb50906cd8eb8448443885aa65"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a113213814bed9981c1d073d40024b550" id="r_a113213814bed9981c1d073d40024b550"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structAiResult.html">AiResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAiService.html#a113213814bed9981c1d073d40024b550">refinePreset</a> (const juce::String &amp;prompt, const juce::String &amp;currentJson, const juce::StringArray &amp;lockedParamIds, int modelId, const juce::String &amp;backendName)</td></tr>
-<tr class="separator:a113213814bed9981c1d073d40024b550"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af871253b674ba4c28821181f2e60632c" id="r_af871253b674ba4c28821181f2e60632c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structAiModelsResult.html">AiModelsResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAiService.html#af871253b674ba4c28821181f2e60632c">fetchModels</a> ()</td></tr>
+<tr class="separator:af871253b674ba4c28821181f2e60632c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5c6b6814e7eb75fe7c3e12bef3ba040" id="r_ad5c6b6814e7eb75fe7c3e12bef3ba040"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structAiResult.html">AiResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAiService.html#ad5c6b6814e7eb75fe7c3e12bef3ba040">generatePreset</a> (const juce::String &amp;prompt, const juce::String &amp;backendName)</td></tr>
+<tr class="separator:ad5c6b6814e7eb75fe7c3e12bef3ba040"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85d1ef86cc72690eb2d72f83ceeaaafa" id="r_a85d1ef86cc72690eb2d72f83ceeaaafa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structAiResult.html">AiResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAiService.html#a85d1ef86cc72690eb2d72f83ceeaaafa">refinePreset</a> (const juce::String &amp;prompt, const juce::String &amp;currentJson, const juce::StringArray &amp;lockedParamIds, const juce::String &amp;backendName)</td></tr>
+<tr class="separator:a85d1ef86cc72690eb2d72f83ceeaaafa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -141,9 +143,10 @@ Private Attributes</h2></td></tr>
 <tr class="separator:ae94a1b21d3c9de304a49634da054ca30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Génération / affinage de presets par l'IA. </p>
-<p>Endpoints : POST /ai/generate-preset, POST /ai/refine-preset</p>
-<p>Les deux passent par le même chemin (postAuthenticated) : session présente, pas invité, pas expirée -&gt; POST avec le Bearer. Le JSON brut de la réponse est renvoyé tel quel (à passer au <a class="el" href="namespacePresetLoader.html">PresetLoader</a>). </p>
+<div class="textblock"><p>Génération / affinage de presets par l'IA + liste des modèles disponibles. </p>
+<p>Endpoints : GET /ai/models, POST /ai/generate-preset, POST /ai/refine-preset</p>
+<p>Tous passent par le même contrôle : session présente, pas invité, pas expirée -&gt; requête avec le Bearer. Pour generate / refine, le JSON brut de la réponse est renvoyé tel quel (à passer au <a class="el" href="namespacePresetLoader.html">PresetLoader</a>).</p>
+<p>backendName : id du modèle ("charter_v1", ...) ou "latest" pour le dernier déployé. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="afa5b070e69ccc78e69e0b07df2483d0c" name="afa5b070e69ccc78e69e0b07df2483d0c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afa5b070e69ccc78e69e0b07df2483d0c">&#9670;&#160;</a></span>AiService()</h2>
@@ -180,8 +183,25 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ad68a10cb50906cd8eb8448443885aa65" name="ad68a10cb50906cd8eb8448443885aa65"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad68a10cb50906cd8eb8448443885aa65">&#9670;&#160;</a></span>generatePreset()</h2>
+<a id="af871253b674ba4c28821181f2e60632c" name="af871253b674ba4c28821181f2e60632c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af871253b674ba4c28821181f2e60632c">&#9670;&#160;</a></span>fetchModels()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structAiModelsResult.html">AiModelsResult</a> AiService::fetchModels </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad5c6b6814e7eb75fe7c3e12bef3ba040" name="ad5c6b6814e7eb75fe7c3e12bef3ba040"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5c6b6814e7eb75fe7c3e12bef3ba040">&#9670;&#160;</a></span>generatePreset()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -191,12 +211,6 @@ Private Attributes</h2></td></tr>
           <td>(</td>
           <td class="paramtype">const juce::String &amp;&#160;</td>
           <td class="paramname"><em>prompt</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>modelId</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -250,8 +264,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a113213814bed9981c1d073d40024b550" name="a113213814bed9981c1d073d40024b550"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a113213814bed9981c1d073d40024b550">&#9670;&#160;</a></span>refinePreset()</h2>
+<a id="a85d1ef86cc72690eb2d72f83ceeaaafa" name="a85d1ef86cc72690eb2d72f83ceeaaafa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85d1ef86cc72690eb2d72f83ceeaaafa">&#9670;&#160;</a></span>refinePreset()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -273,12 +287,6 @@ Private Attributes</h2></td></tr>
           <td></td>
           <td class="paramtype">const juce::StringArray &amp;&#160;</td>
           <td class="paramname"><em>lockedParamIds</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>modelId</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>

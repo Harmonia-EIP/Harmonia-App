@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['validation_0',['Validation',['../structApiError.html#a3395681759a0b17abe3979f60e507ea3a13148717f8faa9037f37d28971dfc219',1,'ApiError']]]
+  ['warn_0',['Warn',['../classBackendLogger.html#aae70cd25bd5ca009c1ce0309b1abfe98a56525ae64d370c0b448ac0d60710ef17',1,'BackendLogger']]]
 ];

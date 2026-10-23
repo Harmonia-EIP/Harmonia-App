@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['name_0',['name',['../structModelPicker_1_1Item.html#ae7b57ce3e4c2c2431025bc27f05bdcae',1,'ModelPicker::Item::name'],['../structAIModelData.html#adfbece17d6854dab0346da46582fd491',1,'AIModelData::name']]],
+  ['name_0',['name',['../structModelPicker_1_1Item.html#ae7b57ce3e4c2c2431025bc27f05bdcae',1,'ModelPicker::Item::name'],['../structAIModelData.html#a5ecf28f570fe50016dabfb2622ac3085',1,'AIModelData::name']]],
   ['network_1',['network',['../structAiResult.html#a30c52302f0a3eac9c5db7d39f380586baeec89088ee408b80387155272b113256',1,'AiResult::Network'],['../structApiError.html#a3395681759a0b17abe3979f60e507ea3aeec89088ee408b80387155272b113256',1,'ApiError::Network']]],
   ['networkerror_2',['networkerror',['../structHttpResponse.html#a1aab779a623a1ef029bd9a9a71327359',1,'HttpResponse::networkError'],['../namespaceStrings_1_1Errors.html#ac81e6704cacf1cdbab6f72caf42002e1',1,'Strings::Errors::NetworkError']]],
   ['networkerroradvice_3',['NetworkErrorAdvice',['../namespaceStrings_1_1Errors.html#adf3c9e3bb81d98e2e863588c7d64a476',1,'Strings::Errors']]],

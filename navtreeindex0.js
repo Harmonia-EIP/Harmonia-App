@@ -1,10 +1,7 @@
 var NAVTREEINDEX0 =
 {
 "AiConfig_8h.html":[2,0,0,2,0],
-"AiConfig_8h.html#a2d2cc27efdb798fd0ab36692c4ad2b1c":[2,0,0,2,0,1],
-"AiConfig_8h.html#a2d2cc27efdb798fd0ab36692c4ad2b1ca2080646426c21ec9cbd60b04517f2eb6":[2,0,0,2,0,1,0],
-"AiConfig_8h.html#a2d2cc27efdb798fd0ab36692c4ad2b1ca8f062c21ec64e3e5bbec43f96d0b4cff":[2,0,0,2,0,1,1],
-"AiConfig_8h.html#a47a35602167aea54eacf0a9cf709f885":[2,0,0,2,0,2],
+"AiConfig_8h.html#a2a0cefbb9fa717ffd560776e4ae2cb0d":[2,0,0,2,0,1],
 "AiConfig_8h_source.html":[2,0,0,2,0],
 "AiService_8cpp.html":[2,0,0,0,2,0],
 "AiService_8cpp.html#ab701e3ac61a85b337ec5c1abaad6742d":[2,0,0,0,2,0,0],
@@ -249,5 +246,8 @@ var NAVTREEINDEX0 =
 "OscilloscopeComponent_8cpp.html":[2,0,0,1,9],
 "OscilloscopeComponent_8h.html":[2,0,0,1,10],
 "OscilloscopeComponent_8h_source.html":[2,0,0,1,10],
-"PagesIncludes_8h.html":[2,0,0,3,3]
+"PagesIncludes_8h.html":[2,0,0,3,3],
+"PagesIncludes_8h.html#a036145178424c4940773bc8c4de9ded6":[2,0,0,3,3,5],
+"PagesIncludes_8h.html#a1dc65fc924ea45f59e6b3612d89ce8f7":[2,0,0,3,3,7],
+"PagesIncludes_8h.html#a1fbaaa0ce0eb58d7654b1e3342b5f9da":[2,0,0,3,3,2]
 };

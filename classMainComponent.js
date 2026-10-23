@@ -1,6 +1,6 @@
 var classMainComponent =
 [
-    [ "MainComponent", "classMainComponent.html#a0b7eace3b84e1cb74fb65a93fd281835", null ],
+    [ "MainComponent", "classMainComponent.html#a1fb060c9bfc2f92e39e69e2305266c1c", null ],
     [ "~MainComponent", "classMainComponent.html#afc7d0481eafa95da42e728443102f92e", null ],
     [ "activatePalette", "classMainComponent.html#a3861168103f7c69d6c00567efb5a6469", null ],
     [ "applyTheme", "classMainComponent.html#a8583f3f10ddc81a2094d21533c031f58", null ],
@@ -12,6 +12,7 @@ var classMainComponent =
     [ "getAiPrompt", "classMainComponent.html#ada02f221d0dfd6c6cd05a57d8a525c31", null ],
     [ "getLockedParamIds", "classMainComponent.html#a2b0d84b617c47e10c4015d6d69621956", null ],
     [ "paint", "classMainComponent.html#ad80fcbf35ef40aa3746eb32d3684e4dd", null ],
+    [ "refreshModelsAsync", "classMainComponent.html#a340504f7f9f556b0b535016e23a4465f", null ],
     [ "registerJuiceFor", "classMainComponent.html#aa55b0d777b42f9a2b5a0fb7a2ce9260f", null ],
     [ "repaintAllChildren", "classMainComponent.html#aa6a6216b5a861cc2b25a5f3f60e4bc5a", null ],
     [ "resized", "classMainComponent.html#a339148bc43089300e10d5883a0a80726", null ],

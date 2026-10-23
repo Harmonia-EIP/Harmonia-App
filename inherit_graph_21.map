@@ -1,5 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" title=" " alt="" coords="5,5,128,31"/>
-<area shape="rect" id="Node000001" href="$classPromptEditor.html" title=" " alt="" coords="176,5,283,31"/>
-<area shape="poly" id="edge50_Node000000_Node000001" title=" " alt="" coords="141,15,176,15,176,21,141,21"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,5,173,31"/>
+<area shape="rect" id="Node000001" href="$classHarmoniaVoice.html" title="Main synthesizer voice implementation." alt="" coords="221,5,343,31"/>
+<area shape="poly" id="edge49_Node000000_Node000001" title=" " alt="" coords="187,15,221,15,221,21,187,21"/>
 </map>

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['name_0',['name',['../structAIModelData.html#adfbece17d6854dab0346da46582fd491',1,'AIModelData::name'],['../structModelPicker_1_1Item.html#ae7b57ce3e4c2c2431025bc27f05bdcae',1,'ModelPicker::Item::name']]],
+  ['name_0',['name',['../structAIModelData.html#a5ecf28f570fe50016dabfb2622ac3085',1,'AIModelData::name'],['../structModelPicker_1_1Item.html#ae7b57ce3e4c2c2431025bc27f05bdcae',1,'ModelPicker::Item::name']]],
   ['networkerror_1',['networkerror',['../structHttpResponse.html#a1aab779a623a1ef029bd9a9a71327359',1,'HttpResponse::networkError'],['../namespaceStrings_1_1Errors.html#ac81e6704cacf1cdbab6f72caf42002e1',1,'Strings::Errors::NetworkError']]],
   ['networkerroradvice_2',['NetworkErrorAdvice',['../namespaceStrings_1_1Errors.html#adf3c9e3bb81d98e2e863588c7d64a476',1,'Strings::Errors']]],
   ['networkerrorcode_3',['networkErrorCode',['../structHttpResponse.html#adea6bc4cd45928cf36afc8f462975107',1,'HttpResponse']]],
