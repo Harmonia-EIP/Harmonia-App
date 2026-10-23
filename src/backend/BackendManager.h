@@ -2,11 +2,10 @@
  * @file BackendManager.h
  * @brief Façade du backend : point d'entrée unique pour l'UI.
  *
- * L'API publique est identique à l'ancienne version : l'UI n'a pas à changer.
  * Tout le travail est délégué à :
  *   - AuthService     login / signup / logout
  *   - ProfileService  profil, sync de session, palette
- *   - AiService       génération / affinage de presets
+ *   - AiService       liste des modèles, génération / affinage de presets
  * qui utilisent HttpClient (réseau), SessionStore (fichier de session) et
  * BackendLogger (logs), et ne connaissent jamais BackendManager.
  */
@@ -23,12 +22,16 @@
 #include "net/HttpClient.h"
 #include "storage/SessionStore.h"
 
+// Nécessaire ici : AiModelsResult (retour de fetchModels) est défini dans AiService.h.
+// Astuce : si tu veux garder AiService opaque, déplace AiModelsResult dans BackendTypes.h
+// et remets une simple forward declaration de AiService.
+#include "services/AiService.h"
+
 // Shim de compatibilité (voir le fichier) : l'ancien BackendManager.h incluait les managers.
 #include "BackendAuthManager.h"
 
 class AuthService;
 class ProfileService;
-class AiService;
 
 class BackendManager
 {
@@ -64,13 +67,17 @@ public:
     // IA
     // =========================================================
 
-    /** Retourne le JSON brut (format charter), à passer au PresetLoader. Invités refusés. */
-    AiResult generatePreset (const juce::String& prompt, int modelId, const juce::String& backendName);
+    /** GET /ai/models : liste des modèles disponibles. Bloquant, ne pas appeler depuis le thread UI. */
+    AiModelsResult fetchAiModels();
+
+    /** Retourne le JSON brut (format charter), à passer au PresetLoader. Invités refusés.
+        backendName : id du modèle ("charter_v1", ...) ou "latest". */
+    AiResult generatePreset (const juce::String& prompt,
+                             const juce::String& backendName);
 
     AiResult refinePreset (const juce::String& prompt,
                            const juce::String& currentJson,
                            const juce::StringArray& lockedParamIds,
-                           int modelId,
                            const juce::String& backendName);
 
     // =========================================================
@@ -99,8 +106,7 @@ public:
 
     // =========================================================
     // CONFIGURATION / LOGS
-    // (détails internes : à retirer de l'API publique une fois que l'UI ne les utilise plus,
-    //  cf. étape 4.2 du plan)
+    // (détails internes : à retirer de l'API publique une fois que l'UI ne les utilise plus)
     // =========================================================
 
     const juce::String& getApiUrl() const;

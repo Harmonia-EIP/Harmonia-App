@@ -216,7 +216,8 @@ public:
 };
 
 //==============================================================================
-// Sélecteur de modèle IA : capsule + menu déroulant
+// Sélecteur de modèle IA : capsule + menu déroulant.
+// Peut être "figé" (setInteractive (false)) : invité, ou liste pas encore chargée.
 class ModelPicker : public juce::Component,
                     public juce::SettableTooltipClient,
                     private juce::Timer
@@ -225,15 +226,28 @@ public:
     ModelPicker() { setMouseCursor (juce::MouseCursor::PointingHandCursor); }
 
     void addItem (const juce::String& name, int id) { items.push_back ({ name, id }); }
+    void clearItems()                               { items.clear(); selectedId = 0; repaint(); }
     void setSelectedId (int id)                     { selectedId = id; repaint(); }
     int  getSelectedId() const                      { return selectedId; }
+
+    // Texte affiché quand aucun modèle n'est sélectionnable
+    void setPlaceholder (const juce::String& text)  { placeholder = text; repaint(); }
+
+    // false = capsule figée : pas de menu, pas de survol, pas de chevron
+    void setInteractive (bool shouldBeInteractive)
+    {
+        interactive = shouldBeInteractive;
+        setMouseCursor (interactive ? juce::MouseCursor::PointingHandCursor
+                                    : juce::MouseCursor::NormalCursor);
+        repaint();
+    }
 
     std::function<void()> onChange;
 
     void paint (juce::Graphics&) override;
     void mouseEnter (const juce::MouseEvent&) override { startTimerHz (60); }
     void mouseExit  (const juce::MouseEvent&) override { startTimerHz (60); }
-    void mouseDown  (const juce::MouseEvent&) override { showMenu(); }
+    void mouseDown  (const juce::MouseEvent&) override { if (interactive) showMenu(); }
 
 private:
     struct Item { juce::String name; int id; };
@@ -244,8 +258,10 @@ private:
 
     std::vector<Item> items;
     ModelMenuLookAndFeel menuLnF;
+    juce::String placeholder;
     int selectedId = 0;
     bool menuOpen = false;
+    bool interactive = true;
     float hoverAnim = 0.0f;
 };
 
@@ -308,7 +324,9 @@ class HeaderComponent : public juce::Component,
 public:
     enum class Mode { Generate, Refine };
 
-    HeaderComponent (const UserSession& session);
+    // initialModels : liste récupérée via GET /ai/models (peut être vide, on la
+    // met à jour plus tard avec setModels()).
+    HeaderComponent (const UserSession& session, AIModelList initialModels = {});
     ~HeaderComponent() override;
 
     void paint (juce::Graphics&) override;
@@ -339,23 +357,33 @@ public:
     // Jamais appelé pour un invité.
     std::function<void (const juce::StringArray&, int)> onPaletteChanged;
 
-    AIModel getSelectedModel() const;
+    // --- Modèles IA ---------------------------------------------------------
+    // Remplace la liste (appelé quand GET /ai/models répond). Garde le choix de
+    // l'utilisateur s'il existe toujours, sinon sélectionne le modèle "latest".
+    void setModels (const AIModelList& newModels);
+
+    // nullptr si invité ou liste vide.
+    const AIModelData* getSelectedModel() const;
+
     juce::String getSelectedModelName() const;
+
+    // Valeur à envoyer dans "model_name" : "latest" ou l'id du modèle choisi.
     juce::String getSelectedBackendName() const;
-    int getSelectedModelId() const;
 
 private:
     void timerCallback() override;
 
-        // Passe a true quand le Refine est pret cote IA
+    // Passe a true quand le Refine est pret cote IA
     bool refineEnabled = false;
 
     juce::Colour modeColour() const;
     void applyColours();
     void updateModeTexts();
     void paintPromptBar (juce::Graphics&);
+    void rebuildModelPicker (const juce::String& keepId);
 
     UserSession session;
+    AIModelList models;          // doit rester APRES `session` (ordre d'initialisation)
 
     juce::Label titleLabel;
     juce::Label presetLabel;

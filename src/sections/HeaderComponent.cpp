@@ -203,12 +203,12 @@ juce::String ModelPicker::getSelectedName() const
         if (it.id == selectedId)
             return it.name;
 
-    return {};
+    return placeholder;
 }
 
 void ModelPicker::timerCallback()
 {
-    const float target = (isMouseOver() || menuOpen) ? 1.0f : 0.0f;
+    const float target = (interactive && (isMouseOver() || menuOpen)) ? 1.0f : 0.0f;
     hoverAnim += (target - hoverAnim) * 0.30f;
 
     if (std::abs (target - hoverAnim) < 0.01f)
@@ -222,6 +222,9 @@ void ModelPicker::timerCallback()
 
 void ModelPicker::showMenu()
 {
+    if (! interactive || items.empty())
+        return;
+
     juce::PopupMenu menu;
     menu.setLookAndFeel (&menuLnF);
 
@@ -280,17 +283,18 @@ void ModelPicker::paint (juce::Graphics& g)
     g.setColour (HarmoniaPalette::border.interpolatedWith (acc.withAlpha (0.85f), h));
     g.drawRoundedRectangle (b.reduced (0.5f), r, 1.0f);
 
-    // point lumineux
+    // point lumineux (plus discret quand la capsule est figée)
     const juce::Point<float> dot (b.getX() + 15.0f, b.getCentreY());
+    const float dotAlpha = interactive ? 1.0f : 0.55f;
 
-    g.setColour (acc.withAlpha (0.20f + 0.15f * h));
+    g.setColour (acc.withAlpha ((0.20f + 0.15f * h) * dotAlpha));
     g.fillEllipse (juce::Rectangle<float> (16.0f, 16.0f).withCentre (dot));
 
-    g.setColour (acc);
+    g.setColour (acc.withAlpha (dotAlpha));
     g.fillEllipse (juce::Rectangle<float> (6.0f, 6.0f).withCentre (dot));
 
     // textes
-    auto textArea = getLocalBounds().withTrimmedLeft (30).withTrimmedRight (26);
+    auto textArea = getLocalBounds().withTrimmedLeft (30).withTrimmedRight (interactive ? 26 : 10);
 
     g.setColour (HarmoniaPalette::textMuted);
     g.setFont (juce::Font (juce::FontOptions (8.0f).withStyle ("Bold"))
@@ -298,32 +302,39 @@ void ModelPicker::paint (juce::Graphics& g)
     g.drawText ("AI MODEL", textArea.getX(), 5, textArea.getWidth(), 10,
                 juce::Justification::centredLeft, false);
 
-    g.setColour (HarmoniaPalette::textPrimary.interpolatedWith (acc.brighter (0.3f), h));
+    auto nameCol = HarmoniaPalette::textPrimary.interpolatedWith (acc.brighter (0.3f), h);
+    if (! interactive)
+        nameCol = nameCol.withAlpha (0.75f);
+
+    g.setColour (nameCol);
     g.setFont (juce::Font (juce::FontOptions (12.5f).withStyle ("Bold")));
     g.drawText (getSelectedName(), textArea.getX(), 15, textArea.getWidth(), 15,
                 juce::Justification::centredLeft, true);
 
-    // chevron (se retourne quand le menu est ouvert)
-    const float cx = (float) getWidth() - 14.0f;
-    const float cy = (float) getHeight() * 0.5f;
-    const float dir = menuOpen ? -1.0f : 1.0f;
+    // chevron (se retourne quand le menu est ouvert) : seulement si le menu est utilisable
+    if (interactive)
+    {
+        const float cx = (float) getWidth() - 14.0f;
+        const float cy = (float) getHeight() * 0.5f;
+        const float dir = menuOpen ? -1.0f : 1.0f;
 
-    juce::Path chevron;
-    chevron.startNewSubPath (cx - 4.0f, cy - 1.5f * dir);
-    chevron.lineTo          (cx,        cy + 2.0f * dir);
-    chevron.lineTo          (cx + 4.0f, cy - 1.5f * dir);
+        juce::Path chevron;
+        chevron.startNewSubPath (cx - 4.0f, cy - 1.5f * dir);
+        chevron.lineTo          (cx,        cy + 2.0f * dir);
+        chevron.lineTo          (cx + 4.0f, cy - 1.5f * dir);
 
-    g.setColour (HarmoniaPalette::textMuted.interpolatedWith (acc, h));
-    g.strokePath (chevron, juce::PathStrokeType (1.5f,
-                                                 juce::PathStrokeType::curved,
-                                                 juce::PathStrokeType::rounded));
+        g.setColour (HarmoniaPalette::textMuted.interpolatedWith (acc, h));
+        g.strokePath (chevron, juce::PathStrokeType (1.5f,
+                                                     juce::PathStrokeType::curved,
+                                                     juce::PathStrokeType::rounded));
+    }
 }
 
 //==============================================================================
 // HeaderComponent
 //==============================================================================
-HeaderComponent::HeaderComponent (const UserSession& s)
-    : session (s)
+HeaderComponent::HeaderComponent (const UserSession& s, AIModelList initialModels)
+    : session (s), models (std::move (initialModels))
 {
     // Titre
     juce::String username = session.pseudo.isNotEmpty()
@@ -354,12 +365,8 @@ HeaderComponent::HeaderComponent (const UserSession& s)
     addAndMakeVisible (loadButton);
     addAndMakeVisible (saveButton);
 
-    // Modèle IA
-    for (const auto& m : aiModels)
-        modelPicker.addItem (m.name, (int) m.id);
-
-    modelPicker.setSelectedId ((int) AIModel::Model1);
-    modelPicker.setTooltip ("Choose the AI model");
+    // Modèle IA : invité -> capsule figée, connecté -> liste du serveur
+    rebuildModelPicker ({});
     addAndMakeVisible (modelPicker);
 
     // Palette : 3 pastilles libres (le thème est toujours Custom)
@@ -604,36 +611,92 @@ void HeaderComponent::updateModeTexts()
 }
 
 //==============================================================================
-AIModel HeaderComponent::getSelectedModel() const
+// Modèles IA
+//==============================================================================
+void HeaderComponent::setModels (const AIModelList& newModels)
 {
-    return static_cast<AIModel> (modelPicker.getSelectedId());
+    // On lit le choix de l'utilisateur AVANT de remplacer la liste
+    const auto* current = getSelectedModel();
+    const juce::String keepId = current != nullptr ? current->id : juce::String();
+
+    models = newModels;
+    rebuildModelPicker (keepId);
 }
 
-int HeaderComponent::getSelectedModelId() const
+void HeaderComponent::rebuildModelPicker (const juce::String& keepId)
 {
-    return modelPicker.getSelectedId();
+    modelPicker.clearItems();
+
+    if (session.isGuest)
+    {
+        modelPicker.setPlaceholder ("Harmonia AI");
+        modelPicker.setInteractive (false);
+        modelPicker.setTooltip ("Sign in to choose an AI model");
+        return;
+    }
+
+    if (models.empty())
+    {
+        // Liste pas encore chargée ou échec réseau : "latest" marche quand même côté serveur
+        modelPicker.setPlaceholder ("Latest model");
+        modelPicker.setInteractive (false);
+        modelPicker.setTooltip ("Using the latest AI model");
+        return;
+    }
+
+    int sel = -1;
+
+    for (size_t i = 0; i < models.size(); ++i)
+    {
+        modelPicker.addItem (models[i].name, (int) i + 1);
+
+        if (keepId.isNotEmpty() && models[i].id == keepId)
+            sel = (int) i;
+    }
+
+    // Pas de choix précédent : on prend le dernier déployé
+    if (sel < 0)
+        for (size_t i = 0; i < models.size(); ++i)
+            if (models[i].isLatest)
+            {
+                sel = (int) i;
+                break;
+            }
+
+    if (sel < 0)
+        sel = 0;
+
+    modelPicker.setSelectedId (sel + 1);
+    modelPicker.setInteractive (true);
+    modelPicker.setTooltip ("Choose the AI model");
+}
+
+const AIModelData* HeaderComponent::getSelectedModel() const
+{
+    if (session.isGuest)
+        return nullptr;
+
+    const int idx = modelPicker.getSelectedId() - 1;
+
+    return juce::isPositiveAndBelow (idx, (int) models.size()) ? &models[(size_t) idx]
+                                                               : nullptr;
 }
 
 juce::String HeaderComponent::getSelectedModelName() const
 {
-    auto id = getSelectedModel();
-
-    for (const auto& m : aiModels)
-        if (m.id == id)
-            return m.name;
-
-    return {};
+    const auto* m = getSelectedModel();
+    return m != nullptr ? m->name : juce::String();
 }
 
 juce::String HeaderComponent::getSelectedBackendName() const
 {
-    auto id = getSelectedModel();
+    const auto* m = getSelectedModel();
 
-    for (const auto& m : aiModels)
-        if (m.id == id)
-            return m.backendname;
+    if (m == nullptr)
+        return "latest";
 
-    return {};
+    // Le dernier déployé -> "latest" : l'app suit les nouveaux déploiements toute seule
+    return m->isLatest ? "latest" : m->id;
 }
 
 //==============================================================================

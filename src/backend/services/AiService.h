@@ -4,33 +4,44 @@
 #include <nlohmann/json.hpp>
 
 #include "../BackendTypes.h"
+#include "../../config/AiConfig.h"   // adapte le chemin selon ton arborescence
 
 class HttpClient;
 class SessionStore;
 class BackendLogger;
 
+struct AiModelsResult
+{
+    bool         success = false;
+    AIModelList  models;
+    juce::String errorMessage;
+};
+
 /**
- * Génération / affinage de presets par l'IA.
+ * Génération / affinage de presets par l'IA + liste des modèles disponibles.
  *
- * Endpoints : POST /ai/generate-preset, POST /ai/refine-preset
+ * Endpoints : GET /ai/models, POST /ai/generate-preset, POST /ai/refine-preset
  *
- * Les deux passent par le même chemin (postAuthenticated) :
- * session présente, pas invité, pas expirée -> POST avec le Bearer.
- * Le JSON brut de la réponse est renvoyé tel quel (à passer au PresetLoader).
+ * Tous passent par le même contrôle : session présente, pas invité, pas expirée
+ * -> requête avec le Bearer.
+ * Pour generate / refine, le JSON brut de la réponse est renvoyé tel quel
+ * (à passer au PresetLoader).
+ *
+ * backendName : id du modèle ("charter_v1", ...) ou "latest" pour le dernier déployé.
  */
 class AiService
 {
 public:
     AiService (HttpClient& http, SessionStore& store, BackendLogger& logger);
 
+    AiModelsResult fetchModels();
+
     AiResult generatePreset (const juce::String& prompt,
-                             int modelId,
                              const juce::String& backendName);
 
     AiResult refinePreset (const juce::String& prompt,
                            const juce::String& currentJson,
                            const juce::StringArray& lockedParamIds,
-                           int modelId,
                            const juce::String& backendName);
 
 private:
