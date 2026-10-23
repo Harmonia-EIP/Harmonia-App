@@ -7,14 +7,13 @@
 BackendManager::BackendManager()
     : http (juce::String (AppConfig::ApiUrl))
 {
-    // Le logger existe déjà ici : ces deux lignes sont enfin écrites
-    // (avant, logFile était assigné après les premiers writeLog).
     logger->info ("API_URL = " + http.getBaseUrl());
     logger->info ("SESSION PATH = " + sessionStore->getSessionFile().getFullPathName());
 
-    authService    = std::make_unique<AuthService>    (http, sessionStore.get(), logger.get());
-    profileService = std::make_unique<ProfileService> (http, sessionStore.get(), logger.get());
-    aiService      = std::make_unique<AiService>      (http, sessionStore.get(), logger.get());
+    // SharedResourcePointer::get() renvoie une référence : les services prennent des références.
+    authService    = std::make_unique<AuthService>    (http, *sessionStore, *logger);
+    profileService = std::make_unique<ProfileService> (http, *sessionStore, *logger);
+    aiService      = std::make_unique<AiService>      (http, *sessionStore, *logger);
 }
 
 BackendManager::~BackendManager() = default;
@@ -63,20 +62,25 @@ void BackendManager::clearSession()
 }
 
 //================================================
-// AI : retourne le JSON brut (format charter) pour que le caller le passe à PresetLoader.
+// AI : generate / refine retournent le JSON brut (format charter) pour le PresetLoader.
 
-AiResult BackendManager::generatePreset (const juce::String& prompt, int modelId, const juce::String& backendName)
+AiModelsResult BackendManager::fetchAiModels()
 {
-    return aiService->generatePreset (prompt, modelId, backendName);
+    return aiService->fetchModels();
+}
+
+AiResult BackendManager::generatePreset (const juce::String& prompt,
+                                         const juce::String& backendName)
+{
+    return aiService->generatePreset (prompt, backendName);
 }
 
 AiResult BackendManager::refinePreset (const juce::String& prompt,
                                        const juce::String& currentJson,
                                        const juce::StringArray& lockedParamIds,
-                                       int modelId,
                                        const juce::String& backendName)
 {
-    return aiService->refinePreset (prompt, currentJson, lockedParamIds, modelId, backendName);
+    return aiService->refinePreset (prompt, currentJson, lockedParamIds, backendName);
 }
 
 //================================================

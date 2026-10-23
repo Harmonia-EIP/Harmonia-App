@@ -2,7 +2,8 @@
 
 MainComponent::MainComponent (HarmoniaAudioProcessor& p,
                               BackendManager& be,
-                              const UserSession& s)
+                              const UserSession& s,
+                              const AIModelList& models)
     : processor (p),
       backend (be),
       session (s),
@@ -37,11 +38,10 @@ MainComponent::MainComponent (HarmoniaAudioProcessor& p,
     // Le header restaure la palette (setSlots) depuis la session dans son
     // constructeur, avant HarmoniaPalette::setTheme. applyTheme() doit donc
     // venir APRES sa creation.
-    headerComponent = std::make_unique<HeaderComponent> (session);
+    headerComponent = std::make_unique<HeaderComponent> (session, models);
     addAndMakeVisible (*headerComponent);
 
     // Restauration depuis le state de CETTE instance (avant les callbacks)
-        // Restauration depuis le state de CETTE instance (avant les callbacks)
     {
         const juce::String identity = session.isGuest ? juce::String ("guest")
                                                       : "user_" + juce::String (session.userId);
@@ -106,6 +106,9 @@ MainComponent::MainComponent (HarmoniaAudioProcessor& p,
     addAndMakeVisible (synthComponent);
 
     setSize (AppConfig::DefaultWidth, AppConfig::DefaultHeight);
+
+    // Récupère la liste des modèles IA sans bloquer l'ouverture de la fenêtre.
+    refreshModelsAsync();
 }
 
 MainComponent::~MainComponent()
@@ -222,9 +225,9 @@ void MainComponent::buildControls()
     ampPanel->addAndMakeVisible (*releaseKnob);
 
     for (auto* c : {
-            (juce::Component*) osc1WaveSel.get(),        // <-- ajoute
-            (juce::Component*) osc2WaveSel.get(),        // <-- ajoute
-            (juce::Component*) filterTypeSel.get(), 
+            (juce::Component*) osc1WaveSel.get(),
+            (juce::Component*) osc2WaveSel.get(),
+            (juce::Component*) filterTypeSel.get(),
             (juce::Component*) oscMixKnob.get(),
             (juce::Component*) noiseLevelKnob.get(),
             (juce::Component*) filterCutoffKnob.get(),
@@ -381,11 +384,34 @@ void MainComponent::doSavePreset()
         });
 }
 
-// =============================================================================
-// A remplacer dans MainComponent.cpp : l'ancienne doGenerateWithAi() en entier.
-// =============================================================================
- 
-//------------------------------------------------------------------------------
+//==============================================================================
+// Liste des modèles IA
+//==============================================================================
+
+// Récupère GET /ai/models en arrière-plan puis met à jour le header.
+// Invité : rien à faire (le header affiche une capsule figée).
+// Échec réseau : on garde l'état actuel, la génération continue d'utiliser "latest".
+void MainComponent::refreshModelsAsync()
+{
+    if (session.isGuest)
+        return;
+
+    juce::Thread::launch ([safe = juce::Component::SafePointer<MainComponent> (this),
+                           &be = backend]
+    {
+        const auto result = be.fetchAiModels();
+
+        juce::MessageManager::callAsync ([safe, result]
+        {
+            if (safe == nullptr || ! result.success)
+                return;
+
+            safe->headerComponent->setModels (result.models);
+        });
+    });
+}
+
+//==============================================================================
 // Verifie invite + prompt vide. Remplit `prompt`, renvoie false si on doit s'arreter.
 bool MainComponent::getAiPrompt (juce::String& prompt)
 {
@@ -397,9 +423,9 @@ bool MainComponent::getAiPrompt (juce::String& prompt)
             Strings::Errors::AiGuestAdvice);
         return false;
     }
- 
+
     prompt = headerComponent->getPromptEditor().getText();
- 
+
     if (prompt.trim().isEmpty())
     {
         juce::AlertWindow::showMessageBoxAsync (
@@ -408,10 +434,10 @@ bool MainComponent::getAiPrompt (juce::String& prompt)
             Strings::Errors::MissingPromptAdvice);
         return false;
     }
- 
+
     return true;
 }
- 
+
 //------------------------------------------------------------------------------
 // GENERATE : on repart de zero, aucun parametre protege.
 void MainComponent::doGenerateWithAi()
@@ -419,43 +445,40 @@ void MainComponent::doGenerateWithAi()
     juce::String prompt;
     if (! getAiPrompt (prompt))
         return;
- 
-    const int          modelId     = headerComponent->getSelectedModelId();
+
+    // "latest" ou l'id du modele choisi dans le menu
     const juce::String backendName = headerComponent->getSelectedBackendName();
- 
-    runAiRequest ([this, prompt, modelId, backendName]
+
+    runAiRequest ([this, prompt, backendName]
                   {
-                      return backend.generatePreset (prompt, modelId, backendName);
+                      return backend.generatePreset (prompt, backendName);
                   },
                   {});
 }
- 
+
 //------------------------------------------------------------------------------
 // REFINE : on envoie le preset actuel + les parametres verrouilles.
-// -> backend.refinePreset(...) est a creer dans BackendManager (voir plus bas).
 void MainComponent::doRefineWithAi()
 {
     juce::String prompt;
     if (! getAiPrompt (prompt))
         return;
- 
-    const int          modelId     = headerComponent->getSelectedModelId();
+
     const juce::String backendName = headerComponent->getSelectedBackendName();
- 
+
     const auto locked = getLockedParamIds();
- 
+
     const juce::String pseudo = session.pseudo.isNotEmpty() ? session.pseudo : "Unknown";
     const juce::String currentJson =
         PresetLoader::saveToJsonString (processor.getAPVTS(), "current", pseudo);
- 
-    runAiRequest ([this, prompt, currentJson, locked, modelId, backendName]
+
+    runAiRequest ([this, prompt, currentJson, locked, backendName]
                   {
-                      return backend.refinePreset (prompt, currentJson, locked,
-                                                   modelId, backendName);
+                      return backend.refinePreset (prompt, currentJson, locked, backendName);
                   },
                   locked);
 }
- 
+
 //------------------------------------------------------------------------------
 // Partage entre Generate et Refine :
 // thread -> requete -> chargement du preset -> restauration des verrous.
@@ -464,34 +487,34 @@ void MainComponent::runAiRequest (std::function<AiResult()> request,
 {
     // Valeurs des parametres verrouilles AVANT la requete (thread UI)
     std::vector<std::pair<juce::String, float>> keep;
- 
+
     for (const auto& id : lockedIds)
         if (auto* prm = processor.getAPVTS().getParameter (id))
             keep.push_back ({ id, prm->getValue() });
- 
+
     headerComponent->getPresetLabel().setText (Strings::Labels::GeneratingPreset,
                                                juce::dontSendNotification);
- 
+
     juce::Thread::launch ([safe = juce::Component::SafePointer<MainComponent> (this),
                            request = std::move (request),
                            keep = std::move (keep)]
     {
         const auto result = request();
- 
+
         juce::MessageManager::callAsync ([safe, result, keep]
         {
             if (safe == nullptr)
                 return;
- 
+
             if (! result.success)
             {
                 safe->showAiError (result);
                 return;
             }
- 
+
             auto r = PresetLoader::loadFromJsonString (result.json,
                                                        safe->processor.getAPVTS());
- 
+
             if (! r.success)
             {
                 HarmoniaAlert::error (
@@ -499,67 +522,67 @@ void MainComponent::runAiRequest (std::function<AiResult()> request,
                     (r.errorMessage.isNotEmpty() ? r.errorMessage
                                                  : Strings::Errors::UnreadableAIResponse)
                         + "\n\n" + Strings::Errors::PleaseTryAgainLater);
- 
+
                 safe->restorePresetLabel();
                 return;
             }
- 
+
             // Filet de securite : meme si l'IA a touche a un parametre verrouille,
             // on remet la valeur d'origine.
             for (const auto& [id, value] : keep)
                 if (auto* prm = safe->processor.getAPVTS().getParameter (id))
                     prm->setValueNotifyingHost (value);
- 
+
             safe->setPresetName (r.presetName);
         });
     });
 }
- 
+
 //------------------------------------------------------------------------------
 void MainComponent::showAiError (const AiResult& result)
 {
     juce::String message;
     juce::String advice = Strings::Errors::PleaseTryAgainLater;
- 
+
     switch (result.error)
     {
         case AiResult::Error::Network:
             message = Strings::Errors::NetworkError;
             advice  = Strings::Errors::NetworkErrorAdvice;
             break;
- 
+
         case AiResult::Error::HttpError:
             message = Strings::Errors::AiServerError;
             break;
- 
+
         case AiResult::Error::SessionExpired:
             message = "Session expired";
             advice  = "Please log in again.";
             break;
- 
+
         case AiResult::Error::NoSession:
             message = "Not connected";
             advice  = "Please sign in.";
             break;
- 
+
         case AiResult::Error::EmptyResponse:
             message = Strings::Errors::UnknownError;
             break;
- 
+
         case AiResult::Error::EmptyPrompt:
             message = Strings::Errors::MissingPrompt;
             advice  = Strings::Errors::MissingPromptAdvice;
             break;
- 
+
         default:
             message = result.errorMessage.isNotEmpty()
                         ? result.errorMessage
                         : Strings::Errors::UnknownError;
             break;
     }
- 
+
     HarmoniaAlert::error (Strings::Errors::AiError, message + "\n\n" + advice);
- 
+
     restorePresetLabel();
 }
 
@@ -660,7 +683,7 @@ void MainComponent::resized()
         filterPanel->setBounds (filterBox);
 
         {
-           auto inner = oscMixPanel->getContentBounds();
+            auto inner = oscMixPanel->getContentBounds();
 
             // boite d'icones (28) + bande du cadenas : taille fixe
             const int selRowH = 28 + IconChoiceSelector::defaultLockStripH;

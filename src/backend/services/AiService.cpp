@@ -14,8 +14,78 @@ AiService::AiService (HttpClient& h, SessionStore& s, BackendLogger& l)
 {
 }
 
+//==============================================================================
+AiModelsResult AiService::fetchModels()
+{
+    const auto sessionOpt = store.load();
+
+    // Pas de session, ou invité : on ne part même pas sur le réseau.
+    if (! sessionOpt.has_value() || sessionOpt->isGuest)
+        return { false, {}, BackendStrings::LoginRequired };
+
+    const auto& session = *sessionOpt;
+
+    if (session.expiresAt < juce::Time::getCurrentTime())
+        return { false, {}, BackendStrings::SessionExpired };
+
+    const auto response = http.get ("/ai/models",
+                                    HttpOptions (HttpTimeouts::Default).withToken (session.accessToken));
+
+    if (! response.isSuccess())
+    {
+        logger.warn ("GET /ai/models failed: " + response.describe());
+        return { false, {}, parseApiError (response).message };
+    }
+
+    const auto root = json::parse (response.body, nullptr, false);
+
+    if (root.is_discarded() || ! root.is_object()
+        || ! root.contains ("models") || ! root["models"].is_array())
+        return { false, {}, "Invalid models response" };
+
+    auto getStr = [] (const json& o, const char* key) -> juce::String
+    {
+        const auto it = o.find (key);
+
+        return (it != o.end() && it->is_string()) ? juce::String (it->get<std::string>())
+                                                  : juce::String();
+    };
+
+    AIModelList list;
+
+    for (const auto& m : root["models"])
+    {
+        if (! m.is_object())
+            continue;
+
+        AIModelData d;
+        d.id = getStr (m, "id");
+
+        if (d.id.isEmpty())
+            continue;
+
+        const auto name = getStr (m, "name");
+        d.name = name.isNotEmpty() ? name : d.id;
+
+        const auto version = getStr (m, "model_version");
+        const auto hash    = getStr (m, "model_hash");
+
+        if (version.isNotEmpty()) d.version = version;
+        if (hash.isNotEmpty())    d.hash    = hash;
+
+        const auto lat = m.find ("is_latest");
+        d.isLatest = (lat != m.end() && lat->is_boolean() && lat->get<bool>());
+
+        list.push_back (std::move (d));
+    }
+
+    logger.info ("GET /ai/models : " + juce::String ((int) list.size()) + " model(s)");
+
+    return { true, std::move (list), {} };
+}
+
+//==============================================================================
 AiResult AiService::generatePreset (const juce::String& prompt,
-                                    int modelId,
                                     const juce::String& backendName)
 {
     if (prompt.trim().isEmpty())
@@ -23,7 +93,6 @@ AiResult AiService::generatePreset (const juce::String& prompt,
 
     const json payload {
         { "prompt",     prompt.toStdString() },
-        { "model_id",   modelId },
         { "model_name", backendName.toStdString() }
     };
 
@@ -33,7 +102,6 @@ AiResult AiService::generatePreset (const juce::String& prompt,
 AiResult AiService::refinePreset (const juce::String& prompt,
                                   const juce::String& currentJson,
                                   const juce::StringArray& lockedParamIds,
-                                  int modelId,
                                   const juce::String& backendName)
 {
     if (prompt.trim().isEmpty())
@@ -56,7 +124,6 @@ AiResult AiService::refinePreset (const juce::String& prompt,
         { "prompt",         prompt.toStdString() },
         { "current_preset", current },
         { "locked_params",  locked },
-        { "model_id",       modelId },
         { "model_name",     backendName.toStdString() }
     };
 

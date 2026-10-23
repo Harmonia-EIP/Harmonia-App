@@ -11,6 +11,7 @@
  * - Oscillator, filter, LFO, FX, and envelope sections
  * - Oscilloscope and waveform visual feedback
  * - AI-powered preset generation
+ * - Dynamic AI model list fetched from the backend (GET /ai/models)
  * - Preset loading and saving
  * - Session-aware user interface
  * - Animated particle background effects
@@ -34,6 +35,7 @@
  *
  * Threading:
  * - AI preset generation is executed asynchronously
+ * - The AI model list is fetched asynchronously after the UI is created
  * - Palette sync is debounced and executed asynchronously by the backend
  * - UI updates are dispatched safely through JUCE message thread callbacks
  *
@@ -68,6 +70,7 @@
 
 #include "sections/HeaderComponent.h"
 
+#include "config/AiConfig.h"
 #include "config/AppConfig.h"
 #include "parameters/HarmoniaParameters.h"
 #include "tools/PresetLoader.h"
@@ -100,10 +103,14 @@ public:
      * @param p Reference to the audio processor.
      * @param be Backend manager used for AI and session communication.
      * @param session Current authenticated user session.
+     * @param models Optional initial AI model list. Usually empty: the list is
+     *               fetched asynchronously by refreshModelsAsync() right after
+     *               construction (connected users only).
      */
     MainComponent (HarmoniaAudioProcessor& p,
                    BackendManager& be,
-                   const UserSession& session);
+                   const UserSession& session,
+                   const AIModelList& models = {});
 
     /**
      * @brief Destructor.
@@ -141,7 +148,7 @@ public:
      * @brief Callback triggered when user logs out.
      */
     std::function<void()> onLogout;
- 
+
 
 private:
 
@@ -346,6 +353,15 @@ private:
      * @brief Saves current synthesizer state as a preset.
      */
     void doSavePreset();
+
+    /**
+     * @brief Fetches the AI model list (GET /ai/models) on a background thread
+     *        and updates the header menu when it arrives.
+     *
+     * Does nothing for guests. On network failure the header keeps its current
+     * state and generation still works through the "latest" model.
+     */
+    void refreshModelsAsync();
 
     void doGenerateWithAi();
     void doRefineWithAi();
