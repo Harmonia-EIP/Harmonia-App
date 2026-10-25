@@ -264,8 +264,8 @@ void LoginPage::handleLogin()
 
     if (identifier.isEmpty() || password.isEmpty())
     {
-        HarmoniaAlert::warning(Strings::Errors::MissingFields,
-                               Strings::Errors::MissingFieldsAdvice);
+        HarmoniaAlert::warning(this, Strings::Errors::MissingFields,
+                               Strings::Errors::MissingFieldsAdvice, HarmoniaAlert::Position::TopRight);
         return;
     }
 
@@ -273,7 +273,7 @@ void LoginPage::handleLogin()
 
     if (!result.success)
     {
-        HarmoniaAlert::error(Strings::Errors::AuthenticationError, result.errorMessage);
+        HarmoniaAlert::error(this, Strings::Errors::AuthenticationError, result.errorMessage, HarmoniaAlert::Position::TopRight);
         return;
     }
 

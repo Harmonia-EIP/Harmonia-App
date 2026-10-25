@@ -294,8 +294,8 @@ void SignupPage::handleSignup()
     if (username.isEmpty() || firstname.isEmpty() || lastname.isEmpty()
         || email.isEmpty()  || password.isEmpty())
     {
-        HarmoniaAlert::warning(Strings::Errors::MissingFields,
-                               Strings::Errors::MissingFieldsAdvice);
+        HarmoniaAlert::warning(this, Strings::Errors::MissingFields,
+                               Strings::Errors::MissingFieldsAdvice, HarmoniaAlert::Position::TopRight);
         return;
     }
 
@@ -303,10 +303,10 @@ void SignupPage::handleSignup()
 
     if (!result.success)
     {
-        HarmoniaAlert::error(Strings::Errors::AuthenticationError, result.errorMessage);
+        HarmoniaAlert::error(this, Strings::Errors::AuthenticationError, result.errorMessage, HarmoniaAlert::Position::TopRight);
         return;
     }
 
-    HarmoniaAlert::info(Strings::Success::Welcome, Strings::Success::AccountCreated);
+    HarmoniaAlert::info(this, Strings::Success::Welcome, Strings::Success::AccountCreated, HarmoniaAlert::Position::TopRight);
     onSuccess(result.session);
 }

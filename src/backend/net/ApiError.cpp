@@ -1,28 +1,19 @@
 #include "ApiError.h"
 
-#include "../core/BackendStrings.h"
-#include "../core/JsonUtil.h"
-
 namespace
 {
     using json = nlohmann::json;
 
-    // detail = tableau d'erreurs de validation (format FastAPI / Pydantic) :
-    // [{ "type": "...", "loc": ["body", "email"], "ctx": { "min_length": 8 } }, ...]
-    juce::String validationMessage (const json& detail)
+    // fields (optionnel, si le backend l'envoie) :
+    // [{ "field": "email", "type": "string_too_short", "ctx": { "min_length": 8 } }, ...]
+    juce::String validationMessage (const json& fields)
     {
-        if (! detail.is_array() || detail.empty())
+        if (! fields.is_array() || fields.empty() || ! fields[0].is_object())
             return BackendStrings::InvalidInput;
 
-        const auto& error = detail[0];
-        const auto type   = JsonUtil::getString (error, "type");
-
-        std::string field;
-
-        if (error.is_object() && error.contains ("loc") && error["loc"].is_array())
-            for (const auto& item : error["loc"])
-                if (item.is_string() && item.get<std::string>() != "body")
-                    field = item.get<std::string>();
+        const auto& f    = fields[0];
+        const auto field = JsonUtil::getString (f, "field");
+        const auto type  = JsonUtil::getString (f, "type");
 
         if (field == "email")
             return BackendStrings::InvalidEmail;
@@ -31,8 +22,8 @@ namespace
         {
             int minLength = 0;
 
-            if (error.contains ("ctx") && error["ctx"].is_object())
-                minLength = JsonUtil::getInt (error["ctx"], "min_length", 0);
+            if (f.contains ("ctx") && f["ctx"].is_object())
+                minLength = JsonUtil::getInt (f["ctx"], "min_length", 0);
 
             return BackendStrings::passwordTooShort (minLength);
         }
@@ -56,7 +47,45 @@ ApiError parseApiError (const HttpResponse& response)
         return error;
     }
 
-    // Un 5xx ne montre jamais le détail du serveur à l'utilisateur.
+    const json* fields = nullptr;
+    const auto body = JsonUtil::parseObject (response.body);
+
+    if (body)
+    {
+        if (auto it = body->find ("error_code"); it != body->end() && it->is_string())
+            error.code = JsonUtil::toJuce (it->get<std::string>());
+
+        if (auto it = body->find ("detail"); it != body->end() && it->is_string())
+            error.detail = JsonUtil::toJuce (it->get<std::string>());
+
+        if (auto it = body->find ("fields"); it != body->end() && it->is_array())
+            fields = &*it;
+    }
+
+    // 1) Validation : précise si "fields" est présent, générique sinon
+    if (error.code == ErrorCodes::ValidationError)
+    {
+        error.kind    = ApiError::Kind::Validation;
+        error.message = fields != nullptr ? validationMessage (*fields)
+                                          : BackendStrings::InvalidInput;
+        return error;
+    }
+
+    // 2) Code connu -> message traduit
+    const auto mapped = BackendStrings::forErrorCode (error.code);
+
+    if (mapped.isNotEmpty())
+    {
+        error.message = mapped;
+
+        if (ErrorCodes::isTokenError (error.code))  error.kind = ApiError::Kind::Unauthorized;
+        else if (response.statusCode >= 500)        error.kind = ApiError::Kind::Server;
+        else                                        error.kind = ApiError::Kind::Http;
+
+        return error;
+    }
+
+    // 3) Fallbacks : code absent ou inconnu (proxy, HTML, ancienne version...)
     if (response.statusCode >= 500)
     {
         error.kind    = ApiError::Kind::Server;
@@ -64,36 +93,15 @@ ApiError parseApiError (const HttpResponse& response)
         return error;
     }
 
-    juce::String detailText;
-
-    if (const auto body = JsonUtil::parseObject (response.body))
-    {
-        const auto it = body->find ("detail");
-
-        if (it != body->end())
-        {
-            if (it->is_string())
-            {
-                detailText = JsonUtil::toJuce (it->get<std::string>());
-            }
-            else if (it->is_array())
-            {
-                error.kind    = ApiError::Kind::Validation;
-                error.message = validationMessage (*it);
-                return error;
-            }
-        }
-    }
-
     if (response.statusCode == 401)
     {
         error.kind    = ApiError::Kind::Unauthorized;
-        error.message = detailText.isNotEmpty() ? detailText : BackendStrings::SessionExpired;
+        error.message = BackendStrings::SessionExpired;
         return error;
     }
 
     error.kind    = ApiError::Kind::Http;
-    error.message = detailText.isNotEmpty() ? detailText : Strings::Errors::UnknownError;
+    error.message = Strings::Errors::UnknownError;
     return error;
 }
 

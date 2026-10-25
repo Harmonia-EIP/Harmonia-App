@@ -434,10 +434,11 @@ HeaderComponent::HeaderComponent (const UserSession& s, AIModelList initialModel
     {
         if (! refineEnabled)
         {
-            juce::AlertWindow::showMessageBoxAsync (
-                juce::AlertWindow::InfoIcon,
-                "Refine mode",
-                "Refine mode is coming soon.");
+            HarmoniaAlert::info (this,
+                                 "Refine mode",
+                                 "Refine mode is coming soon.",
+                                 HarmoniaAlert::Position::TopRight,
+                                 3000);
             return;
         }
 

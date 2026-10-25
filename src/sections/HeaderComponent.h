@@ -6,6 +6,7 @@
 #include "../themes/HiveLookAndFeel.h"
 #include "../themes/PaletteSelector.h"
 #include "../backend/BackendManager.h"
+#include "../tools/Alert.h"
 #include "../config/AiConfig.h"
 #include "../backend/BackendPalette.h"
 #include <BinaryData.h>

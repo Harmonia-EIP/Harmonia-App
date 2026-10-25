@@ -306,22 +306,31 @@ void MainComponent::doLoadPreset()
 
     chooser->launchAsync (
         juce::FileBrowserComponent::openMode | juce::FileBrowserComponent::canSelectFiles,
-        [this] (const juce::FileChooser& fc)
+        [safe = juce::Component::SafePointer<MainComponent> (this)] (const juce::FileChooser& fc)
         {
+            if (safe == nullptr)
+                return;
+
             auto file = fc.getResult();
             if (! file.existsAsFile()) return;
 
             // Les cadenas ne comptent qu'en mode Refine (en Generate ils sont masques)
-            const auto locked = headerComponent->getMode() == HeaderComponent::Mode::Refine
-                                    ? getLockedParamIds()
+            const auto locked = safe->headerComponent->getMode() == HeaderComponent::Mode::Refine
+                                    ? safe->getLockedParamIds()
                                     : juce::StringArray();
 
-            auto result = PresetLoader::loadFromFile (file, processor.getAPVTS(), locked);
+            auto result = PresetLoader::loadFromFile (file, safe->processor.getAPVTS(), locked);
+
             if (result.success)
-                setPresetName (result.presetName);
+            {
+                safe->setPresetName (result.presetName);
+            }
             else
-                headerComponent->getPresetLabel().setText ("ERR: " + result.errorMessage,
-                                                        juce::dontSendNotification);
+            {
+                HarmoniaAlert::error (safe.getComponent(), Strings::Errors::ErrorTitle,
+                                      result.errorMessage, HarmoniaAlert::Position::Center);
+                safe->restorePresetLabel();
+            }
         });
 }
 
@@ -417,10 +426,10 @@ bool MainComponent::getAiPrompt (juce::String& prompt)
 {
     if (session.isGuest)
     {
-        juce::AlertWindow::showMessageBoxAsync (
-            juce::AlertWindow::WarningIcon,
-            Strings::Errors::AiGuestError,
-            Strings::Errors::AiGuestAdvice);
+        HarmoniaAlert::warning (this,
+                                Strings::Errors::AiGuestError,
+                                Strings::Errors::AiGuestAdvice,
+                                HarmoniaAlert::Position::Center);
         return false;
     }
 
@@ -428,10 +437,10 @@ bool MainComponent::getAiPrompt (juce::String& prompt)
 
     if (prompt.trim().isEmpty())
     {
-        juce::AlertWindow::showMessageBoxAsync (
-            juce::AlertWindow::WarningIcon,
-            Strings::Errors::MissingPrompt,
-            Strings::Errors::MissingPromptAdvice);
+        HarmoniaAlert::warning (this,
+                                Strings::Errors::MissingPrompt,
+                                Strings::Errors::MissingPromptAdvice,
+                                HarmoniaAlert::Position::TopCenter);
         return false;
     }
 
@@ -518,10 +527,10 @@ void MainComponent::runAiRequest (std::function<AiResult()> request,
             if (! r.success)
             {
                 HarmoniaAlert::error (
-                    Strings::Errors::ErrorTitle,
+                    safe.getComponent(), Strings::Errors::ErrorTitle,
                     (r.errorMessage.isNotEmpty() ? r.errorMessage
                                                  : Strings::Errors::UnreadableAIResponse)
-                        + "\n\n" + Strings::Errors::PleaseTryAgainLater);
+                        + "\n\n" + Strings::Errors::PleaseTryAgainLater, HarmoniaAlert::Position::Center);
 
                 safe->restorePresetLabel();
                 return;
@@ -581,7 +590,7 @@ void MainComponent::showAiError (const AiResult& result)
             break;
     }
 
-    HarmoniaAlert::error (Strings::Errors::AiError, message + "\n\n" + advice);
+    HarmoniaAlert::error (this, Strings::Errors::AiError, message + "\n\n" + advice, HarmoniaAlert::Position::Center);
 
     restorePresetLabel();
 }
