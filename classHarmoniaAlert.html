@@ -90,28 +90,581 @@ $(document).ready(function(){initNavTree('classHarmoniaAlert.html',''); initResi
 
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="classHarmoniaAlert-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">HarmoniaAlert Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
+<p>Toast Harmonia : carte sombre avec lueur d'accent, affichée quelques secondes puis disparue toute seule.  
+ <a href="classHarmoniaAlert.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="Alert_8h_source.html">Alert.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for HarmoniaAlert:</div>
+<div class="dyncontent">
+<div class="center"><img src="classHarmoniaAlert__inherit__graph.png" border="0" usemap="#aHarmoniaAlert_inherit__map" alt="Inheritance graph"/></div>
+<map name="aHarmoniaAlert_inherit__map" id="aHarmoniaAlert_inherit__map">
+<area shape="rect" title="Toast Harmonia : carte sombre avec lueur d&#39;accent, affichée quelques secondes puis disparue toute seu..." alt="" coords="150,79,267,104"/>
+<area shape="rect" title=" " alt="" coords="5,5,137,31"/>
+<area shape="poly" title=" " alt="" coords="107,34,187,76,185,81,104,39"/>
+<area shape="rect" title=" " alt="" coords="161,5,256,31"/>
+<area shape="poly" title=" " alt="" coords="211,44,211,79,206,79,206,44"/>
+<area shape="rect" title=" " alt="" coords="281,5,465,31"/>
+<area shape="poly" title=" " alt="" coords="335,39,237,81,234,76,333,34"/>
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
+<div class="dynheader">
+Collaboration diagram for HarmoniaAlert:</div>
+<div class="dyncontent">
+<div class="center"><img src="classHarmoniaAlert__coll__graph.png" border="0" usemap="#aHarmoniaAlert_coll__map" alt="Collaboration graph"/></div>
+<map name="aHarmoniaAlert_coll__map" id="aHarmoniaAlert_coll__map">
+<area shape="rect" title="Toast Harmonia : carte sombre avec lueur d&#39;accent, affichée quelques secondes puis disparue toute seu..." alt="" coords="150,79,267,104"/>
+<area shape="rect" title=" " alt="" coords="5,5,137,31"/>
+<area shape="poly" title=" " alt="" coords="107,34,187,76,185,81,104,39"/>
+<area shape="rect" title=" " alt="" coords="161,5,256,31"/>
+<area shape="poly" title=" " alt="" coords="211,44,211,79,206,79,206,44"/>
+<area shape="rect" title=" " alt="" coords="281,5,465,31"/>
+<area shape="poly" title=" " alt="" coords="335,39,237,81,234,76,333,34"/>
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a1be057b08e0dbf8f2dedc4c501447519" id="r_a1be057b08e0dbf8f2dedc4c501447519"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#a1be057b08e0dbf8f2dedc4c501447519">Type</a> { <a class="el" href="classHarmoniaAlert.html#a1be057b08e0dbf8f2dedc4c501447519a4059b0251f66a18cb56f544728796875">Info</a>
+, <a class="el" href="classHarmoniaAlert.html#a1be057b08e0dbf8f2dedc4c501447519a505a83f220c02df2f85c3810cd9ceb38">Success</a>
+, <a class="el" href="classHarmoniaAlert.html#a1be057b08e0dbf8f2dedc4c501447519a0eaadb4fcb48a0a0ed7bc9868be9fbaa">Warning</a>
+, <a class="el" href="classHarmoniaAlert.html#a1be057b08e0dbf8f2dedc4c501447519a902b0d55fddef6f8d651fe1035b7d4bd">Error</a>
+ }</td></tr>
+<tr class="separator:a1be057b08e0dbf8f2dedc4c501447519"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98075cfd80e876c28f9b0d5cf5065d0b" id="r_a98075cfd80e876c28f9b0d5cf5065d0b"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0b">Position</a> { <br />
+&#160;&#160;<a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0ba7a1920d61156abc05a60135aefe8bc67">Default</a>
+, <a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0bab32beb056fbfe36afbabc6c88c81ab36">TopLeft</a>
+, <a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0ba91b8ede24b7f93a98ae4dcaade15d468">TopCenter</a>
+, <a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0ba1d85a557894c340c318493f33bfa8efb">TopRight</a>
+, <br />
+&#160;&#160;<a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0ba4f1f6016fc9f3f2353c0cc7c67b292bd">Center</a>
+, <a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0ba98e5a1c44509157ebcaf46c515c78875">BottomLeft</a>
+, <a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0babf7d9c8ad2f89a37cf5378b5fec0b420">BottomCenter</a>
+, <a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0ba9146bfc669fddc88db2c4d89297d0e9a">BottomRight</a>
+<br />
+ }</td></tr>
+<tr class="separator:a98075cfd80e876c28f9b0d5cf5065d0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a502a8e51f419a338146ce1d0cc80660f" id="r_a502a8e51f419a338146ce1d0cc80660f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#a502a8e51f419a338146ce1d0cc80660f">~HarmoniaAlert</a> () override</td></tr>
+<tr class="separator:a502a8e51f419a338146ce1d0cc80660f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ad07a589b207e662ab66410c884fd18" id="r_a0ad07a589b207e662ab66410c884fd18"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#a0ad07a589b207e662ab66410c884fd18">paint</a> (juce::Graphics &amp;g) override</td></tr>
+<tr class="separator:a0ad07a589b207e662ab66410c884fd18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28db2373e2349c9192115a3685c50534" id="r_a28db2373e2349c9192115a3685c50534"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#a28db2373e2349c9192115a3685c50534">mouseUp</a> (const juce::MouseEvent &amp;) override</td></tr>
+<tr class="separator:a28db2373e2349c9192115a3685c50534"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:abefd32cfb262d314369fbb32b26d9c2d" id="r_abefd32cfb262d314369fbb32b26d9c2d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#abefd32cfb262d314369fbb32b26d9c2d">show</a> (juce::AlertWindow::AlertIconType type, const juce::String &amp;title, const juce::String &amp;message)</td></tr>
-<tr class="separator:abefd32cfb262d314369fbb32b26d9c2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abfa578092b0f095cbb1decb9ac231a36" id="r_abfa578092b0f095cbb1decb9ac231a36"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#abfa578092b0f095cbb1decb9ac231a36">warning</a> (const juce::String &amp;title, const juce::String &amp;message)</td></tr>
-<tr class="separator:abfa578092b0f095cbb1decb9ac231a36"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7accd508c1d173d745fd4f6a1490d58" id="r_ae7accd508c1d173d745fd4f6a1490d58"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#ae7accd508c1d173d745fd4f6a1490d58">info</a> (const juce::String &amp;title, const juce::String &amp;message)</td></tr>
-<tr class="separator:ae7accd508c1d173d745fd4f6a1490d58"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe8688bd623fa800a5fe2b0a73189e47" id="r_afe8688bd623fa800a5fe2b0a73189e47"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#afe8688bd623fa800a5fe2b0a73189e47">error</a> (const juce::String &amp;title, const juce::String &amp;message)</td></tr>
-<tr class="separator:afe8688bd623fa800a5fe2b0a73189e47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7383a81da9d53535b36ddd1999eee626" id="r_a7383a81da9d53535b36ddd1999eee626"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#a7383a81da9d53535b36ddd1999eee626">info</a> (juce::Component *parent, const juce::String &amp;<a class="el" href="classHarmoniaAlert.html#ae4fb05d4a56c1ee74fb75f6fa2dff0d8">title</a>, const juce::String &amp;<a class="el" href="classHarmoniaAlert.html#a777a868e00fc48c86bd1ab36d0a89609">message</a>, <a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0b">Position</a> pos=<a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0ba7a1920d61156abc05a60135aefe8bc67">Position::Default</a>, int <a class="el" href="classHarmoniaAlert.html#acf18f467dee02c9a47ed9de3bb7a2494">durationMs</a>=4000)</td></tr>
+<tr class="separator:a7383a81da9d53535b36ddd1999eee626"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14f517206b5f03503cc0d692b669f6ce" id="r_a14f517206b5f03503cc0d692b669f6ce"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#a14f517206b5f03503cc0d692b669f6ce">success</a> (juce::Component *parent, const juce::String &amp;<a class="el" href="classHarmoniaAlert.html#ae4fb05d4a56c1ee74fb75f6fa2dff0d8">title</a>, const juce::String &amp;<a class="el" href="classHarmoniaAlert.html#a777a868e00fc48c86bd1ab36d0a89609">message</a>, <a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0b">Position</a> pos=<a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0ba7a1920d61156abc05a60135aefe8bc67">Position::Default</a>, int <a class="el" href="classHarmoniaAlert.html#acf18f467dee02c9a47ed9de3bb7a2494">durationMs</a>=3500)</td></tr>
+<tr class="separator:a14f517206b5f03503cc0d692b669f6ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7151eb34b6f430b7887cabc86539ca35" id="r_a7151eb34b6f430b7887cabc86539ca35"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#a7151eb34b6f430b7887cabc86539ca35">warning</a> (juce::Component *parent, const juce::String &amp;<a class="el" href="classHarmoniaAlert.html#ae4fb05d4a56c1ee74fb75f6fa2dff0d8">title</a>, const juce::String &amp;<a class="el" href="classHarmoniaAlert.html#a777a868e00fc48c86bd1ab36d0a89609">message</a>, <a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0b">Position</a> pos=<a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0ba7a1920d61156abc05a60135aefe8bc67">Position::Default</a>, int <a class="el" href="classHarmoniaAlert.html#acf18f467dee02c9a47ed9de3bb7a2494">durationMs</a>=4500)</td></tr>
+<tr class="separator:a7151eb34b6f430b7887cabc86539ca35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0540f8b20edf8a06116125ae0d6b0798" id="r_a0540f8b20edf8a06116125ae0d6b0798"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#a0540f8b20edf8a06116125ae0d6b0798">error</a> (juce::Component *parent, const juce::String &amp;<a class="el" href="classHarmoniaAlert.html#ae4fb05d4a56c1ee74fb75f6fa2dff0d8">title</a>, const juce::String &amp;<a class="el" href="classHarmoniaAlert.html#a777a868e00fc48c86bd1ab36d0a89609">message</a>, <a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0b">Position</a> pos=<a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0ba7a1920d61156abc05a60135aefe8bc67">Position::Default</a>, int <a class="el" href="classHarmoniaAlert.html#acf18f467dee02c9a47ed9de3bb7a2494">durationMs</a>=5500)</td></tr>
+<tr class="separator:a0540f8b20edf8a06116125ae0d6b0798"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad419fe0499d0115e88eeedee04290214" id="r_ad419fe0499d0115e88eeedee04290214"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#ad419fe0499d0115e88eeedee04290214">setDefaultPosition</a> (<a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0b">Position</a> p)</td></tr>
+<tr class="separator:ad419fe0499d0115e88eeedee04290214"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86dc4245e349d6b1b7db188fcdbc5a51" id="r_a86dc4245e349d6b1b7db188fcdbc5a51"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#a86dc4245e349d6b1b7db188fcdbc5a51">show</a> (juce::Component *parent, <a class="el" href="classHarmoniaAlert.html#a1be057b08e0dbf8f2dedc4c501447519">Type</a> <a class="el" href="classHarmoniaAlert.html#ab185d43211611691b91eed31898c3abd">type</a>, const juce::String &amp;<a class="el" href="classHarmoniaAlert.html#ae4fb05d4a56c1ee74fb75f6fa2dff0d8">title</a>, const juce::String &amp;<a class="el" href="classHarmoniaAlert.html#a777a868e00fc48c86bd1ab36d0a89609">message</a>, <a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0b">Position</a> pos=<a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0ba7a1920d61156abc05a60135aefe8bc67">Position::Default</a>, int <a class="el" href="classHarmoniaAlert.html#acf18f467dee02c9a47ed9de3bb7a2494">durationMs</a>=4000)</td></tr>
+<tr class="separator:a86dc4245e349d6b1b7db188fcdbc5a51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a36dcc3de114230ae20316a8061420d2f" id="r_a36dcc3de114230ae20316a8061420d2f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#a36dcc3de114230ae20316a8061420d2f">HarmoniaAlert</a> (juce::Component &amp;rootComp, <a class="el" href="classHarmoniaAlert.html#a1be057b08e0dbf8f2dedc4c501447519">Type</a> t, const juce::String &amp;ti, const juce::String &amp;m, <a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0b">Position</a> p, int dur)</td></tr>
+<tr class="separator:a36dcc3de114230ae20316a8061420d2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f8211b75a4a5904a3352df67e353477" id="r_a0f8211b75a4a5904a3352df67e353477"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#a0f8211b75a4a5904a3352df67e353477">buildLayoutAndCache</a> ()</td></tr>
+<tr class="separator:a0f8211b75a4a5904a3352df67e353477"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a223afe239efe0f3ce0de470eb750dbb8" id="r_a223afe239efe0f3ce0de470eb750dbb8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#a223afe239efe0f3ce0de470eb750dbb8">componentMovedOrResized</a> (juce::Component &amp;, bool, bool) override</td></tr>
+<tr class="separator:a223afe239efe0f3ce0de470eb750dbb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab26cc04ec3d827b184c12a4c64848762" id="r_ab26cc04ec3d827b184c12a4c64848762"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#ab26cc04ec3d827b184c12a4c64848762">timerCallback</a> () override</td></tr>
+<tr class="separator:ab26cc04ec3d827b184c12a4c64848762"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c88ac663cf74e702cd18f6dabb1ac89" id="r_a7c88ac663cf74e702cd18f6dabb1ac89"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#a7c88ac663cf74e702cd18f6dabb1ac89">finish</a> ()</td></tr>
+<tr class="separator:a7c88ac663cf74e702cd18f6dabb1ac89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
+Static Private Member Functions</h2></td></tr>
+<tr class="memitem:aab7c6d1e113ea61ad2dee388368b2da3" id="r_aab7c6d1e113ea61ad2dee388368b2da3"><td class="memItemLeft" align="right" valign="top">static juce::Colour&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#aab7c6d1e113ea61ad2dee388368b2da3">bgTop</a> ()</td></tr>
+<tr class="separator:aab7c6d1e113ea61ad2dee388368b2da3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76774397b2da9f10fd11323765ce8ca8" id="r_a76774397b2da9f10fd11323765ce8ca8"><td class="memItemLeft" align="right" valign="top">static juce::Colour&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#a76774397b2da9f10fd11323765ce8ca8">bgBottom</a> ()</td></tr>
+<tr class="separator:a76774397b2da9f10fd11323765ce8ca8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a698a773686bdfdf64993ec29f444ba0e" id="r_a698a773686bdfdf64993ec29f444ba0e"><td class="memItemLeft" align="right" valign="top">static juce::Colour&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#a698a773686bdfdf64993ec29f444ba0e">textMain</a> ()</td></tr>
+<tr class="separator:a698a773686bdfdf64993ec29f444ba0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2385264cf05bc228a6410c7d2f82209" id="r_ad2385264cf05bc228a6410c7d2f82209"><td class="memItemLeft" align="right" valign="top">static juce::Colour&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#ad2385264cf05bc228a6410c7d2f82209">accentFor</a> (<a class="el" href="classHarmoniaAlert.html#a1be057b08e0dbf8f2dedc4c501447519">Type</a> t)</td></tr>
+<tr class="separator:ad2385264cf05bc228a6410c7d2f82209"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4708abb428abed95c038b3339b9f540" id="r_ac4708abb428abed95c038b3339b9f540"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#ac4708abb428abed95c038b3339b9f540">isTop</a> (<a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0b">Position</a> p)</td></tr>
+<tr class="separator:ac4708abb428abed95c038b3339b9f540"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab396ffe3dd53e2c2d9524d586432d847" id="r_ab396ffe3dd53e2c2d9524d586432d847"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#ab396ffe3dd53e2c2d9524d586432d847">isBottom</a> (<a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0b">Position</a> p)</td></tr>
+<tr class="separator:ab396ffe3dd53e2c2d9524d586432d847"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ec6fe3f315a02b46ecbd61ad1a0727d" id="r_a0ec6fe3f315a02b46ecbd61ad1a0727d"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#a0ec6fe3f315a02b46ecbd61ad1a0727d">isLeft</a> (<a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0b">Position</a> p)</td></tr>
+<tr class="separator:a0ec6fe3f315a02b46ecbd61ad1a0727d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9eacc99df29af52441ec2d6d05c72528" id="r_a9eacc99df29af52441ec2d6d05c72528"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#a9eacc99df29af52441ec2d6d05c72528">isRight</a> (<a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0b">Position</a> p)</td></tr>
+<tr class="separator:a9eacc99df29af52441ec2d6d05c72528"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafa713a9d495abb1b0d2312df1a0c60a" id="r_aafa713a9d495abb1b0d2312df1a0c60a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0b">Position</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#aafa713a9d495abb1b0d2312df1a0c60a">defaultPositionRef</a> ()</td></tr>
+<tr class="separator:aafa713a9d495abb1b0d2312df1a0c60a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbb95d929ff268328782a9175d297efc" id="r_abbb95d929ff268328782a9175d297efc"><td class="memItemLeft" align="right" valign="top">static std::vector&lt; <a class="el" href="classHarmoniaAlert.html">HarmoniaAlert</a> * &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#abbb95d929ff268328782a9175d297efc">active</a> ()</td></tr>
+<tr class="separator:abbb95d929ff268328782a9175d297efc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a374f64f7533ca6d740a9031bdf86d94a" id="r_a374f64f7533ca6d740a9031bdf86d94a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#a374f64f7533ca6d740a9031bdf86d94a">layoutAll</a> ()</td></tr>
+<tr class="separator:a374f64f7533ca6d740a9031bdf86d94a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6babd556ef0785460e5edd1179427479" id="r_a6babd556ef0785460e5edd1179427479"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#a6babd556ef0785460e5edd1179427479">drawIcon</a> (juce::Graphics &amp;g, <a class="el" href="classHarmoniaAlert.html#a1be057b08e0dbf8f2dedc4c501447519">Type</a> t, juce::Rectangle&lt; float &gt; c)</td></tr>
+<tr class="separator:a6babd556ef0785460e5edd1179427479"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:afd1592fb0dcf86fced186ba3a56d971d" id="r_afd1592fb0dcf86fced186ba3a56d971d"><td class="memItemLeft" align="right" valign="top">juce::Component::SafePointer&lt; juce::Component &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#afd1592fb0dcf86fced186ba3a56d971d">root</a></td></tr>
+<tr class="separator:afd1592fb0dcf86fced186ba3a56d971d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab185d43211611691b91eed31898c3abd" id="r_ab185d43211611691b91eed31898c3abd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classHarmoniaAlert.html#a1be057b08e0dbf8f2dedc4c501447519">Type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#ab185d43211611691b91eed31898c3abd">type</a></td></tr>
+<tr class="separator:ab185d43211611691b91eed31898c3abd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4fb05d4a56c1ee74fb75f6fa2dff0d8" id="r_ae4fb05d4a56c1ee74fb75f6fa2dff0d8"><td class="memItemLeft" align="right" valign="top">juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#ae4fb05d4a56c1ee74fb75f6fa2dff0d8">title</a></td></tr>
+<tr class="separator:ae4fb05d4a56c1ee74fb75f6fa2dff0d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a777a868e00fc48c86bd1ab36d0a89609" id="r_a777a868e00fc48c86bd1ab36d0a89609"><td class="memItemLeft" align="right" valign="top">juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#a777a868e00fc48c86bd1ab36d0a89609">message</a></td></tr>
+<tr class="separator:a777a868e00fc48c86bd1ab36d0a89609"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cd18d4b7c1c496b3b0faa11b760f7d2" id="r_a5cd18d4b7c1c496b3b0faa11b760f7d2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0b">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#a5cd18d4b7c1c496b3b0faa11b760f7d2">position</a></td></tr>
+<tr class="separator:a5cd18d4b7c1c496b3b0faa11b760f7d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf18f467dee02c9a47ed9de3bb7a2494" id="r_acf18f467dee02c9a47ed9de3bb7a2494"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#acf18f467dee02c9a47ed9de3bb7a2494">durationMs</a></td></tr>
+<tr class="separator:acf18f467dee02c9a47ed9de3bb7a2494"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0c15b50b215b4935fbb90cdfcf8e8a1" id="r_af0c15b50b215b4935fbb90cdfcf8e8a1"><td class="memItemLeft" align="right" valign="top">juce::TextLayout&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#af0c15b50b215b4935fbb90cdfcf8e8a1">messageLayout</a></td></tr>
+<tr class="separator:af0c15b50b215b4935fbb90cdfcf8e8a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a87ac9bc94592e60c0563486326345b" id="r_a2a87ac9bc94592e60c0563486326345b"><td class="memItemLeft" align="right" valign="top">juce::Image&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#a2a87ac9bc94592e60c0563486326345b">glowImage</a></td></tr>
+<tr class="separator:a2a87ac9bc94592e60c0563486326345b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2ac6087908c3b0a71d3f50562650177" id="r_af2ac6087908c3b0a71d3f50562650177"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#af2ac6087908c3b0a71d3f50562650177">appear</a> = 0.f</td></tr>
+<tr class="separator:af2ac6087908c3b0a71d3f50562650177"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37715c22616675ba0c60d12a2c860143" id="r_a37715c22616675ba0c60d12a2c860143"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#a37715c22616675ba0c60d12a2c860143">elapsed</a> = 0.0</td></tr>
+<tr class="separator:a37715c22616675ba0c60d12a2c860143"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed0235152c55cd61b3eb876c1e4923fa" id="r_aed0235152c55cd61b3eb876c1e4923fa"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#aed0235152c55cd61b3eb876c1e4923fa">lastTick</a> = 0.0</td></tr>
+<tr class="separator:aed0235152c55cd61b3eb876c1e4923fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a799ebc2c9056db2f88767937bdad62bc" id="r_a799ebc2c9056db2f88767937bdad62bc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#a799ebc2c9056db2f88767937bdad62bc">closing</a> = false</td></tr>
+<tr class="separator:a799ebc2c9056db2f88767937bdad62bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:ac15b828fe0ac40cdea142a7d483a12a1" id="r_ac15b828fe0ac40cdea142a7d483a12a1"><td class="memItemLeft" align="right" valign="top">static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#ac15b828fe0ac40cdea142a7d483a12a1">cardWidth</a> = 340</td></tr>
+<tr class="separator:ac15b828fe0ac40cdea142a7d483a12a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2404264fbbc84d95e9f2719357760865" id="r_a2404264fbbc84d95e9f2719357760865"><td class="memItemLeft" align="right" valign="top">static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#a2404264fbbc84d95e9f2719357760865">glowMargin</a> = 14</td></tr>
+<tr class="separator:a2404264fbbc84d95e9f2719357760865"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0881d04e353c44ef05d0551dde02217" id="r_ab0881d04e353c44ef05d0551dde02217"><td class="memItemLeft" align="right" valign="top">static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#ab0881d04e353c44ef05d0551dde02217">edgeGap</a> = 16</td></tr>
+<tr class="separator:ab0881d04e353c44ef05d0551dde02217"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7eed228d59f2cba22b88f7c10c3cbfbe" id="r_a7eed228d59f2cba22b88f7c10c3cbfbe"><td class="memItemLeft" align="right" valign="top">static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#a7eed228d59f2cba22b88f7c10c3cbfbe">topInset</a> = 98</td></tr>
+<tr class="separator:a7eed228d59f2cba22b88f7c10c3cbfbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5deeb020f7e58b9a409b8710797975f5" id="r_a5deeb020f7e58b9a409b8710797975f5"><td class="memItemLeft" align="right" valign="top">static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#a5deeb020f7e58b9a409b8710797975f5">stackGap</a> = 8</td></tr>
+<tr class="separator:a5deeb020f7e58b9a409b8710797975f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4028a15b15c36ac29179b536a4322c19" id="r_a4028a15b15c36ac29179b536a4322c19"><td class="memItemLeft" align="right" valign="top">static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#a4028a15b15c36ac29179b536a4322c19">cornerRadius</a> = 14.f</td></tr>
+<tr class="separator:a4028a15b15c36ac29179b536a4322c19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bee9a33d2d42cf24f8b2b079fdee362" id="r_a4bee9a33d2d42cf24f8b2b079fdee362"><td class="memItemLeft" align="right" valign="top">static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#a4bee9a33d2d42cf24f8b2b079fdee362">padding</a> = 14.f</td></tr>
+<tr class="separator:a4bee9a33d2d42cf24f8b2b079fdee362"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae84828ba5faac8472d156c8e7d3b32b" id="r_aae84828ba5faac8472d156c8e7d3b32b"><td class="memItemLeft" align="right" valign="top">static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#aae84828ba5faac8472d156c8e7d3b32b">titleHeight</a> = 20.f</td></tr>
+<tr class="separator:aae84828ba5faac8472d156c8e7d3b32b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6aef2da099653f7543bb5da367202f2b" id="r_a6aef2da099653f7543bb5da367202f2b"><td class="memItemLeft" align="right" valign="top">static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#a6aef2da099653f7543bb5da367202f2b">textOffset</a> = 14 + 34 + 12</td></tr>
+<tr class="separator:a6aef2da099653f7543bb5da367202f2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add80910203b0b50a7d6456ce65b331fc" id="r_add80910203b0b50a7d6456ce65b331fc"><td class="memItemLeft" align="right" valign="top">static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html#add80910203b0b50a7d6456ce65b331fc">textWidth</a> = <a class="el" href="classHarmoniaAlert.html#ac15b828fe0ac40cdea142a7d483a12a1">cardWidth</a> - <a class="el" href="classHarmoniaAlert.html#a6aef2da099653f7543bb5da367202f2b">textOffset</a> - 14</td></tr>
+<tr class="separator:add80910203b0b50a7d6456ce65b331fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Toast Harmonia : carte sombre avec lueur d'accent, affichée quelques secondes puis disparue toute seule. </p>
+<p>Header-only.</p>
+<p><a class="el" href="classHarmoniaAlert.html#a0540f8b20edf8a06116125ae0d6b0798">HarmoniaAlert::error</a> (this, "Authentication error", message); <a class="el" href="classHarmoniaAlert.html#a0540f8b20edf8a06116125ae0d6b0798">HarmoniaAlert::error</a> (this, "Authentication error", message, <a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0ba4f1f6016fc9f3f2353c0cc7c67b292bd">HarmoniaAlert::Position::Center</a>); <a class="el" href="classHarmoniaAlert.html#ad419fe0499d0115e88eeedee04290214">HarmoniaAlert::setDefaultPosition</a> (<a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0ba1d85a557894c340c318493f33bfa8efb">HarmoniaAlert::Position::TopRight</a>);</p>
+<ul>
+<li>Survol souris : le compte à rebours est mis en pause.</li>
+<li>Clic : ferme tout de suite.</li>
+<li>Même message déjà affiché : le timer est simplement relancé (pas de doublon). </li>
+</ul>
+</div><h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="a98075cfd80e876c28f9b0d5cf5065d0b" name="a98075cfd80e876c28f9b0d5cf5065d0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98075cfd80e876c28f9b0d5cf5065d0b">&#9670;&#160;</a></span>Position</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0b">HarmoniaAlert::Position</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a98075cfd80e876c28f9b0d5cf5065d0ba7a1920d61156abc05a60135aefe8bc67" name="a98075cfd80e876c28f9b0d5cf5065d0ba7a1920d61156abc05a60135aefe8bc67"></a>Default&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a98075cfd80e876c28f9b0d5cf5065d0bab32beb056fbfe36afbabc6c88c81ab36" name="a98075cfd80e876c28f9b0d5cf5065d0bab32beb056fbfe36afbabc6c88c81ab36"></a>TopLeft&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a98075cfd80e876c28f9b0d5cf5065d0ba91b8ede24b7f93a98ae4dcaade15d468" name="a98075cfd80e876c28f9b0d5cf5065d0ba91b8ede24b7f93a98ae4dcaade15d468"></a>TopCenter&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a98075cfd80e876c28f9b0d5cf5065d0ba1d85a557894c340c318493f33bfa8efb" name="a98075cfd80e876c28f9b0d5cf5065d0ba1d85a557894c340c318493f33bfa8efb"></a>TopRight&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a98075cfd80e876c28f9b0d5cf5065d0ba4f1f6016fc9f3f2353c0cc7c67b292bd" name="a98075cfd80e876c28f9b0d5cf5065d0ba4f1f6016fc9f3f2353c0cc7c67b292bd"></a>Center&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a98075cfd80e876c28f9b0d5cf5065d0ba98e5a1c44509157ebcaf46c515c78875" name="a98075cfd80e876c28f9b0d5cf5065d0ba98e5a1c44509157ebcaf46c515c78875"></a>BottomLeft&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a98075cfd80e876c28f9b0d5cf5065d0babf7d9c8ad2f89a37cf5378b5fec0b420" name="a98075cfd80e876c28f9b0d5cf5065d0babf7d9c8ad2f89a37cf5378b5fec0b420"></a>BottomCenter&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a98075cfd80e876c28f9b0d5cf5065d0ba9146bfc669fddc88db2c4d89297d0e9a" name="a98075cfd80e876c28f9b0d5cf5065d0ba9146bfc669fddc88db2c4d89297d0e9a"></a>BottomRight&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="a1be057b08e0dbf8f2dedc4c501447519" name="a1be057b08e0dbf8f2dedc4c501447519"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1be057b08e0dbf8f2dedc4c501447519">&#9670;&#160;</a></span>Type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="classHarmoniaAlert.html#a1be057b08e0dbf8f2dedc4c501447519">HarmoniaAlert::Type</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a1be057b08e0dbf8f2dedc4c501447519a4059b0251f66a18cb56f544728796875" name="a1be057b08e0dbf8f2dedc4c501447519a4059b0251f66a18cb56f544728796875"></a>Info&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a1be057b08e0dbf8f2dedc4c501447519a505a83f220c02df2f85c3810cd9ceb38" name="a1be057b08e0dbf8f2dedc4c501447519a505a83f220c02df2f85c3810cd9ceb38"></a>Success&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a1be057b08e0dbf8f2dedc4c501447519a0eaadb4fcb48a0a0ed7bc9868be9fbaa" name="a1be057b08e0dbf8f2dedc4c501447519a0eaadb4fcb48a0a0ed7bc9868be9fbaa"></a>Warning&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a1be057b08e0dbf8f2dedc4c501447519a902b0d55fddef6f8d651fe1035b7d4bd" name="a1be057b08e0dbf8f2dedc4c501447519a902b0d55fddef6f8d651fe1035b7d4bd"></a>Error&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a502a8e51f419a338146ce1d0cc80660f" name="a502a8e51f419a338146ce1d0cc80660f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a502a8e51f419a338146ce1d0cc80660f">&#9670;&#160;</a></span>~HarmoniaAlert()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">HarmoniaAlert::~HarmoniaAlert </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a36dcc3de114230ae20316a8061420d2f" name="a36dcc3de114230ae20316a8061420d2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36dcc3de114230ae20316a8061420d2f">&#9670;&#160;</a></span>HarmoniaAlert()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">HarmoniaAlert::HarmoniaAlert </td>
+          <td>(</td>
+          <td class="paramtype">juce::Component &amp;&#160;</td>
+          <td class="paramname"><em>rootComp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classHarmoniaAlert.html#a1be057b08e0dbf8f2dedc4c501447519">Type</a>&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const juce::String &amp;&#160;</td>
+          <td class="paramname"><em>ti</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const juce::String &amp;&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0b">Position</a>&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>dur</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="afe8688bd623fa800a5fe2b0a73189e47" name="afe8688bd623fa800a5fe2b0a73189e47"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afe8688bd623fa800a5fe2b0a73189e47">&#9670;&#160;</a></span>error()</h2>
+<a id="ad2385264cf05bc228a6410c7d2f82209" name="ad2385264cf05bc228a6410c7d2f82209"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2385264cf05bc228a6410c7d2f82209">&#9670;&#160;</a></span>accentFor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static juce::Colour HarmoniaAlert::accentFor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classHarmoniaAlert.html#a1be057b08e0dbf8f2dedc4c501447519">Type</a>&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abbb95d929ff268328782a9175d297efc" name="abbb95d929ff268328782a9175d297efc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbb95d929ff268328782a9175d297efc">&#9670;&#160;</a></span>active()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static std::vector&lt; <a class="el" href="classHarmoniaAlert.html">HarmoniaAlert</a> * &gt; &amp; HarmoniaAlert::active </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a76774397b2da9f10fd11323765ce8ca8" name="a76774397b2da9f10fd11323765ce8ca8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76774397b2da9f10fd11323765ce8ca8">&#9670;&#160;</a></span>bgBottom()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static juce::Colour HarmoniaAlert::bgBottom </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aab7c6d1e113ea61ad2dee388368b2da3" name="aab7c6d1e113ea61ad2dee388368b2da3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab7c6d1e113ea61ad2dee388368b2da3">&#9670;&#160;</a></span>bgTop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static juce::Colour HarmoniaAlert::bgTop </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0f8211b75a4a5904a3352df67e353477" name="a0f8211b75a4a5904a3352df67e353477"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f8211b75a4a5904a3352df67e353477">&#9670;&#160;</a></span>buildLayoutAndCache()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HarmoniaAlert::buildLayoutAndCache </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a223afe239efe0f3ce0de470eb750dbb8" name="a223afe239efe0f3ce0de470eb750dbb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a223afe239efe0f3ce0de470eb750dbb8">&#9670;&#160;</a></span>componentMovedOrResized()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HarmoniaAlert::componentMovedOrResized </td>
+          <td>(</td>
+          <td class="paramtype">juce::Component &amp;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aafa713a9d495abb1b0d2312df1a0c60a" name="aafa713a9d495abb1b0d2312df1a0c60a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafa713a9d495abb1b0d2312df1a0c60a">&#9670;&#160;</a></span>defaultPositionRef()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0b">Position</a> &amp; HarmoniaAlert::defaultPositionRef </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6babd556ef0785460e5edd1179427479" name="a6babd556ef0785460e5edd1179427479"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6babd556ef0785460e5edd1179427479">&#9670;&#160;</a></span>drawIcon()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void HarmoniaAlert::drawIcon </td>
+          <td>(</td>
+          <td class="paramtype">juce::Graphics &amp;&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classHarmoniaAlert.html#a1be057b08e0dbf8f2dedc4c501447519">Type</a>&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">juce::Rectangle&lt; float &gt;&#160;</td>
+          <td class="paramname"><em>c</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0540f8b20edf8a06116125ae0d6b0798" name="a0540f8b20edf8a06116125ae0d6b0798"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0540f8b20edf8a06116125ae0d6b0798">&#9670;&#160;</a></span>error()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -122,6 +675,12 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">static void HarmoniaAlert::error </td>
           <td>(</td>
+          <td class="paramtype">juce::Component *&#160;</td>
+          <td class="paramname"><em>parent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">const juce::String &amp;&#160;</td>
           <td class="paramname"><em>title</em>, </td>
         </tr>
@@ -129,7 +688,19 @@ Static Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const juce::String &amp;&#160;</td>
-          <td class="paramname"><em>message</em>&#160;</td>
+          <td class="paramname"><em>message</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0b">Position</a>&#160;</td>
+          <td class="paramname"><em>pos</em> = <code><a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0ba7a1920d61156abc05a60135aefe8bc67">Position::Default</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>durationMs</em> = <code>5500</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -146,8 +717,33 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ae7accd508c1d173d745fd4f6a1490d58" name="ae7accd508c1d173d745fd4f6a1490d58"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae7accd508c1d173d745fd4f6a1490d58">&#9670;&#160;</a></span>info()</h2>
+<a id="a7c88ac663cf74e702cd18f6dabb1ac89" name="a7c88ac663cf74e702cd18f6dabb1ac89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c88ac663cf74e702cd18f6dabb1ac89">&#9670;&#160;</a></span>finish()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HarmoniaAlert::finish </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7383a81da9d53535b36ddd1999eee626" name="a7383a81da9d53535b36ddd1999eee626"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7383a81da9d53535b36ddd1999eee626">&#9670;&#160;</a></span>info()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -158,6 +754,12 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">static void HarmoniaAlert::info </td>
           <td>(</td>
+          <td class="paramtype">juce::Component *&#160;</td>
+          <td class="paramname"><em>parent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">const juce::String &amp;&#160;</td>
           <td class="paramname"><em>title</em>, </td>
         </tr>
@@ -165,7 +767,19 @@ Static Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const juce::String &amp;&#160;</td>
-          <td class="paramname"><em>message</em>&#160;</td>
+          <td class="paramname"><em>message</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0b">Position</a>&#160;</td>
+          <td class="paramname"><em>pos</em> = <code><a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0ba7a1920d61156abc05a60135aefe8bc67">Position::Default</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>durationMs</em> = <code>4000</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -182,8 +796,215 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="abefd32cfb262d314369fbb32b26d9c2d" name="abefd32cfb262d314369fbb32b26d9c2d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abefd32cfb262d314369fbb32b26d9c2d">&#9670;&#160;</a></span>show()</h2>
+<a id="ab396ffe3dd53e2c2d9524d586432d847" name="ab396ffe3dd53e2c2d9524d586432d847"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab396ffe3dd53e2c2d9524d586432d847">&#9670;&#160;</a></span>isBottom()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool HarmoniaAlert::isBottom </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0b">Position</a>&#160;</td>
+          <td class="paramname"><em>p</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0ec6fe3f315a02b46ecbd61ad1a0727d" name="a0ec6fe3f315a02b46ecbd61ad1a0727d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ec6fe3f315a02b46ecbd61ad1a0727d">&#9670;&#160;</a></span>isLeft()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool HarmoniaAlert::isLeft </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0b">Position</a>&#160;</td>
+          <td class="paramname"><em>p</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9eacc99df29af52441ec2d6d05c72528" name="a9eacc99df29af52441ec2d6d05c72528"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9eacc99df29af52441ec2d6d05c72528">&#9670;&#160;</a></span>isRight()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool HarmoniaAlert::isRight </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0b">Position</a>&#160;</td>
+          <td class="paramname"><em>p</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac4708abb428abed95c038b3339b9f540" name="ac4708abb428abed95c038b3339b9f540"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4708abb428abed95c038b3339b9f540">&#9670;&#160;</a></span>isTop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool HarmoniaAlert::isTop </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0b">Position</a>&#160;</td>
+          <td class="paramname"><em>p</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a374f64f7533ca6d740a9031bdf86d94a" name="a374f64f7533ca6d740a9031bdf86d94a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a374f64f7533ca6d740a9031bdf86d94a">&#9670;&#160;</a></span>layoutAll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void HarmoniaAlert::layoutAll </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a28db2373e2349c9192115a3685c50534" name="a28db2373e2349c9192115a3685c50534"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28db2373e2349c9192115a3685c50534">&#9670;&#160;</a></span>mouseUp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HarmoniaAlert::mouseUp </td>
+          <td>(</td>
+          <td class="paramtype">const juce::MouseEvent &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0ad07a589b207e662ab66410c884fd18" name="a0ad07a589b207e662ab66410c884fd18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ad07a589b207e662ab66410c884fd18">&#9670;&#160;</a></span>paint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HarmoniaAlert::paint </td>
+          <td>(</td>
+          <td class="paramtype">juce::Graphics &amp;&#160;</td>
+          <td class="paramname"><em>g</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad419fe0499d0115e88eeedee04290214" name="ad419fe0499d0115e88eeedee04290214"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad419fe0499d0115e88eeedee04290214">&#9670;&#160;</a></span>setDefaultPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void HarmoniaAlert::setDefaultPosition </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0b">Position</a>&#160;</td>
+          <td class="paramname"><em>p</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a86dc4245e349d6b1b7db188fcdbc5a51" name="a86dc4245e349d6b1b7db188fcdbc5a51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86dc4245e349d6b1b7db188fcdbc5a51">&#9670;&#160;</a></span>show()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -194,7 +1015,13 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">static void HarmoniaAlert::show </td>
           <td>(</td>
-          <td class="paramtype">juce::AlertWindow::AlertIconType&#160;</td>
+          <td class="paramtype">juce::Component *&#160;</td>
+          <td class="paramname"><em>parent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classHarmoniaAlert.html#a1be057b08e0dbf8f2dedc4c501447519">Type</a>&#160;</td>
           <td class="paramname"><em>type</em>, </td>
         </tr>
         <tr>
@@ -207,7 +1034,19 @@ Static Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const juce::String &amp;&#160;</td>
-          <td class="paramname"><em>message</em>&#160;</td>
+          <td class="paramname"><em>message</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0b">Position</a>&#160;</td>
+          <td class="paramname"><em>pos</em> = <code><a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0ba7a1920d61156abc05a60135aefe8bc67">Position::Default</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>durationMs</em> = <code>4000</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -224,8 +1063,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="abfa578092b0f095cbb1decb9ac231a36" name="abfa578092b0f095cbb1decb9ac231a36"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abfa578092b0f095cbb1decb9ac231a36">&#9670;&#160;</a></span>warning()</h2>
+<a id="a14f517206b5f03503cc0d692b669f6ce" name="a14f517206b5f03503cc0d692b669f6ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14f517206b5f03503cc0d692b669f6ce">&#9670;&#160;</a></span>success()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -234,8 +1073,14 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void HarmoniaAlert::warning </td>
+          <td class="memname">static void HarmoniaAlert::success </td>
           <td>(</td>
+          <td class="paramtype">juce::Component *&#160;</td>
+          <td class="paramname"><em>parent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">const juce::String &amp;&#160;</td>
           <td class="paramname"><em>title</em>, </td>
         </tr>
@@ -243,7 +1088,19 @@ Static Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const juce::String &amp;&#160;</td>
-          <td class="paramname"><em>message</em>&#160;</td>
+          <td class="paramname"><em>message</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0b">Position</a>&#160;</td>
+          <td class="paramname"><em>pos</em> = <code><a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0ba7a1920d61156abc05a60135aefe8bc67">Position::Default</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>durationMs</em> = <code>3500</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -254,6 +1111,595 @@ Static Public Member Functions</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a698a773686bdfdf64993ec29f444ba0e" name="a698a773686bdfdf64993ec29f444ba0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a698a773686bdfdf64993ec29f444ba0e">&#9670;&#160;</a></span>textMain()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static juce::Colour HarmoniaAlert::textMain </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab26cc04ec3d827b184c12a4c64848762" name="ab26cc04ec3d827b184c12a4c64848762"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab26cc04ec3d827b184c12a4c64848762">&#9670;&#160;</a></span>timerCallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HarmoniaAlert::timerCallback </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7151eb34b6f430b7887cabc86539ca35" name="a7151eb34b6f430b7887cabc86539ca35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7151eb34b6f430b7887cabc86539ca35">&#9670;&#160;</a></span>warning()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void HarmoniaAlert::warning </td>
+          <td>(</td>
+          <td class="paramtype">juce::Component *&#160;</td>
+          <td class="paramname"><em>parent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const juce::String &amp;&#160;</td>
+          <td class="paramname"><em>title</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const juce::String &amp;&#160;</td>
+          <td class="paramname"><em>message</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0b">Position</a>&#160;</td>
+          <td class="paramname"><em>pos</em> = <code><a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0ba7a1920d61156abc05a60135aefe8bc67">Position::Default</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>durationMs</em> = <code>4500</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="af2ac6087908c3b0a71d3f50562650177" name="af2ac6087908c3b0a71d3f50562650177"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2ac6087908c3b0a71d3f50562650177">&#9670;&#160;</a></span>appear</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float HarmoniaAlert::appear = 0.f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac15b828fe0ac40cdea142a7d483a12a1" name="ac15b828fe0ac40cdea142a7d483a12a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac15b828fe0ac40cdea142a7d483a12a1">&#9670;&#160;</a></span>cardWidth</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr int HarmoniaAlert::cardWidth = 340</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a799ebc2c9056db2f88767937bdad62bc" name="a799ebc2c9056db2f88767937bdad62bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a799ebc2c9056db2f88767937bdad62bc">&#9670;&#160;</a></span>closing</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool HarmoniaAlert::closing = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4028a15b15c36ac29179b536a4322c19" name="a4028a15b15c36ac29179b536a4322c19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4028a15b15c36ac29179b536a4322c19">&#9670;&#160;</a></span>cornerRadius</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr float HarmoniaAlert::cornerRadius = 14.f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acf18f467dee02c9a47ed9de3bb7a2494" name="acf18f467dee02c9a47ed9de3bb7a2494"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf18f467dee02c9a47ed9de3bb7a2494">&#9670;&#160;</a></span>durationMs</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int HarmoniaAlert::durationMs</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab0881d04e353c44ef05d0551dde02217" name="ab0881d04e353c44ef05d0551dde02217"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0881d04e353c44ef05d0551dde02217">&#9670;&#160;</a></span>edgeGap</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr int HarmoniaAlert::edgeGap = 16</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a37715c22616675ba0c60d12a2c860143" name="a37715c22616675ba0c60d12a2c860143"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37715c22616675ba0c60d12a2c860143">&#9670;&#160;</a></span>elapsed</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double HarmoniaAlert::elapsed = 0.0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2a87ac9bc94592e60c0563486326345b" name="a2a87ac9bc94592e60c0563486326345b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a87ac9bc94592e60c0563486326345b">&#9670;&#160;</a></span>glowImage</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">juce::Image HarmoniaAlert::glowImage</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2404264fbbc84d95e9f2719357760865" name="a2404264fbbc84d95e9f2719357760865"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2404264fbbc84d95e9f2719357760865">&#9670;&#160;</a></span>glowMargin</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr int HarmoniaAlert::glowMargin = 14</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aed0235152c55cd61b3eb876c1e4923fa" name="aed0235152c55cd61b3eb876c1e4923fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed0235152c55cd61b3eb876c1e4923fa">&#9670;&#160;</a></span>lastTick</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double HarmoniaAlert::lastTick = 0.0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a777a868e00fc48c86bd1ab36d0a89609" name="a777a868e00fc48c86bd1ab36d0a89609"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a777a868e00fc48c86bd1ab36d0a89609">&#9670;&#160;</a></span>message</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">juce::String HarmoniaAlert::message</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af0c15b50b215b4935fbb90cdfcf8e8a1" name="af0c15b50b215b4935fbb90cdfcf8e8a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0c15b50b215b4935fbb90cdfcf8e8a1">&#9670;&#160;</a></span>messageLayout</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">juce::TextLayout HarmoniaAlert::messageLayout</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4bee9a33d2d42cf24f8b2b079fdee362" name="a4bee9a33d2d42cf24f8b2b079fdee362"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4bee9a33d2d42cf24f8b2b079fdee362">&#9670;&#160;</a></span>padding</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr float HarmoniaAlert::padding = 14.f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5cd18d4b7c1c496b3b0faa11b760f7d2" name="a5cd18d4b7c1c496b3b0faa11b760f7d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5cd18d4b7c1c496b3b0faa11b760f7d2">&#9670;&#160;</a></span>position</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0b">Position</a> HarmoniaAlert::position</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afd1592fb0dcf86fced186ba3a56d971d" name="afd1592fb0dcf86fced186ba3a56d971d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd1592fb0dcf86fced186ba3a56d971d">&#9670;&#160;</a></span>root</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">juce::Component::SafePointer&lt;juce::Component&gt; HarmoniaAlert::root</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5deeb020f7e58b9a409b8710797975f5" name="a5deeb020f7e58b9a409b8710797975f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5deeb020f7e58b9a409b8710797975f5">&#9670;&#160;</a></span>stackGap</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr int HarmoniaAlert::stackGap = 8</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6aef2da099653f7543bb5da367202f2b" name="a6aef2da099653f7543bb5da367202f2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6aef2da099653f7543bb5da367202f2b">&#9670;&#160;</a></span>textOffset</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr int HarmoniaAlert::textOffset = 14 + 34 + 12</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="add80910203b0b50a7d6456ce65b331fc" name="add80910203b0b50a7d6456ce65b331fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add80910203b0b50a7d6456ce65b331fc">&#9670;&#160;</a></span>textWidth</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr int HarmoniaAlert::textWidth = <a class="el" href="classHarmoniaAlert.html#ac15b828fe0ac40cdea142a7d483a12a1">cardWidth</a> - <a class="el" href="classHarmoniaAlert.html#a6aef2da099653f7543bb5da367202f2b">textOffset</a> - 14</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae4fb05d4a56c1ee74fb75f6fa2dff0d8" name="ae4fb05d4a56c1ee74fb75f6fa2dff0d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4fb05d4a56c1ee74fb75f6fa2dff0d8">&#9670;&#160;</a></span>title</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">juce::String HarmoniaAlert::title</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aae84828ba5faac8472d156c8e7d3b32b" name="aae84828ba5faac8472d156c8e7d3b32b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae84828ba5faac8472d156c8e7d3b32b">&#9670;&#160;</a></span>titleHeight</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr float HarmoniaAlert::titleHeight = 20.f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7eed228d59f2cba22b88f7c10c3cbfbe" name="a7eed228d59f2cba22b88f7c10c3cbfbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7eed228d59f2cba22b88f7c10c3cbfbe">&#9670;&#160;</a></span>topInset</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr int HarmoniaAlert::topInset = 98</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab185d43211611691b91eed31898c3abd" name="ab185d43211611691b91eed31898c3abd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab185d43211611691b91eed31898c3abd">&#9670;&#160;</a></span>type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classHarmoniaAlert.html#a1be057b08e0dbf8f2dedc4c501447519">Type</a> HarmoniaAlert::type</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

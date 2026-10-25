@@ -8,6 +8,8 @@ var structApiError =
       [ "Http", "structApiError.html#a3395681759a0b17abe3979f60e507ea3a9d4d43de68f0b3555d5a5ef5dc05bb95", null ],
       [ "Parse", "structApiError.html#a3395681759a0b17abe3979f60e507ea3ac9ad95228aa735bdda1aebf38da022af", null ]
     ] ],
+    [ "code", "structApiError.html#a903301e2455912a76635f24d447a8e97", null ],
+    [ "detail", "structApiError.html#a4d5c772393a91f6e8254c8bab63c6256", null ],
     [ "kind", "structApiError.html#ae5ae055aec934b5f617185a39c3a5e0b", null ],
     [ "message", "structApiError.html#a97ca3e6572f2f92f3909cdf94e2d5a92", null ],
     [ "statusCode", "structApiError.html#ac1413a7d4d22106c1a82513ece6e6157", null ]

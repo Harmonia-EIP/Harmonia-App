@@ -95,14 +95,20 @@ $(document).ready(function(){initNavTree('Alert_8h.html',''); initResizable(); }
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;juce_gui_basics/juce_gui_basics.h&gt;</code><br />
+<code>#include &lt;map&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Alert.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="Alert_8h__incl.png" border="0" usemap="#asrc_2tools_2Alert_8h" alt=""/></div>
 <map name="asrc_2tools_2Alert_8h" id="asrc_2tools_2Alert_8h">
-<area shape="rect" title=" " alt="" coords="21,5,145,31"/>
+<area shape="rect" title=" " alt="" coords="147,5,271,31"/>
 <area shape="rect" title=" " alt="" coords="5,79,160,119"/>
-<area shape="poly" title=" " alt="" coords="85,31,85,65,80,65,80,31"/>
+<area shape="poly" title=" " alt="" coords="192,33,127,73,124,69,189,29"/>
+<area shape="rect" title=" " alt="" coords="184,86,235,111"/>
+<area shape="poly" title=" " alt="" coords="212,31,212,72,207,72,207,31"/>
+<area shape="rect" title=" " alt="" coords="259,86,322,111"/>
+<area shape="poly" title=" " alt="" coords="223,29,271,75,267,78,219,33"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -110,42 +116,47 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="Alert_8h__dep__incl.png" border="0" usemap="#asrc_2tools_2Alert_8hdep" alt=""/></div>
 <map name="asrc_2tools_2Alert_8hdep" id="asrc_2tools_2Alert_8hdep">
-<area shape="rect" title=" " alt="" coords="319,5,443,31"/>
-<area shape="rect" href="MainComponent_8h.html" title="Main synthesizer interface component for Harmonia." alt="" coords="139,79,303,104"/>
-<area shape="poly" title=" " alt="" coords="344,39,249,81,246,76,342,34"/>
-<area shape="rect" href="PagesIncludes_8h.html" title=" " alt="" coords="447,79,639,104"/>
-<area shape="poly" title=" " alt="" coords="421,34,517,76,515,81,419,39"/>
-<area shape="rect" href="AppController_8h.html" title="Main application navigation controller." alt="" coords="282,313,427,339"/>
-<area shape="poly" title=" " alt="" coords="230,116,252,186,269,226,291,264,315,291,340,311,336,315,311,294,287,267,265,228,247,187,225,118"/>
-<area shape="rect" href="MainComponent_8cpp.html" title=" " alt="" coords="5,159,184,185"/>
-<area shape="poly" title=" " alt="" coords="192,114,115,161,112,157,190,109"/>
-<area shape="rect" href="AppController_8cpp.html" title=" " alt="" coords="189,387,349,412"/>
-<area shape="poly" title=" " alt="" coords="332,349,285,388,282,384,329,345"/>
-<area shape="rect" href="PluginEditor_8h.html" title="Main graphical editor of the Harmonia plugin." alt="" coords="374,387,509,412"/>
-<area shape="poly" title=" " alt="" coords="381,345,429,384,425,389,377,349"/>
-<area shape="rect" href="PluginEditor_8cpp.html" title=" " alt="" coords="273,460,423,485"/>
-<area shape="poly" title=" " alt="" coords="417,422,365,462,362,458,414,418"/>
-<area shape="rect" href="PluginProcessor_8cpp.html" title=" " alt="" coords="447,460,622,485"/>
-<area shape="poly" title=" " alt="" coords="469,418,521,458,518,462,465,422"/>
-<area shape="rect" href="AuthPageLookAndFeel_8h.html" title=" " alt="" coords="580,152,785,192"/>
-<area shape="poly" title=" " alt="" coords="577,109,650,150,648,154,574,113"/>
-<area shape="rect" href="LoginPage_8h.html" title=" " alt="" coords="739,240,906,265"/>
-<area shape="poly" title=" " alt="" coords="649,104,738,122,775,135,799,150,814,172,822,196,826,239,821,240,817,197,809,174,795,154,772,140,737,127,648,109"/>
-<area shape="rect" href="SignupPage_8h.html" title=" " alt="" coords="541,240,715,265"/>
-<area shape="poly" title=" " alt="" coords="548,117,555,153,570,191,591,217,614,238,611,242,587,221,566,193,550,155,543,118"/>
-<area shape="rect" href="WelcomePage_8h.html" title=" " alt="" coords="314,159,505,185"/>
-<area shape="poly" title=" " alt="" coords="513,113,430,161,428,157,510,109"/>
-<area shape="poly" title=" " alt="" coords="729,196,803,237,801,242,727,201"/>
-<area shape="poly" title=" " alt="" coords="664,205,638,241,634,238,659,202"/>
-<area shape="poly" title=" " alt="" coords="735,270,428,316,427,311,734,265"/>
-<area shape="rect" href="LoginPage_8cpp.html" title=" " alt="" coords="740,313,921,339"/>
-<area shape="poly" title=" " alt="" coords="828,279,832,313,827,314,823,279"/>
-<area shape="poly" title=" " alt="" coords="572,271,400,316,398,311,570,266"/>
-<area shape="rect" href="SignupPage_8cpp.html" title=" " alt="" coords="525,313,715,339"/>
-<area shape="poly" title=" " alt="" coords="628,279,624,314,619,313,623,279"/>
-<area shape="poly" title=" " alt="" coords="360,192,326,212,311,226,300,241,296,251,297,260,305,279,321,297,339,311,336,315,318,301,301,282,291,261,291,250,295,239,307,222,323,208,358,188"/>
-<area shape="rect" href="WelcomePage_8cpp.html" title=" " alt="" coords="310,240,517,265"/>
-<area shape="poly" title=" " alt="" coords="413,198,415,240,410,240,408,199"/>
+<area shape="rect" title=" " alt="" coords="220,5,344,31"/>
+<area shape="rect" href="MainComponent_8h.html" title="Main synthesizer interface component for Harmonia." alt="" coords="5,159,169,185"/>
+<area shape="poly" title=" " alt="" coords="232,38,191,56,153,81,134,100,117,122,95,160,91,158,113,119,130,97,150,77,189,51,230,33"/>
+<area shape="rect" href="PagesIncludes_8h.html" title=" " alt="" coords="602,79,794,104"/>
+<area shape="poly" title=" " alt="" coords="358,30,632,76,631,81,357,35"/>
+<area shape="rect" href="HeaderComponent_8h.html" title=" " alt="" coords="163,79,401,104"/>
+<area shape="poly" title=" " alt="" coords="285,44,285,79,279,79,279,44"/>
+<area shape="rect" href="AppController_8h.html" title="Main application navigation controller." alt="" coords="433,313,579,339"/>
+<area shape="poly" title=" " alt="" coords="90,198,96,233,103,249,114,263,137,277,169,289,253,305,347,315,433,320,433,326,347,321,252,311,167,294,134,282,111,267,99,252,91,234,85,199"/>
+<area shape="rect" href="MainComponent_8cpp.html" title=" " alt="" coords="125,240,303,265"/>
+<area shape="poly" title=" " alt="" coords="119,190,197,238,194,242,116,194"/>
+<area shape="rect" href="AppController_8cpp.html" title=" " alt="" coords="341,387,501,412"/>
+<area shape="poly" title=" " alt="" coords="484,349,436,388,433,384,480,345"/>
+<area shape="rect" href="PluginEditor_8h.html" title="Main graphical editor of the Harmonia plugin." alt="" coords="525,387,660,412"/>
+<area shape="poly" title=" " alt="" coords="532,345,580,384,577,389,529,349"/>
+<area shape="rect" href="PluginEditor_8cpp.html" title=" " alt="" coords="425,460,574,485"/>
+<area shape="poly" title=" " alt="" coords="569,422,516,462,513,458,565,418"/>
+<area shape="rect" href="PluginProcessor_8cpp.html" title=" " alt="" coords="599,460,773,485"/>
+<area shape="poly" title=" " alt="" coords="620,418,672,458,669,462,617,422"/>
+<area shape="rect" href="AuthPageLookAndFeel_8h.html" title=" " alt="" coords="735,152,941,192"/>
+<area shape="poly" title=" " alt="" coords="732,109,806,150,803,154,729,113"/>
+<area shape="rect" href="LoginPage_8h.html" title=" " alt="" coords="892,240,1059,265"/>
+<area shape="poly" title=" " alt="" coords="806,104,894,122,930,135,955,150,969,172,976,197,979,240,974,240,971,197,964,174,951,154,928,140,893,127,805,109"/>
+<area shape="rect" href="SignupPage_8h.html" title=" " alt="" coords="692,240,867,265"/>
+<area shape="poly" title=" " alt="" coords="703,117,711,153,726,191,745,217,767,238,763,242,741,221,721,193,706,155,698,118"/>
+<area shape="rect" href="WelcomePage_8h.html" title=" " alt="" coords="469,159,660,185"/>
+<area shape="poly" title=" " alt="" coords="668,113,586,161,583,157,665,109"/>
+<area shape="poly" title=" " alt="" coords="884,196,956,237,954,242,881,201"/>
+<area shape="poly" title=" " alt="" coords="818,205,790,241,786,238,814,201"/>
+<area shape="poly" title=" " alt="" coords="887,270,579,316,579,311,886,265"/>
+<area shape="rect" href="LoginPage_8cpp.html" title=" " alt="" coords="891,313,1073,339"/>
+<area shape="poly" title=" " alt="" coords="980,279,984,313,978,313,975,279"/>
+<area shape="poly" title=" " alt="" coords="723,271,551,316,550,311,722,266"/>
+<area shape="rect" href="SignupPage_8cpp.html" title=" " alt="" coords="676,313,867,339"/>
+<area shape="poly" title=" " alt="" coords="779,279,775,314,770,313,774,279"/>
+<area shape="poly" title=" " alt="" coords="514,192,479,212,464,226,452,241,449,251,449,260,458,279,473,297,491,311,487,315,470,301,453,282,444,261,444,250,448,239,460,222,476,208,511,188"/>
+<area shape="rect" href="WelcomePage_8cpp.html" title=" " alt="" coords="461,240,668,265"/>
+<area shape="poly" title=" " alt="" coords="567,198,567,240,562,240,562,198"/>
+<area shape="poly" title=" " alt="" coords="242,112,117,162,115,157,240,107"/>
+<area shape="rect" href="HeaderComponent_8cpp.html" title=" " alt="" coords="193,159,445,185"/>
+<area shape="poly" title=" " alt="" coords="296,115,316,158,311,160,291,118"/>
 </map>
 </div>
 </div>
@@ -154,6 +165,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHarmoniaAlert.html">HarmoniaAlert</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toast Harmonia : carte sombre avec lueur d'accent, affichée quelques secondes puis disparue toute seule.  <a href="classHarmoniaAlert.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->

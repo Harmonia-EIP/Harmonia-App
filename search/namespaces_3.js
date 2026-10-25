@@ -1,5 +1,9 @@
 var searchData=
 [
-  ['iconrenderer_0',['IconRenderer',['../namespaceIconRenderer.html',1,'']]],
-  ['ids_1',['IDs',['../namespaceIDs.html',1,'']]]
+  ['harmoniacolours_0',['HarmoniaColours',['../namespaceHarmoniaColours.html',1,'']]],
+  ['harmoniapalette_1',['HarmoniaPalette',['../namespaceHarmoniaPalette.html',1,'']]],
+  ['harmoniaparams_2',['HarmoniaParams',['../namespaceHarmoniaParams.html',1,'']]],
+  ['harmoniaparams_3a_3aids_3',['IDs',['../namespaceHarmoniaParams_1_1IDs.html',1,'HarmoniaParams']]],
+  ['headercolours_4',['HeaderColours',['../namespaceHeaderColours.html',1,'']]],
+  ['httptimeouts_5',['HttpTimeouts',['../namespaceHttpTimeouts.html',1,'']]]
 ];

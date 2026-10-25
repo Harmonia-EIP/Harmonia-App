@@ -1,16 +1,20 @@
 var searchData=
 [
-  ['email_0',['email',['../structUserSession.html#ada1e0eb87b001a3109e55ae7ea24de0e',1,'UserSession::email'],['../structUserProfile.html#a36e1fe7848e114062d52691e4ff7f701',1,'UserProfile::email'],['../namespaceStrings_1_1Placeholders.html#a9e0b02c9ebb99d715467230e4fac3db2',1,'Strings::Placeholders::Email']]],
-  ['emailfield_1',['emailField',['../classSignupPage.html#a84a5b563c0f3cd6e491f431df2bd6b89',1,'SignupPage']]],
-  ['emitburst_2',['emitBurst',['../classParticleField.html#aaa6c65ceda1f2514a2b14a2ae97c6ddb',1,'ParticleField']]],
-  ['emptyprompt_3',['emptyprompt',['../structAiResult.html#a30c52302f0a3eac9c5db7d39f380586baa1f3533477430e1d11e718b203bdd100',1,'AiResult::EmptyPrompt'],['../namespaceStrings_1_1Errors.html#a0292e61dbb28ae81461daffdce12aaba',1,'Strings::Errors::EmptyPrompt'],['../namespaceBackendStrings.html#a3602a3a4d95b0447df19d23834831e84',1,'BackendStrings::EmptyPrompt']]],
-  ['emptyresponse_4',['EmptyResponse',['../structAiResult.html#a30c52302f0a3eac9c5db7d39f380586ba661add46d791482293481cefba4b1903',1,'AiResult']]],
-  ['envelopevisualizer_5',['envelopevisualizer',['../classEnvelopeVisualizer.html#acaeb40f8c4437e9c9c5f37dca38d6ce5',1,'EnvelopeVisualizer::EnvelopeVisualizer()'],['../classEnvelopeVisualizer.html',1,'EnvelopeVisualizer']]],
-  ['envelopevisualizer_2eh_6',['EnvelopeVisualizer.h',['../EnvelopeVisualizer_8h.html',1,'']]],
-  ['error_7',['error',['../classBackendLogger.html#aae70cd25bd5ca009c1ce0309b1abfe98a902b0d55fddef6f8d651fe1035b7d4bd',1,'BackendLogger::Error'],['../structAiResult.html#a30c52302f0a3eac9c5db7d39f380586b',1,'AiResult::Error'],['../classHarmoniaAlert.html#afe8688bd623fa800a5fe2b0a73189e47',1,'HarmoniaAlert::error()'],['../classBackendLogger.html#a11ba2b8847bbd2699abd45056bc12ad7',1,'BackendLogger::error()'],['../structProfileResult.html#a6bcb9390a86d1a8948d9aa85cdc7d974',1,'ProfileResult::error()'],['../structAiResult.html#a4fa170e75f1ac9bf5c2d4415851b5fe1',1,'AiResult::error']]],
-  ['errorhttp_8',['ErrorHTTP',['../namespaceStrings_1_1Errors.html#a48e54dffc8d3531ed489f96e2c019598',1,'Strings::Errors']]],
-  ['errormessage_9',['errormessage',['../structAuthResult.html#a57ebc92e8eb0dc628052888cf2dcead8',1,'AuthResult::errorMessage'],['../structProfileResult.html#a1a26c71da70ac17bcc686339ed13e78a',1,'ProfileResult::errorMessage'],['../structAiResult.html#adf5e13dc9827a5400f8764d268395f56',1,'AiResult::errorMessage'],['../structAiModelsResult.html#a34488d8eb644b9f2e0e98a269fe24c89',1,'AiModelsResult::errorMessage'],['../structPresetLoader_1_1LoadResult.html#af7c0b5d49595588cc47d2993eba1d731',1,'PresetLoader::LoadResult::errorMessage']]],
-  ['errortitle_10',['ErrorTitle',['../namespaceStrings_1_1Errors.html#a60f1a2e56d462ff6e03682300889b29a',1,'Strings::Errors']]],
-  ['expiresat_11',['expiresAt',['../structUserSession.html#a8c69a7e91dd44b84477decd3352eb954',1,'UserSession']]],
-  ['export_12',['export',['../classIconButton.html#a654c56365d01581483bf694ac36221c3a0095a9fa74d1713e43e370a7d7846224',1,'IconButton::Export'],['../namespaceStrings_1_1Buttons.html#a3e2764f98724ef643a26506b10abf4e8',1,'Strings::Buttons::Export']]]
+  ['edgegap_0',['edgeGap',['../classHarmoniaAlert.html#ab0881d04e353c44ef05d0551dde02217',1,'HarmoniaAlert']]],
+  ['elapsed_1',['elapsed',['../classHarmoniaAlert.html#a37715c22616675ba0c60d12a2c860143',1,'HarmoniaAlert']]],
+  ['email_2',['email',['../namespaceStrings_1_1Placeholders.html#a9e0b02c9ebb99d715467230e4fac3db2',1,'Strings::Placeholders::Email'],['../structUserSession.html#ada1e0eb87b001a3109e55ae7ea24de0e',1,'UserSession::email'],['../structUserProfile.html#a36e1fe7848e114062d52691e4ff7f701',1,'UserProfile::email']]],
+  ['emailfield_3',['emailField',['../classSignupPage.html#a84a5b563c0f3cd6e491f431df2bd6b89',1,'SignupPage']]],
+  ['emitburst_4',['emitBurst',['../classParticleField.html#aaa6c65ceda1f2514a2b14a2ae97c6ddb',1,'ParticleField']]],
+  ['emptyprompt_5',['emptyprompt',['../namespaceStrings_1_1Errors.html#a0292e61dbb28ae81461daffdce12aaba',1,'Strings::Errors::EmptyPrompt'],['../namespaceBackendStrings.html#a3602a3a4d95b0447df19d23834831e84',1,'BackendStrings::EmptyPrompt'],['../structAiResult.html#a30c52302f0a3eac9c5db7d39f380586baa1f3533477430e1d11e718b203bdd100',1,'AiResult::EmptyPrompt']]],
+  ['emptyresponse_6',['EmptyResponse',['../structAiResult.html#a30c52302f0a3eac9c5db7d39f380586ba661add46d791482293481cefba4b1903',1,'AiResult']]],
+  ['envelopevisualizer_7',['envelopevisualizer',['../classEnvelopeVisualizer.html#acaeb40f8c4437e9c9c5f37dca38d6ce5',1,'EnvelopeVisualizer::EnvelopeVisualizer()'],['../classEnvelopeVisualizer.html',1,'EnvelopeVisualizer']]],
+  ['envelopevisualizer_2eh_8',['EnvelopeVisualizer.h',['../EnvelopeVisualizer_8h.html',1,'']]],
+  ['error_9',['error',['../structAiResult.html#a4fa170e75f1ac9bf5c2d4415851b5fe1',1,'AiResult::error'],['../structProfileResult.html#a6bcb9390a86d1a8948d9aa85cdc7d974',1,'ProfileResult::error()'],['../classBackendLogger.html#a11ba2b8847bbd2699abd45056bc12ad7',1,'BackendLogger::error()'],['../classHarmoniaAlert.html#a0540f8b20edf8a06116125ae0d6b0798',1,'HarmoniaAlert::error()'],['../structAiResult.html#a30c52302f0a3eac9c5db7d39f380586b',1,'AiResult::Error'],['../classBackendLogger.html#aae70cd25bd5ca009c1ce0309b1abfe98a902b0d55fddef6f8d651fe1035b7d4bd',1,'BackendLogger::Error'],['../classHarmoniaAlert.html#a1be057b08e0dbf8f2dedc4c501447519a902b0d55fddef6f8d651fe1035b7d4bd',1,'HarmoniaAlert::Error']]],
+  ['errorcodes_10',['ErrorCodes',['../namespaceErrorCodes.html',1,'']]],
+  ['errorcodes_2eh_11',['ErrorCodes.h',['../ErrorCodes_8h.html',1,'']]],
+  ['errorhttp_12',['ErrorHTTP',['../namespaceStrings_1_1Errors.html#a48e54dffc8d3531ed489f96e2c019598',1,'Strings::Errors']]],
+  ['errormessage_13',['errormessage',['../structAiResult.html#adf5e13dc9827a5400f8764d268395f56',1,'AiResult::errorMessage'],['../structAiModelsResult.html#a34488d8eb644b9f2e0e98a269fe24c89',1,'AiModelsResult::errorMessage'],['../structPresetLoader_1_1LoadResult.html#af7c0b5d49595588cc47d2993eba1d731',1,'PresetLoader::LoadResult::errorMessage'],['../structProfileResult.html#a1a26c71da70ac17bcc686339ed13e78a',1,'ProfileResult::errorMessage'],['../structAuthResult.html#a57ebc92e8eb0dc628052888cf2dcead8',1,'AuthResult::errorMessage']]],
+  ['errortitle_14',['ErrorTitle',['../namespaceStrings_1_1Errors.html#a60f1a2e56d462ff6e03682300889b29a',1,'Strings::Errors']]],
+  ['expiresat_15',['expiresAt',['../structUserSession.html#a8c69a7e91dd44b84477decd3352eb954',1,'UserSession']]],
+  ['export_16',['export',['../classIconButton.html#a654c56365d01581483bf694ac36221c3a0095a9fa74d1713e43e370a7d7846224',1,'IconButton::Export'],['../namespaceStrings_1_1Buttons.html#a3e2764f98724ef643a26506b10abf4e8',1,'Strings::Buttons::Export']]]
 ];

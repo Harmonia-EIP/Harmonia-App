@@ -97,25 +97,28 @@ $(document).ready(function(){initNavTree('BackendStrings_8h.html',''); initResiz
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;juce_core/juce_core.h&gt;</code><br />
+<code>#include &lt;map&gt;</code><br />
 <code>#include &quot;<a class="el" href="BackendTypes_8h_source.html">../BackendTypes.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for BackendStrings.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="BackendStrings_8h__incl.png" border="0" usemap="#asrc_2backend_2core_2BackendStrings_8h" alt=""/></div>
 <map name="asrc_2backend_2core_2BackendStrings_8h" id="asrc_2backend_2core_2BackendStrings_8h">
-<area shape="rect" title=" " alt="" coords="21,5,211,45"/>
-<area shape="rect" title=" " alt="" coords="5,240,168,265"/>
-<area shape="poly" title=" " alt="" coords="115,46,97,167,91,226,86,226,92,166,110,45"/>
-<area shape="rect" href="BackendTypes_8h.html" title="Defines backend&#45;related data structures." alt="" coords="128,93,267,119"/>
-<area shape="poly" title=" " alt="" coords="138,44,177,82,173,85,134,47"/>
-<area shape="poly" title=" " alt="" coords="174,121,143,141,114,168,100,197,92,227,87,226,95,196,110,165,139,136,171,116"/>
-<area shape="rect" title=" " alt="" coords="124,167,271,192"/>
-<area shape="poly" title=" " alt="" coords="200,119,200,153,195,153,195,119"/>
-<area shape="rect" href="String_8h.html" title=" " alt="" coords="295,167,422,192"/>
-<area shape="poly" title=" " alt="" coords="224,116,321,159,319,163,222,121"/>
-<area shape="rect" href="AppConfig_8h.html" title=" " alt="" coords="447,167,601,192"/>
-<area shape="poly" title=" " alt="" coords="250,116,458,161,457,166,249,121"/>
-<area shape="poly" title=" " alt="" coords="316,195,144,239,143,234,314,189"/>
+<area shape="rect" title=" " alt="" coords="5,5,196,45"/>
+<area shape="rect" title=" " alt="" coords="7,240,170,265"/>
+<area shape="poly" title=" " alt="" coords="89,47,76,69,66,94,62,130,65,166,81,226,76,228,59,166,56,129,61,93,71,66,84,44"/>
+<area shape="rect" title=" " alt="" coords="75,93,126,119"/>
+<area shape="poly" title=" " alt="" coords="103,46,103,79,98,79,98,46"/>
+<area shape="rect" href="BackendTypes_8h.html" title="Defines backend&#45;related data structures." alt="" coords="150,93,289,119"/>
+<area shape="poly" title=" " alt="" coords="131,43,192,84,189,88,128,48"/>
+<area shape="poly" title=" " alt="" coords="187,121,149,140,131,153,116,168,101,197,94,227,89,225,96,195,112,165,128,149,146,135,184,116"/>
+<area shape="rect" title=" " alt="" coords="126,167,273,192"/>
+<area shape="poly" title=" " alt="" coords="219,120,209,154,204,153,213,118"/>
+<area shape="rect" href="String_8h.html" title=" " alt="" coords="297,167,424,192"/>
+<area shape="poly" title=" " alt="" coords="243,116,327,158,324,163,241,121"/>
+<area shape="rect" href="AppConfig_8h.html" title=" " alt="" coords="449,167,603,192"/>
+<area shape="poly" title=" " alt="" coords="269,116,464,161,462,166,268,121"/>
+<area shape="poly" title=" " alt="" coords="318,195,146,239,145,234,316,189"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -123,15 +126,20 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="BackendStrings_8h__dep__incl.png" border="0" usemap="#asrc_2backend_2core_2BackendStrings_8hdep" alt=""/></div>
 <map name="asrc_2backend_2core_2BackendStrings_8hdep" id="asrc_2backend_2core_2BackendStrings_8hdep">
-<area shape="rect" title=" " alt="" coords="311,5,501,45"/>
-<area shape="rect" href="ApiError_8cpp.html" title=" " alt="" coords="5,101,212,126"/>
-<area shape="poly" title=" " alt="" coords="328,52,149,103,148,98,327,47"/>
-<area shape="rect" href="AiService_8cpp.html" title=" " alt="" coords="237,93,394,133"/>
-<area shape="poly" title=" " alt="" coords="378,57,337,95,334,91,374,53"/>
-<area shape="rect" href="AuthService_8cpp.html" title=" " alt="" coords="418,93,575,133"/>
-<area shape="poly" title=" " alt="" coords="438,53,478,91,475,95,434,57"/>
-<area shape="rect" href="ProfileService_8cpp.html" title=" " alt="" coords="599,93,757,133"/>
-<area shape="poly" title=" " alt="" coords="480,47,619,91,618,96,478,52"/>
+<area shape="rect" title=" " alt="" coords="335,5,526,45"/>
+<area shape="rect" href="ApiError_8h.html" title=" " alt="" coords="269,93,459,119"/>
+<area shape="poly" title=" " alt="" coords="408,58,376,95,372,91,404,54"/>
+<area shape="rect" href="AiService_8cpp.html" title=" " alt="" coords="5,167,163,207"/>
+<area shape="poly" title=" " alt="" coords="365,52,257,96,181,133,118,169,115,164,179,129,255,91,363,47"/>
+<area shape="rect" href="AuthService_8cpp.html" title=" " alt="" coords="419,167,576,207"/>
+<area shape="poly" title=" " alt="" coords="453,56,473,92,487,131,496,166,491,167,482,133,468,94,449,58"/>
+<area shape="rect" href="ProfileService_8cpp.html" title=" " alt="" coords="600,167,757,207"/>
+<area shape="poly" title=" " alt="" coords="473,51,651,164,648,169,470,55"/>
+<area shape="rect" href="ApiError_8cpp.html" title=" " alt="" coords="187,174,394,199"/>
+<area shape="poly" title=" " alt="" coords="346,131,303,176,300,172,342,127"/>
+<area shape="poly" title=" " alt="" coords="311,125,152,169,151,164,309,120"/>
+<area shape="poly" title=" " alt="" coords="397,123,467,164,464,169,394,128"/>
+<area shape="poly" title=" " alt="" coords="423,119,604,164,602,169,422,125"/>
 </map>
 </div>
 </div>
@@ -147,6 +155,9 @@ Namespaces</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:a50369e26a08547947c0cb9f442ebc599" id="r_a50369e26a08547947c0cb9f442ebc599"><td class="memItemLeft" align="right" valign="top">juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceBackendStrings.html#a50369e26a08547947c0cb9f442ebc599">BackendStrings::passwordTooShort</a> (int minLength)</td></tr>
 <tr class="separator:a50369e26a08547947c0cb9f442ebc599"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80e9120d77057a9ec95a2b5a9d81ed9b" id="r_a80e9120d77057a9ec95a2b5a9d81ed9b"><td class="memItemLeft" align="right" valign="top">juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceBackendStrings.html#a80e9120d77057a9ec95a2b5a9d81ed9b">BackendStrings::forErrorCode</a> (const juce::String &amp;code)</td></tr>
+<tr class="memdesc:a80e9120d77057a9ec95a2b5a9d81ed9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Message affichable pour un error_code backend.  <br /></td></tr>
+<tr class="separator:a80e9120d77057a9ec95a2b5a9d81ed9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -170,6 +181,24 @@ Variables</h2></td></tr>
 <tr class="separator:a94e1371cd78f77d579477472f4876f55"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af62f9fdd52521ecc4c86bb9f2abb5154" id="r_af62f9fdd52521ecc4c86bb9f2abb5154"><td class="memItemLeft" align="right" valign="top">const juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceBackendStrings.html#af62f9fdd52521ecc4c86bb9f2abb5154">BackendStrings::InvalidPalette</a> { &quot;The palette must contain exactly 3 colours (#RRGGBB).&quot; }</td></tr>
 <tr class="separator:af62f9fdd52521ecc4c86bb9f2abb5154"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2549ae340e848ebec807401cacfd1a6" id="r_ac2549ae340e848ebec807401cacfd1a6"><td class="memItemLeft" align="right" valign="top">const juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceBackendStrings.html#ac2549ae340e848ebec807401cacfd1a6">BackendStrings::UserAlreadyExists</a> { &quot;An account with this email already exists.&quot; }</td></tr>
+<tr class="separator:ac2549ae340e848ebec807401cacfd1a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac763fc339fa4ad4d358bcfb90eec3fc0" id="r_ac763fc339fa4ad4d358bcfb90eec3fc0"><td class="memItemLeft" align="right" valign="top">const juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceBackendStrings.html#ac763fc339fa4ad4d358bcfb90eec3fc0">BackendStrings::UserNotFound</a> { &quot;User not found.&quot; }</td></tr>
+<tr class="separator:ac763fc339fa4ad4d358bcfb90eec3fc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0f21cce01f14f17f2ce07b05f0155b4" id="r_ab0f21cce01f14f17f2ce07b05f0155b4"><td class="memItemLeft" align="right" valign="top">const juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceBackendStrings.html#ab0f21cce01f14f17f2ce07b05f0155b4">BackendStrings::InvalidCredentials</a> { &quot;Incorrect email or password.&quot; }</td></tr>
+<tr class="separator:ab0f21cce01f14f17f2ce07b05f0155b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8e268df4a0c1e7e2cf1daf8468bce64" id="r_aa8e268df4a0c1e7e2cf1daf8468bce64"><td class="memItemLeft" align="right" valign="top">const juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceBackendStrings.html#aa8e268df4a0c1e7e2cf1daf8468bce64">BackendStrings::NotAllowed</a> { &quot;This action is not allowed.&quot; }</td></tr>
+<tr class="separator:aa8e268df4a0c1e7e2cf1daf8468bce64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba7bfb209ab2a2a9ee655fb059b2f6b6" id="r_aba7bfb209ab2a2a9ee655fb059b2f6b6"><td class="memItemLeft" align="right" valign="top">const juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceBackendStrings.html#aba7bfb209ab2a2a9ee655fb059b2f6b6">BackendStrings::NoPermission</a> { &quot;You do not have permission to do this.&quot; }</td></tr>
+<tr class="separator:aba7bfb209ab2a2a9ee655fb059b2f6b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ccb7d7180a76f8746442cba7fd4a76d" id="r_a9ccb7d7180a76f8746442cba7fd4a76d"><td class="memItemLeft" align="right" valign="top">const juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceBackendStrings.html#a9ccb7d7180a76f8746442cba7fd4a76d">BackendStrings::ProfileNotFound</a> { &quot;Profile not found.&quot; }</td></tr>
+<tr class="separator:a9ccb7d7180a76f8746442cba7fd4a76d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3277f44852990153243371b9da5f93b" id="r_ac3277f44852990153243371b9da5f93b"><td class="memItemLeft" align="right" valign="top">const juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceBackendStrings.html#ac3277f44852990153243371b9da5f93b">BackendStrings::AiUnavailable</a> { &quot;The AI service is unavailable. Please try again later.&quot; }</td></tr>
+<tr class="separator:ac3277f44852990153243371b9da5f93b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a9fe69a7316a55447b28977e578c852" id="r_a0a9fe69a7316a55447b28977e578c852"><td class="memItemLeft" align="right" valign="top">const juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceBackendStrings.html#a0a9fe69a7316a55447b28977e578c852">BackendStrings::AiBadResponse</a> { &quot;The AI service returned an invalid response.&quot; }</td></tr>
+<tr class="separator:a0a9fe69a7316a55447b28977e578c852"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a853785dbc287dfd2e1f5558f93d8194a" id="r_a853785dbc287dfd2e1f5558f93d8194a"><td class="memItemLeft" align="right" valign="top">const juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceBackendStrings.html#a853785dbc287dfd2e1f5558f93d8194a">BackendStrings::AiNotConfigured</a> { &quot;The AI service is not configured.&quot; }</td></tr>
+<tr class="separator:a853785dbc287dfd2e1f5558f93d8194a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->

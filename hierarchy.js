@@ -32,6 +32,7 @@ var hierarchy =
       [ "ComboControl", "classComboControl.html", null ],
       [ "DisplayScreen", "classDisplayScreen.html", null ],
       [ "EnvelopeVisualizer", "classEnvelopeVisualizer.html", null ],
+      [ "HarmoniaAlert", "classHarmoniaAlert.html", null ],
       [ "HeaderComponent", "classHeaderComponent.html", null ],
       [ "IconChoiceSelector", "classIconChoiceSelector.html", [
         [ "FilterTypeSelector", "classFilterTypeSelector.html", null ],
@@ -51,7 +52,9 @@ var hierarchy =
       [ "SynthComponent", "classSynthComponent.html", null ],
       [ "WelcomePage", "classWelcomePage.html", null ]
     ] ],
-    [ "HarmoniaAlert", "classHarmoniaAlert.html", null ],
+    [ "juce::ComponentListener", null, [
+      [ "HarmoniaAlert", "classHarmoniaAlert.html", null ]
+    ] ],
     [ "HttpClient", "classHttpClient.html", null ],
     [ "HttpOptions", "structHttpOptions.html", null ],
     [ "HttpResponse", "structHttpResponse.html", null ],
@@ -90,6 +93,7 @@ var hierarchy =
     [ "HarmoniaPalette::ThemeDef", "structHarmoniaPalette_1_1ThemeDef.html", null ],
     [ "ThemePalette", "structThemePalette.html", null ],
     [ "juce::Timer", null, [
+      [ "HarmoniaAlert", "classHarmoniaAlert.html", null ],
       [ "HeaderComponent", "classHeaderComponent.html", null ],
       [ "IconButton", "classIconButton.html", null ],
       [ "LfoVisualizer", "classLfoVisualizer.html", null ],

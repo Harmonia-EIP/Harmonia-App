@@ -9,8 +9,13 @@ var namespaces_dup =
     ] ],
     [ "AudioConfig", "namespaceAudioConfig.html", "namespaceAudioConfig" ],
     [ "BackendStrings", "namespaceBackendStrings.html", [
+      [ "forErrorCode", "namespaceBackendStrings.html#a80e9120d77057a9ec95a2b5a9d81ed9b", null ],
       [ "passwordTooShort", "namespaceBackendStrings.html#a50369e26a08547947c0cb9f442ebc599", null ],
+      [ "AiBadResponse", "namespaceBackendStrings.html#a0a9fe69a7316a55447b28977e578c852", null ],
+      [ "AiNotConfigured", "namespaceBackendStrings.html#a853785dbc287dfd2e1f5558f93d8194a", null ],
+      [ "AiUnavailable", "namespaceBackendStrings.html#ac3277f44852990153243371b9da5f93b", null ],
       [ "EmptyPrompt", "namespaceBackendStrings.html#a3602a3a4d95b0447df19d23834831e84", null ],
+      [ "InvalidCredentials", "namespaceBackendStrings.html#ab0f21cce01f14f17f2ce07b05f0155b4", null ],
       [ "InvalidCurrentPreset", "namespaceBackendStrings.html#a94e1371cd78f77d579477472f4876f55", null ],
       [ "InvalidEmail", "namespaceBackendStrings.html#a674eed41ade440d28c52564a516ad93a", null ],
       [ "InvalidInput", "namespaceBackendStrings.html#a1cfdaa484450f281b36bfefe8c1ced19", null ],
@@ -18,8 +23,28 @@ var namespaces_dup =
       [ "InvalidServerResponse", "namespaceBackendStrings.html#a5b8d7de3a51c45b1dac28c7b7b83b003", null ],
       [ "LoginRequired", "namespaceBackendStrings.html#aeb874894b80c7b9c03e862711b3c3e4e", null ],
       [ "MissingField", "namespaceBackendStrings.html#ad7504b315fc36762fcee70336bad5dca", null ],
+      [ "NoPermission", "namespaceBackendStrings.html#aba7bfb209ab2a2a9ee655fb059b2f6b6", null ],
+      [ "NotAllowed", "namespaceBackendStrings.html#aa8e268df4a0c1e7e2cf1daf8468bce64", null ],
+      [ "ProfileNotFound", "namespaceBackendStrings.html#a9ccb7d7180a76f8746442cba7fd4a76d", null ],
       [ "ServerError", "namespaceBackendStrings.html#a80b9db651c56ec11fb481ae02e2e8d3f", null ],
-      [ "SessionExpired", "namespaceBackendStrings.html#aa804365d1477eb0eca184c97a930b083", null ]
+      [ "SessionExpired", "namespaceBackendStrings.html#aa804365d1477eb0eca184c97a930b083", null ],
+      [ "UserAlreadyExists", "namespaceBackendStrings.html#ac2549ae340e848ebec807401cacfd1a6", null ],
+      [ "UserNotFound", "namespaceBackendStrings.html#ac763fc339fa4ad4d358bcfb90eec3fc0", null ]
+    ] ],
+    [ "ErrorCodes", "namespaceErrorCodes.html", [
+      [ "isTokenError", "namespaceErrorCodes.html#afbe2fc462a3fbabec0744cacdb9173ad", null ],
+      [ "InvalidCredentials", "namespaceErrorCodes.html#ad665711c3eb359e2de2e810167d2a42e", null ],
+      [ "InvalidEmail", "namespaceErrorCodes.html#a89900d27991d4fb7b498f8f68732c02f", null ],
+      [ "MissingParam", "namespaceErrorCodes.html#aa41397c7f4d9820dd6f40a5c768663c6", null ],
+      [ "NoPermission", "namespaceErrorCodes.html#ae5eed8d8c72605dfd23bec111c0c4b99", null ],
+      [ "ProfileNotFound", "namespaceErrorCodes.html#a29cec0de3eb63e1451919fe4ef4873ab", null ],
+      [ "TokenExpired", "namespaceErrorCodes.html#aee57943b28995735b436e239764cd9f3", null ],
+      [ "TokenInvalid", "namespaceErrorCodes.html#acee2b3681369e4baac7fe61a316ddc1e", null ],
+      [ "TokenMissing", "namespaceErrorCodes.html#a2068615be746be6269fd787fd49d6856", null ],
+      [ "Unauthorized", "namespaceErrorCodes.html#ad531c6652030d135cb65bb8e4e1e07b5", null ],
+      [ "UserAlreadyExists", "namespaceErrorCodes.html#a40883358f5db181ea10c2ed5711b9ab3", null ],
+      [ "UserNotFound", "namespaceErrorCodes.html#a4effb742b99c3c4300104b570a17e26f", null ],
+      [ "ValidationError", "namespaceErrorCodes.html#a0c3e6198111c1fded4ee617b5cea4db6", null ]
     ] ],
     [ "HarmoniaColours", "namespaceHarmoniaColours.html", [
       [ "bgDeep", "namespaceHarmoniaColours.html#a5ad47335685af3d2c87a99e8a21671aa", null ],

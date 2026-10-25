@@ -18,5 +18,6 @@ var searchData=
   ['reverbparams_15',['reverbParams',['../classHarmoniaAudioProcessor.html#ab266dad1a196b29d73132351985cf964',1,'HarmoniaAudioProcessor']]],
   ['ringbuffer_16',['ringBuffer',['../classOscilloscopeComponent.html#a5db3a0f8b06f5b695871a08e4e51a9e1',1,'OscilloscopeComponent']]],
   ['rng_17',['rng',['../classHarmoniaVoice.html#ab481fb646781ce4338da148ad65f67cb',1,'HarmoniaVoice::rng'],['../classParticleField.html#a638008c9565be77bfaf3ac16147c5b8c',1,'ParticleField::rng']]],
-  ['role_18',['role',['../structUserProfile.html#a79cc90d5e09f1f2c13ac3d2a956022db',1,'UserProfile']]]
+  ['role_18',['role',['../structUserProfile.html#a79cc90d5e09f1f2c13ac3d2a956022db',1,'UserProfile']]],
+  ['root_19',['root',['../classHarmoniaAlert.html#afd1592fb0dcf86fced186ba3a56d971d',1,'HarmoniaAlert']]]
 ];

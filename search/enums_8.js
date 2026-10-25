@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['style_0',['Style',['../classAuthPageLookAndFeel.html#a7e20376b27ead7b897276e0523ce4e8c',1,'AuthPageLookAndFeel']]]
+  ['position_0',['Position',['../classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0b',1,'HarmoniaAlert']]]
 ];

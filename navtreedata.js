@@ -63,13 +63,13 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "AiConfig_8h.html",
-"PagesIncludes_8h.html#a32e6df81b4dee1beda2f90e74e919899",
-"classAuthPageLookAndFeel.html#affcf662bb60b541336222f8ee79055d0",
-"classIconButton.html#a654c56365d01581483bf694ac36221c3a8cf04a9734132302f96da8e113e80ce5",
-"classPaletteSelector_1_1Picker.html#a6f6dc99b9936553c9e3159628288cb61",
-"namespaceAppPaths.html#a092e1a94862fb5b0636134c49b273b3a",
-"namespaceStrings_1_1Labels.html#a1fc08bf6e82405f90f62cc72d602bbd0",
-"structHttpResponse.html#af437cbe87aead2a55f49b9c112dfc6af"
+"KnobControl_8h.html",
+"classAppLookAndFeel.html#a49a9340f3d5b5f90635f6c10385659b4aa77a887b5e340da4edc103ddb5f381c6",
+"classHeaderComponent.html#a1300fd103fcbb604dacafffe9841003c",
+"classMainComponent.html#ab425015cb076fa2d3e83b4e673bd644b",
+"functions_func_g.html",
+"namespaceHttpTimeouts.html#a639bd663e497dfb19482a8d97042779c",
+"structAiResult.html#a30c52302f0a3eac9c5db7d39f380586baa1f3533477430e1d11e718b203bdd100"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

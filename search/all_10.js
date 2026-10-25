@@ -8,7 +8,7 @@ var searchData=
   ['readouth_5',['readoutH',['../classKnobControl.html#a1216338b4dc104ecadc394bf9b63c17c',1,'KnobControl']]],
   ['reapplytheme_6',['reapplyTheme',['../classHeaderComponent.html#a7863886eb144d0113754dc7feb298c5f',1,'HeaderComponent']]],
   ['rebuildmodelpicker_7',['rebuildModelPicker',['../classHeaderComponent.html#a2828cada7f4cf151bef51eebb48cec6b',1,'HeaderComponent']]],
-  ['red_8',['red',['../namespaceStrings_1_1Themes.html#a2a697e5d72c465787ddbca73d3965779',1,'Strings::Themes::Red'],['../namespaceHarmoniaPalette.html#a48dd6f8d4570ed63402450e3ea1fba8caee38e4d5dd68c4e440825018d549cb47',1,'HarmoniaPalette::Red'],['../structThemePalette.html#ab898e8330dcace2fe984615e69ebd64f',1,'ThemePalette::red()'],['../classAppLookAndFeel.html#a7e966ad29d8634970a167de96d1a6b87aee38e4d5dd68c4e440825018d549cb47',1,'AppLookAndFeel::Red']]],
+  ['red_8',['red',['../namespaceStrings_1_1Themes.html#a2a697e5d72c465787ddbca73d3965779',1,'Strings::Themes::Red'],['../namespaceHarmoniaPalette.html#a48dd6f8d4570ed63402450e3ea1fba8caee38e4d5dd68c4e440825018d549cb47',1,'HarmoniaPalette::Red'],['../classAppLookAndFeel.html#a7e966ad29d8634970a167de96d1a6b87aee38e4d5dd68c4e440825018d549cb47',1,'AppLookAndFeel::Red'],['../structThemePalette.html#ab898e8330dcace2fe984615e69ebd64f',1,'ThemePalette::red()']]],
   ['refine_9',['refine',['../namespaceHeaderColours.html#aacbb17db80b9b8c033db5765bc4cdb87',1,'HeaderColours::refine()'],['../namespaceStrings_1_1Buttons.html#aa9235c360dd771d977f6811679315eb3',1,'Strings::Buttons::Refine'],['../namespaceStrings_1_1Placeholders.html#a82c31238c30a5f976df2a4d6f324f2d5',1,'Strings::Placeholders::Refine'],['../classHeaderComponent.html#a3a1ad7c3ffcaf7a88c11ef0326297eb5a9f79b65055f2201292e5f79666bf2579',1,'HeaderComponent::Refine']]],
   ['refineenabled_10',['refineEnabled',['../classHeaderComponent.html#aa19fc7692f717bd72ec2b6c776b7851a',1,'HeaderComponent']]],
   ['refinepreset_11',['refinepreset',['../classBackendManager.html#ae21b50d7e7f6365cbf74c9ab3213e822',1,'BackendManager::refinePreset()'],['../classAiService.html#a85d1ef86cc72690eb2d72f83ceeaaafa',1,'AiService::refinePreset()']]],
@@ -40,6 +40,7 @@ var searchData=
   ['ringbuffer_37',['ringBuffer',['../classOscilloscopeComponent.html#a5db3a0f8b06f5b695871a08e4e51a9e1',1,'OscilloscopeComponent']]],
   ['rng_38',['rng',['../classHarmoniaVoice.html#ab481fb646781ce4338da148ad65f67cb',1,'HarmoniaVoice::rng'],['../classParticleField.html#a638008c9565be77bfaf3ac16147c5b8c',1,'ParticleField::rng']]],
   ['role_39',['role',['../structUserProfile.html#a79cc90d5e09f1f2c13ac3d2a956022db',1,'UserProfile']]],
-  ['rotateifneeded_40',['rotateIfNeeded',['../classBackendLogger.html#ac70f301553ad2fbfd09c6c27dd7f447a',1,'BackendLogger']]],
-  ['runairequest_41',['runAiRequest',['../classMainComponent.html#ab425015cb076fa2d3e83b4e673bd644b',1,'MainComponent']]]
+  ['root_40',['root',['../classHarmoniaAlert.html#afd1592fb0dcf86fced186ba3a56d971d',1,'HarmoniaAlert']]],
+  ['rotateifneeded_41',['rotateIfNeeded',['../classBackendLogger.html#ac70f301553ad2fbfd09c6c27dd7f447a',1,'BackendLogger']]],
+  ['runairequest_42',['runAiRequest',['../classMainComponent.html#ab425015cb076fa2d3e83b4e673bd644b',1,'MainComponent']]]
 ];
