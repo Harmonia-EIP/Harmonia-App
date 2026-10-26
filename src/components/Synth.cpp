@@ -12,6 +12,20 @@ namespace
         const float g = 1.0f + drive * 12.0f;
         return std::tanh (x * g) / std::tanh (g) * 0.95f;
     }
+
+    inline void updateEnvelope (juce::ADSR& env,
+                                juce::ADSR::Parameters& current,
+                                const juce::ADSR::Parameters& next) noexcept
+    {
+        if (juce::exactlyEqual (current.attack,  next.attack)
+         && juce::exactlyEqual (current.decay,   next.decay)
+         && juce::exactlyEqual (current.sustain, next.sustain)
+         && juce::exactlyEqual (current.release, next.release))
+            return;
+
+        current = next;
+        env.setParameters (current);
+    }
 }
 
 float HarmoniaVoice::renderWave (Wave w, float phase) noexcept
@@ -49,6 +63,8 @@ void HarmoniaVoice::prepare (double sampleRate, int samplesPerBlock, int numOutp
 
     ampEnv.setSampleRate (sampleRate);
     filterEnv.setSampleRate (sampleRate);
+    ampEnv.setParameters (ampParams);
+    filterEnv.setParameters (filterEnvParams);
 }
 
 bool HarmoniaVoice::canPlaySound (juce::SynthesiserSound* sound)
@@ -108,17 +124,17 @@ void HarmoniaVoice::renderNextBlock (juce::AudioBuffer<float>& buffer,
     const float resonance  = juce::jlimit (0.0f, 0.95f, params.filterResonance->load());
     const int   ftype      = (int) params.filterType->load();
 
-    ampParams.attack  = params.ampAttack->load()  * 0.001f; // ms -> s
-    ampParams.decay   = params.ampDecay->load()   * 0.001f;
-    ampParams.sustain = params.ampSustain->load();
-    ampParams.release = params.ampRelease->load() * 0.001f;
-    ampEnv.setParameters (ampParams);
+    updateEnvelope (ampEnv, ampParams,
+                    { params.ampAttack->load() * 0.001f, // ms -> s
+                      params.ampDecay->load() * 0.001f,
+                      params.ampSustain->load(),
+                      params.ampRelease->load() * 0.001f });
 
-    filterEnvParams.attack  = 0.001f;
-    filterEnvParams.decay   = params.filterEnvDecay->load() * 0.001f;
-    filterEnvParams.sustain = 0.0f;   // env filtre = AD only (cf. charte)
-    filterEnvParams.release = 0.05f;
-    filterEnv.setParameters (filterEnvParams);
+    updateEnvelope (filterEnv, filterEnvParams,
+                    { 0.001f,
+                      params.filterEnvDecay->load() * 0.001f,
+                      0.0f, // env filtre = AD only (cf. charte)
+                      0.05f });
 
     const float filterEnvAmount = params.filterEnvAmount->load();    // -1..1
     const float lfoRateHz       = juce::jlimit (0.1f, 20.0f, params.lfoRate->load());
@@ -136,7 +152,7 @@ void HarmoniaVoice::renderNextBlock (juce::AudioBuffer<float>& buffer,
 
     // setResonance attend un Q strictement positif (il sert de diviseur) :
     // résonance 0 -> Q 0.707 (neutre), 0.95 -> Q ~11.3. Ne jamais passer 0.
-    const float q = 0.707f * std::pow (16.0f, resonance / 0.95f);
+    const float q = 0.707f * std::pow (17.0f, resonance / 0.95f);
     filter.setResonance (q);
 
     const float detuneRatio = centsToRatio (detune);
