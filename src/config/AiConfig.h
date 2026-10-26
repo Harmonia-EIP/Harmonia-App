@@ -1,13 +1,16 @@
 #pragma once
 
-enum class AIModel { Model1 = 1, Model2 };
+#include <juce_core/juce_core.h>
+#include <vector>
 
-struct AIModelData {
-  AIModel id;
-  const char *name;
-  const char *backendname;
+// Un modèle IA tel que renvoyé par GET /ai/models.
+struct AIModelData
+{
+    juce::String id;                   // envoyé au backend dans "model_name" (ex: "charter_v1")
+    juce::String name;                 // affiché dans l'UI
+    bool         isLatest = false;     // true = dernier modèle déployé
+    juce::String version  = "unknown";
+    juce::String hash     = "unknown";
 };
 
-static constexpr AIModelData aiModels[] = {
-    {AIModel::Model1, "Model 1", "model-1"},
-    {AIModel::Model2, "Charter v1", "charter_v1"}};
+using AIModelList = std::vector<AIModelData>;

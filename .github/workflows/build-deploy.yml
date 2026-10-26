@@ -15,33 +15,22 @@ permissions:
 jobs:
   build:
     runs-on: windows-2022
-    env:
-      SCCACHE_GHA_ENABLED: "true"
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
-
-      - name: Setup sccache
-        uses: mozilla-actions/sccache-action@v0.0.9
 
       - name: Setup MSVC
         uses: ilammy/msvc-dev-cmd@v1
 
       - name: Configure
         run: >
-          cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
-          -DCMAKE_C_COMPILER_LAUNCHER=sccache
-          -DCMAKE_CXX_COMPILER_LAUNCHER=sccache
+          cmake --fresh -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
           -DCMAKE_POLICY_DEFAULT_CMP0141=NEW
           -DCMAKE_MSVC_DEBUG_INFORMATION_FORMAT=Embedded
 
       - name: Build
-        run: cmake --build build
-
-      - name: Cache stats
-        if: always()
-        run: sccache --show-stats
+        run: cmake --build build --clean-first
 
       - name: Upload VST3 artifact
         uses: actions/upload-artifact@v4
@@ -85,6 +74,9 @@ jobs:
           zip -r ../../Harmonia.vst3.zip Harmonia.vst3
           cd ../standalone
           zip -r ../../Harmonia.exe.zip Harmonia.exe
+          cd ../..
+          echo "VST3_SHA=$(sha256sum Harmonia.vst3.zip | cut -d' ' -f1)" >> $GITHUB_ENV
+          echo "EXE_SHA=$(sha256sum Harmonia.exe.zip | cut -d' ' -f1)" >> $GITHUB_ENV
 
       - name: Upload ZIPs (temp)
         uses: appleboy/scp-action@v0.1.7
@@ -94,15 +86,30 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           source: "Harmonia.vst3.zip,Harmonia.exe.zip"
           target: "/var/www/harmonia-downloads/tmp/"
+          overwrite: true
 
       - name: Replace ZIPs atomically
         uses: appleboy/ssh-action@v1.0.3
+        env:
+          VST3_SHA: ${{ env.VST3_SHA }}
+          EXE_SHA: ${{ env.EXE_SHA }}
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USERNAME }}
           key: ${{ secrets.VPS_SSH_KEY }}
+          envs: VST3_SHA,EXE_SHA
+          script_stop: true
           script: |
-            mv /var/www/harmonia-downloads/tmp/Harmonia.vst3.zip \
-               /var/www/harmonia-downloads/Harmonia.vst3.zip
-            mv /var/www/harmonia-downloads/tmp/Harmonia.exe.zip \
-               /var/www/harmonia-downloads/Harmonia.exe.zip
+            cd /var/www/harmonia-downloads
+
+            echo "--- tmp avant remplacement ---"
+            ls -l --time-style=full-iso tmp/
+
+            mv -f tmp/Harmonia.vst3.zip Harmonia.vst3.zip
+            mv -f tmp/Harmonia.exe.zip Harmonia.exe.zip
+
+            echo "--- dossier final ---"
+            ls -l --time-style=full-iso
+
+            echo "$VST3_SHA  Harmonia.vst3.zip" | sha256sum -c -
+            echo "$EXE_SHA  Harmonia.exe.zip" | sha256sum -c -

@@ -11,10 +11,12 @@
  * - Oscillator, filter, LFO, FX, and envelope sections
  * - Oscilloscope and waveform visual feedback
  * - AI-powered preset generation
+ * - Dynamic AI model list fetched from the backend (GET /ai/models)
  * - Preset loading and saving
  * - Session-aware user interface
  * - Animated particle background effects
  * - Responsive layout management
+ * - Per-user 3-colour palette synced with the backend
  *
  * UI Sections:
  * - Oscillator 1 / Mix
@@ -33,6 +35,8 @@
  *
  * Threading:
  * - AI preset generation is executed asynchronously
+ * - The AI model list is fetched asynchronously after the UI is created
+ * - Palette sync is debounced and executed asynchronously by the backend
  * - UI updates are dispatched safely through JUCE message thread callbacks
  *
  * Lifetime:
@@ -52,276 +56,318 @@
 #include "themes/HiveLookAndFeel.h"
 #include "themes/PaletteSelector.h"
 
-#include "backendManagement/BackendManager.h"
+#include "backend/BackendManager.h"
 
-#include "components/DisplayScreen.h"
-#include "components/EnvelopeVisualizer.h"
-#include "components/KnobControl.h"
-#include "components/LfoVisualizer.h"
-#include "components/OscilloscopeComponent.h"
-#include "components/ParticleField.h"
-#include "components/SectionPanel.h"
 #include "components/SynthComponent.h"
+#include "components/OscilloscopeComponent.h"
+#include "components/SectionPanel.h"
+#include "components/KnobControl.h"
+#include "components/DisplayScreen.h"
+#include "components/ParticleField.h"
+#include "components/EnvelopeVisualizer.h"
+#include "components/LfoVisualizer.h"
 #include "components/WaveformSelector.h"
 
 #include "sections/HeaderComponent.h"
 
+#include "config/AiConfig.h"
 #include "config/AppConfig.h"
 #include "parameters/HarmoniaParameters.h"
-#include "tools/Alert.h"
 #include "tools/PresetLoader.h"
+#include "tools/Alert.h"
 
-class MainComponent : public juce::Component {
+namespace UiState
+{
+    inline const juce::Identifier identity     { "ui_identity" };
+    inline const juce::Identifier themeId      { "ui_theme_id" };
+    inline const juce::Identifier customColour { "ui_custom_colour" };
+    inline const juce::Identifier paletteSlot  { "ui_palette_slot" };
+    inline const juce::Identifier presetName   { "ui_preset_name" };
+}
+
+class MainComponent : public juce::Component
+{
 public:
-  /**
-   * @brief Constructs the main plugin interface.
-   *
-   * Initializes:
-   * - Look and feel
-   * - Visual sections
-   * - Parameter controls
-   * - Oscilloscope routing
-   * - Preset management
-   * - AI generation tools
-   *
-   * @param p Reference to the audio processor.
-   * @param be Backend manager used for AI and session communication.
-   * @param session Current authenticated user session.
-   */
-  MainComponent(HarmoniaAudioProcessor &p, BackendManager &be,
-                const UserSession &session);
+    /**
+     * @brief Constructs the main plugin interface.
+     *
+     * Initializes:
+     * - Look and feel
+     * - Visual sections
+     * - Parameter controls
+     * - Oscilloscope routing
+     * - Preset management
+     * - AI generation tools
+     * - Palette restoration / sync callbacks
+     *
+     * @param p Reference to the audio processor.
+     * @param be Backend manager used for AI and session communication.
+     * @param session Current authenticated user session.
+     * @param models Optional initial AI model list. Usually empty: the list is
+     *               fetched asynchronously by refreshModelsAsync() right after
+     *               construction (connected users only).
+     */
+    MainComponent (HarmoniaAudioProcessor& p,
+                   BackendManager& be,
+                   const UserSession& session,
+                   const AIModelList& models = {});
 
-  /**
-   * @brief Destructor.
-   *
-   * Safely unregisters oscilloscope from the processor
-   * and resets look-and-feel ownership.
-   */
-  ~MainComponent() override;
+    /**
+     * @brief Destructor.
+     *
+     * Safely unregisters oscilloscope from the processor
+     * and resets look-and-feel ownership.
+     */
+    ~MainComponent() override;
 
-  /**
-   * @brief Paints the main background and header visuals.
-   *
-   * Draws:
-   * - Global background
-   * - Header gradient
-   * - Accent separators
-   *
-   * @param g JUCE graphics context.
-   */
-  void paint(juce::Graphics &) override;
+    /**
+     * @brief Paints the main background and header visuals.
+     *
+     * Draws:
+     * - Global background
+     * - Header gradient
+     * - Accent separators
+     *
+     * @param g JUCE graphics context.
+     */
+    void paint (juce::Graphics&) override;
 
-  /**
-   * @brief Updates layout positions and component sizing.
-   *
-   * Handles:
-   * - Responsive section placement
-   * - Header/button layout
-   * - Keyboard sizing
-   * - Visualizer sizing
-   * - Dynamic knob arrangement
-   */
-  void resized() override;
+    /**
+     * @brief Updates layout positions and component sizing.
+     *
+     * Handles:
+     * - Responsive section placement
+     * - Header/button layout
+     * - Keyboard sizing
+     * - Visualizer sizing
+     * - Dynamic knob arrangement
+     */
+    void resized() override;
 
-  /**
-   * @brief Callback triggered when user logs out.
-   */
-  std::function<void()> onLogout;
+    /**
+     * @brief Callback triggered when user logs out.
+     */
+    std::function<void()> onLogout;
 
-  // in the private section, near the other header widgets:
-  PaletteSelector paletteSelector;
 
 private:
-  HarmoniaPalette::Theme currentTheme{HarmoniaPalette::Theme::Cyan};
 
-  void applyTheme();
+    /**
+     * Custom by default: the header restores the user palette (setSlots)
+     * in its constructor, and applyTheme() must not overwrite it with a
+     * built-in theme.
+     */
+    HarmoniaPalette::Theme currentTheme { HarmoniaPalette::Theme::Custom };
 
-  static void repaintAllChildren(juce::Component &root) {
-    root.repaint();
-    for (int i = 0; i < root.getNumChildComponents(); ++i)
-      repaintAllChildren(*root.getChildComponent(i));
-  }
+    void applyTheme();
 
-  /** Reference to the main audio processor. */
-  HarmoniaAudioProcessor &processor;
+    static void repaintAllChildren (juce::Component& root)
+    {
+        root.repaint();
+        for (int i = 0; i < root.getNumChildComponents(); ++i)
+            repaintAllChildren (*root.getChildComponent(i));
+    }
 
-  /** Backend communication manager. */
-  BackendManager &backend;
+    /** Reference to the main audio processor. */
+    HarmoniaAudioProcessor& processor;
 
-  /** Current authenticated user session. */
-  UserSession session;
+    /** Backend communication manager. */
+    BackendManager& backend;
 
-  //==========================================================================
-  // Look & feel / visuals
+    /** Current authenticated user session. */
+    UserSession session;
 
-  /** Custom Harmonia look-and-feel implementation. */
-  HiveLookAndFeel lookAndFeel;
+    //==========================================================================
+    // Look & feel / visuals
 
-  /** Animated particle background layer. */
-  ParticleField particles;
+    /** Custom Harmonia look-and-feel implementation. */
+    HiveLookAndFeel lookAndFeel;
 
-  //==========================================================================
-  // Header UI
+    void saveThemeToState (int slot = -1);
+    void setPresetName (const juce::String& name);
+    void restorePresetLabel();
 
-  std::unique_ptr<HeaderComponent> headerComponent;
+    void activatePalette();
 
-  //==========================================================================
-  // Section containers
 
-  std::unique_ptr<SectionPanel> oscMixPanel;
-  std::unique_ptr<SectionPanel> filterPanel;
-  std::unique_ptr<SectionPanel> screenPanel;
-  std::unique_ptr<SectionPanel> lfoPanel;
-  std::unique_ptr<SectionPanel> osc2Panel;
-  std::unique_ptr<SectionPanel> fxPanel;
-  std::unique_ptr<SectionPanel> ampPanel;
+    juce::TooltipWindow tooltipWindow { this, 3000 };
 
-  //==========================================================================
-  // Visualizers & displays
+    /** Animated particle background layer. */
+    ParticleField particles;
 
-  /** Audio waveform oscilloscope. */
-  OscilloscopeComponent oscilloscope;
+    //==========================================================================
+    // Header UI
 
-  /** Display wrapper around oscilloscope. */
-  DisplayScreen displayScreen;
+    std::unique_ptr<HeaderComponent> headerComponent;
 
-  /** MIDI keyboard component. */
-  SynthComponent synthComponent;
+    //==========================================================================
+    // Section containers
 
-  /** ADSR envelope visualizer. */
-  EnvelopeVisualizer ampEnvViz;
+    std::unique_ptr<SectionPanel> oscMixPanel;
+    std::unique_ptr<SectionPanel> filterPanel;
+    std::unique_ptr<SectionPanel> screenPanel;
+    std::unique_ptr<SectionPanel> lfoPanel;
+    std::unique_ptr<SectionPanel> osc2Panel;
+    std::unique_ptr<SectionPanel> fxPanel;
+    std::unique_ptr<SectionPanel> ampPanel;
 
-  /** LFO waveform visualizer. */
-  LfoVisualizer lfoViz;
+    //==========================================================================
+    // Visualizers & displays
 
-  //==========================================================================
-  // Oscillator 1 controls
+    /** Audio waveform oscilloscope. */
+    OscilloscopeComponent oscilloscope;
 
-  /** Oscillator 1 waveform selector. */
-  std::unique_ptr<WaveformSelector> osc1WaveSel;
+    /** Display wrapper around oscilloscope. */
+    DisplayScreen displayScreen;
 
-  /** Oscillator mix control. */
-  std::unique_ptr<KnobControl> oscMixKnob;
+    /** MIDI keyboard component. */
+    SynthComponent synthComponent;
 
-  /** Noise level control. */
-  std::unique_ptr<KnobControl> noiseLevelKnob;
+    /** ADSR envelope visualizer. */
+    EnvelopeVisualizer ampEnvViz;
 
-  //==========================================================================
-  // Filter controls
+    /** LFO waveform visualizer. */
+    LfoVisualizer lfoViz;
 
-  /** Filter cutoff frequency control. */
-  std::unique_ptr<KnobControl> filterCutoffKnob;
+    //==========================================================================
+    // Oscillator 1 controls
 
-  /** Filter resonance control. */
-  std::unique_ptr<KnobControl> filterResoKnob;
+    /** Oscillator 1 waveform selector. */
+    std::unique_ptr<WaveformSelector> osc1WaveSel;
 
-  /** Filter type selector. */
-  std::unique_ptr<FilterTypeSelector> filterTypeSel;
+    /** Oscillator mix control. */
+    std::unique_ptr<KnobControl> oscMixKnob;
 
-  /** Filter envelope modulation amount control. */
-  std::unique_ptr<KnobControl> filterEnvAmtKnob;
+    /** Noise level control. */
+    std::unique_ptr<KnobControl> noiseLevelKnob;
 
-  /** Filter envelope decay control. */
-  std::unique_ptr<KnobControl> filterEnvDecayKnob;
+    //==========================================================================
+    // Filter controls
 
-  /** Velocity-to-filter modulation control. */
-  std::unique_ptr<KnobControl> velocityFilterKnob;
+    /** Filter cutoff frequency control. */
+    std::unique_ptr<KnobControl> filterCutoffKnob;
 
-  //==========================================================================
-  // LFO controls
+    /** Filter resonance control. */
+    std::unique_ptr<KnobControl> filterResoKnob;
 
-  /** LFO rate control. */
-  std::unique_ptr<KnobControl> lfoRateKnob;
+    /** Filter type selector. */
+    std::unique_ptr<FilterTypeSelector> filterTypeSel;
 
-  /** LFO-to-pitch modulation control. */
-  std::unique_ptr<KnobControl> lfoToPitchKnob;
+    /** Filter envelope modulation amount control. */
+    std::unique_ptr<KnobControl> filterEnvAmtKnob;
 
-  /** LFO-to-cutoff modulation control. */
-  std::unique_ptr<KnobControl> lfoToCutoffKnob;
+    /** Filter envelope decay control. */
+    std::unique_ptr<KnobControl> filterEnvDecayKnob;
 
-  //==========================================================================
-  // Oscillator 2 controls
+    /** Velocity-to-filter modulation control. */
+    std::unique_ptr<KnobControl> velocityFilterKnob;
 
-  /** Oscillator 2 waveform selector. */
-  std::unique_ptr<WaveformSelector> osc2WaveSel;
+    //==========================================================================
+    // LFO controls
 
-  /** Oscillator 2 detune control. */
-  std::unique_ptr<KnobControl> osc2DetuneKnob;
+    /** LFO rate control. */
+    std::unique_ptr<KnobControl> lfoRateKnob;
 
-  //==========================================================================
-  // FX controls
+    /** LFO-to-pitch modulation control. */
+    std::unique_ptr<KnobControl> lfoToPitchKnob;
 
-  /** Distortion amount control. */
-  std::unique_ptr<KnobControl> distortionKnob;
+    /** LFO-to-cutoff modulation control. */
+    std::unique_ptr<KnobControl> lfoToCutoffKnob;
 
-  /** Reverb mix control. */
-  std::unique_ptr<KnobControl> reverbKnob;
+    //==========================================================================
+    // Oscillator 2 controls
 
-  //==========================================================================
-  // ADSR controls
+    /** Oscillator 2 waveform selector. */
+    std::unique_ptr<WaveformSelector> osc2WaveSel;
 
-  /** Envelope attack control. */
-  std::unique_ptr<KnobControl> attackKnob;
+    /** Oscillator 2 detune control. */
+    std::unique_ptr<KnobControl> osc2DetuneKnob;
 
-  /** Envelope decay control. */
-  std::unique_ptr<KnobControl> decayKnob;
+    //==========================================================================
+    // FX controls
 
-  /** Envelope sustain control. */
-  std::unique_ptr<KnobControl> sustainKnob;
+    /** Distortion amount control. */
+    std::unique_ptr<KnobControl> distortionKnob;
 
-  /** Envelope release control. */
-  std::unique_ptr<KnobControl> releaseKnob;
+    /** Reverb mix control. */
+    std::unique_ptr<KnobControl> reverbKnob;
 
-  //==========================================================================
-  // Utilities
+    //==========================================================================
+    // ADSR controls
 
-  /** File chooser used for preset loading/saving. */
-  std::unique_ptr<juce::FileChooser> chooser;
+    /** Envelope attack control. */
+    std::unique_ptr<KnobControl> attackKnob;
 
-  //==========================================================================
-  // Internal helpers
+    /** Envelope decay control. */
+    std::unique_ptr<KnobControl> decayKnob;
 
-  /**
-   * @brief Creates and registers all parameter controls.
-   *
-   * Instantiates:
-   * - Knobs
-   * - Selectors
-   * - Modulation controls
-   */
-  void buildControls();
+    /** Envelope sustain control. */
+    std::unique_ptr<KnobControl> sustainKnob;
 
-  /**
-   * @brief Connects button callbacks and interactions.
-   */
-  void wireHeaderButtons();
+    /** Envelope release control. */
+    std::unique_ptr<KnobControl> releaseKnob;
 
-  /**
-   * @brief Registers particle feedback interactions for a control.
-   *
-   * Adds animated particle bursts when controls are rapidly tweaked.
-   *
-   * @param c Component to monitor.
-   */
-  void registerJuiceFor(juce::Component *c);
+    std::vector<LockableControl*> lockables;
+    void setRefineUi (bool refine);
+    juce::StringArray getLockedParamIds() const;
 
-  /**
-   * @brief Opens and loads a preset file.
-   */
-  void doLoadPreset();
+    //==========================================================================
+    // Utilities
 
-  /**
-   * @brief Saves current synthesizer state as a preset.
-   */
-  void doSavePreset();
+    /** File chooser used for preset loading/saving. */
+    std::unique_ptr<juce::FileChooser> chooser;
 
-  /**
-   * @brief Generates a new preset using AI backend services.
-   *
-   * Sends user prompt to backend, parses generated preset,
-   * and applies parameters to the synthesizer.
-   */
-  void doGenerateWithAi();
+    //==========================================================================
+    // Internal helpers
 
-  JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainComponent)
+    /**
+     * @brief Creates and registers all parameter controls.
+     *
+     * Instantiates:
+     * - Knobs
+     * - Selectors
+     * - Modulation controls
+     */
+    void buildControls();
+
+    /**
+     * @brief Connects button callbacks and interactions.
+     */
+    void wireHeaderButtons();
+
+    /**
+     * @brief Registers particle feedback interactions for a control.
+     *
+     * Adds animated particle bursts when controls are rapidly tweaked.
+     *
+     * @param c Component to monitor.
+     */
+    void registerJuiceFor (juce::Component* c);
+
+    /**
+     * @brief Opens and loads a preset file.
+     */
+    void doLoadPreset();
+
+    /**
+     * @brief Saves current synthesizer state as a preset.
+     */
+    void doSavePreset();
+
+    /**
+     * @brief Fetches the AI model list (GET /ai/models) on a background thread
+     *        and updates the header menu when it arrives.
+     *
+     * Does nothing for guests. On network failure the header keeps its current
+     * state and generation still works through the "latest" model.
+     */
+    void refreshModelsAsync();
+
+    void doGenerateWithAi();
+    void doRefineWithAi();
+    bool getAiPrompt (juce::String& prompt);
+    void runAiRequest (std::function<AiResult()> request, juce::StringArray lockedIds);
+    void showAiError (const AiResult& result);
+
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };
