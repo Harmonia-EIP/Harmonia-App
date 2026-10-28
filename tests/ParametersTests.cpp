@@ -147,3 +147,28 @@ TEST_CASE ("Valeurs hors bornes: l'APVTS les ramène dans la plage")
     res->setValueNotifyingHost (-3.0f);   // trop petit
     REQUIRE (res->getValue() >= 0.0f);
 }
+TEST_CASE ("Affichage des valeurs : décimales selon la grandeur, unités courtes")
+{
+    HarmoniaAudioProcessor p;
+    auto& a = p.getAPVTS();
+
+    auto text = [&] (const char* id, float physical)
+    {
+        auto* prm = a.getParameter (id);
+        return prm->getText (prm->convertTo0to1 (physical), 0);
+    };
+
+    REQUIRE (text ("filter_cutoff", 20000.0f) == "20.0 kHz");
+    REQUIRE (text ("filter_cutoff", 440.0f) == "440 Hz");
+    REQUIRE (text ("amp_decay", 300.0f) == "300 ms");
+    REQUIRE (text ("amp_release", 2500.0f) == "2.50 s");
+    REQUIRE (text ("osc_mix", 0.5f) == "0.50");
+    REQUIRE (text ("filter_env_amount", 2.0f) == "+2.00 oct");
+    REQUIRE (text ("osc_2_coarse", 7.0f) == "+7 st");
+    REQUIRE (text ("unison_voices", 4.0f) == "4");
+    REQUIRE (text ("dx7_algorithm", 0.0f) == "1");          // affiché 1..32
+    REQUIRE (text ("dx7_op1_detune", 7.0f) == "0");         // affiché -7..+7
+
+    auto* cutoff = a.getParameter ("filter_cutoff");
+    REQUIRE (cutoff->convertFrom0to1 (cutoff->getValueForText ("1.2 kHz")) == Catch::Approx (1200.0f).epsilon (0.001));
+}
