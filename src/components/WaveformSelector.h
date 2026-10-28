@@ -52,3 +52,25 @@ public:
             })
     {}
 };
+
+/**
+ * @class FilterSlopeSelector
+ * @brief 12 / 24 dB filter slope as a compact two-way switch (it sits in the filter panel's title row).
+ */
+class FilterSlopeSelector : public IconChoiceSelector
+{
+public:
+    FilterSlopeSelector (juce::AudioProcessorValueTreeState& apvts,
+                         const juce::String& paramId)
+        : IconChoiceSelector (apvts, paramId,
+            [] (juce::Graphics& g, juce::Rectangle<float> area, int idx, juce::Colour col)
+            {
+                g.setColour (col);
+                g.setFont (juce::Font (juce::FontOptions (9.0f).withStyle ("Bold")));
+                g.drawText (idx == 0 ? "12" : "24",
+                            area.withSizeKeepingCentre (area.getWidth() + 14.0f, 12.0f),
+                            juce::Justification::centred, false);
+            })
+    {}
+};
+

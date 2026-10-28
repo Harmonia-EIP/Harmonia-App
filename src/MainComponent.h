@@ -61,6 +61,7 @@
 #include "components/SynthComponent.h"
 #include "components/OscilloscopeComponent.h"
 #include "components/SectionPanel.h"
+#include "components/EngineBadge.h"
 #include "components/KnobControl.h"
 #include "components/DisplayScreen.h"
 #include "components/ParticleField.h"
@@ -291,6 +292,26 @@ private:
 
     /** Reverb mix control. */
     std::unique_ptr<KnobControl> reverbKnob;
+
+    //==========================================================================
+    // v3: the essential new parameters only; the others are set by the AI, saved in
+    // presets and automatable from the host, but not shown
+
+    std::unique_ptr<KnobControl> unisonVoicesKnob;   ///< Osc 1 / Mix: thickness
+    std::unique_ptr<KnobControl> unisonDetuneKnob;   ///< Osc 1 / Mix: unison spread (dimmed with one voice)
+    std::unique_ptr<KnobControl> stereoWidthKnob;    ///< Osc 1 / Mix: stereo width
+    std::unique_ptr<KnobControl> osc2CoarseKnob;     ///< Osc 2: interval in semitones
+    std::unique_ptr<FilterSlopeSelector> filterSlopeSel;  ///< Filter: 12 / 24 dB, in the title row
+    std::unique_ptr<KnobControl> delayMixKnob;       ///< Effects: echo level
+    std::unique_ptr<KnobControl> reverbSizeKnob;     ///< Effects: reverb size
+
+    //==========================================================================
+    // DX7 mode: the analog panels are dimmed (they do not act on a DX7 voice) and a badge says so
+
+    EngineBadge engineBadge;
+    std::unique_ptr<juce::ParameterAttachment> engineWatch;
+    std::unique_ptr<juce::ParameterAttachment> unisonWatch;
+    void showEngine (bool dx7);
 
     //==========================================================================
     // ADSR controls

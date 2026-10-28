@@ -215,6 +215,45 @@ void MainComponent::buildControls()
     fxPanel->addAndMakeVisible (*distortionKnob);
     fxPanel->addAndMakeVisible (*reverbKnob);
 
+    // v3 essentials
+    unisonVoicesKnob = std::make_unique<KnobControl>(a, "unison_voices",  "Unison");
+    unisonDetuneKnob = std::make_unique<KnobControl>(a, "unison_detune",  "Spread");
+    stereoWidthKnob  = std::make_unique<KnobControl>(a, "stereo_width",   "Width");
+    oscMixPanel->addAndMakeVisible (*unisonVoicesKnob);
+    oscMixPanel->addAndMakeVisible (*unisonDetuneKnob);
+    oscMixPanel->addAndMakeVisible (*stereoWidthKnob);
+
+    osc2CoarseKnob = std::make_unique<KnobControl>(a, "osc_2_coarse", "Interval", true);
+    osc2Panel->addAndMakeVisible (*osc2CoarseKnob);
+
+    filterSlopeSel = std::make_unique<FilterSlopeSelector>(a, "filter_slope");
+    filterSlopeSel->setLockStripHeight (0);
+    filterPanel->addAndMakeVisible (*filterSlopeSel);
+
+    delayMixKnob   = std::make_unique<KnobControl>(a, "delay_mix",   "Delay");
+    reverbSizeKnob = std::make_unique<KnobControl>(a, "reverb_size", "Size");
+    fxPanel->addAndMakeVisible (*delayMixKnob);
+    fxPanel->addAndMakeVisible (*reverbSizeKnob);
+
+    screenPanel->addChildComponent (engineBadge);
+    engineBadge.setText ("DX7");
+
+    if (auto* engine = a.getParameter ("engine"))
+    {
+        engineWatch = std::make_unique<juce::ParameterAttachment> (*engine, [this] (float value) { showEngine (value > 0.5f); });
+        engineWatch->sendInitialUpdate();
+    }
+    if (auto* voices = a.getParameter ("unison_voices"))
+    {
+        // the spread only exists with more than one voice
+        unisonWatch = std::make_unique<juce::ParameterAttachment> (*voices, [this] (float value)
+        {
+            unisonDetuneKnob->setEnabled (value > 1.5f);
+            unisonDetuneKnob->setAlpha (value > 1.5f ? 1.0f : 0.4f);
+        });
+        unisonWatch->sendInitialUpdate();
+    }
+
     attackKnob  = std::make_unique<KnobControl>(a, HarmoniaParams::IDs::ampAttack,  "Attack");
     decayKnob   = std::make_unique<KnobControl>(a, HarmoniaParams::IDs::ampDecay,   "Decay");
     sustainKnob = std::make_unique<KnobControl>(a, HarmoniaParams::IDs::ampSustain, "Sustain");
@@ -228,6 +267,13 @@ void MainComponent::buildControls()
             (juce::Component*) osc1WaveSel.get(),
             (juce::Component*) osc2WaveSel.get(),
             (juce::Component*) filterTypeSel.get(),
+            (juce::Component*) filterSlopeSel.get(),
+            (juce::Component*) unisonVoicesKnob.get(),
+            (juce::Component*) unisonDetuneKnob.get(),
+            (juce::Component*) stereoWidthKnob.get(),
+            (juce::Component*) osc2CoarseKnob.get(),
+            (juce::Component*) delayMixKnob.get(),
+            (juce::Component*) reverbSizeKnob.get(),
             (juce::Component*) oscMixKnob.get(),
             (juce::Component*) noiseLevelKnob.get(),
             (juce::Component*) filterCutoffKnob.get(),
@@ -251,6 +297,18 @@ void MainComponent::buildControls()
         if (auto* l = dynamic_cast<LockableControl*> (c))
             lockables.push_back (l);
     }
+}
+
+void MainComponent::showEngine (bool dx7)
+{
+    // a DX7 voice ignores the analog panels: dim them rather than hide them, so the layout stays put
+    for (auto* panel : { oscMixPanel.get(), filterPanel.get(), lfoPanel.get(),
+                         osc2Panel.get(), fxPanel.get(), ampPanel.get() })
+    {
+        panel->setEnabled (! dx7);
+        panel->setAlpha (dx7 ? 0.35f : 1.0f);
+    }
+    engineBadge.setVisible (dx7);
 }
 
 void MainComponent::wireHeaderButtons()
@@ -701,24 +759,20 @@ void MainComponent::resized()
 
             inner.removeFromTop (1);
 
-            const int cellW = inner.getWidth() / 2;
-
-            oscMixKnob->setBounds (
-                juce::Rectangle<int> (
-                    inner.getX(),
-                    inner.getY(),
-                    cellW,
-                    inner.getHeight()).reduced (4, 0));
-
-            noiseLevelKnob->setBounds (
-                juce::Rectangle<int> (
-                    inner.getX() + cellW,
-                    inner.getY(),
-                    cellW,
-                    inner.getHeight()).reduced (4, 0));
+            // Mix, Noise | Unison, Spread, Width
+            const int n = 5;
+            const int cellW = inner.getWidth() / n;
+            int i = 0;
+            for (auto* k : { oscMixKnob.get(), noiseLevelKnob.get(), unisonVoicesKnob.get(),
+                             unisonDetuneKnob.get(), stereoWidthKnob.get() })
+                k->setBounds (juce::Rectangle<int> (inner.getX() + cellW * i++, inner.getY(),
+                                                    cellW, inner.getHeight()).reduced (2, 0));
         }
 
         {
+            // 12 / 24 dB: compact switch at the right of the title row
+            filterSlopeSel->setBounds (filterPanel->getWidth() - 16 - 60, 7, 60, 18);
+
             auto inner = filterPanel->getContentBounds();
 
             const int rowH = inner.getHeight() / 2;
@@ -773,6 +827,7 @@ void MainComponent::resized()
 
         screenPanel->setBounds (screenBox);
         lfoPanel->setBounds (lfoBox);
+        engineBadge.setBounds (screenPanel->getWidth() - 16 - 44, 7, 44, 16);
 
         displayScreen.setBounds (
             screenPanel->getContentBounds().reduced (4));
@@ -835,28 +890,21 @@ void MainComponent::resized()
 
             inner.removeFromTop (2);
 
-            osc2DetuneKnob->setBounds (
-                inner.reduced (4));
+            const int cellW = inner.getWidth() / 2;
+            osc2DetuneKnob->setBounds (inner.removeFromLeft (cellW).reduced (4));
+            osc2CoarseKnob->setBounds (inner.reduced (4));
         }
 
         {
             auto inner = fxPanel->getContentBounds();
 
-            const int cellW = inner.getWidth() / 2;
-
-            distortionKnob->setBounds (
-                juce::Rectangle<int> (
-                    inner.getX(),
-                    inner.getY(),
-                    cellW,
-                    inner.getHeight()).reduced (4));
-
-            reverbKnob->setBounds (
-                juce::Rectangle<int> (
-                    inner.getX() + cellW,
-                    inner.getY(),
-                    cellW,
-                    inner.getHeight()).reduced (4));
+            // Drive | Delay | Reverb, Size
+            const int n = 4;
+            const int cellW = inner.getWidth() / n;
+            int i = 0;
+            for (auto* k : { distortionKnob.get(), delayMixKnob.get(), reverbKnob.get(), reverbSizeKnob.get() })
+                k->setBounds (juce::Rectangle<int> (inner.getX() + cellW * i++, inner.getY(),
+                                                    cellW, inner.getHeight()).reduced (2));
         }
     }
 }

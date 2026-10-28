@@ -187,12 +187,108 @@ TEST_CASE ("Guest: chaque paramètre a exactement un contrôle à l'écran")
     for (auto* l : lockables)
         ids.insert (l->getParamId());
 
-    for (const auto& id : HarmoniaParams::orderedIds())
+    // les 20 paramètres v2 et les 7 paramètres v3 jugés essentiels ; les autres sont réglés par l'IA
+    std::vector<juce::String> shown (HarmoniaParams::orderedIds().begin(), HarmoniaParams::orderedIds().end());
+    for (const char* id : { "unison_voices", "unison_detune", "stereo_width", "osc_2_coarse",
+                            "filter_slope", "delay_mix", "reverb_size" })
+        shown.push_back (id);
+
+    for (const auto& id : shown)
     {
         INFO (id.toStdString());
         REQUIRE (ids.count (id) == 1);
     }
-    REQUIRE (ids.size() == HarmoniaParams::orderedIds().size());
+    REQUIRE (ids.size() == shown.size());
+}
+
+TEST_CASE ("Mode DX7 : panneaux analogiques grisés, étiquette DX7 visible")
+{
+    HarmoniaAudioProcessor proc;
+    MainComponent ui (proc, proc.getBackend(), makeGuest());
+    ui.setSize (AppConfig::DefaultWidth, AppConfig::DefaultHeight);
+
+    auto findBadge = [&]
+    {
+        std::vector<juce::Component*> all;
+        collect (ui, all);
+        for (auto* c : all)
+            if (dynamic_cast<EngineBadge*> (c) != nullptr)
+                return c;
+        return (juce::Component*) nullptr;
+    };
+    auto knobFor = [&] (const juce::String& id)
+    {
+        std::vector<LockableControl*> lockables;
+        collectLockables (ui, lockables);
+        for (auto* l : lockables)
+            if (l->getParamId() == id)
+                return dynamic_cast<juce::Component*> (l);
+        return (juce::Component*) nullptr;
+    };
+
+    REQUIRE (findBadge() != nullptr);
+    REQUIRE_FALSE (findBadge()->isVisible());
+    REQUIRE (knobFor ("filter_cutoff")->isEnabled());
+
+    proc.getAPVTS().getParameter ("engine")->setValueNotifyingHost (1.0f);
+    pump();
+    REQUIRE (findBadge()->isVisible());
+    REQUIRE_FALSE (knobFor ("filter_cutoff")->isEnabled());
+    REQUIRE (knobFor ("filter_cutoff")->isVisible());   // grisé, pas caché : la mise en page ne bouge pas
+
+    proc.getAPVTS().getParameter ("engine")->setValueNotifyingHost (0.0f);
+    pump();
+    REQUIRE_FALSE (findBadge()->isVisible());
+    REQUIRE (knobFor ("filter_cutoff")->isEnabled());
+}
+
+TEST_CASE ("Unisson à une voix : l'étalement est grisé")
+{
+    HarmoniaAudioProcessor proc;
+    MainComponent ui (proc, proc.getBackend(), makeGuest());
+    auto* voices = proc.getAPVTS().getParameter ("unison_voices");
+
+    auto spread = [&]
+    {
+        std::vector<LockableControl*> lockables;
+        collectLockables (ui, lockables);
+        for (auto* l : lockables)
+            if (l->getParamId() == "unison_detune")
+                return dynamic_cast<juce::Component*> (l);
+        return (juce::Component*) nullptr;
+    };
+
+    voices->setValueNotifyingHost (voices->convertTo0to1 (1.0f));
+    pump();
+    REQUIRE_FALSE (spread()->isEnabled());
+
+    voices->setValueNotifyingHost (voices->convertTo0to1 (5.0f));
+    pump();
+    REQUIRE (spread()->isEnabled());
+}
+
+// Capture de l'interface (analogique et DX7) pour la relire à l'œil, hors CI :
+//   HARMONIA_UI_CAPTURE_DIR=/tmp/captures ./Harmonia_Tests "[.capture]"
+TEST_CASE ("Capture de l'interface", "[.capture]")
+{
+    const auto dir = juce::SystemStats::getEnvironmentVariable ("HARMONIA_UI_CAPTURE_DIR", {});
+    REQUIRE (dir.isNotEmpty());
+
+    HarmoniaAudioProcessor proc;
+    MainComponent ui (proc, proc.getBackend(), makeGuest());
+    ui.setSize (AppConfig::DefaultWidth, AppConfig::DefaultHeight);
+    proc.getAPVTS().getParameter ("unison_voices")->setValueNotifyingHost (0.2f);
+
+    for (const bool dx7 : { false, true })
+    {
+        proc.getAPVTS().getParameter ("engine")->setValueNotifyingHost (dx7 ? 1.0f : 0.0f);
+        pump (100);
+        const auto image = ui.createComponentSnapshot (ui.getLocalBounds(), true, 2.0f);
+        juce::File file (juce::File (dir).getChildFile (dx7 ? "ui-dx7.png" : "ui-analog.png"));
+        file.deleteFile();
+        juce::FileOutputStream out (file);
+        REQUIRE (juce::PNGImageFormat().writeImageToStream (image, out));
+    }
 }
 
 TEST_CASE ("Guest: aucun contrôle verrouillé au départ")
