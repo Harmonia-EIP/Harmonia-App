@@ -34,6 +34,8 @@
 
 #include "JuceHeader.h"
 #include "parameters/HarmoniaParameters.h"
+#include "parameters/HarmoniaParametersV3.h"
+#include "engine/HarmoniaEngineV3.h"
 #include "components/Synth.h"
 #include "components/OscilloscopeComponent.h"
 #include "backend/BackendManager.h"
@@ -272,11 +274,11 @@ private:
      */
     juce::AudioProcessorValueTreeState apvts;
 
-    /**
-     * Cached atomic parameter references for fast
-     * real-time access inside DSP code.
-     */
-    HarmoniaParams::AtomicRefs paramRefs;
+    /** Physical value of every charter v3 parameter (audio thread). */
+    HarmoniaParamsV3::ParameterRefs paramRefs;
+
+    /** Analog parameters of the current block, shared by the voices and the effects. */
+    harmonia::AnalogPatch patch = harmonia::defaultPatch();
 
     /**
      * Polyphonic synthesizer engine.
@@ -289,15 +291,11 @@ private:
      */
     juce::MidiKeyboardState keyboardState;
 
-    /**
-     * Global reverb DSP processor.
-     */
-    juce::dsp::Reverb reverb;
+    /** Chorus, delay and reverb on the mix of the voices. */
+    harmonia::Effects effects;
 
-    /**
-     * Current reverb parameter configuration.
-     */
-    juce::dsp::Reverb::Parameters reverbParams;
+    /** Stereo scratch for the effects when the output is mono. */
+    juce::AudioBuffer<float> effectsScratch;
 
     /**
      * Optional oscilloscope visualization target.
