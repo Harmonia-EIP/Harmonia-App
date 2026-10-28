@@ -44,7 +44,7 @@ void HarmoniaAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlo
     synth.clearSounds();
 
     for (int i = 0; i < 8; ++i)
-        synth.addVoice (new HarmoniaVoice (patch, (std::uint64_t) i + 1));
+        synth.addVoice (new HarmoniaVoice (patches, (std::uint64_t) i + 1));
 
     synth.addSound (new HarmoniaSound());
     synth.setCurrentPlaybackSampleRate (sampleRate);
@@ -82,15 +82,29 @@ void HarmoniaAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer,
     buffer.clear();
 
     for (int i = 0; i < HarmoniaCharter::analog::count; ++i)
-        patch[(size_t) i] = paramRefs.analog (i);
+        patches.analog[(size_t) i] = paramRefs.analog (i);
+
+    static const auto engineIndex = (size_t) HarmoniaCharter::indexOf ("engine");
+    patches.dx7Mode = paramRefs.get (engineIndex) > 0.5f;
+    if (patches.dx7Mode)
+    {
+        std::array<float, harmonia::dx7ParameterCount> dx7Values {};
+        for (size_t i = 0; i < dx7Values.size(); ++i)
+            dx7Values[i] = paramRefs.get (HarmoniaCharter::dx7Begin + i);
+        patches.dx7 = harmonia::dx7PatchFromValues (dx7Values.data());
+    }
 
     const int numSamples = buffer.getNumSamples();
     keyboardState.processNextMidiBuffer (midiMessages, 0, numSamples, true);
     synth.renderNextBlock (buffer, midiMessages, 0, numSamples);
 
-    if (buffer.getNumChannels() >= 2)
+    if (patches.dx7Mode)
     {
-        effects.process (patch, buffer.getWritePointer (0), buffer.getWritePointer (1), numSamples);
+        // DX7 voices play dry, as the DX7 and the AI's reference renders do
+    }
+    else if (buffer.getNumChannels() >= 2)
+    {
+        effects.process (patches.analog, buffer.getWritePointer (0), buffer.getWritePointer (1), numSamples);
     }
     else if (buffer.getNumChannels() == 1)
     {
@@ -101,7 +115,7 @@ void HarmoniaAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer,
             const int n = juce::jmin (chunk, numSamples - start);
             effectsScratch.copyFrom (0, 0, buffer, 0, start, n);
             effectsScratch.copyFrom (1, 0, buffer, 0, start, n);
-            effects.process (patch, effectsScratch.getWritePointer (0), effectsScratch.getWritePointer (1), n);
+            effects.process (patches.analog, effectsScratch.getWritePointer (0), effectsScratch.getWritePointer (1), n);
             buffer.copyFrom (0, start, effectsScratch.getReadPointer (0), n, 0.5f);
             buffer.addFrom (0, start, effectsScratch, 1, 0, n, 0.5f);
         }

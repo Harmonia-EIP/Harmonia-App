@@ -86,12 +86,17 @@ file(GLOB_RECURSE PLUGIN_SOURCES CONFIGURE_DEPENDS
     src/*.h
 )
 
+# Cœur FM du mode DX7 : msfa de Dexed (Apache 2.0, voir src/engine/dx7/README.md)
+file(GLOB MSFA_SOURCES CONFIGURE_DEPENDS src/engine/dx7/msfa/*.cc)
+
 target_sources(Harmonia PRIVATE
     ${PLUGIN_SOURCES}
+    ${MSFA_SOURCES}
 )
 
 target_include_directories(Harmonia PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/engine/dx7
 )
 
 target_link_libraries(Harmonia PRIVATE

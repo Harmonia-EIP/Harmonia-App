@@ -1,8 +1,9 @@
-// Tests of the v3 analog engine on its own (plain C++17, no JUCE): pitch, release, block-size invariance,
-// stability on any charter values. Whether it sounds like the reference engine is checked against the
-// Python implementation by HARMONIA/scripts/v3/engine_parity.py (Harmonia-AI).
+// Tests of the v3 engines on their own (plain C++17, no JUCE): analog (pitch, release, block-size invariance,
+// stability on any charter values) and DX7 mode (INIT VOICE pitch, patch layout, release). Whether they sound
+// like the AI's reference renderers is checked by HARMONIA/scripts/v3/engine_parity.py (Harmonia-AI).
 
 #include "../../src/engine/HarmoniaEngineV3.h"
+#include "../../src/engine/HarmoniaDx7.h"
 
 #include <cmath>
 #include <cstdio>
@@ -161,6 +162,56 @@ int main()
                "wrong parameter count");
         check (harmonia_render_analog_note (patch.data(), A::count, 60, 0.8, 0.5, 1.0, sr, 1, out.data(), sr) == -1,
                "buffer too small");
+    });
+
+    test ("DX7 INIT VOICE plays a 440 Hz sine on A4", []
+    {
+        const auto patch = dx7InitPatch();
+        check (patch[5 * 21 + 16] == 99 && patch[16] == 0, "OP1 at full level, OP6 silent (OP6 first in the buffer)");
+        check (patch[134] == 0 && patch[144] == 24, "algorithm 1, no transpose");
+        Dx7Voice voice;
+        voice.prepare (sr);
+        voice.start (patch, 69, 100.0 / 127.0);
+        std::vector<float> l ((std::size_t) sr), r ((std::size_t) sr);
+        voice.render (l.data(), r.data(), sr);
+        int crossings = 0;
+        for (std::size_t i = sr / 4 + 1; i < (std::size_t) sr * 3 / 4; ++i)
+            crossings += (l[i - 1] < 0.0f) != (l[i] < 0.0f);
+        check (std::abs (crossings - 440.0) <= 2.0, "pitch: " + std::to_string (crossings) + " Hz");
+        check (l == r, "mono on both channels");
+    });
+
+    test ("DX7 patch follows the charter's parameter order", []
+    {
+        std::array<float, dx7ParameterCount> values {};
+        for (std::size_t k = 0; k < values.size(); ++k)
+            values[k] = HarmoniaCharter::params[HarmoniaCharter::dx7Begin + k].defaultValue;
+        values[0] = 12.0f;              // dx7_op1_eg_rate_1
+        values[5 * 21 + 16] = 55.0f;    // dx7_op6_output_level
+        values[6 * 21 + 8] = 21.0f;     // dx7_algorithm (shown 22)
+        const auto patch = dx7PatchFromValues (values.data());
+        check (patch[5 * 21] == 12 && patch[16] == 55 && patch[134] == 21, "OP1 last, OP6 first, voice fields at 126");
+    });
+
+    test ("DX7 note releases, falls silent and frees its voice; block size does not matter", []
+    {
+        std::vector<std::vector<float>> outs;
+        for (int blockLen : { 1, 64, 500 })
+        {
+            Dx7Voice voice;
+            voice.prepare (sr);
+            voice.start (dx7InitPatch(), 60, 0.8);
+            std::vector<float> l ((std::size_t) sr * 3), r ((std::size_t) sr * 3);
+            for (int i = 0; i < sr * 3; i += blockLen)
+            {
+                if (i >= sr / 2 && i < sr / 2 + blockLen)
+                    voice.scheduleRelease (sr / 2);
+                voice.render (l.data() + i, r.data() + i, std::min (blockLen, sr * 3 - i));
+            }
+            check (! voice.isActive(), "voice freed after the release");
+            outs.push_back (l);
+        }
+        check (outs[0] == outs[1] && outs[1] == outs[2], "identical renders");
     });
 
     std::printf (failures == 0 ? "all engine tests passed\n" : "%d failure(s)\n", failures);

@@ -4,18 +4,20 @@
  *
  * Included classes:
  * - HarmoniaSound
- * - HarmoniaVoice: a juce::SynthesiserVoice around the v3 analog engine (engine/HarmoniaEngineV3.h)
+ * - HarmoniaVoice: a juce::SynthesiserVoice that plays a note on one of the two v3 engines
  *
- * The engine itself is plain C++ and matches the reference the AI models are trained on
- * (HARMONIA/src/synth/engine_v3.py in Harmonia-AI): 2 oscillators x unison, noise, 12/24 dB filter,
- * exponential envelopes, pitch envelope, LFO, drive, at twice the sample rate. Chorus, delay and
- * reverb run once on the mix, in the processor.
+ * Both engines are plain C++ and match what the AI models are trained on (Harmonia-AI):
+ * - analog (engine/HarmoniaEngineV3.h, reference HARMONIA/src/synth/engine_v3.py): 2 oscillators x unison,
+ *   noise, 12/24 dB filter, exponential envelopes, pitch envelope, LFO, drive, at twice the sample rate;
+ *   chorus, delay and reverb run once on the mix, in the processor;
+ * - DX7 (engine/HarmoniaDx7.h): one DX7 voice played by Dexed's msfa FM core, as on the instrument.
  */
 
 #pragma once
 
 #include "../JuceHeader.h"
 #include "../engine/HarmoniaEngineV3.h"
+#include "../engine/HarmoniaDx7.h"
 
 #include <vector>
 
@@ -31,16 +33,25 @@ public:
 };
 
 /**
+ * @brief What the voices play, filled by the processor at the start of each block (audio thread).
+ */
+struct HarmoniaPatches
+{
+    harmonia::AnalogPatch analog = harmonia::defaultPatch();  ///< physical values, charter order
+    harmonia::Dx7Patch dx7 = harmonia::dx7InitPatch();       ///< DX7 voice built from the charter's DX7 parameters
+    bool dx7Mode = false;                                     ///< parameter "engine": 0 analog, 1 DX7
+};
+
+/**
  * @class HarmoniaVoice
- * @brief One polyphonic voice: plays the processor's current analog patch.
+ * @brief One polyphonic voice: plays a note on the engine selected when the note starts.
  *
- * The patch (physical values in charter order) is filled by the processor at the start of each
- * block, on the audio thread, before the synthesiser renders the voices.
+ * Analog notes follow automation block by block; a DX7 note keeps the voice it started with.
  */
 class HarmoniaVoice : public juce::SynthesiserVoice
 {
 public:
-    HarmoniaVoice (const harmonia::AnalogPatch& patch, std::uint64_t seed);
+    HarmoniaVoice (const HarmoniaPatches& patches, std::uint64_t seed);
 
     bool canPlaySound (juce::SynthesiserSound* sound) override;
 
@@ -63,8 +74,10 @@ public:
                   int numOutputChannels);
 
 private:
-    const harmonia::AnalogPatch& patch;
-    harmonia::AnalogVoice engine;
+    const HarmoniaPatches& patches;
+    harmonia::AnalogVoice analog;
+    harmonia::Dx7Voice dx7;
+    bool playingDx7 = false;
     std::vector<float> left, right;   ///< scratch, sized in prepare()
     std::uint64_t seed;
     std::uint64_t notesPlayed = 0;    ///< each note draws its own unison phases, drift and noise

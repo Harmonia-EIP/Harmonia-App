@@ -277,8 +277,8 @@ private:
     /** Physical value of every charter v3 parameter (audio thread). */
     HarmoniaParamsV3::ParameterRefs paramRefs;
 
-    /** Analog parameters of the current block, shared by the voices and the effects. */
-    harmonia::AnalogPatch patch = harmonia::defaultPatch();
+    /** What the voices play in the current block (analog patch, DX7 voice, engine), shared with the effects. */
+    HarmoniaPatches patches;
 
     /**
      * Polyphonic synthesizer engine.
@@ -291,7 +291,7 @@ private:
      */
     juce::MidiKeyboardState keyboardState;
 
-    /** Chorus, delay and reverb on the mix of the voices. */
+    /** Chorus, delay and reverb on the mix of the analog voices (a DX7 voice plays dry, as on the instrument). */
     harmonia::Effects effects;
 
     /** Stereo scratch for the effects when the output is mono. */

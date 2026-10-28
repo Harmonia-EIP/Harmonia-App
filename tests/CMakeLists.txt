@@ -12,10 +12,12 @@ add_executable(Harmonia_Tests EXCLUDE_FROM_ALL
     ParametersTests.cpp
     PresetsTests.cpp
     UiTests.cpp
-    ${PLUGIN_SOURCES})
+    ${PLUGIN_SOURCES}
+    ${MSFA_SOURCES})
 
 target_include_directories(Harmonia_Tests PRIVATE
-    ${CMAKE_SOURCE_DIR}/src)
+    ${CMAKE_SOURCE_DIR}/src
+    ${CMAKE_SOURCE_DIR}/src/engine/dx7)
 
 # Récupère les définitions JucePlugin_* du plugin
 target_compile_definitions(Harmonia_Tests PRIVATE
@@ -48,7 +50,12 @@ set_tests_properties(unit_tests PROPERTIES FIXTURES_REQUIRED harmonia_build)
 # Moteur v3 seul (C++17 pur, sans JUCE ni réseau)
 add_executable(HarmoniaEngine_Tests EXCLUDE_FROM_ALL
     engine/EngineTests.cpp
-    ${CMAKE_SOURCE_DIR}/src/engine/HarmoniaEngineV3.cpp)
+    ${CMAKE_SOURCE_DIR}/src/engine/HarmoniaEngineV3.cpp
+    ${CMAKE_SOURCE_DIR}/src/engine/HarmoniaDx7.cpp
+    ${CMAKE_SOURCE_DIR}/src/engine/dx7/msfa/porta.cpp
+    ${MSFA_SOURCES})
+
+target_include_directories(HarmoniaEngine_Tests PRIVATE ${CMAKE_SOURCE_DIR}/src/engine/dx7)
 
 add_test(NAME build_engine_tests
     COMMAND ${CMAKE_COMMAND} --build ${CMAKE_BINARY_DIR} --target HarmoniaEngine_Tests)

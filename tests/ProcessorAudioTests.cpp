@@ -259,3 +259,18 @@ TEST_CASE ("Régression NaN: résonance 0 / cutoff modulé vers le bas")
         r.run (20);
     }
 }
+TEST_CASE ("Mode DX7 : un preset DX7 joue sur le cœur FM, sans effets")
+{
+    Rig r;
+    auto& a = r.proc.getAPVTS();
+    a.getParameter ("reverb_mix")->setValueNotifyingHost (1.0f);   // ne doit pas toucher une voix DX7
+    a.getParameter ("engine")->setValueNotifyingHost (1.0f);       // DX7 (INIT VOICE)
+    r.noteOn (69);
+    const double held = r.run (20);
+    r.noteOff (69);
+    r.run (40);
+    const double tail = r.run (20);
+
+    REQUIRE (held > 0.0);
+    REQUIRE (tail < held * 1e-3);   // INIT VOICE se tait vite après le relâchement, pas de queue de reverb
+}
