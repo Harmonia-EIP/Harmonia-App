@@ -45,3 +45,14 @@ set_tests_properties(build_tests PROPERTIES FIXTURES_SETUP harmonia_build)
 # Étape 2 : lancer les tests
 add_test(NAME unit_tests COMMAND Harmonia_Tests)
 set_tests_properties(unit_tests PROPERTIES FIXTURES_REQUIRED harmonia_build)
+# Moteur v3 seul (C++17 pur, sans JUCE ni réseau)
+add_executable(HarmoniaEngine_Tests EXCLUDE_FROM_ALL
+    engine/EngineTests.cpp
+    ${CMAKE_SOURCE_DIR}/src/engine/HarmoniaEngineV3.cpp)
+
+add_test(NAME build_engine_tests
+    COMMAND ${CMAKE_COMMAND} --build ${CMAKE_BINARY_DIR} --target HarmoniaEngine_Tests)
+set_tests_properties(build_engine_tests PROPERTIES FIXTURES_SETUP harmonia_engine_build)
+
+add_test(NAME engine_tests COMMAND HarmoniaEngine_Tests)
+set_tests_properties(engine_tests PROPERTIES FIXTURES_REQUIRED harmonia_engine_build)
