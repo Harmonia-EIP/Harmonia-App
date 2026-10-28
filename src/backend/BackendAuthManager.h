@@ -58,6 +58,11 @@ public:
         juce::SharedResourcePointer<BackendLogger> logger;
         juce::SharedResourcePointer<SessionStore>  store;
 
-        return ProfileService::fetchAndStoreProfile (HttpClient (apiUrl), store.get(), logger.get(), session);
+        auto snap = ProfileService::fetchAndStoreProfile (HttpClient (apiUrl), store.get(), logger.get(), session);
+
+        if (! snap.has_value())
+            return std::nullopt;
+
+        return snap->session;
     }
 };

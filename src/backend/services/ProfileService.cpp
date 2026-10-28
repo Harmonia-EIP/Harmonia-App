@@ -8,6 +8,7 @@
 #include "../storage/PaletteMapper.h"
 #include "../storage/SessionMapper.h"
 #include "../storage/SessionStore.h"
+#include "../storage/HistoryMapper.h"
 
 #include <atomic>
 #include <chrono>
@@ -18,16 +19,7 @@ namespace
 {
     constexpr int paletteDebounceMs = 2500;   // attente sans nouveau changement avant le PUT
 
-    // Etat de palette comparable (copie par valeur, aucune dépendance JUCE
-    // pour rester sûr dans les threads détachés).
-    struct PaletteState
-    {
-        std::vector<std::string> colours;
-        int         slot   = 0;
-        bool        valid  = false;
-        int         userId = 0;
-        std::string token;
-    };
+    // PaletteState est défini dans ProfileService.h (struct au niveau namespace).
 
     bool samePalette (const PaletteState& a, const PaletteState& b)
     {
@@ -42,33 +34,40 @@ namespace
         return out;
     }
 
-    // TODO étape 7 : ces globaux sont partagés entre toutes les instances du plugin
-    // dans le même DAW. Ils deviendront des membres de PaletteSyncService.
-    std::mutex                paletteMutex;
-    PaletteState              lastSent;   // dernier état connu du serveur (login ou dernier PUT réussi)
-    PaletteState              pending;    // dernier changement demandé, pas encore envoyé
-    std::atomic<uint64_t>     paletteTicket { 0 };   // chaque changement/flush invalide les attentes en cours
-
-    // Attend `totalMs`, par tranches de 50 ms, et abandonne dès que le ticket
-    // n'est plus le dernier : un thread annulé s'arrête vite au lieu de rester
-    // endormi plusieurs secondes.
-    bool waitUnlessCancelled (uint64_t ticket, int totalMs)
-    {
-        for (int waited = 0; waited < totalMs; waited += 50)
-        {
-            if (paletteTicket.load() != ticket)
-                return false;
-
-            std::this_thread::sleep_for (std::chrono::milliseconds (50));
-        }
-
-        return paletteTicket.load() == ticket;
-    }
+    const juce::String historyEntryPath (int id) { return "/profile/me/history/" + juce::String (id); }
+    const juce::String historyAllPath = "/profile/me/history";
 }
 
 ProfileService::ProfileService (HttpClient& h, SessionStore& s, BackendLogger& l)
     : http (h), store (s), logger (l)
 {
+}
+
+ProfileService::~ProfileService()
+{
+    ++paletteTicket;   // les debounces en attente se terminent en <= 50 ms
+
+    // Supprime les jobs pas encore démarrés, attend les autres (max 5 s).
+    // Les jobs utilisent `this`, http, store et logger : ils doivent être finis
+    // avant que ces objets disparaissent.
+    if (! pool.removeAllJobs (true, 5000))
+        logger.warn ("ProfileService: jobs still running at shutdown");
+}
+
+// Attend `totalMs`, par tranches de 50 ms, et abandonne dès que le ticket
+// n'est plus le dernier : un job annulé s'arrête vite au lieu de rester
+// endormi plusieurs secondes.
+bool ProfileService::waitUnlessCancelled (uint64_t ticket, int totalMs)
+{
+    for (int waited = 0; waited < totalMs; waited += 50)
+    {
+        if (paletteTicket.load() != ticket)
+            return false;
+
+        std::this_thread::sleep_for (std::chrono::milliseconds (50));
+    }
+
+    return paletteTicket.load() == ticket;
 }
 
 //==============================================================================
@@ -113,13 +112,31 @@ ProfileResult ProfileService::getProfile()
     return ProfileResult::ok (profile);
 }
 
+void ProfileService::refreshSessionAsync (const UserSession& session,
+                                          std::function<void (ProfileSnapshot)> onDone)
+{
+    if (session.isGuest || session.accessToken.isEmpty())
+        return;
+
+    pool.addJob ([this, session, onDone = std::move (onDone)]
+    {
+        try
+        {
+            if (auto snap = fetchAndStoreProfile (http, store, logger, session))
+                if (onDone)
+                    onDone (std::move (*snap));
+        }
+        catch (...) {}
+    });
+}
+
 //==============================================================================
 // Sync de la session (remplace syncProfileParams / ...InBackground / ...FromServer)
 
-std::optional<UserSession> ProfileService::fetchAndStoreProfile (const HttpClient& http,
-                                                                 SessionStore& store,
-                                                                 BackendLogger& logger,
-                                                                 const UserSession& session)
+std::optional<ProfileSnapshot> ProfileService::fetchAndStoreProfile (const HttpClient& http,
+                                                                     SessionStore& store,
+                                                                     BackendLogger& logger,
+                                                                     const UserSession& session)
 {
     if (session.isGuest || session.accessToken.isEmpty())
         return std::nullopt;
@@ -133,7 +150,7 @@ std::optional<UserSession> ProfileService::fetchAndStoreProfile (const HttpClien
         return std::nullopt;
     }
 
-    const auto body = JsonUtil::parseObject (response.body);
+    const auto body = JsonUtil::parseObject (response.body);   // <- la ligne qui manquait
 
     if (! body.has_value())
     {
@@ -141,13 +158,10 @@ std::optional<UserSession> ProfileService::fetchAndStoreProfile (const HttpClien
         return std::nullopt;
     }
 
-    // Lecture-modification-écriture atomique sur la session ACTUELLE du fichier
-    // (pas sur la copie reçue en paramètre, qui peut être périmée) :
-    //  - si l'utilisateur s'est déconnecté pendant la requête, il n'y a plus de
-    //    session et rien n'est écrit (plus de "reconnexion fantôme") ;
-    //  - si un autre compte s'est connecté entre-temps, le token diffère : on n'écrase pas ;
-    //  - on ne perd pas un changement de palette écrit pendant ce temps.
-    std::optional<UserSession> result;
+    // Lecture-modification-écriture atomique sur la session ACTUELLE du fichier :
+    // si l'utilisateur s'est déconnecté ou qu'un autre compte s'est connecté
+    // pendant la requête, rien n'est écrit.
+    std::optional<UserSession> updated;
 
     const bool written = store.update ([&] (UserSession& stored)
     {
@@ -155,7 +169,7 @@ std::optional<UserSession> ProfileService::fetchAndStoreProfile (const HttpClien
             return false;
 
         SessionMapper::applyProfileResponse (*body, stored);
-        result = stored;
+        updated = stored;
         return true;
     });
 
@@ -166,37 +180,11 @@ std::optional<UserSession> ProfileService::fetchAndStoreProfile (const HttpClien
     }
 
     logger.info ("Session synced from backend");
-    return result;
-}
 
-std::optional<UserSession> ProfileService::refreshSession (const UserSession& session)
-{
-    return fetchAndStoreProfile (http, store, logger, session);
-}
-
-void ProfileService::refreshSessionAsync (const UserSession& session)
-{
-    if (session.isGuest || session.accessToken.isEmpty())
-        return;
-
-    // Tout est passé par valeur : le BackendManager (donc `this`, http, store, logger)
-    // est détruit à chaque fermeture de l'éditeur, alors que ce thread peut encore tourner.
-    // Le store et le logger sont des objets partagés du processus : en construire un
-    // handle ici donne la même instance et la garde en vie tant que le thread tourne.
-    // (Suppose que le store de BackendManager est bien le SharedResourcePointer par défaut.)
-    const HttpClient httpCopy = http;
-
-    std::thread ([httpCopy, session]()
-    {
-        try
-        {
-            juce::SharedResourcePointer<BackendLogger> sharedLogger;
-            juce::SharedResourcePointer<SessionStore>  sharedStore;
-
-            fetchAndStoreProfile (httpCopy, sharedStore.get(), sharedLogger.get(), session);
-        }
-        catch (...) {}   // un thread détaché ne doit jamais laisser remonter d'exception
-    }).detach();
+    ProfileSnapshot snap;
+    snap.session = *updated;
+    snap.history = HistoryMapper::readFromJson (*body);
+    return snap;
 }
 
 //==============================================================================
@@ -297,9 +285,7 @@ void ProfileService::updatePaletteAsync (const juce::StringArray& colours, int s
         pending = requested;
     }
 
-    const HttpClient httpCopy = http;
-
-    std::thread ([httpCopy, ticket]()
+    pool.addJob ([this, ticket]
     {
         try
         {
@@ -323,7 +309,7 @@ void ProfileService::updatePaletteAsync (const juce::StringArray& colours, int s
                 }
             }
 
-            const auto result = putPaletteToServer (httpCopy, snap.userId, snap.token,
+            const auto result = putPaletteToServer (http, snap.userId, snap.token,
                                                     snap.colours, snap.slot, HttpTimeouts::Palette);
 
             if (result.success)
@@ -339,12 +325,11 @@ void ProfileService::updatePaletteAsync (const juce::StringArray& colours, int s
             {
                 // lastSent n'est PAS mis à jour et pending reste valide : le prochain
                 // changement ou le flush de fermeture retentera.
-                juce::SharedResourcePointer<BackendLogger> sharedLogger;
-                sharedLogger->warn ("Palette update failed: " + juce::String (result.errorMessage));
+                logger.warn ("Palette update failed: " + juce::String (result.errorMessage));
             }
         }
         catch (...) {}
-    }).detach();
+    });
 }
 
 void ProfileService::flushPaletteIfPending()
@@ -368,18 +353,14 @@ void ProfileService::flushPaletteIfPending()
         }
 
         // `pending` reste valide tant que le serveur n'a pas confirmé : si le PUT
-        // échoue, le changement n'est pas perdu (ancien bug : il était effacé avant l'envoi).
+        // échoue, le changement n'est pas perdu.
     }
 
-    // Tout est copié par valeur : le thread ne touche ni `this`, ni
-    // BackendManager, ni le fichier de session (qu'un logout peut avoir vidé).
-    const HttpClient httpCopy = http;
-
-    std::thread ([httpCopy, snap]()
+    pool.addJob ([this, snap]
     {
         try
         {
-            const auto result = putPaletteToServer (httpCopy, snap.userId, snap.token,
+            const auto result = putPaletteToServer (http, snap.userId, snap.token,
                                                     snap.colours, snap.slot, HttpTimeouts::PaletteFlush);
 
             if (result.success)
@@ -393,12 +374,11 @@ void ProfileService::flushPaletteIfPending()
             }
             else
             {
-                juce::SharedResourcePointer<BackendLogger> sharedLogger;
-                sharedLogger->warn ("Palette flush failed: " + juce::String (result.errorMessage));
+                logger.warn ("Palette flush failed: " + juce::String (result.errorMessage));
             }
         }
         catch (...) {}
-    }).detach();
+    });
 }
 
 ProfileResult ProfileService::updatePalette (const juce::StringArray& colours, int slot)
@@ -431,4 +411,61 @@ ProfileResult ProfileService::updatePalette (const juce::StringArray& colours, i
 
     logger.info ("PUT palette : " + juce::String (result.success ? "ok" : "failed"));
     return result;
+}
+
+//==============================================================================
+// Historique
+
+bool ProfileService::deleteHistoryRequest (const juce::String& path, const juce::String& what)
+{
+    const auto sessionOpt = store.load();
+
+    if (! sessionOpt.has_value() || sessionOpt->isGuest || sessionOpt->accessToken.isEmpty())
+    {
+        logger.warn (what + " ignored: no user session");
+        return false;
+    }
+
+    const auto response = http.del (path,
+                                    HttpOptions (HttpTimeouts::Profile)
+                                        .withToken (sessionOpt->accessToken));
+
+    logger.info (what + " : " + response.describe());
+
+    // 404 = déjà supprimée : l'état voulu est atteint, on ne resynchronise pas pour rien.
+    return response.isSuccess() || response.statusCode == 404;
+}
+
+bool ProfileService::deleteHistoryEntry (int entryId)
+{
+    if (entryId <= 0)
+        return false;
+
+    return deleteHistoryRequest (historyEntryPath (entryId),
+                                 "DELETE " + historyEntryPath (entryId));
+}
+
+bool ProfileService::clearHistory()
+{
+    return deleteHistoryRequest (historyAllPath, "DELETE " + historyAllPath);
+}
+
+bool ProfileService::touchHistoryEntry (int entryId)
+{
+    if (entryId <= 0)
+        return false;
+
+    const auto sessionOpt = store.load();
+
+    if (! sessionOpt.has_value() || sessionOpt->isGuest || sessionOpt->accessToken.isEmpty())
+        return false;
+
+    const auto path = "/profile/me/history/" + juce::String (entryId) + "/touch";
+
+    const auto response = http.post (path, "",
+                                     HttpOptions (HttpTimeouts::Profile)
+                                         .withToken (sessionOpt->accessToken));
+
+    logger.info ("POST " + path + " : " + response.describe());
+    return response.isSuccess();
 }

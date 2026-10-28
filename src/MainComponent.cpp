@@ -103,12 +103,66 @@ MainComponent::MainComponent (HarmoniaAudioProcessor& p,
         setRefineUi (m == HeaderComponent::Mode::Refine);
     };
 
+    // --- Historique : le header renvoie l'entrée complète ---------------------
+
+    headerComponent->onHistorySelected = [this] (const HeaderComponent::HistoryList::value_type& entry)
+    {
+        loadHistoryEntry (entry);
+    };
+
+        headerComponent->onHistoryDeleted = [safe = juce::Component::SafePointer<MainComponent> (this),
+                                         &be = backend] (const HeaderComponent::HistoryList::value_type& entry)
+    {
+        juce::Thread::launch ([safe, &be, id = entry.id]
+        {
+            if (be.deleteHistoryEntry (id))
+                return;
+
+            juce::MessageManager::callAsync ([safe]
+            {
+                if (safe == nullptr)
+                    return;
+
+                HarmoniaAlert::warning (safe.getComponent(),
+                                        "Could not delete preset",
+                                        "The preset was restored. Please try again.",
+                                        HarmoniaAlert::Position::TopCenter);
+                safe->refreshHistoryAsync();
+            });
+        });
+    };
+
+    headerComponent->onHistoryCleared = [safe = juce::Component::SafePointer<MainComponent> (this),
+                                         &be = backend]
+    {
+        juce::Thread::launch ([safe, &be]
+        {
+            if (be.clearHistory())
+                return;
+
+            juce::MessageManager::callAsync ([safe]
+            {
+                if (safe == nullptr)
+                    return;
+
+                HarmoniaAlert::warning (safe.getComponent(),
+                                        "Could not clear history",
+                                        "Your history was restored. Please try again.",
+                                        HarmoniaAlert::Position::TopCenter);
+                safe->refreshHistoryAsync();
+            });
+        });
+    };
+
     addAndMakeVisible (synthComponent);
 
     setSize (AppConfig::DefaultWidth, AppConfig::DefaultHeight);
 
     // Récupère la liste des modèles IA sans bloquer l'ouverture de la fenêtre.
     refreshModelsAsync();
+
+    // Récupère palette serveur + historique sans bloquer non plus.
+    refreshProfileAsync();
 }
 
 MainComponent::~MainComponent()
@@ -334,6 +388,32 @@ void MainComponent::doLoadPreset()
         });
 }
 
+//------------------------------------------------------------------------------
+// Charge une entrée de l'historique :
+//  - Generate : tous les paramètres sont remplacés
+//  - Refine   : les paramètres verrouillés gardent leur valeur
+void MainComponent::loadHistoryEntry (const HeaderComponent::HistoryList::value_type& entry)
+{
+    const auto locked = headerComponent->getMode() == HeaderComponent::Mode::Refine
+                            ? getLockedParamIds()
+                            : juce::StringArray();
+
+    auto r = PresetLoader::loadFromParameters (entry.parameters, entry.name,
+                                               processor.getAPVTS(), locked);
+
+    if (! r.success)
+    {
+        HarmoniaAlert::error (this, Strings::Errors::ErrorTitle,
+                              r.errorMessage.isNotEmpty() ? r.errorMessage
+                                                          : Strings::Errors::UnreadableAIResponse,
+                              HarmoniaAlert::Position::Center);
+        return;
+    }
+
+    setPresetName (r.presetName);
+    touchHistoryAsync (entry.id);
+}
+
 void MainComponent::saveThemeToState (int slot)
 {
     if (slot < 0)
@@ -420,6 +500,79 @@ void MainComponent::refreshModelsAsync()
     });
 }
 
+// Recharge uniquement l'historique (ne touche pas à la palette).
+void MainComponent::refreshHistoryAsync()
+{
+    if (session.isGuest)
+        return;
+
+    backend.syncProfileParamsInBackground (session,
+        [safe = juce::Component::SafePointer<MainComponent> (this)] (ProfileSnapshot snap)
+        {
+            juce::MessageManager::callAsync ([safe, history = std::move (snap.history)]
+            {
+                if (safe != nullptr)
+                    safe->headerComponent->setHistory (history);
+            });
+        });
+}
+
+// Prévient le serveur que l'entrée vient d'être utilisée, puis recharge la liste.
+void MainComponent::touchHistoryAsync (int entryId)
+{
+    if (session.isGuest || entryId <= 0)
+        return;
+
+    headerComponent->moveHistoryToTop (entryId);   // mise à jour locale immédiate
+
+    juce::Thread::launch ([safe = juce::Component::SafePointer<MainComponent> (this),
+                           &be = backend, entryId]
+    {
+        if (be.touchHistoryEntry (entryId))
+            return;
+
+        juce::MessageManager::callAsync ([safe]
+        {
+            if (safe == nullptr)
+                return;
+
+            HarmoniaAlert::warning (safe.getComponent(),
+                                    "History not updated",
+                                    "Could not sync with the server.",
+                                    HarmoniaAlert::Position::TopCenter);
+            safe->refreshHistoryAsync();
+        });
+    });
+}
+
+// Récupère GET /profile/me en arrière-plan (palette serveur + historique),
+// puis met à jour le header. Invité : rien à faire.
+void MainComponent::refreshProfileAsync()
+{
+    if (session.isGuest)
+        return;
+
+    backend.syncProfileParamsInBackground (session,
+        [safe = juce::Component::SafePointer<MainComponent> (this)] (ProfileSnapshot snap)
+        {
+            // Appelé depuis un thread du pool : on repasse sur le message thread
+            juce::MessageManager::callAsync ([safe, snap = std::move (snap)]
+            {
+                if (safe == nullptr)
+                    return;
+
+                // Référence « état serveur » pour le filtre anti-PUT
+                safe->backend.resetPaletteSyncState (snap.session.paletteColours,
+                                                     snap.session.paletteSlot);
+
+                // <<< C'est ici que ça part au header >>>
+                safe->headerComponent->setPaletteFromServer (snap.session.paletteColours,
+                                                             snap.session.paletteSlot);
+                safe->headerComponent->setHistory (snap.history);
+            });
+        });
+}
+
 //==============================================================================
 // Verifie invite + prompt vide. Remplit `prompt`, renvoie false si on doit s'arreter.
 bool MainComponent::getAiPrompt (juce::String& prompt)
@@ -501,8 +654,7 @@ void MainComponent::runAiRequest (std::function<AiResult()> request,
         if (auto* prm = processor.getAPVTS().getParameter (id))
             keep.push_back ({ id, prm->getValue() });
 
-    headerComponent->getPresetLabel().setText (Strings::Labels::GeneratingPreset,
-                                               juce::dontSendNotification);
+    headerComponent->setPresetName (Strings::Labels::GeneratingPreset);
 
     juce::Thread::launch ([safe = juce::Component::SafePointer<MainComponent> (this),
                            request = std::move (request),
@@ -530,7 +682,8 @@ void MainComponent::runAiRequest (std::function<AiResult()> request,
                     safe.getComponent(), Strings::Errors::ErrorTitle,
                     (r.errorMessage.isNotEmpty() ? r.errorMessage
                                                  : Strings::Errors::UnreadableAIResponse)
-                        + "\n\n" + Strings::Errors::PleaseTryAgainLater, HarmoniaAlert::Position::Center);
+                        + "\n\n" + Strings::Errors::PleaseTryAgainLater,
+                    HarmoniaAlert::Position::Center);
 
                 safe->restorePresetLabel();
                 return;
@@ -543,6 +696,12 @@ void MainComponent::runAiRequest (std::function<AiResult()> request,
                     prm->setValueNotifyingHost (value);
 
             safe->setPresetName (r.presetName);
+
+            // Le serveur a renvoye l'entree creee : pas besoin de GET /profile/me.
+            if (result.historyEntry.has_value())
+                safe->headerComponent->addHistoryEntry (*result.historyEntry);
+            else
+                safe->refreshHistoryAsync();   // filet de securite
         });
     });
 }

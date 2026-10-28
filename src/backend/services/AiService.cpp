@@ -5,6 +5,7 @@
 #include "../core/JsonUtil.h"
 #include "../net/ApiError.h"
 #include "../net/HttpClient.h"
+#include "../storage/HistoryMapper.h"
 #include "../storage/SessionStore.h"
 
 using json = nlohmann::json;
@@ -172,5 +173,26 @@ AiResult AiService::postAuthenticated (const juce::String& endpoint, const json&
     if (response.body.empty())
         return AiResult::failure (AiResult::Error::EmptyResponse, "Empty response");
 
-    return AiResult::ok (JsonUtil::toJuce (response.body));
+    // Le corps complet reste la source du preset (result.json) : PresetLoader
+    // ignore les clés inconnues, donc "history_entry" ne le gêne pas.
+    auto result = AiResult::ok (JsonUtil::toJuce (response.body));
+
+    // Entrée d'historique créée par le serveur (optionnelle)
+    const auto parsed = json::parse (response.body, nullptr, false);
+
+    if (! parsed.is_discarded() && parsed.is_object()
+        && parsed.contains ("history_entry") && parsed["history_entry"].is_object())
+    {
+        auto entry = HistoryMapper::readEntry (parsed["history_entry"]);
+
+        // history_entry ne contient pas les paramètres : on prend ceux du preset
+        if (entry.parameters.empty() && parsed.contains ("parameters"))
+            entry.parameters = HistoryMapper::readParameters (parsed["parameters"]);
+
+        // Sans id valide, delete/touch seraient impossibles : on laisse le refresh serveur faire
+        if (entry.id > 0)
+            result.historyEntry = std::move (entry);
+    }
+
+    return result;
 }

@@ -1,6 +1,6 @@
 #include "AppController.h"
 
-// `backend` est maintenant une RÉFÉRENCE vers le BackendManager du processor
+// `backend` est une RÉFÉRENCE vers le BackendManager du processor
 // (voir AppController.h : `BackendManager& backend;`, déclaré après `processor`).
 AppController::AppController(HarmoniaAudioProcessor& p)
     : processor(p), backend(p.getBackend())
@@ -15,16 +15,10 @@ AppController::AppController(HarmoniaAudioProcessor& p)
     if (session && session->expiresAt > juce::Time::getCurrentTime())
     {
         currentSession = *session;
+
+        // Le sync du profil (palette + historique) est lancé par MainComponent
+        // (refreshProfileAsync), qui reçoit le résultat et le distribue au header.
         showMainScreen(*session);
-
-        juce::Component::SafePointer<AppController> safeThis(this);
-
-        // Le backend vit dans le processor : il survit à cet AppController (donc à l'éditeur).
-        // La requête tourne en arrière-plan ; son résultat revient sur le message thread,
-        // où `safeThis` est vérifié puis utilisé de façon atomique : si l'utilisateur a fermé
-        // la fenêtre entre-temps, le callback ne fait rien.
-        backend.syncProfileParamsInBackground(*session);
-
         return;
     }
 
