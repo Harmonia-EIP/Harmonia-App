@@ -15,7 +15,9 @@ HeaderComponent::HeaderComponent (const UserSession& s, AIModelList initialModel
     titleLabel.setText (username.toUpperCase(), juce::dontSendNotification);
     titleLabel.setFont (juce::Font (juce::FontOptions (17.0f).withStyle ("Bold"))
                             .withExtraKerningFactor (0.10f));
-    titleLabel.setBorderSize ({ 0, 5, 0, 5 });   // plus de marge verticale parasite
+    titleLabel.setBorderSize ({ 0, 0, 0, 5 });
+    titleLabel.setMinimumHorizontalScale (1.0f);
+    titleLabel.setTooltip (username);
     addAndMakeVisible (titleLabel);
 
     // Preset
@@ -132,24 +134,24 @@ HeaderComponent::HeaderComponent (const UserSession& s, AIModelList initialModel
     addAndMakeVisible (promptEditor);
 
     // when refine mode is available with ai
-    // logoButton.onClick = [this]
-    // {
-    //     setMode (mode == Mode::Generate ? Mode::Refine : Mode::Generate);
-    // };
     logoButton.onClick = [this]
     {
-        if (! refineEnabled)
-        {
-            HarmoniaAlert::info (this,
-                                 "Refine mode",
-                                 "Refine mode is coming soon.",
-                                 HarmoniaAlert::Position::TopRight,
-                                 3000);
-            return;
-        }
-
         setMode (mode == Mode::Generate ? Mode::Refine : Mode::Generate);
     };
+    // logoButton.onClick = [this]
+    // {
+    //     if (! refineEnabled)
+    //     {
+    //         HarmoniaAlert::info (this,
+    //                              "Refine mode",
+    //                              "Refine mode is coming soon.",
+    //                              HarmoniaAlert::Position::TopRight,
+    //                              3000);
+    //         return;
+    //     }
+
+    //     setMode (mode == Mode::Generate ? Mode::Refine : Mode::Generate);
+    // };
     addAndMakeVisible (logoButton);
     logoButton.setTooltip ("Refine mode (coming soon)");
     addAndMakeVisible (actionButton);
@@ -654,18 +656,24 @@ void HeaderComponent::resized()
     const int cy = row.getCentreY();
 
     // ---------- GAUCHE : maison + pseudo, puis couleurs dessous ----------
-    const int homeSize = 30;
-    const int topY = 6;
-    const int titleNudge = 1;   // 1 ou 2 px : ajuste à l'œil pour aligner pseudo et maison
+    const int homeSize   = 30;
+    const int topY       = 6;
+    const int titleNudge = 1;
+    const int homeGap    = 4;     // pseudo collé à la maison
+    const int leftZoneW  = 124;   // largeur FIXE de la zone gauche, quel que soit le pseudo
 
     homeButton.setBounds (row.getX(), topY, homeSize, homeSize);
 
-    const int titleW = juce::jmin (200, titleLabel.getFont().getStringWidth (titleLabel.getText()) + 8);
-    titleLabel.setBounds (homeButton.getRight() + 10, topY + titleNudge, titleW, homeSize);
+    const int titleX    = homeButton.getRight() + homeGap;
+    const int titleMaxW = row.getX() + leftZoneW - titleX;
+    const int textW     = titleLabel.getFont().getStringWidth (titleLabel.getText()) + 4;
+
+    titleLabel.setBounds (titleX, topY + titleNudge, juce::jmin (titleMaxW, textW), homeSize);
 
     paletteSelector.setBounds (row.getX(), homeButton.getBottom() + 6, 118, 24);
 
-    const int leftEdge = juce::jmax (titleLabel.getRight(), paletteSelector.getRight());
+    // Ne dépend plus du pseudo : le reste du layout ne bouge plus
+    const int leftEdge = row.getX() + leftZoneW;
 
     // ---------- DROITE : modèle + load/export (même axe que la barre) ----------
     const int rowH      = 34;
@@ -673,49 +681,52 @@ void HeaderComponent::resized()
     const int pickerW   = 140;
     const int pickerGap = 10;
 
-    // Historique : capsule "cartes empilées + nombre" (~64 px), même hauteur que les autres pickers
-    const int historyW   = 64;
-    const int historyGap = 24;         // espace entre la capsule et la barre
+    // Historique : capsule "cartes empilées + nombre" (~64 px)
+    const int historyW = 64;
+
+    // Un seul écart pour les deux côtés de la barre
+    const int barGap = 20;
 
     fileGroupBounds = { row.getRight() - 68, barCy - rowH / 2, 68, rowH };
     loadButton.setBounds (fileGroupBounds.withWidth (34));
     saveButton.setBounds (fileGroupBounds.withTrimmedLeft (34));
 
-    modelPicker.setBounds (fileGroupBounds.getX() - pickerGap - pickerW,
-                           barCy - rowH / 2, pickerW, rowH);
-    const int rightEdge = modelPicker.getX();
+    const int modelX = fileGroupBounds.getX() - pickerGap - pickerW;
 
     // ---------- CENTRE : barre de prompt + preset dessous ----------
     const int barH = 42, labelH = 14, gap = 4;
-    const int top = barCy - barH / 2;  // la barre est centrée sur le même axe
+    const int top = barCy - barH / 2;
+    const int cx  = getWidth() / 2;
 
-    // Le côté gauche réserve aussi la place de l'historique,
-    // pour que la barre reste centrée dans la fenêtre
-    const int leftReservedX = leftEdge + pickerGap + historyW + historyGap;
+    // Demi-largeur max : à gauche (zone pseudo + historique), à droite (model picker)
+    const int halfLeft  = cx - (leftEdge + pickerGap + historyW + barGap);
+    const int halfRight = modelX - barGap - cx;
+    const int half      = juce::jmin (halfLeft, halfRight, 310);   // 310 = 620 / 2
 
-    const int sideW = juce::jmax (leftReservedX - row.getX(), row.getRight() - rightEdge);
-    const int centredW = row.getWidth() - 2 * sideW - 32;
-
-    if (centredW >= 340)
+    if (half >= 170)   // barre >= 340 px
     {
-        const int w = juce::jmin (centredW, 620);
-        promptBounds = { getWidth() / 2 - w / 2, top, w, barH };
+        // Barre parfaitement centrée, écart identique des deux côtés
+        promptBounds = { cx - half, top, half * 2, barH };
 
-        // capsule historique à gauche de la barre
-        historyPicker.setBounds (promptBounds.getX() - historyGap - historyW,
+        historyPicker.setBounds (promptBounds.getX() - barGap - historyW,
                                  barCy - rowH / 2, historyW, rowH);
+
+        modelPicker.setBounds (promptBounds.getRight() + barGap,
+                               barCy - rowH / 2, pickerW, rowH);
     }
     else
     {
-        // fenêtre étroite : historique juste après le pseudo/palette, barre entre les deux
+        // Fenêtre étroite : on revient à un placement entre les deux
+        modelPicker.setBounds (modelX, barCy - rowH / 2, pickerW, rowH);
+
         historyPicker.setBounds (leftEdge + pickerGap, barCy - rowH / 2, historyW, rowH);
 
-        const int barX = historyPicker.getRight() + 16;
-        promptBounds = { barX, top, juce::jmax (0, rightEdge - 16 - barX), barH };
+        const int barX = historyPicker.getRight() + barGap;
+        promptBounds = { barX, top,
+                         juce::jmax (0, modelPicker.getX() - barGap - barX), barH };
     }
 
     // nom du preset : du bord gauche du logo au bord droit du bouton GENERATE
-    // (même marge de 6 px que la barre intérieure ci-dessous)
     presetLabel.setBounds (promptBounds.getX() + 6, promptBounds.getBottom() + gap,
                            promptBounds.getWidth() - 12, labelH);
 
@@ -728,6 +739,4 @@ void HeaderComponent::resized()
     bar.removeFromRight (10);
 
     promptEditor.setBounds (bar);
-
-    // La largeur du label vient de changer : on réévalue si le tooltip est nécessaire
 }
