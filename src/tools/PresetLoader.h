@@ -3,6 +3,8 @@
 #include <juce_audio_processors/juce_audio_processors.h>
 #include <juce_core/juce_core.h>
 #include <nlohmann/json.hpp>
+#include <algorithm>
+#include <cmath>
 #include <map>
 #include "../parameters/HarmoniaParameters.h"
 #include "../parameters/HarmoniaParametersV3.h"
@@ -28,14 +30,120 @@ namespace PresetLoader
             && m["charter_version"].get<std::string>().rfind ("3", 0) == 0;
     }
 
+    // Vrai si les valeurs contiennent un paramètre apparu en v3 (engine, unison_voices, dx7_...) : seul
+    // indice quand le preset arrive sans metadata, comme une entrée d'historique du backend (un nom et
+    // ses parameters). Un preset v1/v2 n'a que les 20 paramètres v2 ; un id inconnu ne compte pas.
+    inline bool hasV3Parameters (const std::map<juce::String, float>& values)
+    {
+        for (const auto& entry : values)
+        {
+            const auto id = entry.first.toStdString();
+            if (HarmoniaCharter::indexOf (id) >= 0
+                && std::find (HarmoniaCharter::v2Ids.begin(), HarmoniaCharter::v2Ids.end(), id) == HarmoniaCharter::v2Ids.end())
+                return true;
+        }
+        return false;
+    }
+
+    // Applique des valeurs normalisées { id -> [0..1] } sur l'APVTS. Un preset v3 s'applique tel quel.
+    // Un preset v1/v2 (normalisé sur les 20 plages v2) passe par les règles de la charte
+    // (HarmoniaCharter::upgradeFromV2) ; les paramètres apparus en v3 reprennent leur valeur neutre,
+    // pour que le son reste celui du preset, et le moteur passe en analogique.
+    // lockedIds : paramètres verrouillés, ils ne sont jamais modifiés.
+    // Renvoie le nombre de paramètres du preset reconnus (verrouillés compris).
+    inline int applyValues (const std::map<juce::String, float>& values, bool charterV3,
+                            juce::AudioProcessorValueTreeState& apvts,
+                            const juce::StringArray& lockedIds)
+    {
+        auto applyNorm = [&apvts, &lockedIds] (const juce::String& id, float normValue)
+        {
+            if (lockedIds.contains (id))
+                return;   // verrouille : on ne touche pas
+
+            if (auto* p = apvts.getParameter (id))
+            {
+                normValue = juce::jlimit (0.0f, 1.0f, normValue);
+                p->beginChangeGesture();
+                p->setValueNotifyingHost (normValue);
+                p->endChangeGesture();
+            }
+        };
+
+        int recognised = 0;
+
+        if (charterV3)
+        {
+            for (const auto& [id, value] : values)
+            {
+                if (apvts.getParameter (id) != nullptr)
+                    ++recognised;
+                applyNorm (id, value);
+            }
+            return recognised;
+        }
+
+        // preset v1/v2 : valeurs normalisées sur les plages v2 -> valeurs physiques v3
+        std::array<float, HarmoniaCharter::v2Ids.size()> v2 {};
+        std::array<bool, HarmoniaCharter::v2Ids.size()> present {};
+        for (size_t i = 0; i < v2.size(); ++i)
+        {
+            const auto it = values.find (HarmoniaParamsV3::toJuce (HarmoniaCharter::v2Ids[i]));
+            present[i] = it != values.end();
+            v2[i] = present[i] ? juce::jlimit (0.0f, 1.0f, it->second) : 0.0f;
+            recognised += present[i] ? 1 : 0;
+        }
+        for (size_t i = HarmoniaCharter::analogBegin; i < HarmoniaCharter::analogEnd; ++i)
+        {
+            const auto& p = HarmoniaCharter::params[i];
+            const auto id = HarmoniaParamsV3::toJuce (p.id);
+            if (p.v2.source < 0)
+                applyNorm (id, HarmoniaCharter::toNormalized (p, p.defaultValue));
+            else if (present[(size_t) p.v2.source])
+                applyNorm (id, HarmoniaCharter::toNormalized (p, HarmoniaCharter::upgradeFromV2Normalized (p, v2)));
+            // absent du preset : le paramètre garde sa valeur
+        }
+        applyNorm ("engine", 0.0f);  // analogique
+        return recognised;
+    }
+
+    // Charge une entrée de l'historique du backend : un nom et { id -> valeur normalisée [0..1] },
+    // sans metadata. Le format (v3, ou v1/v2 à convertir) se lit sur les ids (hasV3Parameters).
+    // Les ids verrouillés ou inconnus sont ignorés ; une valeur hors de [0, 1] refuse l'entrée entière.
+    inline LoadResult loadFromParameters (const std::map<juce::String, float>& parameters,
+                                          const juce::String& presetName,
+                                          juce::AudioProcessorValueTreeState& apvts,
+                                          const juce::StringArray& lockedIds = {})
+    {
+        LoadResult r;
+
+        // Valider avant de toucher au moindre paramètre
+        for (const auto& [id, value] : parameters)
+        {
+            if (! std::isfinite (value) || value < 0.0f || value > 1.0f)
+            {
+                r.errorMessage = "Invalid preset: value out of range";
+                return r;
+            }
+        }
+
+        if (applyValues (parameters, hasV3Parameters (parameters), apvts, lockedIds) == 0)
+        {
+            r.errorMessage = "No matching parameters found in history entry";
+            return r;
+        }
+
+        r.success = true;
+        r.presetName = presetName.isNotEmpty() ? presetName : juce::String ("Preset");
+        return r;
+    }
+
     // Charge un fichier hel.json (schéma : metadata + parameters{name:value} + values[])
     // et applique les valeurs normalisées sur l'APVTS.
     // Accepte deux formes :
     //   1. parameters: { "osc_1_waveform": 0.5, ... }     (recommandée)
     //   2. values: [0.5, 0.3, ...]  (fallback v2 ; ordre = HarmoniaParams::orderedIds())
-    // Un preset v3 s'applique tel quel. Un preset v1/v2 passe par les règles de la charte
-    // (HarmoniaCharter::upgradeFromV2) ; les paramètres apparus en v3 reprennent leur valeur
-    // neutre, pour que le son reste celui du preset, et le moteur passe en analogique.
+    // Un preset v3 (metadata.charter_version "3...", ou des paramètres apparus en v3) s'applique
+    // tel quel ; un preset v1/v2 est converti (voir applyValues).
     //
     // lockedIds : paramètres verrouillés, ils ne sont jamais modifiés.
     inline LoadResult loadFromJsonString (const juce::String& jsonText,
@@ -60,20 +168,6 @@ namespace PresetLoader
         {
             r.presetName = juce::String (doc["metadata"]["name"].get<std::string>());
         }
-
-        auto applyNorm = [&apvts, &lockedIds] (const juce::String& id, float normValue)
-        {
-            if (lockedIds.contains (id))
-                return;   // verrouille : on ne touche pas
-
-            if (auto* p = apvts.getParameter (id))
-            {
-                normValue = juce::jlimit (0.0f, 1.0f, normValue);
-                p->beginChangeGesture();
-                p->setValueNotifyingHost (normValue);
-                p->endChangeGesture();
-            }
-        };
 
         // Valeurs normalisées du preset, par identifiant.
         std::map<juce::String, float> values;
@@ -122,34 +216,8 @@ namespace PresetLoader
 
         const bool applied = ! values.empty();
 
-        if (applied && isCharterV3 (doc))
-        {
-            for (const auto& [id, value] : values)
-                applyNorm (id, value);
-        }
-        else if (applied)
-        {
-            // preset v1/v2 : valeurs normalisées sur les plages v2 -> valeurs physiques v3
-            std::array<float, HarmoniaCharter::v2Ids.size()> v2 {};
-            std::array<bool, HarmoniaCharter::v2Ids.size()> present {};
-            for (size_t i = 0; i < v2.size(); ++i)
-            {
-                const auto it = values.find (HarmoniaParamsV3::toJuce (HarmoniaCharter::v2Ids[i]));
-                present[i] = it != values.end();
-                v2[i] = present[i] ? juce::jlimit (0.0f, 1.0f, it->second) : 0.0f;
-            }
-            for (size_t i = HarmoniaCharter::analogBegin; i < HarmoniaCharter::analogEnd; ++i)
-            {
-                const auto& p = HarmoniaCharter::params[i];
-                const auto id = HarmoniaParamsV3::toJuce (p.id);
-                if (p.v2.source < 0)
-                    applyNorm (id, HarmoniaCharter::toNormalized (p, p.defaultValue));
-                else if (present[(size_t) p.v2.source])
-                    applyNorm (id, HarmoniaCharter::toNormalized (p, HarmoniaCharter::upgradeFromV2Normalized (p, v2)));
-                // absent du preset : le paramètre garde sa valeur
-            }
-            applyNorm ("engine", 0.0f);  // analogique
-        }
+        if (applied)
+            applyValues (values, isCharterV3 (doc) || hasV3Parameters (values), apvts, lockedIds);
 
         if (! applied)
         {

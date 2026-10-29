@@ -484,6 +484,115 @@ TEST_CASE ("PresetLoader: 'parameters' est prioritaire sur 'values'")
 }
 
 //==============================================================================
+// Entrées de l'historique du backend (un nom et des parameters, sans metadata)
+//==============================================================================
+
+namespace
+{
+    // Valeurs normalisées actuelles de tous les paramètres de la charte v3
+    Snapshot snapshotAll (juce::AudioProcessorValueTreeState& a)
+    {
+        Snapshot s;
+        for (const auto& spec : HarmoniaCharter::params)
+            s[std::string (spec.id)] = a.getParameter (HarmoniaParamsV3::toJuce (spec.id))->getValue();
+        return s;
+    }
+
+    float physicalValue (juce::AudioProcessorValueTreeState& a, const juce::String& id)
+    {
+        auto* p = a.getParameter (id);
+        return p->convertFrom0to1 (p->getValue());
+    }
+}
+
+TEST_CASE ("PresetLoader: entrée d'historique v3 appliquée telle quelle")
+{
+    HarmoniaAudioProcessor p;
+    auto& a = p.getAPVTS();
+
+    const std::map<juce::String, float> entry { { "engine", 1.0f }, { "unison_voices", 0.4f },
+                                                { "filter_env_amount", 0.75f }, { "dx7_algorithm", 0.5f } };
+
+    const auto r = PresetLoader::loadFromParameters (entry, "Acid lead", a);
+
+    REQUIRE (r.success);
+    REQUIRE (r.presetName == "Acid lead");
+    REQUIRE (physicalValue (a, "engine") == Catch::Approx (1.0f));   // DX7 : pas de conversion v2
+    REQUIRE (a.getParameter ("filter_env_amount")->getValue() == Catch::Approx (0.75f).margin (1e-5));
+    REQUIRE (a.getParameter ("unison_voices")->getValue() == Catch::Approx (snapped (a.getParameter ("unison_voices"), 0.4f)));
+}
+
+TEST_CASE ("PresetLoader: entrée d'historique v2 convertie comme un fichier v2")
+{
+    HarmoniaAudioProcessor fromEntry, fromFile;
+    juce::Random rng (17);
+
+    std::map<juce::String, float> entry;
+    nlohmann::json doc;
+    doc["metadata"] = { { "name", "v2" }, { "charter_version", "1.0" } };
+    for (const auto& id : HarmoniaCharter::v2Ids)
+    {
+        const float v = rng.nextFloat();
+        entry[HarmoniaParamsV3::toJuce (id)] = v;
+        doc["parameters"][std::string (id)] = v;
+    }
+
+    REQUIRE (PresetLoader::loadFromParameters (entry, "v2", fromEntry.getAPVTS()).success);
+    REQUIRE (PresetLoader::loadFromJsonString (juce::String (doc.dump()), fromFile.getAPVTS()).success);
+
+    requireSameExcept (snapshotAll (fromFile.getAPVTS()), snapshotAll (fromEntry.getAPVTS()));
+    REQUIRE (physicalValue (fromEntry.getAPVTS(), "engine") == Catch::Approx (0.0f));   // analogique
+}
+
+TEST_CASE ("PresetLoader: entrée d'historique invalide refusée sans toucher aux paramètres")
+{
+    const auto entry = GENERATE (std::map<juce::String, float> {},
+                                 std::map<juce::String, float> { { "parametre_qui_n_existe_pas", 0.5f } },
+                                 std::map<juce::String, float> { { "engine", 1.0f }, { "amp_decay", 1.5f } },
+                                 std::map<juce::String, float> { { "filter_cutoff", -0.1f } },
+                                 std::map<juce::String, float> { { "filter_cutoff", std::nanf ("") } });
+
+    HarmoniaAudioProcessor p;
+    juce::Random rng (23);
+    randomise (p.getAPVTS(), rng);
+    const auto before = snapshotAll (p.getAPVTS());
+
+    const auto r = PresetLoader::loadFromParameters (entry, "x", p.getAPVTS());
+
+    REQUIRE_FALSE (r.success);
+    REQUIRE (r.errorMessage.isNotEmpty());
+    requireSameExcept (before, snapshotAll (p.getAPVTS()));
+}
+
+TEST_CASE ("PresetLoader: entrée d'historique en mode affinage, les verrouillés gardent leur valeur")
+{
+    HarmoniaAudioProcessor p;
+    auto& a = p.getAPVTS();
+    a.getParameter ("filter_cutoff")->setValueNotifyingHost (0.1f);
+    const float lockedBefore = a.getParameter ("filter_cutoff")->getValue();
+
+    const std::map<juce::String, float> entry { { "engine", 0.0f }, { "filter_cutoff", 0.9f }, { "amp_decay", 0.3f } };
+    juce::StringArray locked { "filter_cutoff" };
+
+    const auto r = PresetLoader::loadFromParameters (entry, {}, a, locked);
+
+    REQUIRE (r.success);
+    REQUIRE (r.presetName == "Preset");
+    REQUIRE (a.getParameter ("filter_cutoff")->getValue() == Catch::Approx (lockedBefore));
+    REQUIRE (a.getParameter ("amp_decay")->getValue() == Catch::Approx (0.3f).margin (1e-5));
+}
+
+TEST_CASE ("PresetLoader: fichier sans metadata mais avec des paramètres v3 lu en v3")
+{
+    HarmoniaAudioProcessor p;
+    auto& a = p.getAPVTS();
+
+    REQUIRE (PresetLoader::loadFromJsonString (R"({"parameters":{"engine":1.0,"filter_env_amount":0.75}})", a).success);
+    REQUIRE (physicalValue (a, "engine") == Catch::Approx (1.0f));
+    REQUIRE (a.getParameter ("filter_env_amount")->getValue() == Catch::Approx (0.75f).margin (1e-5));
+}
+
+//==============================================================================
 // Preset + audio
 //==============================================================================
 
