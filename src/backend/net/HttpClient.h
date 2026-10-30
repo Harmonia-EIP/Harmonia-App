@@ -70,6 +70,7 @@ public:
     HttpResponse get  (const juce::String& path, const HttpOptions& options = {}) const;
     HttpResponse post (const juce::String& path, const std::string& jsonBody, const HttpOptions& options = {}) const;
     HttpResponse put  (const juce::String& path, const std::string& jsonBody, const HttpOptions& options = {}) const;
+    HttpResponse del  (const juce::String& path, const HttpOptions& options = {}) const;
 
     const juce::String& getBaseUrl() const noexcept { return baseUrl; }
 

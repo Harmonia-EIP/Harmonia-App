@@ -18,6 +18,7 @@
 #include "../config/String.h"
 #include "../config/AppConfig.h"
 #include <juce_core/juce_core.h>
+#include <optional>
 
 struct UserSession
 {
@@ -27,11 +28,25 @@ struct UserSession
 
     juce::String pseudo;
     juce::String email;
+    juce::String avatarUrl;             // vide = pas d'avatar -> logo Harmonia
     juce::String accessToken;
     juce::Time   expiresAt;
 
     juce::StringArray paletteColours;   // 3 hex "#RRGGBB", vide = pas encore reçu du backend
     int paletteSlot = 0;                // 0..2 côté front (backend : last_color_id 1..3)
+};
+
+struct HistoryEntry
+{
+    int id = 0;
+    juce::String name, type, createdAt, lastUsedAt;
+    std::map<juce::String, float> parameters;
+};
+
+struct ProfileSnapshot
+{
+    UserSession session;                 // palette incluse
+    std::vector<HistoryEntry> history;   // en mémoire seulement, jamais sur disque
 };
 
 struct AuthResult
@@ -48,6 +63,7 @@ struct UserProfile
     std::string email;
     std::string firstName;
     std::string lastName;
+    std::string avatarUrl;
     std::string createdAt;
     std::string role;
     bool        isActive = true;
@@ -91,6 +107,7 @@ struct AiResult
     juce::String json;
     juce::String errorMessage;
     Error error = Error::Unknown;
+    std::optional<HistoryEntry> historyEntry;
 
     static inline AiResult ok(const juce::String& json)
     {

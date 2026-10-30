@@ -87,10 +87,7 @@ public:
     ProfileResult getProfile();
 
     /** Resync de la session depuis GET /profile/me, sur un thread de fond. */
-    void syncProfileParamsInBackground (const UserSession& session);
-
-    /** Resync bloquante. nullopt si échec. */
-    std::optional<UserSession> syncProfileParams (const UserSession& session);
+    void syncProfileParamsInBackground (const UserSession& session, std::function<void (ProfileSnapshot)> onDone);
 
     /** Palette, bloquant. Refuse invités et palettes invalides. */
     ProfileResult updatePalette (const juce::StringArray& colours, int slot);
@@ -103,6 +100,10 @@ public:
 
     /** Définit l'état "connu du serveur" (palette de la session, vide pour un invité). */
     void resetPaletteSyncState (const juce::StringArray& colours, int slot);
+
+    bool deleteHistoryEntry (int entryId);
+    bool clearHistory();
+    bool touchHistoryEntry (int entryId);
 
     // =========================================================
     // CONFIGURATION / LOGS

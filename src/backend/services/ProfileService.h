@@ -12,6 +12,15 @@ class HttpClient;
 class SessionStore;
 class BackendLogger;
 
+struct PaletteState
+{
+    std::vector<std::string> colours;
+    int         slot   = 0;
+    bool        valid  = false;
+    int         userId = 0;
+    std::string token;
+};
+
 /**
  * Profil utilisateur et synchronisation de la palette.
  *
@@ -33,27 +42,23 @@ class ProfileService
 {
 public:
     ProfileService (HttpClient& http, SessionStore& store, BackendLogger& logger);
+    ~ProfileService();
 
     ProfileResult getProfile();
+    
+    static std::optional<ProfileSnapshot> fetchAndStoreProfile (const HttpClient&, SessionStore&,
+                                                            BackendLogger&, const UserSession&);
 
-    //==========================================================================
-    // Sync de la session depuis le serveur (GET /profile/me)
+    void refreshSessionAsync (const UserSession& session,
+                            std::function<void (ProfileSnapshot)> onDone);
 
-    /** Bloquant. Retourne la session mise à jour, ou nullopt si échec / session changée entre-temps. */
-    std::optional<UserSession> refreshSession (const UserSession& session);
+    /** DELETE d'une entrée. Refuse les invités. true = supprimée côté serveur. */
+    bool deleteHistoryEntry (int entryId);
 
-    /** Même chose sur un thread de fond. Le résultat est écrit dans le SessionStore. */
-    void refreshSessionAsync (const UserSession& session);
+    /** DELETE de tout l'historique. Refuse les invités. true = vidé côté serveur. */
+    bool clearHistory();
 
-    /**
-     * Implémentation sans état (utilisable depuis n'importe quel thread).
-     * Public uniquement pour la compatibilité avec BackendAuthManager.h (shim) ;
-     * à repasser en privé quand l'éditeur ne l'appelle plus directement.
-     */
-    static std::optional<UserSession> fetchAndStoreProfile (const HttpClient& http,
-                                                            SessionStore& store,
-                                                            BackendLogger& logger,
-                                                            const UserSession& session);
+    bool touchHistoryEntry (int entryId);
 
     //==========================================================================
     // Palette
@@ -81,4 +86,17 @@ private:
     HttpClient&    http;
     SessionStore&  store;
     BackendLogger& logger;
+
+    bool waitUnlessCancelled (uint64_t ticket, int totalMs);
+
+    bool deleteHistoryRequest (const juce::String& path, const juce::String& what);
+
+    // Ex-globaux du .cpp : maintenant propres à CETTE instance (règle aussi le problème multi-plugins)
+    std::mutex            paletteMutex;
+    PaletteState          lastSent;
+    PaletteState          pending;
+    std::atomic<uint64_t> paletteTicket { 0 };
+
+    // DOIT être déclaré EN DERNIER : détruit en premier, avant les membres qu'il utilise
+    juce::ThreadPool pool { 2 };
 };
