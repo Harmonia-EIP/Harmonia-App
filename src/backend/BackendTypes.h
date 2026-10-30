@@ -28,6 +28,7 @@ struct UserSession
 
     juce::String pseudo;
     juce::String email;
+    juce::String avatarUrl;             // vide = pas d'avatar -> logo Harmonia
     juce::String accessToken;
     juce::Time   expiresAt;
 
@@ -62,6 +63,7 @@ struct UserProfile
     std::string email;
     std::string firstName;
     std::string lastName;
+    std::string avatarUrl;
     std::string createdAt;
     std::string role;
     bool        isActive = true;

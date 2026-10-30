@@ -568,6 +568,7 @@ void MainComponent::refreshProfileAsync()
                 // <<< C'est ici que ça part au header >>>
                 safe->headerComponent->setPaletteFromServer (snap.session.paletteColours,
                                                              snap.session.paletteSlot);
+                safe->headerComponent->setAvatarUrl (snap.session.avatarUrl);
                 safe->headerComponent->setHistory (snap.history);
             });
         });

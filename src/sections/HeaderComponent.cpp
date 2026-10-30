@@ -134,24 +134,24 @@ HeaderComponent::HeaderComponent (const UserSession& s, AIModelList initialModel
     addAndMakeVisible (promptEditor);
 
     // when refine mode is available with ai
-    logoButton.onClick = [this]
-    {
-        setMode (mode == Mode::Generate ? Mode::Refine : Mode::Generate);
-    };
     // logoButton.onClick = [this]
     // {
-    //     if (! refineEnabled)
-    //     {
-    //         HarmoniaAlert::info (this,
-    //                              "Refine mode",
-    //                              "Refine mode is coming soon.",
-    //                              HarmoniaAlert::Position::TopRight,
-    //                              3000);
-    //         return;
-    //     }
-
     //     setMode (mode == Mode::Generate ? Mode::Refine : Mode::Generate);
     // };
+    logoButton.onClick = [this]
+    {
+        if (! refineEnabled)
+        {
+            HarmoniaAlert::info (this,
+                                 "Refine mode",
+                                 "Refine mode is coming soon.",
+                                 HarmoniaAlert::Position::TopRight,
+                                 3000);
+            return;
+        }
+
+        setMode (mode == Mode::Generate ? Mode::Refine : Mode::Generate);
+    };
     addAndMakeVisible (logoButton);
     logoButton.setTooltip ("Refine mode (coming soon)");
     addAndMakeVisible (actionButton);
@@ -160,9 +160,13 @@ HeaderComponent::HeaderComponent (const UserSession& s, AIModelList initialModel
     {
         auto img = juce::ImageCache::getFromMemory (BinaryData::harmonia_logo_png,
                                                     BinaryData::harmonia_logo_pngSize);
-        jassert (img.isValid());   // si ça s'arrête ici : nom de ressource BinaryData incorrect
+        jassert (img.isValid());
+        defaultLogo = img;
         logoButton.setLogo (img);
     }
+
+    // Avatar du compte : invité ou pas d'avatar -> le logo Harmonia reste
+    setAvatarUrl (session.avatarUrl);
 
     // Clic ailleurs que sur la barre => le curseur disparaît et le placeholder revient
     juce::Desktop::getInstance().addGlobalMouseListener (this);
@@ -184,6 +188,44 @@ HeaderComponent::HeaderComponent (const UserSession& s, AIModelList initialModel
 HeaderComponent::~HeaderComponent()
 {
     juce::Desktop::getInstance().removeGlobalMouseListener (this);
+}
+
+void HeaderComponent::setAvatarUrl (const juce::String& rawUrl)
+{
+    const auto url = session.isGuest ? juce::String() : rawUrl.trim();
+
+    if (url == currentAvatarUrl)
+        return;
+
+    currentAvatarUrl = url;
+    const int requestId = ++avatarRequestId;
+
+    // Pas d'avatar (ou supprimé depuis le site) : logo Harmonia
+    if (! AvatarLoader::isUsableUrl (url))
+    {
+        logoButton.setLogo (defaultLogo);
+        return;
+    }
+
+    // Déjà en cache : affiché tout de suite, sans flash du logo
+    const auto cached = AvatarLoader::loadFromCache (url);
+
+    if (cached.isValid())
+    {
+        logoButton.setLogo (cached);
+        return;
+    }
+
+    logoButton.setLogo (defaultLogo);   // le temps du téléchargement
+
+    AvatarLoader::fetchAsync (url,
+        [safe = juce::Component::SafePointer<HeaderComponent> (this), requestId] (juce::Image img)
+        {
+            if (safe == nullptr || ! img.isValid() || safe->avatarRequestId != requestId)
+                return;
+
+            safe->logoButton.setLogo (img);
+        });
 }
 
 //==============================================================================

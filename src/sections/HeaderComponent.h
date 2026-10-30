@@ -12,6 +12,7 @@
 #include "../backend/BackendPalette.h"
 #include "../backend/BackendTypes.h"
 #include "../tools/Alert.h"
+#include "../tools/AvatarLoader.h"
 #include "../config/AiConfig.h"
 
 #include "header_components/HeaderColours.h"
@@ -78,6 +79,8 @@ public:
     void restoreSlot (int slot);
     void reapplyTheme();
 
+    void setAvatarUrl (const juce::String& url);
+
     // Remonte une entrée existante en tête de liste (mise à jour locale, sans réseau).
     void moveHistoryToTop (int id);
 
@@ -133,6 +136,10 @@ public:
     void setPresetName (const juce::String& name);
 
 private:
+
+    juce::Image  defaultLogo;
+    juce::String currentAvatarUrl;
+    int          avatarRequestId = 0;
 
     void timerCallback() override;
 

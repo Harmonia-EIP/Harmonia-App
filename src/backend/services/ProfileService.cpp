@@ -108,6 +108,7 @@ ProfileResult ProfileService::getProfile()
     profile.isActive  = JsonUtil::getBool   (*body, "is_active", true);
 
     PaletteMapper::readFromJson (*body, profile.paletteColours, profile.paletteSlot);
+    profile.avatarUrl = JsonUtil::getString (*body, "avatar_url");
 
     return ProfileResult::ok (profile);
 }
