@@ -44,77 +44,71 @@
  * - paint() handles background rendering
  * - resized() updates keyboard bounds
  */
-class SynthComponent : public juce::Component
-{
+class SynthComponent : public juce::Component {
 public:
+  /**
+   * @brief Constructs the synthesizer keyboard component.
+   *
+   * Initializes the internal JUCE keyboard component
+   * using a shared MidiKeyboardState.
+   *
+   * The keyboard is displayed horizontally and automatically
+   * added to the component hierarchy.
+   *
+   * @param state Shared MIDI keyboard state used for
+   *              note synchronization and playback.
+   */
+  SynthComponent(juce::MidiKeyboardState &state);
 
-    /**
-     * @brief Constructs the synthesizer keyboard component.
-     *
-     * Initializes the internal JUCE keyboard component
-     * using a shared MidiKeyboardState.
-     *
-     * The keyboard is displayed horizontally and automatically
-     * added to the component hierarchy.
-     *
-     * @param state Shared MIDI keyboard state used for
-     *              note synchronization and playback.
-     */
-    SynthComponent(juce::MidiKeyboardState& state);
+  /**
+   * @brief Destructor.
+   *
+   * Uses the default JUCE cleanup behavior.
+   */
+  ~SynthComponent() override = default;
 
-    /**
-     * @brief Destructor.
-     *
-     * Uses the default JUCE cleanup behavior.
-     */
-    ~SynthComponent() override = default;
+  /**
+   * @brief Returns the associated keyboard state.
+   *
+   * Provides access to the internal MidiKeyboardState
+   * used by the keyboard component.
+   *
+   * @return Reference to the MIDI keyboard state.
+   */
+  juce::MidiKeyboardState &getKeyboardState() noexcept { return keyboardState; }
 
-    /**
-     * @brief Returns the associated keyboard state.
-     *
-     * Provides access to the internal MidiKeyboardState
-     * used by the keyboard component.
-     *
-     * @return Reference to the MIDI keyboard state.
-     */
-    juce::MidiKeyboardState& getKeyboardState() noexcept
-    {
-        return keyboardState;
-    }
+  /**
+   * @brief Paints the component background.
+   *
+   * Fills the entire component area with a black color.
+   *
+   * @param g JUCE graphics context.
+   */
+  void paint(juce::Graphics &g) override;
 
-    /**
-     * @brief Paints the component background.
-     *
-     * Fills the entire component area with a black color.
-     *
-     * @param g JUCE graphics context.
-     */
-    void paint(juce::Graphics& g) override;
-
-    /**
-     * @brief Updates child component layout.
-     *
-     * Resizes the internal keyboard component to occupy
-     * the full available bounds of the parent component.
-     */
-    void resized() override;
+  /**
+   * @brief Updates child component layout.
+   *
+   * Resizes the internal keyboard component to occupy
+   * the full available bounds of the parent component.
+   */
+  void resized() override;
 
 private:
+  /**
+   * @brief Shared MIDI keyboard state.
+   *
+   * Stores note on/off information and synchronizes
+   * keyboard interactions with the synthesizer engine.
+   */
+  juce::MidiKeyboardState &keyboardState;
 
-    /**
-     * @brief Shared MIDI keyboard state.
-     *
-     * Stores note on/off information and synchronizes
-     * keyboard interactions with the synthesizer engine.
-     */
-    juce::MidiKeyboardState& keyboardState;
+  /**
+   * @brief Graphical JUCE piano keyboard component.
+   *
+   * Responsible for rendering and interaction handling.
+   */
+  juce::MidiKeyboardComponent keyboardComponent;
 
-    /**
-     * @brief Graphical JUCE piano keyboard component.
-     *
-     * Responsible for rendering and interaction handling.
-     */
-    juce::MidiKeyboardComponent keyboardComponent;
-
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SynthComponent)
+  JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SynthComponent)
 };
