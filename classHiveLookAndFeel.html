@@ -157,13 +157,19 @@ Public Member Functions</h2></td></tr>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:afae841772fbe255aed8ff99c7fc4beaa" id="r_afae841772fbe255aed8ff99c7fc4beaa"><td class="memItemLeft" align="right" valign="top">static juce::Font&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHiveLookAndFeel.html#afae841772fbe255aed8ff99c7fc4beaa">tooltipFont</a> ()</td></tr>
 <tr class="separator:afae841772fbe255aed8ff99c7fc4beaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd8c069ec5a94e92c704f5250a6af16d" id="r_abd8c069ec5a94e92c704f5250a6af16d"><td class="memItemLeft" align="right" valign="top">static juce::TextLayout&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHiveLookAndFeel.html#abd8c069ec5a94e92c704f5250a6af16d">makeTipLayout</a> (const juce::String &amp;text, float maxTextWidth)</td></tr>
+<tr class="separator:abd8c069ec5a94e92c704f5250a6af16d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:ae75ec8a754564cf419f64b9196ed663e" id="r_ae75ec8a754564cf419f64b9196ed663e"><td class="memItemLeft" align="right" valign="top">static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHiveLookAndFeel.html#ae75ec8a754564cf419f64b9196ed663e">tipPadX</a> = 13</td></tr>
 <tr class="separator:ae75ec8a754564cf419f64b9196ed663e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6b01575ef53bb06da2bdc261220504a" id="r_ab6b01575ef53bb06da2bdc261220504a"><td class="memItemLeft" align="right" valign="top">static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHiveLookAndFeel.html#ab6b01575ef53bb06da2bdc261220504a">tipPadY</a> = 8</td></tr>
+<tr class="separator:ab6b01575ef53bb06da2bdc261220504a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad83fbb03108e0d0f8bbfe1f49d275cac" id="r_ad83fbb03108e0d0f8bbfe1f49d275cac"><td class="memItemLeft" align="right" valign="top">static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHiveLookAndFeel.html#ad83fbb03108e0d0f8bbfe1f49d275cac">tipHeight</a> = 24</td></tr>
 <tr class="separator:ad83fbb03108e0d0f8bbfe1f49d275cac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae51cfdeefe749d92b7b80127587263b3" id="r_ae51cfdeefe749d92b7b80127587263b3"><td class="memItemLeft" align="right" valign="top">static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHiveLookAndFeel.html#ae51cfdeefe749d92b7b80127587263b3">tipMaxW</a> = 280.0f</td></tr>
+<tr class="separator:ae51cfdeefe749d92b7b80127587263b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae9f303aab9beb762871e002b3c506d00" name="ae9f303aab9beb762871e002b3c506d00"></a>
@@ -821,6 +827,42 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="abd8c069ec5a94e92c704f5250a6af16d" name="abd8c069ec5a94e92c704f5250a6af16d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd8c069ec5a94e92c704f5250a6af16d">&#9670;&#160;</a></span>makeTipLayout()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static juce::TextLayout HiveLookAndFeel::makeTipLayout </td>
+          <td>(</td>
+          <td class="paramtype">const juce::String &amp;&#160;</td>
+          <td class="paramname"><em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>maxTextWidth</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="aa11621f02164bb94cb84ec5603402042" name="aa11621f02164bb94cb84ec5603402042"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa11621f02164bb94cb84ec5603402042">&#9670;&#160;</a></span>positionComboBoxText()</h2>
 
@@ -930,6 +972,28 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="ae51cfdeefe749d92b7b80127587263b3" name="ae51cfdeefe749d92b7b80127587263b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae51cfdeefe749d92b7b80127587263b3">&#9670;&#160;</a></span>tipMaxW</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr float HiveLookAndFeel::tipMaxW = 280.0f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ae75ec8a754564cf419f64b9196ed663e" name="ae75ec8a754564cf419f64b9196ed663e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae75ec8a754564cf419f64b9196ed663e">&#9670;&#160;</a></span>tipPadX</h2>
 
@@ -941,6 +1005,28 @@ Static Public Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">constexpr int HiveLookAndFeel::tipPadX = 13</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab6b01575ef53bb06da2bdc261220504a" name="ab6b01575ef53bb06da2bdc261220504a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6b01575ef53bb06da2bdc261220504a">&#9670;&#160;</a></span>tipPadY</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr int HiveLookAndFeel::tipPadY = 8</td>
         </tr>
       </table>
   </td>

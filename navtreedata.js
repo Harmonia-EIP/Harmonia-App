@@ -62,14 +62,15 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"AiConfig_8h.html",
-"KnobControl_8h.html",
-"classAppLookAndFeel.html#a49a9340f3d5b5f90635f6c10385659b4aa77a887b5e340da4edc103ddb5f381c6",
-"classHeaderComponent.html#a1300fd103fcbb604dacafffe9841003c",
-"classMainComponent.html#ab425015cb076fa2d3e83b4e673bd644b",
-"functions_func_g.html",
-"namespaceHttpTimeouts.html#a639bd663e497dfb19482a8d97042779c",
-"structAiResult.html#a30c52302f0a3eac9c5db7d39f380586baa1f3533477430e1d11e718b203bdd100"
+"ActionButton_8cpp.html",
+"HiveLookAndFeel_8h_source.html",
+"String_8h.html#aff04d4054aca28ecc2c4684579efe8b4",
+"classHarmoniaAudioProcessor.html#a9b300a27b2e7af330d955448f202000c",
+"classHttpClient.html#a62d4c2dd446ea3dcf85976383c601e1e",
+"classPaletteSelector.html#a0b733500bab7c324af5e36ec5503fd17",
+"functions_vars_p.html",
+"namespacePaletteMapper.html#abb124cad5f7b932c85ed3ae22892c2b6",
+"structHarmoniaPalette_1_1ThemeDef.html#a3c42c1f75aac95641632f0dda090bb76"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

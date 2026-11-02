@@ -9,8 +9,13 @@ var searchData=
   ['highpass_6',['HighPass',['../namespaceStrings_1_1Filter.html#a65375f1f176f5817629087f1d21ab2f3',1,'Strings::Filter']]],
   ['hint_7',['hint',['../classPromptEditor.html#acc8310eec3f35639acfe2c4921ac114c',1,'PromptEditor']]],
   ['hintcol_8',['hintCol',['../classPromptEditor.html#a3c407742c5375e3bd4eed5261dbe0bf1',1,'PromptEditor']]],
-  ['homebutton_9',['homeButton',['../classHeaderComponent.html#a593b7749dc2c5e0c35eae13ebfcd5da8',1,'HeaderComponent']]],
-  ['hoveranim_10',['hoveranim',['../classIconButton.html#a6df7acee0a5691f3e627ce0d32eb5877',1,'IconButton::hoverAnim'],['../classLogoButton.html#a723abf6aecc66c5286f01f67abccda9f',1,'LogoButton::hoverAnim'],['../classModelPicker.html#af632a57beb0080d4be9b984066d7fd6a',1,'ModelPicker::hoverAnim']]],
-  ['hoveredindex_11',['hoveredIndex',['../classIconChoiceSelector.html#a2d49f9f20b9ce1829b5406e713b3e978',1,'IconChoiceSelector']]],
-  ['http_12',['http',['../classBackendManager.html#a1e044fcc4310c1f171da8208ee6cda09',1,'BackendManager::http'],['../classAiService.html#a1bb26c06cb5668234bc805aa64cdf478',1,'AiService::http'],['../classAuthService.html#a74cbc02eda08a8f2520b48e80da0ea22',1,'AuthService::http'],['../classProfileService.html#a5b7fc9007d62ddf10be9e7e265ff1f39',1,'ProfileService::http']]]
+  ['history_9',['history',['../structProfileSnapshot.html#a98b94132521cb4998efc88d9b8a8b95f',1,'ProfileSnapshot']]],
+  ['historyentries_10',['historyEntries',['../classHeaderComponent.html#ae3d52568602b2488e410c5c472f5abbc',1,'HeaderComponent']]],
+  ['historyentry_11',['historyEntry',['../structAiResult.html#a3bc3425b8c15d6d6679d13733aa4faa2',1,'AiResult']]],
+  ['historypicker_12',['historyPicker',['../classHeaderComponent.html#a739c3618d2d732b978db85a70dba8f4c',1,'HeaderComponent']]],
+  ['homebutton_13',['homeButton',['../classHeaderComponent.html#a593b7749dc2c5e0c35eae13ebfcd5da8',1,'HeaderComponent']]],
+  ['hover_14',['hover',['../classHistoryTile.html#ac7c470cd4227596a002e57349e8c6fbf',1,'HistoryTile']]],
+  ['hoveranim_15',['hoveranim',['../classHistoryPicker.html#a9a32039cdf327f40327bb45ae53b07f7',1,'HistoryPicker::hoverAnim'],['../classIconButton.html#a6df7acee0a5691f3e627ce0d32eb5877',1,'IconButton::hoverAnim'],['../classLogoButton.html#a723abf6aecc66c5286f01f67abccda9f',1,'LogoButton::hoverAnim'],['../classModelPicker.html#af632a57beb0080d4be9b984066d7fd6a',1,'ModelPicker::hoverAnim']]],
+  ['hoveredindex_16',['hoveredIndex',['../classIconChoiceSelector.html#a2d49f9f20b9ce1829b5406e713b3e978',1,'IconChoiceSelector']]],
+  ['http_17',['http',['../classBackendManager.html#a1e044fcc4310c1f171da8208ee6cda09',1,'BackendManager::http'],['../classAiService.html#a1bb26c06cb5668234bc805aa64cdf478',1,'AiService::http'],['../classAuthService.html#a74cbc02eda08a8f2520b48e80da0ea22',1,'AuthService::http'],['../classProfileService.html#a5b7fc9007d62ddf10be9e7e265ff1f39',1,'ProfileService::http']]]
 ];

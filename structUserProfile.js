@@ -1,5 +1,6 @@
 var structUserProfile =
 [
+    [ "avatarUrl", "structUserProfile.html#a8a9d6fc2c5f33b451639aff5092633c8", null ],
     [ "createdAt", "structUserProfile.html#aa82e5f4b2d0065aff0c5ce6c15622883", null ],
     [ "email", "structUserProfile.html#a36e1fe7848e114062d52691e4ff7f701", null ],
     [ "firstName", "structUserProfile.html#a583a089cd1d186db7cdc8f33e76928d6", null ],

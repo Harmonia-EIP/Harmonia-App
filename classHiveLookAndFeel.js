@@ -13,9 +13,12 @@ var classHiveLookAndFeel =
     [ "getPopupMenuFont", "classHiveLookAndFeel.html#a837672018a073e5270d55cbf50219b0b", null ],
     [ "getTextButtonFont", "classHiveLookAndFeel.html#a3dd7d6c2031339db0c5ae7fd72f7008a", null ],
     [ "getTooltipBounds", "classHiveLookAndFeel.html#acddecb1547df06a2a2f4769f196de870", null ],
+    [ "makeTipLayout", "classHiveLookAndFeel.html#abd8c069ec5a94e92c704f5250a6af16d", null ],
     [ "positionComboBoxText", "classHiveLookAndFeel.html#aa11621f02164bb94cb84ec5603402042", null ],
     [ "refreshTheme", "classHiveLookAndFeel.html#af1214c543829a91d9afefe5e825eec97", null ],
     [ "tooltipFont", "classHiveLookAndFeel.html#afae841772fbe255aed8ff99c7fc4beaa", null ],
     [ "tipHeight", "classHiveLookAndFeel.html#ad83fbb03108e0d0f8bbfe1f49d275cac", null ],
-    [ "tipPadX", "classHiveLookAndFeel.html#ae75ec8a754564cf419f64b9196ed663e", null ]
+    [ "tipMaxW", "classHiveLookAndFeel.html#ae51cfdeefe749d92b7b80127587263b3", null ],
+    [ "tipPadX", "classHiveLookAndFeel.html#ae75ec8a754564cf419f64b9196ed663e", null ],
+    [ "tipPadY", "classHiveLookAndFeel.html#ab6b01575ef53bb06da2bdc261220504a", null ]
 ];

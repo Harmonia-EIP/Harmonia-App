@@ -93,6 +93,7 @@ $(document).ready(function(){initNavTree('classHeaderComponent.html',''); initRe
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classHeaderComponent-members.html">List of all members</a>  </div>
@@ -118,42 +119,50 @@ Collaboration diagram for HeaderComponent:</div>
 <div class="dyncontent">
 <div class="center"><img src="classHeaderComponent__coll__graph.png" border="0" usemap="#aHeaderComponent_coll__map" alt="Collaboration graph"/></div>
 <map name="aHeaderComponent_coll__map" id="aHeaderComponent_coll__map">
-<area shape="rect" title=" " alt="" coords="796,214,940,239"/>
-<area shape="rect" title=" " alt="" coords="249,298,381,323"/>
-<area shape="poly" title=" " alt="" coords="394,296,795,235,796,240,394,301"/>
-<area shape="rect" href="classModelPicker.html" title=" " alt="" coords="533,365,635,390"/>
-<area shape="poly" title=" " alt="" coords="381,324,534,362,532,367,380,329"/>
-<area shape="rect" href="classPaletteSelector.html" title=" " alt="" coords="524,315,644,341"/>
-<area shape="poly" title=" " alt="" coords="395,313,524,321,524,327,394,318"/>
-<area shape="rect" title=" " alt="" coords="267,65,362,90"/>
-<area shape="poly" title=" " alt="" coords="357,57,439,29,491,16,547,7,605,3,664,6,720,19,773,43,796,60,814,81,842,130,859,178,867,213,862,215,854,179,837,132,810,84,792,64,771,48,719,24,663,11,605,8,548,12,492,22,441,34,359,62"/>
-<area shape="rect" href="classIconButton.html" title=" " alt="" coords="538,66,630,91"/>
-<area shape="poly" title=" " alt="" coords="376,75,538,76,538,81,376,80"/>
-<area shape="rect" href="classLogoButton.html" title=" " alt="" coords="536,165,632,190"/>
-<area shape="poly" title=" " alt="" coords="369,92,501,139,525,149,554,162,552,167,523,154,499,144,368,97"/>
-<area shape="poly" title=" " alt="" coords="344,97,378,128,413,166,438,207,467,262,497,315,526,351,543,362,540,367,522,355,493,318,463,264,434,210,409,170,374,132,340,101"/>
-<area shape="rect" href="structUserSession.html" title=" " alt="" coords="533,115,635,141"/>
-<area shape="poly" title=" " alt="" coords="650,136,710,149,773,169,815,190,850,212,847,216,812,195,771,174,709,154,649,141"/>
-<area shape="poly" title=" " alt="" coords="644,86,718,102,773,122,802,143,827,167,861,212,856,215,823,171,798,147,771,126,716,108,643,92"/>
-<area shape="rect" title=" " alt="" coords="265,181,365,206"/>
-<area shape="poly" title=" " alt="" coords="356,173,523,100,550,89,552,94,525,105,358,177"/>
-<area shape="poly" title=" " alt="" coords="378,187,536,177,536,183,379,192"/>
-<area shape="rect" href="classActionButton.html" title=" " alt="" coords="531,214,637,239"/>
-<area shape="poly" title=" " alt="" coords="379,198,531,217,530,223,378,204"/>
-<area shape="poly" title=" " alt="" coords="647,185,796,212,795,217,646,191"/>
-<area shape="poly" title=" " alt="" coords="651,224,796,224,796,229,651,229"/>
-<area shape="poly" title=" " alt="" coords="648,377,710,370,742,362,771,348,802,324,827,293,859,238,863,241,831,296,805,327,773,353,743,367,711,376,649,383"/>
-<area shape="rect" title=" " alt="" coords="219,361,411,386"/>
-<area shape="poly" title=" " alt="" coords="425,372,533,374,533,379,424,378"/>
-<area shape="rect" href="classModelMenuLookAndFeel.html" title=" " alt="" coords="224,410,405,435"/>
-<area shape="poly" title=" " alt="" coords="418,407,500,393,532,387,533,392,500,399,419,412"/>
-<area shape="rect" title=" " alt="" coords="5,410,169,435"/>
-<area shape="poly" title=" " alt="" coords="183,420,224,420,224,425,183,425"/>
-<area shape="rect" href="classPromptEditor.html" title=" " alt="" coords="531,431,637,457"/>
-<area shape="poly" title=" " alt="" coords="651,438,712,425,743,413,770,396,790,379,806,359,833,314,851,271,861,239,866,240,856,273,838,316,811,362,793,383,774,401,745,418,714,430,652,444"/>
-<area shape="rect" title=" " alt="" coords="253,459,376,485"/>
-<area shape="poly" title=" " alt="" coords="390,462,530,447,531,452,390,467"/>
-<area shape="poly" title=" " alt="" coords="658,329,714,324,771,308,797,293,820,274,855,238,859,241,824,278,800,298,773,313,715,329,658,334"/>
+<area shape="rect" title=" " alt="" coords="796,333,940,358"/>
+<area shape="rect" title=" " alt="" coords="249,41,381,66"/>
+<area shape="poly" title=" " alt="" coords="366,34,453,14,505,6,561,3,618,5,674,16,727,36,774,68,802,98,824,134,840,172,852,211,865,283,869,333,864,333,860,284,847,212,835,174,819,136,797,102,770,72,724,41,673,21,618,11,561,8,506,12,454,19,367,40"/>
+<area shape="rect" href="classModelPicker.html" title=" " alt="" coords="533,138,635,164"/>
+<area shape="poly" title=" " alt="" coords="395,58,448,68,501,86,541,110,572,136,568,140,538,115,499,91,447,73,394,63"/>
+<area shape="rect" href="classHistoryPicker.html" title=" " alt="" coords="530,208,638,233"/>
+<area shape="poly" title=" " alt="" coords="374,68,448,94,480,108,502,122,512,135,516,148,519,160,526,173,544,191,563,205,559,209,540,195,522,177,514,162,510,149,507,138,498,126,477,113,446,99,373,73"/>
+<area shape="rect" href="classPaletteSelector.html" title=" " alt="" coords="524,56,644,81"/>
+<area shape="poly" title=" " alt="" coords="395,49,500,52,524,55,523,60,500,58,394,54"/>
+<area shape="rect" title=" " alt="" coords="267,286,362,312"/>
+<area shape="poly" title=" " alt="" coords="375,288,455,281,555,277,664,281,719,288,773,298,814,312,848,330,845,335,812,317,771,303,718,293,663,287,555,283,455,286,376,294"/>
+<area shape="rect" href="classIconButton.html" title=" " alt="" coords="538,325,630,350"/>
+<area shape="poly" title=" " alt="" coords="376,305,538,328,537,334,375,310"/>
+<area shape="rect" href="classLogoButton.html" title=" " alt="" coords="536,374,632,400"/>
+<area shape="poly" title=" " alt="" coords="369,314,545,372,543,377,367,319"/>
+<area shape="poly" title=" " alt="" coords="372,280,539,230,540,236,373,285"/>
+<area shape="rect" href="structUserSession.html" title=" " alt="" coords="533,473,635,498"/>
+<area shape="poly" title=" " alt="" coords="648,479,710,468,741,458,771,445,798,425,823,401,856,357,861,360,827,404,802,429,773,449,743,463,711,473,649,485"/>
+<area shape="rect" href="classPresetLabel.html" title=" " alt="" coords="535,522,633,548"/>
+<area shape="poly" title=" " alt="" coords="647,533,710,524,742,514,770,498,805,465,831,426,849,387,860,358,865,359,854,389,836,429,809,469,774,502,744,519,711,529,648,539"/>
+<area shape="rect" title=" " alt="" coords="269,522,361,548"/>
+<area shape="poly" title=" " alt="" coords="375,532,535,532,535,538,375,538"/>
+<area shape="poly" title=" " alt="" coords="644,340,668,342,796,344,796,349,668,347,644,346"/>
+<area shape="rect" title=" " alt="" coords="265,402,365,428"/>
+<area shape="poly" title=" " alt="" coords="373,396,538,348,539,353,374,401"/>
+<area shape="poly" title=" " alt="" coords="378,406,500,394,536,390,536,395,500,399,379,411"/>
+<area shape="rect" href="classActionButton.html" title=" " alt="" coords="531,424,637,449"/>
+<area shape="poly" title=" " alt="" coords="379,421,435,427,531,432,530,438,434,432,378,426"/>
+<area shape="poly" title=" " alt="" coords="645,380,772,364,815,356,816,361,772,370,646,385"/>
+<area shape="poly" title=" " alt="" coords="651,426,710,415,771,398,813,378,847,356,850,361,815,382,773,403,711,421,652,432"/>
+<area shape="poly" title=" " alt="" coords="649,158,712,176,744,191,774,209,805,239,831,273,863,331,859,334,827,276,801,242,770,213,741,195,710,181,647,163"/>
+<area shape="rect" title=" " alt="" coords="219,189,411,214"/>
+<area shape="poly" title=" " alt="" coords="396,184,532,158,533,163,397,189"/>
+<area shape="poly" title=" " alt="" coords="425,207,530,214,530,219,424,212"/>
+<area shape="rect" href="classModelMenuLookAndFeel.html" title=" " alt="" coords="224,125,405,150"/>
+<area shape="poly" title=" " alt="" coords="419,140,533,146,533,151,419,145"/>
+<area shape="rect" title=" " alt="" coords="5,125,169,150"/>
+<area shape="poly" title=" " alt="" coords="183,135,224,135,224,140,183,140"/>
+<area shape="poly" title=" " alt="" coords="653,225,713,238,773,261,799,277,823,296,858,331,854,335,819,300,796,281,771,265,711,243,651,230"/>
+<area shape="rect" href="classPromptEditor.html" title=" " alt="" coords="531,572,637,597"/>
+<area shape="poly" title=" " alt="" coords="651,586,713,579,743,569,770,553,793,532,812,507,839,451,855,397,862,358,868,359,860,398,844,453,816,509,797,535,774,557,745,574,714,584,652,591"/>
+<area shape="rect" title=" " alt="" coords="253,572,376,597"/>
+<area shape="poly" title=" " alt="" coords="390,582,530,582,530,587,390,587"/>
+<area shape="poly" title=" " alt="" coords="657,82,718,107,747,124,774,145,794,168,812,193,839,246,857,296,866,332,861,333,852,297,834,248,807,195,790,171,770,149,744,128,715,111,655,87"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -163,6 +172,8 @@ Public Types</h2></td></tr>
 , <a class="el" href="classHeaderComponent.html#a3a1ad7c3ffcaf7a88c11ef0326297eb5a9f79b65055f2201292e5f79666bf2579">Refine</a>
  }</td></tr>
 <tr class="separator:a3a1ad7c3ffcaf7a88c11ef0326297eb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b027833d01846b84aa329bf08ec745c" id="r_a6b027833d01846b84aa329bf08ec745c"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHeaderComponent.html#a6b027833d01846b84aa329bf08ec745c">HistoryList</a> = std::vector&lt; <a class="el" href="structHistoryEntry.html">HistoryEntry</a> &gt;</td></tr>
+<tr class="separator:a6b027833d01846b84aa329bf08ec745c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -202,6 +213,16 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a5b22414cba1f63cb02e4b2443c02a059"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7863886eb144d0113754dc7feb298c5f" id="r_a7863886eb144d0113754dc7feb298c5f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHeaderComponent.html#a7863886eb144d0113754dc7feb298c5f">reapplyTheme</a> ()</td></tr>
 <tr class="separator:a7863886eb144d0113754dc7feb298c5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff18fab1fda9760b7f54ed5406a7d8f7" id="r_aff18fab1fda9760b7f54ed5406a7d8f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHeaderComponent.html#aff18fab1fda9760b7f54ed5406a7d8f7">setAvatarUrl</a> (const juce::String &amp;url)</td></tr>
+<tr class="separator:aff18fab1fda9760b7f54ed5406a7d8f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec1085a6bd48c5badfbfe57de0659e6b" id="r_aec1085a6bd48c5badfbfe57de0659e6b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHeaderComponent.html#aec1085a6bd48c5badfbfe57de0659e6b">moveHistoryToTop</a> (int id)</td></tr>
+<tr class="separator:aec1085a6bd48c5badfbfe57de0659e6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fc9e7cccced0b4cc3b0f266fb94a627" id="r_a0fc9e7cccced0b4cc3b0f266fb94a627"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHeaderComponent.html#a0fc9e7cccced0b4cc3b0f266fb94a627">addHistoryEntry</a> (const <a class="el" href="structHistoryEntry.html">HistoryEntry</a> &amp;e)</td></tr>
+<tr class="separator:a0fc9e7cccced0b4cc3b0f266fb94a627"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47b17549526fb094b60dfe6402c81716" id="r_a47b17549526fb094b60dfe6402c81716"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHeaderComponent.html#a47b17549526fb094b60dfe6402c81716">setHistory</a> (const <a class="el" href="classHeaderComponent.html#a6b027833d01846b84aa329bf08ec745c">HistoryList</a> &amp;entries)</td></tr>
+<tr class="separator:a47b17549526fb094b60dfe6402c81716"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5d828d78ba0bbe9a524f12dce46fbfe" id="r_ac5d828d78ba0bbe9a524f12dce46fbfe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHeaderComponent.html#ac5d828d78ba0bbe9a524f12dce46fbfe">setPaletteFromServer</a> (const juce::StringArray &amp;hexColours, int activeSlot)</td></tr>
+<tr class="separator:ac5d828d78ba0bbe9a524f12dce46fbfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d45146fefc24bb7b792b552f13f6c3b" id="r_a6d45146fefc24bb7b792b552f13f6c3b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHeaderComponent.html#a6d45146fefc24bb7b792b552f13f6c3b">setModels</a> (const <a class="el" href="AiConfig_8h.html#a2a0cefbb9fa717ffd560776e4ae2cb0d">AIModelList</a> &amp;newModels)</td></tr>
 <tr class="separator:a6d45146fefc24bb7b792b552f13f6c3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a99f05a81b3f32125df1d7493388459cd" id="r_a99f05a81b3f32125df1d7493388459cd"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structAIModelData.html">AIModelData</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHeaderComponent.html#a99f05a81b3f32125df1d7493388459cd">getSelectedModel</a> () const</td></tr>
@@ -210,6 +231,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a4195fceac91f2ab4bf54a3d7c79c3002"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a88f67cd1407827067dbe43d74de0e176" id="r_a88f67cd1407827067dbe43d74de0e176"><td class="memItemLeft" align="right" valign="top">juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHeaderComponent.html#a88f67cd1407827067dbe43d74de0e176">getSelectedBackendName</a> () const</td></tr>
 <tr class="separator:a88f67cd1407827067dbe43d74de0e176"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a7d066495d8781702f7dec722f8fb62" id="r_a1a7d066495d8781702f7dec722f8fb62"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHeaderComponent.html#a1a7d066495d8781702f7dec722f8fb62">setPresetName</a> (const juce::String &amp;name)</td></tr>
+<tr class="separator:a1a7d066495d8781702f7dec722f8fb62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -217,8 +240,19 @@ Public Attributes</h2></td></tr>
 <tr class="separator:acd1742393b646e2e9aa696d120e07382"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3389babbb783a263d884c6f0ca9ddcd4" id="r_a3389babbb783a263d884c6f0ca9ddcd4"><td class="memItemLeft" align="right" valign="top">std::function&lt; void(<a class="el" href="classHeaderComponent.html#a3a1ad7c3ffcaf7a88c11ef0326297eb5">Mode</a>)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHeaderComponent.html#a3389babbb783a263d884c6f0ca9ddcd4">onModeChanged</a></td></tr>
 <tr class="separator:a3389babbb783a263d884c6f0ca9ddcd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab68aa451e72367762684d1eb74fe15eb" id="r_ab68aa451e72367762684d1eb74fe15eb"><td class="memItemLeft" align="right" valign="top">std::function&lt; void(const HistoryList::value_type &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHeaderComponent.html#ab68aa451e72367762684d1eb74fe15eb">onHistorySelected</a></td></tr>
+<tr class="separator:ab68aa451e72367762684d1eb74fe15eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42a4832f974e60ba5084ab98c8e3c764" id="r_a42a4832f974e60ba5084ab98c8e3c764"><td class="memItemLeft" align="right" valign="top">std::function&lt; void(const HistoryList::value_type &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHeaderComponent.html#a42a4832f974e60ba5084ab98c8e3c764">onHistoryDeleted</a></td></tr>
+<tr class="separator:a42a4832f974e60ba5084ab98c8e3c764"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09a4bd9acde1f669016e568a6f8b90f6" id="r_a09a4bd9acde1f669016e568a6f8b90f6"><td class="memItemLeft" align="right" valign="top">std::function&lt; void()&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHeaderComponent.html#a09a4bd9acde1f669016e568a6f8b90f6">onHistoryCleared</a></td></tr>
+<tr class="separator:a09a4bd9acde1f669016e568a6f8b90f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a06b66a80872f22a1445684d6e0d4c086" id="r_a06b66a80872f22a1445684d6e0d4c086"><td class="memItemLeft" align="right" valign="top">std::function&lt; void(const juce::StringArray &amp;, int)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHeaderComponent.html#a06b66a80872f22a1445684d6e0d4c086">onPaletteChanged</a></td></tr>
 <tr class="separator:a06b66a80872f22a1445684d6e0d4c086"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a9185815fc457790bba2d70f7340b4608" id="r_a9185815fc457790bba2d70f7340b4608"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHeaderComponent.html#a9185815fc457790bba2d70f7340b4608">maxHistoryEntries</a> = 50</td></tr>
+<tr class="separator:a9185815fc457790bba2d70f7340b4608"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -237,16 +271,26 @@ Private Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
+<tr class="memitem:a2dbdcdc021d933f290a40084347d6eb7" id="r_a2dbdcdc021d933f290a40084347d6eb7"><td class="memItemLeft" align="right" valign="top">juce::Image&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHeaderComponent.html#a2dbdcdc021d933f290a40084347d6eb7">defaultLogo</a></td></tr>
+<tr class="separator:a2dbdcdc021d933f290a40084347d6eb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cbf08a11fc15a3c6562bf73e8fc411d" id="r_a1cbf08a11fc15a3c6562bf73e8fc411d"><td class="memItemLeft" align="right" valign="top">juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHeaderComponent.html#a1cbf08a11fc15a3c6562bf73e8fc411d">currentAvatarUrl</a></td></tr>
+<tr class="separator:a1cbf08a11fc15a3c6562bf73e8fc411d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68f1acd8395479e38f46022a33fddba0" id="r_a68f1acd8395479e38f46022a33fddba0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHeaderComponent.html#a68f1acd8395479e38f46022a33fddba0">avatarRequestId</a> = 0</td></tr>
+<tr class="separator:a68f1acd8395479e38f46022a33fddba0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa19fc7692f717bd72ec2b6c776b7851a" id="r_aa19fc7692f717bd72ec2b6c776b7851a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHeaderComponent.html#aa19fc7692f717bd72ec2b6c776b7851a">refineEnabled</a> = false</td></tr>
 <tr class="separator:aa19fc7692f717bd72ec2b6c776b7851a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab65c20be7ce6572d9a7347f5a927ab66" id="r_ab65c20be7ce6572d9a7347f5a927ab66"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUserSession.html">UserSession</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHeaderComponent.html#ab65c20be7ce6572d9a7347f5a927ab66">session</a></td></tr>
 <tr class="separator:ab65c20be7ce6572d9a7347f5a927ab66"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72aa4edbe8991e9806dc533d3bebb644" id="r_a72aa4edbe8991e9806dc533d3bebb644"><td class="memItemLeft" align="right" valign="top"><a class="el" href="AiConfig_8h.html#a2a0cefbb9fa717ffd560776e4ae2cb0d">AIModelList</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHeaderComponent.html#a72aa4edbe8991e9806dc533d3bebb644">models</a></td></tr>
 <tr class="separator:a72aa4edbe8991e9806dc533d3bebb644"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3d52568602b2488e410c5c472f5abbc" id="r_ae3d52568602b2488e410c5c472f5abbc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classHeaderComponent.html#a6b027833d01846b84aa329bf08ec745c">HistoryList</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHeaderComponent.html#ae3d52568602b2488e410c5c472f5abbc">historyEntries</a></td></tr>
+<tr class="separator:ae3d52568602b2488e410c5c472f5abbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5d99c7dc40c25bf644b13b42690d981" id="r_ac5d99c7dc40c25bf644b13b42690d981"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHeaderComponent.html#ac5d99c7dc40c25bf644b13b42690d981">applyingServerPalette</a> = false</td></tr>
+<tr class="separator:ac5d99c7dc40c25bf644b13b42690d981"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66e50ad65c1c37690fd0edd6bd9301c0" id="r_a66e50ad65c1c37690fd0edd6bd9301c0"><td class="memItemLeft" align="right" valign="top">juce::Label&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHeaderComponent.html#a66e50ad65c1c37690fd0edd6bd9301c0">titleLabel</a></td></tr>
 <tr class="separator:a66e50ad65c1c37690fd0edd6bd9301c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad99c5e743c5b9b2b2320bb6d90448ad1" id="r_ad99c5e743c5b9b2b2320bb6d90448ad1"><td class="memItemLeft" align="right" valign="top">juce::Label&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHeaderComponent.html#ad99c5e743c5b9b2b2320bb6d90448ad1">presetLabel</a></td></tr>
-<tr class="separator:ad99c5e743c5b9b2b2320bb6d90448ad1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d4de5f4d00ffd012ce88d613f4b7ae5" id="r_a7d4de5f4d00ffd012ce88d613f4b7ae5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPresetLabel.html">PresetLabel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHeaderComponent.html#a7d4de5f4d00ffd012ce88d613f4b7ae5">presetLabel</a></td></tr>
+<tr class="separator:a7d4de5f4d00ffd012ce88d613f4b7ae5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a593b7749dc2c5e0c35eae13ebfcd5da8" id="r_a593b7749dc2c5e0c35eae13ebfcd5da8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classIconButton.html">IconButton</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHeaderComponent.html#a593b7749dc2c5e0c35eae13ebfcd5da8">homeButton</a> { <a class="el" href="classIconButton.html#a654c56365d01581483bf694ac36221c3a8cf04a9734132302f96da8e113e80ce5">IconButton::Icon::Home</a> }</td></tr>
 <tr class="separator:a593b7749dc2c5e0c35eae13ebfcd5da8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ebf73c64948e1b11c9d2929b44dd30c" id="r_a0ebf73c64948e1b11c9d2929b44dd30c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classIconButton.html">IconButton</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHeaderComponent.html#a0ebf73c64948e1b11c9d2929b44dd30c">loadButton</a> { <a class="el" href="classIconButton.html#a654c56365d01581483bf694ac36221c3a72d6d7a1885885bb55a565fd1070581a">IconButton::Icon::Import</a> }</td></tr>
@@ -259,6 +303,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:ae321c9a103fb4196013c96cae71a0df1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33182ebe52278c80731f7d195a3045c4" id="r_a33182ebe52278c80731f7d195a3045c4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classModelPicker.html">ModelPicker</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHeaderComponent.html#a33182ebe52278c80731f7d195a3045c4">modelPicker</a></td></tr>
 <tr class="separator:a33182ebe52278c80731f7d195a3045c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a739c3618d2d732b978db85a70dba8f4c" id="r_a739c3618d2d732b978db85a70dba8f4c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classHistoryPicker.html">HistoryPicker</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHeaderComponent.html#a739c3618d2d732b978db85a70dba8f4c">historyPicker</a></td></tr>
+<tr class="separator:a739c3618d2d732b978db85a70dba8f4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a2da609348476b6d1ce88c4bf123c97" id="r_a5a2da609348476b6d1ce88c4bf123c97"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPromptEditor.html">PromptEditor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHeaderComponent.html#a5a2da609348476b6d1ce88c4bf123c97">promptEditor</a></td></tr>
 <tr class="separator:a5a2da609348476b6d1ce88c4bf123c97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac59efc850793da5ba5a8c8363a9806a9" id="r_ac59efc850793da5ba5a8c8363a9806a9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPaletteSelector.html">PaletteSelector</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHeaderComponent.html#ac59efc850793da5ba5a8c8363a9806a9">paletteSelector</a></td></tr>
@@ -278,6 +324,21 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:ae64e1aff8676be588408a4a1b4892740" id="r_ae64e1aff8676be588408a4a1b4892740"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHeaderComponent.html#ae64e1aff8676be588408a4a1b4892740">waveAnim</a> = 1.0f</td></tr>
 <tr class="separator:ae64e1aff8676be588408a4a1b4892740"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a6b027833d01846b84aa329bf08ec745c" name="a6b027833d01846b84aa329bf08ec745c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b027833d01846b84aa329bf08ec745c">&#9670;&#160;</a></span>HistoryList</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classHeaderComponent.html#a6b027833d01846b84aa329bf08ec745c">HeaderComponent::HistoryList</a> =  std::vector&lt;<a class="el" href="structHistoryEntry.html">HistoryEntry</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="a3a1ad7c3ffcaf7a88c11ef0326297eb5" name="a3a1ad7c3ffcaf7a88c11ef0326297eb5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3a1ad7c3ffcaf7a88c11ef0326297eb5">&#9670;&#160;</a></span>Mode</h2>
@@ -360,6 +421,24 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a0fc9e7cccced0b4cc3b0f266fb94a627" name="a0fc9e7cccced0b4cc3b0f266fb94a627"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fc9e7cccced0b4cc3b0f266fb94a627">&#9670;&#160;</a></span>addHistoryEntry()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HeaderComponent::addHistoryEntry </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structHistoryEntry.html">HistoryEntry</a> &amp;&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a358bc85022b2565bf0d1a42af2f85fd8" name="a358bc85022b2565bf0d1a42af2f85fd8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a358bc85022b2565bf0d1a42af2f85fd8">&#9670;&#160;</a></span>applyColours()</h2>
 
@@ -712,6 +791,24 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="aec1085a6bd48c5badfbfe57de0659e6b" name="aec1085a6bd48c5badfbfe57de0659e6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec1085a6bd48c5badfbfe57de0659e6b">&#9670;&#160;</a></span>moveHistoryToTop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HeaderComponent::moveHistoryToTop </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ad93e8537fc2f9280d2cd00c452dea5cf" name="ad93e8537fc2f9280d2cd00c452dea5cf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad93e8537fc2f9280d2cd00c452dea5cf">&#9670;&#160;</a></span>paint()</h2>
 
@@ -850,6 +947,42 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="aff18fab1fda9760b7f54ed5406a7d8f7" name="aff18fab1fda9760b7f54ed5406a7d8f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff18fab1fda9760b7f54ed5406a7d8f7">&#9670;&#160;</a></span>setAvatarUrl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HeaderComponent::setAvatarUrl </td>
+          <td>(</td>
+          <td class="paramtype">const juce::String &amp;&#160;</td>
+          <td class="paramname"><em>url</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a47b17549526fb094b60dfe6402c81716" name="a47b17549526fb094b60dfe6402c81716"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47b17549526fb094b60dfe6402c81716">&#9670;&#160;</a></span>setHistory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HeaderComponent::setHistory </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classHeaderComponent.html#a6b027833d01846b84aa329bf08ec745c">HistoryList</a> &amp;&#160;</td>
+          <td class="paramname"><em>entries</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a59eab08fe15cb4c8a03a03ee21e851b2" name="a59eab08fe15cb4c8a03a03ee21e851b2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a59eab08fe15cb4c8a03a03ee21e851b2">&#9670;&#160;</a></span>setLogo()</h2>
 
@@ -915,6 +1048,52 @@ Private Attributes</h2></td></tr>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="AiConfig_8h.html#a2a0cefbb9fa717ffd560776e4ae2cb0d">AIModelList</a> &amp;&#160;</td>
           <td class="paramname"><em>newModels</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac5d828d78ba0bbe9a524f12dce46fbfe" name="ac5d828d78ba0bbe9a524f12dce46fbfe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5d828d78ba0bbe9a524f12dce46fbfe">&#9670;&#160;</a></span>setPaletteFromServer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HeaderComponent::setPaletteFromServer </td>
+          <td>(</td>
+          <td class="paramtype">const juce::StringArray &amp;&#160;</td>
+          <td class="paramname"><em>hexColours</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>activeSlot</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1a7d066495d8781702f7dec722f8fb62" name="a1a7d066495d8781702f7dec722f8fb62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a7d066495d8781702f7dec722f8fb62">&#9670;&#160;</a></span>setPresetName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HeaderComponent::setPresetName </td>
+          <td>(</td>
+          <td class="paramtype">const juce::String &amp;&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -995,6 +1174,94 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="ac5d99c7dc40c25bf644b13b42690d981" name="ac5d99c7dc40c25bf644b13b42690d981"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5d99c7dc40c25bf644b13b42690d981">&#9670;&#160;</a></span>applyingServerPalette</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool HeaderComponent::applyingServerPalette = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a68f1acd8395479e38f46022a33fddba0" name="a68f1acd8395479e38f46022a33fddba0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68f1acd8395479e38f46022a33fddba0">&#9670;&#160;</a></span>avatarRequestId</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int HeaderComponent::avatarRequestId = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1cbf08a11fc15a3c6562bf73e8fc411d" name="a1cbf08a11fc15a3c6562bf73e8fc411d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1cbf08a11fc15a3c6562bf73e8fc411d">&#9670;&#160;</a></span>currentAvatarUrl</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">juce::String HeaderComponent::currentAvatarUrl</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2dbdcdc021d933f290a40084347d6eb7" name="a2dbdcdc021d933f290a40084347d6eb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2dbdcdc021d933f290a40084347d6eb7">&#9670;&#160;</a></span>defaultLogo</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">juce::Image HeaderComponent::defaultLogo</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a2dc3ac57abf32b3b9ff199c67b09b825" name="a2dc3ac57abf32b3b9ff199c67b09b825"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2dc3ac57abf32b3b9ff199c67b09b825">&#9670;&#160;</a></span>fileGroupBounds</h2>
 
@@ -1028,6 +1295,50 @@ Private Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">float HeaderComponent::focusAnim = 0.0f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae3d52568602b2488e410c5c472f5abbc" name="ae3d52568602b2488e410c5c472f5abbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3d52568602b2488e410c5c472f5abbc">&#9670;&#160;</a></span>historyEntries</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classHeaderComponent.html#a6b027833d01846b84aa329bf08ec745c">HistoryList</a> HeaderComponent::historyEntries</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a739c3618d2d732b978db85a70dba8f4c" name="a739c3618d2d732b978db85a70dba8f4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a739c3618d2d732b978db85a70dba8f4c">&#9670;&#160;</a></span>historyPicker</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classHistoryPicker.html">HistoryPicker</a> HeaderComponent::historyPicker</td>
         </tr>
       </table>
   </td>
@@ -1099,6 +1410,28 @@ Private Attributes</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9185815fc457790bba2d70f7340b4608" name="a9185815fc457790bba2d70f7340b4608"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9185815fc457790bba2d70f7340b4608">&#9670;&#160;</a></span>maxHistoryEntries</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr size_t HeaderComponent::maxHistoryEntries = 50</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1193,6 +1526,48 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a09a4bd9acde1f669016e568a6f8b90f6" name="a09a4bd9acde1f669016e568a6f8b90f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09a4bd9acde1f669016e568a6f8b90f6">&#9670;&#160;</a></span>onHistoryCleared</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::function&lt;void()&gt; HeaderComponent::onHistoryCleared</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a42a4832f974e60ba5084ab98c8e3c764" name="a42a4832f974e60ba5084ab98c8e3c764"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42a4832f974e60ba5084ab98c8e3c764">&#9670;&#160;</a></span>onHistoryDeleted</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::function&lt;void (const HistoryList::value_type&amp;)&gt; HeaderComponent::onHistoryDeleted</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab68aa451e72367762684d1eb74fe15eb" name="ab68aa451e72367762684d1eb74fe15eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab68aa451e72367762684d1eb74fe15eb">&#9670;&#160;</a></span>onHistorySelected</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::function&lt;void (const HistoryList::value_type&amp;)&gt; HeaderComponent::onHistorySelected</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a3389babbb783a263d884c6f0ca9ddcd4" name="a3389babbb783a263d884c6f0ca9ddcd4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3389babbb783a263d884c6f0ca9ddcd4">&#9670;&#160;</a></span>onModeChanged</h2>
 
@@ -1257,8 +1632,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ad99c5e743c5b9b2b2320bb6d90448ad1" name="ad99c5e743c5b9b2b2320bb6d90448ad1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad99c5e743c5b9b2b2320bb6d90448ad1">&#9670;&#160;</a></span>presetLabel</h2>
+<a id="a7d4de5f4d00ffd012ce88d613f4b7ae5" name="a7d4de5f4d00ffd012ce88d613f4b7ae5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d4de5f4d00ffd012ce88d613f4b7ae5">&#9670;&#160;</a></span>presetLabel</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1267,7 +1642,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">juce::Label HeaderComponent::presetLabel</td>
+          <td class="memname"><a class="el" href="classPresetLabel.html">PresetLabel</a> HeaderComponent::presetLabel</td>
         </tr>
       </table>
   </td>

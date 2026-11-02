@@ -8,12 +8,14 @@ var searchData=
   ['isbuseslayoutsupported_5',['isBusesLayoutSupported',['../classHarmoniaAudioProcessor.html#ae05a48bbc10aff801c87ac7986827825',1,'HarmoniaAudioProcessor']]],
   ['isinlockstrip_6',['isInLockStrip',['../classIconChoiceSelector.html#a30587604e4f5a341138167452d79aae9',1,'IconChoiceSelector']]],
   ['isleft_7',['isLeft',['../classHarmoniaAlert.html#a0ec6fe3f315a02b46ecbd61ad1a0727d',1,'HarmoniaAlert']]],
-  ['islocked_8',['islocked',['../classIconChoiceSelector.html#a2d644ccb79f8135847c16d78503a52db',1,'IconChoiceSelector::isLocked()'],['../classLockableControl.html#ae8546d530b6112548b52d25e3b3710d4',1,'LockableControl::isLocked()'],['../classKnobControl.html#a564580581d3fc36ab36eac1bdaa49fc4',1,'KnobControl::isLocked()']]],
+  ['islocked_8',['islocked',['../classKnobControl.html#a564580581d3fc36ab36eac1bdaa49fc4',1,'KnobControl::isLocked()'],['../classLockableControl.html#ae8546d530b6112548b52d25e3b3710d4',1,'LockableControl::isLocked()'],['../classIconChoiceSelector.html#a2d644ccb79f8135847c16d78503a52db',1,'IconChoiceSelector::isLocked()']]],
   ['ismidieffect_9',['isMidiEffect',['../classHarmoniaAudioProcessor.html#a0ec8e70f868ed305a6ada426c92e4306',1,'HarmoniaAudioProcessor']]],
-  ['isright_10',['isRight',['../classHarmoniaAlert.html#a9eacc99df29af52441ec2d6d05c72528',1,'HarmoniaAlert']]],
-  ['issuccess_11',['isSuccess',['../structHttpResponse.html#a090399743497b93a6bc85b7d3a4118c7',1,'HttpResponse']]],
-  ['istokenerror_12',['isTokenError',['../namespaceErrorCodes.html#afbe2fc462a3fbabec0744cacdb9173ad',1,'ErrorCodes']]],
-  ['istop_13',['isTop',['../classHarmoniaAlert.html#ac4708abb428abed95c038b3339b9f540',1,'HarmoniaAlert']]],
-  ['isvalidhex_14',['isValidHex',['../namespacePaletteMapper.html#ac6d65112332c87bc3ec965297518c4a0',1,'PaletteMapper']]],
-  ['isvalidpalette_15',['isValidPalette',['../namespacePaletteMapper.html#a4f3827b0f1b060866f3e0b83fe8098d6',1,'PaletteMapper']]]
+  ['isrefined_10',['isRefined',['../namespaceHistoryUtils.html#a6b119fb935465a1c48c2046efb2b5fa5',1,'HistoryUtils']]],
+  ['isright_11',['isRight',['../classHarmoniaAlert.html#a9eacc99df29af52441ec2d6d05c72528',1,'HarmoniaAlert']]],
+  ['issuccess_12',['isSuccess',['../structHttpResponse.html#a090399743497b93a6bc85b7d3a4118c7',1,'HttpResponse']]],
+  ['istokenerror_13',['isTokenError',['../namespaceErrorCodes.html#afbe2fc462a3fbabec0744cacdb9173ad',1,'ErrorCodes']]],
+  ['istop_14',['isTop',['../classHarmoniaAlert.html#ac4708abb428abed95c038b3339b9f540',1,'HarmoniaAlert']]],
+  ['isusableurl_15',['isUsableUrl',['../namespaceAvatarLoader.html#a71baa644899703180eddf9328f2186d5',1,'AvatarLoader']]],
+  ['isvalidhex_16',['isValidHex',['../namespacePaletteMapper.html#ac6d65112332c87bc3ec965297518c4a0',1,'PaletteMapper']]],
+  ['isvalidpalette_17',['isValidPalette',['../namespacePaletteMapper.html#a4f3827b0f1b060866f3e0b83fe8098d6',1,'PaletteMapper']]]
 ];

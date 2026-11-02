@@ -8,6 +8,16 @@ var namespaces_dup =
       [ "getSessionFile", "namespaceAppPaths.html#a092e1a94862fb5b0636134c49b273b3a", null ]
     ] ],
     [ "AudioConfig", "namespaceAudioConfig.html", "namespaceAudioConfig" ],
+    [ "AvatarLoader", "namespaceAvatarLoader.html", [
+      [ "cacheFileFor", "namespaceAvatarLoader.html#a3dfbb027cfab6350b57524d49e1e8f14", null ],
+      [ "decode", "namespaceAvatarLoader.html#a6d75b7ca7ba4d3755b635557a57d0b43", null ],
+      [ "fetchAsync", "namespaceAvatarLoader.html#afb0dd94877d77d0a94893a66394d61c7", null ],
+      [ "isUsableUrl", "namespaceAvatarLoader.html#a71baa644899703180eddf9328f2186d5", null ],
+      [ "loadFromCache", "namespaceAvatarLoader.html#aaf5153c2c26c94f5e2a0f6a2785f7159", null ],
+      [ "makeCircular", "namespaceAvatarLoader.html#a6c83669e49506cfd612b7841eae9dc7c", null ],
+      [ "avatarPx", "namespaceAvatarLoader.html#abc5d8e44ca761460d8d5ebc6976ff2ca", null ],
+      [ "maxAvatarBytes", "namespaceAvatarLoader.html#aca6379aa1249854dffee06ca8ecc0f2e", null ]
+    ] ],
     [ "BackendStrings", "namespaceBackendStrings.html", [
       [ "forErrorCode", "namespaceBackendStrings.html#a80e9120d77057a9ec95a2b5a9d81ed9b", null ],
       [ "passwordTooShort", "namespaceBackendStrings.html#a50369e26a08547947c0cb9f442ebc599", null ],
@@ -70,6 +80,16 @@ var namespaces_dup =
     [ "HeaderColours", "namespaceHeaderColours.html", [
       [ "generate", "namespaceHeaderColours.html#acdd5999e30dd3b190468272d3b17ab87", null ],
       [ "refine", "namespaceHeaderColours.html#aacbb17db80b9b8c033db5765bc4cdb87", null ]
+    ] ],
+    [ "HistoryMapper", "namespaceHistoryMapper.html", [
+      [ "readEntry", "namespaceHistoryMapper.html#a77e99bbd6e1e019db756655291a88452", null ],
+      [ "readFromJson", "namespaceHistoryMapper.html#a4b70391ebb5d20133a0a0dea833f0ec5", null ],
+      [ "readParameters", "namespaceHistoryMapper.html#a2bfe67b95c3ce9344dfd7180844ad8ef", null ]
+    ] ],
+    [ "HistoryUtils", "namespaceHistoryUtils.html", [
+      [ "danger", "namespaceHistoryUtils.html#a87a3e9b9c867c5aa9763df0b9931d207", null ],
+      [ "formatDate", "namespaceHistoryUtils.html#aa703169b4357da2cfdbdbac4aaeee85a", null ],
+      [ "isRefined", "namespaceHistoryUtils.html#a6b119fb935465a1c48c2046efb2b5fa5", null ]
     ] ],
     [ "HttpTimeouts", "namespaceHttpTimeouts.html", [
       [ "Ai", "namespaceHttpTimeouts.html#a55b1ceac3e64ec9a54d34130a0d4b5f6", null ],

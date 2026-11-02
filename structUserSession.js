@@ -1,6 +1,7 @@
 var structUserSession =
 [
     [ "accessToken", "structUserSession.html#a1ddcbc4766e84e222fa78e6ae72bf997", null ],
+    [ "avatarUrl", "structUserSession.html#ac74126c9559c56f52401c666471272d5", null ],
     [ "email", "structUserSession.html#ada1e0eb87b001a3109e55ae7ea24de0e", null ],
     [ "expiresAt", "structUserSession.html#a8c69a7e91dd44b84477decd3352eb954", null ],
     [ "isGuest", "structUserSession.html#a5bd5660bcff32a44eff9ccb4061bf08e", null ],

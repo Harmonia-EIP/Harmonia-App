@@ -6,12 +6,15 @@ var searchData=
   ['_7eharmoniaaudioprocessor_3',['~HarmoniaAudioProcessor',['../classHarmoniaAudioProcessor.html#ae89ea737b85e0670de703ca671c3c417',1,'HarmoniaAudioProcessor']]],
   ['_7eharmoniaaudioprocessoreditor_4',['~HarmoniaAudioProcessorEditor',['../classHarmoniaAudioProcessorEditor.html#a434f958e609ed0a35c8260458e7457a6',1,'HarmoniaAudioProcessorEditor']]],
   ['_7eheadercomponent_5',['~HeaderComponent',['../classHeaderComponent.html#a51931ed5f4ba30f320ad298f716a27fa',1,'HeaderComponent']]],
-  ['_7eiconchoiceselector_6',['~IconChoiceSelector',['../classIconChoiceSelector.html#aeaa4b62966fe0c7c779935df5d549a57',1,'IconChoiceSelector']]],
-  ['_7elockablecontrol_7',['~LockableControl',['../classLockableControl.html#a6d7615ea6aa8911baf87984e779f3d87',1,'LockableControl']]],
-  ['_7eloginpage_8',['~LoginPage',['../classLoginPage.html#acf5b30835039b07dd9075c7f81402077',1,'LoginPage']]],
-  ['_7emaincomponent_9',['~MainComponent',['../classMainComponent.html#afc7d0481eafa95da42e728443102f92e',1,'MainComponent']]],
-  ['_7epicker_10',['~Picker',['../classPaletteSelector_1_1Picker.html#a1d7172213d4b0fb9758d0bc1caf70038',1,'PaletteSelector::Picker']]],
-  ['_7esignuppage_11',['~SignupPage',['../classSignupPage.html#a98bde77d5c610c0c434451e5aa113e4f',1,'SignupPage']]],
-  ['_7esynthcomponent_12',['~SynthComponent',['../classSynthComponent.html#a4cec9f95fa7ea465e9a59d03a9176a2b',1,'SynthComponent']]],
-  ['_7ewelcomepage_13',['~WelcomePage',['../classWelcomePage.html#a7a336327432db29913ae5ed4eb61075b',1,'WelcomePage']]]
+  ['_7ehistorypanel_6',['~HistoryPanel',['../classHistoryPanel.html#aff2a16121fc2beb0ea972c7a08f85bf9',1,'HistoryPanel']]],
+  ['_7ehistorypicker_7',['~HistoryPicker',['../classHistoryPicker.html#a24dcd037f4bef5deaea58118705e188d',1,'HistoryPicker']]],
+  ['_7eiconchoiceselector_8',['~IconChoiceSelector',['../classIconChoiceSelector.html#aeaa4b62966fe0c7c779935df5d549a57',1,'IconChoiceSelector']]],
+  ['_7elockablecontrol_9',['~LockableControl',['../classLockableControl.html#a6d7615ea6aa8911baf87984e779f3d87',1,'LockableControl']]],
+  ['_7eloginpage_10',['~LoginPage',['../classLoginPage.html#acf5b30835039b07dd9075c7f81402077',1,'LoginPage']]],
+  ['_7emaincomponent_11',['~MainComponent',['../classMainComponent.html#afc7d0481eafa95da42e728443102f92e',1,'MainComponent']]],
+  ['_7epicker_12',['~Picker',['../classPaletteSelector_1_1Picker.html#a1d7172213d4b0fb9758d0bc1caf70038',1,'PaletteSelector::Picker']]],
+  ['_7eprofileservice_13',['~ProfileService',['../classProfileService.html#a77c9a9658354ce8f08104ed92a777e89',1,'ProfileService']]],
+  ['_7esignuppage_14',['~SignupPage',['../classSignupPage.html#a98bde77d5c610c0c434451e5aa113e4f',1,'SignupPage']]],
+  ['_7esynthcomponent_15',['~SynthComponent',['../classSynthComponent.html#a4cec9f95fa7ea465e9a59d03a9176a2b',1,'SynthComponent']]],
+  ['_7ewelcomepage_16',['~WelcomePage',['../classWelcomePage.html#a7a336327432db29913ae5ed4eb61075b',1,'WelcomePage']]]
 ];

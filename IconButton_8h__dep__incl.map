@@ -1,0 +1,78 @@
+<map id="src/sections/header_components/IconButton.h" name="src/sections/header_components/IconButton.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="731,5,926,45"/>
+<area shape="rect" id="Node000002" href="$HeaderComponent_8h.html" title=" " alt="" coords="473,277,710,302"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="718,34,535,46,430,58,324,73,223,92,134,117,63,147,36,164,16,183,8,202,10,210,16,219,37,231,76,241,195,259,338,271,473,280,472,285,337,277,194,264,75,246,35,236,12,223,5,212,3,201,12,180,33,160,60,142,132,112,222,87,323,67,429,52,535,41,717,28"/>
+<area shape="rect" id="Node000011" href="$HeaderIncludes_8h.html" title=" " alt="" coords="715,93,942,133"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="823,59,824,93,818,93,817,59"/>
+<area shape="rect" id="Node000029" href="$IconButton_8cpp.html" title=" " alt="" coords="966,93,1177,133"/>
+<area shape="poly" id="edge47_Node000001_Node000029" title=" " alt="" coords="896,47,1019,91,1017,96,894,52"/>
+<area shape="rect" id="Node000003" href="$MainComponent_8h.html" title="Main synthesizer interface component for Harmonia." alt="" coords="625,365,789,390"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="620,308,693,362,690,367,616,312"/>
+<area shape="rect" id="Node000010" href="$HeaderComponent_8cpp.html" title=" " alt="" coords="349,365,601,390"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="566,312,493,367,490,362,563,308"/>
+<area shape="rect" id="Node000004" href="$AppController_8h.html" title="Main application navigation controller." alt="" coords="728,453,873,478"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="732,398,790,450,786,454,728,402"/>
+<area shape="rect" id="Node000009" href="$MainComponent_8cpp.html" title=" " alt="" coords="525,453,703,478"/>
+<area shape="poly" id="edge8_Node000003_Node000009" title=" " alt="" coords="686,402,629,454,625,450,683,398"/>
+<area shape="rect" id="Node000005" href="$AppController_8cpp.html" title=" " alt="" coords="634,533,794,559"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="779,489,729,535,725,531,776,485"/>
+<area shape="rect" id="Node000006" href="$PluginEditor_8h.html" title="Main graphical editor of the Harmonia plugin." alt="" coords="819,533,953,559"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="825,485,875,531,872,535,822,489"/>
+<area shape="rect" id="Node000007" href="$PluginEditor_8cpp.html" title=" " alt="" coords="718,607,867,632"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="862,569,810,609,806,604,859,565"/>
+<area shape="rect" id="Node000008" href="$PluginProcessor_8cpp.html" title=" " alt="" coords="892,607,1067,632"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="913,565,966,604,963,609,910,569"/>
+<area shape="poly" id="edge35_Node000011_Node000001" title=" " alt="" coords="835,80,834,46,839,46,840,80"/>
+<area shape="rect" id="Node000012" href="$ActionButton_8h.html" title=" " alt="" coords="27,181,236,221"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="702,129,484,153,237,184,236,184,236,179,236,179,483,148,701,124"/>
+<area shape="rect" id="Node000014" href="$HeaderColours_8h.html" title=" " alt="" coords="261,181,482,221"/>
+<area shape="poly" id="edge15_Node000011_Node000014" title=" " alt="" coords="708,138,464,184,463,179,707,133"/>
+<area shape="rect" id="Node000015" href="$HistoryPanel_8cpp.html" title=" " alt="" coords="1420,357,1643,397"/>
+<area shape="poly" id="edge18_Node000011_Node000015" title=" " alt="" coords="956,131,1065,136,1196,140,1320,151,1371,162,1410,179,1440,210,1472,259,1525,356,1520,358,1468,262,1436,213,1407,184,1370,167,1319,156,1196,145,1065,141,956,136"/>
+<area shape="rect" id="Node000016" href="$HistoryPicker_8h.html" title=" " alt="" coords="951,181,1162,221"/>
+<area shape="poly" id="edge19_Node000011_Node000016" title=" " alt="" coords="885,136,1000,179,998,184,883,141"/>
+<area shape="rect" id="Node000018" href="$HistoryTile_8h.html" title=" " alt="" coords="1772,181,1968,221"/>
+<area shape="poly" id="edge23_Node000011_Node000018" title=" " alt="" coords="956,131,1162,149,1323,158,1483,165,1686,179,1772,187,1772,192,1686,184,1482,170,1322,163,1162,154,955,136"/>
+<area shape="rect" id="Node000022" href="$HistoryUtils_8h.html" title=" " alt="" coords="1471,181,1674,221"/>
+<area shape="poly" id="edge30_Node000011_Node000022" title=" " alt="" coords="956,131,1097,146,1206,155,1315,163,1453,179,1472,181,1471,186,1452,184,1315,169,1206,160,1096,151,955,136"/>
+<area shape="rect" id="Node000024" href="$LogoButton_8h.html" title=" " alt="" coords="729,181,928,221"/>
+<area shape="poly" id="edge36_Node000011_Node000024" title=" " alt="" coords="823,147,824,181,818,181,817,147"/>
+<area shape="rect" id="Node000026" href="$PromptEditor_8h.html" title=" " alt="" coords="1187,181,1396,221"/>
+<area shape="poly" id="edge40_Node000011_Node000026" title=" " alt="" coords="936,133,1187,179,1186,185,935,139"/>
+<area shape="rect" id="Node000028" href="$PromptFont_8h.html" title=" " alt="" coords="506,181,706,221"/>
+<area shape="poly" id="edge44_Node000011_Node000028" title=" " alt="" coords="761,141,648,184,646,179,759,136"/>
+<area shape="poly" id="edge12_Node000012_Node000002" title=" " alt="" coords="246,221,531,274,530,279,245,227"/>
+<area shape="poly" id="edge14_Node000012_Node000011" title=" " alt="" coords="249,180,260,179,504,148,715,125,715,130,504,153,261,184,250,186"/>
+<area shape="rect" id="Node000013" href="$ActionButton_8cpp.html" title=" " alt="" coords="19,269,243,309"/>
+<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="134,235,134,269,129,269,129,235"/>
+<area shape="poly" id="edge16_Node000014_Node000002" title=" " alt="" coords="433,224,563,274,561,279,431,229"/>
+<area shape="poly" id="edge17_Node000014_Node000011" title=" " alt="" coords="492,176,735,131,736,136,493,181"/>
+<area shape="poly" id="edge20_Node000016_Node000002" title=" " alt="" coords="942,226,654,279,653,274,941,221"/>
+<area shape="poly" id="edge21_Node000016_Node000011" title=" " alt="" coords="1001,179,885,136,887,131,1002,174"/>
+<area shape="rect" id="Node000017" href="$HistoryPicker_8cpp.html" title=" " alt="" coords="1468,445,1693,485"/>
+<area shape="poly" id="edge22_Node000016_Node000017" title=" " alt="" coords="1068,234,1085,272,1097,291,1112,307,1152,338,1195,364,1242,386,1289,405,1383,432,1468,449,1467,454,1382,437,1287,410,1239,391,1193,369,1149,342,1108,311,1093,294,1080,275,1063,236"/>
+<area shape="rect" id="Node000019" href="$HistoryPanel_8h.html" title=" " alt="" coords="2000,269,2207,309"/>
+<area shape="poly" id="edge24_Node000018_Node000019" title=" " alt="" coords="1935,224,2053,267,2051,272,1933,229"/>
+<area shape="rect" id="Node000021" href="$HistoryTile_8cpp.html" title=" " alt="" coords="1765,269,1975,309"/>
+<area shape="poly" id="edge29_Node000018_Node000021" title=" " alt="" coords="1873,235,1873,269,1867,269,1867,235"/>
+<area shape="poly" id="edge27_Node000019_Node000015" title=" " alt="" coords="1987,312,1643,363,1643,358,1986,307"/>
+<area shape="poly" id="edge28_Node000019_Node000017" title=" " alt="" coords="2082,322,2042,363,2017,383,1990,400,1916,429,1839,448,1763,460,1694,466,1694,460,1762,454,1838,443,1915,424,1988,395,2014,379,2039,359,2079,318"/>
+<area shape="rect" id="Node000020" href="$HistoryOverlay_8h.html" title=" " alt="" coords="1755,357,1977,397"/>
+<area shape="poly" id="edge25_Node000019_Node000020" title=" " alt="" coords="2039,317,1919,360,1917,355,2037,312"/>
+<area shape="poly" id="edge26_Node000020_Node000017" title=" " alt="" coords="1791,404,1644,448,1642,443,1789,399"/>
+<area shape="poly" id="edge31_Node000022_Node000015" title=" " alt="" coords="1540,232,1525,250,1514,270,1509,293,1511,316,1524,356,1519,358,1506,317,1504,292,1509,268,1521,247,1536,229"/>
+<area shape="poly" id="edge32_Node000022_Node000017" title=" " alt="" coords="1525,230,1474,263,1428,304,1411,326,1402,349,1401,372,1411,396,1424,411,1440,424,1477,443,1474,448,1437,428,1420,415,1406,399,1396,373,1396,348,1407,323,1424,300,1471,258,1522,226"/>
+<area shape="poly" id="edge33_Node000022_Node000021" title=" " alt="" coords="1652,223,1806,267,1804,272,1650,228"/>
+<area shape="rect" id="Node000023" href="$HistoryUtils_8cpp.html" title=" " alt="" coords="1523,269,1740,309"/>
+<area shape="poly" id="edge34_Node000022_Node000023" title=" " alt="" coords="1596,231,1621,268,1616,271,1591,234"/>
+<area shape="poly" id="edge37_Node000024_Node000002" title=" " alt="" coords="764,229,624,279,622,274,763,224"/>
+<area shape="poly" id="edge38_Node000024_Node000011" title=" " alt="" coords="835,168,834,134,839,134,840,168"/>
+<area shape="rect" id="Node000025" href="$LogoButton_8cpp.html" title=" " alt="" coords="735,269,949,309"/>
+<area shape="poly" id="edge39_Node000024_Node000025" title=" " alt="" coords="836,234,842,269,836,270,831,235"/>
+<area shape="poly" id="edge41_Node000026_Node000002" title=" " alt="" coords="1173,224,946,249,722,272,668,279,667,274,722,267,945,243,1173,219"/>
+<area shape="poly" id="edge42_Node000026_Node000011" title=" " alt="" coords="1184,181,937,136,938,131,1185,176"/>
+<area shape="rect" id="Node000027" href="$PromptEditor_8cpp.html" title=" " alt="" coords="1122,269,1346,309"/>
+<area shape="poly" id="edge43_Node000026_Node000027" title=" " alt="" coords="1273,234,1249,271,1245,268,1269,232"/>
+<area shape="poly" id="edge45_Node000028_Node000002" title=" " alt="" coords="603,235,596,277,591,276,598,234"/>
+<area shape="poly" id="edge46_Node000028_Node000011" title=" " alt="" coords="674,174,786,131,788,136,676,179"/>
+</map>

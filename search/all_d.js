@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['name_0',['name',['../structModelPicker_1_1Item.html#ae7b57ce3e4c2c2431025bc27f05bdcae',1,'ModelPicker::Item::name'],['../structAIModelData.html#a5ecf28f570fe50016dabfb2622ac3085',1,'AIModelData::name']]],
+  ['name_0',['name',['../structAIModelData.html#a5ecf28f570fe50016dabfb2622ac3085',1,'AIModelData::name'],['../structModelPicker_1_1Item.html#ae7b57ce3e4c2c2431025bc27f05bdcae',1,'ModelPicker::Item::name'],['../structHistoryEntry.html#a17692ab0bf79cf59173b4c4e4218bd66',1,'HistoryEntry::name']]],
   ['network_1',['network',['../structAiResult.html#a30c52302f0a3eac9c5db7d39f380586baeec89088ee408b80387155272b113256',1,'AiResult::Network'],['../structApiError.html#a3395681759a0b17abe3979f60e507ea3aeec89088ee408b80387155272b113256',1,'ApiError::Network']]],
   ['networkerror_2',['networkerror',['../structHttpResponse.html#a1aab779a623a1ef029bd9a9a71327359',1,'HttpResponse::networkError'],['../namespaceStrings_1_1Errors.html#ac81e6704cacf1cdbab6f72caf42002e1',1,'Strings::Errors::NetworkError']]],
   ['networkerroradvice_3',['NetworkErrorAdvice',['../namespaceStrings_1_1Errors.html#adf3c9e3bb81d98e2e863588c7d64a476',1,'Strings::Errors']]],
@@ -8,10 +8,10 @@ var searchData=
   ['networkerrormessage_5',['networkErrorMessage',['../structHttpResponse.html#ae1a43771822d904df62abf956c1a8a7b',1,'HttpResponse']]],
   ['noise_6',['Noise',['../namespaceStrings_1_1Knobs.html#ac2c4121922f5342b2bce00cfc11cee7f',1,'Strings::Knobs']]],
   ['noisedist_7',['noiseDist',['../classHarmoniaVoice.html#ade24ce2d9c0cc8f9225a60570f0b486f',1,'HarmoniaVoice']]],
-  ['noiselevel_8',['noiselevel',['../namespaceHarmoniaParams_1_1IDs.html#af268d4a86f10af86a731a8cb60485cf8',1,'HarmoniaParams::IDs::noiseLevel'],['../structHarmoniaParams_1_1AtomicRefs.html#aeca1826d49e10a005fee52dd2d443e14',1,'HarmoniaParams::AtomicRefs::noiseLevel']]],
+  ['noiselevel_8',['noiselevel',['../structHarmoniaParams_1_1AtomicRefs.html#aeca1826d49e10a005fee52dd2d443e14',1,'HarmoniaParams::AtomicRefs::noiseLevel'],['../namespaceHarmoniaParams_1_1IDs.html#af268d4a86f10af86a731a8cb60485cf8',1,'HarmoniaParams::IDs::noiseLevel']]],
   ['noiselevelknob_9',['noiseLevelKnob',['../classMainComponent.html#ab169e5fdaf47adb739ed61a384f47dc5',1,'MainComponent']]],
   ['none_10',['None',['../structAiResult.html#a30c52302f0a3eac9c5db7d39f380586ba6adf97f83acf6453d4a6a4b1070f3754',1,'AiResult']]],
-  ['nopermission_11',['nopermission',['../namespaceErrorCodes.html#ae5eed8d8c72605dfd23bec111c0c4b99',1,'ErrorCodes::NoPermission'],['../namespaceBackendStrings.html#aba7bfb209ab2a2a9ee655fb059b2f6b6',1,'BackendStrings::NoPermission']]],
+  ['nopermission_11',['nopermission',['../namespaceBackendStrings.html#aba7bfb209ab2a2a9ee655fb059b2f6b6',1,'BackendStrings::NoPermission'],['../namespaceErrorCodes.html#ae5eed8d8c72605dfd23bec111c0c4b99',1,'ErrorCodes::NoPermission']]],
   ['nosession_12',['NoSession',['../structAiResult.html#a30c52302f0a3eac9c5db7d39f380586ba0f58fb16979a19a531cfb8db74a9c5e2',1,'AiResult']]],
   ['notallowed_13',['NotAllowed',['../namespaceBackendStrings.html#aa8e268df4a0c1e7e2cf1daf8468bce64',1,'BackendStrings']]],
   ['notevelocity_14',['noteVelocity',['../classHarmoniaVoice.html#aec1a0df363b748b69343bc9d4bf5c984',1,'HarmoniaVoice']]],

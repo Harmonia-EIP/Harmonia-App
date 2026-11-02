@@ -142,12 +142,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ae21b50d7e7f6365cbf74c9ab3213e822"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45da484953210bee5b8baa2fafd463f6" id="r_a45da484953210bee5b8baa2fafd463f6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structProfileResult.html">ProfileResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a45da484953210bee5b8baa2fafd463f6">getProfile</a> ()</td></tr>
 <tr class="separator:a45da484953210bee5b8baa2fafd463f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61203ae58e04ff22c866acb5dc602c23" id="r_a61203ae58e04ff22c866acb5dc602c23"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a61203ae58e04ff22c866acb5dc602c23">syncProfileParamsInBackground</a> (const <a class="el" href="structUserSession.html">UserSession</a> &amp;session)</td></tr>
-<tr class="memdesc:a61203ae58e04ff22c866acb5dc602c23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resync de la session depuis GET /profile/me, sur un thread de fond.  <br /></td></tr>
-<tr class="separator:a61203ae58e04ff22c866acb5dc602c23"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa869d21bab03453f69e0cc4e0dfa7a5a" id="r_aa869d21bab03453f69e0cc4e0dfa7a5a"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="structUserSession.html">UserSession</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#aa869d21bab03453f69e0cc4e0dfa7a5a">syncProfileParams</a> (const <a class="el" href="structUserSession.html">UserSession</a> &amp;session)</td></tr>
-<tr class="memdesc:aa869d21bab03453f69e0cc4e0dfa7a5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resync bloquante.  <br /></td></tr>
-<tr class="separator:aa869d21bab03453f69e0cc4e0dfa7a5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c146df936ee487d6f7d731f1c2c70a6" id="r_a7c146df936ee487d6f7d731f1c2c70a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a7c146df936ee487d6f7d731f1c2c70a6">syncProfileParamsInBackground</a> (const <a class="el" href="structUserSession.html">UserSession</a> &amp;session, std::function&lt; void(<a class="el" href="structProfileSnapshot.html">ProfileSnapshot</a>)&gt; onDone)</td></tr>
+<tr class="memdesc:a7c146df936ee487d6f7d731f1c2c70a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resync de la session depuis GET /profile/me, sur un thread de fond.  <br /></td></tr>
+<tr class="separator:a7c146df936ee487d6f7d731f1c2c70a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46f9b491d0d3adc079a3d75192fb2bfb" id="r_a46f9b491d0d3adc079a3d75192fb2bfb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structProfileResult.html">ProfileResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a46f9b491d0d3adc079a3d75192fb2bfb">updatePalette</a> (const juce::StringArray &amp;colours, int slot)</td></tr>
 <tr class="memdesc:a46f9b491d0d3adc079a3d75192fb2bfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Palette, bloquant.  <br /></td></tr>
 <tr class="separator:a46f9b491d0d3adc079a3d75192fb2bfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -160,6 +157,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab1d9fc37565b10858d52bac65fda2f54" id="r_ab1d9fc37565b10858d52bac65fda2f54"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#ab1d9fc37565b10858d52bac65fda2f54">resetPaletteSyncState</a> (const juce::StringArray &amp;colours, int slot)</td></tr>
 <tr class="memdesc:ab1d9fc37565b10858d52bac65fda2f54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Définit l'état "connu du serveur" (palette de la session, vide pour un invité).  <br /></td></tr>
 <tr class="separator:ab1d9fc37565b10858d52bac65fda2f54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7c5216d76013d7139e5712ede679f77" id="r_ad7c5216d76013d7139e5712ede679f77"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#ad7c5216d76013d7139e5712ede679f77">deleteHistoryEntry</a> (int entryId)</td></tr>
+<tr class="separator:ad7c5216d76013d7139e5712ede679f77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63e6d73fe56e6890aaf274fa70a47f52" id="r_a63e6d73fe56e6890aaf274fa70a47f52"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a63e6d73fe56e6890aaf274fa70a47f52">clearHistory</a> ()</td></tr>
+<tr class="separator:a63e6d73fe56e6890aaf274fa70a47f52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a9b0e7ec685af2539b7541c8701c5ad" id="r_a2a9b0e7ec685af2539b7541c8701c5ad"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a2a9b0e7ec685af2539b7541c8701c5ad">touchHistoryEntry</a> (int entryId)</td></tr>
+<tr class="separator:a2a9b0e7ec685af2539b7541c8701c5ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abfaf058d370332559ca2a79da994e72f" id="r_abfaf058d370332559ca2a79da994e72f"><td class="memItemLeft" align="right" valign="top">const juce::String &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#abfaf058d370332559ca2a79da994e72f">getApiUrl</a> () const</td></tr>
 <tr class="separator:abfaf058d370332559ca2a79da994e72f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75e5015d05b4a9bf67492b95936a03f9" id="r_a75e5015d05b4a9bf67492b95936a03f9"><td class="memItemLeft" align="right" valign="top">const juce::File &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBackendManager.html#a75e5015d05b4a9bf67492b95936a03f9">getSessionFile</a> () const</td></tr>
@@ -254,6 +257,23 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a63e6d73fe56e6890aaf274fa70a47f52" name="a63e6d73fe56e6890aaf274fa70a47f52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63e6d73fe56e6890aaf274fa70a47f52">&#9670;&#160;</a></span>clearHistory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool BackendManager::clearHistory </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a022a7ce81088cec16dbe4a5abda31dd4" name="a022a7ce81088cec16dbe4a5abda31dd4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a022a7ce81088cec16dbe4a5abda31dd4">&#9670;&#160;</a></span>clearSession()</h2>
 
@@ -271,6 +291,24 @@ Private Attributes</h2></td></tr>
 
 <p>Supprime la session locale. </p>
 <p>Appeler <a class="el" href="classBackendManager.html#a70e8894ed6ef9c092ddddef0f401cc7e" title="Envoie le changement de palette en attente, sans bloquer.">flushPaletteIfPending()</a> AVANT. </p>
+
+</div>
+</div>
+<a id="ad7c5216d76013d7139e5712ede679f77" name="ad7c5216d76013d7139e5712ede679f77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7c5216d76013d7139e5712ede679f77">&#9670;&#160;</a></span>deleteHistoryEntry()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool BackendManager::deleteHistoryEntry </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>entryId</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -623,29 +661,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="aa869d21bab03453f69e0cc4e0dfa7a5a" name="aa869d21bab03453f69e0cc4e0dfa7a5a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa869d21bab03453f69e0cc4e0dfa7a5a">&#9670;&#160;</a></span>syncProfileParams()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::optional&lt; <a class="el" href="structUserSession.html">UserSession</a> &gt; BackendManager::syncProfileParams </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="structUserSession.html">UserSession</a> &amp;&#160;</td>
-          <td class="paramname"><em>session</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Resync bloquante. </p>
-<p>nullopt si échec. </p>
-
-</div>
-</div>
-<a id="a61203ae58e04ff22c866acb5dc602c23" name="a61203ae58e04ff22c866acb5dc602c23"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a61203ae58e04ff22c866acb5dc602c23">&#9670;&#160;</a></span>syncProfileParamsInBackground()</h2>
+<a id="a7c146df936ee487d6f7d731f1c2c70a6" name="a7c146df936ee487d6f7d731f1c2c70a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c146df936ee487d6f7d731f1c2c70a6">&#9670;&#160;</a></span>syncProfileParamsInBackground()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -654,13 +671,41 @@ Private Attributes</h2></td></tr>
           <td class="memname">void BackendManager::syncProfileParamsInBackground </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structUserSession.html">UserSession</a> &amp;&#160;</td>
-          <td class="paramname"><em>session</em></td><td>)</td>
+          <td class="paramname"><em>session</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">std::function&lt; void(<a class="el" href="structProfileSnapshot.html">ProfileSnapshot</a>)&gt;&#160;</td>
+          <td class="paramname"><em>onDone</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Resync de la session depuis GET /profile/me, sur un thread de fond. </p>
+
+</div>
+</div>
+<a id="a2a9b0e7ec685af2539b7541c8701c5ad" name="a2a9b0e7ec685af2539b7541c8701c5ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a9b0e7ec685af2539b7541c8701c5ad">&#9670;&#160;</a></span>touchHistoryEntry()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool BackendManager::touchHistoryEntry </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>entryId</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>

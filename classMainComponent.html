@@ -187,6 +187,8 @@ Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
+<tr class="memitem:ab63477a8ecd7eefee41e99bb684e8ad0" id="r_ab63477a8ecd7eefee41e99bb684e8ad0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#ab63477a8ecd7eefee41e99bb684e8ad0">refreshProfileAsync</a> ()</td></tr>
+<tr class="separator:ab63477a8ecd7eefee41e99bb684e8ad0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8583f3f10ddc81a2094d21533c031f58" id="r_a8583f3f10ddc81a2094d21533c031f58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#a8583f3f10ddc81a2094d21533c031f58">applyTheme</a> ()</td></tr>
 <tr class="separator:a8583f3f10ddc81a2094d21533c031f58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a107789663da348e23dae566c28c006b4" id="r_a107789663da348e23dae566c28c006b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#a107789663da348e23dae566c28c006b4">saveThemeToState</a> (int slot=-1)</td></tr>
@@ -216,6 +218,13 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a899a28b83547847b6b273f5941b19302" id="r_a899a28b83547847b6b273f5941b19302"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#a899a28b83547847b6b273f5941b19302">doSavePreset</a> ()</td></tr>
 <tr class="memdesc:a899a28b83547847b6b273f5941b19302"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves current synthesizer state as a preset.  <br /></td></tr>
 <tr class="separator:a899a28b83547847b6b273f5941b19302"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4d4c4bfd5ab3d4eb91b18417d8e278d" id="r_ab4d4c4bfd5ab3d4eb91b18417d8e278d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#ab4d4c4bfd5ab3d4eb91b18417d8e278d">refreshHistoryAsync</a> ()</td></tr>
+<tr class="separator:ab4d4c4bfd5ab3d4eb91b18417d8e278d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff6f14f5f75666dee3771b658d27c869" id="r_aff6f14f5f75666dee3771b658d27c869"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#aff6f14f5f75666dee3771b658d27c869">touchHistoryAsync</a> (int entryId)</td></tr>
+<tr class="separator:aff6f14f5f75666dee3771b658d27c869"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1012b8fe54bec9d4695bd48b9073d9d3" id="r_a1012b8fe54bec9d4695bd48b9073d9d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#a1012b8fe54bec9d4695bd48b9073d9d3">loadHistoryEntry</a> (const HeaderComponent::HistoryList::value_type &amp;entry)</td></tr>
+<tr class="memdesc:a1012b8fe54bec9d4695bd48b9073d9d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads a history entry into the synth parameters.  <br /></td></tr>
+<tr class="separator:a1012b8fe54bec9d4695bd48b9073d9d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a340504f7f9f556b0b535016e23a4465f" id="r_a340504f7f9f556b0b535016e23a4465f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#a340504f7f9f556b0b535016e23a4465f">refreshModelsAsync</a> ()</td></tr>
 <tr class="memdesc:a340504f7f9f556b0b535016e23a4465f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches the AI model list (GET /ai/models) on a background thread and updates the header menu when it arrives.  <br /></td></tr>
 <tr class="separator:a340504f7f9f556b0b535016e23a4465f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -252,7 +261,7 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:aedafc666fd4c8705179d0c1ea154903a" id="r_aedafc666fd4c8705179d0c1ea154903a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classHiveLookAndFeel.html">HiveLookAndFeel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#aedafc666fd4c8705179d0c1ea154903a">lookAndFeel</a></td></tr>
 <tr class="memdesc:aedafc666fd4c8705179d0c1ea154903a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Custom Harmonia look-and-feel implementation.  <br /></td></tr>
 <tr class="separator:aedafc666fd4c8705179d0c1ea154903a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae4faa7bc76defa722b2031f7c6e24bc9" id="r_ae4faa7bc76defa722b2031f7c6e24bc9"><td class="memItemLeft" align="right" valign="top">juce::TooltipWindow&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#ae4faa7bc76defa722b2031f7c6e24bc9">tooltipWindow</a> { this, 3000 }</td></tr>
+<tr class="memitem:ae4faa7bc76defa722b2031f7c6e24bc9" id="r_ae4faa7bc76defa722b2031f7c6e24bc9"><td class="memItemLeft" align="right" valign="top">juce::TooltipWindow&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#ae4faa7bc76defa722b2031f7c6e24bc9">tooltipWindow</a> { this, 1000 }</td></tr>
 <tr class="separator:ae4faa7bc76defa722b2031f7c6e24bc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c159e59f7f68d7f1bbedfcd29de69b4" id="r_a7c159e59f7f68d7f1bbedfcd29de69b4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classParticleField.html">ParticleField</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMainComponent.html#a7c159e59f7f68d7f1bbedfcd29de69b4">particles</a></td></tr>
 <tr class="memdesc:a7c159e59f7f68d7f1bbedfcd29de69b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Animated particle background layer.  <br /></td></tr>
@@ -402,6 +411,7 @@ Private Attributes</h2></td></tr>
 <li>Preset management</li>
 <li>AI generation tools</li>
 <li>Palette restoration / sync callbacks</li>
+<li>History callbacks (select / delete / clear)</li>
 </ul>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -681,6 +691,35 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a1012b8fe54bec9d4695bd48b9073d9d3" name="a1012b8fe54bec9d4695bd48b9073d9d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1012b8fe54bec9d4695bd48b9073d9d3">&#9670;&#160;</a></span>loadHistoryEntry()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainComponent::loadHistoryEntry </td>
+          <td>(</td>
+          <td class="paramtype">const HeaderComponent::HistoryList::value_type &amp;&#160;</td>
+          <td class="paramname"><em>entry</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Loads a history entry into the synth parameters. </p>
+<p>Generate mode: every parameter is replaced. Refine mode: locked parameters keep their current value. </p>
+
+</div>
+</div>
 <a id="ad80fcbf35ef40aa3746eb32d3684e4dd" name="ad80fcbf35ef40aa3746eb32d3684e4dd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad80fcbf35ef40aa3746eb32d3684e4dd">&#9670;&#160;</a></span>paint()</h2>
 
@@ -720,6 +759,31 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="ab4d4c4bfd5ab3d4eb91b18417d8e278d" name="ab4d4c4bfd5ab3d4eb91b18417d8e278d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4d4c4bfd5ab3d4eb91b18417d8e278d">&#9670;&#160;</a></span>refreshHistoryAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainComponent::refreshHistoryAsync </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a340504f7f9f556b0b535016e23a4465f" name="a340504f7f9f556b0b535016e23a4465f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a340504f7f9f556b0b535016e23a4465f">&#9670;&#160;</a></span>refreshModelsAsync()</h2>
 
@@ -745,6 +809,31 @@ Private Attributes</h2></td></tr>
 
 <p>Fetches the AI model list (GET /ai/models) on a background thread and updates the header menu when it arrives. </p>
 <p>Does nothing for guests. On network failure the header keeps its current state and generation still works through the "latest" model. </p>
+
+</div>
+</div>
+<a id="ab63477a8ecd7eefee41e99bb684e8ad0" name="ab63477a8ecd7eefee41e99bb684e8ad0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab63477a8ecd7eefee41e99bb684e8ad0">&#9670;&#160;</a></span>refreshProfileAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainComponent::refreshProfileAsync </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -996,6 +1085,32 @@ Private Attributes</h2></td></tr>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structAiResult.html">AiResult</a> &amp;&#160;</td>
           <td class="paramname"><em>result</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aff6f14f5f75666dee3771b658d27c869" name="aff6f14f5f75666dee3771b658d27c869"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff6f14f5f75666dee3771b658d27c869">&#9670;&#160;</a></span>touchHistoryAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainComponent::touchHistoryAsync </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>entryId</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -2004,7 +2119,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">juce::TooltipWindow MainComponent::tooltipWindow { this, 3000 }</td>
+          <td class="memname">juce::TooltipWindow MainComponent::tooltipWindow { this, 1000 }</td>
         </tr>
       </table>
   </td>

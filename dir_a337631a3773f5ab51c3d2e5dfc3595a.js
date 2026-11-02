@@ -1,5 +1,6 @@
 var dir_a337631a3773f5ab51c3d2e5dfc3595a =
 [
+    [ "HistoryMapper.h", "HistoryMapper_8h.html", "HistoryMapper_8h" ],
     [ "PaletteMapper.h", "PaletteMapper_8h.html", "PaletteMapper_8h" ],
     [ "SessionMapper.cpp", "SessionMapper_8cpp.html", "SessionMapper_8cpp" ],
     [ "SessionMapper.h", "SessionMapper_8h.html", "SessionMapper_8h" ],

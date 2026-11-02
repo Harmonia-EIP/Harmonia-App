@@ -34,6 +34,10 @@ var hierarchy =
       [ "EnvelopeVisualizer", "classEnvelopeVisualizer.html", null ],
       [ "HarmoniaAlert", "classHarmoniaAlert.html", null ],
       [ "HeaderComponent", "classHeaderComponent.html", null ],
+      [ "HistoryOverlay", "classHistoryOverlay.html", null ],
+      [ "HistoryPanel", "classHistoryPanel.html", null ],
+      [ "HistoryPicker", "classHistoryPicker.html", null ],
+      [ "HistoryTile", "classHistoryTile.html", null ],
       [ "IconChoiceSelector", "classIconChoiceSelector.html", [
         [ "FilterTypeSelector", "classFilterTypeSelector.html", null ],
         [ "WaveformSelector", "classWaveformSelector.html", null ]
@@ -55,10 +59,14 @@ var hierarchy =
     [ "juce::ComponentListener", null, [
       [ "HarmoniaAlert", "classHarmoniaAlert.html", null ]
     ] ],
+    [ "HistoryEntry", "structHistoryEntry.html", null ],
     [ "HttpClient", "classHttpClient.html", null ],
     [ "HttpOptions", "structHttpOptions.html", null ],
     [ "HttpResponse", "structHttpResponse.html", null ],
     [ "ModelPicker::Item", "structModelPicker_1_1Item.html", null ],
+    [ "juce::Label", null, [
+      [ "PresetLabel", "classPresetLabel.html", null ]
+    ] ],
     [ "juce::AudioProcessorValueTreeState::Listener", null, [
       [ "EnvelopeVisualizer", "classEnvelopeVisualizer.html", null ],
       [ "IconChoiceSelector", "classIconChoiceSelector.html", null ]
@@ -75,10 +83,13 @@ var hierarchy =
       [ "ModelMenuLookAndFeel", "classModelMenuLookAndFeel.html", null ],
       [ "WelcomeLookAndFeel", "classWelcomeLookAndFeel.html", null ]
     ] ],
+    [ "PaletteState", "structPaletteState.html", null ],
     [ "ProfileResult", "structProfileResult.html", null ],
     [ "ProfileService", "classProfileService.html", null ],
+    [ "ProfileSnapshot", "structProfileSnapshot.html", null ],
     [ "SessionStore", "classSessionStore.html", null ],
     [ "juce::SettableTooltipClient", null, [
+      [ "HistoryPicker", "classHistoryPicker.html", null ],
       [ "ModelPicker", "classModelPicker.html", null ]
     ] ],
     [ "juce::SynthesiserSound", null, [
@@ -95,15 +106,18 @@ var hierarchy =
     [ "juce::Timer", null, [
       [ "HarmoniaAlert", "classHarmoniaAlert.html", null ],
       [ "HeaderComponent", "classHeaderComponent.html", null ],
+      [ "HistoryPicker", "classHistoryPicker.html", null ],
       [ "IconButton", "classIconButton.html", null ],
       [ "LfoVisualizer", "classLfoVisualizer.html", null ],
       [ "LoginPage", "classLoginPage.html", null ],
       [ "LogoButton", "classLogoButton.html", null ],
-      [ "ModelPicker", "classModelPicker.html", null ],
       [ "OscilloscopeComponent", "classOscilloscopeComponent.html", null ],
       [ "ParticleField", "classParticleField.html", null ],
       [ "SignupPage", "classSignupPage.html", null ],
       [ "WelcomePage", "classWelcomePage.html", null ]
+    ] ],
+    [ "juce::TooltipClient", null, [
+      [ "HistoryPanel", "classHistoryPanel.html", null ]
     ] ],
     [ "UserProfile", "structUserProfile.html", null ],
     [ "UserSession", "structUserSession.html", null ],

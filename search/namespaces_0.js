@@ -15,5 +15,6 @@ var searchData=
   ['audioconfig_3a_3afilter_3a_3acutoff_12',['Cutoff',['../namespaceAudioConfig_1_1Filter_1_1Cutoff.html',1,'AudioConfig::Filter']]],
   ['audioconfig_3a_3afilter_3a_3aresonance_13',['Resonance',['../namespaceAudioConfig_1_1Filter_1_1Resonance.html',1,'AudioConfig::Filter']]],
   ['audioconfig_3a_3afrequency_14',['Frequency',['../namespaceAudioConfig_1_1Frequency.html',1,'AudioConfig']]],
-  ['audioconfig_3a_3avolume_15',['Volume',['../namespaceAudioConfig_1_1Volume.html',1,'AudioConfig']]]
+  ['audioconfig_3a_3avolume_15',['Volume',['../namespaceAudioConfig_1_1Volume.html',1,'AudioConfig']]],
+  ['avatarloader_16',['AvatarLoader',['../namespaceAvatarLoader.html',1,'']]]
 ];

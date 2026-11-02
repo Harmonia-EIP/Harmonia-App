@@ -2,8 +2,8 @@ var searchData=
 [
   ['back_0',['Back',['../namespaceStrings_1_1Buttons.html#a3885bc8f0f6aa19b9d4e39eb60825f7a',1,'Strings::Buttons']]],
   ['backbutton_1',['backbutton',['../classSignupPage.html#a3c8d4626499ab361ef15d7dc3978b00c',1,'SignupPage::backButton'],['../classLoginPage.html#ad8510ec52ffdcba2dbb5e9799f3122d3',1,'LoginPage::backButton']]],
-  ['backend_2',['backend',['../classMainComponent.html#a406af97f9c54dcb7c7c13c0d7504372a',1,'MainComponent::backend'],['../classLoginPage.html#ad467ba7fe5a4f10a28ea37ca0883c16d',1,'LoginPage::backend'],['../classSignupPage.html#a4d9b97ef56922877a2326617e75fdbbc',1,'SignupPage::backend'],['../classHarmoniaAudioProcessor.html#a47a0a01923f264a9ffc7e471fe532047',1,'HarmoniaAudioProcessor::backend'],['../classAppController.html#a0e323e048a71fdf7ff10a930087d0056',1,'AppController::backend']]],
-  ['background_3',['background',['../namespaceHarmoniaPalette.html#ad75c5c033fc4b3e7fc1d3c3e1945c2c9',1,'HarmoniaPalette::background'],['../structThemePalette.html#a5185e50af37421b0ddd1557e367a174f',1,'ThemePalette::background']]],
+  ['backend_2',['backend',['../classLoginPage.html#ad467ba7fe5a4f10a28ea37ca0883c16d',1,'LoginPage::backend'],['../classMainComponent.html#a406af97f9c54dcb7c7c13c0d7504372a',1,'MainComponent::backend'],['../classAppController.html#a0e323e048a71fdf7ff10a930087d0056',1,'AppController::backend'],['../classHarmoniaAudioProcessor.html#a47a0a01923f264a9ffc7e471fe532047',1,'HarmoniaAudioProcessor::backend'],['../classSignupPage.html#a4d9b97ef56922877a2326617e75fdbbc',1,'SignupPage::backend']]],
+  ['background_3',['background',['../structThemePalette.html#a5185e50af37421b0ddd1557e367a174f',1,'ThemePalette::background'],['../namespaceHarmoniaPalette.html#ad75c5c033fc4b3e7fc1d3c3e1945c2c9',1,'HarmoniaPalette::background']]],
   ['bandpass_4',['BandPass',['../namespaceStrings_1_1Filter.html#a8a1345caeddb6ce69ad25802020d38d8',1,'Strings::Filter']]],
   ['basefrequencyhz_5',['baseFrequencyHz',['../classHarmoniaVoice.html#a840cc5fe28c50a004fbe8463dfbc89cf',1,'HarmoniaVoice']]],
   ['baseurl_6',['baseUrl',['../classHttpClient.html#a7d03b1ff73507796bd523cc52f14dc08',1,'HttpClient']]],
@@ -15,10 +15,12 @@ var searchData=
   ['body_12',['body',['../structHttpResponse.html#ab59b82bffe1ab9a8e2741d5f4f94d12a',1,'HttpResponse']]],
   ['border_13',['border',['../namespaceHarmoniaPalette.html#a76db180530cfde516855be231f17d7c2',1,'HarmoniaPalette']]],
   ['borderhi_14',['borderHi',['../namespaceHarmoniaPalette.html#a2bb316d27757a2ed6ebcb0c650f78f0c',1,'HarmoniaPalette']]],
-  ['btnborder_15',['btnBorder',['../namespaceHarmoniaColours.html#a771e51e8b5017893f95c481eb51f0a0a',1,'HarmoniaColours']]],
-  ['btnoutline_16',['btnOutline',['../namespaceHarmoniaColours.html#adcfaca2a6871523bfcbbcd336d858625',1,'HarmoniaColours']]],
-  ['btnoutlinehov_17',['btnOutlineHov',['../namespaceHarmoniaColours.html#a036145178424c4940773bc8c4de9ded6',1,'HarmoniaColours']]],
-  ['btnsigninhover_18',['btnSignInHover',['../namespaceHarmoniaColours.html#a37ccf518a04c8f676ad442915dbe337a',1,'HarmoniaColours']]],
-  ['buffersize_19',['BufferSize',['../namespaceAppConfig_1_1Oscilloscope.html#a1e135db023421b9515e73aa5ffde2ea2',1,'AppConfig::Oscilloscope']]],
-  ['bursts_20',['bursts',['../classParticleField.html#afcc910ebd26f4203f393bf37baa012c8',1,'ParticleField']]]
+  ['bottomh_15',['bottomH',['../classHistoryPanel.html#aae565438aae812b0d4696a6313cca6e2',1,'HistoryPanel']]],
+  ['btnborder_16',['btnBorder',['../namespaceHarmoniaColours.html#a771e51e8b5017893f95c481eb51f0a0a',1,'HarmoniaColours']]],
+  ['btnoutline_17',['btnOutline',['../namespaceHarmoniaColours.html#adcfaca2a6871523bfcbbcd336d858625',1,'HarmoniaColours']]],
+  ['btnoutlinehov_18',['btnOutlineHov',['../namespaceHarmoniaColours.html#a036145178424c4940773bc8c4de9ded6',1,'HarmoniaColours']]],
+  ['btnsigninhover_19',['btnSignInHover',['../namespaceHarmoniaColours.html#a37ccf518a04c8f676ad442915dbe337a',1,'HarmoniaColours']]],
+  ['buffersize_20',['BufferSize',['../namespaceAppConfig_1_1Oscilloscope.html#a1e135db023421b9515e73aa5ffde2ea2',1,'AppConfig::Oscilloscope']]],
+  ['burst_21',['burst',['../classModelPicker.html#a6cab80d4905c493e8d2975bd4a56fad4',1,'ModelPicker']]],
+  ['bursts_22',['bursts',['../classParticleField.html#afcc910ebd26f4203f393bf37baa012c8',1,'ParticleField']]]
 ];
