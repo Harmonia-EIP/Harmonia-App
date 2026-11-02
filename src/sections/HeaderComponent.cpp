@@ -1,337 +1,8 @@
 #include "HeaderComponent.h"
+#include <BinaryData.h>
 
-//==============================================================================
-// IconButton
-//==============================================================================
-juce::Path IconButton::makePath (Icon i)
-{
-    juce::Path p;   // boîte 24x24
+#include <algorithm>
 
-    switch (i)
-    {
-        case Icon::Home:
-            p.startNewSubPath (3.0f, 11.5f);
-            p.lineTo (12.0f, 3.5f);
-            p.lineTo (21.0f, 11.5f);
-
-            p.startNewSubPath (5.5f, 9.5f);
-            p.lineTo (5.5f, 20.5f);
-            p.lineTo (10.0f, 20.5f);
-            p.lineTo (10.0f, 14.5f);
-            p.lineTo (14.0f, 14.5f);
-            p.lineTo (14.0f, 20.5f);
-            p.lineTo (18.5f, 20.5f);
-            p.lineTo (18.5f, 9.5f);
-            break;
-
-        case Icon::Import:
-            p.startNewSubPath (12.0f, 4.0f);   p.lineTo (12.0f, 15.0f);
-            p.startNewSubPath (7.5f, 10.5f);   p.lineTo (12.0f, 15.0f);  p.lineTo (16.5f, 10.5f);
-            p.startNewSubPath (4.0f, 16.0f);   p.lineTo (4.0f, 20.0f);   p.lineTo (20.0f, 20.0f);  p.lineTo (20.0f, 16.0f);
-            break;
-
-        case Icon::Export:
-            p.startNewSubPath (12.0f, 15.0f);  p.lineTo (12.0f, 4.0f);
-            p.startNewSubPath (7.5f, 8.5f);    p.lineTo (12.0f, 4.0f);   p.lineTo (16.5f, 8.5f);
-            p.startNewSubPath (4.0f, 16.0f);   p.lineTo (4.0f, 20.0f);   p.lineTo (20.0f, 20.0f);  p.lineTo (20.0f, 16.0f);
-            break;
-    }
-
-    return p;
-}
-
-void IconButton::timerCallback()
-{
-    const float target = (isOver() || isDown()) ? 1.0f : 0.0f;
-    hoverAnim += (target - hoverAnim) * 0.30f;
-
-    if (std::abs (target - hoverAnim) < 0.01f)
-    {
-        hoverAnim = target;
-        stopTimer();
-    }
-
-    repaint();
-}
-
-void IconButton::paintButton (juce::Graphics& g, bool, bool down)
-{
-    auto b = getLocalBounds().toFloat();
-    const auto accent = HarmoniaPalette::accent;
-    const float h = hoverAnim;
-
-    if (h > 0.01f)
-    {
-        auto r = b.reduced (3.0f);
-
-        // glow radial
-        juce::ColourGradient glow (accent.withAlpha (0.30f * h), r.getCentre(),
-                                   accent.withAlpha (0.0f),      r.getTopLeft(),
-                                   true);
-        g.setGradientFill (glow);
-        g.fillRoundedRectangle (r, 8.0f);
-
-        // ligne néon qui s'élargit
-        const float w = r.getWidth() * 0.55f * h;
-        g.setColour (accent.withAlpha (0.90f * h));
-        g.fillRoundedRectangle (b.getCentreX() - w * 0.5f, b.getBottom() - 4.0f, w, 1.5f, 0.75f);
-    }
-
-    auto area = b.reduced (8.0f);
-    if (down)
-        area = area.reduced (1.0f);
-
-    auto path = makePath (icon);
-    path.applyTransform (path.getTransformToScaleToFit (area, true));
-
-    g.setColour (HarmoniaPalette::textMuted.interpolatedWith (accent.brighter (0.3f), h));
-    g.strokePath (path, juce::PathStrokeType (1.5f,
-                                              juce::PathStrokeType::curved,
-                                              juce::PathStrokeType::rounded));
-}
-
-//==============================================================================
-// LogoButton
-//==============================================================================
-void LogoButton::setRefine (bool)
-{
-    // Le logo ne change plus selon le mode (conservé pour compatibilité avec le .h)
-}
-
-void LogoButton::timerCallback()
-{
-    const float targetHover = (isOver() || isDown()) ? 1.0f : 0.0f;
-    hoverAnim += (targetHover - hoverAnim) * 0.30f;
-
-    bool busy = std::abs (targetHover - hoverAnim) >= 0.01f;
-
-    if (! busy)
-        hoverAnim = targetHover;
-
-    if (spinning)
-    {
-        spinProgress += 0.035f;          // ~0.5 s pour un tour : augmente = plus rapide
-
-        if (spinProgress >= 1.0f)
-        {
-            spinProgress = 0.0f;
-            spinning = false;
-        }
-        else
-        {
-            busy = true;
-        }
-    }
-
-    if (! busy)
-        stopTimer();
-
-    repaint();
-}
-
-void LogoButton::paintButton (juce::Graphics& g, bool, bool down)
-{
-    auto b = getLocalBounds().toFloat().reduced (1.0f);
-
-    // fond + glow au survol
-    g.setColour (juce::Colours::black.withAlpha (0.28f));
-    g.fillEllipse (b);
-
-    if (hoverAnim > 0.01f)
-    {
-        juce::ColourGradient glow (tint.withAlpha (0.30f * hoverAnim), b.getCentre(),
-                                   tint.withAlpha (0.0f), b.getTopLeft(), true);
-        g.setGradientFill (glow);
-        g.fillEllipse (b);
-    }
-
-    // anneau plein (toujours, quel que soit le mode)
-    g.setColour (tint.withAlpha (0.85f));
-    g.drawEllipse (b, 1.4f);
-
-    // logo : un tour complet sur lui-même au clic (ease-out)
-    if (logo.isValid())
-    {
-        auto area = b.reduced (down ? 6.5f : 5.0f);
-
-        juce::Graphics::ScopedSaveState state (g);
-
-        if (spinning)
-        {
-            const float inv   = 1.0f - spinProgress;
-            const float eased = 1.0f - inv * inv * inv;
-            g.addTransform (juce::AffineTransform::rotation (eased * juce::MathConstants<float>::twoPi,
-                                                             b.getCentreX(), b.getCentreY()));
-        }
-
-        g.setOpacity (0.8f + 0.2f * hoverAnim);
-        g.drawImage (logo, area, juce::RectanglePlacement::centred);
-    }
-}
-
-//==============================================================================
-// ActionButton
-//==============================================================================
-void ActionButton::paintButton (juce::Graphics& g, bool over, bool down)
-{
-    auto b = getLocalBounds().toFloat().reduced (1.0f);
-    const float r = juce::jmap (sharp, b.getHeight() * 0.5f, 3.0f);
-
-    g.setColour (tint.withMultipliedBrightness (down ? 0.85f : (over ? 1.12f : 1.0f)));
-    g.fillRoundedRectangle (b, r);
-
-    // léger reflet
-    juce::ColourGradient gloss (juce::Colours::white.withAlpha (0.20f), 0.0f, b.getY(),
-                                juce::Colours::white.withAlpha (0.0f),  0.0f, b.getCentreY(),
-                                false);
-    g.setGradientFill (gloss);
-    g.fillRoundedRectangle (b, r);
-
-    g.setColour (juce::Colours::black.withAlpha (0.85f));
-    g.setFont (juce::Font (juce::FontOptions (11.0f).withStyle ("Bold"))
-                   .withExtraKerningFactor (0.14f));
-    g.drawText (getButtonText().toUpperCase(), getLocalBounds(),
-                juce::Justification::centred, false);
-}
-
-//==============================================================================
-// ModelPicker
-//==============================================================================
-juce::String ModelPicker::getSelectedName() const
-{
-    for (const auto& it : items)
-        if (it.id == selectedId)
-            return it.name;
-
-    return placeholder;
-}
-
-void ModelPicker::timerCallback()
-{
-    const float target = (interactive && (isMouseOver() || menuOpen)) ? 1.0f : 0.0f;
-    hoverAnim += (target - hoverAnim) * 0.30f;
-
-    if (std::abs (target - hoverAnim) < 0.01f)
-    {
-        hoverAnim = target;
-        stopTimer();
-    }
-
-    repaint();
-}
-
-void ModelPicker::showMenu()
-{
-    if (! interactive || items.empty())
-        return;
-
-    juce::PopupMenu menu;
-    menu.setLookAndFeel (&menuLnF);
-
-    for (const auto& it : items)
-        menu.addItem (it.id, it.name, true, it.id == selectedId);
-
-    menuOpen = true;
-    startTimerHz (60);
-
-    menu.showMenuAsync (juce::PopupMenu::Options()
-                            .withTargetComponent (this)
-                            .withPreferredPopupDirection (juce::PopupMenu::Options::PopupDirection::downwards)
-                            .withMinimumWidth (getWidth())
-                            .withStandardItemHeight (36),
-                        [safe = juce::Component::SafePointer<ModelPicker> (this)] (int result)
-    {
-        if (safe == nullptr)
-            return;
-
-        safe->menuOpen = false;
-        safe->startTimerHz (60);
-
-        if (result != 0 && result != safe->selectedId)
-        {
-            safe->selectedId = result;
-            safe->repaint();
-
-            if (safe->onChange)
-                safe->onChange();
-        }
-    });
-}
-
-void ModelPicker::paint (juce::Graphics& g)
-{
-    auto b = getLocalBounds().toFloat().reduced (1.0f);
-    const auto acc = HarmoniaPalette::accent;
-    const float h = hoverAnim;
-    const float r = 10.0f;
-
-    // fond
-    g.setColour (juce::Colours::black.withAlpha (0.28f));
-    g.fillRoundedRectangle (b, r);
-
-    // lueur qui part de la gauche
-    if (h > 0.01f)
-    {
-        juce::ColourGradient glow (acc.withAlpha (0.20f * h), b.getX() + 16.0f, b.getCentreY(),
-                                   acc.withAlpha (0.0f),      b.getRight(),      b.getCentreY(),
-                                   false);
-        g.setGradientFill (glow);
-        g.fillRoundedRectangle (b, r);
-    }
-
-    // bordure
-    g.setColour (HarmoniaPalette::border.interpolatedWith (acc.withAlpha (0.85f), h));
-    g.drawRoundedRectangle (b.reduced (0.5f), r, 1.0f);
-
-    // point lumineux (plus discret quand la capsule est figée)
-    const juce::Point<float> dot (b.getX() + 15.0f, b.getCentreY());
-    const float dotAlpha = interactive ? 1.0f : 0.55f;
-
-    g.setColour (acc.withAlpha ((0.20f + 0.15f * h) * dotAlpha));
-    g.fillEllipse (juce::Rectangle<float> (16.0f, 16.0f).withCentre (dot));
-
-    g.setColour (acc.withAlpha (dotAlpha));
-    g.fillEllipse (juce::Rectangle<float> (6.0f, 6.0f).withCentre (dot));
-
-    // textes
-    auto textArea = getLocalBounds().withTrimmedLeft (30).withTrimmedRight (interactive ? 26 : 10);
-
-    g.setColour (HarmoniaPalette::textMuted);
-    g.setFont (juce::Font (juce::FontOptions (8.0f).withStyle ("Bold"))
-                   .withExtraKerningFactor (0.20f));
-    g.drawText ("AI MODEL", textArea.getX(), 5, textArea.getWidth(), 10,
-                juce::Justification::centredLeft, false);
-
-    auto nameCol = HarmoniaPalette::textPrimary.interpolatedWith (acc.brighter (0.3f), h);
-    if (! interactive)
-        nameCol = nameCol.withAlpha (0.75f);
-
-    g.setColour (nameCol);
-    g.setFont (juce::Font (juce::FontOptions (12.5f).withStyle ("Bold")));
-    g.drawText (getSelectedName(), textArea.getX(), 15, textArea.getWidth(), 15,
-                juce::Justification::centredLeft, true);
-
-    // chevron (se retourne quand le menu est ouvert) : seulement si le menu est utilisable
-    if (interactive)
-    {
-        const float cx = (float) getWidth() - 14.0f;
-        const float cy = (float) getHeight() * 0.5f;
-        const float dir = menuOpen ? -1.0f : 1.0f;
-
-        juce::Path chevron;
-        chevron.startNewSubPath (cx - 4.0f, cy - 1.5f * dir);
-        chevron.lineTo          (cx,        cy + 2.0f * dir);
-        chevron.lineTo          (cx + 4.0f, cy - 1.5f * dir);
-
-        g.setColour (HarmoniaPalette::textMuted.interpolatedWith (acc, h));
-        g.strokePath (chevron, juce::PathStrokeType (1.5f,
-                                                     juce::PathStrokeType::curved,
-                                                     juce::PathStrokeType::rounded));
-    }
-}
-
-//==============================================================================
-// HeaderComponent
 //==============================================================================
 HeaderComponent::HeaderComponent (const UserSession& s, AIModelList initialModels)
     : session (s), models (std::move (initialModels))
@@ -344,7 +15,9 @@ HeaderComponent::HeaderComponent (const UserSession& s, AIModelList initialModel
     titleLabel.setText (username.toUpperCase(), juce::dontSendNotification);
     titleLabel.setFont (juce::Font (juce::FontOptions (17.0f).withStyle ("Bold"))
                             .withExtraKerningFactor (0.10f));
-    titleLabel.setBorderSize ({ 0, 5, 0, 5 });   // plus de marge verticale parasite
+    titleLabel.setBorderSize ({ 0, 0, 0, 5 });
+    titleLabel.setMinimumHorizontalScale (1.0f);
+    titleLabel.setTooltip (username);
     addAndMakeVisible (titleLabel);
 
     // Preset
@@ -368,6 +41,40 @@ HeaderComponent::HeaderComponent (const UserSession& s, AIModelList initialModel
     // Modèle IA : invité -> capsule figée, connecté -> liste du serveur
     rebuildModelPicker ({});
     addAndMakeVisible (modelPicker);
+
+    // Historique : vide au départ, rempli par setHistory() quand le profil arrive
+    historyPicker.setInteractive (false);
+    historyPicker.setTooltip (session.isGuest ? "Sign in to see your history"
+                                              : "Generation & Refinement History");
+
+    // Le picker ne renvoie que des index : on les traduit ici en entrées complètes
+    historyPicker.onSelect = [this] (int index)
+    {
+        if (juce::isPositiveAndBelow (index, (int) historyEntries.size()) && onHistorySelected)
+            onHistorySelected (historyEntries[(size_t) index]);
+    };
+
+    historyPicker.onDelete = [this] (int index)
+    {
+        if (! juce::isPositiveAndBelow (index, (int) historyEntries.size()))
+            return;
+
+        const auto entry = historyEntries[(size_t) index];   // copie, pour l'id côté backend
+        historyEntries.erase (historyEntries.begin() + index);
+
+        if (onHistoryDeleted)
+            onHistoryDeleted (entry);
+    };
+
+    historyPicker.onClear = [this]
+    {
+        historyEntries.clear();
+
+        if (onHistoryCleared)
+            onHistoryCleared();
+    };
+
+    addAndMakeVisible (historyPicker);
 
     // Palette : 3 pastilles libres (le thème est toujours Custom)
     addAndMakeVisible (paletteSelector);
@@ -400,8 +107,9 @@ HeaderComponent::HeaderComponent (const UserSession& s, AIModelList initialModel
         if (onThemeChanged)
             onThemeChanged (theme);
 
-        // Un compte connecté synchronise à chaque changement (couleur OU pastille)
-        if (! session.isGuest && onPaletteChanged)
+        // Un compte connecté synchronise à chaque changement (couleur OU pastille),
+        // sauf si le changement vient du serveur lui-même
+        if (! applyingServerPalette && ! session.isGuest && onPaletteChanged)
         {
             juce::StringArray hex;
 
@@ -452,9 +160,13 @@ HeaderComponent::HeaderComponent (const UserSession& s, AIModelList initialModel
     {
         auto img = juce::ImageCache::getFromMemory (BinaryData::harmonia_logo_png,
                                                     BinaryData::harmonia_logo_pngSize);
-        jassert (img.isValid());   // si ça s'arrête ici : nom de ressource BinaryData incorrect
+        jassert (img.isValid());
+        defaultLogo = img;
         logoButton.setLogo (img);
     }
+
+    // Avatar du compte : invité ou pas d'avatar -> le logo Harmonia reste
+    setAvatarUrl (session.avatarUrl);
 
     // Clic ailleurs que sur la barre => le curseur disparaît et le placeholder revient
     juce::Desktop::getInstance().addGlobalMouseListener (this);
@@ -478,6 +190,118 @@ HeaderComponent::~HeaderComponent()
     juce::Desktop::getInstance().removeGlobalMouseListener (this);
 }
 
+void HeaderComponent::setAvatarUrl (const juce::String& rawUrl)
+{
+    const auto url = session.isGuest ? juce::String() : rawUrl.trim();
+
+    if (url == currentAvatarUrl)
+        return;
+
+    currentAvatarUrl = url;
+    const int requestId = ++avatarRequestId;
+
+    // Pas d'avatar (ou supprimé depuis le site) : logo Harmonia
+    if (! AvatarLoader::isUsableUrl (url))
+    {
+        logoButton.setLogo (defaultLogo);
+        return;
+    }
+
+    // Déjà en cache : affiché tout de suite, sans flash du logo
+    const auto cached = AvatarLoader::loadFromCache (url);
+
+    if (cached.isValid())
+    {
+        logoButton.setLogo (cached);
+        return;
+    }
+
+    logoButton.setLogo (defaultLogo);   // le temps du téléchargement
+
+    AvatarLoader::fetchAsync (url,
+        [safe = juce::Component::SafePointer<HeaderComponent> (this), requestId] (juce::Image img)
+        {
+            if (safe == nullptr || ! img.isValid() || safe->avatarRequestId != requestId)
+                return;
+
+            safe->logoButton.setLogo (img);
+        });
+}
+
+//==============================================================================
+// Données du profil reçues du MainComponent
+//==============================================================================
+void HeaderComponent::setHistory (const HistoryList& entries)
+{
+    historyEntries = entries;
+
+    DBG ("HeaderComponent: " << (int) historyEntries.size() << " history entries received");
+
+    juce::StringArray titles, typeList, dateList;
+
+    for (const auto& e : historyEntries)
+    {
+        titles.add (e.name.isNotEmpty() ? e.name : e.type);   // repli sur le type si pas de nom
+        typeList.add (e.type);
+        dateList.add (e.lastUsedAt.isNotEmpty() ? e.lastUsedAt : e.createdAt);
+    }
+
+    historyPicker.setItems (titles, typeList, dateList);
+    historyPicker.setInteractive (! session.isGuest && ! titles.isEmpty());
+}
+
+void HeaderComponent::moveHistoryToTop (int id)
+{
+    auto it = std::find_if (historyEntries.begin(), historyEntries.end(),
+                            [id] (const auto& e) { return e.id == id; });
+
+    if (it == historyEntries.end())
+        return;
+
+    // Si l'entrée est déjà en tête, rotate ne change rien
+    std::rotate (historyEntries.begin(), it, it + 1);
+    setHistory (historyEntries);
+}
+
+void HeaderComponent::addHistoryEntry (const HistoryEntry& e)
+{
+    historyEntries.insert (historyEntries.begin(), e);
+
+    // Même plafond que le serveur : la plus ancienne sort de la liste
+    if (historyEntries.size() > maxHistoryEntries)
+        historyEntries.resize (maxHistoryEntries);
+
+    setHistory (historyEntries);
+}
+
+void HeaderComponent::setPaletteFromServer (const juce::StringArray& hexColours, int activeSlot)
+{
+    if (session.isGuest || hexColours.size() != 3)
+        return;
+
+    std::array<juce::Colour, 3> cols;
+
+    for (int i = 0; i < 3; ++i)
+        cols[(size_t) i] = BackendPalette::fromHex (hexColours[i]);
+
+    {
+        // Pendant ce bloc, onThemeUpdated ne renvoie rien au serveur
+        const juce::ScopedValueSetter<bool> guard (applyingServerPalette, true);
+        paletteSelector.setSlots (cols, juce::jlimit (0, 2, activeSlot));
+    }
+
+    // Même application que dans le constructeur / reapplyTheme
+    const auto theme = paletteSelector.getCurrentTheme();
+    HarmoniaPalette::setTheme (theme);
+    applyColours();
+
+    if (onThemeChanged)
+        onThemeChanged (theme);
+
+    repaint();
+}
+
+//==============================================================================
 void HeaderComponent::restoreSlot (int slot)
 {
     paletteSelector.setSlots (paletteSelector.getSlotColours(),
@@ -606,7 +430,6 @@ void HeaderComponent::updateModeTexts()
                                   : "Switch to Refine mode");
 
     // Refine : police monospace (look terminal) / Generate : police normale
-    // Même taille visuelle dans les deux modes (voir PromptFont dans le .h)
     promptEditor.applyFontToAllText (PromptFont::make (refine));
     promptEditor.repaint();
 }
@@ -864,55 +687,90 @@ void HeaderComponent::paint (juce::Graphics& g)
     paintPromptBar (g);
 }
 
+void HeaderComponent::setPresetName (const juce::String& name)
+{
+    presetLabel.setText (name.toUpperCase(), juce::dontSendNotification);
+}
+
 void HeaderComponent::resized()
 {
     auto row = getLocalBounds().reduced (16, 16);
     const int cy = row.getCentreY();
 
     // ---------- GAUCHE : maison + pseudo, puis couleurs dessous ----------
-    const int homeSize = 30;
-    const int topY = 6;
-    const int titleNudge = 1;   // 1 ou 2 px : ajuste à l'œil pour aligner pseudo et maison
+    const int homeSize   = 30;
+    const int topY       = 6;
+    const int titleNudge = 1;
+    const int homeGap    = 4;     // pseudo collé à la maison
+    const int leftZoneW  = 124;   // largeur FIXE de la zone gauche, quel que soit le pseudo
 
     homeButton.setBounds (row.getX(), topY, homeSize, homeSize);
 
-    const int titleW = juce::jmin (200, titleLabel.getFont().getStringWidth (titleLabel.getText()) + 8);
-    titleLabel.setBounds (homeButton.getRight() + 10, topY + titleNudge, titleW, homeSize);
+    const int titleX    = homeButton.getRight() + homeGap;
+    const int titleMaxW = row.getX() + leftZoneW - titleX;
+    const int textW     = titleLabel.getFont().getStringWidth (titleLabel.getText()) + 4;
+
+    titleLabel.setBounds (titleX, topY + titleNudge, juce::jmin (titleMaxW, textW), homeSize);
 
     paletteSelector.setBounds (row.getX(), homeButton.getBottom() + 6, 118, 24);
 
-    const int leftEdge = juce::jmax (titleLabel.getRight(), paletteSelector.getRight());
+    // Ne dépend plus du pseudo : le reste du layout ne bouge plus
+    const int leftEdge = row.getX() + leftZoneW;
 
     // ---------- DROITE : modèle + load/export (même axe que la barre) ----------
-    const int rowH  = 34;
-    const int barCy = cy - 6;          // <- descends/monte la barre ET les boutons ici
+    const int rowH      = 34;
+    const int barCy     = cy - 6;      // <- descends/monte la barre ET les boutons ici
+    const int pickerW   = 140;
+    const int pickerGap = 10;
+
+    // Historique : capsule "cartes empilées + nombre" (~64 px)
+    const int historyW = 64;
+
+    // Un seul écart pour les deux côtés de la barre
+    const int barGap = 20;
 
     fileGroupBounds = { row.getRight() - 68, barCy - rowH / 2, 68, rowH };
     loadButton.setBounds (fileGroupBounds.withWidth (34));
     saveButton.setBounds (fileGroupBounds.withTrimmedLeft (34));
 
-    modelPicker.setBounds (fileGroupBounds.getX() - 10 - 140, barCy - rowH / 2, 140, rowH);
-    const int rightEdge = modelPicker.getX();
+    const int modelX = fileGroupBounds.getX() - pickerGap - pickerW;
 
     // ---------- CENTRE : barre de prompt + preset dessous ----------
     const int barH = 42, labelH = 14, gap = 4;
-    const int top = barCy - barH / 2;  // la barre est centrée sur le même axe
+    const int top = barCy - barH / 2;
+    const int cx  = getWidth() / 2;
 
-    const int sideW = juce::jmax (leftEdge - row.getX(), row.getRight() - rightEdge);
-    const int centredW = row.getWidth() - 2 * sideW - 32;
+    // Demi-largeur max : à gauche (zone pseudo + historique), à droite (model picker)
+    const int halfLeft  = cx - (leftEdge + pickerGap + historyW + barGap);
+    const int halfRight = modelX - barGap - cx;
+    const int half      = juce::jmin (halfLeft, halfRight, 310);   // 310 = 620 / 2
 
-    if (centredW >= 340)
+    if (half >= 170)   // barre >= 340 px
     {
-        const int w = juce::jmin (centredW, 620);
-        promptBounds = { getWidth() / 2 - w / 2, top, w, barH };
+        // Barre parfaitement centrée, écart identique des deux côtés
+        promptBounds = { cx - half, top, half * 2, barH };
+
+        historyPicker.setBounds (promptBounds.getX() - barGap - historyW,
+                                 barCy - rowH / 2, historyW, rowH);
+
+        modelPicker.setBounds (promptBounds.getRight() + barGap,
+                               barCy - rowH / 2, pickerW, rowH);
     }
     else
     {
-        promptBounds = { leftEdge + 16, top, juce::jmax (0, rightEdge - leftEdge - 32), barH };
+        // Fenêtre étroite : on revient à un placement entre les deux
+        modelPicker.setBounds (modelX, barCy - rowH / 2, pickerW, rowH);
+
+        historyPicker.setBounds (leftEdge + pickerGap, barCy - rowH / 2, historyW, rowH);
+
+        const int barX = historyPicker.getRight() + barGap;
+        promptBounds = { barX, top,
+                         juce::jmax (0, modelPicker.getX() - barGap - barX), barH };
     }
 
-    presetLabel.setBounds (promptBounds.getX(), promptBounds.getBottom() + gap,
-                           promptBounds.getWidth(), labelH);
+    // nom du preset : du bord gauche du logo au bord droit du bouton GENERATE
+    presetLabel.setBounds (promptBounds.getX() + 6, promptBounds.getBottom() + gap,
+                           promptBounds.getWidth() - 12, labelH);
 
     auto bar = promptBounds.reduced (6, 5);
 

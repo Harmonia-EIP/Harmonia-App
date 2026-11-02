@@ -14,6 +14,52 @@ namespace PresetLoader
         juce::String errorMessage;
     };
 
+    // Applique une map { id -> valeur normalisée [0..1] } sur l'APVTS.
+    // Les ids verrouillés ou inconnus sont ignorés.
+    inline LoadResult loadFromParameters (const std::map<juce::String, float>& parameters,
+                                        const juce::String& presetName,
+                                        juce::AudioProcessorValueTreeState& apvts,
+                                        const juce::StringArray& lockedIds = {})
+    {
+        LoadResult r;
+
+        // Valider avant de toucher au moindre paramètre
+        for (const auto& [id, value] : parameters)
+        {
+            if (! std::isfinite (value) || value < 0.0f || value > 1.0f)
+            {
+                r.errorMessage = "Invalid preset: value out of range";
+                return r;
+            }
+        }
+
+        bool applied = false;
+
+        for (const auto& [id, value] : parameters)
+        {
+            if (lockedIds.contains (id))
+                continue;
+
+            if (auto* p = apvts.getParameter (id))
+            {
+                p->beginChangeGesture();
+                p->setValueNotifyingHost (value);
+                p->endChangeGesture();
+                applied = true;
+            }
+        }
+
+        if (! applied)
+        {
+            r.errorMessage = "No matching parameters found in history entry";
+            return r;
+        }
+
+        r.success = true;
+        r.presetName = presetName.isNotEmpty() ? presetName : juce::String ("Preset");
+        return r;
+    }
+
     // Charge un fichier hel.json (schéma : metadata + parameters{name:value} + values[])
     // et applique les valeurs normalisées sur l'APVTS.
     // Accepte deux formes :

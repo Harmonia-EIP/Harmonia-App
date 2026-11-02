@@ -23,6 +23,7 @@ namespace SessionMapper
         session.accessToken = JsonUtil::toJuce (token);
         session.pseudo      = JsonUtil::toJuce (JsonUtil::getString (body, "username"));
         session.email       = JsonUtil::toJuce (JsonUtil::getString (body, "email"));
+        session.avatarUrl   = JsonUtil::toJuce (JsonUtil::getString (body, "avatar_url"));
 
         // La palette vient uniquement de la réponse du backend
         PaletteMapper::readFromJson (body, session.paletteColours, session.paletteSlot);
@@ -45,6 +46,10 @@ namespace SessionMapper
         if (! email.empty())
             session.email = JsonUtil::toJuce (email);
 
+        // Toujours assigné, même vide : un avatar supprimé ailleurs (site web)
+        // doit disparaître ici aussi.
+        session.avatarUrl = JsonUtil::toJuce (JsonUtil::getString (body, "avatar_url"));
+
         PaletteMapper::readFromJson (body, session.paletteColours, session.paletteSlot);
     }
 
@@ -57,6 +62,7 @@ namespace SessionMapper
         session.userId      = JsonUtil::getInt (j, "userId", 0);
         session.pseudo      = JsonUtil::toJuce (JsonUtil::getString (j, "pseudo"));
         session.email       = JsonUtil::toJuce (JsonUtil::getString (j, "email"));
+        session.avatarUrl   = JsonUtil::toJuce (JsonUtil::getString (j, "avatarUrl"));
         session.accessToken = JsonUtil::toJuce (JsonUtil::getString (j, "accessToken"));
         session.isGuest     = JsonUtil::getBool (j, "isGuest", false);
         session.paletteSlot = juce::jlimit (0, 2, JsonUtil::getInt (j, "paletteSlot", 0));
@@ -92,6 +98,7 @@ namespace SessionMapper
             { "userId",         session.userId },
             { "pseudo",         session.pseudo.toStdString() },
             { "email",          session.email.toStdString() },
+            { "avatarUrl",      session.avatarUrl.toStdString() },
             { "accessToken",    session.accessToken.toStdString() },
             { "expiresAt",      (long long) session.expiresAt.toMilliseconds() },
             { "paletteColours", colours },

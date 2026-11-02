@@ -12,6 +12,7 @@
  * - Oscilloscope and waveform visual feedback
  * - AI-powered preset generation
  * - Dynamic AI model list fetched from the backend (GET /ai/models)
+ * - Generation history (load / delete / clear) fetched with the profile
  * - Preset loading and saving
  * - Session-aware user interface
  * - Animated particle background effects
@@ -36,6 +37,7 @@
  * Threading:
  * - AI preset generation is executed asynchronously
  * - The AI model list is fetched asynchronously after the UI is created
+ * - History deletion is sent to the backend asynchronously
  * - Palette sync is debounced and executed asynchronously by the backend
  * - UI updates are dispatched safely through JUCE message thread callbacks
  *
@@ -99,6 +101,7 @@ public:
      * - Preset management
      * - AI generation tools
      * - Palette restoration / sync callbacks
+     * - History callbacks (select / delete / clear)
      *
      * @param p Reference to the audio processor.
      * @param be Backend manager used for AI and session communication.
@@ -152,6 +155,8 @@ public:
 
 private:
 
+    void refreshProfileAsync();
+
     /**
      * Custom by default: the header restores the user palette (setSlots)
      * in its constructor, and applyTheme() must not overwrite it with a
@@ -190,7 +195,7 @@ private:
     void activatePalette();
 
 
-    juce::TooltipWindow tooltipWindow { this, 3000 };
+    juce::TooltipWindow tooltipWindow { this, 1000 };
 
     /** Animated particle background layer. */
     ParticleField particles;
@@ -353,6 +358,17 @@ private:
      * @brief Saves current synthesizer state as a preset.
      */
     void doSavePreset();
+
+
+    void refreshHistoryAsync();
+    void touchHistoryAsync (int entryId);
+    /**
+     * @brief Loads a history entry into the synth parameters.
+     *
+     * Generate mode: every parameter is replaced.
+     * Refine mode: locked parameters keep their current value.
+     */
+    void loadHistoryEntry (const HeaderComponent::HistoryList::value_type& entry);
 
     /**
      * @brief Fetches the AI model list (GET /ai/models) on a background thread

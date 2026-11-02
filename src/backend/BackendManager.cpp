@@ -7,8 +7,8 @@
 BackendManager::BackendManager()
     : http (juce::String (AppConfig::ApiUrl))
 {
-    logger->info ("API_URL = " + http.getBaseUrl());
-    logger->info ("SESSION PATH = " + sessionStore->getSessionFile().getFullPathName());
+    // Aucun accès disque ici (ni log) : un DAW instancie le plugin sans éditeur
+    // pendant le scan. Les logs de démarrage sont écrits par AppController.
 
     // SharedResourcePointer::get() renvoie une référence : les services prennent des références.
     authService    = std::make_unique<AuthService>    (http, *sessionStore, *logger);
@@ -20,16 +20,13 @@ BackendManager::~BackendManager() = default;
 
 //================================================
 // AUTH
+// Le sync du profil n'est plus lancé ici : il est déclenché par MainComponent
+// (refreshProfileAsync), qui reçoit le résultat et le distribue à l'UI.
 
 AuthResult BackendManager::loginUser (const juce::String& usernameOrEmail,
                                       const juce::String& password)
 {
-    auto result = authService->loginUser (usernameOrEmail, password);
-
-    if (result.success)
-        profileService->refreshSessionAsync (result.session);
-
-    return result;
+    return authService->loginUser (usernameOrEmail, password);
 }
 
 AuthResult BackendManager::signupUser (const juce::String& username,
@@ -38,12 +35,7 @@ AuthResult BackendManager::signupUser (const juce::String& username,
                                        const juce::String& email,
                                        const juce::String& password)
 {
-    auto result = authService->signupUser (username, firstname, lastname, email, password);
-
-    if (result.success)
-        profileService->refreshSessionAsync (result.session);
-
-    return result;
+    return authService->signupUser (username, firstname, lastname, email, password);
 }
 
 std::optional<UserSession> BackendManager::loadSession()
@@ -111,17 +103,30 @@ void BackendManager::resetPaletteSyncState (const juce::StringArray& colours, in
     profileService->resetPaletteSyncState (colours, slot);
 }
 
+bool BackendManager::deleteHistoryEntry (int entryId)
+{
+    return profileService->deleteHistoryEntry (entryId);
+}
+
+bool BackendManager::clearHistory()
+{
+    return profileService->clearHistory();
+}
+
+bool BackendManager::touchHistoryEntry (int entryId)
+{
+    return profileService->touchHistoryEntry (entryId);
+}
+
 //================================================
 // SYNC
 
-void BackendManager::syncProfileParamsInBackground (const UserSession& session)
+// `onDone` est appelé sur un thread du pool : l'appelant doit repasser
+// sur le message thread (SafePointer + MessageManager::callAsync).
+void BackendManager::syncProfileParamsInBackground (const UserSession& session,
+                                                    std::function<void (ProfileSnapshot)> onDone)
 {
-    profileService->refreshSessionAsync (session);
-}
-
-std::optional<UserSession> BackendManager::syncProfileParams (const UserSession& session)
-{
-    return profileService->refreshSession (session);
+    profileService->refreshSessionAsync (session, std::move (onDone));
 }
 
 //================================================
