@@ -4,7 +4,7 @@
 
 namespace
 {
-    enum class Method { Get, Post, Put };
+    enum class Method { Get, Post, Put, Delete };
 
     HttpResponse convert (const cpr::Response& r)
     {
@@ -48,6 +48,8 @@ namespace
 
             case Method::Put:
                 return convert (cpr::Put (url, headers, cpr::Body { body }, timeout, connectTimeout));
+            case Method::Delete:
+                return convert (cpr::Delete (url, headers, timeout, connectTimeout));
         }
 
         return {};
@@ -72,4 +74,9 @@ HttpResponse HttpClient::post (const juce::String& path, const std::string& json
 HttpResponse HttpClient::put (const juce::String& path, const std::string& jsonBody, const HttpOptions& options) const
 {
     return send (Method::Put, baseUrl, path, jsonBody, options);
+}
+
+HttpResponse HttpClient::del (const juce::String& path, const HttpOptions& options) const
+{
+    return send (Method::Delete, baseUrl, path, {}, options);
 }
