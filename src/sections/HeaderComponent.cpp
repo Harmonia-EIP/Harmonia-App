@@ -133,18 +133,15 @@ HeaderComponent::HeaderComponent (const UserSession& s, AIModelList initialModel
     promptEditor.onFocusChanged = [this] { startTimerHz (60); };
     addAndMakeVisible (promptEditor);
 
-    // when refine mode is available with ai
-    // logoButton.onClick = [this]
-    // {
-    //     setMode (mode == Mode::Generate ? Mode::Refine : Mode::Generate);
-    // };
+    // Le logo bascule entre Generate et Refine. Le serveur IA sait affiner (route /refine-preset) :
+    // avec harmonia_v3 il part du preset courant et le rapproche du prompt, cadenas respectes.
     logoButton.onClick = [this]
     {
         if (! refineEnabled)
         {
             HarmoniaAlert::info (this,
                                  "Refine mode",
-                                 "Refine mode is coming soon.",
+                                 "Refine mode is not available.",
                                  HarmoniaAlert::Position::TopRight,
                                  3000);
             return;
@@ -153,7 +150,7 @@ HeaderComponent::HeaderComponent (const UserSession& s, AIModelList initialModel
         setMode (mode == Mode::Generate ? Mode::Refine : Mode::Generate);
     };
     addAndMakeVisible (logoButton);
-    logoButton.setTooltip ("Refine mode (coming soon)");
+    logoButton.setTooltip ("Switch to Refine mode");
     addAndMakeVisible (actionButton);
 
     // Logo chargé directement ici (plus besoin de setLogo depuis le parent)

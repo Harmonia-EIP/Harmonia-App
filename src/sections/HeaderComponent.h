@@ -143,8 +143,8 @@ private:
 
     void timerCallback() override;
 
-    // Passe a true quand le Refine est pret cote IA
-    bool refineEnabled = false;
+    // Le Refine est pret cote IA (route /refine-preset) : le logo bascule Generate <-> Refine
+    bool refineEnabled = true;
 
     juce::Colour modeColour() const;
     void applyColours();

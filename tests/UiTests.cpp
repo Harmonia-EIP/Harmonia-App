@@ -304,6 +304,34 @@ TEST_CASE ("Guest: aucun contrôle verrouillé au départ")
         REQUIRE_FALSE (l->isLocked());
 }
 
+TEST_CASE ("Refine: le logo bascule entre Generate et Refine, le bouton d'action suit")
+{
+    HarmoniaAudioProcessor proc;
+    MainComponent ui (proc, proc.getBackend(), makeGuest());
+
+    std::vector<juce::Component*> all;
+    collect (ui, all);
+
+    HeaderComponent* header = nullptr;
+    for (auto* c : all)
+        if (auto* h = dynamic_cast<HeaderComponent*> (c))
+            header = h;
+
+    REQUIRE (header != nullptr);
+    REQUIRE (header->getMode() == HeaderComponent::Mode::Generate);
+
+    // le serveur IA sait affiner : le logo n'affiche plus "coming soon", il change de mode
+    header->getLogoButton().onClick();
+    pump();
+    REQUIRE (header->getMode() == HeaderComponent::Mode::Refine);
+    REQUIRE (header->getGenerateButton().getButtonText() == Strings::Buttons::Refine);
+
+    header->getLogoButton().onClick();
+    pump();
+    REQUIRE (header->getMode() == HeaderComponent::Mode::Generate);
+    REQUIRE (header->getGenerateButton().getButtonText() != Strings::Buttons::Refine);
+}
+
 TEST_CASE ("Guest: le clavier de l'UI fait sonner le synthé")
 {
     HarmoniaAudioProcessor proc;
