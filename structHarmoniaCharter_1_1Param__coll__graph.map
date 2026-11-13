@@ -1,0 +1,5 @@
+<map id="HarmoniaCharter::Param" name="HarmoniaCharter::Param">
+<area shape="rect" id="Node000001" title=" " alt="" coords="8,106,190,134"/>
+<area shape="rect" id="Node000002" href="$structHarmoniaCharter_1_1V2Rule.html" title="v3 value = offset + scale * v2[source] on physical values; source &#45;1: no rule, the default is used." alt="" coords="5,5,193,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="101,47,102,106,96,105,97,50"/>
+</map>

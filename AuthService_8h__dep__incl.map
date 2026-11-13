@@ -1,7 +1,7 @@
 <map id="src/backend/services/AuthService.h" name="src/backend/services/AuthService.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="159,5,317,45"/>
-<area shape="rect" id="Node000002" href="$BackendManager_8cpp.html" title=" " alt="" coords="5,101,247,126"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="204,56,143,102,140,98,201,52"/>
-<area shape="rect" id="Node000003" href="$AuthService_8cpp.html" title=" " alt="" coords="271,93,429,133"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="276,52,327,91,324,95,272,56"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="158,5,314,50"/>
+<area shape="rect" id="Node000002" href="$BackendManager_8cpp.html" title=" " alt="" coords="5,106,246,134"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="201,59,143,108,140,104,196,60"/>
+<area shape="rect" id="Node000003" href="$AuthService_8cpp.html" title=" " alt="" coords="270,98,426,143"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="275,57,324,98,319,97,274,62"/>
 </map>

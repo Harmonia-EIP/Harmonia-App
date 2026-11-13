@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['oscilloscopecomponent_0',['OscilloscopeComponent',['../classOscilloscopeComponent.html',1,'']]]
+  ['maincomponent_0',['MainComponent',['../classMainComponent.html',1,'']]],
+  ['modelmenulookandfeel_1',['ModelMenuLookAndFeel',['../classModelMenuLookAndFeel.html',1,'']]],
+  ['modelpicker_2',['ModelPicker',['../classModelPicker.html',1,'']]],
+  ['module_3',['Module',['../classModule.html',1,'']]]
 ];

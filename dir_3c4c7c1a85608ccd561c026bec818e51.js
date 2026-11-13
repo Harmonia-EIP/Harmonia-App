@@ -3,6 +3,7 @@ var dir_3c4c7c1a85608ccd561c026bec818e51 =
     [ "ComboControl.h", "ComboControl_8h.html", "ComboControl_8h" ],
     [ "ComponentsIncludes.h", "ComponentsIncludes_8h.html", null ],
     [ "DisplayScreen.h", "DisplayScreen_8h.html", "DisplayScreen_8h" ],
+    [ "EngineBadge.h", "EngineBadge_8h.html", "EngineBadge_8h" ],
     [ "EnvelopeVisualizer.h", "EnvelopeVisualizer_8h.html", "EnvelopeVisualizer_8h" ],
     [ "IconChoiceSelector.h", "IconChoiceSelector_8h.html", "IconChoiceSelector_8h" ],
     [ "IconRenderer.h", "IconRenderer_8h.html", "IconRenderer_8h" ],

@@ -45,7 +45,8 @@ var NAVTREE =
         [ "Functions", "functions_func.html", "functions_func" ],
         [ "Variables", "functions_vars.html", "functions_vars" ],
         [ "Typedefs", "functions_type.html", null ],
-        [ "Enumerations", "functions_enum.html", null ]
+        [ "Enumerations", "functions_enum.html", null ],
+        [ "Enumerator", "functions_eval.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -53,7 +54,10 @@ var NAVTREE =
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
+        [ "Variables", "globals_vars.html", null ],
         [ "Typedefs", "globals_type.html", null ],
+        [ "Enumerations", "globals_enum.html", null ],
+        [ "Enumerator", "globals_eval.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ]
@@ -63,15 +67,18 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "ActionButton_8cpp.html",
-"HiveLookAndFeel_8h_source.html",
-"String_8h.html#aff04d4054aca28ecc2c4684579efe8b4",
-"classHarmoniaAudioProcessor.html#a9b300a27b2e7af330d955448f202000c",
-"classHttpClient.html#a62d4c2dd446ea3dcf85976383c601e1e",
-"classPaletteSelector.html#a0b733500bab7c324af5e36ec5503fd17",
-"functions_vars_p.html",
-"namespacePaletteMapper.html#abb124cad5f7b932c85ed3ae22892c2b6",
-"structHarmoniaPalette_1_1ThemeDef.html#a3c42c1f75aac95641632f0dda090bb76"
+"classAppLookAndFeel.html#a4c4e1f746f8231da685907a490ec2ee9",
+"classHarmoniaAlert.html#a5deeb020f7e58b9a409b8710797975f5",
+"classHistoryTile.html",
+"classMainComponent.html#aaa0959be142c801ba7d8b145148fcebd",
+"classWelcomeLookAndFeel.html#ae257f6b3510231cc8cadcf3abce7ef82",
+"dx7note_8cc.html#a626f704852a8f6b7917d0a789309e72d",
+"namespaceErrorCodes.html#ae5eed8d8c72605dfd23bec111c0c4b99",
+"namespacePresetLoader.html#a226bb0a71014a13c7a3783ea6fb8e2ef",
+"structAiModelsResult.html#a50af099afc64fe5c1d97b655716cd960",
+"structProfileResult.html#aa75142ddb619d8ecc0cedbf22b12b4a2"
 ];
 
-var SYNCONMSG = 'click to disable panel synchronisation';
-var SYNCOFFMSG = 'click to enable panel synchronisation';
+var SYNCONMSG = 'click to disable panel synchronization';
+var SYNCOFFMSG = 'click to enable panel synchronization';
+var LISTOFALLMEMBERS = 'List of all members';

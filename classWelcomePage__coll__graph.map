@@ -1,13 +1,13 @@
 <map id="WelcomePage" name="WelcomePage">
-<area shape="rect" id="Node000001" title="Initial landing page allowing the user to choose between sign&#45;in and sign&#45;up." alt="" coords="152,181,265,207"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,137,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="103,124,191,179,189,183,100,128"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="161,93,256,119"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="211,133,211,181,206,181,206,133"/>
-<area shape="rect" id="Node000004" href="$classAppLookAndFeel.html" title=" " alt="" coords="281,93,411,119"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="317,128,229,183,226,179,315,124"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="183,5,347,31"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="287,39,337,91,333,95,283,43"/>
-<area shape="rect" id="Node000006" href="$structThemePalette.html" title=" " alt="" coords="371,5,483,31"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="409,43,359,95,355,91,405,39"/>
+<area shape="rect" id="Node000001" title="Initial landing page allowing the user to choose between sign&#45;in and sign&#45;up." alt="" coords="152,207,264,234"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,106,137,134"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="102,140,192,205,188,207,100,145"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="161,106,256,134"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="210,148,211,207,206,205,206,151"/>
+<area shape="rect" id="Node000004" href="$classAppLookAndFeel.html" title=" " alt="" coords="280,106,409,134"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="317,142,228,208,225,204,312,143"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="181,5,345,33"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="284,42,336,105,331,105,282,47"/>
+<area shape="rect" id="Node000006" href="$structThemePalette.html" title=" " alt="" coords="369,5,480,33"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="407,43,357,107,353,103,402,46"/>
 </map>

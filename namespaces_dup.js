@@ -56,6 +56,8 @@ var namespaces_dup =
       [ "UserNotFound", "namespaceErrorCodes.html#a4effb742b99c3c4300104b570a17e26f", null ],
       [ "ValidationError", "namespaceErrorCodes.html#a0c3e6198111c1fded4ee617b5cea4db6", null ]
     ] ],
+    [ "harmonia", "namespaceharmonia.html", "namespaceharmonia" ],
+    [ "HarmoniaCharter", "namespaceHarmoniaCharter.html", "namespaceHarmoniaCharter" ],
     [ "HarmoniaColours", "namespaceHarmoniaColours.html", [
       [ "bgDeep", "namespaceHarmoniaColours.html#a5ad47335685af3d2c87a99e8a21671aa", null ],
       [ "bgMid", "namespaceHarmoniaColours.html#af0b36e1d9803d0bbc5d0d9dc60d2f831", null ],
@@ -77,6 +79,7 @@ var namespaces_dup =
     ] ],
     [ "HarmoniaPalette", "namespaceHarmoniaPalette.html", "namespaceHarmoniaPalette" ],
     [ "HarmoniaParams", "namespaceHarmoniaParams.html", "namespaceHarmoniaParams" ],
+    [ "HarmoniaParamsV3", "namespaceHarmoniaParamsV3.html", "namespaceHarmoniaParamsV3" ],
     [ "HeaderColours", "namespaceHeaderColours.html", [
       [ "generate", "namespaceHeaderColours.html#acdd5999e30dd3b190468272d3b17ab87", null ],
       [ "refine", "namespaceHeaderColours.html#aacbb17db80b9b8c033db5765bc4cdb87", null ]
@@ -117,7 +120,7 @@ var namespaces_dup =
     ] ],
     [ "IDs", "namespaceIDs.html", null ],
     [ "JsonUtil", "namespaceJsonUtil.html", [
-      [ "json", "namespaceJsonUtil.html#ae1be8793680bcfa78ab1929d152106e8", null ],
+      [ "json", "namespaceJsonUtil.html#afbdeeb5f497dd50ad08c172487ac0d7e", null ],
       [ "getBool", "namespaceJsonUtil.html#a8e38403216189c55317547f9f7a85e0f", null ],
       [ "getInt", "namespaceJsonUtil.html#a6ebca18d68ec074ce0a8f86a688a52d8", null ],
       [ "getInt64", "namespaceJsonUtil.html#a80d677298f2a410aeb057aae27eace01", null ],
@@ -141,7 +144,7 @@ var namespaces_dup =
       [ "size", "namespacePromptFont.html#ae0eb9dce329282bee16e21cd2cd82a1d", null ]
     ] ],
     [ "SessionMapper", "namespaceSessionMapper.html", [
-      [ "json", "namespaceSessionMapper.html#a85c4b6991f2853540949fce107e4c1c6", null ],
+      [ "json", "namespaceSessionMapper.html#a466b27551f74e166a46cc465e1623d1a", null ],
       [ "applyProfileResponse", "namespaceSessionMapper.html#a925282265b7224594999abc8eb976509", null ],
       [ "fromAuthResponse", "namespaceSessionMapper.html#a9262f50de9611e125baf490e9fede2c0", null ],
       [ "fromFileJson", "namespaceSessionMapper.html#ac6ba56180cda88c6b01ab773a786c269", null ],
@@ -149,6 +152,7 @@ var namespaces_dup =
       [ "sessionLifetimeHours", "namespaceSessionMapper.html#ae7dbf1b5b6198e037ea0a291f3163ced", null ]
     ] ],
     [ "Strings", "namespaceStrings.html", "namespaceStrings" ],
+    [ "Tunings", "namespaceTunings.html", "namespaceTunings" ],
     [ "UiState", "namespaceUiState.html", [
       [ "customColour", "namespaceUiState.html#a8b2feb0067f6460be97ea49400cb1df4", null ],
       [ "identity", "namespaceUiState.html#a5b51a6b9ddade700aea386c2a29e6e0b", null ],

@@ -1,6 +1,19 @@
 var searchData=
 [
-  ['iconbutton_0',['IconButton',['../classIconButton.html',1,'']]],
-  ['iconchoiceselector_1',['IconChoiceSelector',['../classIconChoiceSelector.html',1,'']]],
-  ['item_2',['Item',['../structModelPicker_1_1Item.html',1,'ModelPicker']]]
+  ['harmoniaalert_0',['HarmoniaAlert',['../classHarmoniaAlert.html',1,'']]],
+  ['harmoniaaudioprocessor_1',['HarmoniaAudioProcessor',['../classHarmoniaAudioProcessor.html',1,'']]],
+  ['harmoniaaudioprocessoreditor_2',['HarmoniaAudioProcessorEditor',['../classHarmoniaAudioProcessorEditor.html',1,'']]],
+  ['harmoniapatches_3',['HarmoniaPatches',['../structHarmoniaPatches.html',1,'']]],
+  ['harmoniasound_4',['HarmoniaSound',['../classHarmoniaSound.html',1,'']]],
+  ['harmoniavoice_5',['HarmoniaVoice',['../classHarmoniaVoice.html',1,'']]],
+  ['headercomponent_6',['HeaderComponent',['../classHeaderComponent.html',1,'']]],
+  ['historyentry_7',['HistoryEntry',['../structHistoryEntry.html',1,'']]],
+  ['historyoverlay_8',['HistoryOverlay',['../classHistoryOverlay.html',1,'']]],
+  ['historypanel_9',['HistoryPanel',['../classHistoryPanel.html',1,'']]],
+  ['historypicker_10',['HistoryPicker',['../classHistoryPicker.html',1,'']]],
+  ['historytile_11',['HistoryTile',['../classHistoryTile.html',1,'']]],
+  ['hivelookandfeel_12',['HiveLookAndFeel',['../classHiveLookAndFeel.html',1,'']]],
+  ['httpclient_13',['HttpClient',['../classHttpClient.html',1,'']]],
+  ['httpoptions_14',['HttpOptions',['../structHttpOptions.html',1,'']]],
+  ['httpresponse_15',['HttpResponse',['../structHttpResponse.html',1,'']]]
 ];

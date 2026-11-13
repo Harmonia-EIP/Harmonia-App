@@ -1,0 +1,9 @@
+<map id="src/components/EngineBadge.h" name="src/components/EngineBadge.h">
+<area shape="rect" id="Node000001" title="Small label telling which engine plays the preset (&quot;DX7&quot; when the DX7 mode is on)." alt="" coords="72,5,298,33"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,81,160,126"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="167,36,124,73,120,69,170,32"/>
+<area shape="rect" id="Node000003" href="$HarmoniaPalette_8h.html" title=" " alt="" coords="184,90,392,117"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="202,31,262,79,257,80,201,36"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="217,174,358,218"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="290,116,290,159,286,156,286,120"/>
+</map>

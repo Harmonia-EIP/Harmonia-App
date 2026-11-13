@@ -1,0 +1,7 @@
+<map id="harmonia::AnalogVoice" name="harmonia::AnalogVoice">
+<area shape="rect" id="Node000001" title="One note of the analog engine." alt="" coords="83,145,254,173"/>
+<area shape="rect" id="Node000002" href="$classharmonia_1_1Random.html" title="Small, fast generator (SplitMix64) for unison phases, drift, noise and sample &amp; hold." alt="" coords="5,14,151,42"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,52,162,144,157,145,94,56"/>
+<area shape="rect" id="Node000003" href="$structharmonia_1_1AnalogVoice_1_1Envelope.html" title=" " alt="" coords="175,5,346,50"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="244,63,207,123,185,147,182,142,203,120,240,65"/>
+</map>

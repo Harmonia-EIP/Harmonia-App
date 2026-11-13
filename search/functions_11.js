@@ -1,8 +1,21 @@
 var searchData=
 [
-  ['update_0',['update',['../classSessionStore.html#a15d8445372ac4466c21ef81633ec8b7c',1,'SessionStore::update()'],['../classModelPicker.html#a6f50736ff017c6e1aa07df40e702551c',1,'ModelPicker::update()']]],
-  ['updatehover_1',['updateHover',['../classHistoryTile.html#acf8881be6fc6189f3d67414331c998cf',1,'HistoryTile']]],
-  ['updatemodetexts_2',['updateModeTexts',['../classHeaderComponent.html#a258f6652ed3982b0b37d98581df0783b',1,'HeaderComponent']]],
-  ['updatepalette_3',['updatepalette',['../classBackendManager.html#a46f9b491d0d3adc079a3d75192fb2bfb',1,'BackendManager::updatePalette()'],['../classProfileService.html#a60c0a08f990b4fc48db535e1f09b6630',1,'ProfileService::updatePalette()']]],
-  ['updatepaletteasync_4',['updatepaletteasync',['../classBackendManager.html#aaa1882520bf0d605dabfd018742ac11c',1,'BackendManager::updatePaletteAsync()'],['../classProfileService.html#ad69f3717d6288c13295480b7a8033236',1,'ProfileService::updatePaletteAsync()']]]
+  ['textmain_0',['textMain',['../classHarmoniaAlert.html#a698a773686bdfdf64993ec29f444ba0e',1,'HarmoniaAlert']]],
+  ['themefromid_1',['themeFromId',['../namespaceHarmoniaPalette.html#a497d220bb9bbb00526d2164ba7cb1a59',1,'HarmoniaPalette']]],
+  ['themepreviewcolour_2',['themePreviewColour',['../namespaceHarmoniaPalette.html#a1c251f715ba927faca8aad3c5ab5b680',1,'HarmoniaPalette']]],
+  ['timercallback_3',['timerCallback',['../classLfoVisualizer.html#a8cc9f38c8cdc904372208644adad0425',1,'LfoVisualizer::timerCallback()'],['../classOscilloscopeComponent.html#ac3c325a5783106db2919d89b0c63931e',1,'OscilloscopeComponent::timerCallback()'],['../classParticleField.html#a291b89119a43e372e90556fbe8213dec',1,'ParticleField::timerCallback()'],['../classLoginPage.html#ae866f59bf6946cbeafaa787b596c39d8',1,'LoginPage::timerCallback()'],['../classSignupPage.html#a753a6579dbc6e6f356c2254f207fd97e',1,'SignupPage::timerCallback()'],['../classWelcomePage.html#a80a5d0cbfd814bc489226ee884dc2498',1,'WelcomePage::timerCallback()'],['../classHistoryPicker.html#a50991a1bda8b4dfe50d2e3b4407ec1a4',1,'HistoryPicker::timerCallback()'],['../classIconButton.html#abb757c98c5f1b42fee2b4cc04f9aaece',1,'IconButton::timerCallback()'],['../classLogoButton.html#ad65fc8a8a457879fb0d452b0ebe0948a',1,'LogoButton::timerCallback()'],['../classHeaderComponent.html#a18b26b52225fe4fc2897e4a7f94347d8',1,'HeaderComponent::timerCallback()'],['../classHarmoniaAlert.html#ab26cc04ec3d827b184c12a4c64848762',1,'HarmoniaAlert::timerCallback()']]],
+  ['title_4',['Title',['../namespaceUIStyle_1_1Fonts.html#a7e48b8ab54666ecd13fbc676aae8e2ed',1,'UIStyle::Fonts']]],
+  ['tofilejson_5',['toFileJson',['../namespaceSessionMapper.html#afb6595013ce430feb94fb28fe4b626f7',1,'SessionMapper']]],
+  ['toggletheme_6',['toggleTheme',['../classAppLookAndFeel.html#a65e1af939c984595aa7b6eaac51f986b',1,'AppLookAndFeel']]],
+  ['tohex_7',['toHex',['../classPaletteSelector_1_1Picker.html#a1f01c93771149078175342ac97ce7f4b',1,'PaletteSelector::Picker::toHex()'],['../namespacePaletteMapper.html#af94142eaac9da844f394d7af17b3652e',1,'PaletteMapper::toHex()']]],
+  ['tojuce_8',['toJuce',['../namespaceJsonUtil.html#a39474ce2c7ce1a45571173f92556eaef',1,'JsonUtil::toJuce()'],['../namespaceHarmoniaParamsV3.html#a3ebe9baea8511db6ee257b84fb53453e',1,'HarmoniaParamsV3::toJuce()']]],
+  ['tonormalized_9',['toNormalized',['../namespaceHarmoniaCharter.html#a92afc6057b3726d74b2a8e161b3b4601',1,'HarmoniaCharter']]],
+  ['tooltipfont_10',['tooltipFont',['../classHiveLookAndFeel.html#afae841772fbe255aed8ff99c7fc4beaa',1,'HiveLookAndFeel']]],
+  ['toputbody_11',['toPutBody',['../namespacePaletteMapper.html#a48ce01b8b8c4ab25cbd1145391acf5d0',1,'PaletteMapper']]],
+  ['touchhistoryasync_12',['touchHistoryAsync',['../classMainComponent.html#aff6f14f5f75666dee3771b658d27c869',1,'MainComponent']]],
+  ['touchhistoryentry_13',['touchHistoryEntry',['../classBackendManager.html#a2a9b0e7ec685af2539b7541c8701c5ad',1,'BackendManager::touchHistoryEntry()'],['../classProfileService.html#a12ff71fad8431cdc254be320b071de52',1,'ProfileService::touchHistoryEntry()']]],
+  ['transfer_14',['transfer',['../classEnv.html#a129d57f9eac1c5ebafedf717486bc193',1,'Env']]],
+  ['transferphase_15',['transferPhase',['../classDx7Note.html#ab8ea64980fc55d3c06e61de163cbe925',1,'Dx7Note']]],
+  ['transfersignal_16',['transferSignal',['../classDx7Note.html#a579fd886bed9b838ad0bfedda66ecf06',1,'Dx7Note']]],
+  ['transferstate_17',['transferState',['../classDx7Note.html#a4cbeef1053c5f3d0677f716b4eee1cd0',1,'Dx7Note']]]
 ];

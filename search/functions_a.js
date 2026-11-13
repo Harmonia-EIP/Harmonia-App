@@ -15,8 +15,10 @@ var searchData=
   ['loadsession_12',['loadSession',['../classBackendManager.html#acf262702909c9686548e84aa3bc9e40c',1,'BackendManager']]],
   ['loadsessionfromfile_13',['loadSessionFromFile',['../classBackendAuthManager.html#ab06803cb771c0085669cfcfd98575193',1,'BackendAuthManager']]],
   ['log_14',['log',['../classBackendLogger.html#a32876d4cf7478aebb342b1e43386fdeb',1,'BackendLogger']]],
-  ['loginpage_15',['LoginPage',['../classLoginPage.html#a50436cb2261e60d9bc286f0bf3dc0bac',1,'LoginPage']]],
-  ['loginuser_16',['loginuser',['../classBackendManager.html#a27675e6f46e70bcbae60c9cbefba8fd6',1,'BackendManager::loginUser()'],['../classAuthService.html#a78d7b9274afcfb3b30834820c1f26d1d',1,'AuthService::loginUser()']]],
-  ['logobutton_17',['LogoButton',['../classLogoButton.html#a498031e75539e2a55d64488ecf8e82dc',1,'LogoButton']]],
-  ['logout_18',['logout',['../classAuthService.html#ad87579a247050385e74ca7bb569f995d',1,'AuthService']]]
+  ['logfreq_5fround2semi_15',['logfreq_round2semi',['../dx7note_8cc.html#a3c9871e9f5be24085ee33ce0abb8d9ae',1,'dx7note.cc']]],
+  ['loginpage_16',['LoginPage',['../classLoginPage.html#a50436cb2261e60d9bc286f0bf3dc0bac',1,'LoginPage']]],
+  ['loginuser_17',['loginUser',['../classBackendManager.html#a27675e6f46e70bcbae60c9cbefba8fd6',1,'BackendManager::loginUser()'],['../classAuthService.html#a78d7b9274afcfb3b30834820c1f26d1d',1,'AuthService::loginUser()']]],
+  ['logobutton_18',['LogoButton',['../classLogoButton.html#a498031e75539e2a55d64488ecf8e82dc',1,'LogoButton']]],
+  ['logout_19',['logout',['../classAuthService.html#ad87579a247050385e74ca7bb569f995d',1,'AuthService']]],
+  ['lookup_20',['lookup',['../classExp2.html#afff3a1cd80b1b9fcd1de5226d1db89ed',1,'Exp2::lookup()'],['../classTanh.html#a75f44116f977bc8277d1f65f00ced5d6',1,'Tanh::lookup()'],['../classFreqlut.html#a1d227f3c81626a344541a53c8bc59844',1,'Freqlut::lookup()'],['../classSin.html#a95db3498a5659451e0bcc886d9f27095',1,'Sin::lookup()']]]
 ];

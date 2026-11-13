@@ -1,16 +1,16 @@
 <map id="src/components/LfoVisualizer.h" name="src/components/LfoVisualizer.h">
-<area shape="rect" id="Node000001" title="Animated LFO waveform visualization component." alt="" coords="115,5,339,31"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,167,191,207"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="156,33,76,53,44,66,24,80,19,90,18,99,24,119,40,139,59,157,56,160,36,142,20,122,13,100,14,88,20,77,41,61,74,48,155,28"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="34,79,189,119"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="212,33,152,73,149,69,209,29"/>
-<area shape="rect" id="Node000004" href="$HarmoniaPalette_8h.html" title=" " alt="" coords="501,86,709,111"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="283,28,537,81,536,86,282,33"/>
-<area shape="rect" id="Node000006" href="$HarmoniaParameters_8h.html" title="Centralized synthesizer parameter definitions and APVTS layout creation." alt="" coords="213,86,476,111"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="246,29,317,76,314,80,243,33"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="533,167,676,207"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="607,112,607,153,602,153,602,112"/>
-<area shape="poly" id="edge6_Node000006_Node000002" title=" " alt="" coords="312,114,166,165,164,160,311,109"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="317,174,373,199"/>
-<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="347,112,347,160,342,160,342,112"/>
+<area shape="rect" id="Node000001" title="Animated LFO waveform visualization component." alt="" coords="115,5,338,33"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,174,190,218"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="147,36,73,56,42,69,24,83,17,102,23,123,37,143,57,163,52,164,33,146,18,125,12,102,19,79,39,64,71,51,150,31"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="34,81,188,126"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="206,35,156,74,152,69,210,32"/>
+<area shape="rect" id="Node000004" href="$HarmoniaPalette_8h.html" title=" " alt="" coords="498,90,705,117"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="287,31,529,84,524,87,287,36"/>
+<area shape="rect" id="Node000006" href="$HarmoniaParameters_8h.html" title="Centralized synthesizer parameter definitions and APVTS layout creation." alt="" coords="212,90,474,117"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="246,31,315,80,309,81,245,36"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="531,174,672,218"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="603,116,604,159,599,156,600,119"/>
+<area shape="poly" id="edge6_Node000006_Node000002" title=" " alt="" coords="310,117,172,170,170,165,305,118"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="315,182,370,210"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="345,116,345,168,341,165,341,119"/>
 </map>

@@ -26,11 +26,12 @@ var classHarmoniaAudioProcessor =
     [ "setStateInformation", "classHarmoniaAudioProcessor.html#a7f21c2da410ae60d5936f26c12234f29", null ],
     [ "apvts", "classHarmoniaAudioProcessor.html#ad8768fee42b798a2fd476132d8295dc2", null ],
     [ "backend", "classHarmoniaAudioProcessor.html#a47a0a01923f264a9ffc7e471fe532047", null ],
+    [ "effects", "classHarmoniaAudioProcessor.html#ac5e0d6c002ff56ec6f67e5528dcd3c2f", null ],
+    [ "effectsScratch", "classHarmoniaAudioProcessor.html#ad3fd7d8b84d5675c2ffaad144d3d3154", null ],
     [ "keyboardState", "classHarmoniaAudioProcessor.html#af0591acaf0cbf37c2fc24ef3ed6dafb1", null ],
     [ "oscilloscope", "classHarmoniaAudioProcessor.html#a7949413ae3bce514758b7441c0c3b056", null ],
     [ "oscLock", "classHarmoniaAudioProcessor.html#a61cf09b3ab1ddbc40d290414609adfe4", null ],
-    [ "paramRefs", "classHarmoniaAudioProcessor.html#a12ec5f5c119393db248fa6cdb4ce56be", null ],
-    [ "reverb", "classHarmoniaAudioProcessor.html#acfd3ec2052fd195f4ff63cbe74f938a1", null ],
-    [ "reverbParams", "classHarmoniaAudioProcessor.html#ab266dad1a196b29d73132351985cf964", null ],
+    [ "paramRefs", "classHarmoniaAudioProcessor.html#ad3d020394c6cac918ce9e984f09419e1", null ],
+    [ "patches", "classHarmoniaAudioProcessor.html#a9d25e9f3a8532e98cc5f49ac8627c1bf", null ],
     [ "synth", "classHarmoniaAudioProcessor.html#a398de85fb71b63459c0e2286aae2c8b5", null ]
 ];

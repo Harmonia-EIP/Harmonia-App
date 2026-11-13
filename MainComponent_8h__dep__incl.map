@@ -1,15 +1,15 @@
 <map id="src/MainComponent.h" name="src/MainComponent.h">
-<area shape="rect" id="Node000001" title="Main synthesizer interface component for Harmonia." alt="" coords="182,5,346,31"/>
-<area shape="rect" id="Node000002" href="$AppController_8h.html" title="Main application navigation controller." alt="" coords="98,79,243,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="240,41,188,81,184,76,237,37"/>
-<area shape="rect" id="Node000007" href="$MainComponent_8cpp.html" title=" " alt="" coords="268,79,447,104"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="291,37,344,76,340,81,288,41"/>
-<area shape="rect" id="Node000003" href="$AppController_8cpp.html" title=" " alt="" coords="5,152,165,177"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="148,115,101,154,98,150,145,110"/>
-<area shape="rect" id="Node000004" href="$PluginEditor_8h.html" title="Main graphical editor of the Harmonia plugin." alt="" coords="190,152,325,177"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="197,110,245,150,241,154,193,115"/>
-<area shape="rect" id="Node000005" href="$PluginEditor_8cpp.html" title=" " alt="" coords="89,225,239,251"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="233,188,181,227,178,223,230,183"/>
-<area shape="rect" id="Node000006" href="$PluginProcessor_8cpp.html" title=" " alt="" coords="263,225,438,251"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="285,183,337,223,334,227,281,188"/>
+<area shape="rect" id="Node000001" title="Main synthesizer interface component for Harmonia." alt="" coords="181,5,344,33"/>
+<area shape="rect" id="Node000002" href="$AppController_8h.html" title="Main application navigation controller." alt="" coords="98,81,242,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="232,45,188,83,185,79,236,41"/>
+<area shape="rect" id="Node000007" href="$MainComponent_8cpp.html" title=" " alt="" coords="266,81,445,109"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="291,40,342,80,336,81,290,45"/>
+<area shape="rect" id="Node000003" href="$AppController_8cpp.html" title=" " alt="" coords="5,157,165,184"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="142,121,102,158,98,154,145,117"/>
+<area shape="rect" id="Node000004" href="$PluginEditor_8h.html" title="Main graphical editor of the Harmonia plugin." alt="" coords="189,157,322,184"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="198,117,243,156,238,156,197,122"/>
+<area shape="rect" id="Node000005" href="$PluginEditor_8cpp.html" title=" " alt="" coords="88,232,236,260"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="230,193,180,234,178,230,225,195"/>
+<area shape="rect" id="Node000006" href="$PluginProcessor_8cpp.html" title=" " alt="" coords="261,232,434,260"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="285,192,334,232,329,232,283,197"/>
 </map>

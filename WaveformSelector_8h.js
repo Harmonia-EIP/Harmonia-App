@@ -1,5 +1,6 @@
 var WaveformSelector_8h =
 [
     [ "WaveformSelector", "classWaveformSelector.html", "classWaveformSelector" ],
-    [ "FilterTypeSelector", "classFilterTypeSelector.html", "classFilterTypeSelector" ]
+    [ "FilterTypeSelector", "classFilterTypeSelector.html", "classFilterTypeSelector" ],
+    [ "FilterSlopeSelector", "classFilterSlopeSelector.html", "classFilterSlopeSelector" ]
 ];

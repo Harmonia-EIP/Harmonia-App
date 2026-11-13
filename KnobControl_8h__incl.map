@@ -1,17 +1,17 @@
 <map id="src/components/KnobControl.h" name="src/components/KnobControl.h">
-<area shape="rect" id="Node000001" title="Rotary knob UI component linked to an APVTS parameter." alt="" coords="171,5,393,31"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,191,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="256,33,156,76,154,71,254,28"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="113,167,267,207"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="278,32,209,156,205,153,273,29"/>
-<area shape="rect" id="Node000004" href="$HarmoniaPalette_8h.html" title=" " alt="" coords="403,174,611,199"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="321,28,369,48,418,77,462,119,495,161,490,164,458,122,415,81,367,53,319,33"/>
-<area shape="rect" id="Node000006" href="$LockableControl_8h.html" title="Interface commune aux controles dont le parametre peut etre verrouille en mode Refine (KnobControl,..." alt="" coords="266,86,405,111"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="292,29,322,73,317,76,288,32"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="436,255,579,295"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="510,200,510,241,505,241,505,200"/>
-<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="317,114,235,162,232,157,314,109"/>
-<area shape="poly" id="edge7_Node000006_Node000004" title=" " alt="" coords="360,109,473,165,471,170,357,114"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="292,174,379,199"/>
-<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="338,112,338,160,333,160,333,112"/>
+<area shape="rect" id="Node000001" title="Rotary knob UI component linked to an APVTS parameter." alt="" coords="170,5,390,33"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,81,190,126"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="249,36,161,76,158,72,253,32"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="112,174,267,218"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="276,32,210,162,205,159,271,35"/>
+<area shape="rect" id="Node000004" href="$HarmoniaPalette_8h.html" title=" " alt="" coords="400,182,608,210"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="322,31,370,51,416,79,460,123,492,170,487,168,456,126,413,83,368,55,323,36"/>
+<area shape="rect" id="Node000006" href="$LockableControl_8h.html" title="Interface commune aux controles dont le parametre peut etre verrouille en mode Refine (KnobControl,..." alt="" coords="265,90,402,117"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="289,31,320,77,314,77,288,36"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="434,266,575,311"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="506,208,506,252,502,249,502,212"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="311,119,238,167,236,163,315,116"/>
+<area shape="poly" id="edge7_Node000006_Node000004" title=" " alt="" coords="359,115,469,174,464,175,358,120"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="290,182,377,210"/>
+<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="335,115,336,168,331,166,332,120"/>
 </map>

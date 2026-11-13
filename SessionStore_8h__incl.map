@@ -1,26 +1,26 @@
 <map id="src/backend/storage/SessionStore.h" name="src/backend/storage/SessionStore.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="136,5,288,45"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="260,240,422,265"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="136,36,84,46,38,62,22,73,11,85,8,100,14,118,33,146,58,170,86,189,116,206,182,229,246,242,245,247,181,234,114,211,83,194,54,174,29,149,9,120,3,100,7,83,18,69,36,57,82,40,135,31"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="24,93,111,119"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="178,48,102,89,99,84,176,43"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="137,167,201,192"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="200,47,187,69,177,94,171,124,170,153,165,152,166,123,172,93,182,67,196,44"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="304,167,378,192"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="289,36,337,56,359,72,376,92,382,108,380,126,363,157,358,154,375,124,377,109,372,95,355,76,335,61,287,41"/>
-<area shape="rect" id="Node000006" href="$BackendTypes_8h.html" title="Defines backend&#45;related data structures." alt="" coords="450,93,589,119"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="286,43,462,87,460,92,285,48"/>
-<area shape="rect" id="Node000010" href="$BackendLogger_8h.html" title=" " alt="" coords="186,93,362,119"/>
-<area shape="poly" id="edge12_Node000001_Node000010" title=" " alt="" coords="229,44,258,81,254,84,225,47"/>
-<area shape="poly" id="edge10_Node000006_Node000002" title=" " alt="" coords="505,121,443,169,366,233,363,229,439,165,502,117"/>
-<area shape="poly" id="edge11_Node000006_Node000005" title=" " alt="" coords="492,121,384,164,382,159,490,116"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="453,167,600,192"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="523,119,526,153,521,153,518,119"/>
-<area shape="rect" id="Node000008" href="$String_8h.html" title=" " alt="" coords="624,167,751,192"/>
-<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="548,116,648,159,646,164,545,121"/>
-<area shape="rect" id="Node000009" href="$AppConfig_8h.html" title=" " alt="" coords="776,167,930,192"/>
-<area shape="poly" id="edge9_Node000006_Node000009" title=" " alt="" coords="574,116,786,161,785,166,573,121"/>
-<area shape="poly" id="edge8_Node000008_Node000002" title=" " alt="" coords="632,195,411,240,410,235,631,189"/>
-<area shape="poly" id="edge13_Node000010_Node000002" title=" " alt="" coords="277,119,282,152,294,191,306,211,321,228,317,232,302,214,289,193,277,153,272,119"/>
-<area shape="poly" id="edge14_Node000010_Node000004" title=" " alt="" coords="259,121,199,161,196,157,256,116"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="133,5,284,50"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="257,249,419,277"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="131,39,82,50,38,68,22,79,11,92,8,107,14,125,33,153,56,177,84,197,114,213,179,237,245,253,239,254,178,242,112,218,81,201,53,181,28,156,9,127,3,107,7,90,18,75,35,63,81,45,135,35"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="23,98,109,126"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="169,53,103,92,100,88,172,48"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="134,174,198,201"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="195,48,184,74,174,99,168,129,167,159,162,157,163,129,169,97,179,72,192,52"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="301,174,375,201"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="284,39,334,60,356,76,374,97,379,113,378,131,361,163,357,159,372,129,374,114,369,99,352,80,331,65,285,45"/>
+<area shape="rect" id="Node000006" href="$BackendTypes_8h.html" title="Defines backend&#45;related data structures." alt="" coords="448,98,585,126"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="285,46,455,92,450,95,285,52"/>
+<area shape="rect" id="Node000010" href="$BackendLogger_8h.html" title=" " alt="" coords="184,98,359,126"/>
+<area shape="poly" id="edge12_Node000001_Node000010" title=" " alt="" coords="226,48,255,85,249,85,225,53"/>
+<area shape="poly" id="edge10_Node000006_Node000002" title=" " alt="" coords="502,125,441,176,365,241,363,236,438,172,497,127"/>
+<area shape="poly" id="edge11_Node000006_Node000005" title=" " alt="" coords="487,125,385,170,383,165,482,127"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="451,174,596,201"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="519,124,523,159,518,157,516,128"/>
+<area shape="rect" id="Node000008" href="$String_8h.html" title=" " alt="" coords="620,174,746,201"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="547,124,642,167,637,167,546,129"/>
+<area shape="rect" id="Node000009" href="$AppConfig_8h.html" title=" " alt="" coords="770,174,924,201"/>
+<area shape="poly" id="edge9_Node000006_Node000009" title=" " alt="" coords="576,124,775,169,770,170,576,129"/>
+<area shape="poly" id="edge8_Node000008_Node000002" title=" " alt="" coords="624,202,415,248,415,243,618,202"/>
+<area shape="poly" id="edge13_Node000010_Node000002" title=" " alt="" coords="273,124,279,160,291,200,316,239,311,237,286,202,274,161,270,128"/>
+<area shape="poly" id="edge14_Node000010_Node000004" title=" " alt="" coords="255,125,198,167,195,163,250,128"/>
 </map>

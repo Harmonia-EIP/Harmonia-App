@@ -1,0 +1,27 @@
+var classControllers =
+[
+    [ "Controllers", "classControllers.html#a5023888f51ed9d68aacea1a3437937a9", null ],
+    [ "applyMod", "classControllers.html#ae390de1d04ccb47c21df5fa8358cec0b", null ],
+    [ "refresh", "classControllers.html#acba950797830418dca9e5c625b854499", null ],
+    [ "aftertouch_cc", "classControllers.html#aa128f247f0ab169c0a1a59a028c05575", null ],
+    [ "amp_mod", "classControllers.html#a0273b0a1d0a87b82e1400866d6442a0c", null ],
+    [ "at", "classControllers.html#a745cb3a843c2570c73d4584831b57d2d", null ],
+    [ "breath", "classControllers.html#aa596e2176ddfc0d7af5ea90e26f576f2", null ],
+    [ "breath_cc", "classControllers.html#a10e863d5104229c21859e22505b164a6", null ],
+    [ "core", "classControllers.html#a03d73d3e9a71b034c5e6f59c2d7dd88b", null ],
+    [ "eg_mod", "classControllers.html#ae85304a1537245c49535fc8f639aa158", null ],
+    [ "foot", "classControllers.html#acfa1676482e33fa616735b58184f6286", null ],
+    [ "foot_cc", "classControllers.html#a92f57ffc3b21dd15b7fd1813cebc3efe", null ],
+    [ "masterTune", "classControllers.html#a877c2645e6a72ef865eedcf7dea1ced3", null ],
+    [ "modwheel_cc", "classControllers.html#ab804e0a1db568b9e7f79390e3fc7b1c9", null ],
+    [ "mpeEnabled", "classControllers.html#a260de4a2e49b2befea597b257373894a", null ],
+    [ "mpePitchBendRange", "classControllers.html#ae02e041fb485806c7ddeadea2fcc7aa7", null ],
+    [ "opSwitch", "classControllers.html#a6c0052c8fdb14b3a03868188aac8a14f", null ],
+    [ "pitch_mod", "classControllers.html#a433226de949e2e7fb41046269bcf8f3e", null ],
+    [ "portamento_cc", "classControllers.html#a5086aca106dd85249008ef37be9352ff", null ],
+    [ "portamento_enable_cc", "classControllers.html#adae3fa4ef400e3c9ddcbffd4ed60006e", null ],
+    [ "portamento_gliss_cc", "classControllers.html#ae1be72e8efc4ad0b49b538b71b8235a4", null ],
+    [ "transpose12AsScale", "classControllers.html#a751a380d8bb3316a5f31ee9138048e32", null ],
+    [ "values_", "classControllers.html#a579c6ed3df53fe61dd48c08a200dbd36", null ],
+    [ "wheel", "classControllers.html#a784b441688bd44a6d335072ddd227c9d", null ]
+];

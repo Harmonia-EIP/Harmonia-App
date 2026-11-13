@@ -1,0 +1,22 @@
+<map id="src/engine/dx7/msfa/fm_core.h" name="src/engine/dx7/msfa/fm_core.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="171,5,324,50"/>
+<area shape="rect" id="Node000002" href="$aligned__buf_8h.html" title=" " alt="" coords="5,98,114,126"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="196,53,105,94,102,89,199,48"/>
+<area shape="rect" id="Node000004" href="$fm__op__kernel_8h.html" title=" " alt="" coords="138,98,259,126"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="236,48,216,86,212,83,233,52"/>
+<area shape="rect" id="Node000005" href="$synth_8h.html" title=" " alt="" coords="256,174,325,201"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="257,48,274,97,288,159,283,158,269,99,255,53"/>
+<area shape="rect" id="Node000007" href="$controllers_8h.html" title=" " alt="" coords="340,98,443,126"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="286,48,358,90,353,91,285,53"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="23,174,96,201"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="60,124,62,158,57,158,59,129"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="255,249,325,277"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="292,200,292,235,288,232,288,204"/>
+<area shape="poly" id="edge7_Node000007_Node000005" title=" " alt="" coords="376,125,322,167,319,162,371,127"/>
+<area shape="rect" id="Node000008" href="$Dexed_8h.html" title=" " alt="" coords="348,174,435,201"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="393,124,394,159,389,157,390,128"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="459,174,524,201"/>
+<area shape="poly" id="edge9_Node000007_Node000009" title=" " alt="" coords="410,124,464,165,459,164,409,129"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="548,174,619,201"/>
+<area shape="poly" id="edge10_Node000007_Node000010" title=" " alt="" coords="426,124,538,168,532,168,425,129"/>
+</map>

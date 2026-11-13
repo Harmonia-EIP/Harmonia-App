@@ -1,5 +1,5 @@
 <map id="src/themes/AppColourIds.h" name="src/themes/AppColourIds.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,201,31"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="26,79,181,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="106,31,106,65,101,65,101,31"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,201,33"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="26,81,180,126"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="105,31,106,66,100,64,101,36"/>
 </map>

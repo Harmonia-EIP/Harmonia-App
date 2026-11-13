@@ -1,17 +1,17 @@
 <map id="src/backend/storage/HistoryMapper.h" name="src/backend/storage/HistoryMapper.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="135,5,287,45"/>
-<area shape="rect" id="Node000002" href="$BackendTypes_8h.html" title="Defines backend&#45;related data structures." alt="" coords="221,93,360,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="232,44,271,82,267,85,228,47"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="5,167,152,192"/>
-<area shape="poly" id="edge8_Node000001_Node000003" title=" " alt="" coords="196,48,100,158,96,154,192,44"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="257,121,127,165,125,160,256,116"/>
-<area shape="rect" id="Node000004" href="$String_8h.html" title=" " alt="" coords="177,167,303,192"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="284,121,258,157,254,154,280,117"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="209,240,372,265"/>
-<area shape="poly" id="edge6_Node000002_Node000005" title=" " alt="" coords="300,118,310,139,319,166,317,199,307,229,302,227,312,198,313,167,305,141,295,120"/>
-<area shape="rect" id="Node000006" href="$AppConfig_8h.html" title=" " alt="" coords="379,167,533,192"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="318,116,418,159,415,164,316,121"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="557,167,632,192"/>
-<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="340,116,544,164,543,169,339,121"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="251,191,277,227,272,230,246,194"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="132,5,283,50"/>
+<area shape="rect" id="Node000002" href="$BackendTypes_8h.html" title="Defines backend&#45;related data structures." alt="" coords="219,98,356,126"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="229,48,266,86,261,87,228,53"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,174,151,201"/>
+<area shape="poly" id="edge8_Node000001_Node000003" title=" " alt="" coords="189,53,100,163,96,160,191,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="248,128,131,171,129,166,252,124"/>
+<area shape="rect" id="Node000004" href="$String_8h.html" title=" " alt="" coords="175,174,301,201"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="281,125,257,163,253,159,276,128"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="207,249,368,277"/>
+<area shape="poly" id="edge6_Node000002_Node000005" title=" " alt="" coords="296,124,307,147,315,173,315,202,303,237,299,233,310,201,310,174,302,149,294,129"/>
+<area shape="rect" id="Node000006" href="$AppConfig_8h.html" title=" " alt="" coords="376,174,530,201"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="317,124,412,167,407,167,317,129"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="554,174,628,201"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="344,124,542,172,537,174,343,129"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="248,200,273,237,268,236,246,204"/>
 </map>

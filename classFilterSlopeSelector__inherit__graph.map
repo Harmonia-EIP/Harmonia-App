@@ -1,0 +1,11 @@
+<map id="FilterSlopeSelector" name="FilterSlopeSelector">
+<area shape="rect" id="Node000001" title="12 / 24 dB filter slope as a compact two&#45;way switch (it sits in the filter panel&#39;s title row)." alt="" coords="151,174,295,201"/>
+<area shape="rect" id="Node000002" href="$classIconChoiceSelector.html" title=" " alt="" coords="150,98,296,126"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="225,140,225,175,221,172,221,143"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,14,137,42"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="109,47,201,96,196,99,108,52"/>
+<area shape="rect" id="Node000004" href="$classLockableControl.html" title=" " alt="" coords="160,14,286,42"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="225,55,225,99,221,97,221,59"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="310,5,502,50"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="346,56,253,100,251,95,341,58"/>
+</map>

@@ -1,20 +1,20 @@
 <map id="LoginPage" name="LoginPage">
-<area shape="rect" id="Node000001" title="Authentication page — sign in with identifier + password." alt="" coords="319,181,407,207"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,137,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,120,325,179,323,184,123,125"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="161,93,256,119"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="243,123,344,179,341,183,240,128"/>
-<area shape="rect" id="Node000004" href="$classAppLookAndFeel.html" title=" " alt="" coords="471,93,602,119"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="502,127,388,183,386,179,500,122"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="289,5,453,31"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="407,35,515,91,513,95,404,39"/>
-<area shape="rect" id="Node000007" href="$classAuthPageLookAndFeel.html" title="Shared LookAndFeel for LoginPage and SignupPage (buttons + text fields)." alt="" coords="280,93,447,119"/>
-<area shape="poly" id="edge7_Node000007_Node000005" title=" " alt="" coords="372,45,367,93,362,93,366,44"/>
-<area shape="rect" id="Node000006" href="$structThemePalette.html" title=" " alt="" coords="481,5,593,31"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="539,45,539,93,534,93,534,45"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="366,133,366,181,361,181,361,133"/>
-<area shape="rect" id="Node000008" href="$classBackendManager.html" title=" " alt="" coords="627,93,761,119"/>
-<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="662,128,625,145,584,160,490,181,408,192,407,186,490,176,583,155,623,140,660,123"/>
-<area shape="rect" id="Node000009" href="$classHttpClient.html" title="Sans état modifiable : copiable, utilisable depuis n&#39;importe quel thread." alt="" coords="650,5,738,31"/>
-<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="697,45,697,93,691,93,691,45"/>
+<area shape="rect" id="Node000001" title="Authentication page — sign in with identifier + password." alt="" coords="318,207,405,234"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,106,137,134"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,136,325,204,321,208,123,142"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="161,106,256,134"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="242,140,344,206,338,206,240,145"/>
+<area shape="rect" id="Node000004" href="$classAppLookAndFeel.html" title=" " alt="" coords="469,106,598,134"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="500,141,386,209,384,204,495,142"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="288,5,451,33"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="405,39,514,105,509,106,404,44"/>
+<area shape="rect" id="Node000007" href="$classAuthPageLookAndFeel.html" title="Shared LookAndFeel for LoginPage and SignupPage (buttons + text fields)." alt="" coords="279,106,444,134"/>
+<area shape="poly" id="edge7_Node000007_Node000005" title=" " alt="" coords="369,46,365,107,360,104,366,50"/>
+<area shape="rect" id="Node000006" href="$structThemePalette.html" title=" " alt="" coords="478,5,589,33"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="535,47,536,107,531,104,532,51"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="364,148,364,208,359,205,360,151"/>
+<area shape="rect" id="Node000008" href="$classBackendManager.html" title=" " alt="" coords="623,106,756,134"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="664,143,631,167,595,185,545,200,495,211,406,220,406,215,494,205,544,195,593,180,629,162,659,144"/>
+<area shape="rect" id="Node000009" href="$classHttpClient.html" title="Sans état modifiable : copiable, utilisable depuis n&#39;importe quel thread." alt="" coords="646,5,733,33"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="691,47,692,107,687,104,688,51"/>
 </map>

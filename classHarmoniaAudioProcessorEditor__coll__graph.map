@@ -1,15 +1,19 @@
 <map id="HarmoniaAudioProcessorEditor" name="HarmoniaAudioProcessorEditor">
-<area shape="rect" id="Node000001" title="Root editor window of the Harmonia plugin." alt="" coords="12,269,236,295"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,181,200,207"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="111,219,124,268,118,269,106,221"/>
-<area shape="rect" id="Node000003" href="$classHarmoniaAudioProcessor.html" title="Main JUCE audio processor for the Harmonia synthesizer." alt="" coords="224,181,411,207"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="280,215,151,272,149,267,278,210"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="27,93,184,119"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="148,122,290,179,288,184,146,126"/>
-<area shape="rect" id="Node000005" href="$structHarmoniaParams_1_1AtomicRefs.html" title="Real&#45;time safe parameter access structure." alt="" coords="209,93,426,119"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="320,133,320,181,315,181,315,133"/>
-<area shape="rect" id="Node000006" href="$classBackendManager.html" title=" " alt="" coords="450,93,585,119"/>
-<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="479,127,346,184,343,179,477,122"/>
-<area shape="rect" id="Node000007" href="$classHttpClient.html" title="Sans état modifiable : copiable, utilisable depuis n&#39;importe quel thread." alt="" coords="473,5,561,31"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="520,45,520,93,515,93,515,45"/>
+<area shape="rect" id="Node000001" title="Root editor window of the Harmonia plugin." alt="" coords="905,87,1129,114"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="556,61,750,89"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="765,80,908,92,902,93,766,86"/>
+<area shape="rect" id="Node000003" href="$classHarmoniaAudioProcessor.html" title="Main JUCE audio processor for the Harmonia synthesizer." alt="" coords="560,113,746,141"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="761,125,881,119,937,115,932,115,882,124,761,130"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="224,5,380,33"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="395,15,466,27,501,39,534,57,543,68,547,79,550,89,558,98,580,113,575,112,554,103,545,92,542,80,538,70,530,61,499,44,465,32,396,20"/>
+<area shape="rect" id="Node000005" href="$structHarmoniaParamsV3_1_1ParameterRefs.html" title="Physical value of every charter parameter for the audio thread (index = position in HarmoniaCharter::..." alt="" coords="175,57,429,85"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="444,85,532,98,595,113,590,113,532,103,445,90"/>
+<area shape="rect" id="Node000006" href="$structHarmoniaPatches.html" title="What the voices play, filled by the processor at the start of each block (audio thread)." alt="" coords="234,113,370,141"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="385,125,563,126,558,128,385,130"/>
+<area shape="rect" id="Node000007" href="$classharmonia_1_1Effects.html" title="Chorus &#45;&gt; delay &#45;&gt; reverb on the stereo mix of the voices, as the reference applies them to one note." alt="" coords="234,169,370,197"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="385,174,532,155,599,142,604,141,532,160,386,179"/>
+<area shape="rect" id="Node000008" href="$classBackendManager.html" title=" " alt="" coords="235,225,368,253"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="383,230,456,217,531,196,587,169,631,142,636,141,590,173,533,201,457,223,384,235"/>
+<area shape="rect" id="Node000009" href="$classHttpClient.html" title="Sans état modifiable : copiable, utilisable depuis n&#39;importe quel thread." alt="" coords="5,225,93,253"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="108,237,235,237,234,242,108,242"/>
 </map>

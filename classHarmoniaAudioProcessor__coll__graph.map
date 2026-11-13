@@ -1,11 +1,15 @@
 <map id="HarmoniaAudioProcessor" name="HarmoniaAudioProcessor">
-<area shape="rect" id="Node000001" title="Main JUCE audio processor for the Harmonia synthesizer." alt="" coords="203,181,389,207"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,163,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="126,122,269,179,267,184,124,126"/>
-<area shape="rect" id="Node000003" href="$structHarmoniaParams_1_1AtomicRefs.html" title="Real&#45;time safe parameter access structure." alt="" coords="187,93,405,119"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="299,133,299,181,293,181,293,133"/>
-<area shape="rect" id="Node000004" href="$classBackendManager.html" title=" " alt="" coords="429,93,563,119"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="458,127,324,184,322,179,455,122"/>
-<area shape="rect" id="Node000005" href="$classHttpClient.html" title="Sans état modifiable : copiable, utilisable depuis n&#39;importe quel thread." alt="" coords="452,5,540,31"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="499,45,499,93,493,93,493,45"/>
+<area shape="rect" id="Node000001" title="Main JUCE audio processor for the Harmonia synthesizer." alt="" coords="556,113,741,141"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="224,5,380,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="395,24,464,36,533,55,587,82,631,113,626,112,584,87,531,60,463,41,395,29"/>
+<area shape="rect" id="Node000003" href="$structHarmoniaParamsV3_1_1ParameterRefs.html" title="Physical value of every charter parameter for the audio thread (index = position in HarmoniaCharter::..." alt="" coords="175,57,429,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="444,84,532,98,593,113,587,113,532,103,445,90"/>
+<area shape="rect" id="Node000004" href="$structHarmoniaPatches.html" title="What the voices play, filled by the processor at the start of each block (audio thread)." alt="" coords="234,113,370,141"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="384,125,558,126,553,128,385,130"/>
+<area shape="rect" id="Node000005" href="$classharmonia_1_1Effects.html" title="Chorus &#45;&gt; delay &#45;&gt; reverb on the stereo mix of the voices, as the reference applies them to one note." alt="" coords="234,169,370,197"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="385,174,532,155,596,142,601,141,532,160,386,180"/>
+<area shape="rect" id="Node000006" href="$classBackendManager.html" title=" " alt="" coords="235,225,368,253"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="383,230,456,218,531,196,585,169,627,142,632,141,588,173,533,201,457,223,384,235"/>
+<area shape="rect" id="Node000007" href="$classHttpClient.html" title="Sans état modifiable : copiable, utilisable depuis n&#39;importe quel thread." alt="" coords="5,225,93,253"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="108,237,235,237,234,242,108,242"/>
 </map>

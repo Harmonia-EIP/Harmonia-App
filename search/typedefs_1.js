@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['historylist_0',['HistoryList',['../classHeaderComponent.html#a6b027833d01846b84aa329bf08ec745c',1,'HeaderComponent']]]
+  ['dx7patch_0',['Dx7Patch',['../namespaceharmonia.html#a5e27e8985cca9f5c2106ccd6b7f80eec',1,'harmonia']]]
 ];

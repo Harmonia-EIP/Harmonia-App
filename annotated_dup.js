@@ -1,19 +1,37 @@
 var annotated_dup =
 [
+    [ "harmonia", "namespaceharmonia.html", [
+      [ "Dx7Voice", "classharmonia_1_1Dx7Voice.html", "classharmonia_1_1Dx7Voice" ],
+      [ "Random", "classharmonia_1_1Random.html", "classharmonia_1_1Random" ],
+      [ "AnalogVoice", "classharmonia_1_1AnalogVoice.html", "classharmonia_1_1AnalogVoice" ],
+      [ "Effects", "classharmonia_1_1Effects.html", "classharmonia_1_1Effects" ]
+    ] ],
+    [ "HarmoniaCharter", "namespaceHarmoniaCharter.html", [
+      [ "V2Rule", "structHarmoniaCharter_1_1V2Rule.html", "structHarmoniaCharter_1_1V2Rule" ],
+      [ "Param", "structHarmoniaCharter_1_1Param.html", "structHarmoniaCharter_1_1Param" ],
+      [ "Group", "structHarmoniaCharter_1_1Group.html", "structHarmoniaCharter_1_1Group" ]
+    ] ],
     [ "HarmoniaPalette", "namespaceHarmoniaPalette.html", [
       [ "ThemeDef", "structHarmoniaPalette_1_1ThemeDef.html", "structHarmoniaPalette_1_1ThemeDef" ]
     ] ],
     [ "HarmoniaParams", "namespaceHarmoniaParams.html", [
       [ "AtomicRefs", "structHarmoniaParams_1_1AtomicRefs.html", "structHarmoniaParams_1_1AtomicRefs" ]
     ] ],
+    [ "HarmoniaParamsV3", "namespaceHarmoniaParamsV3.html", [
+      [ "ParameterRefs", "structHarmoniaParamsV3_1_1ParameterRefs.html", "structHarmoniaParamsV3_1_1ParameterRefs" ]
+    ] ],
     [ "PresetLoader", "namespacePresetLoader.html", [
       [ "LoadResult", "structPresetLoader_1_1LoadResult.html", "structPresetLoader_1_1LoadResult" ]
+    ] ],
+    [ "Tunings", "namespaceTunings.html", [
+      [ "Tuning", "structTunings_1_1Tuning.html", null ]
     ] ],
     [ "ActionButton", "classActionButton.html", "classActionButton" ],
     [ "AIModelData", "structAIModelData.html", "structAIModelData" ],
     [ "AiModelsResult", "structAiModelsResult.html", "structAiModelsResult" ],
     [ "AiResult", "structAiResult.html", "structAiResult" ],
     [ "AiService", "classAiService.html", "classAiService" ],
+    [ "AlignedBuf", "classAlignedBuf.html", "classAlignedBuf" ],
     [ "ApiError", "structApiError.html", "structApiError" ],
     [ "AppController", "classAppController.html", "classAppController" ],
     [ "AppLookAndFeel", "classAppLookAndFeel.html", "classAppLookAndFeel" ],
@@ -24,12 +42,26 @@ var annotated_dup =
     [ "BackendLogger", "classBackendLogger.html", "classBackendLogger" ],
     [ "BackendManager", "classBackendManager.html", "classBackendManager" ],
     [ "ComboControl", "classComboControl.html", "classComboControl" ],
+    [ "Controllers", "classControllers.html", "classControllers" ],
     [ "DisplayScreen", "classDisplayScreen.html", "classDisplayScreen" ],
+    [ "Dx7Note", "classDx7Note.html", "classDx7Note" ],
+    [ "EngineBadge", "classEngineBadge.html", "classEngineBadge" ],
+    [ "Env", "classEnv.html", "classEnv" ],
     [ "EnvelopeVisualizer", "classEnvelopeVisualizer.html", "classEnvelopeVisualizer" ],
+    [ "Exp2", "classExp2.html", "classExp2" ],
+    [ "FilterSlopeSelector", "classFilterSlopeSelector.html", "classFilterSlopeSelector" ],
     [ "FilterTypeSelector", "classFilterTypeSelector.html", "classFilterTypeSelector" ],
+    [ "FmAlgorithm", "classFmAlgorithm.html", "classFmAlgorithm" ],
+    [ "FmCore", "classFmCore.html", "classFmCore" ],
+    [ "FmMod", "structFmMod.html", "structFmMod" ],
+    [ "FmOperatorInfo", "classFmOperatorInfo.html", "classFmOperatorInfo" ],
+    [ "FmOpKernel", "classFmOpKernel.html", "classFmOpKernel" ],
+    [ "FmOpParams", "structFmOpParams.html", "structFmOpParams" ],
+    [ "Freqlut", "classFreqlut.html", "classFreqlut" ],
     [ "HarmoniaAlert", "classHarmoniaAlert.html", "classHarmoniaAlert" ],
     [ "HarmoniaAudioProcessor", "classHarmoniaAudioProcessor.html", "classHarmoniaAudioProcessor" ],
     [ "HarmoniaAudioProcessorEditor", "classHarmoniaAudioProcessorEditor.html", "classHarmoniaAudioProcessorEditor" ],
+    [ "HarmoniaPatches", "structHarmoniaPatches.html", "structHarmoniaPatches" ],
     [ "HarmoniaSound", "classHarmoniaSound.html", "classHarmoniaSound" ],
     [ "HarmoniaVoice", "classHarmoniaVoice.html", "classHarmoniaVoice" ],
     [ "HeaderComponent", "classHeaderComponent.html", "classHeaderComponent" ],
@@ -45,6 +77,7 @@ var annotated_dup =
     [ "IconButton", "classIconButton.html", "classIconButton" ],
     [ "IconChoiceSelector", "classIconChoiceSelector.html", "classIconChoiceSelector" ],
     [ "KnobControl", "classKnobControl.html", "classKnobControl" ],
+    [ "Lfo", "classLfo.html", "classLfo" ],
     [ "LfoVisualizer", "classLfoVisualizer.html", "classLfoVisualizer" ],
     [ "LockableControl", "classLockableControl.html", "classLockableControl" ],
     [ "LoginPage", "classLoginPage.html", "classLoginPage" ],
@@ -52,10 +85,13 @@ var annotated_dup =
     [ "MainComponent", "classMainComponent.html", "classMainComponent" ],
     [ "ModelMenuLookAndFeel", "classModelMenuLookAndFeel.html", "classModelMenuLookAndFeel" ],
     [ "ModelPicker", "classModelPicker.html", "classModelPicker" ],
+    [ "Module", "classModule.html", "classModule" ],
     [ "OscilloscopeComponent", "classOscilloscopeComponent.html", "classOscilloscopeComponent" ],
     [ "PaletteSelector", "classPaletteSelector.html", "classPaletteSelector" ],
     [ "PaletteState", "structPaletteState.html", "structPaletteState" ],
     [ "ParticleField", "classParticleField.html", "classParticleField" ],
+    [ "PitchEnv", "classPitchEnv.html", "classPitchEnv" ],
+    [ "Porta", "structPorta.html", "structPorta" ],
     [ "PresetLabel", "classPresetLabel.html", "classPresetLabel" ],
     [ "ProfileResult", "structProfileResult.html", "structProfileResult" ],
     [ "ProfileService", "classProfileService.html", "classProfileService" ],
@@ -64,10 +100,14 @@ var annotated_dup =
     [ "SectionPanel", "classSectionPanel.html", "classSectionPanel" ],
     [ "SessionStore", "classSessionStore.html", "classSessionStore" ],
     [ "SignupPage", "classSignupPage.html", "classSignupPage" ],
+    [ "Sin", "classSin.html", "classSin" ],
     [ "SynthComponent", "classSynthComponent.html", "classSynthComponent" ],
+    [ "Tanh", "classTanh.html", "classTanh" ],
     [ "ThemePalette", "structThemePalette.html", "structThemePalette" ],
+    [ "TuningState", "classTuningState.html", "classTuningState" ],
     [ "UserProfile", "structUserProfile.html", "structUserProfile" ],
     [ "UserSession", "structUserSession.html", "structUserSession" ],
+    [ "VoiceStatus", "structVoiceStatus.html", "structVoiceStatus" ],
     [ "WaveformSelector", "classWaveformSelector.html", "classWaveformSelector" ],
     [ "WelcomeLookAndFeel", "classWelcomeLookAndFeel.html", "classWelcomeLookAndFeel" ],
     [ "WelcomePage", "classWelcomePage.html", "classWelcomePage" ]

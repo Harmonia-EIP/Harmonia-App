@@ -1,7 +1,7 @@
 <map id="AppLookAndFeel" name="AppLookAndFeel">
-<area shape="rect" id="Node000001" title=" " alt="" coords="103,93,234,119"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,169,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="110,39,159,91,155,95,106,43"/>
-<area shape="rect" id="Node000003" href="$structThemePalette.html" title=" " alt="" coords="194,5,306,31"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="232,43,182,95,178,91,228,39"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="102,106,232,134"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,169,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,42,159,105,154,106,105,47"/>
+<area shape="rect" id="Node000003" href="$structThemePalette.html" title=" " alt="" coords="193,5,304,33"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="231,44,180,107,176,103,226,46"/>
 </map>

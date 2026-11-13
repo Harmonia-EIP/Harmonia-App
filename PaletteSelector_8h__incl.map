@@ -1,15 +1,15 @@
 <map id="src/themes/PaletteSelector.h" name="src/themes/PaletteSelector.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="171,5,378,31"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,86,61,111"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="231,33,157,54,76,81,71,83,69,78,74,76,156,49,229,28"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="86,86,173,111"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="254,33,164,82,162,77,252,28"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="197,79,352,119"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="277,31,277,65,272,65,272,31"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="377,79,525,119"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="301,28,397,71,395,76,299,33"/>
-<area shape="rect" id="Node000006" href="$HarmoniaPalette_8h.html" title=" " alt="" coords="549,86,691,111"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="325,28,557,80,556,86,324,33"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="549,167,691,207"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="623,112,623,153,617,153,617,112"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="168,5,375,33"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,90,61,117"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="217,35,150,56,74,83,71,85,67,81,72,79,148,51,221,32"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="84,90,171,117"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="246,35,166,84,163,79,251,32"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="194,81,349,126"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="273,31,274,66,269,64,270,36"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="373,81,520,126"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="300,31,389,74,384,75,299,36"/>
+<area shape="rect" id="Node000006" href="$HarmoniaPalette_8h.html" title=" " alt="" coords="544,90,687,117"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="329,31,532,78,552,85,546,85,531,84,329,36"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="545,174,686,218"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="618,116,618,159,614,156,614,119"/>
 </map>

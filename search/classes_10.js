@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['waveformselector_0',['WaveformSelector',['../classWaveformSelector.html',1,'']]],
-  ['wavelayer_1',['wavelayer',['../structLoginPage_1_1WaveLayer.html',1,'LoginPage::WaveLayer'],['../structSignupPage_1_1WaveLayer.html',1,'SignupPage::WaveLayer'],['../structWelcomePage_1_1WaveLayer.html',1,'WelcomePage::WaveLayer']]],
-  ['welcomelookandfeel_2',['WelcomeLookAndFeel',['../classWelcomeLookAndFeel.html',1,'']]],
-  ['welcomepage_3',['WelcomePage',['../classWelcomePage.html',1,'']]]
+  ['tanh_0',['Tanh',['../classTanh.html',1,'']]],
+  ['themedef_1',['ThemeDef',['../structHarmoniaPalette_1_1ThemeDef.html',1,'HarmoniaPalette']]],
+  ['themepalette_2',['ThemePalette',['../structThemePalette.html',1,'']]],
+  ['tuning_3',['Tuning',['../structTunings_1_1Tuning.html',1,'Tunings']]],
+  ['tuningstate_4',['TuningState',['../classTuningState.html',1,'']]]
 ];

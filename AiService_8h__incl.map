@@ -1,23 +1,23 @@
 <map id="src/backend/services/AiService.h" name="src/backend/services/AiService.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="105,5,263,45"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="183,240,345,265"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="140,48,88,75,39,110,21,129,11,149,9,170,19,190,42,206,78,219,170,238,169,243,77,225,39,211,15,194,4,171,5,148,17,126,35,106,85,70,138,43"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="29,167,176,192"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="176,47,118,155,113,153,171,45"/>
-<area shape="rect" id="Node000004" href="$BackendTypes_8h.html" title="Defines backend&#45;related data structures." alt="" coords="195,93,333,119"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="205,44,244,82,240,85,202,47"/>
-<area shape="rect" id="Node000008" href="$AiConfig_8h.html" title=" " alt="" coords="616,93,771,119"/>
-<area shape="poly" id="edge10_Node000001_Node000008" title=" " alt="" coords="263,36,606,89,606,94,263,41"/>
-<area shape="poly" id="edge8_Node000004_Node000002" title=" " alt="" coords="260,120,250,141,241,167,243,198,253,227,248,229,237,199,236,166,245,139,255,118"/>
-<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="239,121,143,163,141,159,237,116"/>
-<area shape="rect" id="Node000005" href="$String_8h.html" title=" " alt="" coords="251,167,378,192"/>
-<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="275,117,301,154,296,157,270,121"/>
-<area shape="rect" id="Node000006" href="$AppConfig_8h.html" title=" " alt="" coords="403,167,557,192"/>
-<area shape="poly" id="edge7_Node000004_Node000006" title=" " alt="" coords="300,116,433,160,431,165,298,121"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="581,167,656,192"/>
-<area shape="poly" id="edge9_Node000004_Node000007" title=" " alt="" coords="327,116,568,164,567,169,326,121"/>
-<area shape="poly" id="edge6_Node000005_Node000002" title=" " alt="" coords="308,194,282,230,278,227,304,191"/>
-<area shape="poly" id="edge11_Node000008_Node000002" title=" " alt="" coords="696,119,691,156,683,177,670,194,647,208,616,219,537,236,446,246,360,252,359,246,445,241,536,231,615,214,645,203,666,190,679,174,686,155,691,118"/>
-<area shape="rect" id="Node000009" title=" " alt="" coords="731,167,794,192"/>
-<area shape="poly" id="edge12_Node000008_Node000009" title=" " alt="" coords="707,117,744,155,740,159,703,121"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="106,5,262,50"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="182,249,344,277"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="134,53,85,81,37,118,20,138,10,158,9,179,20,200,42,215,77,229,169,248,165,252,76,234,39,220,16,203,4,180,5,157,16,135,34,114,82,77,137,48"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="30,174,176,201"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="176,49,119,161,114,158,171,52"/>
+<area shape="rect" id="Node000004" href="$BackendTypes_8h.html" title="Defines backend&#45;related data structures." alt="" coords="194,98,332,126"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="205,48,242,86,237,87,205,53"/>
+<area shape="rect" id="Node000008" href="$AiConfig_8h.html" title=" " alt="" coords="614,98,768,126"/>
+<area shape="poly" id="edge10_Node000001_Node000008" title=" " alt="" coords="263,39,600,94,597,98,263,44"/>
+<area shape="poly" id="edge8_Node000004_Node000002" title=" " alt="" coords="258,124,249,149,242,174,242,201,252,236,247,234,236,202,236,173,244,147,254,128"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="232,128,146,169,144,165,236,125"/>
+<area shape="rect" id="Node000005" href="$String_8h.html" title=" " alt="" coords="250,174,377,201"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="273,124,299,161,293,160,271,129"/>
+<area shape="rect" id="Node000006" href="$AppConfig_8h.html" title=" " alt="" coords="400,174,555,201"/>
+<area shape="poly" id="edge7_Node000004_Node000006" title=" " alt="" coords="302,124,427,168,422,169,301,129"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="579,174,653,201"/>
+<area shape="poly" id="edge9_Node000004_Node000007" title=" " alt="" coords="332,123,566,172,562,174,332,129"/>
+<area shape="poly" id="edge6_Node000005_Node000002" title=" " alt="" coords="307,201,282,238,279,234,302,203"/>
+<area shape="poly" id="edge11_Node000008_Node000002" title=" " alt="" coords="693,124,689,165,681,186,667,203,645,217,614,229,535,246,445,256,359,262,359,256,444,251,534,240,613,224,643,212,664,199,676,183,684,163,689,128"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="728,174,790,201"/>
+<area shape="poly" id="edge12_Node000008_Node000009" title=" " alt="" coords="704,124,739,163,734,161,702,129"/>
 </map>

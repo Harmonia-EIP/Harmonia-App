@@ -1,15 +1,21 @@
 var searchData=
 [
-  ['sectionpanel_2eh_0',['SectionPanel.h',['../SectionPanel_8h.html',1,'']]],
-  ['sessionmapper_2ecpp_1',['SessionMapper.cpp',['../SessionMapper_8cpp.html',1,'']]],
-  ['sessionmapper_2eh_2',['SessionMapper.h',['../SessionMapper_8h.html',1,'']]],
-  ['sessionstore_2ecpp_3',['SessionStore.cpp',['../SessionStore_8cpp.html',1,'']]],
-  ['sessionstore_2eh_4',['SessionStore.h',['../SessionStore_8h.html',1,'']]],
-  ['signuppage_2ecpp_5',['SignupPage.cpp',['../SignupPage_8cpp.html',1,'']]],
-  ['signuppage_2eh_6',['SignupPage.h',['../SignupPage_8h.html',1,'']]],
-  ['string_2eh_7',['String.h',['../String_8h.html',1,'']]],
-  ['synth_2ecpp_8',['Synth.cpp',['../Synth_8cpp.html',1,'']]],
-  ['synth_2eh_9',['Synth.h',['../Synth_8h.html',1,'']]],
-  ['synthcomponent_2ecpp_10',['SynthComponent.cpp',['../SynthComponent_8cpp.html',1,'']]],
-  ['synthcomponent_2eh_11',['SynthComponent.h',['../SynthComponent_8h.html',1,'']]]
+  ['pagesincludes_2eh_0',['PagesIncludes.h',['../PagesIncludes_8h.html',1,'']]],
+  ['palettemapper_2eh_1',['PaletteMapper.h',['../PaletteMapper_8h.html',1,'']]],
+  ['paletteselector_2eh_2',['PaletteSelector.h',['../PaletteSelector_8h.html',1,'']]],
+  ['particlefield_2eh_3',['ParticleField.h',['../ParticleField_8h.html',1,'']]],
+  ['pitchenv_2ecc_4',['pitchenv.cc',['../pitchenv_8cc.html',1,'']]],
+  ['pitchenv_2eh_5',['pitchenv.h',['../pitchenv_8h.html',1,'']]],
+  ['plugineditor_2ecpp_6',['PluginEditor.cpp',['../PluginEditor_8cpp.html',1,'']]],
+  ['plugineditor_2eh_7',['PluginEditor.h',['../PluginEditor_8h.html',1,'']]],
+  ['pluginprocessor_2ecpp_8',['PluginProcessor.cpp',['../PluginProcessor_8cpp.html',1,'']]],
+  ['pluginprocessor_2eh_9',['PluginProcessor.h',['../PluginProcessor_8h.html',1,'']]],
+  ['porta_2ecpp_10',['porta.cpp',['../porta_8cpp.html',1,'']]],
+  ['porta_2eh_11',['porta.h',['../porta_8h.html',1,'']]],
+  ['presetloader_2eh_12',['PresetLoader.h',['../PresetLoader_8h.html',1,'']]],
+  ['profileservice_2ecpp_13',['ProfileService.cpp',['../ProfileService_8cpp.html',1,'']]],
+  ['profileservice_2eh_14',['ProfileService.h',['../ProfileService_8h.html',1,'']]],
+  ['prompteditor_2ecpp_15',['PromptEditor.cpp',['../PromptEditor_8cpp.html',1,'']]],
+  ['prompteditor_2eh_16',['PromptEditor.h',['../PromptEditor_8h.html',1,'']]],
+  ['promptfont_2eh_17',['PromptFont.h',['../PromptFont_8h.html',1,'']]]
 ];

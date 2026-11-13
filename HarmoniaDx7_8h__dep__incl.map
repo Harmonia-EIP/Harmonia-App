@@ -1,0 +1,27 @@
+<map id="src/engine/HarmoniaDx7.h" name="src/engine/HarmoniaDx7.h">
+<area shape="rect" id="Node000001" title="Harmonia&#39;s DX7 mode: one DX7 voice played by Dexed&#39;s msfa FM core (Apache 2.0, see dx7/README...." alt="" coords="508,5,702,33"/>
+<area shape="rect" id="Node000002" href="$Synth_8h.html" title="Synthesizer voice and sound definitions for Harmonia." alt="" coords="408,81,586,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="571,44,518,83,515,78,575,40"/>
+<area shape="rect" id="Node000012" href="$HarmoniaDx7_8cpp.html" title=" " alt="" coords="610,81,819,109"/>
+<area shape="poly" id="edge13_Node000001_Node000012" title=" " alt="" coords="637,39,698,80,692,81,637,45"/>
+<area shape="rect" id="Node000003" href="$PluginProcessor_8h.html" title="Main audio processor of the Harmonia synthesizer plugin." alt="" coords="318,157,476,184"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="465,120,416,158,413,154,469,116"/>
+<area shape="rect" id="Node000011" href="$Synth_8cpp.html" title=" " alt="" coords="501,157,693,184"/>
+<area shape="poly" id="edge12_Node000002_Node000011" title=" " alt="" coords="527,115,582,156,577,156,527,121"/>
+<area shape="rect" id="Node000004" href="$MainComponent_8h.html" title="Main synthesizer interface component for Harmonia." alt="" coords="189,232,352,260"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="359,194,294,234,291,230,364,191"/>
+<area shape="rect" id="Node000007" href="$PluginEditor_8h.html" title="Main graphical editor of the Harmonia plugin." alt="" coords="237,384,370,411"/>
+<area shape="poly" id="edge10_Node000003_Node000007" title=" " alt="" coords="400,198,397,265,388,302,374,337,352,365,326,385,324,381,348,361,369,334,383,300,391,264,397,202"/>
+<area shape="rect" id="Node000009" href="$PluginProcessor_8cpp.html" title=" " alt="" coords="361,459,534,487"/>
+<area shape="poly" id="edge11_Node000003_Node000009" title=" " alt="" coords="407,197,417,232,439,364,449,460,444,457,433,364,412,233,405,202"/>
+<area shape="rect" id="Node000005" href="$AppController_8h.html" title="Main application navigation controller." alt="" coords="13,308,157,336"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="222,268,119,310,117,305,225,264"/>
+<area shape="rect" id="Node000010" href="$MainComponent_8cpp.html" title=" " alt="" coords="181,308,360,336"/>
+<area shape="poly" id="edge9_Node000004_Node000010" title=" " alt="" coords="272,274,273,309,268,306,269,278"/>
+<area shape="rect" id="Node000006" href="$AppController_8cpp.html" title=" " alt="" coords="5,384,165,411"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="86,349,88,384,82,383,84,354"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="139,338,267,382,262,385,138,344"/>
+<area shape="rect" id="Node000008" href="$PluginEditor_8cpp.html" title=" " alt="" coords="188,459,336,487"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="291,424,271,461,268,457,286,427"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="344,416,425,459,419,459,342,421"/>
+</map>

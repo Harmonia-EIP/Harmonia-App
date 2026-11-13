@@ -10,14 +10,14 @@ var namespaceAudioConfig_1_1ADSR =
       [ "Max", "namespaceAudioConfig_1_1ADSR_1_1Decay.html#a1fe6a1d7fd6079be70d3bd0372f7d64b", null ],
       [ "Min", "namespaceAudioConfig_1_1ADSR_1_1Decay.html#a8cd19e214cba53ce5096b0db8ecaedab", null ]
     ] ],
-    [ "Release", "namespaceAudioConfig_1_1ADSR_1_1Release.html", [
-      [ "Default", "namespaceAudioConfig_1_1ADSR_1_1Release.html#a5cedcaeb6de10a3ba78c67046648c221", null ],
-      [ "Max", "namespaceAudioConfig_1_1ADSR_1_1Release.html#aa97389ddfd5f05f14211e7d4ee800d7e", null ],
-      [ "Min", "namespaceAudioConfig_1_1ADSR_1_1Release.html#af504245bbc74fbdba0e41efd4a883f7b", null ]
-    ] ],
     [ "Sustain", "namespaceAudioConfig_1_1ADSR_1_1Sustain.html", [
       [ "Default", "namespaceAudioConfig_1_1ADSR_1_1Sustain.html#a07133f9783f300fd940fba9e937d23e4", null ],
       [ "Max", "namespaceAudioConfig_1_1ADSR_1_1Sustain.html#ac1d141167471918b55f13e72807ef10d", null ],
       [ "Min", "namespaceAudioConfig_1_1ADSR_1_1Sustain.html#ae399dba04bf2265262ebd2a4161b9450", null ]
+    ] ],
+    [ "Release", "namespaceAudioConfig_1_1ADSR_1_1Release.html", [
+      [ "Default", "namespaceAudioConfig_1_1ADSR_1_1Release.html#a5cedcaeb6de10a3ba78c67046648c221", null ],
+      [ "Max", "namespaceAudioConfig_1_1ADSR_1_1Release.html#aa97389ddfd5f05f14211e7d4ee800d7e", null ],
+      [ "Min", "namespaceAudioConfig_1_1ADSR_1_1Release.html#af504245bbc74fbdba0e41efd4a883f7b", null ]
     ] ]
 ];

@@ -1,7 +1,15 @@
 <map id="HarmoniaVoice" name="HarmoniaVoice">
-<area shape="rect" id="Node000001" title="Main synthesizer voice implementation." alt="" coords="137,93,258,119"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,173,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="116,37,184,91,181,95,113,41"/>
-<area shape="rect" id="Node000003" href="$structHarmoniaParams_1_1AtomicRefs.html" title="Real&#45;time safe parameter access structure." alt="" coords="198,5,415,31"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="283,41,214,95,211,91,279,37"/>
+<area shape="rect" id="Node000001" title="One polyphonic voice: plays a note on the engine selected when the note starts." alt="" coords="272,246,392,274"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,145,173,173"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="136,177,301,244,297,247,135,182"/>
+<area shape="rect" id="Node000003" href="$structHarmoniaPatches.html" title="What the voices play, filled by the processor at the start of each block (audio thread)." alt="" coords="197,145,333,173"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="284,184,325,246,320,245,281,188"/>
+<area shape="rect" id="Node000004" href="$classharmonia_1_1AnalogVoice.html" title="One note of the analog engine." alt="" coords="357,145,528,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="419,182,348,248,345,243,414,184"/>
+<area shape="rect" id="Node000005" href="$classharmonia_1_1Random.html" title="Small, fast generator (SplitMix64) for unison phases, drift, noise and sample &amp; hold." alt="" coords="278,14,423,42"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="364,52,408,120,430,145,425,144,404,123,362,57"/>
+<area shape="rect" id="Node000006" href="$structharmonia_1_1AnalogVoice_1_1Envelope.html" title=" " alt="" coords="447,5,619,50"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="512,61,453,147,450,143,507,64"/>
+<area shape="rect" id="Node000007" href="$classharmonia_1_1Dx7Voice.html" title=" " alt="" coords="552,145,704,173"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="582,178,458,225,379,248,378,243,456,219,576,179"/>
 </map>

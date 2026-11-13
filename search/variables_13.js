@@ -1,13 +1,21 @@
 var searchData=
 [
   ['unauthorized_0',['Unauthorized',['../namespaceErrorCodes.html#ad531c6652030d135cb65bb8e4e1e07b5',1,'ErrorCodes']]],
-  ['unknownerror_1',['UnknownError',['../namespaceStrings_1_1Errors.html#ac4894cade2db4978029094f2b7a36ccb',1,'Strings::Errors']]],
-  ['unreadableairesponse_2',['UnreadableAIResponse',['../namespaceStrings_1_1Errors.html#ad642bc9bfc2212b2729cf6e01e3e0132',1,'Strings::Errors']]],
-  ['unsetpreset_3',['UnsetPreset',['../namespaceStrings_1_1Labels.html#a2524bd98d38c85ae86a5929853c34d75',1,'Strings::Labels']]],
-  ['user_4',['User',['../namespaceStrings_1_1Labels.html#a5c4bfdb651f59c16cbc0925c7d9b35f2',1,'Strings::Labels']]],
-  ['useralreadyexists_5',['useralreadyexists',['../namespaceBackendStrings.html#ac2549ae340e848ebec807401cacfd1a6',1,'BackendStrings::UserAlreadyExists'],['../namespaceErrorCodes.html#a40883358f5db181ea10c2ed5711b9ab3',1,'ErrorCodes::UserAlreadyExists']]],
-  ['userid_6',['userid',['../structUserSession.html#a787104200686f0a27ea5d8ee5d02acb8',1,'UserSession::userId'],['../structPaletteState.html#a36e21a916fcd20fd3ad97012e61ae254',1,'PaletteState::userId']]],
-  ['username_7',['username',['../structUserProfile.html#a971f890fb9138b3b8a4424f400fdfbaf',1,'UserProfile::username'],['../namespaceStrings_1_1Placeholders.html#af916636856101bf67ea61c3a7b9027e6',1,'Strings::Placeholders::Username']]],
-  ['usernamefield_8',['usernameField',['../classSignupPage.html#a199949519dbb9b95fd4f88cb743a5a2e',1,'SignupPage']]],
-  ['usernotfound_9',['usernotfound',['../namespaceBackendStrings.html#ac763fc339fa4ad4d358bcfb90eec3fc0',1,'BackendStrings::UserNotFound'],['../namespaceErrorCodes.html#a4effb742b99c3c4300104b570a17e26f',1,'ErrorCodes::UserNotFound']]]
+  ['unison_1',['unison',['../classharmonia_1_1AnalogVoice.html#a63431b67c82be2f8ce62932dfdd4fa8b',1,'harmonia::AnalogVoice']]],
+  ['unisondetuneknob_2',['unisonDetuneKnob',['../classMainComponent.html#a92b51a4326d9a6efec5547c6eca2414c',1,'MainComponent']]],
+  ['unisonoffset_3',['unisonOffset',['../classharmonia_1_1AnalogVoice.html#a740bde71e5a5ebe300de84a0324a70dd',1,'harmonia::AnalogVoice']]],
+  ['unisonvoicesknob_4',['unisonVoicesKnob',['../classMainComponent.html#aaa0959be142c801ba7d8b145148fcebd',1,'MainComponent']]],
+  ['unisonwatch_5',['unisonWatch',['../classMainComponent.html#a05a20f62e2e3fe2c2a0a83471d39cbdc',1,'MainComponent']]],
+  ['unit_6',['unit',['../structHarmoniaCharter_1_1Param.html#ab67d20c9ff9dfcec966d674e3836566a',1,'HarmoniaCharter::Param']]],
+  ['unit_5f_7',['unit_',['../classLfo.html#a9e202e96b4fa604435b309f45c18b4ce',1,'Lfo::unit_'],['../classPitchEnv.html#ae988c0afe7dfec2062f437d2e2ddb912',1,'PitchEnv::unit_']]],
+  ['unknownerror_8',['UnknownError',['../namespaceStrings_1_1Errors.html#ac4894cade2db4978029094f2b7a36ccb',1,'Strings::Errors']]],
+  ['unreadableairesponse_9',['UnreadableAIResponse',['../namespaceStrings_1_1Errors.html#ad642bc9bfc2212b2729cf6e01e3e0132',1,'Strings::Errors']]],
+  ['unsetpreset_10',['UnsetPreset',['../namespaceStrings_1_1Labels.html#a2524bd98d38c85ae86a5929853c34d75',1,'Strings::Labels']]],
+  ['user_11',['User',['../namespaceStrings_1_1Labels.html#a5c4bfdb651f59c16cbc0925c7d9b35f2',1,'Strings::Labels']]],
+  ['useralreadyexists_12',['UserAlreadyExists',['../namespaceBackendStrings.html#ac2549ae340e848ebec807401cacfd1a6',1,'BackendStrings::UserAlreadyExists'],['../namespaceErrorCodes.html#a40883358f5db181ea10c2ed5711b9ab3',1,'ErrorCodes::UserAlreadyExists']]],
+  ['userid_13',['userId',['../structUserSession.html#a787104200686f0a27ea5d8ee5d02acb8',1,'UserSession::userId'],['../structPaletteState.html#a36e21a916fcd20fd3ad97012e61ae254',1,'PaletteState::userId']]],
+  ['username_14',['Username',['../namespaceStrings_1_1Placeholders.html#af916636856101bf67ea61c3a7b9027e6',1,'Strings::Placeholders']]],
+  ['username_15',['username',['../structUserProfile.html#a971f890fb9138b3b8a4424f400fdfbaf',1,'UserProfile']]],
+  ['usernamefield_16',['usernameField',['../classSignupPage.html#a199949519dbb9b95fd4f88cb743a5a2e',1,'SignupPage']]],
+  ['usernotfound_17',['UserNotFound',['../namespaceBackendStrings.html#ac763fc339fa4ad4d358bcfb90eec3fc0',1,'BackendStrings::UserNotFound'],['../namespaceErrorCodes.html#a4effb742b99c3c4300104b570a17e26f',1,'ErrorCodes::UserNotFound']]]
 ];

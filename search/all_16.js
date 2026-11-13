@@ -1,4 +1,31 @@
 var searchData=
 [
-  ['x_0',['x',['../structParticleField_1_1Ambient.html#a87acd99d297a2c5f3512844dfcec22f2',1,'ParticleField::Ambient::x'],['../structParticleField_1_1Burst.html#a4db9b2a76126fc16e2c9e4713e34926a',1,'ParticleField::Burst::x']]]
+  ['v2_0',['v2',['../structHarmoniaCharter_1_1Param.html#ad66c0bf6a0439b3452974d804d37e17c',1,'HarmoniaCharter::Param']]],
+  ['v2ids_1',['v2Ids',['../namespaceHarmoniaCharter.html#a9bdea52cc64e100986cbcf9f1137e3d8',1,'HarmoniaCharter']]],
+  ['v2params_2',['v2Params',['../namespaceHarmoniaCharter.html#a302381496fb232e51fed3a44c293fbb8',1,'HarmoniaCharter']]],
+  ['v2rule_3',['V2Rule',['../structHarmoniaCharter_1_1V2Rule.html',1,'HarmoniaCharter']]],
+  ['valid_4',['valid',['../structPaletteState.html#abfc8aa3565de14fbd87c5bbbbcfa4a19',1,'PaletteState']]],
+  ['validation_5',['Validation',['../structApiError.html#a3395681759a0b17abe3979f60e507ea3a13148717f8faa9037f37d28971dfc219',1,'ApiError']]],
+  ['validationerror_6',['ValidationError',['../namespaceErrorCodes.html#a0c3e6198111c1fded4ee617b5cea4db6',1,'ErrorCodes']]],
+  ['value_7',['value',['../structharmonia_1_1AnalogVoice_1_1Envelope.html#aed10562fa5a2ca1bb1f6443f3feab110',1,'harmonia::AnalogVoice::Envelope']]],
+  ['values_8',['values',['../structHarmoniaParamsV3_1_1ParameterRefs.html#a2935259faf47d192b10d490613f07328',1,'HarmoniaParamsV3::ParameterRefs']]],
+  ['values_5f_9',['values_',['../classControllers.html#a579c6ed3df53fe61dd48c08a200dbd36',1,'Controllers']]],
+  ['vblank_10',['vblank',['../classModelPicker.html#a5f7e5473de691382923ded5f9c6bac3a',1,'ModelPicker']]],
+  ['velflt_11',['VelFlt',['../namespaceStrings_1_1Knobs.html#ade3ec7c43217524ac79d8bb2e2327b7f',1,'Strings::Knobs']]],
+  ['velocity_12',['velocity',['../classharmonia_1_1AnalogVoice.html#adb95d402eee4bc1b34dae64076ca4e1b',1,'harmonia::AnalogVoice']]],
+  ['velocity_5fdata_13',['velocity_data',['../dx7note_8cc.html#ad1efc795d0ce751d15e854699105ab5d',1,'dx7note.cc']]],
+  ['velocity_5fto_5famp_14',['velocity_to_amp',['../namespaceHarmoniaCharter_1_1analog.html#accb56d3487cd78cb9651f3e49292667fa74b3f1877a123030f7e4710e52948637',1,'HarmoniaCharter::analog']]],
+  ['velocity_5fto_5ffilter_15',['velocity_to_filter',['../namespaceHarmoniaCharter_1_1analog.html#accb56d3487cd78cb9651f3e49292667fa73d806b1ccd39284a4a97f96ff678d21',1,'HarmoniaCharter::analog']]],
+  ['velocityfilterknob_16',['velocityFilterKnob',['../classMainComponent.html#a2227fd236f234268d8e5855fe1c38d0d',1,'MainComponent']]],
+  ['velocitytofilter_17',['velocityToFilter',['../structHarmoniaParams_1_1AtomicRefs.html#a8d34fd7d165c2b95c5e19cbe829bcb8d',1,'HarmoniaParams::AtomicRefs::velocityToFilter'],['../namespaceHarmoniaParams_1_1IDs.html#a5f848ecf1dd24b93edb78f4a7cd3f49e',1,'HarmoniaParams::IDs::velocityToFilter']]],
+  ['version_18',['Version',['../namespaceAppConfig.html#ad713117e2d68e40b493a2fa87946684f',1,'AppConfig']]],
+  ['version_19',['version',['../structAIModelData.html#a8b2d62c16dd4a1c28053e49a247f0e59',1,'AIModelData::version'],['../namespaceHarmoniaCharter.html#ab4a13c02aafc50184e3432eb43fb9b7a',1,'HarmoniaCharter::version']]],
+  ['versionhint_20',['versionHint',['../namespaceHarmoniaParamsV3.html#a2bb70fce529db1ab824c2826e01a52fb',1,'HarmoniaParamsV3']]],
+  ['verticalgain_21',['verticalGain',['../classOscilloscopeComponent.html#a0d57dcb8a9a009ddda3dee15e1b9b3b9',1,'OscilloscopeComponent']]],
+  ['viewport_22',['viewport',['../classHistoryPanel.html#af0a8cebdb238e8f592354ddc94cb0ca1',1,'HistoryPanel']]],
+  ['visibilitychanged_23',['visibilityChanged',['../classLoginPage.html#a85c69c43ccc2ee6e0847135031a9aebb',1,'LoginPage::visibilityChanged()'],['../classSignupPage.html#a6c7e1998bb2162d7f57c1e07b8387cdc',1,'SignupPage::visibilityChanged()'],['../classWelcomePage.html#a75e8138d186fb497e30633f21fdb51d7',1,'WelcomePage::visibilityChanged()']]],
+  ['voicestatus_24',['VoiceStatus',['../structVoiceStatus.html',1,'']]],
+  ['volume_25',['Volume',['../namespaceStrings_1_1Parameters.html#ad95139de35dc94d83b218d41ab2c17ac',1,'Strings::Parameters']]],
+  ['vx_26',['vx',['../structParticleField_1_1Burst.html#ac8e99f5512d1337fcbc67ac3178a0d78',1,'ParticleField::Burst']]],
+  ['vy_27',['vy',['../structParticleField_1_1Burst.html#a8aa37d3af64aebf4bcebe50bfc70b14a',1,'ParticleField::Burst']]]
 ];

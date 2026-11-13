@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['waveformselector_2eh_0',['WaveformSelector.h',['../WaveformSelector_8h.html',1,'']]],
-  ['welcomepage_2ecpp_1',['WelcomePage.cpp',['../WelcomePage_8cpp.html',1,'']]],
-  ['welcomepage_2eh_2',['WelcomePage.h',['../WelcomePage_8h.html',1,'']]]
+  ['themes_2eh_0',['Themes.h',['../Themes_8h.html',1,'']]],
+  ['tuning_2eh_1',['tuning.h',['../tuning_8h.html',1,'']]],
+  ['tunings_2eh_2',['Tunings.h',['../Tunings_8h.html',1,'']]]
 ];

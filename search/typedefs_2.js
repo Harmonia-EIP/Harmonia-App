@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['icondrawer_0',['IconDrawer',['../classIconChoiceSelector.html#a71d1665ad83cfb6da0a351414545484a',1,'IconChoiceSelector']]]
+  ['historylist_0',['HistoryList',['../classHeaderComponent.html#a6b027833d01846b84aa329bf08ec745c',1,'HeaderComponent']]]
 ];

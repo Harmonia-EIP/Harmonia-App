@@ -1,7 +1,7 @@
 <map id="ModelPicker" name="ModelPicker">
-<area shape="rect" id="Node000001" title=" " alt="" coords="114,79,215,104"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,137,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="99,37,151,76,148,81,95,41"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="162,5,354,31"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="234,41,182,81,178,76,231,37"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="113,81,213,109"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,137,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,40,149,80,144,81,98,45"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="161,5,352,33"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="230,42,181,83,178,78,225,44"/>
 </map>
