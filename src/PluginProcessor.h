@@ -34,7 +34,6 @@
 
 #include "JuceHeader.h"
 #include "parameters/HarmoniaParameters.h"
-#include "parameters/HarmoniaParametersV3.h"
 #include "engine/HarmoniaEngineV3.h"
 #include "components/Synth.h"
 #include "components/OscilloscopeComponent.h"
@@ -275,7 +274,7 @@ private:
     juce::AudioProcessorValueTreeState apvts;
 
     /** Physical value of every charter v3 parameter (audio thread). */
-    HarmoniaParamsV3::ParameterRefs paramRefs;
+    HarmoniaParams::AtomicRefs paramRefs;
 
     /** What the voices play in the current block (analog patch, DX7 voice, engine), shared with the effects. */
     HarmoniaPatches patches;
@@ -284,6 +283,8 @@ private:
      * Polyphonic synthesizer engine.
      */
     juce::Synthesiser synth;
+
+    bool lastDx7Mode = false;
 
     /**
      * Shared MIDI keyboard state used by the UI

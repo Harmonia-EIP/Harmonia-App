@@ -1,486 +1,255 @@
 /**
  * @file HarmoniaParameters.h
- * @brief Centralized synthesizer parameter definitions and APVTS layout creation.
+ * @brief Point d'entree unique des parametres Harmonia (46 analogiques + 145 DX7 + engine).
  *
- * This file defines every parameter used by the Harmonia synthesizer.
+ * Tout est lu dans HarmoniaCharter.h (genere) : IDs, plages, skews, defauts, groupes.
+ * Ce fichier ne contient que la glue JUCE :
+ *   - IDs::        noms CamelCase des parametres analogiques (+ engine)
+ *   - orderedIds() les 20 IDs historiques, dans l'ordre v1
+ *   - orderedAnalogIds() les 46 IDs analogiques, dans l'ordre du charter
+ *   - createLayout() layout APVTS complet, groupes par module / operateur DX7
+ *   - AtomicRefs   pointeurs atomiques pour le DSP (refs.filterCutoff->load())
  *
- * Responsibilities:
- * - Declaring parameter identifiers
- * - Creating the AudioProcessorValueTreeState layout
- * - Providing ordered parameter access
- * - Defining logarithmic parameter ranges
- * - Providing fast atomic parameter references
+ * Les IDs ne sont PAS ecrits en dur : un static_assert verifie a la compilation que
+ * chaque nom correspond bien a l'ID du charter.
  *
- * Main DSP Sections:
- * - Oscillators
- * - Noise generator
- * - Filter
- * - ADSR envelopes
- * - Filter envelope
- * - LFO modulation
- * - Velocity modulation
- * - Distortion
- * - Reverb
+ * Pour ajouter un parametre analogique : regenerer le charter, puis ajouter une ligne
+ * X(nomCamelCase, id_snake_case) dans HARMONIA_ANALOG_LIST (a la fin, dans l'ordre du charter).
  *
- * Architecture:
- * IDs namespace:
- *     Contains all parameter string identifiers.
+ * Chargement de presets : le charter fournit indexOf(id), snap(), fromNormalized() et
+ * upgradeFromV2(); un preset incomplet (20 params au lieu de 46+) se charge en ne touchant
+ * que les IDs presents, les autres gardent leur valeur par defaut.
  *
- * createLayout():
- *     Builds the JUCE parameter tree.
- *
- * AtomicRefs:
- *     Stores raw atomic parameter pointers for
- *     real-time safe DSP access.
+ * Unites v3 : filterEnvAmount en octaves (-10..10), lfoToPitch en cents (0..1200),
+ *             lfoToCutoff en octaves (0..4).
  */
 
 #pragma once
 
 #include <juce_audio_processors/juce_audio_processors.h>
 #include <array>
+#include <atomic>
+#include <cmath>
+#include <memory>
+#include <vector>
 
-/**
- * @namespace HarmoniaParams
- * @brief Contains all synthesizer parameter utilities and definitions.
- */
+#include "HarmoniaCharter.h"
+
+// Ordre = ordre de HarmoniaCharter::analog::Index (les 20 premiers = ordre v1).
+#define HARMONIA_ANALOG_LIST(X)            \
+    X(osc1Waveform,     osc_1_waveform)    \
+    X(osc2Waveform,     osc_2_waveform)    \
+    X(oscMix,           osc_mix)           \
+    X(osc2Detune,       osc_2_detune)      \
+    X(noiseLevel,       noise_level)       \
+    X(filterCutoff,     filter_cutoff)     \
+    X(filterResonance,  filter_resonance)  \
+    X(filterType,       filter_type)       \
+    X(ampAttack,        amp_attack)        \
+    X(ampDecay,         amp_decay)         \
+    X(ampSustain,       amp_sustain)       \
+    X(ampRelease,       amp_release)       \
+    X(filterEnvAmount,  filter_env_amount) \
+    X(filterEnvDecay,   filter_env_decay)  \
+    X(lfoRate,          lfo_rate)          \
+    X(lfoToPitch,       lfo_to_pitch)      \
+    X(lfoToCutoff,      lfo_to_cutoff)     \
+    X(velocityToFilter, velocity_to_filter)\
+    X(distortionMix,    distortion_mix)    \
+    X(reverbMix,        reverb_mix)        \
+    /* --- nouveaux en v3 --- */           \
+    X(osc1Coarse,       osc_1_coarse)      \
+    X(osc2Coarse,       osc_2_coarse)      \
+    X(pulseWidth,       pulse_width)       \
+    X(oscSync,          osc_sync)          \
+    X(fmAmount,         fm_amount)         \
+    X(ringMod,          ring_mod)          \
+    X(unisonVoices,     unison_voices)     \
+    X(unisonDetune,     unison_detune)     \
+    X(filterSlope,      filter_slope)      \
+    X(filterKeytrack,   filter_keytrack)   \
+    X(filterEnvAttack,  filter_env_attack) \
+    X(filterEnvSustain, filter_env_sustain)\
+    X(filterEnvRelease, filter_env_release)\
+    X(velocityToAmp,    velocity_to_amp)   \
+    X(pitchEnvAmount,   pitch_env_amount)  \
+    X(pitchEnvDecay,    pitch_env_decay)   \
+    X(lfoWaveform,      lfo_waveform)      \
+    X(lfoDelay,         lfo_delay)         \
+    X(lfoToAmp,         lfo_to_amp)        \
+    X(lfoToPw,          lfo_to_pw)         \
+    X(chorusMix,        chorus_mix)        \
+    X(delayTime,        delay_time)        \
+    X(delayFeedback,    delay_feedback)    \
+    X(delayMix,         delay_mix)         \
+    X(reverbSize,       reverb_size)       \
+    X(stereoWidth,      stereo_width)
+
+// Garde-fous de compilation : l'ID du charter doit correspondre au nom attendu.
+#define HARMONIA_CHECK_ID(name, key)                                                              \
+    static_assert (HarmoniaCharter::params[HarmoniaCharter::analogBegin                           \
+                                           + (std::size_t) HarmoniaCharter::analog::key].id == #key, \
+                   "Charter: ordre ou ID modifie pour " #key);
+HARMONIA_ANALOG_LIST (HARMONIA_CHECK_ID)
+#undef HARMONIA_CHECK_ID
+
+static_assert ((std::size_t) HarmoniaCharter::analog::count
+                   == HarmoniaCharter::analogEnd - HarmoniaCharter::analogBegin,
+               "analog::count ne correspond plus a la plage analogique du charter");
+
 namespace HarmoniaParams
 {
-    /**
-     * @namespace IDs
-     * @brief Contains all parameter identifier strings.
-     *
-     * These IDs are used by:
-     * - AudioProcessorValueTreeState
-     * - UI attachments
-     * - DSP parameter access
-     * - Automation systems
-     * - Preset serialization
-     *
-     * Naming Convention:
-     * - snake_case
-     * - grouped by DSP section
-     */
-    namespace IDs
+    /** string_view (charter) -> juce::String, UTF-8. */
+    inline juce::String toJuce (std::string_view s)
     {
-        //==================================================
-        // OSCILLATORS
-
-        /**
-         * @brief Oscillator 1 waveform selector.
-         *
-         * Available values:
-         * - Sine
-         * - Triangle
-         * - Saw
-         * - Square
-         */
-        static const juce::String osc1Waveform = "osc_1_waveform";
-
-        /**
-         * @brief Oscillator 2 waveform selector.
-         */
-        static const juce::String osc2Waveform = "osc_2_waveform";
-
-        /**
-         * @brief Oscillator mix amount.
-         *
-         * Range:
-         * 0.0 = OSC1 only
-         * 1.0 = OSC2 only
-         */
-        static const juce::String oscMix = "osc_mix";
-
-        /**
-         * @brief Oscillator 2 detune in cents.
-         */
-        static const juce::String osc2Detune = "osc_2_detune";
-
-        /**
-         * @brief White noise generator level.
-         */
-        static const juce::String noiseLevel = "noise_level";
-
-        //==================================================
-        // FILTER
-
-        /**
-         * @brief Filter cutoff frequency.
-         *
-         * Uses logarithmic scaling.
-         */
-        static const juce::String filterCutoff = "filter_cutoff";
-
-        /**
-         * @brief Filter resonance amount.
-         */
-        static const juce::String filterResonance = "filter_resonance";
-
-        /**
-         * @brief Filter type selector.
-         *
-         * Available types:
-         * - Lowpass
-         * - Bandpass
-         * - Highpass
-         */
-        static const juce::String filterType = "filter_type";
-
-        //==================================================
-        // AMPLIFIER ENVELOPE
-
-        /**
-         * @brief ADSR attack time.
-         */
-        static const juce::String ampAttack = "amp_attack";
-
-        /**
-         * @brief ADSR decay time.
-         */
-        static const juce::String ampDecay = "amp_decay";
-
-        /**
-         * @brief ADSR sustain level.
-         */
-        static const juce::String ampSustain = "amp_sustain";
-
-        /**
-         * @brief ADSR release time.
-         */
-        static const juce::String ampRelease = "amp_release";
-
-        //==================================================
-        // FILTER ENVELOPE
-
-        /**
-         * @brief Filter envelope modulation amount.
-         *
-         * Bipolar range:
-         * -1.0 to 1.0
-         */
-        static const juce::String filterEnvAmount = "filter_env_amount";
-
-        /**
-         * @brief Filter envelope decay time.
-         */
-        static const juce::String filterEnvDecay = "filter_env_decay";
-
-        //==================================================
-        // LFO + MODULATION
-
-        /**
-         * @brief LFO frequency.
-         */
-        static const juce::String lfoRate = "lfo_rate";
-
-        /**
-         * @brief LFO pitch modulation amount.
-         */
-        static const juce::String lfoToPitch = "lfo_to_pitch";
-
-        /**
-         * @brief LFO cutoff modulation amount.
-         */
-        static const juce::String lfoToCutoff = "lfo_to_cutoff";
-
-        /**
-         * @brief Velocity-to-filter modulation amount.
-         */
-        static const juce::String velocityToFilter = "velocity_to_filter";
-
-        //==================================================
-        // FX
-
-        /**
-         * @brief Distortion wet amount.
-         */
-        static const juce::String distortionMix = "distortion_mix";
-
-        /**
-         * @brief Reverb wet amount.
-         */
-        static const juce::String reverbMix = "reverb_mix";
+        return juce::String::fromUTF8 (s.data(), (int) s.size());
     }
 
-    /**
-     * @brief Returns all parameter IDs in deterministic order.
-     *
-     * Useful for:
-     * - Preset serialization
-     * - Parameter iteration
-     * - Automation export
-     * - AI preset generation
-     *
-     * @return Ordered array of all parameter IDs.
-     */
+    namespace IDs
+    {
+        inline juce::String idOf (HarmoniaCharter::analog::Index i)
+        {
+            return toJuce (HarmoniaCharter::params[HarmoniaCharter::analogBegin + (std::size_t) i].id);
+        }
+
+        inline const juce::String engine = toJuce (HarmoniaCharter::params[0].id);
+
+       #define HARMONIA_DEFINE_ID(name, key) \
+        inline const juce::String name = idOf (HarmoniaCharter::analog::key);
+        HARMONIA_ANALOG_LIST (HARMONIA_DEFINE_ID)
+       #undef HARMONIA_DEFINE_ID
+    }
+
+    /** Les 20 IDs historiques, dans l'ordre v1 (anciens presets IA). */
     inline const std::array<juce::String, 20>& orderedIds()
     {
-        static const std::array<juce::String, 20> list =
+        static const std::array<juce::String, 20> list = []
         {
-            IDs::osc1Waveform,
-            IDs::osc2Waveform,
-            IDs::oscMix,
-            IDs::osc2Detune,
-            IDs::noiseLevel,
-
-            IDs::filterCutoff,
-            IDs::filterResonance,
-            IDs::filterType,
-
-            IDs::ampAttack,
-            IDs::ampDecay,
-            IDs::ampSustain,
-            IDs::ampRelease,
-
-            IDs::filterEnvAmount,
-            IDs::filterEnvDecay,
-
-            IDs::lfoRate,
-            IDs::lfoToPitch,
-            IDs::lfoToCutoff,
-
-            IDs::velocityToFilter,
-            IDs::distortionMix,
-            IDs::reverbMix
-        };
-
+            std::array<juce::String, 20> a;
+            for (std::size_t i = 0; i < a.size(); ++i)
+                a[i] = toJuce (HarmoniaCharter::v2Ids[i]);
+            return a;
+        }();
         return list;
     }
 
-    /**
-     * @brief Creates a logarithmic parameter range.
-     *
-     * Used for perceptually logarithmic parameters:
-     * - Frequencies
-     * - Envelope times
-     * - LFO rates
-     *
-     * JUCE internally uses a skew factor to
-     * create non-linear parameter scaling.
-     *
-     * @param minV Minimum value.
-     * @param maxV Maximum value.
-     * @param midpoint Desired midpoint value.
-     *
-     * @return Configured logarithmic range.
-     */
-    inline juce::NormalisableRange<float> makeLogRange (float minV,
-                                                        float maxV,
-                                                        float midpoint)
+    /** Les 46 IDs analogiques, dans l'ordre du charter (= ordre d'un patch analogique). */
+    inline const std::array<juce::String, HarmoniaCharter::analog::count>& orderedAnalogIds()
     {
-        const float skew =
-            std::log (0.5f) /
-            std::log ((midpoint - minV) / (maxV - minV));
+        static const std::array<juce::String, HarmoniaCharter::analog::count> list = []
+        {
+            std::array<juce::String, HarmoniaCharter::analog::count> a;
+            for (std::size_t i = 0; i < a.size(); ++i)
+                a[i] = IDs::idOf ((HarmoniaCharter::analog::Index) i);
+            return a;
+        }();
+        return list;
+    }
 
+    /** Plage logarithmique (meme formule que le charter pour ses skews). */
+    inline juce::NormalisableRange<float> makeLogRange (float minV, float maxV, float midpoint)
+    {
+        const float skew = std::log (0.5f) / std::log ((midpoint - minV) / (maxV - minV));
         return { minV, maxV, 0.0001f, skew };
     }
 
-    /**
-     * @brief Creates the synthesizer parameter layout.
-     *
-     * Builds all APVTS parameters used by the synthesizer.
-     *
-     * Includes:
-     * - Float parameters
-     * - Choice parameters
-     * - Labels
-     * - Default values
-     * - Parameter ranges
-     * - Skew factors
-     *
-     * Parameter Categories:
-     * - Oscillators
-     * - Filter
-     * - Envelopes
-     * - Modulation
-     * - Effects
-     *
-     * @return Fully initialized JUCE parameter layout.
-     */
+    /** Layout APVTS complet, genere depuis le charter (un groupe par module / operateur DX7). */
     inline juce::AudioProcessorValueTreeState::ParameterLayout createLayout()
     {
-        using APF      = juce::AudioParameterFloat;
-        using APC      = juce::AudioParameterChoice;
-        using Range    = juce::NormalisableRange<float>;
-        using ParamID  = juce::ParameterID;
+        using namespace HarmoniaCharter;
+        static constexpr int versionHint = 1;
 
-        constexpr int versionHint = 1;
+        auto makeParam = [] (const Param& p) -> std::unique_ptr<juce::RangedAudioParameter>
+        {
+            const juce::ParameterID pid { toJuce (p.id), versionHint };
+            const auto name = toJuce (p.label);
+            const auto unit = toJuce (p.unit);
+            const int  off  = p.displayOffset;
+
+            switch (p.kind)
+            {
+                case Kind::Float:
+                    return std::make_unique<juce::AudioParameterFloat> (
+                        pid, name,
+                        juce::NormalisableRange<float> { p.min, p.max, p.interval, p.skew },
+                        p.defaultValue,
+                        juce::AudioParameterFloatAttributes().withLabel (unit));
+
+                case Kind::Int:
+                    return std::make_unique<juce::AudioParameterInt> (
+                        pid, name, (int) p.min, (int) p.max, (int) p.defaultValue,
+                        juce::AudioParameterIntAttributes()
+                            .withLabel (unit)
+                            .withStringFromValueFunction ([off] (int v, int) { return juce::String (v + off); }));
+
+                case Kind::Choice:
+                {
+                    juce::StringArray items;
+                    for (int i = 0; i < p.numChoices; ++i)
+                        items.add (toJuce (p.choices[i]));
+                    return std::make_unique<juce::AudioParameterChoice> (pid, name, items, (int) p.defaultValue);
+                }
+
+                case Kind::Bool:
+                {
+                    const auto offText = toJuce (p.choices[0]);
+                    const auto onText  = toJuce (p.choices[1]);
+                    return std::make_unique<juce::AudioParameterBool> (
+                        pid, name, p.defaultValue >= 0.5f,
+                        juce::AudioParameterBoolAttributes()
+                            .withStringFromValueFunction ([offText, onText] (bool v, int) { return v ? onText : offText; }));
+                }
+            }
+            return nullptr;
+        };
 
         juce::AudioProcessorValueTreeState::ParameterLayout layout;
 
-        const juce::StringArray waveforms { "Sine", "Triangle", "Saw", "Square" };
-        const juce::StringArray filterTypes { "Lowpass", "Bandpass", "Highpass" };
+        for (const auto& g : groups)
+        {
+            auto group = std::make_unique<juce::AudioProcessorParameterGroup> (toJuce (g.id), toJuce (g.label), "|");
 
-        // Part1 Osc
-        layout.add (std::make_unique<APC> (ParamID { IDs::osc1Waveform, versionHint },
-                                           "Osc 1 Waveform", waveforms, 2)); // Saw
-        layout.add (std::make_unique<APC> (ParamID { IDs::osc2Waveform, versionHint },
-                                           "Osc 2 Waveform", waveforms, 1)); // Triangle
-        layout.add (std::make_unique<APF> (ParamID { IDs::oscMix, versionHint },
-                                           "Osc Mix",
-                                           Range { 0.0f, 1.0f, 0.0001f }, 0.5f));
-        layout.add (std::make_unique<APF> (ParamID { IDs::osc2Detune, versionHint },
-                                           "Osc 2 Detune",
-                                           Range { 0.0f, 100.0f, 0.01f }, 0.0f,
-                                           juce::AudioParameterFloatAttributes().withLabel ("cents")));
-        layout.add (std::make_unique<APF> (ParamID { IDs::noiseLevel, versionHint },
-                                           "Noise Level",
-                                           Range { 0.0f, 1.0f, 0.0001f }, 0.0f));
+            for (const auto& p : params)
+                if (p.group == g.id)
+                    group->addChild (makeParam (p));
 
-        // Part 2 Filters
-        layout.add (std::make_unique<APF> (ParamID { IDs::filterCutoff, versionHint },
-                                           "Filter Cutoff",
-                                           makeLogRange (20.0f, 20000.0f, 1000.0f), 8000.0f,
-                                           juce::AudioParameterFloatAttributes().withLabel ("Hz")));
-        layout.add (std::make_unique<APF> (ParamID { IDs::filterResonance, versionHint },
-                                           "Filter Resonance",
-                                           Range { 0.0f, 0.95f, 0.0001f }, 0.1f));
-        layout.add (std::make_unique<APC> (ParamID { IDs::filterType, versionHint },
-                                           "Filter Type", filterTypes, 0));
-
-        // Part 3 Enveloppess
-        layout.add (std::make_unique<APF> (ParamID { IDs::ampAttack, versionHint },
-                                           "Amp Attack",
-                                           makeLogRange (1.0f, 5000.0f, 100.0f), 5.0f,
-                                           juce::AudioParameterFloatAttributes().withLabel ("ms")));
-        layout.add (std::make_unique<APF> (ParamID { IDs::ampDecay, versionHint },
-                                           "Amp Decay",
-                                           makeLogRange (10.0f, 5000.0f, 300.0f), 200.0f,
-                                           juce::AudioParameterFloatAttributes().withLabel ("ms")));
-        layout.add (std::make_unique<APF> (ParamID { IDs::ampSustain, versionHint },
-                                           "Amp Sustain",
-                                           Range { 0.0f, 1.0f, 0.0001f }, 0.8f));
-        layout.add (std::make_unique<APF> (ParamID { IDs::ampRelease, versionHint },
-                                           "Amp Release",
-                                           makeLogRange (10.0f, 10000.0f, 500.0f), 400.0f,
-                                           juce::AudioParameterFloatAttributes().withLabel ("ms")));
-        layout.add (std::make_unique<APF> (ParamID { IDs::filterEnvAmount, versionHint },
-                                           "Filter Env Amount",
-                                           Range { -1.0f, 1.0f, 0.0001f }, 0.0f));
-        layout.add (std::make_unique<APF> (ParamID { IDs::filterEnvDecay, versionHint },
-                                           "Filter Env Decay",
-                                           makeLogRange (10.0f, 5000.0f, 300.0f), 200.0f,
-                                           juce::AudioParameterFloatAttributes().withLabel ("ms")));
-
-        // Part 4 Lfos + modulations
-        layout.add (std::make_unique<APF> (ParamID { IDs::lfoRate, versionHint },
-                                           "LFO Rate",
-                                           makeLogRange (0.1f, 20.0f, 2.0f), 4.0f,
-                                           juce::AudioParameterFloatAttributes().withLabel ("Hz")));
-        layout.add (std::make_unique<APF> (ParamID { IDs::lfoToPitch, versionHint },
-                                           "LFO -> Pitch",
-                                           Range { 0.0f, 1.0f, 0.0001f }, 0.0f));
-        layout.add (std::make_unique<APF> (ParamID { IDs::lfoToCutoff, versionHint },
-                                           "LFO -> Cutoff",
-                                           Range { 0.0f, 1.0f, 0.0001f }, 0.0f));
-        layout.add (std::make_unique<APF> (ParamID { IDs::velocityToFilter, versionHint },
-                                           "Velocity -> Filter",
-                                           Range { 0.0f, 1.0f, 0.0001f }, 0.0f));
-        layout.add (std::make_unique<APF> (ParamID { IDs::distortionMix, versionHint },
-                                           "Distortion",
-                                           Range { 0.0f, 1.0f, 0.0001f, 1.8f }, 0.0f)); // skew>1 = expo
-        layout.add (std::make_unique<APF> (ParamID { IDs::reverbMix, versionHint },
-                                           "Reverb Mix",
-                                           Range { 0.0f, 1.0f, 0.0001f }, 0.2f));
+            layout.add (std::move (group));
+        }
 
         return layout;
     }
 
-    /**
-     * @struct AtomicRefs
-     * @brief Real-time safe parameter access structure.
-     *
-     * Stores raw atomic<float> pointers retrieved from
-     * AudioProcessorValueTreeState.
-     *
-     * Benefits:
-     * - Lock-free DSP access
-     * - Real-time safe
-     * - Faster than repeated APVTS lookups
-     * - Minimal CPU overhead
-     *
-     * Used directly inside:
-     * - Synth voices
-     * - DSP rendering
-     * - Modulation systems
-     */
+    /** Acces temps reel : pointeurs nommes (refs.filterCutoff->load()) ou indexes. */
     struct AtomicRefs
     {
-        //==================================================
-        // OSCILLATORS
+        std::atomic<float>* engine = nullptr;
 
-        std::atomic<float>* osc1Waveform     = nullptr;
-        std::atomic<float>* osc2Waveform     = nullptr;
-        std::atomic<float>* oscMix           = nullptr;
-        std::atomic<float>* osc2Detune       = nullptr;
-        std::atomic<float>* noiseLevel       = nullptr;
+       #define HARMONIA_DECLARE_REF(name, key) std::atomic<float>* name = nullptr;
+        HARMONIA_ANALOG_LIST (HARMONIA_DECLARE_REF)
+       #undef HARMONIA_DECLARE_REF
 
-        //==================================================
-        // FILTER
+        /** Index = HarmoniaCharter::analog::Index (ex: refs.analog[HarmoniaCharter::analog::filter_cutoff]). */
+        std::array<std::atomic<float>*, HarmoniaCharter::analog::count> analog {};
 
-        std::atomic<float>* filterCutoff     = nullptr;
-        std::atomic<float>* filterResonance  = nullptr;
-        std::atomic<float>* filterType       = nullptr;
+        /** Index = (position dans HarmoniaCharter::params) - HarmoniaCharter::dx7Begin. */
+        std::array<std::atomic<float>*, HarmoniaCharter::dx7End - HarmoniaCharter::dx7Begin> dx7 {};
 
-        //==================================================
-        // ENVELOPES
-
-        std::atomic<float>* ampAttack        = nullptr;
-        std::atomic<float>* ampDecay         = nullptr;
-        std::atomic<float>* ampSustain       = nullptr;
-        std::atomic<float>* ampRelease       = nullptr;
-
-        std::atomic<float>* filterEnvAmount  = nullptr;
-        std::atomic<float>* filterEnvDecay   = nullptr;
-
-        //==================================================
-        // MODULATION
-
-        std::atomic<float>* lfoRate          = nullptr;
-        std::atomic<float>* lfoToPitch       = nullptr;
-        std::atomic<float>* lfoToCutoff      = nullptr;
-        std::atomic<float>* velocityToFilter = nullptr;
-
-        //==================================================
-        // FX
-
-        std::atomic<float>* distortionMix    = nullptr;
-        std::atomic<float>* reverbMix        = nullptr;
-
-        /**
-         * @brief Binds all atomic parameter pointers.
-         *
-         * Retrieves raw parameter pointers from the APVTS.
-         *
-         * Must be called before accessing parameters
-         * inside the DSP engine.
-         *
-         * @param apvts AudioProcessorValueTreeState instance.
-         */
         void bind (juce::AudioProcessorValueTreeState& apvts)
         {
-            osc1Waveform     = apvts.getRawParameterValue (IDs::osc1Waveform);
-            osc2Waveform     = apvts.getRawParameterValue (IDs::osc2Waveform);
-            oscMix           = apvts.getRawParameterValue (IDs::oscMix);
-            osc2Detune       = apvts.getRawParameterValue (IDs::osc2Detune);
-            noiseLevel       = apvts.getRawParameterValue (IDs::noiseLevel);
+            engine = apvts.getRawParameterValue (IDs::engine);
+            jassert (engine != nullptr);
 
-            filterCutoff     = apvts.getRawParameterValue (IDs::filterCutoff);
-            filterResonance  = apvts.getRawParameterValue (IDs::filterResonance);
-            filterType       = apvts.getRawParameterValue (IDs::filterType);
+           #define HARMONIA_BIND_REF(name, key)                           \
+            name = apvts.getRawParameterValue (IDs::name);                \
+            jassert (name != nullptr);
+            HARMONIA_ANALOG_LIST (HARMONIA_BIND_REF)
+           #undef HARMONIA_BIND_REF
 
-            ampAttack        = apvts.getRawParameterValue (IDs::ampAttack);
-            ampDecay         = apvts.getRawParameterValue (IDs::ampDecay);
-            ampSustain       = apvts.getRawParameterValue (IDs::ampSustain);
-            ampRelease       = apvts.getRawParameterValue (IDs::ampRelease);
-            filterEnvAmount  = apvts.getRawParameterValue (IDs::filterEnvAmount);
-            filterEnvDecay   = apvts.getRawParameterValue (IDs::filterEnvDecay);
+            for (std::size_t i = 0; i < analog.size(); ++i)
+                analog[i] = apvts.getRawParameterValue (IDs::idOf ((HarmoniaCharter::analog::Index) i));
 
-            lfoRate          = apvts.getRawParameterValue (IDs::lfoRate);
-            lfoToPitch       = apvts.getRawParameterValue (IDs::lfoToPitch);
-            lfoToCutoff      = apvts.getRawParameterValue (IDs::lfoToCutoff);
-            velocityToFilter = apvts.getRawParameterValue (IDs::velocityToFilter);
-            distortionMix    = apvts.getRawParameterValue (IDs::distortionMix);
-            reverbMix        = apvts.getRawParameterValue (IDs::reverbMix);
+            for (std::size_t i = 0; i < dx7.size(); ++i)
+                dx7[i] = apvts.getRawParameterValue (toJuce (HarmoniaCharter::params[HarmoniaCharter::dx7Begin + i].id));
         }
     };
 }

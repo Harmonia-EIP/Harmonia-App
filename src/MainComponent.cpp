@@ -380,6 +380,18 @@ void MainComponent::wireHeaderButtons()
         else
             doGenerateWithAi();
     };
+    headerComponent->onRandomize = [this]
+    {
+        const auto locked = headerComponent->getMode() == HeaderComponent::Mode::Refine
+                                ? getLockedParamIds()
+                                : juce::StringArray();
+
+        if (auto* engine = processor.getAPVTS().getParameter ("engine"))
+            engine->setValueNotifyingHost (0.0f);
+
+        ParamRandomizer::randomize (processor.getAPVTS(), locked);
+        setPresetName ("Random");
+    };
 
     headerComponent->getLogoutButton().onClick =
         [this]
@@ -732,8 +744,14 @@ void MainComponent::runAiRequest (std::function<AiResult()> request,
                 return;
             }
 
+            juce::StringArray locked;
+            for (const auto& [id, value] : keep)
+                locked.add (id);
+
             auto r = PresetLoader::loadFromJsonString (result.json,
-                                                       safe->processor.getAPVTS());
+                                                    safe->processor.getAPVTS(),
+                                                    locked,
+                                                    true);
 
             if (! r.success)
             {

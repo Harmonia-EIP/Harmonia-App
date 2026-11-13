@@ -78,6 +78,7 @@
 #include "parameters/HarmoniaParameters.h"
 #include "tools/PresetLoader.h"
 #include "tools/Alert.h"
+#include "tools/ParamRandomizer.h"
 
 namespace UiState
 {
