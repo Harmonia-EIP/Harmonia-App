@@ -200,9 +200,12 @@ namespace harmonia
         active = false;
     }
 
-    void AnalogVoice::start (const AnalogPatch& p, int midiNote, double noteVelocity, std::uint64_t seed) noexcept
+    void AnalogVoice::start (const AnalogPatch& p, int midiNote, double noteVelocity, std::uint64_t seed,
+                             SampleNote sampleNote) noexcept
     {
         random = Random (seed);
+        sample = std::move (sampleNote);
+        samplePos = sample.playable() ? p[sample_start] * 1e-3 * sample.recording->sampleRate : 0.0;
         note = midiNote;
         velocity = std::clamp (noteVelocity, 0.0, 1.0);
         baseFrequency = 440.0 * std::exp2 ((midiNote - 69) / 12.0);
@@ -287,6 +290,10 @@ namespace harmonia
         const double distortion = p[distortion_mix];
         const double width = std::clamp (p[stereo_width], 0.0, 1.0);
         const double uniNorm = 1.0 / std::sqrt ((double) unison);
+        const double sampleLevel = sample.playable() ? std::clamp (p[sample_level], 0.0, 1.0) : 0.0;
+        const double sampleStep = sample.playable()
+            ? sample.recording->sampleRate / fast * std::exp2 ((note - sample.rootKey + p[sample_tune]) / 12.0) : 0.0;
+        const int oscillatorVoices = sampleLevel < 1.0 ? unison : 0;  // the instrument alone: no oscillator to run
 
         for (int u = 0; u < unison; ++u)
         {
@@ -348,7 +355,7 @@ namespace harmonia
                     const double pw = std::clamp (pw0 + lfo * lfoPw * 0.45, 0.05, 0.95);
 
                     double l = 0.0, r = 0.0;
-                    for (int u = 0; u < unison; ++u)
+                    for (int u = 0; u < oscillatorVoices; ++u)
                     {
                         const auto k = (std::size_t) u;
                         const double dt1 = common * tune1[k];
@@ -390,6 +397,23 @@ namespace harmonia
                         const double n = random.uniform (-1.0, 1.0);
                         l = l * (1.0 - noise) + n * noise;
                         r = r * (1.0 - noise) + n * noise;
+                    }
+                    if (sampleLevel > 0.0)
+                    {
+                        double sl = 0.0, sr = 0.0;
+                        const Recording& rec = *sample.recording;
+                        if (samplePos < (double) (rec.frames() - 1))
+                        {
+                            const auto j = (std::size_t) samplePos;
+                            const double frac = samplePos - (double) j;
+                            const double scale = sample.gain / 32768.0;
+                            const auto& rightChannel = rec.right.empty() ? rec.left : rec.right;
+                            sl = (rec.left[j] * (1.0 - frac) + rec.left[j + 1] * frac) * scale;
+                            sr = (rightChannel[j] * (1.0 - frac) + rightChannel[j + 1] * frac) * scale;
+                            samplePos += sampleStep * std::exp2 (semis / 12.0);
+                        }
+                        l = l * (1.0 - sampleLevel) + sl * sampleLevel;
+                        r = r * (1.0 - sampleLevel) + sr * sampleLevel;
                     }
 
                     filterEnv.step (fRate, fDecay, fSustain, fRelease);
@@ -587,14 +611,14 @@ namespace harmonia
 
     //==============================================================================================================
     void renderNote (const AnalogPatch& patch, int midiNote, double velocity, double holdSeconds, double totalSeconds,
-                     int sampleRate, std::uint64_t seed, float* left, float* right)
+                     int sampleRate, std::uint64_t seed, float* left, float* right, const SampleNote& sample)
     {
         const int n = (int) (totalSeconds * sampleRate);
         const int padded = n + AnalogVoice::latency;
         std::vector<float> l ((std::size_t) padded, 0.0f), r ((std::size_t) padded, 0.0f);
         AnalogVoice voice;
         voice.prepare (sampleRate);
-        voice.start (patch, midiNote, velocity, seed);
+        voice.start (patch, midiNote, velocity, seed, sample);
         voice.scheduleRelease ((std::int64_t) (holdSeconds * sampleRate * AnalogVoice::oversample));
         voice.render (patch, l.data(), r.data(), padded);
         std::copy (l.begin() + AnalogVoice::latency, l.end(), left);
@@ -609,12 +633,41 @@ extern "C" int harmonia_render_analog_note (const double* physical, int count, i
                                             double holdSeconds, double totalSeconds, int sampleRate,
                                             unsigned long long seed, float* out, int capacity)
 {
+    return harmonia_render_analog_note_sampled (physical, count, midiNote, velocity, holdSeconds, totalSeconds,
+                                                sampleRate, seed, nullptr, nullptr, 0, 48000.0, 60.0, 0.0, out, capacity);
+}
+
+extern "C" int harmonia_render_analog_note_sampled (const double* physical, int count, int midiNote, double velocity,
+                                                    double holdSeconds, double totalSeconds, int sampleRate,
+                                                    unsigned long long seed, const float* sampleLeft,
+                                                    const float* sampleRight, long long sampleFrames,
+                                                    double sampleRateIn, double rootKey, double gain,
+                                                    float* out, int capacity)
+{
     const int n = (int) (totalSeconds * sampleRate);
-    if (physical == nullptr || out == nullptr || count != HarmoniaCharter::analog::count || sampleRate <= 0
-        || n <= 0 || capacity < 2 * n)
+    if (physical == nullptr || out == nullptr || count < HarmoniaCharter::analog::coreCount
+        || count > HarmoniaCharter::analog::count || sampleRate <= 0 || n <= 0 || capacity < 2 * n)
         return -1;
-    harmonia::AnalogPatch patch {};
+    harmonia::AnalogPatch patch = harmonia::defaultPatch();  // a charter 3.0 vector: no sample source
     std::copy (physical, physical + count, patch.begin());
-    harmonia::renderNote (patch, midiNote, velocity, holdSeconds, totalSeconds, sampleRate, seed, out, out + n);
+    harmonia::SampleNote sample;
+    if (sampleLeft != nullptr && sampleFrames > 1)
+    {
+        auto instrument = std::make_shared<harmonia::SampledInstrument>();
+        harmonia::Recording rec;
+        rec.sampleRate = sampleRateIn;
+        auto toInt16 = [] (float x) { return (std::int16_t) std::lround (std::clamp (x, -1.0f, 32767.0f / 32768.0f) * 32768.0f); };
+        for (long long i = 0; i < sampleFrames; ++i)
+            rec.left.push_back (toInt16 (sampleLeft[i]));
+        if (sampleRight != nullptr && sampleRight != sampleLeft)
+            for (long long i = 0; i < sampleFrames; ++i)
+                rec.right.push_back (toInt16 (sampleRight[i]));
+        instrument->recordings.push_back (std::move (rec));
+        sample.recording = &instrument->recordings.front();
+        sample.rootKey = rootKey;
+        sample.gain = gain;
+        sample.instrument = std::move (instrument);
+    }
+    harmonia::renderNote (patch, midiNote, velocity, holdSeconds, totalSeconds, sampleRate, seed, out, out + n, sample);
     return n;
 }

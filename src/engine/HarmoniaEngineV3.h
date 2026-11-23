@@ -3,8 +3,9 @@
  * @brief Harmonia v3 analog engine, plain C++17 (no JUCE): the sound the v3 AI models are trained on.
  *
  * Port of the reference implementation HARMONIA/src/synth/engine_v3.py (Harmonia-AI). Per voice:
- * 2 oscillators (sine, triangle, band-limited saw and pulse) x unison (1..16 voices) + noise
- * -> state-variable filter (12 / 24 dB) -> drive -> amplifier, computed at twice the sample rate
+ * 2 oscillators (sine, triangle, band-limited saw and pulse) x unison (1..16 voices) + noise, crossfaded with
+ * the sample source (charter 3.1: a recorded instrument, HarmoniaSamples.h, transposed and bent by the pitch
+ * envelope and LFO like the oscillators) -> state-variable filter (12 / 24 dB) -> drive -> amplifier, computed at twice the sample rate
  * and brought back by a half-band filter; then, on the mix, chorus -> delay -> reverb (feedback
  * delay network). Parameters are physical values in charter order (HarmoniaCharter::analog::Index).
  *
@@ -18,6 +19,7 @@
 #include <vector>
 
 #include "../parameters/HarmoniaCharterV3.h"
+#include "HarmoniaSamples.h"
 
 namespace harmonia
 {
@@ -49,7 +51,10 @@ namespace harmonia
         /** Output sample rate; the voice runs at twice that. */
         void prepare (double sampleRate);
 
-        void start (const AnalogPatch& patch, int midiNote, double velocity, std::uint64_t seed) noexcept;
+        /** `sample`: the recording the sample source plays for this note (empty: none). The voice keeps its
+            instrument alive until its next note. */
+        void start (const AnalogPatch& patch, int midiNote, double velocity, std::uint64_t seed,
+                    SampleNote sample = {}) noexcept;
         void release() noexcept { releasePending = true; }
         /** Releases the note when the voice reaches this sample of its own (twice faster) clock: offline renders. */
         void scheduleRelease (std::int64_t fastSample) noexcept { releaseAt = fastSample; }
@@ -95,6 +100,9 @@ namespace harmonia
         std::array<std::array<double, 4>, maxUnison> driftRate {}, driftPhase {};  // [u][osc * 2 + sine]
         std::array<std::array<double, 2>, maxUnison> drift {};
 
+        SampleNote sample;
+        double samplePos = 0.0;  // frame of the recording being read
+
         Envelope amp, filterEnv;
         double lfoPhase = 0.0, lfoHeld = 0.0;
         std::array<std::array<double, 2>, 4> filter {};  // channel x stage
@@ -132,11 +140,21 @@ namespace harmonia
     /** One note offline, aligned with the reference renderer (`render` in engine_v3.py): the voice is held
         for holdSeconds, then released; the output lasts totalSeconds. left / right hold sampleRate * totalSeconds. */
     void renderNote (const AnalogPatch& patch, int midiNote, double velocity, double holdSeconds, double totalSeconds,
-                     int sampleRate, std::uint64_t seed, float* left, float* right);
+                     int sampleRate, std::uint64_t seed, float* left, float* right, const SampleNote& sample = {});
 }
 
-/** C entry point for the AI's comparison bench (ctypes): physical values in charter order. Returns the
-    number of samples per channel written to out (left then right), or -1 on bad arguments. */
+/** C entry point for the AI's comparison bench (ctypes): physical values in charter order (the 46 of charter 3.0
+    or all of them). Returns the number of samples per channel written to out (left then right), or -1 on bad
+    arguments. */
 extern "C" int harmonia_render_analog_note (const double* physical, int count, int midiNote, double velocity,
                                             double holdSeconds, double totalSeconds, int sampleRate,
                                             unsigned long long seed, float* out, int capacity);
+
+/** Same, with the recording the sample source plays (as the reference passes it: float frames, planar, its rate,
+    root key and gain). It is stored in 16 bits like the plugin's sample library does. */
+extern "C" int harmonia_render_analog_note_sampled (const double* physical, int count, int midiNote, double velocity,
+                                                    double holdSeconds, double totalSeconds, int sampleRate,
+                                                    unsigned long long seed, const float* sampleLeft,
+                                                    const float* sampleRight, long long sampleFrames,
+                                                    double sampleRateIn, double rootKey, double gain,
+                                                    float* out, int capacity);
