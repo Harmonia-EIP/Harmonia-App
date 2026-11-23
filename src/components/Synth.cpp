@@ -1,9 +1,10 @@
 #include "Synth.h"
 
 #include <algorithm>
+#include <cmath>
 
-HarmoniaVoice::HarmoniaVoice (const HarmoniaPatches& sharedPatches, std::uint64_t voiceSeed)
-    : patches (sharedPatches), seed (voiceSeed)
+HarmoniaVoice::HarmoniaVoice (const HarmoniaPatches& sharedPatches, std::uint64_t voiceSeed, SampleLibrary* library)
+    : patches (sharedPatches), samples (library), seed (voiceSeed)
 {
 }
 
@@ -32,7 +33,15 @@ void HarmoniaVoice::startNote (int midiNoteNumber, float velocity, juce::Synthes
     else
     {
         dx7.kill();
-        analog.start (patches.analog, midiNoteNumber, v, seed * 0x9E3779B97F4A7C15ULL + ++notesPlayed);
+        ++notesPlayed;
+        // the sample source: the recording of the patch's instrument for this note, when it is decoded already
+        harmonia::SampleNote sample;
+        using namespace HarmoniaCharter::analog;
+        const int choice = (int) std::lround (patches.analog[(size_t) sample_instrument]);
+        if (samples != nullptr && choice > 0 && patches.analog[(size_t) sample_level] > 0.0)
+            sample = harmonia::SampleNote::make (samples->get (choice), midiNoteNumber, (int) std::lround (v * 127.0),
+                                                 notesPlayed);
+        analog.start (patches.analog, midiNoteNumber, v, seed * 0x9E3779B97F4A7C15ULL + notesPlayed, std::move (sample));
     }
 }
 

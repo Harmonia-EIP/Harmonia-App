@@ -18,6 +18,7 @@
 #include "../JuceHeader.h"
 #include "../engine/HarmoniaEngineV3.h"
 #include "../engine/HarmoniaDx7.h"
+#include "../engine/SampleLibrary.h"
 
 #include <vector>
 
@@ -51,7 +52,8 @@ struct HarmoniaPatches
 class HarmoniaVoice : public juce::SynthesiserVoice
 {
 public:
-    HarmoniaVoice (const HarmoniaPatches& patches, std::uint64_t seed);
+    /** samples: the recorded instruments of the sample source (nullptr: none, e.g. in some tests). */
+    HarmoniaVoice (const HarmoniaPatches& patches, std::uint64_t seed, SampleLibrary* samples = nullptr);
 
     bool canPlaySound (juce::SynthesiserSound* sound) override;
 
@@ -75,6 +77,7 @@ public:
 
 private:
     const HarmoniaPatches& patches;
+    SampleLibrary* samples;
     harmonia::AnalogVoice analog;
     harmonia::Dx7Voice dx7;
     bool playingDx7 = false;

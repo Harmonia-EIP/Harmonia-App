@@ -44,7 +44,7 @@ void HarmoniaAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlo
     synth.clearSounds();
 
     for (int i = 0; i < 8; ++i)
-        synth.addVoice (new HarmoniaVoice (patches, (std::uint64_t) i + 1));
+        synth.addVoice (new HarmoniaVoice (patches, (std::uint64_t) i + 1, &samples));
 
     synth.addSound (new HarmoniaSound());
     synth.setCurrentPlaybackSampleRate (sampleRate);
@@ -86,6 +86,12 @@ void HarmoniaAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer,
 
     static const auto engineIndex = (size_t) HarmoniaCharter::indexOf ("engine");
     patches.dx7Mode = paramRefs.get (engineIndex) > 0.5f;
+    {
+        // the instrument of the sample source is decoded in the background as soon as the patch plays one
+        using namespace HarmoniaCharter::analog;
+        const bool sampled = ! patches.dx7Mode && patches.analog[(size_t) sample_level] > 0.0;
+        samples.want (sampled ? (int) std::lround (patches.analog[(size_t) sample_instrument]) : 0);
+    }
     if (patches.dx7Mode)
     {
         std::array<float, harmonia::dx7ParameterCount> dx7Values {};

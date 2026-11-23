@@ -258,6 +258,12 @@ public:
         return backend;
     }
 
+    /** @brief The recorded instruments of the sample source (folder, status, credits). */
+    SampleLibrary& getSampleLibrary()
+    {
+        return samples;
+    }
+
     /**
      * @brief Attaches an oscilloscope component.
      *
@@ -279,6 +285,10 @@ private:
 
     /** What the voices play in the current block (analog patch, DX7 voice, engine), shared with the effects. */
     HarmoniaPatches patches;
+
+    /** Recorded instruments of the sample source, decoded in the background. Declared before the synthesiser:
+        it outlives the voices that play its instruments. */
+    SampleLibrary samples;
 
     /**
      * Polyphonic synthesizer engine.
