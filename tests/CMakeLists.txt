@@ -12,6 +12,7 @@ add_executable(Harmonia_Tests EXCLUDE_FROM_ALL
     ParametersTests.cpp
     PresetsTests.cpp
     UiTests.cpp
+    HistoryTests.cpp
     ${PLUGIN_SOURCES}
     ${MSFA_SOURCES})
 

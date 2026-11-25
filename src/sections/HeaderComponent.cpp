@@ -1,4 +1,5 @@
 #include "HeaderComponent.h"
+#include "header_components/HistoryUtils.h"
 #include <BinaryData.h>
 
 #include <algorithm>
@@ -230,17 +231,21 @@ void HeaderComponent::setHistory (const HistoryList& entries)
 
     DBG ("HeaderComponent: " << (int) historyEntries.size() << " history entries received");
 
-    juce::StringArray titles, typeList, dateList;
+    HistoryItems items;
+    items.reserve (historyEntries.size());
 
     for (const auto& e : historyEntries)
     {
-        titles.add (e.name.isNotEmpty() ? e.name : e.type);   // repli sur le type si pas de nom
-        typeList.add (e.type);
-        dateList.add (e.lastUsedAt.isNotEmpty() ? e.lastUsedAt : e.createdAt);
+        HistoryItem it;
+        it.title = e.name.isNotEmpty() ? e.name : e.type;   // repli sur le type si pas de nom
+        it.type  = e.type;
+        it.date  = HistoryUtils::formatDate (e.lastUsedAt.isNotEmpty() ? e.lastUsedAt : e.createdAt);
+        it.model = HistoryUtils::formatModel (e.modelName, e.modelId, models);
+        items.push_back (std::move (it));
     }
 
-    historyPicker.setItems (titles, typeList, dateList);
-    historyPicker.setInteractive (! session.isGuest && ! titles.isEmpty());
+    historyPicker.setItems (items);
+    historyPicker.setInteractive (! session.isGuest && ! items.empty());
 }
 
 void HeaderComponent::moveHistoryToTop (int id)
@@ -440,6 +445,9 @@ void HeaderComponent::setModels (const AIModelList& newModels)
 
     models = newModels;
     rebuildModelPicker (keepId);
+
+    // Les noms des modèles de l'historique viennent de cette liste : on les remet à jour
+    setHistory (historyEntries);
 }
 
 void HeaderComponent::rebuildModelPicker (const juce::String& keepId)
