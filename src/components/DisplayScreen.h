@@ -61,7 +61,7 @@ public:
             g.drawHorizontalLine ((int) y, r.getX() + 8.0f, r.getRight() - 8.0f);
         }
 
-        g.setColour (HarmoniaPalette::accent.withAlpha (0.5f));
+        g.setColour (HarmoniaPalette::textMuted);   // accent à 50 % : 2.5:1, hors norme
         g.setFont (juce::Font (juce::FontOptions (9.0f).withStyle ("Bold")));
         g.drawText ("OSCILLOSCOPE",
                     r.toNearestInt().reduced (10, 6).removeFromTop (12),

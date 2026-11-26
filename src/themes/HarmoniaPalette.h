@@ -240,6 +240,14 @@ namespace HarmoniaPalette
     };
 
     // ── CUSTOM ACCENT ─────────────────────────────────────────────────────
+    // Les textes sont dérivés de l'accent par les formules de CONTRASTE.md
+    // (racine du dépôt). Avec les 3 couleurs par défaut, chaque texte doit
+    // garder un contraste WCAG >= 4.5:1 sur les fonds sombres (tests/ContrastTests.cpp).
+
+    inline constexpr float textPrimaryMix   = 0.88f;  // part de blanc dans textPrimary
+    inline constexpr float textSecondaryMix = 0.55f;  // part de blanc dans textSecondary
+    inline constexpr float textMutedSat     = 0.50f;  // saturation de textMuted (x saturation de l'accent)
+    inline constexpr float textMutedBright  = 0.75f;  // luminosité HSB de textMuted (0.5 avant : 2.3 à 3.3:1, hors norme)
 
     inline juce::Colour customAccent { 0xFF00D4FF };
 
@@ -262,9 +270,9 @@ namespace HarmoniaPalette
         sectionAmpEnv = juce::Colour (0xFFFBBF24);
 
         // textes teintés par l'accent
-        textPrimary   = c.interpolatedWith (juce::Colours::white, 0.88f);
-        textSecondary = c.interpolatedWith (juce::Colours::white, 0.55f);
-        textMuted     = c.withSaturation (c.getSaturation() * 0.5f).withBrightness (0.5f);
+        textPrimary   = c.interpolatedWith (juce::Colours::white, textPrimaryMix);
+        textSecondary = c.interpolatedWith (juce::Colours::white, textSecondaryMix);
+        textMuted     = c.withSaturation (c.getSaturation() * textMutedSat).withBrightness (textMutedBright);
     }
 
     // ── APPLY THEME ───────────────────────────────────────────────────────

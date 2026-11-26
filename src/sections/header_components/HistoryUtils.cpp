@@ -25,4 +25,30 @@ namespace HistoryUtils
         const juce::Time utc (y, mo - 1, d, h, mi, sec, 0, false);   // false = interprété en UTC
         return utc.formatted ("%d %b %H:%M");                        // affiché en heure locale
     }
+
+    juce::String formatModel (const juce::String& modelName, const juce::String& modelId,
+                              const AIModelList& models)
+    {
+        const auto raw = (modelName.trim().isNotEmpty() ? modelName : modelId).trim();
+
+        if (raw.isEmpty())
+            return "Unknown model";
+
+        if (raw.equalsIgnoreCase ("latest"))
+            return "Latest";
+
+        for (const auto& m : models)
+            if (m.id.equalsIgnoreCase (raw) && m.name.isNotEmpty())
+                return m.name;
+
+        // "harmonia_v3" -> "Harmonia V3" : séparateurs en espaces, 1re lettre de chaque mot en majuscule
+        juce::StringArray words;
+        words.addTokens (raw.replaceCharacters ("_-", "  "), " ", "");
+        words.removeEmptyStrings();
+
+        for (auto& w : words)
+            w = w.substring (0, 1).toUpperCase() + w.substring (1);
+
+        return words.joinIntoString (" ");
+    }
 }

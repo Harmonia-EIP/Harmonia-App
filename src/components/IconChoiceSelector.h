@@ -53,6 +53,27 @@ public:
     }
 
     /** Reserve une bande en bas du composant pour le cadenas (0 = cadenas sur l'icone). */
+    /** Nombre de colonnes de la grille d'icônes (0 = une seule ligne, le défaut).
+        Ex. 2 avec 4 choix : grille 2 x 2. */
+    void setColumns (int numColumns)
+    {
+        columns = juce::jmax (0, numColumns);
+        repaint();
+    }
+
+    /** Cadenas dans une colonne à GAUCHE de la boîte (petits sélecteurs posés dans une ligne
+        de titre, comme 12 / 24 dB). La colonne est toujours réservée : rien ne bouge quand
+        les cadenas apparaissent. Remplace la bande du dessous. */
+    void setLockOnLeft (bool shouldBeOnLeft)
+    {
+        lockLeftW = shouldBeOnLeft ? lockColumnW : 0;
+        if (shouldBeOnLeft)
+            lockStripH = 0;
+        repaint();
+    }
+
+    static constexpr int lockColumnW = 14;
+
     void setLockStripHeight (int h)
     {
         lockStripH = juce::jmax (0, h);
@@ -84,6 +105,11 @@ public:
     bool isLocked() const override              { return locked; }
     juce::String getParamId() const override    { return paramID; }
 
+    void setArrowTarget (bool isTarget) override
+    {
+        arrowTarget = isTarget;   // aucun repère visuel (choix de design)
+    }
+
     void paint (juce::Graphics& g) override
     {
         if (numChoices <= 0) return;
@@ -96,12 +122,9 @@ public:
         g.setColour (HarmoniaPalette::border);
         g.drawRoundedRectangle (r, corner, 1.0f);
 
-        const float cellW = r.getWidth() / (float) numChoices;
-
         for (int i = 0; i < numChoices; ++i)
         {
-            auto cell = juce::Rectangle<float> (r.getX() + i * cellW, r.getY(), cellW, r.getHeight())
-                            .reduced (3.0f);
+            auto cell = cellRect (i).reduced (3.0f);
 
             const bool active = i == currentIndex;
             const bool hover  = i == hoveredIndex && ! active;
@@ -144,7 +167,7 @@ public:
 
         const int idx = indexAt (e.position);
 
-        if (lockUiVisible && lockStripH == 0 && idx == currentIndex)
+        if (lockUiVisible && lockStripH == 0 && lockLeftW == 0 && idx == currentIndex)
         {
             setLocked (! locked);
             return;
@@ -161,7 +184,7 @@ public:
 
         const bool overLock = lockUiVisible
                               && (isInLockStrip (e.position)
-                                  || (lockStripH == 0 && idx == currentIndex));
+                                  || (lockStripH == 0 && lockLeftW == 0 && idx == currentIndex));
 
         setMouseCursor (overLock ? juce::MouseCursor::PointingHandCursor
                                  : juce::MouseCursor::NormalCursor);
@@ -177,12 +200,26 @@ private:
 
     juce::Rectangle<int> boxBounds() const
     {
-        return getLocalBounds().withTrimmedBottom (lockStripH);
+        return getLocalBounds().withTrimmedBottom (lockStripH).withTrimmedLeft (lockLeftW);
     }
 
     bool isInLockStrip (juce::Point<float> p) const
     {
-        return lockStripH > 0 && p.y >= (float) (getHeight() - lockStripH);
+        return (lockStripH > 0 && p.y >= (float) (getHeight() - lockStripH))
+            || (lockLeftW  > 0 && p.x <  (float) lockLeftW);
+    }
+
+    /** Case de l'icône `i` (une ligne, ou une grille avec setColumns). */
+    juce::Rectangle<float> cellRect (int i) const
+    {
+        const auto r = boxBounds().toFloat().reduced (1.0f);
+        const int cols = columns > 0 ? juce::jmin (columns, numChoices) : numChoices;
+        const int rows = (numChoices + cols - 1) / juce::jmax (1, cols);
+
+        const float cellW = r.getWidth()  / (float) juce::jmax (1, cols);
+        const float cellH = r.getHeight() / (float) juce::jmax (1, rows);
+
+        return { r.getX() + (float) (i % cols) * cellW, r.getY() + (float) (i / cols) * cellH, cellW, cellH };
     }
 
     int indexAt (juce::Point<float> p) const
@@ -190,14 +227,19 @@ private:
         if (numChoices <= 0) return -1;
         if (isInLockStrip (p)) return -1;
 
-        const float cellW = (float) getWidth() / (float) numChoices;
-        const int idx = (int) (p.x / cellW);
-        return juce::jlimit (0, numChoices - 1, idx);
+        for (int i = 0; i < numChoices; ++i)
+            if (cellRect (i).expanded (1.0f).contains (p))
+                return i;
+
+        return -1;
     }
 
     juce::Rectangle<float> padlockRect() const
     {
         const juce::Rectangle<float> padlock (9.0f, 11.0f);
+
+        if (lockLeftW > 0)
+            return padlock.withCentre (getLocalBounds().toFloat().removeFromLeft ((float) lockLeftW).getCentre());
 
         if (lockStripH > 0)
         {
@@ -208,11 +250,7 @@ private:
                                         strip.getCentreY() + gap * 0.5f });
         }
 
-        const auto r = boxBounds().toFloat().reduced (1.0f);
-        const float cellW = r.getWidth() / (float) juce::jmax (1, numChoices);
-        const auto cell = juce::Rectangle<float> (r.getX() + currentIndex * cellW,
-                                                  r.getY(), cellW, r.getHeight());
-        return padlock.withCentre (cell.getCentre());
+        return padlock.withCentre (cellRect (currentIndex).getCentre());
     }
 
     int readIndex() const
@@ -235,10 +273,15 @@ private:
 
     void parameterChanged (const juce::String&, float) override
     {
-        juce::MessageManager::callAsync ([this]
+        // SafePointer : le sélecteur peut être détruit avant que ce message ne passe
+        // (fenêtre fermée juste après un changement venu de l'hôte ou de l'IA)
+        juce::MessageManager::callAsync ([safe = juce::Component::SafePointer<IconChoiceSelector> (this)]
         {
-            currentIndex = readIndex();
-            repaint();
+            if (safe == nullptr)
+                return;
+
+            safe->currentIndex = safe->readIndex();
+            safe->repaint();
         });
     }
 
@@ -250,6 +293,9 @@ private:
     int hoveredIndex  = -1;
 
     int  lockStripH    = 0;
+    int  columns       = 0;   // 0 = une seule ligne
+    int  lockLeftW     = 0;   // > 0 : cadenas dans une colonne à gauche
+    bool arrowTarget   = false;
     bool locked        = false;
     bool lockUiVisible = false;
 };

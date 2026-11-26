@@ -63,12 +63,14 @@
 #include "components/SynthComponent.h"
 #include "components/OscilloscopeComponent.h"
 #include "components/SectionPanel.h"
+#include "components/EngineBadge.h"
 #include "components/KnobControl.h"
 #include "components/DisplayScreen.h"
 #include "components/ParticleField.h"
 #include "components/EnvelopeVisualizer.h"
 #include "components/LfoVisualizer.h"
 #include "components/WaveformSelector.h"
+#include "components/OutputStrip.h"
 
 #include "sections/HeaderComponent.h"
 
@@ -77,6 +79,7 @@
 #include "parameters/HarmoniaParameters.h"
 #include "tools/PresetLoader.h"
 #include "tools/Alert.h"
+#include "tools/ParamRandomizer.h"
 
 namespace UiState
 {
@@ -85,6 +88,7 @@ namespace UiState
     inline const juce::Identifier customColour { "ui_custom_colour" };
     inline const juce::Identifier paletteSlot  { "ui_palette_slot" };
     inline const juce::Identifier presetName   { "ui_preset_name" };
+    inline const juce::Identifier keyLayout    { "ui_key_layout" };   // "azerty" / "qwerty" (pas lié au compte)
 }
 
 class MainComponent : public juce::Component
@@ -148,6 +152,22 @@ public:
     void resized() override;
 
     /**
+     * @brief After a click anywhere in the plugin (knob, button, selector…),
+     *        gives keyboard focus back to the piano so the computer keys play
+     *        notes right away. Clicks in a text field keep their focus.
+     *
+     * Registered on all children with addMouseListener (this, true).
+     */
+    void mouseUp (const juce::MouseEvent& e) override;
+
+    /** Contrôle (knob ou sélecteur) réglé par les flèches : le dernier cliqué, ou nullptr. */
+    juce::Component* getArrowTarget() const noexcept { return arrowTarget.getComponent(); }
+
+    /** Flèches : +1 / -1 pas sur la cible. Knob : 1 % de la course (0,2 % avec Maj) ;
+        sélecteur / paramètre entier : un cran. false si pas de cible utilisable. */
+    bool nudgeArrowTarget (int dir, bool fine);
+
+    /**
      * @brief Callback triggered when user logs out.
      */
     std::function<void()> onLogout;
@@ -156,6 +176,13 @@ public:
 private:
 
     void refreshProfileAsync();
+
+    /** Gives focus to the piano on the next message loop, unless a text field
+        outside this component (history search…) has just taken it. */
+    void focusKeyboardSoon();
+
+    juce::Component::SafePointer<juce::Component> arrowTarget;
+    void setArrowTarget (juce::Component* c);
 
     /**
      * Custom by default: the header restores the user palette (setSlots)
@@ -215,6 +242,18 @@ private:
     std::unique_ptr<SectionPanel> osc2Panel;
     std::unique_ptr<SectionPanel> fxPanel;
     std::unique_ptr<SectionPanel> ampPanel;
+
+    /** Volume de sortie + vumètre, sous l'oscilloscope (agit sur les deux moteurs, reste actif en DX7). */
+    std::unique_ptr<OutputStrip> outputStrip;
+
+    // contenu de chaque panneau (appelés par resized)
+    void layoutAmp();
+    void layoutOsc1();
+    void layoutFilter();
+    void layoutDisplay();
+    void layoutLfo();
+    void layoutOsc2();
+    void layoutFx();
 
     //==========================================================================
     // Visualizers & displays
@@ -296,6 +335,26 @@ private:
 
     /** Reverb mix control. */
     std::unique_ptr<KnobControl> reverbKnob;
+
+    //==========================================================================
+    // v3: the essential new parameters only; the others are set by the AI, saved in
+    // presets and automatable from the host, but not shown
+
+    std::unique_ptr<KnobControl> unisonVoicesKnob;   ///< Osc 1 / Mix: thickness
+    std::unique_ptr<KnobControl> unisonDetuneKnob;   ///< Osc 1 / Mix: unison spread (dimmed with one voice)
+    std::unique_ptr<KnobControl> stereoWidthKnob;    ///< Osc 1 / Mix: stereo width
+    std::unique_ptr<KnobControl> osc2CoarseKnob;     ///< Osc 2: interval in semitones
+    std::unique_ptr<FilterSlopeSelector> filterSlopeSel;  ///< Filter: 12 / 24 dB, in the title row
+    std::unique_ptr<KnobControl> delayMixKnob;       ///< Effects: echo level
+    std::unique_ptr<KnobControl> reverbSizeKnob;     ///< Effects: reverb size
+
+    //==========================================================================
+    // DX7 mode: the analog panels are dimmed (they do not act on a DX7 voice) and a badge says so
+
+    EngineBadge engineBadge;
+    std::unique_ptr<juce::ParameterAttachment> engineWatch;
+    std::unique_ptr<juce::ParameterAttachment> unisonWatch;
+    void showEngine (bool dx7);
 
     //==========================================================================
     // ADSR controls

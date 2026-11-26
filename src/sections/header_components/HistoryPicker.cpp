@@ -24,23 +24,15 @@ juce::String HistoryPicker::clean (const juce::String& s)
 }
 
 //==============================================================================
-void HistoryPicker::setItems (const juce::StringArray& newTitles,
-                              const juce::StringArray& newTypes,
-                              const juce::StringArray& newDates)
+void HistoryPicker::setItems (const HistoryItems& newItems)
 {
-    titles.clear();
-    types.clear();
-    dates.clear();
+    items = newItems;
 
-    for (int i = 0; i < newTitles.size(); ++i)
-    {
-        titles.add (clean (newTitles[i]));
-        types.add (newTypes[i]);
-        dates.add (HistoryUtils::formatDate (newDates[i]));
-    }
+    for (auto& it : items)
+        it.title = clean (it.title);
 
     if (pushToPanel)
-        pushToPanel (titles, types, dates);
+        pushToPanel (items);
 
     repaint();
 }
@@ -59,7 +51,7 @@ void HistoryPicker::setInteractive (bool shouldBeInteractive)
 
 juce::String HistoryPicker::getValueText() const
 {
-    return juce::String (titles.size());
+    return juce::String ((int) items.size());
 }
 
 void HistoryPicker::timerCallback()
@@ -82,30 +74,26 @@ void HistoryPicker::timerCallback()
 //==============================================================================
 void HistoryPicker::removeEntry (int index)
 {
-    if (! juce::isPositiveAndBelow (index, titles.size()))
+    if (! juce::isPositiveAndBelow (index, (int) items.size()))
         return;
 
-    titles.remove (index);
-    types.remove (index);
-    dates.remove (index);
+    items.erase (items.begin() + index);
 
     if (pushToPanel)
-        pushToPanel (titles, types, dates);
+        pushToPanel (items);
 
     repaint();
 
     if (onDelete)
         onDelete (index);
 
-    if (titles.isEmpty())
+    if (items.empty())
         closeMenu();
 }
 
 void HistoryPicker::clearAll()
 {
-    titles.clear();
-    types.clear();
-    dates.clear();
+    items.clear();
     closeMenu();
     repaint();
 
@@ -127,7 +115,7 @@ void HistoryPicker::showMenu()
         return;
     }
 
-    if (! interactive || titles.isEmpty())
+    if (! interactive || items.empty())
         return;
 
     auto* top = getTopLevelComponent();
@@ -145,7 +133,7 @@ void HistoryPicker::showMenu()
                         HarmoniaPalette::border);
 
     auto& panel = o->getPanel();
-    panel.setItems (titles, types, dates);
+    panel.setItems (items);
 
     panel.onSelect = [safe] (int index)
     {
@@ -191,10 +179,9 @@ void HistoryPicker::showMenu()
 
     auto* rawPanel = &panel;
 
-    pushToPanel = [rawPanel] (const juce::StringArray& t, const juce::StringArray& ty,
-                              const juce::StringArray& d)
+    pushToPanel = [rawPanel] (const HistoryItems& newItems)
     {
-        rawPanel->setItems (t, ty, d);
+        rawPanel->setItems (newItems);
     };
 
     menuOpen = true;
@@ -235,7 +222,7 @@ void HistoryPicker::paint (juce::Graphics& g)
     if (! interactive)
         g.beginTransparencyLayer (0.55f);
 
-    const auto txt = titles.size() > 99 ? juce::String ("99+") : getValueText();
+    const auto txt = items.size() > 99 ? juce::String ("99+") : getValueText();
     const auto font = juce::Font (juce::FontOptions (12.5f).withStyle ("Bold"));
     const float textW = (float) juce::GlyphArrangement::getStringWidthInt (font, txt);
 

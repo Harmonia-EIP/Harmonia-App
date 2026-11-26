@@ -4,27 +4,27 @@
 namespace
 {
     constexpr float textGap = 6.0f;   // espace entre la colonne de l'icône et le texte
+}
 
-    // étincelle à 4 branches (symétrique tous les 90°)
-    juce::Path star (juce::Point<float> c, float outer, float inner, float rot)
+// étincelle à 4 branches (symétrique tous les 90°), partagée avec les cartes d'historique
+juce::Path ModelPicker::sparkle (juce::Point<float> c, float outer, float inner, float rot)
+{
+    juce::Path p;
+
+    for (int i = 0; i < 8; ++i)
     {
-        juce::Path p;
+        const float a   = rot + juce::MathConstants<float>::pi * 0.25f * (float) i
+                              - juce::MathConstants<float>::halfPi;
+        const float rad = (i % 2 == 0) ? outer : inner;
+        const juce::Point<float> q (c.x + std::cos (a) * rad,
+                                    c.y + std::sin (a) * rad);
 
-        for (int i = 0; i < 8; ++i)
-        {
-            const float a   = rot + juce::MathConstants<float>::pi * 0.25f * (float) i
-                                  - juce::MathConstants<float>::halfPi;
-            const float rad = (i % 2 == 0) ? outer : inner;
-            const juce::Point<float> q (c.x + std::cos (a) * rad,
-                                        c.y + std::sin (a) * rad);
-
-            if (i == 0) p.startNewSubPath (q);
-            else        p.lineTo (q);
-        }
-
-        p.closeSubPath();
-        return p;
+        if (i == 0) p.startNewSubPath (q);
+        else        p.lineTo (q);
     }
+
+    p.closeSubPath();
+    return p;
 }
 
 juce::String ModelPicker::getSelectedName() const
@@ -185,7 +185,7 @@ void ModelPicker::paint (juce::Graphics& g)
         g.fillEllipse (juce::Rectangle<float> (haloR * 2.0f, haloR * 2.0f).withCentre (ic));
     }
 
-    const auto star4 = star (ic, outer, inner, rot);
+    const auto star4 = sparkle (ic, outer, inner, rot);
 
     g.setColour (acc.withAlpha ((0.15f + 0.20f * h) * dim));
     g.fillPath (star4);

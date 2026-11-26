@@ -40,6 +40,7 @@ struct HistoryEntry
 {
     int id = 0;
     juce::String name, type, createdAt, lastUsedAt;
+    juce::String modelId, modelName;     // modèle IA demandé ("latest", "charter_v1"...), vide si inconnu
     std::map<juce::String, float> parameters;
 };
 

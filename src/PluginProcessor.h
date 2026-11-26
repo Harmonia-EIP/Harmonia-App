@@ -34,9 +34,13 @@
 
 #include "JuceHeader.h"
 #include "parameters/HarmoniaParameters.h"
+#include "engine/HarmoniaEngineV3.h"
 #include "components/Synth.h"
 #include "components/OscilloscopeComponent.h"
 #include "backend/BackendManager.h"
+#include "engine/OutputStage.h"
+
+#include <atomic>
 
 /**
  * @class HarmoniaAudioProcessor
@@ -266,22 +270,30 @@ public:
      */
     void setOscilloscope(OscilloscopeComponent* osc);
 
+    /**
+     * @brief Crête de sortie (0..1, après volume et limiteur) depuis le dernier appel,
+     *        puis remise à zéro. Pour le vumètre (thread UI) ; sans verrou.
+     */
+    float takeOutputPeak() noexcept { return outputPeak.exchange (0.0f); }
+
 private:
     /**
      * AudioProcessorValueTreeState storing all plugin parameters.
      */
     juce::AudioProcessorValueTreeState apvts;
 
-    /**
-     * Cached atomic parameter references for fast
-     * real-time access inside DSP code.
-     */
+    /** Physical value of every charter v3 parameter (audio thread). */
     HarmoniaParams::AtomicRefs paramRefs;
+
+    /** What the voices play in the current block (analog patch, DX7 voice, engine), shared with the effects. */
+    HarmoniaPatches patches;
 
     /**
      * Polyphonic synthesizer engine.
      */
     juce::Synthesiser synth;
+
+    bool lastDx7Mode = false;
 
     /**
      * Shared MIDI keyboard state used by the UI
@@ -289,15 +301,21 @@ private:
      */
     juce::MidiKeyboardState keyboardState;
 
-    /**
-     * Global reverb DSP processor.
-     */
-    juce::dsp::Reverb reverb;
+    /** Chorus, delay and reverb on the mix of the analog voices (a DX7 voice plays dry, as on the instrument). */
+    harmonia::Effects effects;
 
-    /**
-     * Current reverb parameter configuration.
-     */
-    juce::dsp::Reverb::Parameters reverbParams;
+    /** Stereo scratch for the effects when the output is mono. */
+    juce::AudioBuffer<float> effectsScratch;
+
+    /** Volume de sortie (dB, hors charte), lissé pour éviter les clics. */
+    std::atomic<float>* outputVolumeDb = nullptr;
+    juce::SmoothedValue<float, juce::ValueSmoothingTypes::Linear> outputGain;
+
+    /** Plus haute crête de sortie depuis la dernière lecture du vumètre. */
+    std::atomic<float> outputPeak { 0.0f };
+
+    /** Volume + limiteur doux sur tout le buffer (les deux moteurs). */
+    void applyOutputStage (juce::AudioBuffer<float>& buffer, int numSamples) noexcept;
 
     /**
      * Optional oscilloscope visualization target.

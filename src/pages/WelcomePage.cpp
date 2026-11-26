@@ -29,7 +29,7 @@ WelcomePage::WelcomePage()
     subtitleLabel.setFont(juce::Font("Inter", 11.f, juce::Font::plain)
                               .withExtraKerningFactor(0.30f));
     subtitleLabel.setColour(juce::Label::textColourId,
-                            HarmoniaColours::waveBlue.withAlpha(0.65f));
+                            HarmoniaColours::textSubtitle);   // waveBlue à 65 % : 2.8:1, hors norme
     subtitleLabel.setJustificationType(juce::Justification::centred);
     addAndMakeVisible(subtitleLabel);
 

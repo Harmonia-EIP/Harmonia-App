@@ -156,6 +156,33 @@ MainComponent::MainComponent (HarmoniaAudioProcessor& p,
 
     addAndMakeVisible (synthComponent);
 
+    // Disposition du clavier d'ordinateur (touche B) : retenue avec le projet / la session
+    {
+        auto& kb = synthComponent.getKeyboard();
+        auto& st = processor.getAPVTS().state;
+
+        if (st.getProperty (UiState::keyLayout).toString() == "qwerty")
+            kb.setLayout (HarmoniaKeyboard::Layout::Qwerty);
+
+        kb.onLayoutChanged = [&st] (HarmoniaKeyboard::Layout l)
+        {
+            st.setProperty (UiState::keyLayout, l == HarmoniaKeyboard::Layout::Qwerty ? "qwerty" : "azerty", nullptr);
+        };
+
+        // flèches : réglage fin du dernier knob / sélecteur cliqué ; Échap retire la cible
+        kb.onArrowKey  = [this] (int dir, bool fine) { return nudgeArrowTarget (dir, fine); };
+        kb.onEscapeKey = [this]
+        {
+            if (arrowTarget == nullptr)
+                return false;
+            setArrowTarget (nullptr);
+            return true;
+        };
+    }
+
+    // Clic sur un knob / bouton / sélecteur : le clavier d'ordinateur rejoue des notes tout de suite
+    addMouseListener (this, true);
+
     setSize (AppConfig::DefaultWidth, AppConfig::DefaultHeight);
 
     // Récupère la liste des modèles IA sans bloquer l'ouverture de la fenêtre.
@@ -171,8 +198,107 @@ MainComponent::~MainComponent()
     // le backend copie tout par valeur et lance un PUT court détaché.
     backend.flushPaletteIfPending();
 
+    removeMouseListener (this);
     processor.setOscilloscope (nullptr);
     setLookAndFeel(nullptr);
+}
+
+//==============================================================================
+// Focus du clavier
+//==============================================================================
+void MainComponent::mouseUp (const juce::MouseEvent& e)
+{
+    auto* origin = e.originalComponent;
+
+    // Knob ou sélecteur cliqué : il devient la cible des flèches. Clic ailleurs (hors piano
+    // et champs texte) : plus de cible.
+    {
+        juce::Component* lockable = nullptr;
+        for (auto* c = origin; c != nullptr && c != this; c = c->getParentComponent())
+            if (dynamic_cast<LockableControl*> (c) != nullptr) { lockable = c; break; }
+
+        if (lockable != nullptr)
+            setArrowTarget (lockable);
+        else if (! synthComponent.isKeyboard (origin)
+                 && dynamic_cast<juce::TextEditor*> (origin) == nullptr)
+            setArrowTarget (nullptr);
+    }
+
+    // Clic dans un champ texte (prompt, code hex de la palette) : il garde le focus.
+    // Clic sur le piano : il prend déjà le focus tout seul.
+    if (dynamic_cast<juce::TextEditor*> (origin) != nullptr
+        || (origin != nullptr && origin->findParentComponentOfClass<juce::TextEditor>() != nullptr)
+        || synthComponent.isKeyboard (origin))
+        return;
+
+    focusKeyboardSoon();
+}
+
+void MainComponent::setArrowTarget (juce::Component* c)
+{
+    if (c == arrowTarget.getComponent())
+        return;
+
+    if (auto* old = dynamic_cast<LockableControl*> (arrowTarget.getComponent()))
+        old->setArrowTarget (false);
+
+    arrowTarget = c;
+
+    if (auto* now = dynamic_cast<LockableControl*> (c))
+        now->setArrowTarget (true);
+}
+
+bool MainComponent::nudgeArrowTarget (int dir, bool fine)
+{
+    auto* target = arrowTarget.getComponent();
+    auto* lockable = dynamic_cast<LockableControl*> (target);
+
+    // pas de cible, ou cible grisée (panneaux analogiques en mode DX7, Spread à une voix)
+    if (lockable == nullptr || ! target->isEnabled() || ! target->isShowing())
+        return false;
+
+    auto* param = processor.getAPVTS().getParameter (lockable->getParamId());
+    if (param == nullptr)
+        return false;
+
+    const int steps = param->getNumSteps();
+    const float step = (param->isDiscrete() && steps > 1) ? 1.0f / (float) (steps - 1)   // un cran
+                                                         : (fine ? 0.002f : 0.01f);     // % de la course
+
+    const float next = juce::jlimit (0.0f, 1.0f, param->getValue() + (float) dir * step);
+
+    if (next != param->getValue())
+    {
+        param->beginChangeGesture();
+        param->setValueNotifyingHost (next);
+        param->endChangeGesture();
+    }
+
+    return true;   // touche utilisée même en butée : elle ne part pas ailleurs
+}
+
+void MainComponent::focusKeyboardSoon()
+{
+    // Asynchrone : on passe APRÈS ce que le clic a lui-même déclenché (ouverture
+    // de l'historique qui donne le focus à sa recherche, menu, etc.).
+    juce::MessageManager::callAsync ([safe = juce::Component::SafePointer<MainComponent> (this)]
+    {
+        if (safe == nullptr || ! safe->isShowing())
+            return;
+
+        // Menu déroulant ou fenêtre modale ouverte (modèle IA, alerte…) : prendre
+        // le focus la fermerait.
+        if (juce::ModalComponentManager::getInstance()->getNumModalComponents() > 0)
+            return;
+
+        // Un champ texte hors de ce composant (recherche de l'historique, attachée
+        // à la fenêtre) vient de prendre le focus : on ne le lui vole pas.
+        auto* focused = juce::Component::getCurrentlyFocusedComponent();
+        if (dynamic_cast<juce::TextEditor*> (focused) != nullptr && ! safe->isParentOf (focused))
+            return;
+
+        safe->synthComponent.focusKeyboard();
+    });
 }
 
 void MainComponent::activatePalette()
@@ -204,6 +330,8 @@ void MainComponent::applyTheme()
     oscMixPanel->setAccentColour (HarmoniaPalette::sectionOsc1);
     osc2Panel->setAccentColour   (HarmoniaPalette::sectionOsc2);
     screenPanel->setAccentColour (HarmoniaPalette::sectionDisplay);
+    if (outputStrip != nullptr)
+        outputStrip->repaint();
 
     lookAndFeel.refreshTheme();
     sendLookAndFeelChange();
@@ -231,6 +359,7 @@ void MainComponent::buildControls()
 
     osc1WaveSel    = std::make_unique<WaveformSelector>(a, HarmoniaParams::IDs::osc1Waveform);
     osc1WaveSel->setLockStripHeight (IconChoiceSelector::defaultLockStripH);
+    osc1WaveSel->setColumns (2);   // grille 2 x 2, à côté de Mix / Noise
     oscMixKnob     = std::make_unique<KnobControl>     (a, HarmoniaParams::IDs::oscMix,     "Mix");
     noiseLevelKnob = std::make_unique<KnobControl>     (a, HarmoniaParams::IDs::noiseLevel, "Noise");
     oscMixPanel->addAndMakeVisible (*osc1WaveSel);
@@ -269,6 +398,45 @@ void MainComponent::buildControls()
     fxPanel->addAndMakeVisible (*distortionKnob);
     fxPanel->addAndMakeVisible (*reverbKnob);
 
+    // v3 essentials
+    unisonVoicesKnob = std::make_unique<KnobControl>(a, "unison_voices",  "Unison");
+    unisonDetuneKnob = std::make_unique<KnobControl>(a, "unison_detune",  "Spread");
+    stereoWidthKnob  = std::make_unique<KnobControl>(a, "stereo_width",   "Width");
+    oscMixPanel->addAndMakeVisible (*unisonVoicesKnob);
+    oscMixPanel->addAndMakeVisible (*unisonDetuneKnob);
+    oscMixPanel->addAndMakeVisible (*stereoWidthKnob);
+
+    osc2CoarseKnob = std::make_unique<KnobControl>(a, "osc_2_coarse", "Interval", true);
+    osc2Panel->addAndMakeVisible (*osc2CoarseKnob);
+
+    filterSlopeSel = std::make_unique<FilterSlopeSelector>(a, "filter_slope");
+    filterSlopeSel->setLockOnLeft (true);   // cadenas à gauche du switch (pas sur "12")
+    filterPanel->addAndMakeVisible (*filterSlopeSel);
+
+    delayMixKnob   = std::make_unique<KnobControl>(a, "delay_mix",   "Delay");
+    reverbSizeKnob = std::make_unique<KnobControl>(a, "reverb_size", "Size");
+    fxPanel->addAndMakeVisible (*delayMixKnob);
+    fxPanel->addAndMakeVisible (*reverbSizeKnob);
+
+    screenPanel->addChildComponent (engineBadge);
+    engineBadge.setText ("DX7");
+
+    if (auto* engine = a.getParameter ("engine"))
+    {
+        engineWatch = std::make_unique<juce::ParameterAttachment> (*engine, [this] (float value) { showEngine (value > 0.5f); });
+        engineWatch->sendInitialUpdate();
+    }
+    if (auto* voices = a.getParameter ("unison_voices"))
+    {
+        // the spread only exists with more than one voice
+        unisonWatch = std::make_unique<juce::ParameterAttachment> (*voices, [this] (float value)
+        {
+            unisonDetuneKnob->setEnabled (value > 1.5f);
+            unisonDetuneKnob->setAlpha (value > 1.5f ? 1.0f : 0.4f);
+        });
+        unisonWatch->sendInitialUpdate();
+    }
+
     attackKnob  = std::make_unique<KnobControl>(a, HarmoniaParams::IDs::ampAttack,  "Attack");
     decayKnob   = std::make_unique<KnobControl>(a, HarmoniaParams::IDs::ampDecay,   "Decay");
     sustainKnob = std::make_unique<KnobControl>(a, HarmoniaParams::IDs::ampSustain, "Sustain");
@@ -278,10 +446,22 @@ void MainComponent::buildControls()
     ampPanel->addAndMakeVisible (*sustainKnob);
     ampPanel->addAndMakeVisible (*releaseKnob);
 
+    // Volume de sortie (hors charte : ni IA, ni presets, ni aléatoire) + vumètre.
+    // Pas dans `lockables` : il n'y a rien à verrouiller pour l'IA.
+    outputStrip = std::make_unique<OutputStrip> (a, [&proc = processor] { return proc.takeOutputPeak(); });
+    addAndMakeVisible (*outputStrip);
+
     for (auto* c : {
             (juce::Component*) osc1WaveSel.get(),
             (juce::Component*) osc2WaveSel.get(),
             (juce::Component*) filterTypeSel.get(),
+            (juce::Component*) filterSlopeSel.get(),
+            (juce::Component*) unisonVoicesKnob.get(),
+            (juce::Component*) unisonDetuneKnob.get(),
+            (juce::Component*) stereoWidthKnob.get(),
+            (juce::Component*) osc2CoarseKnob.get(),
+            (juce::Component*) delayMixKnob.get(),
+            (juce::Component*) reverbSizeKnob.get(),
             (juce::Component*) oscMixKnob.get(),
             (juce::Component*) noiseLevelKnob.get(),
             (juce::Component*) filterCutoffKnob.get(),
@@ -307,6 +487,18 @@ void MainComponent::buildControls()
     }
 }
 
+void MainComponent::showEngine (bool dx7)
+{
+    // a DX7 voice ignores the analog panels: dim them rather than hide them, so the layout stays put
+    for (auto* panel : { oscMixPanel.get(), filterPanel.get(), lfoPanel.get(),
+                         osc2Panel.get(), fxPanel.get(), ampPanel.get() })
+    {
+        panel->setEnabled (! dx7);
+        panel->setAlpha (dx7 ? 0.35f : 1.0f);
+    }
+    engineBadge.setVisible (dx7);
+}
+
 void MainComponent::wireHeaderButtons()
 {
     headerComponent->getLoadButton().onClick =
@@ -321,6 +513,18 @@ void MainComponent::wireHeaderButtons()
             doRefineWithAi();
         else
             doGenerateWithAi();
+    };
+    headerComponent->onRandomize = [this]
+    {
+        const auto locked = headerComponent->getMode() == HeaderComponent::Mode::Refine
+                                ? getLockedParamIds()
+                                : juce::StringArray();
+
+        if (auto* engine = processor.getAPVTS().getParameter ("engine"))
+            engine->setValueNotifyingHost (0.0f);
+
+        ParamRandomizer::randomize (processor.getAPVTS(), locked);
+        setPresetName ("Random");
     };
 
     headerComponent->getLogoutButton().onClick =
@@ -412,6 +616,9 @@ void MainComponent::loadHistoryEntry (const HeaderComponent::HistoryList::value_
 
     setPresetName (r.presetName);
     touchHistoryAsync (entry.id);
+
+    // le panneau d'historique est hors de ce composant : on rend la main au clavier ici
+    focusKeyboardSoon();
 }
 
 void MainComponent::saveThemeToState (int slot)
@@ -674,8 +881,14 @@ void MainComponent::runAiRequest (std::function<AiResult()> request,
                 return;
             }
 
+            juce::StringArray locked;
+            for (const auto& [id, value] : keep)
+                locked.add (id);
+
             auto r = PresetLoader::loadFromJsonString (result.json,
-                                                       safe->processor.getAPVTS());
+                                                    safe->processor.getAPVTS(),
+                                                    locked,
+                                                    true);
 
             if (! r.success)
             {
@@ -763,260 +976,180 @@ void MainComponent::paint (juce::Graphics& g)
 
 void MainComponent::resized()
 {
-    auto bounds = getLocalBounds();
+    // Disposition : l'oscilloscope pile au centre (colonnes gauche et droite de même largeur).
+    //
+    //   [ Osc 1 / Mix ] [ Display ] [ Osc 2   ]
+    //   [             ] [         ] [ Effects ]
+    //   [ LFO         ] [ Filter  ] [         ]
+    //   [             ] [         ] [ Output  ]
+    //   [ Amp Envelope : Attack Decay | courbe | Sustain Release ]
+    //   [ Keyboard : titre + chips | touches                     ]
+    constexpr int headerH = 76, keyboardH = 170, ampH = 124;   // clavier : grandes touches (fenêtre 750 px)
+    // cadres des panneaux à 16 px du bord, comme le contenu du header (HeaderComponent : reduced (16, ...)) ;
+    // les panneaux dessinent leur cadre 6 px à l'intérieur (place de l'ombre)
+    constexpr int headerContentMargin = 16;
+    constexpr int gap = 10, sideMargin = headerContentMargin - SectionPanel::shadowMargin;
+    constexpr float centerShare    = 0.35f;   // colonne de l'écran et de Filter
+    constexpr float filterShare    = 0.56f;   // Filter (2 rangées de knobs) : l'écran au-dessus garde le reste
+    constexpr float lfoShare       = 0.46f;   // LFO (graphe plus haut) : Osc 1 un peu réduit
+    constexpr int   osc2H          = 174;     // Osc 2 : formes d'onde + 2 knobs (en dessous, plus de place pour les knobs)
 
+    auto bounds = getLocalBounds();
     particles.setBounds (bounds);
 
-    auto headerArea = bounds.removeFromTop (76);
-    headerComponent->setBounds (headerArea);
+    headerComponent->setBounds (bounds.removeFromTop (headerH));
+    // même marges latérales que les panneaux : cadres alignés au pixel
+    synthComponent.setBounds (bounds.removeFromBottom (keyboardH).reduced (sideMargin, 0).withTrimmedBottom (2));
 
-    auto kbArea = bounds.removeFromBottom (100);
-    synthComponent.setBounds (kbArea);
+    ampPanel->setBounds (bounds.removeFromBottom (ampH).reduced (sideMargin, 6));
 
-    auto ampArea = bounds.removeFromBottom (180).reduced (16, 8);
-    ampPanel->setBounds (ampArea);
+    // marges égales à gauche et à droite + colonnes latérales égales = écran centré au pixel
+    auto main = bounds.reduced (sideMargin, 4);
 
+    const int sideW   = (main.getWidth() - 2 * gap - (int) ((float) main.getWidth() * centerShare)) / 2;
+    const int centerW = main.getWidth() - 2 * gap - 2 * sideW;
+
+    auto leftCol = main.removeFromLeft (sideW);
+    main.removeFromLeft (gap);
+    auto centerCol = main.removeFromLeft (centerW);
+    main.removeFromLeft (gap);
+    auto rightCol = main;
+
+    auto takeBottom = [&] (juce::Rectangle<int>& col, float share)
     {
-        auto inner = ampPanel->getContentBounds();
+        auto b = col.removeFromBottom ((int) ((float) col.getHeight() * share));
+        col.removeFromBottom (gap);
+        return b;
+    };
 
-        const int vizH = (int) (inner.getHeight() * 0.40f);
+    // centre : l'écran, Filter dessous
+    filterPanel->setBounds (takeBottom (centerCol, filterShare));
+    screenPanel->setBounds (centerCol);
 
-        ampEnvViz.setBounds (inner.removeFromTop (vizH));
+    // gauche : Osc 1, LFO dessous
+    lfoPanel->setBounds    (takeBottom (leftCol, lfoShare));
+    oscMixPanel->setBounds (leftCol);
 
-        inner.removeFromTop (6);
+    // droite : Osc 2 (hauteur fixe), le bandeau Output en bas, Effects prend tout l'entre-deux
+    osc2Panel->setBounds (rightCol.removeFromTop (osc2H));
+    rightCol.removeFromTop (gap);
+    outputStrip->setBounds (rightCol.removeFromBottom (OutputStrip::preferredHeight));
+    rightCol.removeFromBottom (gap);
+    fxPanel->setBounds (rightCol);
 
-        const int n = 4;
-        const int cellW = inner.getWidth() / n;
+    layoutAmp();
+    layoutOsc1();
+    layoutFilter();
+    layoutDisplay();
+    layoutLfo();
+    layoutOsc2();
+    layoutFx();
+}
 
-        attackKnob->setBounds (
-            juce::Rectangle<int> (
-                inner.getX() + 0 * cellW,
-                inner.getY(),
-                cellW,
-                inner.getHeight()).reduced (4));
-
-        decayKnob->setBounds (
-            juce::Rectangle<int> (
-                inner.getX() + 1 * cellW,
-                inner.getY(),
-                cellW,
-                inner.getHeight()).reduced (4));
-
-        sustainKnob->setBounds (
-            juce::Rectangle<int> (
-                inner.getX() + 2 * cellW,
-                inner.getY(),
-                cellW,
-                inner.getHeight()).reduced (4));
-
-        releaseKnob->setBounds (
-            juce::Rectangle<int> (
-                inner.getX() + 3 * cellW,
-                inner.getY(),
-                cellW,
-                inner.getHeight()).reduced (4));
-    }
-
-    auto mainRow = bounds.reduced (16, 6);
-
-    const int gap = 10;
-
-    const int leftW   = (int) (mainRow.getWidth() * 0.33f);
-    const int rightW  = (int) (mainRow.getWidth() * 0.29f);
-    const int centerW = mainRow.getWidth() - leftW - rightW - 2 * gap;
-
-    auto leftCol = mainRow.removeFromLeft (leftW);
-
-    mainRow.removeFromLeft (gap);
-
-    auto centerCol = mainRow.removeFromLeft (centerW);
-
-    mainRow.removeFromLeft (gap);
-
-    auto rightCol = mainRow;
-
-    // =========================================================
-    // LEFT COLUMN
-    // =========================================================
-
+//==============================================================================
+// Contenu de chaque panneau
+//==============================================================================
+namespace
+{
+    // cellules de même largeur sur une ligne
+    void layoutRow (juce::Rectangle<int> area, std::initializer_list<juce::Component*> items, int padX, int padY)
     {
-        const int osc1H = (int) (leftCol.getHeight() * 0.48f);
-
-        auto osc1Box = leftCol.removeFromTop (osc1H);
-
-        leftCol.removeFromTop (gap);
-
-        auto filterBox = leftCol;
-
-        oscMixPanel->setBounds (osc1Box);
-        filterPanel->setBounds (filterBox);
-
-        {
-            auto inner = oscMixPanel->getContentBounds();
-
-            // boite d'icones (28) + bande du cadenas : taille fixe
-            const int selRowH = 28 + IconChoiceSelector::defaultLockStripH;
-
-            osc1WaveSel->setBounds (inner.removeFromTop (selRowH));
-
-            inner.removeFromTop (1);
-
-            const int cellW = inner.getWidth() / 2;
-
-            oscMixKnob->setBounds (
-                juce::Rectangle<int> (
-                    inner.getX(),
-                    inner.getY(),
-                    cellW,
-                    inner.getHeight()).reduced (4, 0));
-
-            noiseLevelKnob->setBounds (
-                juce::Rectangle<int> (
-                    inner.getX() + cellW,
-                    inner.getY(),
-                    cellW,
-                    inner.getHeight()).reduced (4, 0));
-        }
-
-        {
-            auto inner = filterPanel->getContentBounds();
-
-            const int rowH = inner.getHeight() / 2;
-            const int cellW = inner.getWidth() / 3;
-
-            filterCutoffKnob->setBounds (
-                juce::Rectangle<int> (inner.getX(), inner.getY(), cellW, rowH).reduced (0, 2));
-
-            filterResoKnob->setBounds (
-                juce::Rectangle<int> (inner.getX() + cellW, inner.getY(), cellW, rowH).reduced (0, 2));
-
-
-            auto typeCell = juce::Rectangle<int> (
-                inner.getX() + 2 * cellW,
-                inner.getY(),
-                cellW,
-                rowH).reduced (4);
-
-            // boite d'icones (28) + bande du cadenas (14)
-            const int selH = juce::jmin (28 + IconChoiceSelector::defaultLockStripH,
-                                        typeCell.getHeight());
-
-            typeCell = typeCell.withSizeKeepingCentre (
-                typeCell.getWidth(),
-                selH);
-
-            filterTypeSel->setBounds (typeCell);
-
-            filterEnvAmtKnob->setBounds (
-                juce::Rectangle<int> (inner.getX(), inner.getY() + rowH, cellW, rowH).reduced (0, 2));
-
-            filterEnvDecayKnob->setBounds (
-                juce::Rectangle<int> (inner.getX() + cellW, inner.getY() + rowH, cellW, rowH).reduced (0, 2));
-
-            velocityFilterKnob->setBounds (
-                juce::Rectangle<int> (inner.getX() + 2 * cellW, inner.getY() + rowH, cellW, rowH).reduced (0, 2));
-        }
+        const int cellW = area.getWidth() / juce::jmax (1, (int) items.size());
+        int i = 0;
+        for (auto* c : items)
+            c->setBounds (juce::Rectangle<int> (area.getX() + cellW * i++, area.getY(), cellW, area.getHeight())
+                              .reduced (padX, padY));
     }
+}
 
-    // =========================================================
-    // CENTER COLUMN
-    // =========================================================
+void MainComponent::layoutAmp()
+{
+    // Attack, Decay | courbe | Sustain, Release : la courbe au centre, entre ses réglages
+    auto inner = ampPanel->getContentBounds().withTrimmedTop (-4);
+    const int sideW = (int) ((float) inner.getWidth() * 0.20f);   // la courbe prend 60 % de la largeur
 
-    {
-        const int screenH = (int) (centerCol.getHeight() * 0.50f);
+    layoutRow (inner.removeFromLeft (sideW),  { attackKnob.get(), decayKnob.get() },    4, 0);
+    layoutRow (inner.removeFromRight (sideW), { sustainKnob.get(), releaseKnob.get() }, 4, 0);
+    ampEnvViz.setBounds (inner.reduced (10, 0));
+}
 
-        auto screenBox = centerCol.removeFromTop (screenH);
+void MainComponent::layoutOsc1()
+{
+    // Formes d'onde en grille 2 x 2 à gauche, Mix et Noise à droite sur la même hauteur ;
+    // Unison, Spread et Width récupèrent toute la rangée du bas.
+    //
+    //   [ ~  /\ ]  Mix   Noise
+    //   [ /| [] ]
+    //   Unison   Spread   Width
+    auto inner = oscMixPanel->getContentBounds();
 
-        centerCol.removeFromTop (gap);
+    auto top = inner.removeFromTop (inner.getHeight() / 2);
+    inner.removeFromTop (2);
 
-        auto lfoBox = centerCol;
+    // la grille occupe la même hauteur qu'un knob de la ligne : son haut s'aligne sur les
+    // libellés MIX / NOISE, le bas de la boîte sur le bas des cadrans (le knob réduit sa zone
+    // de 2 px), et la bande du cadenas (14 px) tombe pile sur la ligne des valeurs (14 px)
+    static_assert (IconChoiceSelector::defaultLockStripH == 14, "bande du cadenas = hauteur des valeurs des knobs");
+    auto waves = top.removeFromLeft ((int) ((float) top.getWidth() * 0.46f));
+    osc1WaveSel->setBounds (waves.withTrimmedTop (2).withTrimmedBottom (2));
+    top.removeFromLeft (6);
+    layoutRow (top, { oscMixKnob.get(), noiseLevelKnob.get() }, 2, 0);
 
-        screenPanel->setBounds (screenBox);
-        lfoPanel->setBounds (lfoBox);
+    layoutRow (inner, { unisonVoicesKnob.get(), unisonDetuneKnob.get(), stereoWidthKnob.get() }, 4, 0);
+}
 
-        displayScreen.setBounds (
-            screenPanel->getContentBounds().reduced (4));
+void MainComponent::layoutFilter()
+{
+    auto inner = filterPanel->getContentBounds();
+    auto top = inner.removeFromTop (inner.getHeight() / 2);
 
-        auto inner = lfoPanel->getContentBounds();
+    const int cellW = top.getWidth() / 3;
+    layoutRow (top.removeFromLeft (cellW * 2), { filterCutoffKnob.get(), filterResoKnob.get() }, 0, 2);
 
-        const int vizH = (int) (inner.getHeight() * 0.40f);
+    // 3e cellule : 12 / 24 dB au-dessus du type de filtre, même largeur de boîte
+    //   [ 12 | 24 ]          <- cadenas dans une colonne à gauche (déborde dans la marge)
+    //   [ LP  BP  HP ]
+    //   [   cadenas  ]
+    constexpr int slopeH = 22, slopeGap = 4;
+    constexpr int typeH  = 28 + IconChoiceSelector::defaultLockStripH;
 
-        lfoViz.setBounds (inner.removeFromTop (vizH));
+    auto cell = top.reduced (4, 0);
+    auto block = cell.withSizeKeepingCentre (cell.getWidth(), juce::jmin (cell.getHeight(), slopeH + slopeGap + typeH));
 
-        inner.removeFromTop (6);
+    const auto slopeRow = block.removeFromTop (slopeH);
+    filterSlopeSel->setBounds (slopeRow.withX (slopeRow.getX() - IconChoiceSelector::lockColumnW)
+                                       .withWidth (slopeRow.getWidth() + IconChoiceSelector::lockColumnW));
+    block.removeFromTop (slopeGap);
+    filterTypeSel->setBounds (block);
 
-        const int cellW = inner.getWidth() / 3;
+    layoutRow (inner, { filterEnvAmtKnob.get(), filterEnvDecayKnob.get(), velocityFilterKnob.get() }, 0, 2);
+}
 
-        lfoRateKnob->setBounds (
-            juce::Rectangle<int> (
-                inner.getX(),
-                inner.getY(),
-                cellW,
-                inner.getHeight()).reduced (4));
+void MainComponent::layoutDisplay()
+{
+    engineBadge.setBounds (screenPanel->getWidth() - 16 - 44, 7, 44, 16);
+    displayScreen.setBounds (screenPanel->getContentBounds().reduced (4));
+}
 
-        lfoToPitchKnob->setBounds (
-            juce::Rectangle<int> (
-                inner.getX() + cellW,
-                inner.getY(),
-                cellW,
-                inner.getHeight()).reduced (4));
+void MainComponent::layoutLfo()
+{
+    auto inner = lfoPanel->getContentBounds();
+    lfoViz.setBounds (inner.removeFromTop ((int) ((float) inner.getHeight() * 0.36f)));
+    inner.removeFromTop (4);
+    layoutRow (inner, { lfoRateKnob.get(), lfoToPitchKnob.get(), lfoToCutoffKnob.get() }, 4, 0);
+}
 
-        lfoToCutoffKnob->setBounds (
-            juce::Rectangle<int> (
-                inner.getX() + 2 * cellW,
-                inner.getY(),
-                cellW,
-                inner.getHeight()).reduced (4));
-    }
+void MainComponent::layoutOsc2()
+{
+    auto inner = osc2Panel->getContentBounds();
+    osc2WaveSel->setBounds (inner.removeFromTop (28 + IconChoiceSelector::defaultLockStripH));
+    inner.removeFromTop (2);
+    layoutRow (inner, { osc2DetuneKnob.get(), osc2CoarseKnob.get() }, 4, 0);
+}
 
-    // =========================================================
-    // RIGHT COLUMN
-    // =========================================================
-
-    {
-        const int osc2H = (int) (rightCol.getHeight() * 0.55f);
-
-        auto osc2Box = rightCol.removeFromTop (osc2H);
-
-        rightCol.removeFromTop (gap);
-
-        auto fxBox = rightCol;
-
-        osc2Panel->setBounds (osc2Box);
-        fxPanel->setBounds (fxBox);
-
-        {
-            auto inner = osc2Panel->getContentBounds();
-
-            const int selH = 28;
-
-            osc2WaveSel->setBounds (
-                inner.removeFromTop (selH + IconChoiceSelector::defaultLockStripH));
-
-            inner.removeFromTop (2);
-
-            osc2DetuneKnob->setBounds (
-                inner.reduced (4));
-        }
-
-        {
-            auto inner = fxPanel->getContentBounds();
-
-            const int cellW = inner.getWidth() / 2;
-
-            distortionKnob->setBounds (
-                juce::Rectangle<int> (
-                    inner.getX(),
-                    inner.getY(),
-                    cellW,
-                    inner.getHeight()).reduced (4));
-
-            reverbKnob->setBounds (
-                juce::Rectangle<int> (
-                    inner.getX() + cellW,
-                    inner.getY(),
-                    cellW,
-                    inner.getHeight()).reduced (4));
-        }
-    }
+void MainComponent::layoutFx()
+{
+    // Drive | Delay | Reverb, Size
+    layoutRow (fxPanel->getContentBounds(),
+               { distortionKnob.get(), delayMixKnob.get(), reverbKnob.get(), reverbSizeKnob.get() }, 2, 2);
 }

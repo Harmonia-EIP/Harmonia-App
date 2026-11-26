@@ -16,6 +16,9 @@ class ModelPicker : public juce::Component,
 public:
     ModelPicker() { setMouseCursor (juce::MouseCursor::PointingHandCursor); }
 
+    // Étincelle à 4 branches de la capsule (réutilisée par les cartes d'historique)
+    static juce::Path sparkle (juce::Point<float> centre, float outer, float inner, float rotation = 0.0f);
+
     void addItem (const juce::String& name, int id) { items.push_back ({ name, id }); }
     void clearItems()                               { items.clear(); selectedId = 0; repaint(); }
     void setSelectedId (int id)                     { selectedId = id; repaint(); }

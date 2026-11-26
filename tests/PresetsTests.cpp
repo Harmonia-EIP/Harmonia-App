@@ -156,26 +156,25 @@ TEST_CASE ("PresetLoader: structure du JSON exporté")
 
     const auto json = PresetLoader::saveToJsonString (p.getAPVTS(), "Mon Preset", "tests");
     const auto doc  = nlohmann::json::parse (json.toStdString());
-    const auto& ids = HarmoniaParams::orderedIds();
 
     REQUIRE (doc["metadata"]["name"] == "Mon Preset");
     REQUIRE (doc["metadata"]["generated_by"] == "tests");
-    REQUIRE (doc["metadata"]["charter_version"] == "1.0");
+    REQUIRE (doc["metadata"]["charter_version"] == std::string (HarmoniaCharter::version));
+    REQUIRE ((doc["metadata"]["engine"] == "analog" || doc["metadata"]["engine"] == "dx7"));
 
+    // charte v3 : tous les paramètres, normalisés ; plus de tableau 'values' (forme v2)
     REQUIRE (doc["parameters"].is_object());
-    REQUIRE (doc["values"].is_array());
-    REQUIRE (doc["parameters"].size() == ids.size());
-    REQUIRE (doc["values"].size()     == ids.size());
+    REQUIRE_FALSE (doc.contains ("values"));
+    REQUIRE (doc["parameters"].size() == HarmoniaCharter::params.size());
 
-    for (size_t i = 0; i < ids.size(); ++i)
+    for (const auto& spec : HarmoniaCharter::params)
     {
-        INFO (ids[i].toStdString());
-        const auto key = ids[i].toStdString();
+        const std::string key (spec.id);
+        INFO (key);
         REQUIRE (doc["parameters"].contains (key));
         REQUIRE (doc["parameters"][key].is_number());
         REQUIRE (doc["parameters"][key].get<double>() >= 0.0);
         REQUIRE (doc["parameters"][key].get<double>() <= 1.0);
-        REQUIRE (doc["values"][i] == doc["parameters"][key]);   // même ordre que orderedIds()
     }
 
     const auto text = json.toLowerCase();
@@ -367,13 +366,57 @@ TEST_CASE ("PresetLoader: forme 'values' appliquée dans l'ordre de orderedIds()
 
     REQUIRE (PresetLoader::loadFromJsonString (juce::String (doc.dump()), a).success);
 
-    for (size_t i = 0; i < ids.size(); ++i)
+    // 'values' est la forme v2 : normalisée sur les plages v2, convertie par les règles de la charte
+    std::array<float, HarmoniaCharter::v2Ids.size()> v2 {};
+    for (size_t i = 0; i < v2.size(); ++i)
+        v2[i] = (float) i / (float) (ids.size() - 1);
+
+    for (size_t i = HarmoniaCharter::analogBegin; i < HarmoniaCharter::analogEnd; ++i)
     {
-        INFO (ids[i].toStdString());
-        auto* prm = a.getParameter (ids[i]);
-        const float x = (float) i / (float) (ids.size() - 1);
-        REQUIRE (prm->getValue() == Catch::Approx (snapped (prm, x)).margin (1e-4));
+        const auto& spec = HarmoniaCharter::params[i];
+        INFO (std::string (spec.id));
+        auto* prm = a.getParameter (HarmoniaParams::toJuce (spec.id));
+        const float expected = HarmoniaCharter::upgradeFromV2Normalized (spec, v2);
+        REQUIRE (prm->convertFrom0to1 (prm->getValue()) == Catch::Approx (expected).epsilon (1e-3).margin (1e-3));
     }
+}
+
+TEST_CASE ("PresetLoader: preset v2 (modèles v1/v2) converti sur les plages v3")
+{
+    HarmoniaAudioProcessor p;
+    auto& a = p.getAPVTS();
+    a.getParameter ("unison_voices")->setValueNotifyingHost (1.0f);   // réglage v3 qu'un preset v2 ne connaît pas
+
+    nlohmann::json doc;
+    doc["metadata"] = { { "name", "v2" }, { "charter_version", "1.0" } };
+    doc["parameters"] = { { "filter_env_amount", 0.75 },   // v2 : -1..1 -> 0.5, x 4 octaves
+                          { "lfo_to_pitch", 0.2 },         // v2 : x 50 cents
+                          { "reverb_mix", 1.0 },           // donne aussi reverb_size = 0.55 + 0.35
+                          { "amp_decay", 0.5 } };          // v2 : 10..5000 ms, centre 300
+
+    REQUIRE (PresetLoader::loadFromJsonString (juce::String (doc.dump()), a).success);
+
+    auto physical = [&] (const juce::String& id) { return a.getParameter (id)->convertFrom0to1 (a.getParameter (id)->getValue()); };
+    REQUIRE (physical ("filter_env_amount") == Catch::Approx (2.0f).margin (1e-3));
+    REQUIRE (physical ("lfo_to_pitch") == Catch::Approx (10.0f).margin (1e-2));
+    REQUIRE (physical ("reverb_size") == Catch::Approx (0.9f).margin (1e-3));
+    REQUIRE (physical ("amp_decay") == Catch::Approx (300.0f).epsilon (0.01));
+    REQUIRE (physical ("unison_voices") == Catch::Approx (1.0f));     // remis à sa valeur neutre
+    REQUIRE (physical ("engine") == Catch::Approx (0.0f));            // analogique
+}
+
+TEST_CASE ("PresetLoader: preset v3 appliqué tel quel")
+{
+    HarmoniaAudioProcessor p;
+    auto& a = p.getAPVTS();
+
+    nlohmann::json doc;
+    doc["metadata"] = { { "name", "v3" }, { "charter_version", std::string (HarmoniaCharter::version) } };
+    doc["parameters"] = { { "engine", 0.0 }, { "unison_voices", 0.4 }, { "amp_decay", 0.5 } };
+
+    REQUIRE (PresetLoader::loadFromJsonString (juce::String (doc.dump()), a).success);
+    REQUIRE (a.getParameter ("unison_voices")->getValue() == Catch::Approx (snapped (a.getParameter ("unison_voices"), 0.4f)));
+    REQUIRE (a.getParameter ("amp_decay")->getValue() == Catch::Approx (0.5f).margin (1e-5));
 }
 
 TEST_CASE ("PresetLoader: 'values' trop court, trop long ou avec des non-nombres")
@@ -438,6 +481,115 @@ TEST_CASE ("PresetLoader: 'parameters' est prioritaire sur 'values'")
 
     REQUIRE (PresetLoader::loadFromJsonString (juce::String (doc.dump()), a).success);
     requireSameExcept (before, snapshot (a), { HarmoniaParams::IDs::filterCutoff.toStdString() });
+}
+
+//==============================================================================
+// Entrées de l'historique du backend (un nom et des parameters, sans metadata)
+//==============================================================================
+
+namespace
+{
+    // Valeurs normalisées actuelles de tous les paramètres de la charte v3
+    Snapshot snapshotAll (juce::AudioProcessorValueTreeState& a)
+    {
+        Snapshot s;
+        for (const auto& spec : HarmoniaCharter::params)
+            s[std::string (spec.id)] = a.getParameter (HarmoniaParams::toJuce (spec.id))->getValue();
+        return s;
+    }
+
+    float physicalValue (juce::AudioProcessorValueTreeState& a, const juce::String& id)
+    {
+        auto* p = a.getParameter (id);
+        return p->convertFrom0to1 (p->getValue());
+    }
+}
+
+TEST_CASE ("PresetLoader: entrée d'historique v3 appliquée telle quelle")
+{
+    HarmoniaAudioProcessor p;
+    auto& a = p.getAPVTS();
+
+    const std::map<juce::String, float> entry { { "engine", 1.0f }, { "unison_voices", 0.4f },
+                                                { "filter_env_amount", 0.75f }, { "dx7_algorithm", 0.5f } };
+
+    const auto r = PresetLoader::loadFromParameters (entry, "Acid lead", a);
+
+    REQUIRE (r.success);
+    REQUIRE (r.presetName == "Acid lead");
+    REQUIRE (physicalValue (a, "engine") == Catch::Approx (1.0f));   // DX7 : pas de conversion v2
+    REQUIRE (a.getParameter ("filter_env_amount")->getValue() == Catch::Approx (0.75f).margin (1e-5));
+    REQUIRE (a.getParameter ("unison_voices")->getValue() == Catch::Approx (snapped (a.getParameter ("unison_voices"), 0.4f)));
+}
+
+TEST_CASE ("PresetLoader: entrée d'historique v2 convertie comme un fichier v2")
+{
+    HarmoniaAudioProcessor fromEntry, fromFile;
+    juce::Random rng (17);
+
+    std::map<juce::String, float> entry;
+    nlohmann::json doc;
+    doc["metadata"] = { { "name", "v2" }, { "charter_version", "1.0" } };
+    for (const auto& id : HarmoniaCharter::v2Ids)
+    {
+        const float v = rng.nextFloat();
+        entry[HarmoniaParams::toJuce (id)] = v;
+        doc["parameters"][std::string (id)] = v;
+    }
+
+    REQUIRE (PresetLoader::loadFromParameters (entry, "v2", fromEntry.getAPVTS()).success);
+    REQUIRE (PresetLoader::loadFromJsonString (juce::String (doc.dump()), fromFile.getAPVTS()).success);
+
+    requireSameExcept (snapshotAll (fromFile.getAPVTS()), snapshotAll (fromEntry.getAPVTS()));
+    REQUIRE (physicalValue (fromEntry.getAPVTS(), "engine") == Catch::Approx (0.0f));   // analogique
+}
+
+TEST_CASE ("PresetLoader: entrée d'historique invalide refusée sans toucher aux paramètres")
+{
+    const auto entry = GENERATE (std::map<juce::String, float> {},
+                                 std::map<juce::String, float> { { "parametre_qui_n_existe_pas", 0.5f } },
+                                 std::map<juce::String, float> { { "engine", 1.0f }, { "amp_decay", 1.5f } },
+                                 std::map<juce::String, float> { { "filter_cutoff", -0.1f } },
+                                 std::map<juce::String, float> { { "filter_cutoff", std::nanf ("") } });
+
+    HarmoniaAudioProcessor p;
+    juce::Random rng (23);
+    randomise (p.getAPVTS(), rng);
+    const auto before = snapshotAll (p.getAPVTS());
+
+    const auto r = PresetLoader::loadFromParameters (entry, "x", p.getAPVTS());
+
+    REQUIRE_FALSE (r.success);
+    REQUIRE (r.errorMessage.isNotEmpty());
+    requireSameExcept (before, snapshotAll (p.getAPVTS()));
+}
+
+TEST_CASE ("PresetLoader: entrée d'historique en mode affinage, les verrouillés gardent leur valeur")
+{
+    HarmoniaAudioProcessor p;
+    auto& a = p.getAPVTS();
+    a.getParameter ("filter_cutoff")->setValueNotifyingHost (0.1f);
+    const float lockedBefore = a.getParameter ("filter_cutoff")->getValue();
+
+    const std::map<juce::String, float> entry { { "engine", 0.0f }, { "filter_cutoff", 0.9f }, { "amp_decay", 0.3f } };
+    juce::StringArray locked { "filter_cutoff" };
+
+    const auto r = PresetLoader::loadFromParameters (entry, {}, a, locked);
+
+    REQUIRE (r.success);
+    REQUIRE (r.presetName == "Preset");
+    REQUIRE (a.getParameter ("filter_cutoff")->getValue() == Catch::Approx (lockedBefore));
+    REQUIRE (a.getParameter ("amp_decay")->getValue() == Catch::Approx (0.3f).margin (1e-5));
+}
+
+TEST_CASE ("PresetLoader: fichier sans metadata mais avec des paramètres v3 lu en v3")
+{
+    HarmoniaAudioProcessor p;
+    auto& a = p.getAPVTS();
+
+    REQUIRE (PresetLoader::loadFromJsonString (R"({"parameters":{"engine":1.0,"filter_env_amount":0.75}})", a).success);
+    REQUIRE (physicalValue (a, "engine") == Catch::Approx (1.0f));
+    REQUIRE (a.getParameter ("filter_env_amount")->getValue() == Catch::Approx (0.75f).margin (1e-5));
 }
 
 //==============================================================================
