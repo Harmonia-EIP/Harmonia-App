@@ -34,11 +34,13 @@
 
 #include "JuceHeader.h"
 #include "parameters/HarmoniaParameters.h"
-#include "parameters/HarmoniaParametersV3.h"
 #include "engine/HarmoniaEngineV3.h"
 #include "components/Synth.h"
 #include "components/OscilloscopeComponent.h"
 #include "backend/BackendManager.h"
+#include "engine/OutputStage.h"
+
+#include <atomic>
 
 /**
  * @class HarmoniaAudioProcessor
@@ -268,6 +270,12 @@ public:
      */
     void setOscilloscope(OscilloscopeComponent* osc);
 
+    /**
+     * @brief Crête de sortie (0..1, après volume et limiteur) depuis le dernier appel,
+     *        puis remise à zéro. Pour le vumètre (thread UI) ; sans verrou.
+     */
+    float takeOutputPeak() noexcept { return outputPeak.exchange (0.0f); }
+
 private:
     /**
      * AudioProcessorValueTreeState storing all plugin parameters.
@@ -275,7 +283,7 @@ private:
     juce::AudioProcessorValueTreeState apvts;
 
     /** Physical value of every charter v3 parameter (audio thread). */
-    HarmoniaParamsV3::ParameterRefs paramRefs;
+    HarmoniaParams::AtomicRefs paramRefs;
 
     /** What the voices play in the current block (analog patch, DX7 voice, engine), shared with the effects. */
     HarmoniaPatches patches;
@@ -284,6 +292,8 @@ private:
      * Polyphonic synthesizer engine.
      */
     juce::Synthesiser synth;
+
+    bool lastDx7Mode = false;
 
     /**
      * Shared MIDI keyboard state used by the UI
@@ -296,6 +306,16 @@ private:
 
     /** Stereo scratch for the effects when the output is mono. */
     juce::AudioBuffer<float> effectsScratch;
+
+    /** Volume de sortie (dB, hors charte), lissé pour éviter les clics. */
+    std::atomic<float>* outputVolumeDb = nullptr;
+    juce::SmoothedValue<float, juce::ValueSmoothingTypes::Linear> outputGain;
+
+    /** Plus haute crête de sortie depuis la dernière lecture du vumètre. */
+    std::atomic<float> outputPeak { 0.0f };
+
+    /** Volume + limiteur doux sur tout le buffer (les deux moteurs). */
+    void applyOutputStage (juce::AudioBuffer<float>& buffer, int numSamples) noexcept;
 
     /**
      * Optional oscilloscope visualization target.

@@ -83,9 +83,17 @@ public:
     bool isLocked() const override              { return locked; }
     juce::String getParamId() const override    { return parameterId; }
 
+    void setArrowTarget (bool isTarget) override
+    {
+        arrowTarget = isTarget;   // aucun repère visuel (choix de design) : seules les flèches changent
+    }
+
+    bool isArrowTarget() const noexcept { return arrowTarget; }
+
     void paint (juce::Graphics& g) override
     {
         const auto r = getLocalBounds();
+
         const bool lockedShown = lockUiVisible && locked;
 
         const auto font = juce::Font (juce::FontOptions (9.5f).withStyle ("Bold"))
@@ -97,7 +105,13 @@ public:
         juce::GlyphArrangement ga;
         ga.addLineOfText (font, text, 0.0f, 0.0f);
         const float textW = ga.getBoundingBox (0, -1, true).getWidth();
-        const float textX = capArea.getCentreX() - textW * 0.5f;
+
+        // Cadenas visible (mode Refine) : cadenas + libellé centrés ENSEMBLE, pour qu'un
+        // libellé large ("TO CUTOFF") ne colle pas au cadenas
+        constexpr float iconW = 8.0f, iconH = 10.0f, lockGap = 5.0f;
+        const float groupW = lockUiVisible ? iconW + lockGap + textW : textW;
+        const float groupX = juce::jmax (capArea.getX(), capArea.getCentreX() - groupW * 0.5f);
+        const float textX  = lockUiVisible ? groupX + iconW + lockGap : groupX;
 
         const auto textCol = lockedShown
                                ? HarmoniaPalette::textMuted.interpolatedWith (HarmoniaPalette::textPrimary, 0.35f)
@@ -111,12 +125,8 @@ public:
 
         if (lockUiVisible)
         {
-            const float iconW = 8.0f, iconH = 10.0f, gap = 4.0f;
-
-            const float padX = juce::jmax (0.0f, textX - gap - iconW);
-
             LockableControl::drawPadlock (g,
-                { padX, capArea.getCentreY() - iconH * 0.5f, iconW, iconH },
+                { groupX, capArea.getCentreY() - iconH * 0.5f, iconW, iconH },
                 locked,
                 locked ? HarmoniaPalette::textPrimary
                     : HarmoniaPalette::textMuted.withAlpha (0.55f));
@@ -166,6 +176,7 @@ private:
     }
 
     juce::Slider slider;
+    bool arrowTarget = false;
     juce::String caption;
     const juce::String parameterId;
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> attachment;

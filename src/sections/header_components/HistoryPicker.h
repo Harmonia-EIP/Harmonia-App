@@ -1,6 +1,7 @@
 #pragma once
 
 #include "HeaderIncludes.h"
+#include "HistoryItem.h"
 
 #include <functional>
 
@@ -18,9 +19,8 @@ public:
     HistoryPicker();
     ~HistoryPicker() override;
 
-    void setItems (const juce::StringArray& newTitles,
-                   const juce::StringArray& newTypes,
-                   const juce::StringArray& newDates);
+    // Titres nettoyés ici ; date et modèle sont déjà formatés par le header.
+    void setItems (const HistoryItems& newItems);
 
     void setInteractive (bool shouldBeInteractive);
 
@@ -43,14 +43,11 @@ private:
 
     static juce::String clean (const juce::String& s);
 
-    juce::StringArray titles;
-    juce::StringArray types;
-    juce::StringArray dates;
+    HistoryItems items;
 
     juce::Component::SafePointer<HistoryOverlay> overlay;
 
-    std::function<void (const juce::StringArray&, const juce::StringArray&,
-                        const juce::StringArray&)> pushToPanel;
+    std::function<void (const HistoryItems&)> pushToPanel;
 
     bool menuOpen = false;
     bool interactive = true;

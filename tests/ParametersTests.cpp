@@ -25,12 +25,15 @@ TEST_CASE ("Le layout contient exactement les paramètres de la charte v3")
 {
     HarmoniaAudioProcessor p;
     // 192 paramètres : engine, 46 analogiques, 145 DX7 (HARMONIA/charter/harmonia_v3.json)
-    REQUIRE (p.getParameters().size() == (int) HarmoniaCharter::params.size());
+    // + les paramètres hors charte (volume de sortie)
+    REQUIRE (p.getParameters().size()
+             == (int) HarmoniaCharter::params.size() + HarmoniaParams::Output::numExtraParams);
+    REQUIRE (p.getAPVTS().getParameter (HarmoniaParams::Output::volumeId) != nullptr);
 
     for (const auto& spec : HarmoniaCharter::params)
     {
         INFO (std::string (spec.id));
-        REQUIRE (p.getAPVTS().getParameter (HarmoniaParamsV3::toJuce (spec.id)) != nullptr);
+        REQUIRE (p.getAPVTS().getParameter (HarmoniaParams::toJuce (spec.id)) != nullptr);
     }
 }
 
@@ -42,7 +45,7 @@ TEST_CASE ("Valeurs par défaut et bornes : celles de la charte")
     for (const auto& spec : HarmoniaCharter::params)
     {
         INFO (std::string (spec.id));
-        auto* prm = a.getParameter (HarmoniaParamsV3::toJuce (spec.id));
+        auto* prm = a.getParameter (HarmoniaParams::toJuce (spec.id));
         REQUIRE (prm->convertFrom0to1 (prm->getDefaultValue()) == Catch::Approx (spec.defaultValue).margin (1e-4));
         REQUIRE (prm->convertFrom0to1 (0.0f) == Catch::Approx (spec.min).epsilon (0.001));
         REQUIRE (prm->convertFrom0to1 (1.0f) == Catch::Approx (spec.max).epsilon (0.001));
@@ -110,15 +113,18 @@ TEST_CASE ("AtomicRefs: tous les pointeurs liés et cohérents avec l'APVTS")
 TEST_CASE ("ParameterRefs v3 : chaque paramètre de la charte est lié")
 {
     HarmoniaAudioProcessor p;
-    HarmoniaParamsV3::ParameterRefs refs;
+    HarmoniaParams::AtomicRefs refs;
     refs.bind (p.getAPVTS());
 
-    for (auto* ptr : refs.values)
+    REQUIRE (refs.engine != nullptr);
+    for (auto* ptr : refs.analog)
+        REQUIRE (ptr != nullptr);
+    for (auto* ptr : refs.dx7)
         REQUIRE (ptr != nullptr);
 
     auto* cutoff = p.getAPVTS().getParameter (IDs::filterCutoff);
     cutoff->setValueNotifyingHost (cutoff->convertTo0to1 (440.0f));
-    REQUIRE (refs.analog (HarmoniaCharter::analog::filter_cutoff) == Catch::Approx (440.0f).epsilon (0.01));
+    REQUIRE (refs.analog[(size_t) HarmoniaCharter::analog::filter_cutoff]->load() == Catch::Approx (440.0f).epsilon (0.01));
 }
 
 TEST_CASE ("Paramètres de choix: nombre d'entrées et textes")
@@ -161,6 +167,8 @@ TEST_CASE ("Affichage des valeurs : décimales selon la grandeur, unités courte
     REQUIRE (text ("filter_cutoff", 20000.0f) == "20.0 kHz");
     REQUIRE (text ("filter_cutoff", 440.0f) == "440 Hz");
     REQUIRE (text ("amp_decay", 300.0f) == "300 ms");
+    REQUIRE (text ("amp_attack", 117.589f) == "118 ms");     // pas "117.589 ms" : arrondi au-delà de 100
+    REQUIRE (text ("filter_cutoff", 2220.0f) == "2.22 kHz");
     REQUIRE (text ("amp_release", 2500.0f) == "2.50 s");
     REQUIRE (text ("osc_mix", 0.5f) == "0.50");
     REQUIRE (text ("filter_env_amount", 2.0f) == "+2.00 oct");

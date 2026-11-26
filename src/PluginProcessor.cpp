@@ -11,12 +11,13 @@ HarmoniaAudioProcessor::HarmoniaAudioProcessor()
                        .withOutput ("Output", juce::AudioChannelSet::stereo(), true)
                      #endif
                        ),
-       apvts (*this, nullptr, "HARMONIA", HarmoniaParamsV3::createLayout())
+       apvts (*this, nullptr, "HARMONIA", HarmoniaParams::createLayout())
 #else
-     : apvts (*this, nullptr, "HARMONIA", HarmoniaParamsV3::createLayout())
+     : apvts (*this, nullptr, "HARMONIA", HarmoniaParams::createLayout())
 #endif
 {
     paramRefs.bind (apvts);
+    outputVolumeDb = apvts.getRawParameterValue (HarmoniaParams::Output::volumeId);
 }
 
 HarmoniaAudioProcessor::~HarmoniaAudioProcessor()
@@ -55,6 +56,9 @@ void HarmoniaAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlo
 
     effects.prepare (sampleRate);
     effectsScratch.setSize (2, juce::jmax (1, samplesPerBlock));
+
+    outputGain.reset (sampleRate, 0.05);   // 50 ms : pas de clic quand on tourne le knob
+    outputGain.setCurrentAndTargetValue (harmonia::output::dbToGain (outputVolumeDb->load()));
 }
 
 void HarmoniaAudioProcessor::releaseResources() {}
@@ -82,15 +86,25 @@ void HarmoniaAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer,
     buffer.clear();
 
     for (int i = 0; i < HarmoniaCharter::analog::count; ++i)
-        patches.analog[(size_t) i] = paramRefs.analog (i);
+        patches.analog[(size_t) i] = paramRefs.analog[(size_t) i]->load();
 
-    static const auto engineIndex = (size_t) HarmoniaCharter::indexOf ("engine");
-    patches.dx7Mode = paramRefs.get (engineIndex) > 0.5f;
+    // Changement de moteur : on coupe les voix en cours et on vide les effets,
+    // sinon l'ancien état (notes tenues, queue de reverb/delay) reste "bloqué".
+    const bool dx7Now = paramRefs.engine->load() > 0.5f;
+    if (dx7Now != lastDx7Mode)
+    {
+        lastDx7Mode = dx7Now;
+        synth.allNotesOff (0, false);   // false = coupe net, sans release
+        effects.reset();
+    }
+    patches.dx7Mode = dx7Now;
+
     if (patches.dx7Mode)
     {
         std::array<float, harmonia::dx7ParameterCount> dx7Values {};
+        static_assert (harmonia::dx7ParameterCount == HarmoniaCharter::dx7End - HarmoniaCharter::dx7Begin);
         for (size_t i = 0; i < dx7Values.size(); ++i)
-            dx7Values[i] = paramRefs.get (HarmoniaCharter::dx7Begin + i);
+            dx7Values[i] = paramRefs.dx7[i]->load();
         patches.dx7 = harmonia::dx7PatchFromValues (dx7Values.data());
     }
 
@@ -121,11 +135,38 @@ void HarmoniaAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer,
         }
     }
 
+    applyOutputStage (buffer, numSamples);
+
     {
         const juce::ScopedLock sl (oscLock);
         if (oscilloscope != nullptr)
             oscilloscope->pushBuffer (buffer, 0, buffer.getNumSamples());
     }
+}
+
+void HarmoniaAudioProcessor::applyOutputStage (juce::AudioBuffer<float>& buffer, int numSamples) noexcept
+{
+    outputGain.setTargetValue (harmonia::output::dbToGain (outputVolumeDb->load()));
+
+    const int numChannels = buffer.getNumChannels();
+    auto* const* channels = buffer.getArrayOfWritePointers();
+    float peak = 0.0f;
+
+    for (int s = 0; s < numSamples; ++s)
+    {
+        const float gain = outputGain.getNextValue();
+
+        for (int ch = 0; ch < numChannels; ++ch)
+        {
+            const float y = harmonia::output::softLimit (channels[ch][s] * gain);
+            channels[ch][s] = y;
+            peak = juce::jmax (peak, std::abs (y));
+        }
+    }
+
+    // le vumètre lit puis remet à zéro : on garde la plus haute crête en attendant
+    float previous = outputPeak.load (std::memory_order_relaxed);
+    while (peak > previous && ! outputPeak.compare_exchange_weak (previous, peak, std::memory_order_relaxed)) {}
 }
 
 bool HarmoniaAudioProcessor::hasEditor() const { return true; }
@@ -144,7 +185,7 @@ void HarmoniaAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
 {
     if (auto state = apvts.copyState(); state.isValid())
     {
-        state.setProperty (charterVersionId, HarmoniaParamsV3::toJuce (HarmoniaCharter::version), nullptr);
+        state.setProperty (charterVersionId, HarmoniaParams::toJuce (HarmoniaCharter::version), nullptr);
         if (auto xml = state.createXml())
             copyXmlToBinary (*xml, destData);
     }
@@ -168,7 +209,7 @@ void HarmoniaAudioProcessor::setStateInformation (const void* data, int sizeInBy
     std::array<float, HarmoniaCharter::v2Ids.size()> v2 {};
     for (size_t i = 0; i < v2.size(); ++i)
     {
-        const auto id = HarmoniaParamsV3::toJuce (HarmoniaCharter::v2Ids[i]);
+        const auto id = HarmoniaParams::toJuce (HarmoniaCharter::v2Ids[i]);
         const auto child = state.getChildWithProperty ("id", id);
         v2[i] = child.isValid() ? (float) child.getProperty ("value")
                                 : HarmoniaCharter::fromNormalized (HarmoniaCharter::v2Params[i], 0.0f);
@@ -177,7 +218,15 @@ void HarmoniaAudioProcessor::setStateInformation (const void* data, int sizeInBy
         if (state.getChild (i).hasProperty ("id") && state.getChild (i).hasProperty ("value"))
             state.removeChild (i, nullptr);
     apvts.replaceState (state);
-    HarmoniaParamsV3::applyV2State (apvts, v2);
+
+    // Applique les règles de migration du charter (défaut si le paramètre n'a pas de règle v2).
+    for (int i = 0; i < HarmoniaCharter::analog::count; ++i)
+    {
+        const auto& spec = HarmoniaCharter::params[HarmoniaCharter::analogBegin + (size_t) i];
+
+        if (auto* p = apvts.getParameter (HarmoniaParams::toJuce (spec.id)))
+            p->setValueNotifyingHost (p->convertTo0to1 (HarmoniaCharter::upgradeFromV2 (spec, v2)));
+    }
 }
 
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()

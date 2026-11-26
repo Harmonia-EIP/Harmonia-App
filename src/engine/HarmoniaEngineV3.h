@@ -17,7 +17,7 @@
 #include <cstdint>
 #include <vector>
 
-#include "../parameters/HarmoniaCharterV3.h"
+#include "../parameters/HarmoniaCharter.h"
 
 namespace harmonia
 {

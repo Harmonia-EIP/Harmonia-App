@@ -26,6 +26,9 @@ public:
     virtual bool isLocked() const = 0;
     virtual juce::String getParamId() const = 0;
 
+    /** Contrôle ciblé par les flèches du clavier (le dernier cliqué). Pas de repère visuel. */
+    virtual void setArrowTarget (bool isTarget) { juce::ignoreUnused (isTarget); }
+
     std::function<void()> onLockChanged;
 
     /** Petit cadenas vectoriel. closed = verrouille (plein), sinon ouvert (contour).

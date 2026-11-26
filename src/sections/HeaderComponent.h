@@ -24,6 +24,7 @@
 #include "header_components/ModelPicker.h"
 #include "header_components/HistoryPicker.h"
 #include "header_components/PromptEditor.h"
+#include "header_components/RandomizeButton.h"
 
 // Label dont le tooltip est calculé à la demande : toujours à jour,
 // et présent seulement si le texte est coupé par les "..."
@@ -69,6 +70,7 @@ public:
     juce::Button& getSaveButton()     { return saveButton; }
     juce::Button& getLogoutButton()   { return homeButton; }
     juce::Button& getLogoButton()     { return logoButton; }
+    juce::Button& getRandomButton()   { return randomButton; }
 
     juce::TextEditor& getPromptEditor()    { return promptEditor; }
     juce::Label&      getPresetLabel()     { return presetLabel; }
@@ -89,6 +91,11 @@ public:
 
     std::function<void (HarmoniaPalette::Theme)> onThemeChanged;
     std::function<void (Mode)> onModeChanged;
+
+    // --- Randomisation ------------------------------------------------------
+    // L'utilisateur a cliqué sur l'icône aléatoire. Le header ne connaît ni les
+    // paramètres ni les verrous : le MainComponent appelle ParamRandomizer.
+    std::function<void()> onRandomize;
 
     // --- Historique ---------------------------------------------------------
     // Le header garde la liste complète et renvoie l'ENTRÉE complète (pas un index) :
@@ -172,6 +179,7 @@ private:
 
     ModelPicker      modelPicker;
     HistoryPicker    historyPicker;
+    RandomizeButton  randomButton;
     PromptEditor     promptEditor;
     PaletteSelector  paletteSelector;
 

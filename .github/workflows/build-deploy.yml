@@ -13,7 +13,12 @@ permissions:
   contents: read
 
 jobs:
+  # Même CI que les PR (compilation + tests) : rien ne part sur le serveur si un test échoue
+  ci:
+    uses: ./.github/workflows/ci.yml
+
   build:
+    needs: ci
     runs-on: windows-2022
     steps:
       - uses: actions/checkout@v4

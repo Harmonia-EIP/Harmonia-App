@@ -1,14 +1,23 @@
 #include "HistoryTile.h"
 #include "HistoryUtils.h"
+#include "ModelPicker.h"
 
 namespace
 {
-    constexpr int textLeft = 10;       // début du contenu
+    constexpr int textLeft = 10;       // début du contenu (badge, puis ligne méta)
     constexpr int padY = 10, lineH = 17;
-    constexpr int badgeGap = 8, dateGap = 6, titleGap = 6;
+    constexpr int badgeGap = 8, titleGap = 6;
     constexpr int crossW = 24, crossH = 22, rightPad = 4;
-    constexpr int restRightPad = 10;   // marge droite des lignes 2 et 3 du titre
+    constexpr int restRightPad = 10;   // marge droite des lignes suivantes du titre et de la ligne méta
     constexpr int safety = 3;          // marge anti-rognage (arrondis de mesure)
+
+    // ligne méta (sous le titre) : filet, puis [étincelle] modèle ......... date
+    constexpr int metaGap      = 5;    // entre la dernière ligne du titre et le filet
+    constexpr int metaPadT     = 5;    // entre le filet et le texte
+    constexpr int metaH        = 16;
+    constexpr int padBottom    = 8;
+    constexpr int iconW        = 13;   // colonne de l'étincelle
+    constexpr int modelDateGap = 10;   // espace minimum entre le modèle et la date
 
     juce::Font titleFont (bool refined)
     {
@@ -18,7 +27,9 @@ namespace
 
         return juce::Font (juce::FontOptions (12.5f).withStyle ("Bold"));
     }
-    juce::Font dateFont()   { return juce::Font (juce::FontOptions (9.0f)); }
+    juce::Font dateFont()   { return juce::Font (juce::FontOptions (10.5f)); }
+
+    juce::Font modelFont()  { return juce::Font (juce::FontOptions (11.0f)); }
 
     juce::Font badgeFont()
     {
@@ -31,22 +42,37 @@ namespace
         return (int) std::ceil (juce::GlyphArrangement::getStringWidth (f, s)) + 1;
     }
 
-    // Colonnes de la carte (identiques pour toutes les cartes : titres et dates alignés)
-    //  - titleW : largeur de la 1re ligne du titre (s'arrête avant la date)
-    //  - restW  : largeur des lignes suivantes (la date n'est plus là)
-    struct Cols { int badgeW, titleX, titleW, restW, dateX, dateW; };
+    // Colonnes de la carte (identiques pour toutes les cartes : titres alignés)
+    //  - titleW : largeur de la 1re ligne du titre (s'arrête avant la croix)
+    //  - restW  : largeur des lignes suivantes (la croix n'est plus là)
+    //  - metaR  : bord droit de la ligne méta (la date s'y aligne)
+    struct Cols { int badgeW, titleX, titleW, restW, metaR; };
 
     Cols columns (int width)
     {
         Cols c;
         c.badgeW = juce::jmax (textWidth (badgeFont(), "GEN"),
                                textWidth (badgeFont(), "REF")) + 16;
-        c.dateW  = textWidth (dateFont(), "00 Mmm 00:00") + 2;
         c.titleX = textLeft + c.badgeW + badgeGap;
-        c.dateX  = width - rightPad - crossW - dateGap - c.dateW;
-        c.titleW = juce::jmax (20, c.dateX - titleGap - c.titleX - safety);
+        c.titleW = juce::jmax (20, width - rightPad - crossW - titleGap - c.titleX - safety);
         c.restW  = juce::jmax (20, width - restRightPad - c.titleX - safety);
+        c.metaR  = width - restRightPad;
         return c;
+    }
+
+    // Coupe `s` pour qu'il tienne dans maxW, en finissant par "…" si besoin
+    juce::String elide (const juce::String& s, const juce::Font& f, int maxW)
+    {
+        if (textWidth (f, s) <= maxW)
+            return s;
+
+        const juce::String dots (juce::CharPointer_UTF8 ("\xe2\x80\xa6"));
+        auto t = s.trimEnd();
+
+        while (t.isNotEmpty() && textWidth (f, t + dots) > maxW)
+            t = t.dropLastCharacters (1).trimEnd();
+
+        return t + dots;
     }
 
     // Retour à la ligne par mots, SANS limite de lignes. Un mot trop long est
@@ -119,28 +145,56 @@ namespace
 }
 
 //==============================================================================
-HistoryTile::HistoryTile (int idx, const juce::String& t, const juce::String& d, bool ref)
-    : index (idx), title (t), date (d), refined (ref)
+HistoryTile::HistoryTile (int idx, const HistoryItem& item)
+    : index (idx),
+      title (item.title),
+      date (item.date),
+      model (item.model),
+      refined (HistoryUtils::isRefined (item.type))
 {
     setMouseCursor (juce::MouseCursor::PointingHandCursor);
     lines.add (title);
 }
 
+void HistoryTile::wrapTitle (int width)
+{
+    const auto col  = columns (width);
+    const auto font = titleFont (refined);
+
+    lines = wrap (title, font, col.titleW, col.restW);
+
+    // Prompt très long : maxLines lignes au plus, la dernière finit par "…",
+    // et le titre complet passe dans l'info-bulle.
+    const bool truncated = lines.size() > maxLines;
+
+    if (truncated)
+    {
+        juce::StringArray rest;
+        for (int i = maxLines - 1; i < lines.size(); ++i)
+            rest.add (lines[i]);
+
+        lines.removeRange (maxLines - 1, lines.size());
+        lines.add (elide (rest.joinIntoString (" "), font, maxLines == 1 ? col.titleW : col.restW));
+    }
+
+    setTooltip (truncated ? title : juce::String());
+}
+
+int HistoryTile::metaTop() const
+{
+    return padY + lines.size() * lineH + metaGap;
+}
+
 int HistoryTile::layoutForWidth (int width)
 {
-    const auto col = columns (width);
-
-    // Aucune limite : le titre est affiché en entier, la carte grandit avec
-    lines = wrap (title, titleFont (refined), col.titleW, col.restW);
-
-    return padY * 2 + lines.size() * lineH;
+    wrapTitle (width);
+    return metaTop() + metaPadT + metaH + padBottom;
 }
 
 void HistoryTile::resized()
 {
     // la tile reste correcte même si le parent n'a pas appelé layoutForWidth
-    const auto col = columns (getWidth());
-    lines = wrap (title, titleFont (refined), col.titleW, col.restW);
+    wrapTitle (getWidth());
 }
 
 //==============================================================================
@@ -248,10 +302,38 @@ void HistoryTile::paint (juce::Graphics& g)
                     (i == 0 ? col.titleW : col.restW) + safety, lineH,
                     juce::Justification::centredLeft, false);
 
-    // --- date (alignée sur la première ligne) ---
-    g.setColour (HarmoniaPalette::textMuted);
-    g.setFont (dateFont());
-    g.drawText (date, col.dateX, rowY - 7, col.dateW, 14, juce::Justification::centredRight, false);
+    // --- ligne méta, depuis le bord gauche : filet, [étincelle] modèle ...... date ---
+    {
+        const int sepY = metaTop();
+        const int rowY = sepY + metaPadT;
+        const float cy = (float) rowY + (float) metaH * 0.5f;
+
+        g.setColour (juce::Colours::white.withAlpha (0.06f));
+        g.fillRect ((float) textLeft, (float) sepY, (float) (col.metaR - textLeft), 1.0f);
+
+        // même étincelle que la capsule "AI MODEL" du header
+        const auto star = ModelPicker::sparkle ({ (float) textLeft + 5.5f, cy }, 5.5f, 2.0f);
+        g.setColour (acc.withAlpha (0.25f));
+        g.fillPath (star);
+        g.setColour (acc.withAlpha (0.95f));
+        g.strokePath (star, juce::PathStrokeType (1.0f, juce::PathStrokeType::mitered,
+                                                  juce::PathStrokeType::rounded));
+
+        // date à droite (largeur réelle) ; le modèle prend le reste et s'abrège si besoin
+        const int dateW  = textWidth (dateFont(), date);
+        const int dateX  = col.metaR - dateW;
+        const int modelX = textLeft + iconW + 4;
+        const int modelW = juce::jmax (0, dateX - modelDateGap - modelX);
+
+        g.setColour (HarmoniaPalette::textSecondary);
+        g.setFont (dateFont());
+        g.drawText (date, dateX, rowY, dateW, metaH, juce::Justification::centredRight, false);
+
+        g.setColour (HarmoniaPalette::textPrimary.withAlpha (0.9f));
+        g.setFont (modelFont());
+        g.drawText (elide (model, modelFont(), modelW), modelX, rowY, modelW + safety, metaH,
+                    juce::Justification::centredLeft, false);
+    }
 
     // --- croix : simplement plus claire au survol (pas de pastille, pas de rouge) ---
     {

@@ -97,13 +97,9 @@ HistoryPanel::~HistoryPanel()
         onClosed();
 }
 
-void HistoryPanel::setItems (const juce::StringArray& newTitles,
-                             const juce::StringArray& newTypes,
-                             const juce::StringArray& newDates)
+void HistoryPanel::setItems (const HistoryItems& newItems)
 {
-    titles = newTitles;
-    types  = newTypes;
-    dates  = newDates;
+    items = newItems;
     rebuild();
     repaint();
 }
@@ -236,10 +232,13 @@ juce::Rectangle<int> HistoryPanel::clearZone() const
 
 bool HistoryPanel::matches (int i, const juce::String& q) const
 {
+    const auto& it = items[(size_t) i];
+
     return q.isEmpty()
-        || titles[i].containsIgnoreCase (q)
-        || types[i].containsIgnoreCase (q)
-        || dates[i].containsIgnoreCase (q);
+        || it.title.containsIgnoreCase (q)
+        || it.type.containsIgnoreCase (q)
+        || it.date.containsIgnoreCase (q)
+        || it.model.containsIgnoreCase (q);
 }
 
 void HistoryPanel::rebuild()
@@ -248,13 +247,12 @@ void HistoryPanel::rebuild()
 
     const auto q = search.getText().trim();
 
-    for (int i = 0; i < titles.size(); ++i)
+    for (int i = 0; i < (int) items.size(); ++i)
     {
         if (! matches (i, q))
             continue;
 
-        auto* t = tiles.add (new HistoryTile (i, titles[i], dates[i],
-                                              HistoryUtils::isRefined (types[i])));
+        auto* t = tiles.add (new HistoryTile (i, items[(size_t) i]));
         t->onSelect = [this] (int idx) { if (onSelect) onSelect (idx); };
         t->onDelete = [this] (int idx) { if (onDelete) onDelete (idx); };
         content.addAndMakeVisible (t);

@@ -1,4 +1,5 @@
 #include "HeaderComponent.h"
+#include "header_components/HistoryUtils.h"
 #include <BinaryData.h>
 
 #include <algorithm>
@@ -74,6 +75,14 @@ HeaderComponent::HeaderComponent (const UserSession& s, AIModelList initialModel
             onHistoryCleared();
     };
 
+    // Bouton aléatoire : ne fait que prévenir le parent, la logique est dans ParamRandomizer
+    randomButton.onClick = [this]
+    {
+        if (onRandomize)
+            onRandomize();
+    };
+    addAndMakeVisible (randomButton);
+
     addAndMakeVisible (historyPicker);
 
     // Palette : 3 pastilles libres (le thème est toujours Custom)
@@ -133,24 +142,12 @@ HeaderComponent::HeaderComponent (const UserSession& s, AIModelList initialModel
     promptEditor.onFocusChanged = [this] { startTimerHz (60); };
     addAndMakeVisible (promptEditor);
 
-    // Le logo bascule entre Generate et Refine. Le serveur IA sait affiner (route /refine-preset) :
-    // avec harmonia_v3 il part du preset courant et le rapproche du prompt, cadenas respectes.
     logoButton.onClick = [this]
     {
-        if (! refineEnabled)
-        {
-            HarmoniaAlert::info (this,
-                                 "Refine mode",
-                                 "Refine mode is not available.",
-                                 HarmoniaAlert::Position::TopRight,
-                                 3000);
-            return;
-        }
-
         setMode (mode == Mode::Generate ? Mode::Refine : Mode::Generate);
     };
     addAndMakeVisible (logoButton);
-    logoButton.setTooltip ("Switch to Refine mode");
+    logoButton.setTooltip ("Refine mode (coming soon)");
     addAndMakeVisible (actionButton);
 
     // Logo chargé directement ici (plus besoin de setLogo depuis le parent)
@@ -234,17 +231,21 @@ void HeaderComponent::setHistory (const HistoryList& entries)
 
     DBG ("HeaderComponent: " << (int) historyEntries.size() << " history entries received");
 
-    juce::StringArray titles, typeList, dateList;
+    HistoryItems items;
+    items.reserve (historyEntries.size());
 
     for (const auto& e : historyEntries)
     {
-        titles.add (e.name.isNotEmpty() ? e.name : e.type);   // repli sur le type si pas de nom
-        typeList.add (e.type);
-        dateList.add (e.lastUsedAt.isNotEmpty() ? e.lastUsedAt : e.createdAt);
+        HistoryItem it;
+        it.title = e.name.isNotEmpty() ? e.name : e.type;   // repli sur le type si pas de nom
+        it.type  = e.type;
+        it.date  = HistoryUtils::formatDate (e.lastUsedAt.isNotEmpty() ? e.lastUsedAt : e.createdAt);
+        it.model = HistoryUtils::formatModel (e.modelName, e.modelId, models);
+        items.push_back (std::move (it));
     }
 
-    historyPicker.setItems (titles, typeList, dateList);
-    historyPicker.setInteractive (! session.isGuest && ! titles.isEmpty());
+    historyPicker.setItems (items);
+    historyPicker.setInteractive (! session.isGuest && ! items.empty());
 }
 
 void HeaderComponent::moveHistoryToTop (int id)
@@ -384,6 +385,7 @@ void HeaderComponent::timerCallback()
     actionButton.setTint (c);
     actionButton.setSharpness (modeAnim);
     logoButton.setTint (c);
+    randomButton.setTint (c);
 
     repaint (promptBounds.expanded (30));
 }
@@ -403,6 +405,7 @@ void HeaderComponent::applyColours()
 
     actionButton.setTint (c);
     logoButton.setTint (c);
+    randomButton.setTint (c);
     updateModeTexts();
 }
 
@@ -413,7 +416,7 @@ void HeaderComponent::updateModeTexts()
     // Placeholder (textes dans Strings::Placeholders)
     if (refine)
         promptEditor.setHint (Strings::Placeholders::Refine,
-                              HarmoniaPalette::accent.withAlpha (0.80f),
+                              HarmoniaPalette::accent,   // pas de transparence : 4.2:1 en violet sinon
                               true);
     else
         promptEditor.setHint (Strings::Placeholders::Prompt,
@@ -442,6 +445,9 @@ void HeaderComponent::setModels (const AIModelList& newModels)
 
     models = newModels;
     rebuildModelPicker (keepId);
+
+    // Les noms des modèles de l'historique viennent de cette liste : on les remet à jour
+    setHistory (historyEntries);
 }
 
 void HeaderComponent::rebuildModelPicker (const juce::String& keepId)
@@ -721,7 +727,13 @@ void HeaderComponent::resized()
     const int pickerGap = 10;
 
     // Historique : capsule "cartes empilées + nombre" (~64 px)
-    const int historyW = 64;
+    const int historyW = 78;
+
+    // Icône aléatoire : petite et discrète, carrée
+    const int randomW     = 26;
+    const int randomGap   = 8;         // écart icône <-> barre (avant : barGap = 20)
+    const int btnGap      = 6;
+    const int historyMinW = 56;
 
     // Un seul écart pour les deux côtés de la barre
     const int barGap = 20;
@@ -737,7 +749,7 @@ void HeaderComponent::resized()
     const int top = barCy - barH / 2;
     const int cx  = getWidth() / 2;
 
-    // Demi-largeur max : à gauche (zone pseudo + historique), à droite (model picker)
+    // Demi-largeur max : formule d'ORIGINE, le bouton aléatoire ne réduit pas la barre
     const int halfLeft  = cx - (leftEdge + pickerGap + historyW + barGap);
     const int halfRight = modelX - barGap - cx;
     const int half      = juce::jmin (halfLeft, halfRight, 310);   // 310 = 620 / 2
@@ -747,8 +759,17 @@ void HeaderComponent::resized()
         // Barre parfaitement centrée, écart identique des deux côtés
         promptBounds = { cx - half, top, half * 2, barH };
 
-        historyPicker.setBounds (promptBounds.getX() - barGap - historyW,
-                                 barCy - rowH / 2, historyW, rowH);
+        // dé collé à la barre, historique décalé à sa gauche
+        // icône collée à la barre, historique décalé à sa gauche. La barre garde
+        // sa taille : si la place manque, c'est l'historique qui se rétrécit.
+        randomButton.setBounds (promptBounds.getX() - randomGap - randomW,
+                        barCy - randomW / 2, randomW, randomW);
+
+        const int histRight = randomButton.getX() - btnGap;
+        const int histW     = juce::jlimit (historyMinW, historyW,
+                                            histRight - (leftEdge + pickerGap));
+
+        historyPicker.setBounds (histRight - histW, barCy - rowH / 2, histW, rowH);
 
         modelPicker.setBounds (promptBounds.getRight() + barGap,
                                barCy - rowH / 2, pickerW, rowH);
@@ -760,7 +781,10 @@ void HeaderComponent::resized()
 
         historyPicker.setBounds (leftEdge + pickerGap, barCy - rowH / 2, historyW, rowH);
 
-        const int barX = historyPicker.getRight() + barGap;
+        randomButton.setBounds (historyPicker.getRight() + btnGap,
+                                barCy - randomW / 2, randomW, randomW);
+
+        const int barX = randomButton.getRight() + randomGap;
         promptBounds = { barX, top,
                          juce::jmax (0, modelPicker.getX() - barGap - barX), barH };
     }

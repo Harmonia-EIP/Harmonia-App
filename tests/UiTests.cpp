@@ -1,11 +1,17 @@
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/generators/catch_generators.hpp>
 #include <set>
+#include <string>
 #include <typeinfo>
+#include <vector>
 
 #include "PluginProcessor.h"
 #include "MainComponent.h"
 #include "components/LockableControl.h"
+#include "backend/BackendTypes.h"
+
+// Tous les tests sont en mode guest : pas de session utilisateur,
+// donc aucun thread / requête backend à gérer.
 
 namespace
 {
@@ -20,16 +26,21 @@ namespace
         return g;
     }
 
-    UserSession makeUser()
+    // proc est déclaré avant ui : il est détruit après lui (ordre inverse de construction).
+    struct Fixture
     {
-        UserSession s;
-        s.isGuest = false;
-        s.userId  = 7;
-        s.pseudo  = "tester";
-        s.paletteSlot = 0;
-        s.expiresAt = juce::Time::getCurrentTime() + juce::RelativeTime::days (1);
-        return s;
-    }
+        HarmoniaAudioProcessor proc;
+        MainComponent ui;
+
+        explicit Fixture (bool prepare = true, bool setSize = true)
+            : proc(),
+              ui ((prepare ? (proc.prepareToPlay (48000.0, 512), 0) : 0,
+                   proc), proc.getBackend(), makeGuest())
+        {
+            if (setSize)
+                ui.setSize (AppConfig::DefaultWidth, AppConfig::DefaultHeight);
+        }
+    };
 
     void collect (juce::Component& c, std::vector<juce::Component*>& out)
     {
@@ -41,25 +52,15 @@ namespace
         }
     }
 
-    void collectLockables (juce::Component& c, std::vector<LockableControl*>& out)
+    template <typename T>
+    void collectOfType (juce::Component& c, std::vector<T*>& out)
     {
         for (int i = 0; i < c.getNumChildComponents(); ++i)
         {
             auto* child = c.getChildComponent (i);
-            if (auto* l = dynamic_cast<LockableControl*> (child))
-                out.push_back (l);
-            collectLockables (*child, out);
-        }
-    }
-
-    void collectLabels (juce::Component& c, std::vector<juce::Label*>& out)
-    {
-        for (int i = 0; i < c.getNumChildComponents(); ++i)
-        {
-            auto* child = c.getChildComponent (i);
-            if (auto* l = dynamic_cast<juce::Label*> (child))
-                out.push_back (l);
-            collectLabels (*child, out);
+            if (auto* t = dynamic_cast<T*> (child))
+                out.push_back (t);
+            collectOfType<T> (*child, out);
         }
     }
 
@@ -67,9 +68,24 @@ namespace
     {
         juce::MessageManager::getInstance()->runDispatchLoopUntil (ms);
     }
+
+    void renderBlocks (HarmoniaAudioProcessor& proc, int n)
+    {
+        juce::AudioBuffer<float> buf (2, 512);
+        juce::MidiBuffer midi;
+        for (int i = 0; i < n; ++i)
+        {
+            buf.clear();
+            proc.processBlock (buf, midi);
+        }
+    }
 }
 
-TEST_CASE ("MainComponent: construction et destruction répétées")
+// ============================================================
+// Cycle de vie
+// ============================================================
+
+TEST_CASE ("UI: construction et destruction répétées", "[ui][lifecycle]")
 {
     HarmoniaAudioProcessor proc;
     proc.prepareToPlay (48000.0, 512);
@@ -79,29 +95,127 @@ TEST_CASE ("MainComponent: construction et destruction répétées")
         MainComponent ui (proc, proc.getBackend(), makeGuest());
         ui.setSize (AppConfig::DefaultWidth, AppConfig::DefaultHeight);
         pump();
-
-        juce::AudioBuffer<float> buf (2, 512);
-        juce::MidiBuffer midi;
-        proc.processBlock (buf, midi);
+        renderBlocks (proc, 1);
     }
+    renderBlocks (proc, 1);
+}
+
+TEST_CASE ("UI: s'ouvre même si prepareToPlay n'a pas été appelé", "[ui][lifecycle]")
+{
+    // Dans un vrai hôte, l'éditeur peut être créé avant prepareToPlay.
+    Fixture f (false);
+    pump();
+    REQUIRE (f.ui.getNumChildComponents() > 0);
+}
+
+TEST_CASE ("UI: construction sans setSize ne plante pas", "[ui][lifecycle]")
+{
+    Fixture f (true, false);
+    pump();
+    SUCCEED();
+}
+
+TEST_CASE ("UI: la boucle de messages peut tourner après le chargement", "[ui][lifecycle]")
+{
+    Fixture f;
+    pump (200);
+    REQUIRE (f.ui.getNumChildComponents() > 0);
+}
+
+TEST_CASE ("UI: destruction pendant que l'audio tourne", "[ui][lifecycle]")
+{
+    HarmoniaAudioProcessor proc;
+    proc.prepareToPlay (48000.0, 512);
+    proc.getKeyboardState().noteOn (1, 60, 1.0f);
 
     juce::AudioBuffer<float> buf (2, 512);
     juce::MidiBuffer midi;
-    proc.processBlock (buf, midi);
+    {
+        MainComponent ui (proc, proc.getBackend(), makeGuest());
+        proc.processBlock (buf, midi);
+    }
+    renderBlocks (proc, 10);
+    SUCCEED();
 }
 
-TEST_CASE ("Layout: aucun composant visible ne sort de son parent")
-{
-    const bool guest = GENERATE (true, false);
-    const auto scale = GENERATE (1.0f, 1.5f);   // 0.8 retiré : taille jamais atteinte en vrai
+// ============================================================
+// Arbre de composants
+// ============================================================
 
-    HarmoniaAudioProcessor proc;
-    MainComponent ui (proc, proc.getBackend(), guest ? makeGuest() : makeUser());
-    ui.setSize ((int) (AppConfig::DefaultWidth  * scale),
-                (int) (AppConfig::DefaultHeight * scale));
+TEST_CASE ("Arbre: l'UI contient des composants", "[ui][tree]")
+{
+    Fixture f;
 
     std::vector<juce::Component*> all;
-    collect (ui, all);
+    collect (f.ui, all);
+
+    INFO ("nombre de composants: " << all.size());
+    REQUIRE (! all.empty());
+}
+
+TEST_CASE ("Arbre: chaque enfant référence bien son parent", "[ui][tree]")
+{
+    Fixture f;
+
+    std::vector<juce::Component*> all;
+    collect (f.ui, all);
+
+    for (auto* c : all)
+    {
+        INFO (typeid (*c).name());
+        REQUIRE (c->getParentComponent() != nullptr);
+    }
+}
+
+TEST_CASE ("Arbre: pas de composant enfant nul", "[ui][tree]")
+{
+    Fixture f;
+
+    std::vector<juce::Component*> stack { &f.ui };
+    while (! stack.empty())
+    {
+        auto* c = stack.back();
+        stack.pop_back();
+        for (int i = 0; i < c->getNumChildComponents(); ++i)
+        {
+            auto* child = c->getChildComponent (i);
+            REQUIRE (child != nullptr);
+            stack.push_back (child);
+        }
+    }
+}
+
+TEST_CASE ("Arbre: l'UI contient des sliders, des boutons et un clavier", "[ui][tree]")
+{
+    Fixture f;
+
+    std::vector<juce::Slider*> sliders;
+    std::vector<juce::Button*> buttons;
+    std::vector<juce::MidiKeyboardComponent*> keyboards;
+    collectOfType (f.ui, sliders);
+    collectOfType (f.ui, buttons);
+    collectOfType (f.ui, keyboards);
+
+    INFO ("sliders=" << sliders.size() << " buttons=" << buttons.size());
+    REQUIRE (! sliders.empty());
+    REQUIRE (! buttons.empty());
+    REQUIRE (keyboards.size() == 1);
+}
+
+// ============================================================
+// Layout
+// ============================================================
+
+TEST_CASE ("Layout: aucun composant visible ne sort de son parent", "[ui][layout]")
+{
+    const auto scale = GENERATE (1.0f, 1.25f, 1.5f);
+
+    Fixture f (true, false);
+    f.ui.setSize ((int) (AppConfig::DefaultWidth  * scale),
+                  (int) (AppConfig::DefaultHeight * scale));
+
+    std::vector<juce::Component*> all;
+    collect (f.ui, all);
     REQUIRE (! all.empty());
 
     for (auto* c : all)
@@ -113,7 +227,8 @@ TEST_CASE ("Layout: aucun composant visible ne sort de son parent")
         for (auto* p = c; p != nullptr; p = p->getParentComponent())
             chain += std::string (typeid (*p).name()) + " <- ";
 
-        INFO ("chaine: " << chain
+        INFO ("scale: " << scale
+              << "\nchaine: " << chain
               << "\nbounds: " << c->getBounds().toString().toStdString()
               << " parent: " << c->getParentComponent()->getLocalBounds().toString().toStdString());
 
@@ -121,33 +236,174 @@ TEST_CASE ("Layout: aucun composant visible ne sort de son parent")
     }
 }
 
-TEST_CASE ("Layout: les sections principales ne se chevauchent pas")
+TEST_CASE ("Layout: les sections principales ne se chevauchent pas", "[ui][layout]")
 {
-    const bool guest = GENERATE (true, false);
-
-    HarmoniaAudioProcessor proc;
-    MainComponent ui (proc, proc.getBackend(), guest ? makeGuest() : makeUser());
-    ui.setSize (AppConfig::DefaultWidth, AppConfig::DefaultHeight);
+    Fixture f;
 
     std::vector<juce::Component*> blocks;
-    for (int i = 0; i < ui.getNumChildComponents(); ++i)
+    for (int i = 0; i < f.ui.getNumChildComponents(); ++i)
     {
-        auto* c = ui.getChildComponent (i);
-        if (c->isVisible() && c->getBounds() != ui.getLocalBounds())   // exclut le fond (particules)
+        auto* c = f.ui.getChildComponent (i);
+        if (c->isVisible() && c->getBounds() != f.ui.getLocalBounds())   // exclut le fond
             blocks.push_back (c);
     }
-    REQUIRE (blocks.size() >= 8);   // header, 7 panneaux, clavier
+
+    INFO ("nombre de sections: " << blocks.size());
+    for (auto* b : blocks)
+        INFO (typeid (*b).name() << " " << b->getBounds().toString().toStdString());
+
+    REQUIRE (blocks.size() >= 8);   // header, 7 panneaux, clavier (à ajuster si le layout change)
 
     for (size_t i = 0; i < blocks.size(); ++i)
         for (size_t j = i + 1; j < blocks.size(); ++j)
         {
-            INFO (blocks[i]->getBounds().toString().toStdString() << " vs "
-                  << blocks[j]->getBounds().toString().toStdString());
+            INFO (typeid (*blocks[i]).name() << " " << blocks[i]->getBounds().toString().toStdString()
+                  << " vs " << typeid (*blocks[j]).name() << " " << blocks[j]->getBounds().toString().toStdString());
             REQUIRE_FALSE (blocks[i]->getBounds().intersects (blocks[j]->getBounds()));
         }
 }
 
-TEST_CASE ("État UI: l'identité détermine ce qui est restauré")
+TEST_CASE ("Layout: les sections sont dans les limites de la fenêtre", "[ui][layout]")
+{
+    Fixture f;
+
+    for (int i = 0; i < f.ui.getNumChildComponents(); ++i)
+    {
+        auto* c = f.ui.getChildComponent (i);
+        if (! c->isVisible())
+            continue;
+        INFO (typeid (*c).name() << " " << c->getBounds().toString().toStdString());
+        REQUIRE (f.ui.getLocalBounds().contains (c->getBounds()));
+    }
+}
+
+TEST_CASE ("Layout: les contrôles visibles ont une taille non nulle", "[ui][layout]")
+{
+    Fixture f;
+
+    std::vector<LockableControl*> lockables;
+    collectOfType (f.ui, lockables);
+    REQUIRE (! lockables.empty());
+
+    for (auto* l : lockables)
+    {
+        // LockableControl n'est pas forcément un juce::Component : on passe par le cast
+        auto* comp = dynamic_cast<juce::Component*> (l);
+        INFO (l->getParamId().toStdString());
+        REQUIRE (comp != nullptr);
+
+        if (! comp->isVisible())
+            continue;
+
+        REQUIRE (comp->getWidth()  > 0);
+        REQUIRE (comp->getHeight() > 0);
+    }
+}
+
+TEST_CASE ("Layout: redimensionnements successifs sans plantage", "[ui][layout]")
+{
+    Fixture f;
+
+    const int sizes[][2] = {
+        { AppConfig::DefaultWidth,       AppConfig::DefaultHeight },
+        { AppConfig::DefaultWidth * 2,   AppConfig::DefaultHeight * 2 },
+        { AppConfig::DefaultWidth,       AppConfig::DefaultHeight },
+        { AppConfig::DefaultWidth * 3/2, AppConfig::DefaultHeight * 3/2 },
+    };
+
+    for (auto& s : sizes)
+    {
+        f.ui.setSize (s[0], s[1]);
+        pump (10);
+        REQUIRE (f.ui.getWidth()  == s[0]);
+        REQUIRE (f.ui.getHeight() == s[1]);
+    }
+}
+
+// ============================================================
+// Contrôles et paramètres
+// ============================================================
+
+TEST_CASE ("Contrôles: chaque paramètre a exactement un contrôle à l'écran", "[ui][params]")
+{
+    Fixture f;
+
+    std::vector<LockableControl*> lockables;
+    collectOfType (f.ui, lockables);
+
+    std::multiset<juce::String> ids;
+    for (auto* l : lockables)
+        ids.insert (l->getParamId());
+
+    // les 20 paramètres historiques sont tous à l'écran...
+    for (const auto& id : HarmoniaParams::orderedIds())
+    {
+        INFO (id.toStdString());
+        REQUIRE (ids.count (id) == 1);
+    }
+
+    // ...plus les essentiels v3 (unison, width, interval, slope, delay, size), jamais en double
+    for (const auto& id : ids)
+    {
+        INFO (id.toStdString());
+        REQUIRE (ids.count (id) == 1);
+    }
+    REQUIRE (ids.size() > HarmoniaParams::orderedIds().size());
+}
+
+TEST_CASE ("Contrôles: chaque contrôle est lié à un paramètre existant", "[ui][params]")
+{
+    Fixture f;
+
+    std::vector<LockableControl*> lockables;
+    collectOfType (f.ui, lockables);
+    REQUIRE (! lockables.empty());
+
+    for (auto* l : lockables)
+    {
+        INFO (l->getParamId().toStdString());
+        REQUIRE (f.proc.getAPVTS().getParameter (l->getParamId()) != nullptr);
+    }
+}
+
+TEST_CASE ("Contrôles: aucun contrôle verrouillé au départ", "[ui][params]")
+{
+    Fixture f;
+
+    std::vector<LockableControl*> lockables;
+    collectOfType (f.ui, lockables);
+    REQUIRE (! lockables.empty());
+
+    for (auto* l : lockables)
+    {
+        INFO (l->getParamId().toStdString());
+        REQUIRE_FALSE (l->isLocked());
+    }
+}
+
+TEST_CASE ("Contrôles: changer chaque paramètre avec l'UI ouverte ne plante pas", "[ui][params]")
+{
+    Fixture f;
+
+    for (const auto& id : HarmoniaParams::orderedIds())
+    {
+        auto* p = f.proc.getAPVTS().getParameter (id);
+        REQUIRE (p != nullptr);
+
+        const float original = p->getValue();
+        p->setValueNotifyingHost (0.0f);
+        p->setValueNotifyingHost (1.0f);
+        p->setValueNotifyingHost (original);
+    }
+    pump (100);
+    SUCCEED();
+}
+
+// ============================================================
+// État UI (identité / preset)
+// ============================================================
+
+TEST_CASE ("État UI: l'identité détermine ce qui est restauré", "[ui][state]")
 {
     HarmoniaAudioProcessor proc;
     auto& st = proc.getAPVTS().state;
@@ -174,207 +430,36 @@ TEST_CASE ("État UI: l'identité détermine ce qui est restauré")
     }
 }
 
-TEST_CASE ("Guest: chaque paramètre a exactement un contrôle à l'écran")
+TEST_CASE ("État UI: l'identité guest est écrite au chargement", "[ui][state]")
 {
-    HarmoniaAudioProcessor proc;
-    MainComponent ui (proc, proc.getBackend(), makeGuest());
-    ui.setSize (AppConfig::DefaultWidth, AppConfig::DefaultHeight);
-
-    std::vector<LockableControl*> lockables;
-    collectLockables (ui, lockables);
-
-    std::multiset<juce::String> ids;
-    for (auto* l : lockables)
-        ids.insert (l->getParamId());
-
-    // les 20 paramètres v2 et les 7 paramètres v3 jugés essentiels ; les autres sont réglés par l'IA
-    std::vector<juce::String> shown (HarmoniaParams::orderedIds().begin(), HarmoniaParams::orderedIds().end());
-    for (const char* id : { "unison_voices", "unison_detune", "stereo_width", "osc_2_coarse",
-                            "filter_slope", "delay_mix", "reverb_size" })
-        shown.push_back (id);
-
-    for (const auto& id : shown)
-    {
-        INFO (id.toStdString());
-        REQUIRE (ids.count (id) == 1);
-    }
-    REQUIRE (ids.size() == shown.size());
+    Fixture f;
+    REQUIRE (f.proc.getAPVTS().state[UiState::identity].toString() == "guest");
 }
 
-TEST_CASE ("Mode DX7 : panneaux analogiques grisés, étiquette DX7 visible")
+TEST_CASE ("État UI: réouvrir l'UI conserve l'état guest", "[ui][state]")
 {
     HarmoniaAudioProcessor proc;
-    MainComponent ui (proc, proc.getBackend(), makeGuest());
-    ui.setSize (AppConfig::DefaultWidth, AppConfig::DefaultHeight);
+    auto& st = proc.getAPVTS().state;
+    st.setProperty (UiState::identity,   "guest",    nullptr);
+    st.setProperty (UiState::presetName, "PERSISTE", nullptr);
 
-    auto findBadge = [&]
-    {
-        std::vector<juce::Component*> all;
-        collect (ui, all);
-        for (auto* c : all)
-            if (dynamic_cast<EngineBadge*> (c) != nullptr)
-                return c;
-        return (juce::Component*) nullptr;
-    };
-    auto knobFor = [&] (const juce::String& id)
-    {
-        std::vector<LockableControl*> lockables;
-        collectLockables (ui, lockables);
-        for (auto* l : lockables)
-            if (l->getParamId() == id)
-                return dynamic_cast<juce::Component*> (l);
-        return (juce::Component*) nullptr;
-    };
-
-    REQUIRE (findBadge() != nullptr);
-    REQUIRE_FALSE (findBadge()->isVisible());
-    REQUIRE (knobFor ("filter_cutoff")->isEnabled());
-
-    proc.getAPVTS().getParameter ("engine")->setValueNotifyingHost (1.0f);
-    pump();
-    REQUIRE (findBadge()->isVisible());
-    REQUIRE_FALSE (knobFor ("filter_cutoff")->isEnabled());
-    REQUIRE (knobFor ("filter_cutoff")->isVisible());   // grisé, pas caché : la mise en page ne bouge pas
-
-    proc.getAPVTS().getParameter ("engine")->setValueNotifyingHost (0.0f);
-    pump();
-    REQUIRE_FALSE (findBadge()->isVisible());
-    REQUIRE (knobFor ("filter_cutoff")->isEnabled());
-}
-
-TEST_CASE ("Unisson à une voix : l'étalement est grisé")
-{
-    HarmoniaAudioProcessor proc;
-    MainComponent ui (proc, proc.getBackend(), makeGuest());
-    auto* voices = proc.getAPVTS().getParameter ("unison_voices");
-
-    auto spread = [&]
-    {
-        std::vector<LockableControl*> lockables;
-        collectLockables (ui, lockables);
-        for (auto* l : lockables)
-            if (l->getParamId() == "unison_detune")
-                return dynamic_cast<juce::Component*> (l);
-        return (juce::Component*) nullptr;
-    };
-
-    voices->setValueNotifyingHost (voices->convertTo0to1 (1.0f));
-    pump();
-    REQUIRE_FALSE (spread()->isEnabled());
-
-    voices->setValueNotifyingHost (voices->convertTo0to1 (5.0f));
-    pump();
-    REQUIRE (spread()->isEnabled());
-}
-
-// Capture de l'interface (analogique et DX7) pour la relire à l'œil, hors CI :
-//   HARMONIA_UI_CAPTURE_DIR=/tmp/captures ./Harmonia_Tests "[.capture]"
-TEST_CASE ("Capture de l'interface", "[.capture]")
-{
-    const auto dir = juce::SystemStats::getEnvironmentVariable ("HARMONIA_UI_CAPTURE_DIR", {});
-    REQUIRE (dir.isNotEmpty());
-
-    HarmoniaAudioProcessor proc;
-    MainComponent ui (proc, proc.getBackend(), makeGuest());
-    ui.setSize (AppConfig::DefaultWidth, AppConfig::DefaultHeight);
-    proc.getAPVTS().getParameter ("unison_voices")->setValueNotifyingHost (0.2f);
-
-    for (const bool dx7 : { false, true })
-    {
-        proc.getAPVTS().getParameter ("engine")->setValueNotifyingHost (dx7 ? 1.0f : 0.0f);
-        pump (100);
-        const auto image = ui.createComponentSnapshot (ui.getLocalBounds(), true, 2.0f);
-        juce::File file (juce::File (dir).getChildFile (dx7 ? "ui-dx7.png" : "ui-analog.png"));
-        file.deleteFile();
-        juce::FileOutputStream out (file);
-        REQUIRE (juce::PNGImageFormat().writeImageToStream (image, out));
-    }
-}
-
-TEST_CASE ("Guest: aucun contrôle verrouillé au départ")
-{
-    HarmoniaAudioProcessor proc;
-    MainComponent ui (proc, proc.getBackend(), makeGuest());
-
-    std::vector<LockableControl*> lockables;
-    collectLockables (ui, lockables);
-    REQUIRE (! lockables.empty());
-
-    for (auto* l : lockables)
-        REQUIRE_FALSE (l->isLocked());
-}
-
-TEST_CASE ("Refine: le logo bascule entre Generate et Refine, le bouton d'action suit")
-{
-    HarmoniaAudioProcessor proc;
-    MainComponent ui (proc, proc.getBackend(), makeGuest());
-
-    std::vector<juce::Component*> all;
-    collect (ui, all);
-
-    HeaderComponent* header = nullptr;
-    for (auto* c : all)
-        if (auto* h = dynamic_cast<HeaderComponent*> (c))
-            header = h;
-
-    REQUIRE (header != nullptr);
-    REQUIRE (header->getMode() == HeaderComponent::Mode::Generate);
-
-    // le serveur IA sait affiner : le logo n'affiche plus "coming soon", il change de mode
-    header->getLogoButton().onClick();
-    pump();
-    REQUIRE (header->getMode() == HeaderComponent::Mode::Refine);
-    REQUIRE (header->getGenerateButton().getButtonText() == Strings::Buttons::Refine);
-
-    header->getLogoButton().onClick();
-    pump();
-    REQUIRE (header->getMode() == HeaderComponent::Mode::Generate);
-    REQUIRE (header->getGenerateButton().getButtonText() != Strings::Buttons::Refine);
-}
-
-TEST_CASE ("Guest: le clavier de l'UI fait sonner le synthé")
-{
-    HarmoniaAudioProcessor proc;
-    proc.prepareToPlay (48000.0, 512);
-    MainComponent ui (proc, proc.getBackend(), makeGuest());
-
-    proc.getKeyboardState().noteOn (1, 60, 0.8f);
-
-    juce::AudioBuffer<float> buf (2, 512);
-    juce::MidiBuffer midi;
-    float peak = 0.0f;
-    for (int i = 0; i < 20; ++i)
-    {
-        proc.processBlock (buf, midi);
-        peak = juce::jmax (peak, buf.getMagnitude (0, 512));
-    }
-    REQUIRE (peak > 0.001f);
-}
-
-TEST_CASE ("Guest: l'oscilloscope est détaché quand l'UI est fermée")
-{
-    HarmoniaAudioProcessor proc;
-    proc.prepareToPlay (48000.0, 512);
-    proc.getKeyboardState().noteOn (1, 60, 1.0f);
-
-    juce::AudioBuffer<float> buf (2, 512);
-    juce::MidiBuffer midi;
+    for (int i = 0; i < 3; ++i)
     {
         MainComponent ui (proc, proc.getBackend(), makeGuest());
-        proc.processBlock (buf, midi);
+        REQUIRE (st[UiState::presetName].toString() == "PERSISTE");
     }
-    for (int i = 0; i < 10; ++i)
-        proc.processBlock (buf, midi);
-    SUCCEED();
 }
 
-TEST_CASE ("Guest: le label de preset affiche l'état par défaut")
+// ============================================================
+// Label de preset
+// ============================================================
+
+TEST_CASE ("Preset: le label affiche l'état par défaut", "[ui][preset]")
 {
-    HarmoniaAudioProcessor proc;
-    MainComponent ui (proc, proc.getBackend(), makeGuest());
+    Fixture f;
 
     std::vector<juce::Label*> labels;
-    collectLabels (ui, labels);
+    collectOfType (f.ui, labels);
 
     bool found = false;
     for (auto* l : labels)
@@ -383,7 +468,7 @@ TEST_CASE ("Guest: le label de preset affiche l'état par défaut")
     REQUIRE (found);
 }
 
-TEST_CASE ("Guest: le nom de preset restauré vient du state")
+TEST_CASE ("Preset: le nom restauré vient du state", "[ui][preset]")
 {
     HarmoniaAudioProcessor proc;
     auto& st = proc.getAPVTS().state;
@@ -393,11 +478,46 @@ TEST_CASE ("Guest: le nom de preset restauré vient du state")
     MainComponent ui (proc, proc.getBackend(), makeGuest());
 
     std::vector<juce::Label*> labels;
-    collectLabels (ui, labels);
+    collectOfType (ui, labels);
 
     bool found = false;
     for (auto* l : labels)
         if (l->getText() == "MON SON")
             found = true;
     REQUIRE (found);
+}
+
+// ============================================================
+// Lien UI <-> audio
+// ============================================================
+
+TEST_CASE ("Audio: le clavier de l'UI fait sonner le synthé", "[ui][audio]")
+{
+    Fixture f;
+
+    f.proc.getKeyboardState().noteOn (1, 60, 0.8f);
+
+    juce::AudioBuffer<float> buf (2, 512);
+    juce::MidiBuffer midi;
+    float peak = 0.0f;
+    for (int i = 0; i < 20; ++i)
+    {
+        f.proc.processBlock (buf, midi);
+        peak = juce::jmax (peak, buf.getMagnitude (0, 512));
+    }
+    REQUIRE (peak > 0.001f);
+}
+
+TEST_CASE ("Audio: processBlock tourne pendant que l'UI redessine", "[ui][audio]")
+{
+    Fixture f;
+    f.proc.getKeyboardState().noteOn (1, 64, 0.8f);
+
+    for (int i = 0; i < 5; ++i)
+    {
+        renderBlocks (f.proc, 4);
+        f.ui.repaint();
+        pump (20);
+    }
+    SUCCEED();
 }

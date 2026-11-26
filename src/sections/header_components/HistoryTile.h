@@ -1,18 +1,23 @@
 #pragma once
 
 #include "HeaderIncludes.h"
+#include "HistoryItem.h"
 
 //==============================================================================
-// Carte d'historique, une seule ligne par défaut :
-//   [ barre ] [BADGE]  Titre ............  date  (x)
-// Si le titre est trop long, il passe à la ligne (3 lignes max) à droite du
-// badge ; badge, date et croix restent alignés sur la première ligne.
-class HistoryTile : public juce::Component
+// Carte d'historique, deux zones :
+//   [BADGE]  Titre .................... (x)
+//   ─────────────────────────────────────
+//   ✦ Modèle ..................... date
+// Titre long : retour à la ligne à droite du badge, maxLines lignes au plus ;
+// au-delà, la dernière ligne finit par "…" et le titre complet est dans
+// l'info-bulle. La ligne méta repart du bord gauche, sous le badge.
+class HistoryTile : public juce::Component,
+                    public juce::SettableTooltipClient
 {
 public:
     static constexpr int maxLines = 3;
 
-    HistoryTile (int index, const juce::String& title, const juce::String& date, bool refined);
+    HistoryTile (int index, const HistoryItem& item);
 
     std::function<void (int)> onSelect, onDelete;
 
@@ -29,10 +34,12 @@ public:
 
 private:
     juce::Rectangle<int> crossBounds() const;
+    void wrapTitle (int width);   // découpe le titre (maxLines, "…") + info-bulle
+    int  metaTop() const;         // y du filet de la ligne méta
     void updateHover (const juce::MouseEvent& e);
 
     int index;                       // index dans la liste complète (pas dans le filtre)
-    juce::String title, date;
+    juce::String title, date, model;
     bool refined;
     juce::StringArray lines;         // titre déjà découpé
     bool hover = false, crossHover = false;

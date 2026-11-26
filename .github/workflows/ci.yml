@@ -3,9 +3,13 @@ name: CI
 on:
   pull_request:
     branches: [dev, main]
+  push:
+    branches: [dev]
+  # Appelé par build-deploy.yml : rien ne part en production sans tests verts
+  workflow_call:
 
 concurrency:
-  group: ci-${{ github.event.pull_request.number }}
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 permissions:
@@ -15,7 +19,7 @@ jobs:
   # Vers main, seules les PR venant de dev sont acceptées
   check-source:
     name: Check source branch
-    if: github.base_ref == 'main'
+    if: github.event_name == 'pull_request' && github.base_ref == 'main'
     runs-on: ubuntu-latest
     steps:
       - name: Only dev -> main
@@ -27,9 +31,11 @@ jobs:
             exit 1
           fi
 
-  build:
-    name: Build
+  # Windows = la plateforme livrée : on compile le plugin ET on lance les tests avec le même compilateur
+  build-and-test:
+    name: Build & tests (Windows)
     runs-on: windows-2022
+    timeout-minutes: 60
     env:
       SCCACHE_GHA_ENABLED: "true"
 
@@ -47,13 +53,32 @@ jobs:
       - name: Configure
         run: >
           cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+          -DHARMONIA_BUILD_TESTS=ON
           -DCMAKE_C_COMPILER_LAUNCHER=sccache
           -DCMAKE_CXX_COMPILER_LAUNCHER=sccache
           -DCMAKE_POLICY_DEFAULT_CMP0141=NEW
           -DCMAKE_MSVC_DEBUG_INFORMATION_FORMAT=Embedded
 
-      - name: Build
+      - name: Build plugin (VST3 + Standalone)
         run: cmake --build build
+
+      - name: Build tests
+        run: cmake --build build --target Harmonia_Tests HarmoniaEngine_Tests
+
+      # Une commande par étape : sous PowerShell, seul le code de sortie de la dernière compte
+      - name: Run plugin tests
+        run: build/tests/Harmonia_Tests.exe --reporter console --reporter "junit::out=build/test-results.xml"
+
+      - name: Run engine tests
+        run: build/tests/HarmoniaEngine_Tests.exe
+
+      - name: Upload test report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: build/test-results.xml
+          if-no-files-found: ignore
 
       - name: Cache stats
         if: always()

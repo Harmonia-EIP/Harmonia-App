@@ -25,9 +25,7 @@ public:
     HistoryPanel();
     ~HistoryPanel() override;
 
-    void setItems (const juce::StringArray& newTitles,
-                   const juce::StringArray& newTypes,
-                   const juce::StringArray& newDates);
+    void setItems (const HistoryItems& newItems);
 
     juce::String getTooltip() override { return clearHover ? "Clear history" : juce::String(); }
 
@@ -45,7 +43,7 @@ private:
     void rebuild();
     void layoutTiles();
 
-    juce::StringArray titles, types, dates;
+    HistoryItems items;
     bool clearHover = false;
     int  curListH = minListH;
 
