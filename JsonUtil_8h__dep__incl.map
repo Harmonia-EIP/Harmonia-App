@@ -1,18 +1,22 @@
 <map id="src/backend/core/JsonUtil.h" name="src/backend/core/JsonUtil.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="396,5,592,33"/>
-<area shape="rect" id="Node000002" href="$ApiError_8h.html" title=" " alt="" coords="267,90,457,117"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="462,41,385,91,382,87,458,43"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="277,5,474,33"/>
+<area shape="rect" id="Node000002" href="$ApiError_8h.html" title=" " alt="" coords="347,90,537,117"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="397,43,434,90,429,89,395,48"/>
 <area shape="rect" id="Node000004" href="$AiService_8cpp.html" title=" " alt="" coords="5,174,162,218"/>
-<area shape="poly" id="edge6_Node000001_Node000004" title=" " alt="" coords="398,38,329,57,257,83,215,105,175,129,111,175,108,171,172,125,213,100,254,79,327,52,403,36"/>
-<area shape="rect" id="Node000005" href="$AuthService_8cpp.html" title=" " alt="" coords="416,174,572,218"/>
-<area shape="poly" id="edge7_Node000001_Node000005" title=" " alt="" coords="496,47,496,175,492,172,492,50"/>
-<area shape="rect" id="Node000006" href="$ProfileService_8cpp.html" title=" " alt="" coords="596,174,752,218"/>
-<area shape="poly" id="edge8_Node000001_Node000006" title=" " alt="" coords="510,44,538,84,572,124,604,150,637,174,632,173,600,154,568,128,533,87,508,49"/>
-<area shape="rect" id="Node000007" href="$SessionMapper_8cpp.html" title=" " alt="" coords="582,81,734,126"/>
-<area shape="poly" id="edge9_Node000001_Node000007" title=" " alt="" coords="534,38,617,80,612,80,534,43"/>
-<area shape="rect" id="Node000003" href="$ApiError_8cpp.html" title=" " alt="" coords="186,182,392,210"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="344,128,301,184,298,180,340,130"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="308,125,151,176,150,170,306,120"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="395,124,465,173,460,173,393,129"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="422,119,602,173,597,173,421,125"/>
+<area shape="poly" id="edge6_Node000001_Node000004" title=" " alt="" coords="260,36,171,56,134,68,111,83,97,103,89,127,84,174,79,172,83,126,92,101,107,79,132,63,169,50,264,32"/>
+<area shape="rect" id="Node000005" href="$AuthService_8cpp.html" title=" " alt="" coords="596,174,752,218"/>
+<area shape="poly" id="edge7_Node000001_Node000005" title=" " alt="" coords="445,35,498,54,550,79,653,173,648,173,547,83,496,58,445,41"/>
+<area shape="rect" id="Node000006" href="$ProfileService_8cpp.html" title=" " alt="" coords="185,174,342,218"/>
+<area shape="poly" id="edge8_Node000001_Node000006" title=" " alt="" coords="360,45,338,82,279,175,275,171,333,80,356,48"/>
+<area shape="rect" id="Node000007" href="$HistoryMapper_8h.html" title=" " alt="" coords="121,81,272,126"/>
+<area shape="poly" id="edge9_Node000001_Node000007" title=" " alt="" coords="331,41,245,83,243,78,335,39"/>
+<area shape="rect" id="Node000008" href="$SessionMapper_8cpp.html" title=" " alt="" coords="612,81,763,126"/>
+<area shape="poly" id="edge12_Node000001_Node000008" title=" " alt="" coords="441,35,614,81,609,83,440,40"/>
+<area shape="rect" id="Node000003" href="$ApiError_8cpp.html" title=" " alt="" coords="366,182,572,210"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="452,130,467,183,463,181,449,134"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="376,124,163,178,162,172,375,119"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="490,121,621,173,616,173,489,126"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="405,124,307,176,305,171,400,125"/>
+<area shape="poly" id="edge10_Node000007_Node000004" title=" " alt="" coords="160,134,112,175,109,171,156,137"/>
+<area shape="poly" id="edge11_Node000007_Node000006" title=" " alt="" coords="223,136,250,174,245,173,221,141"/>
 </map>

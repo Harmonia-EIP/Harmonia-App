@@ -98,24 +98,58 @@ $(function(){initNavTree('namespaceHarmoniaParams.html','',''); });
 <tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:IDs" id="r_IDs"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceHarmoniaParams_1_1IDs.html">IDs</a></td></tr>
+<tr class="memitem:Output" id="r_Output"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceHarmoniaParams_1_1Output.html">Output</a></td></tr>
+<tr class="memdesc:namespaceHarmoniaParams_1_1Output"><td class="mdescLeft">&#160;</td><td class="mdescRight">Volume de sortie du plugin : un réglage d'écoute, pas une partie du son. <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:AtomicRefs" id="r_AtomicRefs"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHarmoniaParams_1_1AtomicRefs.html">AtomicRefs</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Real-time safe parameter access structure.  <a href="structHarmoniaParams_1_1AtomicRefs.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Acces temps reel : pointeurs nommes (refs.filterCutoff-&gt;load()) ou indexes.  <a href="structHarmoniaParams_1_1AtomicRefs.html#details">More...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a3f7bc78ff24ed1f12f311c4fc04640c7" id="r_a3f7bc78ff24ed1f12f311c4fc04640c7"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f7bc78ff24ed1f12f311c4fc04640c7">IndexedRefs</a> = HarmoniaParamsV3::ParameterRefs</td></tr>
+<tr class="memdesc:a3f7bc78ff24ed1f12f311c4fc04640c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Les refs indexees du wrapper v3 restent disponibles : refs.analog (<a class="el" href="namespaceHarmoniaCharter_1_1analog.html#accb56d3487cd78cb9651f3e49292667fa11edebc1ceaf69073114b814e66e5dfd">HarmoniaCharter::analog::filter_cutoff</a>).  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a206e66e6cc62ecaa0d062741c1fdbe5d" id="r_a206e66e6cc62ecaa0d062741c1fdbe5d"><td class="memItemLeft" align="right" valign="top">juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a206e66e6cc62ecaa0d062741c1fdbe5d">toJuce</a> (std::string_view s)</td></tr>
+<tr class="memdesc:a206e66e6cc62ecaa0d062741c1fdbe5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">string_view (charter) -&gt; juce::String, UTF-8.  <br /></td></tr>
 <tr class="memitem:a817cf5dd08b4a72b77d6e6d4658aa9bc" id="r_a817cf5dd08b4a72b77d6e6d4658aa9bc"><td class="memItemLeft" align="right" valign="top">const std::array&lt; juce::String, 20 &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a817cf5dd08b4a72b77d6e6d4658aa9bc">orderedIds</a> ()</td></tr>
-<tr class="memdesc:a817cf5dd08b4a72b77d6e6d4658aa9bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns all parameter <a class="el" href="namespaceHarmoniaParams_1_1IDs.html">IDs</a> in deterministic order.  <br /></td></tr>
+<tr class="memdesc:a817cf5dd08b4a72b77d6e6d4658aa9bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Les 20 <a class="el" href="namespaceHarmoniaParams_1_1IDs.html">IDs</a> historiques, dans l'ordre v1 (anciens presets IA).  <br /></td></tr>
+<tr class="memitem:acaa1f2ac42e87d9ae5bc14b1fe1c10d8" id="r_acaa1f2ac42e87d9ae5bc14b1fe1c10d8"><td class="memItemLeft" align="right" valign="top">const std::array&lt; juce::String, <a class="el" href="namespaceHarmoniaCharter_1_1analog.html#ad58d139d369d75bbbeb5654b8f0ca5a9">HarmoniaCharter::analog::count</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acaa1f2ac42e87d9ae5bc14b1fe1c10d8">orderedAnalogIds</a> ()</td></tr>
+<tr class="memdesc:acaa1f2ac42e87d9ae5bc14b1fe1c10d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Les 46 <a class="el" href="namespaceHarmoniaParams_1_1IDs.html">IDs</a> analogiques, dans l'ordre du charter (= ordre d'un patch analogique).  <br /></td></tr>
+<tr class="memitem:a68921824b6a8094c1ff3a754743d8e4a" id="r_a68921824b6a8094c1ff3a754743d8e4a"><td class="memItemLeft" align="right" valign="top">juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a68921824b6a8094c1ff3a754743d8e4a">shortUnit</a> (std::string_view unit)</td></tr>
+<tr class="memdesc:a68921824b6a8094c1ff3a754743d8e4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unité courte affichée après une valeur ("cents" -&gt; "ct"...) ; vide quand le nombre suffit.  <br /></td></tr>
+<tr class="memitem:aa08135503983de89bbff737fbc982bc4" id="r_aa08135503983de89bbff737fbc982bc4"><td class="memItemLeft" align="right" valign="top">juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa08135503983de89bbff737fbc982bc4">formatValue</a> (const <a class="el" href="structHarmoniaCharter_1_1Param.html">HarmoniaCharter::Param</a> &amp;p, float value)</td></tr>
+<tr class="memdesc:aa08135503983de89bbff737fbc982bc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valeur lisible (knobs, hôte) : 2, 1 ou 0 décimales selon la grandeur, kHz / s au-delà de 1000, un signe sur les paramètres bipolaires.  <br /></td></tr>
+<tr class="memitem:ad78ee77389eec466fd3640a89a6a8959" id="r_ad78ee77389eec466fd3640a89a6a8959"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad78ee77389eec466fd3640a89a6a8959">parseValue</a> (const <a class="el" href="structHarmoniaCharter_1_1Param.html">HarmoniaCharter::Param</a> &amp;p, const juce::String &amp;text)</td></tr>
+<tr class="memdesc:ad78ee77389eec466fd3640a89a6a8959"><td class="mdescLeft">&#160;</td><td class="mdescRight">Valeur tapée dans l'hôte ("1.2 kHz", "450", "1.5 s").  <br /></td></tr>
 <tr class="memitem:a299727c4fcdecee8c508ed19643a5bc0" id="r_a299727c4fcdecee8c508ed19643a5bc0"><td class="memItemLeft" align="right" valign="top">juce::NormalisableRange&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a299727c4fcdecee8c508ed19643a5bc0">makeLogRange</a> (float minV, float maxV, float midpoint)</td></tr>
-<tr class="memdesc:a299727c4fcdecee8c508ed19643a5bc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a logarithmic parameter range.  <br /></td></tr>
+<tr class="memdesc:a299727c4fcdecee8c508ed19643a5bc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plage logarithmique (meme formule que le charter pour ses skews).  <br /></td></tr>
 <tr class="memitem:a277e6f97c0c232c719467c6198da41be" id="r_a277e6f97c0c232c719467c6198da41be"><td class="memItemLeft" align="right" valign="top">juce::AudioProcessorValueTreeState::ParameterLayout&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a277e6f97c0c232c719467c6198da41be">createLayout</a> ()</td></tr>
-<tr class="memdesc:a277e6f97c0c232c719467c6198da41be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the synthesizer parameter layout.  <br /></td></tr>
+<tr class="memdesc:a277e6f97c0c232c719467c6198da41be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Layout APVTS complet, genere depuis le charter (un groupe par module / operateur DX7).  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Contains all synthesizer parameter utilities and definitions. </p>
-</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
+</div><a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Typedef Documentation</h2>
+<a id="a3f7bc78ff24ed1f12f311c4fc04640c7" name="a3f7bc78ff24ed1f12f311c4fc04640c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f7bc78ff24ed1f12f311c4fc04640c7">&#9670;&#160;</a></span>IndexedRefs</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#a3f7bc78ff24ed1f12f311c4fc04640c7">HarmoniaParams::IndexedRefs</a> = HarmoniaParamsV3::ParameterRefs</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Les refs indexees du wrapper v3 restent disponibles : refs.analog (<a class="el" href="namespaceHarmoniaCharter_1_1analog.html#accb56d3487cd78cb9651f3e49292667fa11edebc1ceaf69073114b814e66e5dfd">HarmoniaCharter::analog::filter_cutoff</a>). </p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
 <a id="a277e6f97c0c232c719467c6198da41be" name="a277e6f97c0c232c719467c6198da41be"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a277e6f97c0c232c719467c6198da41be">&#9670;&#160;</a></span>createLayout()</h2>
 
@@ -139,7 +173,9 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Creates the synthesizer parameter layout. </p>
+<p>Layout APVTS complet, genere depuis le charter (un groupe par module / operateur DX7). </p>
+<p>Layout complet v3 (groupes par module et par operateur DX7).</p>
+<p>Creates the synthesizer parameter layout.</p>
 <p>Builds all APVTS parameters used by the synthesizer.</p>
 <p>Includes:</p><ul>
 <li>Float parameters</li>
@@ -157,6 +193,38 @@ Functions</h2></td></tr>
 <li>Effects</li>
 </ul>
 <dl class="section return"><dt>Returns</dt><dd>Fully initialized JUCE parameter layout. </dd></dl>
+
+</div>
+</div>
+<a id="aa08135503983de89bbff737fbc982bc4" name="aa08135503983de89bbff737fbc982bc4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa08135503983de89bbff737fbc982bc4">&#9670;&#160;</a></span>formatValue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">juce::String HarmoniaParams::formatValue </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structHarmoniaCharter_1_1Param.html">HarmoniaCharter::Param</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Valeur lisible (knobs, hôte) : 2, 1 ou 0 décimales selon la grandeur, kHz / s au-delà de 1000, un signe sur les paramètres bipolaires. </p>
+<p>Ex. "20.0 kHz", "2.50 s", "+7 st". </p>
 
 </div>
 </div>
@@ -192,7 +260,9 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Creates a logarithmic parameter range. </p>
+<p>Plage logarithmique (meme formule que le charter pour ses skews). </p>
+<p>Identique a la v1 (le charter v3 precalcule deja ses skews avec la meme formule).</p>
+<p>Creates a logarithmic parameter range.</p>
 <p>Used for perceptually logarithmic parameters:</p><ul>
 <li>Frequencies</li>
 <li>Envelope times</li>
@@ -208,6 +278,34 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Configured logarithmic range. </dd></dl>
+
+</div>
+</div>
+<a id="acaa1f2ac42e87d9ae5bc14b1fe1c10d8" name="acaa1f2ac42e87d9ae5bc14b1fe1c10d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acaa1f2ac42e87d9ae5bc14b1fe1c10d8">&#9670;&#160;</a></span>orderedAnalogIds()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::array&lt; juce::String, <a class="el" href="namespaceHarmoniaCharter_1_1analog.html#ad58d139d369d75bbbeb5654b8f0ca5a9">HarmoniaCharter::analog::count</a> &gt; &amp; HarmoniaParams::orderedAnalogIds </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Les 46 <a class="el" href="namespaceHarmoniaParams_1_1IDs.html">IDs</a> analogiques, dans l'ordre du charter (= ordre d'un patch analogique). </p>
+<p>Les 46 <a class="el" href="namespaceHarmoniaParams_1_1IDs.html">IDs</a> analogiques de la v3, dans l'ordre du charter (= ordre d'un patch analogique). </p>
 
 </div>
 </div>
@@ -234,7 +332,9 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Returns all parameter <a class="el" href="namespaceHarmoniaParams_1_1IDs.html">IDs</a> in deterministic order. </p>
+<p>Les 20 <a class="el" href="namespaceHarmoniaParams_1_1IDs.html">IDs</a> historiques, dans l'ordre v1 (anciens presets IA). </p>
+<p>Les 20 <a class="el" href="namespaceHarmoniaParams_1_1IDs.html">IDs</a> de la v1, dans l'ordre v1 (compatible ancien code / presets IA v1).</p>
+<p>Returns all parameter <a class="el" href="namespaceHarmoniaParams_1_1IDs.html">IDs</a> in deterministic order.</p>
 <p>Useful for:</p><ul>
 <li>Preset serialization</li>
 <li>Parameter iteration</li>
@@ -242,6 +342,91 @@ Functions</h2></td></tr>
 <li>AI preset generation</li>
 </ul>
 <dl class="section return"><dt>Returns</dt><dd>Ordered array of all parameter <a class="el" href="namespaceHarmoniaParams_1_1IDs.html">IDs</a>. </dd></dl>
+
+</div>
+</div>
+<a id="ad78ee77389eec466fd3640a89a6a8959" name="ad78ee77389eec466fd3640a89a6a8959"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad78ee77389eec466fd3640a89a6a8959">&#9670;&#160;</a></span>parseValue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float HarmoniaParams::parseValue </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structHarmoniaCharter_1_1Param.html">HarmoniaCharter::Param</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const juce::String &amp;</td>          <td class="paramname"><span class="paramname"><em>text</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Valeur tapée dans l'hôte ("1.2 kHz", "450", "1.5 s"). </p>
+
+</div>
+</div>
+<a id="a68921824b6a8094c1ff3a754743d8e4a" name="a68921824b6a8094c1ff3a754743d8e4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68921824b6a8094c1ff3a754743d8e4a">&#9670;&#160;</a></span>shortUnit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">juce::String HarmoniaParams::shortUnit </td>
+          <td>(</td>
+          <td class="paramtype">std::string_view</td>          <td class="paramname"><span class="paramname"><em>unit</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Unité courte affichée après une valeur ("cents" -&gt; "ct"...) ; vide quand le nombre suffit. </p>
+
+</div>
+</div>
+<a id="a206e66e6cc62ecaa0d062741c1fdbe5d" name="a206e66e6cc62ecaa0d062741c1fdbe5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a206e66e6cc62ecaa0d062741c1fdbe5d">&#9670;&#160;</a></span>toJuce()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">juce::String HarmoniaParams::toJuce </td>
+          <td>(</td>
+          <td class="paramtype">std::string_view</td>          <td class="paramname"><span class="paramname"><em>s</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>string_view (charter) -&gt; juce::String, UTF-8. </p>
 
 </div>
 </div>

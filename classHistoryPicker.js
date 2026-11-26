@@ -12,19 +12,17 @@ var classHistoryPicker =
     [ "paint", "classHistoryPicker.html#aa7e787c9905d3a46df24463041458b3c", null ],
     [ "removeEntry", "classHistoryPicker.html#abea5f548cd13cd983476e66b028a41f3", null ],
     [ "setInteractive", "classHistoryPicker.html#aacbdc847b8a008a01b4a8f7de2ce7357", null ],
-    [ "setItems", "classHistoryPicker.html#afbda2ff46e9c9aa3c82c81ee383907fc", null ],
+    [ "setItems", "classHistoryPicker.html#a7d70c8e49513653c0fac227c3346ad64", null ],
     [ "showMenu", "classHistoryPicker.html#a80549d080ee2724b74615401a46d3431", null ],
     [ "timerCallback", "classHistoryPicker.html#a50991a1bda8b4dfe50d2e3b4407ec1a4", null ],
-    [ "dates", "classHistoryPicker.html#a472897f7abb63ae39435a45fdc83e3f2", null ],
     [ "hoverAnim", "classHistoryPicker.html#a9a32039cdf327f40327bb45ae53b07f7", null ],
     [ "interactive", "classHistoryPicker.html#acf9cb5ba4bd2d65c3c79f2870fb7f6f0", null ],
+    [ "items", "classHistoryPicker.html#a88c0380cdd68b81dd5eae2229f083f75", null ],
     [ "menuOpen", "classHistoryPicker.html#a11ba109417f364a070838e561ab9cd55", null ],
     [ "onClear", "classHistoryPicker.html#aec14aa3b5bbd0caf5a5f6f065b606c99", null ],
     [ "onDelete", "classHistoryPicker.html#a50f0e16e5bdef600705fd30fbb1b71d0", null ],
     [ "onSelect", "classHistoryPicker.html#a8e82d524ea3e496ed5c82cc56dea1097", null ],
     [ "openAnim", "classHistoryPicker.html#a3ad11cee3f573fef4148fad71d2fd90b", null ],
     [ "overlay", "classHistoryPicker.html#ac09b0bad48137d91bfae24c41b7ec8d0", null ],
-    [ "pushToPanel", "classHistoryPicker.html#acad46b9823049f04a5146ee0785dca6c", null ],
-    [ "titles", "classHistoryPicker.html#ac86ee07e3bafe950ee28b1466e95226d", null ],
-    [ "types", "classHistoryPicker.html#ac68497be89ed889f6ebba6abc5272272", null ]
+    [ "pushToPanel", "classHistoryPicker.html#aa39c3164e190aea417e778e2db7f6762", null ]
 ];

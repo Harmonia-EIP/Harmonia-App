@@ -12,7 +12,7 @@ var searchData=
   ['email_9',['email',['../structUserSession.html#ada1e0eb87b001a3109e55ae7ea24de0e',1,'UserSession::email'],['../structUserProfile.html#a36e1fe7848e114062d52691e4ff7f701',1,'UserProfile::email']]],
   ['emailfield_10',['emailField',['../classSignupPage.html#a84a5b563c0f3cd6e491f431df2bd6b89',1,'SignupPage']]],
   ['emptyprompt_11',['EmptyPrompt',['../namespaceBackendStrings.html#a3602a3a4d95b0447df19d23834831e84',1,'BackendStrings::EmptyPrompt'],['../namespaceStrings_1_1Errors.html#a0292e61dbb28ae81461daffdce12aaba',1,'Strings::Errors::EmptyPrompt']]],
-  ['engine_12',['engine',['../structHarmoniaCharter_1_1Param.html#ac7be6013b1f3572948238528333cb581',1,'HarmoniaCharter::Param::engine'],['../namespaceHarmoniaCharter_1_1choices.html#a65d9ba116c284ec41ef6376a8972f402',1,'HarmoniaCharter::choices::engine']]],
+  ['engine_12',['engine',['../structHarmoniaCharter_1_1Param.html#ac7be6013b1f3572948238528333cb581',1,'HarmoniaCharter::Param::engine'],['../structHarmoniaParams_1_1AtomicRefs.html#a751df5e027cb30d05159a8974b8e29c5',1,'HarmoniaParams::AtomicRefs::engine'],['../namespaceHarmoniaCharter_1_1choices.html#aaa3e0ffec5be0801684a81a5f2e0b811',1,'HarmoniaCharter::choices::engine'],['../namespaceHarmoniaParams_1_1IDs.html#a8bdad53bbd82ce74019e1a2602899ced',1,'HarmoniaParams::IDs::engine']]],
   ['enginebadge_13',['engineBadge',['../classMainComponent.html#a3a3c5ab0871264d94dec43b7723c67a7',1,'MainComponent']]],
   ['enginewatch_14',['engineWatch',['../classMainComponent.html#a2fdcf9e2f8a264ec7b1dad36ee03733c',1,'MainComponent']]],
   ['env_5f_15',['env_',['../classDx7Note.html#ab15d68314326905ef1b1028916921121',1,'Dx7Note']]],

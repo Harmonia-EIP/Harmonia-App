@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.15.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Harmonia Interface: src/parameters/HarmoniaParametersV3.h File Reference</title>
+<title>Harmonia Interface: src/parameters/saved_params/HarmoniaParametersV3.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -92,56 +92,37 @@ $(function(){initNavTree('HarmoniaParametersV3_8h.html','',''); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;juce_audio_processors/juce_audio_processors.h&gt;</code><br />
+<code>#include &lt;array&gt;</code><br />
+<code>#include &lt;atomic&gt;</code><br />
+<code>#include &lt;cmath&gt;</code><br />
 <code>#include &quot;<a class="el" href="HarmoniaCharterV3_8h_source.html">HarmoniaCharterV3.h</a>&quot;</code><br />
+<code>#include &quot;HarmoniaParamsV3.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for HarmoniaParametersV3.h:</div>
 <div class="dyncontent">
-<div class="center"><img src="HarmoniaParametersV3_8h__incl.png" border="0" usemap="#asrc_2parameters_2HarmoniaParametersV3_8h" loading="lazy" alt=""/></div>
-<map name="asrc_2parameters_2HarmoniaParametersV3_8h" id="asrc_2parameters_2HarmoniaParametersV3_8h">
-<area shape="rect" title=" " alt="" coords="51,5,341,33"/>
-<area shape="rect" title=" " alt="" coords="5,81,190,126"/>
-<area shape="poly" title=" " alt="" coords="178,35,137,73,133,69,182,32"/>
-<area shape="rect" href="HarmoniaCharterV3_8h.html" title=" " alt="" coords="214,90,376,117"/>
-<area shape="poly" title=" " alt="" coords="213,31,271,79,265,80,211,36"/>
-<area shape="rect" title=" " alt="" coords="77,174,161,201"/>
-<area shape="poly" title=" " alt="" coords="269,118,162,169,160,164,264,118"/>
-<area shape="rect" title=" " alt="" coords="184,174,240,201"/>
-<area shape="poly" title=" " alt="" coords="284,117,238,165,235,160,279,119"/>
-<area shape="rect" title=" " alt="" coords="264,174,326,201"/>
-<area shape="poly" title=" " alt="" coords="297,116,297,160,293,157,293,120"/>
-<area shape="rect" title=" " alt="" coords="350,174,419,201"/>
-<area shape="poly" title=" " alt="" coords="310,115,361,163,356,163,308,120"/>
-<area shape="rect" title=" " alt="" coords="443,174,539,201"/>
-<area shape="poly" title=" " alt="" coords="327,115,448,167,443,168,326,120"/>
-</map>
-</div>
-</div><div class="textblock"><div class="dynheader">
-This graph shows which files directly or indirectly include this file:</div>
-<div class="dyncontent">
-<div class="center"><img src="HarmoniaParametersV3_8h__dep__incl.png" border="0" usemap="#asrc_2parameters_2HarmoniaParametersV3_8hdep" loading="lazy" alt=""/></div>
-<map name="asrc_2parameters_2HarmoniaParametersV3_8hdep" id="asrc_2parameters_2HarmoniaParametersV3_8hdep">
-<area shape="rect" title=" " alt="" coords="181,5,472,33"/>
-<area shape="rect" href="PluginProcessor_8h.html" title="Main audio processor of the Harmonia synthesizer plugin." alt="" coords="343,81,502,109"/>
-<area shape="poly" title=" " alt="" coords="356,40,408,80,403,81,356,45"/>
-<area shape="rect" href="PresetLoader_8h.html" title=" " alt="" coords="142,81,318,109"/>
-<area shape="poly" title=" " alt="" coords="295,45,249,82,246,79,299,41"/>
-<area shape="rect" href="MainComponent_8h.html" title="Main synthesizer interface component for Harmonia." alt="" coords="155,157,319,184"/>
-<area shape="poly" title=" " alt="" coords="373,116,271,159,269,154,377,113"/>
-<area shape="rect" href="PluginEditor_8h.html" title="Main graphical editor of the Harmonia plugin." alt="" coords="237,308,370,336"/>
-<area shape="poly" title=" " alt="" coords="420,122,406,190,392,227,374,261,351,289,325,310,322,305,347,285,369,259,387,224,401,188,417,126"/>
-<area shape="rect" href="PluginProcessor_8cpp.html" title=" " alt="" coords="361,384,534,411"/>
-<area shape="poly" title=" " alt="" coords="427,122,449,384,444,383,422,125"/>
-<area shape="rect" href="AppController_8h.html" title="Main application navigation controller." alt="" coords="13,232,157,260"/>
-<area shape="poly" title=" " alt="" coords="195,194,113,234,110,230,198,189"/>
-<area shape="rect" href="MainComponent_8cpp.html" title=" " alt="" coords="181,232,360,260"/>
-<area shape="poly" title=" " alt="" coords="250,196,267,232,262,231,248,201"/>
-<area shape="rect" href="AppController_8cpp.html" title=" " alt="" coords="5,308,165,336"/>
-<area shape="poly" title=" " alt="" coords="86,273,88,308,82,307,84,278"/>
-<area shape="poly" title=" " alt="" coords="139,263,267,306,262,309,138,268"/>
-<area shape="rect" href="PluginEditor_8cpp.html" title=" " alt="" coords="188,384,336,411"/>
-<area shape="poly" title=" " alt="" coords="291,348,271,385,268,381,286,351"/>
-<area shape="poly" title=" " alt="" coords="344,341,425,383,419,383,342,346"/>
-<area shape="poly" title=" " alt="" coords="234,122,238,157,233,156,232,127"/>
+<div class="center"><img src="HarmoniaParametersV3_8h__incl.png" border="0" usemap="#asrc_2parameters_2saved__params_2HarmoniaParametersV3_8h" loading="lazy" alt=""/></div>
+<map name="asrc_2parameters_2saved__params_2HarmoniaParametersV3_8h" id="asrc_2parameters_2saved__params_2HarmoniaParametersV3_8h">
+<area shape="rect" title=" " alt="" coords="212,5,460,50"/>
+<area shape="rect" title=" " alt="" coords="5,98,190,143"/>
+<area shape="poly" title=" " alt="" coords="277,52,170,95,168,90,281,49"/>
+<area shape="rect" title=" " alt="" coords="188,191,244,218"/>
+<area shape="poly" title=" " alt="" coords="324,50,236,179,232,176,319,51"/>
+<area shape="rect" title=" " alt="" coords="502,106,568,134"/>
+<area shape="poly" title=" " alt="" coords="385,48,491,96,495,100,490,99,488,100,384,53"/>
+<area shape="rect" title=" " alt="" coords="268,191,330,218"/>
+<area shape="poly" title=" " alt="" coords="325,49,314,74,305,99,300,138,299,177,295,174,294,138,300,97,309,72,321,52"/>
+<area shape="rect" href="HarmoniaCharterV3_8h.html" title=" " alt="" coords="315,106,477,134"/>
+<area shape="poly" title=" " alt="" coords="351,48,382,94,377,93,349,53"/>
+<area shape="rect" title=" " alt="" coords="592,106,755,134"/>
+<area shape="poly" title=" " alt="" coords="417,48,612,101,607,103,417,53"/>
+<area shape="poly" title=" " alt="" coords="370,134,259,187,257,182,365,135"/>
+<area shape="poly" title=" " alt="" coords="383,134,327,183,324,179,378,136"/>
+<area shape="rect" title=" " alt="" coords="354,191,438,218"/>
+<area shape="poly" title=" " alt="" coords="398,133,398,177,394,174,394,137"/>
+<area shape="rect" title=" " alt="" coords="463,191,532,218"/>
+<area shape="poly" title=" " alt="" coords="413,132,472,181,467,180,412,137"/>
+<area shape="rect" title=" " alt="" coords="556,191,652,218"/>
+<area shape="poly" title=" " alt="" coords="430,132,559,185,554,185,429,137"/>
 </map>
 </div>
 </div>
@@ -149,32 +130,151 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:HarmoniaParamsV3_3A_3AParameterRefs" id="r_HarmoniaParamsV3_3A_3AParameterRefs"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHarmoniaParamsV3_1_1ParameterRefs.html">HarmoniaParamsV3::ParameterRefs</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Physical value of every charter parameter for the audio thread (index = position in <a class="el" href="namespaceHarmoniaCharter.html#a1ecd283dbf3156403589442aab4cd80c" title="Every parameter: the global ones, then the analog engine (the AI&#39;s vector order), then the DX7 voice.">HarmoniaCharter::params</a>).  <a href="structHarmoniaParamsV3_1_1ParameterRefs.html#details">More...</a><br /></td></tr>
+<tr class="memitem:HarmoniaParams_3A_3AAtomicRefs" id="r_HarmoniaParams_3A_3AAtomicRefs"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHarmoniaParams_1_1AtomicRefs.html">HarmoniaParams::AtomicRefs</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Acces temps reel : pointeurs nommes (refs.filterCutoff-&gt;load()) ou indexes.  <a href="structHarmoniaParams_1_1AtomicRefs.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
-<tr class="memitem:HarmoniaParamsV3" id="r_HarmoniaParamsV3"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceHarmoniaParamsV3.html">HarmoniaParamsV3</a></td></tr>
+<tr class="memitem:HarmoniaParams" id="r_HarmoniaParams"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceHarmoniaParams.html">HarmoniaParams</a></td></tr>
+<tr class="memdesc:namespaceHarmoniaParams"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains all synthesizer parameter utilities and definitions. <br /></td></tr>
+<tr class="memitem:HarmoniaParams_3A_3AIDs" id="r_HarmoniaParams_3A_3AIDs"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceHarmoniaParams_1_1IDs.html">HarmoniaParams::IDs</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:afeeff1c2f6dba56a8f17229e483eddaf" id="r_afeeff1c2f6dba56a8f17229e483eddaf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afeeff1c2f6dba56a8f17229e483eddaf">HARMONIA_ANALOG_LIST</a>(X)</td></tr>
+<tr class="memitem:a7c1b2025aef7f36180384eb765d918a8" id="r_a7c1b2025aef7f36180384eb765d918a8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7c1b2025aef7f36180384eb765d918a8">HARMONIA_CHECK_ID</a>(name,  key)</td></tr>
+<tr class="memitem:a052ce3efc197ad7aa7873867d4a0287c" id="r_a052ce3efc197ad7aa7873867d4a0287c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a052ce3efc197ad7aa7873867d4a0287c">HARMONIA_DEFINE_ID</a>(name,  key)</td></tr>
+<tr class="memitem:ab954ef441ab95464ee338573e145cec0" id="r_ab954ef441ab95464ee338573e145cec0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab954ef441ab95464ee338573e145cec0">HARMONIA_DECLARE_REF</a>(name,  key)</td></tr>
+<tr class="memitem:a78884a2ce64fb1e749173aa90fdd438b" id="r_a78884a2ce64fb1e749173aa90fdd438b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a78884a2ce64fb1e749173aa90fdd438b">HARMONIA_BIND_REF</a>(name,  key)</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a3f7bc78ff24ed1f12f311c4fc04640c7" id="r_a3f7bc78ff24ed1f12f311c4fc04640c7"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceHarmoniaParams.html#a3f7bc78ff24ed1f12f311c4fc04640c7">HarmoniaParams::IndexedRefs</a> = HarmoniaParamsV3::ParameterRefs</td></tr>
+<tr class="memdesc:a3f7bc78ff24ed1f12f311c4fc04640c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Les refs indexees du wrapper v3 restent disponibles : refs.analog (<a class="el" href="namespaceHarmoniaCharter_1_1analog.html#accb56d3487cd78cb9651f3e49292667fa11edebc1ceaf69073114b814e66e5dfd">HarmoniaCharter::analog::filter_cutoff</a>).  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a3ebe9baea8511db6ee257b84fb53453e" id="r_a3ebe9baea8511db6ee257b84fb53453e"><td class="memItemLeft" align="right" valign="top">juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceHarmoniaParamsV3.html#a3ebe9baea8511db6ee257b84fb53453e">HarmoniaParamsV3::toJuce</a> (std::string_view text)</td></tr>
-<tr class="memitem:a84baf2ee223ea0c57cbedcfbb747e80d" id="r_a84baf2ee223ea0c57cbedcfbb747e80d"><td class="memItemLeft" align="right" valign="top">juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceHarmoniaParamsV3.html#a84baf2ee223ea0c57cbedcfbb747e80d">HarmoniaParamsV3::shortUnit</a> (std::string_view unit)</td></tr>
-<tr class="memdesc:a84baf2ee223ea0c57cbedcfbb747e80d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Short unit shown after a value ("cents" -&gt; "ct"...); empty when the number speaks for itself.  <br /></td></tr>
-<tr class="memitem:ab917bdbc16af09c9aef1108765859f77" id="r_ab917bdbc16af09c9aef1108765859f77"><td class="memItemLeft" align="right" valign="top">juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceHarmoniaParamsV3.html#ab917bdbc16af09c9aef1108765859f77">HarmoniaParamsV3::formatValue</a> (const <a class="el" href="structHarmoniaCharter_1_1Param.html">HarmoniaCharter::Param</a> &amp;p, float value)</td></tr>
-<tr class="memdesc:ab917bdbc16af09c9aef1108765859f77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Readable value: 2, 1 or 0 decimals by magnitude, kHz / s above 1000, a sign on bipolar parameters.  <br /></td></tr>
-<tr class="memitem:a0e9840e7e44960eab63ca2f0af6c1e72" id="r_a0e9840e7e44960eab63ca2f0af6c1e72"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceHarmoniaParamsV3.html#a0e9840e7e44960eab63ca2f0af6c1e72">HarmoniaParamsV3::parseValue</a> (const <a class="el" href="structHarmoniaCharter_1_1Param.html">HarmoniaCharter::Param</a> &amp;p, const juce::String &amp;text)</td></tr>
-<tr class="memdesc:a0e9840e7e44960eab63ca2f0af6c1e72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Value typed in the host ("1.2 kHz", "450", "1.5 s").  <br /></td></tr>
-<tr class="memitem:ad17ec2eae5410320b69a3f4587497203" id="r_ad17ec2eae5410320b69a3f4587497203"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; juce::RangedAudioParameter &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceHarmoniaParamsV3.html#ad17ec2eae5410320b69a3f4587497203">HarmoniaParamsV3::makeParameter</a> (const <a class="el" href="structHarmoniaCharter_1_1Param.html">HarmoniaCharter::Param</a> &amp;p)</td></tr>
-<tr class="memitem:aea0f65ff303a38b7a42119f79db8fbeb" id="r_aea0f65ff303a38b7a42119f79db8fbeb"><td class="memItemLeft" align="right" valign="top">juce::AudioProcessorValueTreeState::ParameterLayout&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceHarmoniaParamsV3.html#aea0f65ff303a38b7a42119f79db8fbeb">HarmoniaParamsV3::createLayout</a> ()</td></tr>
-<tr class="memdesc:aea0f65ff303a38b7a42119f79db8fbeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Every v3 parameter, one group per module and one per DX7 operator (in the charter's order).  <br /></td></tr>
-<tr class="memitem:a64371ef0ebe2d85240299ad649786f5b" id="r_a64371ef0ebe2d85240299ad649786f5b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceHarmoniaParamsV3.html#a64371ef0ebe2d85240299ad649786f5b">HarmoniaParamsV3::applyV2State</a> (juce::AudioProcessorValueTreeState &amp;apvts, const std::array&lt; float, HarmoniaCharter::v2Ids.size()&gt; &amp;v2Physical)</td></tr>
-<tr class="memdesc:a64371ef0ebe2d85240299ad649786f5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">After loading a state saved before charter v3 (20 physical values by v2 id): analog engine, v2 rules.  <br /></td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:a2bb70fce529db1ab824c2826e01a52fb" id="r_a2bb70fce529db1ab824c2826e01a52fb"><td class="memItemLeft" align="right" valign="top">constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceHarmoniaParamsV3.html#a2bb70fce529db1ab824c2826e01a52fb">HarmoniaParamsV3::versionHint</a> = 3</td></tr>
+<tr class="memitem:a7b9dab3e8947059cc217d8f6fb129014" id="r_a7b9dab3e8947059cc217d8f6fb129014"><td class="memItemLeft" align="right" valign="top">juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceHarmoniaParams_1_1IDs.html#a7b9dab3e8947059cc217d8f6fb129014">HarmoniaParams::IDs::idOf</a> (<a class="el" href="namespaceHarmoniaCharter_1_1analog.html#accb56d3487cd78cb9651f3e49292667f">HarmoniaCharter::analog::Index</a> i)</td></tr>
+<tr class="memitem:a817cf5dd08b4a72b77d6e6d4658aa9bc" id="r_a817cf5dd08b4a72b77d6e6d4658aa9bc"><td class="memItemLeft" align="right" valign="top">const std::array&lt; juce::String, 20 &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceHarmoniaParams.html#a817cf5dd08b4a72b77d6e6d4658aa9bc">HarmoniaParams::orderedIds</a> ()</td></tr>
+<tr class="memdesc:a817cf5dd08b4a72b77d6e6d4658aa9bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Les 20 <a class="el" href="namespaceHarmoniaParams_1_1IDs.html">IDs</a> historiques, dans l'ordre v1 (anciens presets IA).  <br /></td></tr>
+<tr class="memitem:acaa1f2ac42e87d9ae5bc14b1fe1c10d8" id="r_acaa1f2ac42e87d9ae5bc14b1fe1c10d8"><td class="memItemLeft" align="right" valign="top">const std::array&lt; juce::String, <a class="el" href="namespaceHarmoniaCharter_1_1analog.html#ad58d139d369d75bbbeb5654b8f0ca5a9">HarmoniaCharter::analog::count</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceHarmoniaParams.html#acaa1f2ac42e87d9ae5bc14b1fe1c10d8">HarmoniaParams::orderedAnalogIds</a> ()</td></tr>
+<tr class="memdesc:acaa1f2ac42e87d9ae5bc14b1fe1c10d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Les 46 <a class="el" href="namespaceHarmoniaParams_1_1IDs.html">IDs</a> analogiques, dans l'ordre du charter (= ordre d'un patch analogique).  <br /></td></tr>
+<tr class="memitem:a299727c4fcdecee8c508ed19643a5bc0" id="r_a299727c4fcdecee8c508ed19643a5bc0"><td class="memItemLeft" align="right" valign="top">juce::NormalisableRange&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceHarmoniaParams.html#a299727c4fcdecee8c508ed19643a5bc0">HarmoniaParams::makeLogRange</a> (float minV, float maxV, float midpoint)</td></tr>
+<tr class="memdesc:a299727c4fcdecee8c508ed19643a5bc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plage logarithmique (meme formule que le charter pour ses skews).  <br /></td></tr>
+<tr class="memitem:a277e6f97c0c232c719467c6198da41be" id="r_a277e6f97c0c232c719467c6198da41be"><td class="memItemLeft" align="right" valign="top">juce::AudioProcessorValueTreeState::ParameterLayout&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceHarmoniaParams.html#a277e6f97c0c232c719467c6198da41be">HarmoniaParams::createLayout</a> ()</td></tr>
+<tr class="memdesc:a277e6f97c0c232c719467c6198da41be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Layout APVTS complet, genere depuis le charter (un groupe par module / operateur DX7).  <br /></td></tr>
 </table>
+<a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Macro Definition Documentation</h2>
+<a id="afeeff1c2f6dba56a8f17229e483eddaf" name="afeeff1c2f6dba56a8f17229e483eddaf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afeeff1c2f6dba56a8f17229e483eddaf">&#9670;&#160;</a></span>HARMONIA_ANALOG_LIST</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HARMONIA_ANALOG_LIST</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>X</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a78884a2ce64fb1e749173aa90fdd438b" name="a78884a2ce64fb1e749173aa90fdd438b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78884a2ce64fb1e749173aa90fdd438b">&#9670;&#160;</a></span>HARMONIA_BIND_REF</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HARMONIA_BIND_REF</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>key</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">            name = apvts.getRawParameterValue (IDs::name);                \</div>
+<div class="line">            jassert (name != <span class="keyword">nullptr</span>);</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a7c1b2025aef7f36180384eb765d918a8" name="a7c1b2025aef7f36180384eb765d918a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c1b2025aef7f36180384eb765d918a8">&#9670;&#160;</a></span>HARMONIA_CHECK_ID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HARMONIA_CHECK_ID</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>key</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keyword">static_assert</span> (<a class="code hl_variable" href="namespaceHarmoniaCharter.html#a658eac6bbe4a6f21eef9370693286cbf">HarmoniaCharter::params</a>[<a class="code hl_variable" href="namespaceHarmoniaCharter.html#a94d36123c6c287847b4dcd7302bc2d66">HarmoniaCharter::analogBegin</a>                           \</div>
+<div class="line">                                           + (std::size_t) HarmoniaCharter::analog::key].id == #key, \</div>
+<div class="line">                   <span class="stringliteral">&quot;Charter v3: ordre ou ID modifie pour &quot;</span> #key);</div>
+<div class="ttc" id="anamespaceHarmoniaCharter_html_a658eac6bbe4a6f21eef9370693286cbf"><div class="ttname"><a href="namespaceHarmoniaCharter.html#a658eac6bbe4a6f21eef9370693286cbf">HarmoniaCharter::params</a></div><div class="ttdeci">constexpr std::array&lt; Param, 192 &gt; params</div><div class="ttdoc">Every parameter: the global ones, then the analog engine (the AI&#39;s vector order), then the DX7 voice.</div><div class="ttdef"><b>Definition</b> HarmoniaCharter.h:108</div></div>
+<div class="ttc" id="anamespaceHarmoniaCharter_html_a94d36123c6c287847b4dcd7302bc2d66"><div class="ttname"><a href="namespaceHarmoniaCharter.html#a94d36123c6c287847b4dcd7302bc2d66">HarmoniaCharter::analogBegin</a></div><div class="ttdeci">constexpr std::size_t analogBegin</div><div class="ttdef"><b>Definition</b> HarmoniaCharter.h:303</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab954ef441ab95464ee338573e145cec0" name="ab954ef441ab95464ee338573e145cec0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab954ef441ab95464ee338573e145cec0">&#9670;&#160;</a></span>HARMONIA_DECLARE_REF</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HARMONIA_DECLARE_REF</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>key</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">std::atomic&lt;float&gt;* name = <span class="keyword">nullptr</span>;</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a052ce3efc197ad7aa7873867d4a0287c" name="a052ce3efc197ad7aa7873867d4a0287c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a052ce3efc197ad7aa7873867d4a0287c">&#9670;&#160;</a></span>HARMONIA_DEFINE_ID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HARMONIA_DEFINE_ID</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>key</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">        <span class="keyword">inline</span> <span class="keyword">const</span> juce::String name = idOf (HarmoniaCharter::analog::key);</div>
+</div><!-- fragment -->
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
@@ -188,7 +288,7 @@ Variables</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="dir_434cae81b587a8a3fa87d985996d40d2.html">parameters</a></li><li class="navelem"><a href="HarmoniaParametersV3_8h.html">HarmoniaParametersV3.h</a></li>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="dir_434cae81b587a8a3fa87d985996d40d2.html">parameters</a></li><li class="navelem"><a href="dir_1f950e628efbf7ebec5c2f3fa0daf37f.html">saved_params</a></li><li class="navelem"><a href="HarmoniaParametersV3_8h.html">HarmoniaParametersV3.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
   </ul>
 </div>

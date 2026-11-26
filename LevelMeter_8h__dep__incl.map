@@ -1,0 +1,19 @@
+<map id="src/components/LevelMeter.h" name="src/components/LevelMeter.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="156,5,368,33"/>
+<area shape="rect" id="Node000002" href="$OutputStrip_8h.html" title=" " alt="" coords="155,81,370,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="263,46,265,81,260,80,261,51"/>
+<area shape="rect" id="Node000003" href="$MainComponent_8h.html" title="Main synthesizer interface component for Harmonia." alt="" coords="181,157,344,184"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="263,122,265,157,260,155,261,127"/>
+<area shape="rect" id="Node000004" href="$AppController_8h.html" title="Main application navigation controller." alt="" coords="98,232,242,260"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="232,196,188,234,185,230,236,192"/>
+<area shape="rect" id="Node000009" href="$MainComponent_8cpp.html" title=" " alt="" coords="266,232,445,260"/>
+<area shape="poly" id="edge8_Node000003_Node000009" title=" " alt="" coords="291,191,342,232,336,232,290,197"/>
+<area shape="rect" id="Node000005" href="$AppController_8cpp.html" title=" " alt="" coords="5,308,165,336"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="142,272,102,310,98,306,145,269"/>
+<area shape="rect" id="Node000006" href="$PluginEditor_8h.html" title="Main graphical editor of the Harmonia plugin." alt="" coords="189,308,322,336"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="198,268,243,307,238,308,197,273"/>
+<area shape="rect" id="Node000007" href="$PluginEditor_8cpp.html" title=" " alt="" coords="88,384,236,411"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="230,345,180,386,178,381,225,346"/>
+<area shape="rect" id="Node000008" href="$PluginProcessor_8cpp.html" title=" " alt="" coords="261,384,434,411"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="285,343,334,384,329,383,283,348"/>
+</map>

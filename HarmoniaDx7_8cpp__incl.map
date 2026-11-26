@@ -3,9 +3,9 @@
 <area shape="rect" id="Node000002" href="$HarmoniaDx7_8h.html" title="Harmonia&#39;s DX7 mode: one DX7 voice played by Dexed&#39;s msfa FM core (Apache 2.0, see dx7/README...." alt="" coords="430,81,553,109"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1036,34,569,87,568,82,1040,31"/>
 <area shape="rect" id="Node000007" title=" " alt="" coords="5,232,90,260"/>
-<area shape="poly" id="edge11_Node000001_Node000007" title=" " alt="" coords="1036,23,818,31,553,42,318,59,235,71,187,83,146,112,111,149,83,187,63,220,58,218,78,184,107,145,142,108,185,79,234,65,318,54,553,37,818,26,1041,22"/>
+<area shape="poly" id="edge11_Node000001_Node000007" title=" " alt="" coords="1036,24,823,33,567,45,339,61,258,72,211,83,164,112,123,149,90,188,66,221,61,218,86,185,120,146,161,108,209,79,257,67,338,56,566,39,823,27,1041,22"/>
 <area shape="rect" id="Node000008" title=" " alt="" coords="114,232,176,260"/>
-<area shape="poly" id="edge12_Node000001_Node000008" title=" " alt="" coords="1036,24,757,42,588,59,419,84,373,89,332,90,260,91,228,96,198,107,169,127,140,158,134,172,132,186,137,218,131,217,126,187,129,170,136,155,166,123,196,102,227,91,260,86,332,85,373,84,418,78,587,54,757,37,1041,22"/>
+<area shape="poly" id="edge12_Node000001_Node000008" title=" " alt="" coords="1036,23,913,31,757,41,588,58,419,84,338,92,273,95,244,101,215,112,188,130,159,158,151,171,146,186,144,217,139,216,141,185,146,169,155,155,184,126,213,107,242,96,272,90,338,87,418,78,587,53,757,36,913,25,1041,22"/>
 <area shape="rect" id="Node000011" title=" " alt="" coords="1232,81,1298,109"/>
 <area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="1166,31,1233,73,1228,73,1165,36"/>
 <area shape="rect" id="Node000012" title=" " alt="" coords="1322,81,1370,109"/>
@@ -40,15 +40,15 @@
 <area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="496,107,521,218,516,216,493,111"/>
 <area shape="rect" id="Node000005" title=" " alt="" coords="581,232,658,260"/>
 <area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="503,106,601,220,596,220,501,111"/>
-<area shape="rect" id="Node000006" href="$HarmoniaCharterV3_8h.html" title=" " alt="" coords="150,157,404,184"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="451,111,331,154,329,149,455,108"/>
-<area shape="poly" id="edge7_Node000006_Node000003" title=" " alt="" coords="306,182,402,226,396,227,306,188"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="235,187,104,230,102,225,237,183"/>
-<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="251,187,183,227,180,222,255,183"/>
+<area shape="rect" id="Node000006" href="$HarmoniaCharter_8h.html" title=" " alt="" coords="168,157,404,184"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="453,111,338,153,336,149,457,108"/>
+<area shape="poly" id="edge7_Node000006_Node000003" title=" " alt="" coords="314,182,402,225,397,226,314,188"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="242,187,106,230,103,225,245,183"/>
+<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="259,187,185,227,182,223,263,183"/>
 <area shape="rect" id="Node000009" title=" " alt="" coords="200,232,269,260"/>
-<area shape="poly" id="edge9_Node000006_Node000009" title=" " alt="" coords="271,183,251,221,247,217,267,187"/>
+<area shape="poly" id="edge9_Node000006_Node000009" title=" " alt="" coords="279,183,254,221,250,218,275,187"/>
 <area shape="rect" id="Node000010" title=" " alt="" coords="293,232,389,260"/>
-<area shape="poly" id="edge10_Node000006_Node000010" title=" " alt="" coords="289,182,322,221,317,220,288,187"/>
+<area shape="poly" id="edge10_Node000006_Node000010" title=" " alt="" coords="297,182,325,220,319,220,295,187"/>
 <area shape="rect" id="Node000015" title=" " alt="" coords="1184,308,1258,336"/>
 <area shape="poly" id="edge17_Node000014_Node000015" title=" " alt="" coords="1223,259,1223,294,1219,291,1219,263"/>
 <area shape="rect" id="Node000017" href="$synth_8h.html" title=" " alt="" coords="996,308,1065,336"/>

@@ -105,12 +105,22 @@ $(function(){initNavTree('HistoryUtils_8h_source.html','',''); });
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="comment">// &quot;2026-10-28T14:03:11.123456Z&quot; (UTC) -&gt; &quot;28 Oct 14:03&quot; (heure locale)</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    juce::String <a class="code hl_function" href="namespaceHistoryUtils.html#aa703169b4357da2cfdbdbac4aaeee85a">formatDate</a> (<span class="keyword">const</span> juce::String&amp; iso);</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>}</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="comment">// Nom affiché du modèle d&#39;une entrée, le même partout :</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="comment">//  - id connu dans la liste GET /ai/models -&gt; son nom (comme dans le ModelPicker)</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="comment">//  - &quot;latest&quot;                              -&gt; &quot;Latest&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="comment">//  - sinon &quot;harmonia_v3&quot;                   -&gt; &quot;Harmonia V3&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="comment">//  - rien en base (NULL)                   -&gt; &quot;Unknown model&quot;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    juce::String <a class="code hl_function" href="namespaceHistoryUtils.html#ad25304dd5b423a5f42033d8d65310741">formatModel</a> (<span class="keyword">const</span> juce::String&amp; modelName, <span class="keyword">const</span> juce::String&amp; modelId,</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>                              <span class="keyword">const</span> <a class="code hl_typedef" href="AiConfig_8h.html#a2a0cefbb9fa717ffd560776e4ae2cb0d">AIModelList</a>&amp; models);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>}</div>
+<div class="ttc" id="aAiConfig_8h_html_a2a0cefbb9fa717ffd560776e4ae2cb0d"><div class="ttname"><a href="AiConfig_8h.html#a2a0cefbb9fa717ffd560776e4ae2cb0d">AIModelList</a></div><div class="ttdeci">std::vector&lt; AIModelData &gt; AIModelList</div><div class="ttdef"><b>Definition</b> AiConfig.h:16</div></div>
 <div class="ttc" id="aHeaderIncludes_8h_html"><div class="ttname"><a href="HeaderIncludes_8h.html">HeaderIncludes.h</a></div></div>
 <div class="ttc" id="anamespaceHistoryUtils_html"><div class="ttname"><a href="namespaceHistoryUtils.html">HistoryUtils</a></div><div class="ttdef"><b>Definition</b> HistoryUtils.cpp:4</div></div>
 <div class="ttc" id="anamespaceHistoryUtils_html_a6b119fb935465a1c48c2046efb2b5fa5"><div class="ttname"><a href="namespaceHistoryUtils.html#a6b119fb935465a1c48c2046efb2b5fa5">HistoryUtils::isRefined</a></div><div class="ttdeci">bool isRefined(const juce::String &amp;type)</div><div class="ttdef"><b>Definition</b> HistoryUtils.cpp:5</div></div>
 <div class="ttc" id="anamespaceHistoryUtils_html_a87a3e9b9c867c5aa9763df0b9931d207"><div class="ttname"><a href="namespaceHistoryUtils.html#a87a3e9b9c867c5aa9763df0b9931d207">HistoryUtils::danger</a></div><div class="ttdeci">juce::Colour danger()</div><div class="ttdef"><b>Definition</b> HistoryUtils.h:9</div></div>
 <div class="ttc" id="anamespaceHistoryUtils_html_aa703169b4357da2cfdbdbac4aaeee85a"><div class="ttname"><a href="namespaceHistoryUtils.html#aa703169b4357da2cfdbdbac4aaeee85a">HistoryUtils::formatDate</a></div><div class="ttdeci">juce::String formatDate(const juce::String &amp;iso)</div><div class="ttdef"><b>Definition</b> HistoryUtils.cpp:10</div></div>
+<div class="ttc" id="anamespaceHistoryUtils_html_ad25304dd5b423a5f42033d8d65310741"><div class="ttname"><a href="namespaceHistoryUtils.html#ad25304dd5b423a5f42033d8d65310741">HistoryUtils::formatModel</a></div><div class="ttdeci">juce::String formatModel(const juce::String &amp;modelName, const juce::String &amp;modelId, const AIModelList &amp;models)</div><div class="ttdef"><b>Definition</b> HistoryUtils.cpp:29</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

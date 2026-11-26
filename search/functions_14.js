@@ -8,7 +8,8 @@ var searchData=
   ['welcomepage_5',['WelcomePage',['../classWelcomePage.html#a9a7dad9a04f5a6b94c721e49a9d006d5',1,'WelcomePage']]],
   ['wireheaderbuttons_6',['wireHeaderButtons',['../classMainComponent.html#a9b9a588d88f74a774c88f7456ca6da4a',1,'MainComponent']]],
   ['withtoken_7',['withToken',['../structHttpOptions.html#a88ebb9e98d48822ed99d355714c55478',1,'HttpOptions']]],
-  ['writeindex_8',['writeIndex',['../classIconChoiceSelector.html#aaeb11e1a2f6a7a1dd53ab02e7a0fa377',1,'IconChoiceSelector']]],
-  ['writelocked_9',['writeLocked',['../classSessionStore.html#a7a392ae973952c9511bcdd1183c175fb',1,'SessionStore']]],
-  ['writelog_10',['writeLog',['../classBackendManager.html#a9ee33036fd962fa87dbedecfc3e8c259',1,'BackendManager']]]
+  ['wraptitle_8',['wrapTitle',['../classHistoryTile.html#a91ce13aeffbe01b46d295bfd20e424d8',1,'HistoryTile']]],
+  ['writeindex_9',['writeIndex',['../classIconChoiceSelector.html#aaeb11e1a2f6a7a1dd53ab02e7a0fa377',1,'IconChoiceSelector']]],
+  ['writelocked_10',['writeLocked',['../classSessionStore.html#a7a392ae973952c9511bcdd1183c175fb',1,'SessionStore']]],
+  ['writelog_11',['writeLog',['../classBackendManager.html#a9ee33036fd962fa87dbedecfc3e8c259',1,'BackendManager']]]
 ];

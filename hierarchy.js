@@ -24,7 +24,8 @@ var hierarchy =
     [ "juce::Button", null, [
       [ "ActionButton", "classActionButton.html", null ],
       [ "IconButton", "classIconButton.html", null ],
-      [ "LogoButton", "classLogoButton.html", null ]
+      [ "LogoButton", "classLogoButton.html", null ],
+      [ "RandomizeButton", "classRandomizeButton.html", null ]
     ] ],
     [ "juce::ChangeListener", null, [
       [ "PaletteSelector::Picker", "classPaletteSelector_1_1Picker.html", null ]
@@ -46,12 +47,15 @@ var hierarchy =
         [ "FilterTypeSelector", "classFilterTypeSelector.html", null ],
         [ "WaveformSelector", "classWaveformSelector.html", null ]
       ] ],
+      [ "KeyboardChip", "classKeyboardChip.html", null ],
       [ "KnobControl", "classKnobControl.html", null ],
+      [ "LevelMeter", "classLevelMeter.html", null ],
       [ "LfoVisualizer", "classLfoVisualizer.html", null ],
       [ "LoginPage", "classLoginPage.html", null ],
       [ "MainComponent", "classMainComponent.html", null ],
       [ "ModelPicker", "classModelPicker.html", null ],
       [ "OscilloscopeComponent", "classOscilloscopeComponent.html", null ],
+      [ "OutputStrip", "classOutputStrip.html", null ],
       [ "PaletteSelector", "classPaletteSelector.html", null ],
       [ "PaletteSelector::Picker", "classPaletteSelector_1_1Picker.html", null ],
       [ "ParticleField", "classParticleField.html", null ],
@@ -80,6 +84,7 @@ var hierarchy =
     [ "HarmoniaCharter::Group", "structHarmoniaCharter_1_1Group.html", null ],
     [ "HarmoniaPatches", "structHarmoniaPatches.html", null ],
     [ "HistoryEntry", "structHistoryEntry.html", null ],
+    [ "HistoryItem", "structHistoryItem.html", null ],
     [ "HttpClient", "classHttpClient.html", null ],
     [ "HttpOptions", "structHttpOptions.html", null ],
     [ "HttpResponse", "structHttpResponse.html", null ],
@@ -88,6 +93,7 @@ var hierarchy =
     [ "juce::Label", null, [
       [ "PresetLabel", "classPresetLabel.html", null ]
     ] ],
+    [ "HarmoniaKeyboard::LayoutKeys", "structHarmoniaKeyboard_1_1LayoutKeys.html", null ],
     [ "Lfo", "classLfo.html", null ],
     [ "juce::AudioProcessorValueTreeState::Listener", null, [
       [ "EnvelopeVisualizer", "classEnvelopeVisualizer.html", null ],
@@ -105,10 +111,12 @@ var hierarchy =
       [ "ModelMenuLookAndFeel", "classModelMenuLookAndFeel.html", null ],
       [ "WelcomeLookAndFeel", "classWelcomeLookAndFeel.html", null ]
     ] ],
+    [ "juce::MidiKeyboardComponent", null, [
+      [ "HarmoniaKeyboard", "classHarmoniaKeyboard.html", null ]
+    ] ],
     [ "Module", "classModule.html", null ],
     [ "PaletteState", "structPaletteState.html", null ],
     [ "HarmoniaCharter::Param", "structHarmoniaCharter_1_1Param.html", null ],
-    [ "HarmoniaParamsV3::ParameterRefs", "structHarmoniaParamsV3_1_1ParameterRefs.html", null ],
     [ "PitchEnv", "classPitchEnv.html", null ],
     [ "Porta", "structPorta.html", null ],
     [ "ProfileResult", "structProfileResult.html", null ],
@@ -118,6 +126,9 @@ var hierarchy =
     [ "SessionStore", "classSessionStore.html", null ],
     [ "juce::SettableTooltipClient", null, [
       [ "HistoryPicker", "classHistoryPicker.html", null ],
+      [ "HistoryTile", "classHistoryTile.html", null ],
+      [ "KeyboardChip", "classKeyboardChip.html", null ],
+      [ "LevelMeter", "classLevelMeter.html", null ],
       [ "ModelPicker", "classModelPicker.html", null ]
     ] ],
     [ "Sin", "classSin.html", null ],
@@ -138,15 +149,18 @@ var hierarchy =
       [ "HeaderComponent", "classHeaderComponent.html", null ],
       [ "HistoryPicker", "classHistoryPicker.html", null ],
       [ "IconButton", "classIconButton.html", null ],
+      [ "LevelMeter", "classLevelMeter.html", null ],
       [ "LfoVisualizer", "classLfoVisualizer.html", null ],
       [ "LoginPage", "classLoginPage.html", null ],
       [ "LogoButton", "classLogoButton.html", null ],
       [ "OscilloscopeComponent", "classOscilloscopeComponent.html", null ],
       [ "ParticleField", "classParticleField.html", null ],
+      [ "RandomizeButton", "classRandomizeButton.html", null ],
       [ "SignupPage", "classSignupPage.html", null ],
       [ "WelcomePage", "classWelcomePage.html", null ]
     ] ],
     [ "juce::TooltipClient", null, [
+      [ "HarmoniaKeyboard", "classHarmoniaKeyboard.html", null ],
       [ "HistoryPanel", "classHistoryPanel.html", null ]
     ] ],
     [ "Tunings::Tuning", "structTunings_1_1Tuning.html", null ],

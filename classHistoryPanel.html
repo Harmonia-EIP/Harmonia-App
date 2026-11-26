@@ -122,7 +122,7 @@ Collaboration diagram for HistoryPanel:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ae724b4e53263f201e387a84a722e701f" id="r_ae724b4e53263f201e387a84a722e701f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae724b4e53263f201e387a84a722e701f">HistoryPanel</a> ()</td></tr>
 <tr class="memitem:aff2a16121fc2beb0ea972c7a08f85bf9" id="r_aff2a16121fc2beb0ea972c7a08f85bf9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aff2a16121fc2beb0ea972c7a08f85bf9">~HistoryPanel</a> () override</td></tr>
-<tr class="memitem:a1810d90a8726e5a2b6ebfe1699306bc0" id="r_a1810d90a8726e5a2b6ebfe1699306bc0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1810d90a8726e5a2b6ebfe1699306bc0">setItems</a> (const juce::StringArray &amp;newTitles, const juce::StringArray &amp;newTypes, const juce::StringArray &amp;newDates)</td></tr>
+<tr class="memitem:a12daa801d5eba873dd06158a9a996a52" id="r_a12daa801d5eba873dd06158a9a996a52"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a12daa801d5eba873dd06158a9a996a52">setItems</a> (const <a class="el" href="HistoryItem_8h.html#a9cba6f6065ea40079e3b13e0f532d56a">HistoryItems</a> &amp;newItems)</td></tr>
 <tr class="memitem:a8f9f960a43c7bf71f5982ecb1fa40c0d" id="r_a8f9f960a43c7bf71f5982ecb1fa40c0d"><td class="memItemLeft" align="right" valign="top">juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f9f960a43c7bf71f5982ecb1fa40c0d">getTooltip</a> () override</td></tr>
 <tr class="memitem:a2da412b5834f4967ac79c76460c52e26" id="r_a2da412b5834f4967ac79c76460c52e26"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2da412b5834f4967ac79c76460c52e26">paint</a> (juce::Graphics &amp;g) override</td></tr>
 <tr class="memitem:acd13559bfe97783b5311de46506683bf" id="r_acd13559bfe97783b5311de46506683bf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd13559bfe97783b5311de46506683bf">resized</a> () override</td></tr>
@@ -158,9 +158,7 @@ Private Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a2dee7e9d1c3845ac953217d6c43c35a4" id="r_a2dee7e9d1c3845ac953217d6c43c35a4"><td class="memItemLeft" align="right" valign="top">juce::StringArray&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2dee7e9d1c3845ac953217d6c43c35a4">titles</a></td></tr>
-<tr class="memitem:afac5f4c4dd19cfc0ffb97a383235c123" id="r_afac5f4c4dd19cfc0ffb97a383235c123"><td class="memItemLeft" align="right" valign="top">juce::StringArray&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afac5f4c4dd19cfc0ffb97a383235c123">types</a></td></tr>
-<tr class="memitem:ac96ba1001e288dca9c5e07905deed0da" id="r_ac96ba1001e288dca9c5e07905deed0da"><td class="memItemLeft" align="right" valign="top">juce::StringArray&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac96ba1001e288dca9c5e07905deed0da">dates</a></td></tr>
+<tr class="memitem:a1f5cbb218d0f934166d09614d943bb25" id="r_a1f5cbb218d0f934166d09614d943bb25"><td class="memItemLeft" align="right" valign="top"><a class="el" href="HistoryItem_8h.html#a9cba6f6065ea40079e3b13e0f532d56a">HistoryItems</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f5cbb218d0f934166d09614d943bb25">items</a></td></tr>
 <tr class="memitem:a5eb24877202dfaf3ed6c9c5244db6967" id="r_a5eb24877202dfaf3ed6c9c5244db6967"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5eb24877202dfaf3ed6c9c5244db6967">clearHover</a> = false</td></tr>
 <tr class="memitem:a603ecc47408a2e5c876327a7a85946da" id="r_a603ecc47408a2e5c876327a7a85946da"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a603ecc47408a2e5c876327a7a85946da">curListH</a> = <a class="el" href="#a124e6dca35b772b60d55c852e65289c3">minListH</a></td></tr>
 <tr class="memitem:af3d466d95d0f09ab775c09b34753bc89" id="r_af3d466d95d0f09ab775c09b34753bc89"><td class="memItemLeft" align="right" valign="top">juce::TextEditor&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af3d466d95d0f09ab775c09b34753bc89">search</a></td></tr>
@@ -491,8 +489,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a1810d90a8726e5a2b6ebfe1699306bc0" name="a1810d90a8726e5a2b6ebfe1699306bc0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1810d90a8726e5a2b6ebfe1699306bc0">&#9670;&#160;</a></span>setItems()</h2>
+<a id="a12daa801d5eba873dd06158a9a996a52" name="a12daa801d5eba873dd06158a9a996a52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12daa801d5eba873dd06158a9a996a52">&#9670;&#160;</a></span>setItems()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -500,17 +498,8 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void HistoryPanel::setItems </td>
           <td>(</td>
-          <td class="paramtype">const juce::StringArray &amp;</td>          <td class="paramname"><span class="paramname"><em>newTitles</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">const <a class="el" href="HistoryItem_8h.html#a9cba6f6065ea40079e3b13e0f532d56a">HistoryItems</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>newItems</em></span></td><td>)</td>
           <td></td>
-          <td class="paramtype">const juce::StringArray &amp;</td>          <td class="paramname"><span class="paramname"><em>newTypes</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const juce::StringArray &amp;</td>          <td class="paramname"><span class="paramname"><em>newDates</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -628,28 +617,6 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ac96ba1001e288dca9c5e07905deed0da" name="ac96ba1001e288dca9c5e07905deed0da"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac96ba1001e288dca9c5e07905deed0da">&#9670;&#160;</a></span>dates</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">juce::StringArray HistoryPanel::dates</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a061f4ade38216da0ca7ff48ed3cd1d81" name="a061f4ade38216da0ca7ff48ed3cd1d81"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a061f4ade38216da0ca7ff48ed3cd1d81">&#9670;&#160;</a></span>gap</h2>
 
@@ -666,6 +633,28 @@ Private Attributes</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1f5cbb218d0f934166d09614d943bb25" name="a1f5cbb218d0f934166d09614d943bb25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f5cbb218d0f934166d09614d943bb25">&#9670;&#160;</a></span>items</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="HistoryItem_8h.html#a9cba6f6065ea40079e3b13e0f532d56a">HistoryItems</a> HistoryPanel::items</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -860,28 +849,6 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a2dee7e9d1c3845ac953217d6c43c35a4" name="a2dee7e9d1c3845ac953217d6c43c35a4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2dee7e9d1c3845ac953217d6c43c35a4">&#9670;&#160;</a></span>titles</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">juce::StringArray HistoryPanel::titles</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="af3e7bd5cbdb4bffa18368c432a6dbc6b" name="af3e7bd5cbdb4bffa18368c432a6dbc6b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af3e7bd5cbdb4bffa18368c432a6dbc6b">&#9670;&#160;</a></span>topH</h2>
 
@@ -898,28 +865,6 @@ Private Attributes</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="afac5f4c4dd19cfc0ffb97a383235c123" name="afac5f4c4dd19cfc0ffb97a383235c123"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afac5f4c4dd19cfc0ffb97a383235c123">&#9670;&#160;</a></span>types</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">juce::StringArray HistoryPanel::types</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

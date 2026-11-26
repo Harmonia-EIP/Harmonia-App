@@ -1,9 +1,14 @@
 var searchData=
 [
-  ['textprimaryid_0',['textPrimaryId',['../namespaceAppColourIds.html#aed3da25e0c68432928f2075bb6f5cf2dab06ac58bf7d980ffed3b308d4604e803',1,'AppColourIds']]],
-  ['textsecondaryid_1',['textSecondaryId',['../namespaceAppColourIds.html#aed3da25e0c68432928f2075bb6f5cf2dab77f0f8b9e8f98e988a15aa9a9c4848b',1,'AppColourIds']]],
-  ['topcenter_2',['TopCenter',['../classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0ba91b8ede24b7f93a98ae4dcaade15d468',1,'HarmoniaAlert']]],
-  ['topleft_3',['TopLeft',['../classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0bab32beb056fbfe36afbabc6c88c81ab36',1,'HarmoniaAlert']]],
-  ['topright_4',['TopRight',['../classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0ba1d85a557894c340c318493f33bfa8efb',1,'HarmoniaAlert']]],
-  ['triangle_5',['Triangle',['../namespaceIconRenderer.html#a11c788c1c3827c6f0932fcfecfc97d25a5e5500cb2b82eb72d550de644bd1b64b',1,'IconRenderer']]]
+  ['saw_0',['Saw',['../namespaceIconRenderer.html#a11c788c1c3827c6f0932fcfecfc97d25ac551a26a97a7440529e861dff6933722',1,'IconRenderer']]],
+  ['server_1',['Server',['../structApiError.html#a3395681759a0b17abe3979f60e507ea3a9aa1b03934893d7134a660af4204f2a9',1,'ApiError']]],
+  ['sessionexpired_2',['SessionExpired',['../structAiResult.html#a30c52302f0a3eac9c5db7d39f380586ba6dce5c5e5103a68c8b614613db57b3a5',1,'AiResult']]],
+  ['signin_3',['SignIn',['../classWelcomePage.html#a7dba8b108ada028113b6ba3321825c92a11b12fae81c7b21003bfb35174c0891b',1,'WelcomePage']]],
+  ['signup_4',['SignUp',['../classWelcomePage.html#a7dba8b108ada028113b6ba3321825c92afe8e6a46bbbc75aa4d52a30a0f056304',1,'WelcomePage']]],
+  ['sine_5',['Sine',['../namespaceIconRenderer.html#a11c788c1c3827c6f0932fcfecfc97d25a6ca9e2d793f678aba7c1b19526592a46',1,'IconRenderer']]],
+  ['square_6',['Square',['../namespaceIconRenderer.html#a11c788c1c3827c6f0932fcfecfc97d25aceb46ca115d05c51aa5a16a8867c3304',1,'IconRenderer']]],
+  ['stepper_7',['Stepper',['../classKeyboardChip.html#aa55b8cb467ce0bc780a505fb4e366009a370509b5dfe60deb7be545e0a7aff04c',1,'KeyboardChip']]],
+  ['stereo_5fwidth_8',['stereo_width',['../namespaceHarmoniaCharter_1_1analog.html#accb56d3487cd78cb9651f3e49292667fab63a6711492db78f65f6962e14811dba',1,'HarmoniaCharter::analog']]],
+  ['success_9',['Success',['../classHarmoniaAlert.html#a1be057b08e0dbf8f2dedc4c501447519a505a83f220c02df2f85c3810cd9ceb38',1,'HarmoniaAlert']]],
+  ['sustain_10',['sustain',['../classharmonia_1_1AnalogVoice.html#af28244989d50f4869ba74036d51fd0c1a34680dc73ad41656c24495c8ea8890c8',1,'harmonia::AnalogVoice']]]
 ];

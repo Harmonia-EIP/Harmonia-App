@@ -40,8 +40,12 @@ var namespaceHarmoniaPalette =
     [ "sectionOsc1", "namespaceHarmoniaPalette.html#aa0143081bde4c24a8a531b9c7ff0dc49", null ],
     [ "sectionOsc2", "namespaceHarmoniaPalette.html#aa4e853f80720eca3b01b3997b26cc39e", null ],
     [ "textMuted", "namespaceHarmoniaPalette.html#a45b2890cc86176e285506a55d9864e10", null ],
+    [ "textMutedBright", "namespaceHarmoniaPalette.html#a827a67ac83528aef19ff0094996256b0", null ],
+    [ "textMutedSat", "namespaceHarmoniaPalette.html#aa9555331cbdc47a5ccc9311a2c2ad91c", null ],
     [ "textPrimary", "namespaceHarmoniaPalette.html#a45b427b55cd94c6af0fa9cd6e9e739b1", null ],
+    [ "textPrimaryMix", "namespaceHarmoniaPalette.html#a130d1f6bbbf206ca6477a5dba8cf982a", null ],
     [ "textSecondary", "namespaceHarmoniaPalette.html#ae296b36c48c7f4936d8f46e6fcb6f613", null ],
+    [ "textSecondaryMix", "namespaceHarmoniaPalette.html#a08ac6704bbf45f4c7a5b6c7d4ec26414", null ],
     [ "Themes", "namespaceHarmoniaPalette.html#a1b7d683affafabf7bbbf016bf2c85829", null ],
     [ "warm", "namespaceHarmoniaPalette.html#a7f40b33084bd5cc2bd888890d596ed59", null ]
 ];

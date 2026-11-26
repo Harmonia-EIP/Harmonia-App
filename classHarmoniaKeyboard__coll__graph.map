@@ -1,0 +1,9 @@
+<map id="HarmoniaKeyboard" name="HarmoniaKeyboard">
+<area shape="rect" id="Node000001" title="Piano du plugin, jouable au clavier d&#39;ordinateur, en AZERTY ou en QWERTY." alt="" coords="245,106,391,134"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,226,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="157,38,293,104,289,107,156,43"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="250,5,387,33"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="320,47,320,107,316,104,316,50"/>
+<area shape="rect" id="Node000004" href="$structHarmoniaKeyboard_1_1LayoutKeys.html" title="Les touches d&#39;une disposition (en minuscules)." alt="" coords="412,5,641,33"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="488,40,347,108,345,103,482,40"/>
+</map>

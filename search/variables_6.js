@@ -8,7 +8,7 @@ var searchData=
   ['glowimage_5',['glowImage',['../classHarmoniaAlert.html#a2a87ac9bc94592e60c0563486326345b',1,'HarmoniaAlert']]],
   ['glowmargin_6',['glowMargin',['../classHarmoniaAlert.html#a2404264fbbc84d95e9f2719357760865',1,'HarmoniaAlert']]],
   ['group_7',['group',['../structHarmoniaCharter_1_1Param.html#a423a374f97369b9ca4bf2119ef9117ef',1,'HarmoniaCharter::Param']]],
-  ['groups_8',['groups',['../namespaceHarmoniaCharter.html#a9d97e9ee544398227785eaca0c7c40ed',1,'HarmoniaCharter']]],
+  ['groups_8',['groups',['../namespaceHarmoniaCharter.html#a0d8826b0dd3f37fe76db2a5e253612d8',1,'HarmoniaCharter']]],
   ['guestbutton_9',['guestButton',['../classWelcomePage.html#ae80a7c5d276a3a437eb84a4d65f65e8b',1,'WelcomePage']]],
   ['guestmode_10',['GuestMode',['../namespaceStrings_1_1Labels.html#a50553d7cccce8f2cab6aeabeb99a3020',1,'Strings::Labels::GuestMode'],['../namespaceStrings_1_1Buttons.html#a3f2b498969fb1cd707bf81fc69388d7a',1,'Strings::Buttons::GuestMode']]]
 ];

@@ -12,5 +12,7 @@ var searchData=
   ['waveslate_9',['waveSlate',['../namespaceHarmoniaColours.html#ac834b67888a6a76708c6cfb8c4bb7c04',1,'HarmoniaColours']]],
   ['welcome_10',['Welcome',['../namespaceStrings_1_1Success.html#a9f543bb8c6b3d15fa39cf1e6655dca2d',1,'Strings::Success']]],
   ['wheel_11',['wheel',['../classControllers.html#a784b441688bd44a6d335072ddd227c9d',1,'Controllers']]],
-  ['writepos_12',['writePos',['../classOscilloscopeComponent.html#ab96afb3cfe5442424b42d8dcdaa45981',1,'OscilloscopeComponent']]]
+  ['wheelaccum_12',['wheelAccum',['../classHarmoniaKeyboard.html#ad5f5321bb5ed73322c9b1fe946cd7cbc',1,'HarmoniaKeyboard']]],
+  ['wheelperkey_13',['wheelPerKey',['../classHarmoniaKeyboard.html#a5f1c253ae16935b0f71c59fca385cc3e',1,'HarmoniaKeyboard']]],
+  ['writepos_14',['writePos',['../classOscilloscopeComponent.html#ab96afb3cfe5442424b42d8dcdaa45981',1,'OscilloscopeComponent']]]
 ];

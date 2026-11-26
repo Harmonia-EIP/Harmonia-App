@@ -100,15 +100,17 @@ Classes</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:a226bb0a71014a13c7a3783ea6fb8e2ef" id="r_a226bb0a71014a13c7a3783ea6fb8e2ef"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a226bb0a71014a13c7a3783ea6fb8e2ef">isCharterV3</a> (const nlohmann::json &amp;doc)</td></tr>
 <tr class="memitem:a8904d06aa65782dbbf98d493b0bbaa1a" id="r_a8904d06aa65782dbbf98d493b0bbaa1a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8904d06aa65782dbbf98d493b0bbaa1a">hasV3Parameters</a> (const std::map&lt; juce::String, float &gt; &amp;values)</td></tr>
-<tr class="memitem:a0faa46dcd1b2f0e6f613f4804cdfd64d" id="r_a0faa46dcd1b2f0e6f613f4804cdfd64d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0faa46dcd1b2f0e6f613f4804cdfd64d">applyValues</a> (const std::map&lt; juce::String, float &gt; &amp;values, bool charterV3, juce::AudioProcessorValueTreeState &amp;apvts, const juce::StringArray &amp;lockedIds)</td></tr>
-<tr class="memitem:acdac9cd371b44b01f46862544abb2767" id="r_acdac9cd371b44b01f46862544abb2767"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPresetLoader_1_1LoadResult.html">LoadResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acdac9cd371b44b01f46862544abb2767">loadFromParameters</a> (const std::map&lt; juce::String, float &gt; &amp;parameters, const juce::String &amp;presetName, juce::AudioProcessorValueTreeState &amp;apvts, const juce::StringArray &amp;lockedIds={})</td></tr>
-<tr class="memitem:abcb03b24dbaa666d5aefdb6f7b962b0a" id="r_abcb03b24dbaa666d5aefdb6f7b962b0a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPresetLoader_1_1LoadResult.html">LoadResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abcb03b24dbaa666d5aefdb6f7b962b0a">loadFromJsonString</a> (const juce::String &amp;jsonText, juce::AudioProcessorValueTreeState &amp;apvts, const juce::StringArray &amp;lockedIds={})</td></tr>
+<tr class="memitem:a42018deb6a50819e6ca7ac2f77268820" id="r_a42018deb6a50819e6ca7ac2f77268820"><td class="memItemLeft" align="right" valign="top">std::map&lt; juce::String, float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a42018deb6a50819e6ca7ac2f77268820">upgradeV2Values</a> (const std::map&lt; juce::String, float &gt; &amp;values)</td></tr>
+<tr class="memitem:ae7bb412c1566a0dbd20ccc940ec707d6" id="r_ae7bb412c1566a0dbd20ccc940ec707d6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae7bb412c1566a0dbd20ccc940ec707d6">isPresetParameter</a> (const juce::String &amp;id)</td></tr>
+<tr class="memitem:adf6e7dfff73ffa64ba9d4b99df9d62d2" id="r_adf6e7dfff73ffa64ba9d4b99df9d62d2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adf6e7dfff73ffa64ba9d4b99df9d62d2">applyValues</a> (const std::map&lt; juce::String, float &gt; &amp;values, juce::AudioProcessorValueTreeState &amp;apvts, const juce::StringArray &amp;lockedIds, bool resetUnspecified=false)</td></tr>
+<tr class="memitem:a9e5ce576f508d293df26626f3b4f184d" id="r_a9e5ce576f508d293df26626f3b4f184d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPresetLoader_1_1LoadResult.html">LoadResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9e5ce576f508d293df26626f3b4f184d">loadFromParameters</a> (const std::map&lt; juce::String, float &gt; &amp;parameters, const juce::String &amp;presetName, juce::AudioProcessorValueTreeState &amp;apvts, const juce::StringArray &amp;lockedIds={}, bool resetUnspecified=true)</td></tr>
+<tr class="memitem:a5c1be5096c64ae44a3f05349d627610f" id="r_a5c1be5096c64ae44a3f05349d627610f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPresetLoader_1_1LoadResult.html">LoadResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5c1be5096c64ae44a3f05349d627610f">loadFromJsonString</a> (const juce::String &amp;jsonText, juce::AudioProcessorValueTreeState &amp;apvts, const juce::StringArray &amp;lockedIds={}, bool resetUnspecified=false)</td></tr>
 <tr class="memitem:a8fc5b750bd11d24b47bfec6b734ccc3f" id="r_a8fc5b750bd11d24b47bfec6b734ccc3f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPresetLoader_1_1LoadResult.html">LoadResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8fc5b750bd11d24b47bfec6b734ccc3f">loadFromFile</a> (const juce::File &amp;file, juce::AudioProcessorValueTreeState &amp;apvts, const juce::StringArray &amp;lockedIds={})</td></tr>
 <tr class="memitem:aa61c647476cdc8ae94dbdedb6e78bb44" id="r_aa61c647476cdc8ae94dbdedb6e78bb44"><td class="memItemLeft" align="right" valign="top">juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa61c647476cdc8ae94dbdedb6e78bb44">saveToJsonString</a> (juce::AudioProcessorValueTreeState &amp;apvts, const juce::String &amp;presetName, const juce::String &amp;generatedBy)</td></tr>
 </table>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
-<a id="a0faa46dcd1b2f0e6f613f4804cdfd64d" name="a0faa46dcd1b2f0e6f613f4804cdfd64d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0faa46dcd1b2f0e6f613f4804cdfd64d">&#9670;&#160;</a></span>applyValues()</h2>
+<a id="adf6e7dfff73ffa64ba9d4b99df9d62d2" name="adf6e7dfff73ffa64ba9d4b99df9d62d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf6e7dfff73ffa64ba9d4b99df9d62d2">&#9670;&#160;</a></span>applyValues()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -124,17 +126,17 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>charterV3</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">juce::AudioProcessorValueTreeState &amp;</td>          <td class="paramname"><span class="paramname"><em>apvts</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const juce::StringArray &amp;</td>          <td class="paramname"><span class="paramname"><em>lockedIds</em></span>&#160;)</td>
+          <td class="paramtype">const juce::StringArray &amp;</td>          <td class="paramname"><span class="paramname"><em>lockedIds</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>resetUnspecified</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -196,6 +198,31 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ae7bb412c1566a0dbd20ccc940ec707d6" name="ae7bb412c1566a0dbd20ccc940ec707d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7bb412c1566a0dbd20ccc940ec707d6">&#9670;&#160;</a></span>isPresetParameter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool PresetLoader::isPresetParameter </td>
+          <td>(</td>
+          <td class="paramtype">const juce::String &amp;</td>          <td class="paramname"><span class="paramname"><em>id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a8fc5b750bd11d24b47bfec6b734ccc3f" name="a8fc5b750bd11d24b47bfec6b734ccc3f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8fc5b750bd11d24b47bfec6b734ccc3f">&#9670;&#160;</a></span>loadFromFile()</h2>
 
@@ -230,8 +257,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="abcb03b24dbaa666d5aefdb6f7b962b0a" name="abcb03b24dbaa666d5aefdb6f7b962b0a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abcb03b24dbaa666d5aefdb6f7b962b0a">&#9670;&#160;</a></span>loadFromJsonString()</h2>
+<a id="a5c1be5096c64ae44a3f05349d627610f" name="a5c1be5096c64ae44a3f05349d627610f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c1be5096c64ae44a3f05349d627610f">&#9670;&#160;</a></span>loadFromJsonString()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -252,7 +279,12 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const juce::StringArray &amp;</td>          <td class="paramname"><span class="paramname"><em>lockedIds</em></span><span class="paramdefsep"> = </span><span class="paramdefval">{}</span>&#160;)</td>
+          <td class="paramtype">const juce::StringArray &amp;</td>          <td class="paramname"><span class="paramname"><em>lockedIds</em></span><span class="paramdefsep"> = </span><span class="paramdefval">{}</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>resetUnspecified</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -264,8 +296,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="acdac9cd371b44b01f46862544abb2767" name="acdac9cd371b44b01f46862544abb2767"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acdac9cd371b44b01f46862544abb2767">&#9670;&#160;</a></span>loadFromParameters()</h2>
+<a id="a9e5ce576f508d293df26626f3b4f184d" name="a9e5ce576f508d293df26626f3b4f184d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e5ce576f508d293df26626f3b4f184d">&#9670;&#160;</a></span>loadFromParameters()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -291,7 +323,12 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const juce::StringArray &amp;</td>          <td class="paramname"><span class="paramname"><em>lockedIds</em></span><span class="paramdefsep"> = </span><span class="paramdefval">{}</span>&#160;)</td>
+          <td class="paramtype">const juce::StringArray &amp;</td>          <td class="paramname"><span class="paramname"><em>lockedIds</em></span><span class="paramdefsep"> = </span><span class="paramdefval">{}</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>resetUnspecified</em></span><span class="paramdefsep"> = </span><span class="paramdefval">true</span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -326,6 +363,31 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const juce::String &amp;</td>          <td class="paramname"><span class="paramname"><em>generatedBy</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a42018deb6a50819e6ca7ac2f77268820" name="a42018deb6a50819e6ca7ac2f77268820"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42018deb6a50819e6ca7ac2f77268820">&#9670;&#160;</a></span>upgradeV2Values()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt; juce::String, float &gt; PresetLoader::upgradeV2Values </td>
+          <td>(</td>
+          <td class="paramtype">const std::map&lt; juce::String, float &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>values</em></span></td><td>)</td>
+          <td></td>
         </tr>
       </table>
   </td>

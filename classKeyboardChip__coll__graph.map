@@ -1,0 +1,7 @@
+<map id="KeyboardChip" name="KeyboardChip">
+<area shape="rect" id="Node000001" title="Petite pastille cliquable de la ligne de titre du clavier." alt="" coords="107,81,219,109"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,137,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,40,149,80,144,81,98,45"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="161,5,352,33"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="230,42,181,83,178,78,225,44"/>
+</map>

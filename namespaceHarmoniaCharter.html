@@ -96,7 +96,7 @@ $(function(){initNavTree('namespaceHarmoniaCharter.html','',''); });
 Namespaces</h2></td></tr>
 <tr class="memitem:choices" id="r_choices"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceHarmoniaCharter_1_1choices.html">choices</a></td></tr>
 <tr class="memitem:analog" id="r_analog"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceHarmoniaCharter_1_1analog.html">analog</a></td></tr>
-<tr class="memdesc:namespaceHarmoniaCharter_1_1analog"><td class="mdescLeft">&#160;</td><td class="mdescRight">Position of each analog parameter in <span class="tt"><a class="el" href="#a1ecd283dbf3156403589442aab4cd80c" title="Every parameter: the global ones, then the analog engine (the AI&#39;s vector order), then the DX7 voice.">params</a></span> minus analogBegin: the order of an analog patch. <br /></td></tr>
+<tr class="memdesc:namespaceHarmoniaCharter_1_1analog"><td class="mdescLeft">&#160;</td><td class="mdescRight">Position of each analog parameter in <span class="tt"><a class="el" href="#a658eac6bbe4a6f21eef9370693286cbf" title="Every parameter: the global ones, then the analog engine (the AI&#39;s vector order), then the DX7 voice.">params</a></span> minus analogBegin: the order of an analog patch. <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -107,14 +107,49 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a13e99dc6625782969bd6352d45064e39" id="r_a13e99dc6625782969bd6352d45064e39"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a13e99dc6625782969bd6352d45064e39">Engine</a> { <a class="el" href="#a13e99dc6625782969bd6352d45064e39a4cc6684df7b4a92b1dec6fce3264fac8">Global</a>
+<tr class="memitem:a13e99dc6625782969bd6352d45064e39" id="r_a13e99dc6625782969bd6352d45064e39"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a13e99dc6625782969bd6352d45064e39">Engine</a> { <br />
+&#160;&#160;<a class="el" href="#a13e99dc6625782969bd6352d45064e39a4cc6684df7b4a92b1dec6fce3264fac8">Global</a>
 , <a class="el" href="#a13e99dc6625782969bd6352d45064e39a3d953aa7cfa5ffe0fde34551d918c76c">Analog</a>
 , <a class="el" href="#a13e99dc6625782969bd6352d45064e39abfd99715d3207aacdfb3b8ae57e24f4f">Dx7</a>
+, <a class="el" href="#a13e99dc6625782969bd6352d45064e39a4cc6684df7b4a92b1dec6fce3264fac8">Global</a>
+, <br />
+&#160;&#160;<a class="el" href="#a13e99dc6625782969bd6352d45064e39a3d953aa7cfa5ffe0fde34551d918c76c">Analog</a>
+, <a class="el" href="#a13e99dc6625782969bd6352d45064e39abfd99715d3207aacdfb3b8ae57e24f4f">Dx7</a>
+<br />
  }</td></tr>
-<tr class="memitem:a4b50e3e01df637f77b78e8ccce774c9b" id="r_a4b50e3e01df637f77b78e8ccce774c9b"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b50e3e01df637f77b78e8ccce774c9b">Kind</a> { <a class="el" href="#a4b50e3e01df637f77b78e8ccce774c9ba22ae0e2b89e5e3d477f988cc36d3272b">Float</a>
+<tr class="memitem:a4b50e3e01df637f77b78e8ccce774c9b" id="r_a4b50e3e01df637f77b78e8ccce774c9b"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b50e3e01df637f77b78e8ccce774c9b">Kind</a> { <br />
+&#160;&#160;<a class="el" href="#a4b50e3e01df637f77b78e8ccce774c9ba22ae0e2b89e5e3d477f988cc36d3272b">Float</a>
 , <a class="el" href="#a4b50e3e01df637f77b78e8ccce774c9ba1686a6c336b71b36d77354cea19a8b52">Int</a>
 , <a class="el" href="#a4b50e3e01df637f77b78e8ccce774c9ba458b9dcc0921f46b1192427426d59c10">Choice</a>
 , <a class="el" href="#a4b50e3e01df637f77b78e8ccce774c9bac26f15e86e3de4c398a8273272aba034">Bool</a>
+, <br />
+&#160;&#160;<a class="el" href="#a4b50e3e01df637f77b78e8ccce774c9ba22ae0e2b89e5e3d477f988cc36d3272b">Float</a>
+, <a class="el" href="#a4b50e3e01df637f77b78e8ccce774c9ba1686a6c336b71b36d77354cea19a8b52">Int</a>
+, <a class="el" href="#a4b50e3e01df637f77b78e8ccce774c9ba458b9dcc0921f46b1192427426d59c10">Choice</a>
+, <a class="el" href="#a4b50e3e01df637f77b78e8ccce774c9bac26f15e86e3de4c398a8273272aba034">Bool</a>
+<br />
+ }</td></tr>
+<tr class="memitem:a13e99dc6625782969bd6352d45064e39" id="r_a13e99dc6625782969bd6352d45064e39"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a13e99dc6625782969bd6352d45064e39">Engine</a> { <br />
+&#160;&#160;<a class="el" href="#a13e99dc6625782969bd6352d45064e39a4cc6684df7b4a92b1dec6fce3264fac8">Global</a>
+, <a class="el" href="#a13e99dc6625782969bd6352d45064e39a3d953aa7cfa5ffe0fde34551d918c76c">Analog</a>
+, <a class="el" href="#a13e99dc6625782969bd6352d45064e39abfd99715d3207aacdfb3b8ae57e24f4f">Dx7</a>
+, <a class="el" href="#a13e99dc6625782969bd6352d45064e39a4cc6684df7b4a92b1dec6fce3264fac8">Global</a>
+, <br />
+&#160;&#160;<a class="el" href="#a13e99dc6625782969bd6352d45064e39a3d953aa7cfa5ffe0fde34551d918c76c">Analog</a>
+, <a class="el" href="#a13e99dc6625782969bd6352d45064e39abfd99715d3207aacdfb3b8ae57e24f4f">Dx7</a>
+<br />
+ }</td></tr>
+<tr class="memitem:a4b50e3e01df637f77b78e8ccce774c9b" id="r_a4b50e3e01df637f77b78e8ccce774c9b"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b50e3e01df637f77b78e8ccce774c9b">Kind</a> { <br />
+&#160;&#160;<a class="el" href="#a4b50e3e01df637f77b78e8ccce774c9ba22ae0e2b89e5e3d477f988cc36d3272b">Float</a>
+, <a class="el" href="#a4b50e3e01df637f77b78e8ccce774c9ba1686a6c336b71b36d77354cea19a8b52">Int</a>
+, <a class="el" href="#a4b50e3e01df637f77b78e8ccce774c9ba458b9dcc0921f46b1192427426d59c10">Choice</a>
+, <a class="el" href="#a4b50e3e01df637f77b78e8ccce774c9bac26f15e86e3de4c398a8273272aba034">Bool</a>
+, <br />
+&#160;&#160;<a class="el" href="#a4b50e3e01df637f77b78e8ccce774c9ba22ae0e2b89e5e3d477f988cc36d3272b">Float</a>
+, <a class="el" href="#a4b50e3e01df637f77b78e8ccce774c9ba1686a6c336b71b36d77354cea19a8b52">Int</a>
+, <a class="el" href="#a4b50e3e01df637f77b78e8ccce774c9ba458b9dcc0921f46b1192427426d59c10">Choice</a>
+, <a class="el" href="#a4b50e3e01df637f77b78e8ccce774c9bac26f15e86e3de4c398a8273272aba034">Bool</a>
+<br />
  }</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
@@ -126,7 +161,7 @@ Functions</h2></td></tr>
 <tr class="memitem:aaa28fe4bad1f99ca0573d793e850c61e" id="r_aaa28fe4bad1f99ca0573d793e850c61e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaa28fe4bad1f99ca0573d793e850c61e">fromNormalized</a> (const <a class="el" href="structHarmoniaCharter_1_1Param.html">Param</a> &amp;p, float normalized) noexcept</td></tr>
 <tr class="memdesc:aaa28fe4bad1f99ca0573d793e850c61e"><td class="mdescLeft">&#160;</td><td class="mdescRight">[0, 1] -&gt; physical value, as juce::NormalisableRange::convertFrom0to1 then snapToLegalValue.  <br /></td></tr>
 <tr class="memitem:a4c87178e5976ccc13482c4ea1c34bdff" id="r_a4c87178e5976ccc13482c4ea1c34bdff"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4c87178e5976ccc13482c4ea1c34bdff">indexOf</a> (std::string_view id) noexcept</td></tr>
-<tr class="memdesc:a4c87178e5976ccc13482c4ea1c34bdff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Index of a parameter in <span class="tt"><a class="el" href="#a1ecd283dbf3156403589442aab4cd80c" title="Every parameter: the global ones, then the analog engine (the AI&#39;s vector order), then the DX7 voice.">params</a></span>, or -1.  <br /></td></tr>
+<tr class="memdesc:a4c87178e5976ccc13482c4ea1c34bdff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Index of a parameter in <span class="tt"><a class="el" href="#a658eac6bbe4a6f21eef9370693286cbf" title="Every parameter: the global ones, then the analog engine (the AI&#39;s vector order), then the DX7 voice.">params</a></span>, or -1.  <br /></td></tr>
 <tr class="memitem:a8218ba54b3000d32d742b4797517ef45" id="r_a8218ba54b3000d32d742b4797517ef45"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8218ba54b3000d32d742b4797517ef45">upgradeFromV2</a> (const <a class="el" href="structHarmoniaCharter_1_1Param.html">Param</a> &amp;p, const std::array&lt; float, 20 &gt; &amp;v2Physical) noexcept</td></tr>
 <tr class="memdesc:a8218ba54b3000d32d742b4797517ef45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Physical v3 value of an analog parameter for a v2 preset or state (20 physical values, v2 order).  <br /></td></tr>
 <tr class="memitem:a2dec9c49863c6764f44a540d94e84735" id="r_a2dec9c49863c6764f44a540d94e84735"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2dec9c49863c6764f44a540d94e84735">upgradeFromV2Normalized</a> (const <a class="el" href="structHarmoniaCharter_1_1Param.html">Param</a> &amp;p, const std::array&lt; float, 20 &gt; &amp;v2Normalized) noexcept</td></tr>
@@ -135,21 +170,21 @@ Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:ab4a13c02aafc50184e3432eb43fb9b7a" id="r_ab4a13c02aafc50184e3432eb43fb9b7a"><td class="memItemLeft" align="right" valign="top">constexpr std::string_view&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab4a13c02aafc50184e3432eb43fb9b7a">version</a> = &quot;3.0.0&quot;</td></tr>
-<tr class="memitem:a9d97e9ee544398227785eaca0c7c40ed" id="r_a9d97e9ee544398227785eaca0c7c40ed"><td class="memItemLeft" align="right" valign="top">constexpr std::array&lt; <a class="el" href="structHarmoniaCharter_1_1Group.html">Group</a>, 19 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9d97e9ee544398227785eaca0c7c40ed">groups</a></td></tr>
-<tr class="memitem:a1ecd283dbf3156403589442aab4cd80c" id="r_a1ecd283dbf3156403589442aab4cd80c"><td class="memItemLeft" align="right" valign="top">constexpr std::array&lt; <a class="el" href="structHarmoniaCharter_1_1Param.html">Param</a>, 192 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ecd283dbf3156403589442aab4cd80c">params</a></td></tr>
-<tr class="memdesc:a1ecd283dbf3156403589442aab4cd80c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Every parameter: the global ones, then the analog engine (the AI's vector order), then the DX7 voice.  <br /></td></tr>
+<tr class="memitem:a0d8826b0dd3f37fe76db2a5e253612d8" id="r_a0d8826b0dd3f37fe76db2a5e253612d8"><td class="memItemLeft" align="right" valign="top">constexpr std::array&lt; <a class="el" href="structHarmoniaCharter_1_1Group.html">Group</a>, 19 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0d8826b0dd3f37fe76db2a5e253612d8">groups</a></td></tr>
+<tr class="memitem:a658eac6bbe4a6f21eef9370693286cbf" id="r_a658eac6bbe4a6f21eef9370693286cbf"><td class="memItemLeft" align="right" valign="top">constexpr std::array&lt; <a class="el" href="structHarmoniaCharter_1_1Param.html">Param</a>, 192 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a658eac6bbe4a6f21eef9370693286cbf">params</a></td></tr>
+<tr class="memdesc:a658eac6bbe4a6f21eef9370693286cbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Every parameter: the global ones, then the analog engine (the AI's vector order), then the DX7 voice.  <br /></td></tr>
 <tr class="memitem:a94d36123c6c287847b4dcd7302bc2d66" id="r_a94d36123c6c287847b4dcd7302bc2d66"><td class="memItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a94d36123c6c287847b4dcd7302bc2d66">analogBegin</a> = 1</td></tr>
 <tr class="memitem:a3bef79111ebb1d3513b785c6a6e434c1" id="r_a3bef79111ebb1d3513b785c6a6e434c1"><td class="memItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3bef79111ebb1d3513b785c6a6e434c1">analogEnd</a> = 47</td></tr>
 <tr class="memitem:ac7544da81ab8449ee2b9e8d2bec0c024" id="r_ac7544da81ab8449ee2b9e8d2bec0c024"><td class="memItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac7544da81ab8449ee2b9e8d2bec0c024">dx7Begin</a> = 47</td></tr>
 <tr class="memitem:ad4bd8890449f85b9593f7d1a4f22902d" id="r_ad4bd8890449f85b9593f7d1a4f22902d"><td class="memItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4bd8890449f85b9593f7d1a4f22902d">dx7End</a> = 192</td></tr>
-<tr class="memitem:a9bdea52cc64e100986cbcf9f1137e3d8" id="r_a9bdea52cc64e100986cbcf9f1137e3d8"><td class="memItemLeft" align="right" valign="top">constexpr std::array&lt; std::string_view, 20 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9bdea52cc64e100986cbcf9f1137e3d8">v2Ids</a> {{ &quot;osc_1_waveform&quot;, &quot;osc_2_waveform&quot;, &quot;osc_mix&quot;, &quot;osc_2_detune&quot;, &quot;noise_level&quot;, &quot;filter_cutoff&quot;, &quot;filter_resonance&quot;, &quot;filter_type&quot;, &quot;amp_attack&quot;, &quot;amp_decay&quot;, &quot;amp_sustain&quot;, &quot;amp_release&quot;, &quot;filter_env_amount&quot;, &quot;filter_env_decay&quot;, &quot;lfo_rate&quot;, &quot;lfo_to_pitch&quot;, &quot;lfo_to_cutoff&quot;, &quot;velocity_to_filter&quot;, &quot;distortion_mix&quot;, &quot;reverb_mix&quot; }}</td></tr>
-<tr class="memdesc:a9bdea52cc64e100986cbcf9f1137e3d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">The 20 parameters of a v2 preset or plugin state, in v2 order (<a class="el" href="structHarmoniaCharter_1_1V2Rule.html#ab49b7247cbd300c3815b696bece367ff">V2Rule::source</a> indexes this).  <br /></td></tr>
-<tr class="memitem:a302381496fb232e51fed3a44c293fbb8" id="r_a302381496fb232e51fed3a44c293fbb8"><td class="memItemLeft" align="right" valign="top">constexpr std::array&lt; <a class="el" href="structHarmoniaCharter_1_1Param.html">Param</a>, 20 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a302381496fb232e51fed3a44c293fbb8">v2Params</a></td></tr>
-<tr class="memdesc:a302381496fb232e51fed3a44c293fbb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Their v2 ranges, to read a v2 preset (values normalized on these ranges).  <br /></td></tr>
+<tr class="memitem:a76f03e4714f6de107776774548cd0380" id="r_a76f03e4714f6de107776774548cd0380"><td class="memItemLeft" align="right" valign="top">constexpr std::array&lt; std::string_view, 20 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76f03e4714f6de107776774548cd0380">v2Ids</a> {{ &quot;osc_1_waveform&quot;, &quot;osc_2_waveform&quot;, &quot;osc_mix&quot;, &quot;osc_2_detune&quot;, &quot;noise_level&quot;, &quot;filter_cutoff&quot;, &quot;filter_resonance&quot;, &quot;filter_type&quot;, &quot;amp_attack&quot;, &quot;amp_decay&quot;, &quot;amp_sustain&quot;, &quot;amp_release&quot;, &quot;filter_env_amount&quot;, &quot;filter_env_decay&quot;, &quot;lfo_rate&quot;, &quot;lfo_to_pitch&quot;, &quot;lfo_to_cutoff&quot;, &quot;velocity_to_filter&quot;, &quot;distortion_mix&quot;, &quot;reverb_mix&quot; }}</td></tr>
+<tr class="memdesc:a76f03e4714f6de107776774548cd0380"><td class="mdescLeft">&#160;</td><td class="mdescRight">The 20 parameters of a v2 preset or plugin state, in v2 order (<a class="el" href="structHarmoniaCharter_1_1V2Rule.html#ab49b7247cbd300c3815b696bece367ff">V2Rule::source</a> indexes this).  <br /></td></tr>
+<tr class="memitem:aae3dec8b50821f5c43ddc39cb89a4036" id="r_aae3dec8b50821f5c43ddc39cb89a4036"><td class="memItemLeft" align="right" valign="top">constexpr std::array&lt; <a class="el" href="structHarmoniaCharter_1_1Param.html">Param</a>, 20 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae3dec8b50821f5c43ddc39cb89a4036">v2Params</a></td></tr>
+<tr class="memdesc:aae3dec8b50821f5c43ddc39cb89a4036"><td class="mdescLeft">&#160;</td><td class="mdescRight">Their v2 ranges, to read a v2 preset (values normalized on these ranges).  <br /></td></tr>
 </table>
 <a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Enumeration Type Documentation</h2>
 <a id="a13e99dc6625782969bd6352d45064e39" name="a13e99dc6625782969bd6352d45064e39"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a13e99dc6625782969bd6352d45064e39">&#9670;&#160;</a></span>Engine</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a13e99dc6625782969bd6352d45064e39">&#9670;&#160;</a></span>Engine <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -171,12 +206,45 @@ Variables</h2></td></tr>
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a13e99dc6625782969bd6352d45064e39a4cc6684df7b4a92b1dec6fce3264fac8" name="a13e99dc6625782969bd6352d45064e39a4cc6684df7b4a92b1dec6fce3264fac8"></a>Global&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a13e99dc6625782969bd6352d45064e39a3d953aa7cfa5ffe0fde34551d918c76c" name="a13e99dc6625782969bd6352d45064e39a3d953aa7cfa5ffe0fde34551d918c76c"></a>Analog&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a13e99dc6625782969bd6352d45064e39abfd99715d3207aacdfb3b8ae57e24f4f" name="a13e99dc6625782969bd6352d45064e39abfd99715d3207aacdfb3b8ae57e24f4f"></a>Dx7&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a13e99dc6625782969bd6352d45064e39a4cc6684df7b4a92b1dec6fce3264fac8" name="a13e99dc6625782969bd6352d45064e39a4cc6684df7b4a92b1dec6fce3264fac8"></a>Global&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a13e99dc6625782969bd6352d45064e39a3d953aa7cfa5ffe0fde34551d918c76c" name="a13e99dc6625782969bd6352d45064e39a3d953aa7cfa5ffe0fde34551d918c76c"></a>Analog&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a13e99dc6625782969bd6352d45064e39abfd99715d3207aacdfb3b8ae57e24f4f" name="a13e99dc6625782969bd6352d45064e39abfd99715d3207aacdfb3b8ae57e24f4f"></a>Dx7&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="a13e99dc6625782969bd6352d45064e39" name="a13e99dc6625782969bd6352d45064e39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13e99dc6625782969bd6352d45064e39">&#9670;&#160;</a></span>Engine <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="#a13e99dc6625782969bd6352d45064e39">HarmoniaCharter::Engine</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel strong">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a13e99dc6625782969bd6352d45064e39a4cc6684df7b4a92b1dec6fce3264fac8" name="a13e99dc6625782969bd6352d45064e39a4cc6684df7b4a92b1dec6fce3264fac8"></a>Global&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a13e99dc6625782969bd6352d45064e39a3d953aa7cfa5ffe0fde34551d918c76c" name="a13e99dc6625782969bd6352d45064e39a3d953aa7cfa5ffe0fde34551d918c76c"></a>Analog&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a13e99dc6625782969bd6352d45064e39abfd99715d3207aacdfb3b8ae57e24f4f" name="a13e99dc6625782969bd6352d45064e39abfd99715d3207aacdfb3b8ae57e24f4f"></a>Dx7&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a13e99dc6625782969bd6352d45064e39a4cc6684df7b4a92b1dec6fce3264fac8" name="a13e99dc6625782969bd6352d45064e39a4cc6684df7b4a92b1dec6fce3264fac8"></a>Global&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a13e99dc6625782969bd6352d45064e39a3d953aa7cfa5ffe0fde34551d918c76c" name="a13e99dc6625782969bd6352d45064e39a3d953aa7cfa5ffe0fde34551d918c76c"></a>Analog&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a13e99dc6625782969bd6352d45064e39abfd99715d3207aacdfb3b8ae57e24f4f" name="a13e99dc6625782969bd6352d45064e39abfd99715d3207aacdfb3b8ae57e24f4f"></a>Dx7&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
 </div>
 <a id="a4b50e3e01df637f77b78e8ccce774c9b" name="a4b50e3e01df637f77b78e8ccce774c9b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4b50e3e01df637f77b78e8ccce774c9b">&#9670;&#160;</a></span>Kind</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b50e3e01df637f77b78e8ccce774c9b">&#9670;&#160;</a></span>Kind <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -196,6 +264,42 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a4b50e3e01df637f77b78e8ccce774c9ba22ae0e2b89e5e3d477f988cc36d3272b" name="a4b50e3e01df637f77b78e8ccce774c9ba22ae0e2b89e5e3d477f988cc36d3272b"></a>Float&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a4b50e3e01df637f77b78e8ccce774c9ba1686a6c336b71b36d77354cea19a8b52" name="a4b50e3e01df637f77b78e8ccce774c9ba1686a6c336b71b36d77354cea19a8b52"></a>Int&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a4b50e3e01df637f77b78e8ccce774c9ba458b9dcc0921f46b1192427426d59c10" name="a4b50e3e01df637f77b78e8ccce774c9ba458b9dcc0921f46b1192427426d59c10"></a>Choice&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a4b50e3e01df637f77b78e8ccce774c9bac26f15e86e3de4c398a8273272aba034" name="a4b50e3e01df637f77b78e8ccce774c9bac26f15e86e3de4c398a8273272aba034"></a>Bool&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a4b50e3e01df637f77b78e8ccce774c9ba22ae0e2b89e5e3d477f988cc36d3272b" name="a4b50e3e01df637f77b78e8ccce774c9ba22ae0e2b89e5e3d477f988cc36d3272b"></a>Float&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a4b50e3e01df637f77b78e8ccce774c9ba1686a6c336b71b36d77354cea19a8b52" name="a4b50e3e01df637f77b78e8ccce774c9ba1686a6c336b71b36d77354cea19a8b52"></a>Int&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a4b50e3e01df637f77b78e8ccce774c9ba458b9dcc0921f46b1192427426d59c10" name="a4b50e3e01df637f77b78e8ccce774c9ba458b9dcc0921f46b1192427426d59c10"></a>Choice&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a4b50e3e01df637f77b78e8ccce774c9bac26f15e86e3de4c398a8273272aba034" name="a4b50e3e01df637f77b78e8ccce774c9bac26f15e86e3de4c398a8273272aba034"></a>Bool&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="a4b50e3e01df637f77b78e8ccce774c9b" name="a4b50e3e01df637f77b78e8ccce774c9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b50e3e01df637f77b78e8ccce774c9b">&#9670;&#160;</a></span>Kind <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="#a4b50e3e01df637f77b78e8ccce774c9b">HarmoniaCharter::Kind</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel strong">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a4b50e3e01df637f77b78e8ccce774c9ba22ae0e2b89e5e3d477f988cc36d3272b" name="a4b50e3e01df637f77b78e8ccce774c9ba22ae0e2b89e5e3d477f988cc36d3272b"></a>Float&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a4b50e3e01df637f77b78e8ccce774c9ba1686a6c336b71b36d77354cea19a8b52" name="a4b50e3e01df637f77b78e8ccce774c9ba1686a6c336b71b36d77354cea19a8b52"></a>Int&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a4b50e3e01df637f77b78e8ccce774c9ba458b9dcc0921f46b1192427426d59c10" name="a4b50e3e01df637f77b78e8ccce774c9ba458b9dcc0921f46b1192427426d59c10"></a>Choice&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a4b50e3e01df637f77b78e8ccce774c9bac26f15e86e3de4c398a8273272aba034" name="a4b50e3e01df637f77b78e8ccce774c9bac26f15e86e3de4c398a8273272aba034"></a>Bool&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a4b50e3e01df637f77b78e8ccce774c9ba22ae0e2b89e5e3d477f988cc36d3272b" name="a4b50e3e01df637f77b78e8ccce774c9ba22ae0e2b89e5e3d477f988cc36d3272b"></a>Float&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a4b50e3e01df637f77b78e8ccce774c9ba1686a6c336b71b36d77354cea19a8b52" name="a4b50e3e01df637f77b78e8ccce774c9ba1686a6c336b71b36d77354cea19a8b52"></a>Int&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a4b50e3e01df637f77b78e8ccce774c9ba458b9dcc0921f46b1192427426d59c10" name="a4b50e3e01df637f77b78e8ccce774c9ba458b9dcc0921f46b1192427426d59c10"></a>Choice&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a4b50e3e01df637f77b78e8ccce774c9bac26f15e86e3de4c398a8273272aba034" name="a4b50e3e01df637f77b78e8ccce774c9bac26f15e86e3de4c398a8273272aba034"></a>Bool&#160;</td><td class="fielddoc"></td></tr>
@@ -258,7 +362,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Index of a parameter in <span class="tt"><a class="el" href="#a1ecd283dbf3156403589442aab4cd80c" title="Every parameter: the global ones, then the analog engine (the AI&#39;s vector order), then the DX7 voice.">params</a></span>, or -1. </p>
+<p>Index of a parameter in <span class="tt"><a class="el" href="#a658eac6bbe4a6f21eef9370693286cbf" title="Every parameter: the global ones, then the analog engine (the AI&#39;s vector order), then the DX7 voice.">params</a></span>, or -1. </p>
 
 </div>
 </div>
@@ -459,8 +563,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a9d97e9ee544398227785eaca0c7c40ed" name="a9d97e9ee544398227785eaca0c7c40ed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9d97e9ee544398227785eaca0c7c40ed">&#9670;&#160;</a></span>groups</h2>
+<a id="a0d8826b0dd3f37fe76db2a5e253612d8" name="a0d8826b0dd3f37fe76db2a5e253612d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d8826b0dd3f37fe76db2a5e253612d8">&#9670;&#160;</a></span>groups</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -469,7 +573,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::array&lt;<a class="el" href="structHarmoniaCharter_1_1Group.html">Group</a>, 19&gt; HarmoniaCharter::groups</td>
+          <td class="memname">std::array&lt; <a class="el" href="structHarmoniaCharter_1_1Group.html">Group</a>, 19 &gt; HarmoniaCharter::groups</td>
         </tr>
       </table>
   </td>
@@ -502,8 +606,8 @@ Variables</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a1ecd283dbf3156403589442aab4cd80c" name="a1ecd283dbf3156403589442aab4cd80c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1ecd283dbf3156403589442aab4cd80c">&#9670;&#160;</a></span>params</h2>
+<a id="a658eac6bbe4a6f21eef9370693286cbf" name="a658eac6bbe4a6f21eef9370693286cbf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a658eac6bbe4a6f21eef9370693286cbf">&#9670;&#160;</a></span>params</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -512,7 +616,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::array&lt;<a class="el" href="structHarmoniaCharter_1_1Param.html">Param</a>, 192&gt; HarmoniaCharter::params</td>
+          <td class="memname">std::array&lt; <a class="el" href="structHarmoniaCharter_1_1Param.html">Param</a>, 192 &gt; HarmoniaCharter::params</td>
         </tr>
       </table>
   </td>
@@ -526,8 +630,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a9bdea52cc64e100986cbcf9f1137e3d8" name="a9bdea52cc64e100986cbcf9f1137e3d8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9bdea52cc64e100986cbcf9f1137e3d8">&#9670;&#160;</a></span>v2Ids</h2>
+<a id="a76f03e4714f6de107776774548cd0380" name="a76f03e4714f6de107776774548cd0380"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76f03e4714f6de107776774548cd0380">&#9670;&#160;</a></span>v2Ids</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -536,7 +640,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::array&lt;std::string_view, 20&gt; HarmoniaCharter::v2Ids {{ &quot;osc_1_waveform&quot;, &quot;osc_2_waveform&quot;, &quot;osc_mix&quot;, &quot;osc_2_detune&quot;, &quot;noise_level&quot;, &quot;filter_cutoff&quot;, &quot;filter_resonance&quot;, &quot;filter_type&quot;, &quot;amp_attack&quot;, &quot;amp_decay&quot;, &quot;amp_sustain&quot;, &quot;amp_release&quot;, &quot;filter_env_amount&quot;, &quot;filter_env_decay&quot;, &quot;lfo_rate&quot;, &quot;lfo_to_pitch&quot;, &quot;lfo_to_cutoff&quot;, &quot;velocity_to_filter&quot;, &quot;distortion_mix&quot;, &quot;reverb_mix&quot; }}</td>
+          <td class="memname">std::array&lt; std::string_view, 20 &gt; HarmoniaCharter::v2Ids {{ &quot;osc_1_waveform&quot;, &quot;osc_2_waveform&quot;, &quot;osc_mix&quot;, &quot;osc_2_detune&quot;, &quot;noise_level&quot;, &quot;filter_cutoff&quot;, &quot;filter_resonance&quot;, &quot;filter_type&quot;, &quot;amp_attack&quot;, &quot;amp_decay&quot;, &quot;amp_sustain&quot;, &quot;amp_release&quot;, &quot;filter_env_amount&quot;, &quot;filter_env_decay&quot;, &quot;lfo_rate&quot;, &quot;lfo_to_pitch&quot;, &quot;lfo_to_cutoff&quot;, &quot;velocity_to_filter&quot;, &quot;distortion_mix&quot;, &quot;reverb_mix&quot; }}</td>
         </tr>
       </table>
   </td>
@@ -550,8 +654,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a302381496fb232e51fed3a44c293fbb8" name="a302381496fb232e51fed3a44c293fbb8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a302381496fb232e51fed3a44c293fbb8">&#9670;&#160;</a></span>v2Params</h2>
+<a id="aae3dec8b50821f5c43ddc39cb89a4036" name="aae3dec8b50821f5c43ddc39cb89a4036"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae3dec8b50821f5c43ddc39cb89a4036">&#9670;&#160;</a></span>v2Params</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -560,7 +664,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::array&lt;<a class="el" href="structHarmoniaCharter_1_1Param.html">Param</a>, 20&gt; HarmoniaCharter::v2Params</td>
+          <td class="memname">std::array&lt; <a class="el" href="structHarmoniaCharter_1_1Param.html">Param</a>, 20 &gt; HarmoniaCharter::v2Params</td>
         </tr>
       </table>
   </td>
@@ -591,9 +695,9 @@ Variables</h2></td></tr>
 <div class="line">        { <span class="stringliteral">&quot;distortion_mix&quot;</span>, <span class="stringliteral">&quot;v2&quot;</span>, <a class="code hl_enumvalue" href="#a13e99dc6625782969bd6352d45064e39a4cc6684df7b4a92b1dec6fce3264fac8">Engine::Global</a>, <a class="code hl_enumvalue" href="#a4b50e3e01df637f77b78e8ccce774c9ba22ae0e2b89e5e3d477f988cc36d3272b">Kind::Float</a>, 0.0f, 1.0f, 0.0f, 0.0001f, 1.8f, <span class="keyword">nullptr</span>, 0, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, 0, { -1, 1.0f, 0.0f } },</div>
 <div class="line">        { <span class="stringliteral">&quot;reverb_mix&quot;</span>, <span class="stringliteral">&quot;v2&quot;</span>, <a class="code hl_enumvalue" href="#a13e99dc6625782969bd6352d45064e39a4cc6684df7b4a92b1dec6fce3264fac8">Engine::Global</a>, <a class="code hl_enumvalue" href="#a4b50e3e01df637f77b78e8ccce774c9ba22ae0e2b89e5e3d477f988cc36d3272b">Kind::Float</a>, 0.0f, 1.0f, 0.0f, 0.0001f, 1.0f, <span class="keyword">nullptr</span>, 0, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, 0, { -1, 1.0f, 0.0f } },</div>
 <div class="line">    }}</div>
-<div class="ttc" id="anamespaceHarmoniaCharter_html_a13e99dc6625782969bd6352d45064e39a4cc6684df7b4a92b1dec6fce3264fac8"><div class="ttname"><a href="#a13e99dc6625782969bd6352d45064e39a4cc6684df7b4a92b1dec6fce3264fac8">HarmoniaCharter::Engine::Global</a></div><div class="ttdeci">@ Global</div><div class="ttdef"><b>Definition</b> HarmoniaCharterV3.h:15</div></div>
-<div class="ttc" id="anamespaceHarmoniaCharter_html_a4b50e3e01df637f77b78e8ccce774c9ba22ae0e2b89e5e3d477f988cc36d3272b"><div class="ttname"><a href="#a4b50e3e01df637f77b78e8ccce774c9ba22ae0e2b89e5e3d477f988cc36d3272b">HarmoniaCharter::Kind::Float</a></div><div class="ttdeci">@ Float</div><div class="ttdef"><b>Definition</b> HarmoniaCharterV3.h:16</div></div>
-<div class="ttc" id="anamespaceHarmoniaCharter_html_a4b50e3e01df637f77b78e8ccce774c9ba458b9dcc0921f46b1192427426d59c10"><div class="ttname"><a href="#a4b50e3e01df637f77b78e8ccce774c9ba458b9dcc0921f46b1192427426d59c10">HarmoniaCharter::Kind::Choice</a></div><div class="ttdeci">@ Choice</div><div class="ttdef"><b>Definition</b> HarmoniaCharterV3.h:16</div></div>
+<div class="ttc" id="anamespaceHarmoniaCharter_html_a13e99dc6625782969bd6352d45064e39a4cc6684df7b4a92b1dec6fce3264fac8"><div class="ttname"><a href="#a13e99dc6625782969bd6352d45064e39a4cc6684df7b4a92b1dec6fce3264fac8">HarmoniaCharter::Engine::Global</a></div><div class="ttdeci">@ Global</div><div class="ttdef"><b>Definition</b> HarmoniaCharter.h:15</div></div>
+<div class="ttc" id="anamespaceHarmoniaCharter_html_a4b50e3e01df637f77b78e8ccce774c9ba22ae0e2b89e5e3d477f988cc36d3272b"><div class="ttname"><a href="#a4b50e3e01df637f77b78e8ccce774c9ba22ae0e2b89e5e3d477f988cc36d3272b">HarmoniaCharter::Kind::Float</a></div><div class="ttdeci">@ Float</div><div class="ttdef"><b>Definition</b> HarmoniaCharter.h:16</div></div>
+<div class="ttc" id="anamespaceHarmoniaCharter_html_a4b50e3e01df637f77b78e8ccce774c9ba458b9dcc0921f46b1192427426d59c10"><div class="ttname"><a href="#a4b50e3e01df637f77b78e8ccce774c9ba458b9dcc0921f46b1192427426d59c10">HarmoniaCharter::Kind::Choice</a></div><div class="ttdeci">@ Choice</div><div class="ttdef"><b>Definition</b> HarmoniaCharter.h:16</div></div>
 </div><!-- fragment -->
 <p>Their v2 ranges, to read a v2 preset (values normalized on these ranges). </p>
 

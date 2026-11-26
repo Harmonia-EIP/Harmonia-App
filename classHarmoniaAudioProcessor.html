@@ -111,19 +111,19 @@ Collaboration diagram for HarmoniaAudioProcessor:</div>
 <div class="dyncontent">
 <div class="center"><img src="classHarmoniaAudioProcessor__coll__graph.png" border="0" usemap="#aHarmoniaAudioProcessor_coll__map" loading="lazy" alt="Collaboration graph"/></div>
 <map name="aHarmoniaAudioProcessor_coll__map" id="aHarmoniaAudioProcessor_coll__map">
-<area shape="rect" title="Main JUCE audio processor for the Harmonia synthesizer." alt="" coords="556,113,741,141"/>
-<area shape="rect" title=" " alt="" coords="224,5,380,33"/>
-<area shape="poly" title=" " alt="" coords="395,24,464,36,533,55,587,82,631,113,626,112,584,87,531,60,463,41,395,29"/>
-<area shape="rect" href="structHarmoniaParamsV3_1_1ParameterRefs.html" title="Physical value of every charter parameter for the audio thread (index = position in HarmoniaCharter::..." alt="" coords="175,57,429,85"/>
-<area shape="poly" title=" " alt="" coords="444,84,532,98,593,113,587,113,532,103,445,90"/>
-<area shape="rect" href="structHarmoniaPatches.html" title="What the voices play, filled by the processor at the start of each block (audio thread)." alt="" coords="234,113,370,141"/>
-<area shape="poly" title=" " alt="" coords="384,125,558,126,553,128,385,130"/>
-<area shape="rect" href="classharmonia_1_1Effects.html" title="Chorus &#45;&gt; delay &#45;&gt; reverb on the stereo mix of the voices, as the reference applies them to one note." alt="" coords="234,169,370,197"/>
-<area shape="poly" title=" " alt="" coords="385,174,532,155,596,142,601,141,532,160,386,180"/>
-<area shape="rect" href="classBackendManager.html" title=" " alt="" coords="235,225,368,253"/>
-<area shape="poly" title=" " alt="" coords="383,230,456,218,531,196,585,169,627,142,632,141,588,173,533,201,457,223,384,235"/>
+<area shape="rect" title="Main JUCE audio processor for the Harmonia synthesizer." alt="" coords="518,113,703,141"/>
+<area shape="rect" title=" " alt="" coords="205,5,361,33"/>
+<area shape="poly" title=" " alt="" coords="376,26,436,38,495,55,549,82,593,113,588,113,546,87,493,60,435,43,377,32"/>
+<area shape="rect" href="structHarmoniaParams_1_1AtomicRefs.html" title="Acces temps reel : pointeurs nommes (refs.filterCutoff&#45;&gt;load()) ou indexes." alt="" coords="175,57,391,85"/>
+<area shape="poly" title=" " alt="" coords="406,84,494,98,554,113,549,113,494,103,406,89"/>
+<area shape="rect" href="structHarmoniaPatches.html" title="What the voices play, filled by the processor at the start of each block (audio thread)." alt="" coords="215,113,350,141"/>
+<area shape="poly" title=" " alt="" coords="366,125,520,126,515,128,367,130"/>
+<area shape="rect" href="classharmonia_1_1Effects.html" title="Chorus &#45;&gt; delay &#45;&gt; reverb on the stereo mix of the voices, as the reference applies them to one note." alt="" coords="215,169,350,197"/>
+<area shape="poly" title=" " alt="" coords="366,173,494,155,558,142,563,141,494,160,367,178"/>
+<area shape="rect" href="classBackendManager.html" title=" " alt="" coords="216,225,350,253"/>
+<area shape="poly" title=" " alt="" coords="364,229,428,217,493,198,547,169,589,143,594,141,550,174,495,203,429,222,365,234"/>
 <area shape="rect" href="classHttpClient.html" title="Sans état modifiable : copiable, utilisable depuis n&#39;importe quel thread." alt="" coords="5,225,93,253"/>
-<area shape="poly" title=" " alt="" coords="108,237,235,237,234,242,108,242"/>
+<area shape="poly" title=" " alt="" coords="108,237,217,237,214,241,109,242"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -177,23 +177,36 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a6f94642a2ed0c19c7dede26b58fc4ff4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the backend (auth, session, AI, palette sync).  <br /></td></tr>
 <tr class="memitem:a37f4f276d331c7fcaccb602aaad1626c" id="r_a37f4f276d331c7fcaccb602aaad1626c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37f4f276d331c7fcaccb602aaad1626c">setOscilloscope</a> (<a class="el" href="classOscilloscopeComponent.html">OscilloscopeComponent</a> *osc)</td></tr>
 <tr class="memdesc:a37f4f276d331c7fcaccb602aaad1626c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attaches an oscilloscope component.  <br /></td></tr>
+<tr class="memitem:a4d40c713f5812c15b66c3f14da989cab" id="r_a4d40c713f5812c15b66c3f14da989cab"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d40c713f5812c15b66c3f14da989cab">takeOutputPeak</a> () noexcept</td></tr>
+<tr class="memdesc:a4d40c713f5812c15b66c3f14da989cab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crête de sortie (0..1, après volume et limiteur) depuis le dernier appel, puis remise à zéro.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a1f063eb694088528c3e24de7d87786c2" id="r_a1f063eb694088528c3e24de7d87786c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f063eb694088528c3e24de7d87786c2">applyOutputStage</a> (juce::AudioBuffer&lt; float &gt; &amp;buffer, int numSamples) noexcept</td></tr>
+<tr class="memdesc:a1f063eb694088528c3e24de7d87786c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Volume + limiteur doux sur tout le buffer (les deux moteurs).  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:ad8768fee42b798a2fd476132d8295dc2" id="r_ad8768fee42b798a2fd476132d8295dc2"><td class="memItemLeft" align="right" valign="top">juce::AudioProcessorValueTreeState&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad8768fee42b798a2fd476132d8295dc2">apvts</a></td></tr>
 <tr class="memdesc:ad8768fee42b798a2fd476132d8295dc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">AudioProcessorValueTreeState storing all plugin parameters.  <br /></td></tr>
-<tr class="memitem:ad3d020394c6cac918ce9e984f09419e1" id="r_ad3d020394c6cac918ce9e984f09419e1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structHarmoniaParamsV3_1_1ParameterRefs.html">HarmoniaParamsV3::ParameterRefs</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad3d020394c6cac918ce9e984f09419e1">paramRefs</a></td></tr>
-<tr class="memdesc:ad3d020394c6cac918ce9e984f09419e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Physical value of every charter v3 parameter (audio thread).  <br /></td></tr>
+<tr class="memitem:a12ec5f5c119393db248fa6cdb4ce56be" id="r_a12ec5f5c119393db248fa6cdb4ce56be"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structHarmoniaParams_1_1AtomicRefs.html">HarmoniaParams::AtomicRefs</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a12ec5f5c119393db248fa6cdb4ce56be">paramRefs</a></td></tr>
+<tr class="memdesc:a12ec5f5c119393db248fa6cdb4ce56be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Physical value of every charter v3 parameter (audio thread).  <br /></td></tr>
 <tr class="memitem:a9d25e9f3a8532e98cc5f49ac8627c1bf" id="r_a9d25e9f3a8532e98cc5f49ac8627c1bf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structHarmoniaPatches.html">HarmoniaPatches</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9d25e9f3a8532e98cc5f49ac8627c1bf">patches</a></td></tr>
 <tr class="memdesc:a9d25e9f3a8532e98cc5f49ac8627c1bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">What the voices play in the current block (analog patch, DX7 voice, engine), shared with the effects.  <br /></td></tr>
 <tr class="memitem:a398de85fb71b63459c0e2286aae2c8b5" id="r_a398de85fb71b63459c0e2286aae2c8b5"><td class="memItemLeft" align="right" valign="top">juce::Synthesiser&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a398de85fb71b63459c0e2286aae2c8b5">synth</a></td></tr>
 <tr class="memdesc:a398de85fb71b63459c0e2286aae2c8b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Polyphonic synthesizer engine.  <br /></td></tr>
+<tr class="memitem:a41dc798c18a6f1c5fa8361b69e101756" id="r_a41dc798c18a6f1c5fa8361b69e101756"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a41dc798c18a6f1c5fa8361b69e101756">lastDx7Mode</a> = false</td></tr>
 <tr class="memitem:af0591acaf0cbf37c2fc24ef3ed6dafb1" id="r_af0591acaf0cbf37c2fc24ef3ed6dafb1"><td class="memItemLeft" align="right" valign="top">juce::MidiKeyboardState&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0591acaf0cbf37c2fc24ef3ed6dafb1">keyboardState</a></td></tr>
 <tr class="memdesc:af0591acaf0cbf37c2fc24ef3ed6dafb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shared MIDI keyboard state used by the UI and MIDI processing pipeline.  <br /></td></tr>
 <tr class="memitem:ac5e0d6c002ff56ec6f67e5528dcd3c2f" id="r_ac5e0d6c002ff56ec6f67e5528dcd3c2f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classharmonia_1_1Effects.html">harmonia::Effects</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac5e0d6c002ff56ec6f67e5528dcd3c2f">effects</a></td></tr>
 <tr class="memdesc:ac5e0d6c002ff56ec6f67e5528dcd3c2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Chorus, delay and reverb on the mix of the analog voices (a DX7 voice plays dry, as on the instrument).  <br /></td></tr>
 <tr class="memitem:ad3fd7d8b84d5675c2ffaad144d3d3154" id="r_ad3fd7d8b84d5675c2ffaad144d3d3154"><td class="memItemLeft" align="right" valign="top">juce::AudioBuffer&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad3fd7d8b84d5675c2ffaad144d3d3154">effectsScratch</a></td></tr>
 <tr class="memdesc:ad3fd7d8b84d5675c2ffaad144d3d3154"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stereo scratch for the effects when the output is mono.  <br /></td></tr>
+<tr class="memitem:af7ca7e8132837a26c083bced36e32ea4" id="r_af7ca7e8132837a26c083bced36e32ea4"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; float &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af7ca7e8132837a26c083bced36e32ea4">outputVolumeDb</a> = nullptr</td></tr>
+<tr class="memdesc:af7ca7e8132837a26c083bced36e32ea4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Volume de sortie (dB, hors charte), lissé pour éviter les clics.  <br /></td></tr>
+<tr class="memitem:aa0101db8330f6309a12aba96cc4a0326" id="r_aa0101db8330f6309a12aba96cc4a0326"><td class="memItemLeft" align="right" valign="top">juce::SmoothedValue&lt; float, juce::ValueSmoothingTypes::Linear &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa0101db8330f6309a12aba96cc4a0326">outputGain</a></td></tr>
+<tr class="memitem:aecbe1d602b6a54c25e8a25192e33f763" id="r_aecbe1d602b6a54c25e8a25192e33f763"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aecbe1d602b6a54c25e8a25192e33f763">outputPeak</a> { 0.0f }</td></tr>
+<tr class="memdesc:aecbe1d602b6a54c25e8a25192e33f763"><td class="mdescLeft">&#160;</td><td class="mdescRight">Plus haute crête de sortie depuis la dernière lecture du vumètre.  <br /></td></tr>
 <tr class="memitem:a7949413ae3bce514758b7441c0c3b056" id="r_a7949413ae3bce514758b7441c0c3b056"><td class="memItemLeft" align="right" valign="top">juce::Component::SafePointer&lt; <a class="el" href="classOscilloscopeComponent.html">OscilloscopeComponent</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7949413ae3bce514758b7441c0c3b056">oscilloscope</a> = nullptr</td></tr>
 <tr class="memdesc:a7949413ae3bce514758b7441c0c3b056"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optional oscilloscope visualization target.  <br /></td></tr>
 <tr class="memitem:a61cf09b3ab1ddbc40d290414609adfe4" id="r_a61cf09b3ab1ddbc40d290414609adfe4"><td class="memItemLeft" align="right" valign="top">juce::CriticalSection&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a61cf09b3ab1ddbc40d290414609adfe4">oscLock</a></td></tr>
@@ -292,6 +305,37 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Indicates MIDI input support. </p>
+
+</div>
+</div>
+<a id="a1f063eb694088528c3e24de7d87786c2" name="a1f063eb694088528c3e24de7d87786c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f063eb694088528c3e24de7d87786c2">&#9670;&#160;</a></span>applyOutputStage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HarmoniaAudioProcessor::applyOutputStage </td>
+          <td>(</td>
+          <td class="paramtype">juce::AudioBuffer&lt; float &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>numSamples</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span><span class="mlabel noexcept">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Volume + limiteur doux sur tout le buffer (les deux moteurs). </p>
 
 </div>
 </div>
@@ -947,6 +991,34 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a4d40c713f5812c15b66c3f14da989cab" name="a4d40c713f5812c15b66c3f14da989cab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d40c713f5812c15b66c3f14da989cab">&#9670;&#160;</a></span>takeOutputPeak()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float HarmoniaAudioProcessor::takeOutputPeak </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel noexcept">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Crête de sortie (0..1, après volume et limiteur) depuis le dernier appel, puis remise à zéro. </p>
+<p>Pour le vumètre (thread UI) ; sans verrou. </p>
+
+</div>
+</div>
 <a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
 <a id="ad8768fee42b798a2fd476132d8295dc2" name="ad8768fee42b798a2fd476132d8295dc2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad8768fee42b798a2fd476132d8295dc2">&#9670;&#160;</a></span>apvts</h2>
@@ -1069,6 +1141,28 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a41dc798c18a6f1c5fa8361b69e101756" name="a41dc798c18a6f1c5fa8361b69e101756"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41dc798c18a6f1c5fa8361b69e101756">&#9670;&#160;</a></span>lastDx7Mode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool HarmoniaAudioProcessor::lastDx7Mode = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a7949413ae3bce514758b7441c0c3b056" name="a7949413ae3bce514758b7441c0c3b056"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7949413ae3bce514758b7441c0c3b056">&#9670;&#160;</a></span>oscilloscope</h2>
 
@@ -1117,8 +1211,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ad3d020394c6cac918ce9e984f09419e1" name="ad3d020394c6cac918ce9e984f09419e1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad3d020394c6cac918ce9e984f09419e1">&#9670;&#160;</a></span>paramRefs</h2>
+<a id="aa0101db8330f6309a12aba96cc4a0326" name="aa0101db8330f6309a12aba96cc4a0326"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0101db8330f6309a12aba96cc4a0326">&#9670;&#160;</a></span>outputGain</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1127,7 +1221,77 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structHarmoniaParamsV3_1_1ParameterRefs.html">HarmoniaParamsV3::ParameterRefs</a> HarmoniaAudioProcessor::paramRefs</td>
+          <td class="memname">juce::SmoothedValue&lt;float, juce::ValueSmoothingTypes::Linear&gt; HarmoniaAudioProcessor::outputGain</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aecbe1d602b6a54c25e8a25192e33f763" name="aecbe1d602b6a54c25e8a25192e33f763"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aecbe1d602b6a54c25e8a25192e33f763">&#9670;&#160;</a></span>outputPeak</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::atomic&lt;float&gt; HarmoniaAudioProcessor::outputPeak { 0.0f }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Plus haute crête de sortie depuis la dernière lecture du vumètre. </p>
+
+</div>
+</div>
+<a id="af7ca7e8132837a26c083bced36e32ea4" name="af7ca7e8132837a26c083bced36e32ea4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7ca7e8132837a26c083bced36e32ea4">&#9670;&#160;</a></span>outputVolumeDb</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::atomic&lt;float&gt;* HarmoniaAudioProcessor::outputVolumeDb = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Volume de sortie (dB, hors charte), lissé pour éviter les clics. </p>
+
+</div>
+</div>
+<a id="a12ec5f5c119393db248fa6cdb4ce56be" name="a12ec5f5c119393db248fa6cdb4ce56be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12ec5f5c119393db248fa6cdb4ce56be">&#9670;&#160;</a></span>paramRefs</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structHarmoniaParams_1_1AtomicRefs.html">HarmoniaParams::AtomicRefs</a> HarmoniaAudioProcessor::paramRefs</td>
         </tr>
       </table>
   </td>

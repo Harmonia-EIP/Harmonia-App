@@ -1,5 +1,11 @@
 var namespaceharmonia =
 [
+    [ "output", "namespaceharmonia_1_1output.html", [
+      [ "dbToGain", "namespaceharmonia_1_1output.html#a5a5370ce57393755b6a0a4f371a23f9a", null ],
+      [ "softLimit", "namespaceharmonia_1_1output.html#a66dba2f7eecbf30dd50dbbc4e751bd78", null ],
+      [ "limiterThreshold", "namespaceharmonia_1_1output.html#ab20481adfaffd3a7e1f33a7e4e6456e1", null ],
+      [ "silenceDb", "namespaceharmonia_1_1output.html#afc3b503dc414a651eed9eff2dea2c182", null ]
+    ] ],
     [ "Dx7Voice", "classharmonia_1_1Dx7Voice.html", "classharmonia_1_1Dx7Voice" ],
     [ "Random", "classharmonia_1_1Random.html", "classharmonia_1_1Random" ],
     [ "AnalogVoice", "classharmonia_1_1AnalogVoice.html", "classharmonia_1_1AnalogVoice" ],

@@ -144,9 +144,9 @@ $(function(){initNavTree('WaveformSelector_8h_source.html','',''); });
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            [] (juce::Graphics&amp; g, juce::Rectangle&lt;float&gt; area, int idx, juce::Colour col)</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>            {</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                g.setColour (col);</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                g.setFont (juce::Font (juce::FontOptions (9.0f).withStyle (<span class="stringliteral">&quot;Bold&quot;</span>)));</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                g.drawText (idx == 0 ? <span class="stringliteral">&quot;12&quot;</span> : <span class="stringliteral">&quot;24&quot;</span>,</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                            area.withSizeKeepingCentre (area.getWidth() + 14.0f, 12.0f),</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                g.setFont (juce::Font (juce::FontOptions (11.0f).withStyle (<span class="stringliteral">&quot;Bold&quot;</span>)));</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                g.drawText (idx == 0 ? <span class="stringliteral">&quot;12 dB&quot;</span> : <span class="stringliteral">&quot;24 dB&quot;</span>,</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                            area.withSizeKeepingCentre (area.getWidth() + 20.0f, 14.0f),</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                            juce::Justification::centred, <span class="keyword">false</span>);</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            })</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    {}</div>

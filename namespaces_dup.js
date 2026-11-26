@@ -41,6 +41,13 @@ var namespaces_dup =
       [ "UserAlreadyExists", "namespaceBackendStrings.html#ac2549ae340e848ebec807401cacfd1a6", null ],
       [ "UserNotFound", "namespaceBackendStrings.html#ac763fc339fa4ad4d358bcfb90eec3fc0", null ]
     ] ],
+    [ "Contrast", "namespaceContrast.html", [
+      [ "composite", "namespaceContrast.html#a46b0eeb54e4ec7b8a76a1e8e3e3a6eef", null ],
+      [ "ratio", "namespaceContrast.html#abad1c7a02048cfe903b2f70c7d733f31", null ],
+      [ "relativeLuminance", "namespaceContrast.html#ab2d61230555cacaf94a165f0b383d996", null ],
+      [ "minLargeText", "namespaceContrast.html#a43d8fe2de8a21d211d4ef6a55b483bc1", null ],
+      [ "minText", "namespaceContrast.html#a51175791960c4a4939b5024ff031108b", null ]
+    ] ],
     [ "ErrorCodes", "namespaceErrorCodes.html", [
       [ "isTokenError", "namespaceErrorCodes.html#afbe2fc462a3fbabec0744cacdb9173ad", null ],
       [ "InvalidCredentials", "namespaceErrorCodes.html#ad665711c3eb359e2de2e810167d2a42e", null ],
@@ -79,7 +86,6 @@ var namespaces_dup =
     ] ],
     [ "HarmoniaPalette", "namespaceHarmoniaPalette.html", "namespaceHarmoniaPalette" ],
     [ "HarmoniaParams", "namespaceHarmoniaParams.html", "namespaceHarmoniaParams" ],
-    [ "HarmoniaParamsV3", "namespaceHarmoniaParamsV3.html", "namespaceHarmoniaParamsV3" ],
     [ "HeaderColours", "namespaceHeaderColours.html", [
       [ "generate", "namespaceHeaderColours.html#acdd5999e30dd3b190468272d3b17ab87", null ],
       [ "refine", "namespaceHeaderColours.html#aacbb17db80b9b8c033db5765bc4cdb87", null ]
@@ -92,6 +98,7 @@ var namespaces_dup =
     [ "HistoryUtils", "namespaceHistoryUtils.html", [
       [ "danger", "namespaceHistoryUtils.html#a87a3e9b9c867c5aa9763df0b9931d207", null ],
       [ "formatDate", "namespaceHistoryUtils.html#aa703169b4357da2cfdbdbac4aaeee85a", null ],
+      [ "formatModel", "namespaceHistoryUtils.html#ad25304dd5b423a5f42033d8d65310741", null ],
       [ "isRefined", "namespaceHistoryUtils.html#a6b119fb935465a1c48c2046efb2b5fa5", null ]
     ] ],
     [ "HttpTimeouts", "namespaceHttpTimeouts.html", [
@@ -136,6 +143,11 @@ var namespaces_dup =
       [ "toHex", "namespacePaletteMapper.html#af94142eaac9da844f394d7af17b3652e", null ],
       [ "toPutBody", "namespacePaletteMapper.html#a48ce01b8b8c4ab25cbd1145391acf5d0", null ]
     ] ],
+    [ "ParamRandomizer", "namespaceParamRandomizer.html", [
+      [ "randomize", "namespaceParamRandomizer.html#aa20ee4815e4f5c24494d5f36d13d90bb", null ],
+      [ "spec", "namespaceParamRandomizer.html#a3b5afa42b092da445f7250cc85faa2e1", null ],
+      [ "numLegacy", "namespaceParamRandomizer.html#ae87caf62679ce4e9955d4fa960c4ebae", null ]
+    ] ],
     [ "PresetLoader", "namespacePresetLoader.html", "namespacePresetLoader" ],
     [ "PromptFont", "namespacePromptFont.html", [
       [ "make", "namespacePromptFont.html#a98217d789f5e2df6fb236cf0dcaabf28", null ],
@@ -156,6 +168,7 @@ var namespaces_dup =
     [ "UiState", "namespaceUiState.html", [
       [ "customColour", "namespaceUiState.html#a8b2feb0067f6460be97ea49400cb1df4", null ],
       [ "identity", "namespaceUiState.html#a5b51a6b9ddade700aea386c2a29e6e0b", null ],
+      [ "keyLayout", "namespaceUiState.html#a3cb9d28c7a88a1dc99c03c9072ea9ff7", null ],
       [ "paletteSlot", "namespaceUiState.html#a9928822a9f9338ca006257ae6dae98bb", null ],
       [ "presetName", "namespaceUiState.html#abfa35c8e06e11aed065f7192a0c9dc0d", null ],
       [ "themeId", "namespaceUiState.html#ae6bb2e0cbfeda589a6f8a534b3b6393c", null ]

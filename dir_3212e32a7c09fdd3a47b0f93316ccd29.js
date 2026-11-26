@@ -4,6 +4,7 @@ var dir_3212e32a7c09fdd3a47b0f93316ccd29 =
     [ "ActionButton.h", "ActionButton_8h.html", "ActionButton_8h" ],
     [ "HeaderColours.h", "HeaderColours_8h.html", "HeaderColours_8h" ],
     [ "HeaderIncludes.h", "HeaderIncludes_8h.html", null ],
+    [ "HistoryItem.h", "HistoryItem_8h.html", "HistoryItem_8h" ],
     [ "HistoryOverlay.h", "HistoryOverlay_8h.html", "HistoryOverlay_8h" ],
     [ "HistoryPanel.cpp", "HistoryPanel_8cpp.html", null ],
     [ "HistoryPanel.h", "HistoryPanel_8h.html", "HistoryPanel_8h" ],
@@ -23,5 +24,6 @@ var dir_3212e32a7c09fdd3a47b0f93316ccd29 =
     [ "ModelPicker.h", "ModelPicker_8h.html", "ModelPicker_8h" ],
     [ "PromptEditor.cpp", "PromptEditor_8cpp.html", null ],
     [ "PromptEditor.h", "PromptEditor_8h.html", "PromptEditor_8h" ],
-    [ "PromptFont.h", "PromptFont_8h.html", "PromptFont_8h" ]
+    [ "PromptFont.h", "PromptFont_8h.html", "PromptFont_8h" ],
+    [ "RandomizeButton.h", "RandomizeButton_8h.html", "RandomizeButton_8h" ]
 ];

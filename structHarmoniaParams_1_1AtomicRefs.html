@@ -92,7 +92,7 @@ $(function(){initNavTree('structHarmoniaParams_1_1AtomicRefs.html','','structHar
 </div><!--header-->
 <div class="contents">
 
-<p>Real-time safe parameter access structure.  
+<p>Acces temps reel : pointeurs nommes (refs.filterCutoff-&gt;load()) ou indexes.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="HarmoniaParameters_8h_source.html">HarmoniaParameters.h</a>&gt;</code></p>
@@ -100,10 +100,17 @@ $(function(){initNavTree('structHarmoniaParams_1_1AtomicRefs.html','','structHar
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aa24308cfaf5f44d7881a97e2afe943df" id="r_aa24308cfaf5f44d7881a97e2afe943df"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa24308cfaf5f44d7881a97e2afe943df">bind</a> (juce::AudioProcessorValueTreeState &amp;apvts)</td></tr>
+<tr class="memitem:aa24308cfaf5f44d7881a97e2afe943df" id="r_aa24308cfaf5f44d7881a97e2afe943df"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa24308cfaf5f44d7881a97e2afe943df">bind</a> (juce::AudioProcessorValueTreeState &amp;apvts)</td></tr>
 <tr class="memdesc:aa24308cfaf5f44d7881a97e2afe943df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binds all atomic parameter pointers.  <br /></td></tr>
+<tr class="memitem:aa24308cfaf5f44d7881a97e2afe943df" id="r_aa24308cfaf5f44d7881a97e2afe943df"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa24308cfaf5f44d7881a97e2afe943df">bind</a> (juce::AudioProcessorValueTreeState &amp;apvts)</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
+<tr class="memitem:a751df5e027cb30d05159a8974b8e29c5" id="r_a751df5e027cb30d05159a8974b8e29c5"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; float &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a751df5e027cb30d05159a8974b8e29c5">engine</a> = nullptr</td></tr>
+<tr class="memitem:a6d58d36bc8d972003cc18c43850c310c" id="r_a6d58d36bc8d972003cc18c43850c310c"><td class="memItemLeft" align="right" valign="top">std::array&lt; std::atomic&lt; float &gt; *, <a class="el" href="namespaceHarmoniaCharter_1_1analog.html#ad58d139d369d75bbbeb5654b8f0ca5a9">HarmoniaCharter::analog::count</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d58d36bc8d972003cc18c43850c310c">analog</a> {}</td></tr>
+<tr class="memdesc:a6d58d36bc8d972003cc18c43850c310c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Index = <a class="el" href="namespaceHarmoniaCharter_1_1analog.html#accb56d3487cd78cb9651f3e49292667f">HarmoniaCharter::analog::Index</a> (ex: refs.analog[<a class="el" href="namespaceHarmoniaCharter_1_1analog.html#accb56d3487cd78cb9651f3e49292667fa11edebc1ceaf69073114b814e66e5dfd">HarmoniaCharter::analog::filter_cutoff</a>]).  <br /></td></tr>
+<tr class="memitem:ac809f0f97abf871b5c1a315c15b3c386" id="r_ac809f0f97abf871b5c1a315c15b3c386"><td class="memItemLeft" align="right" valign="top">std::array&lt; std::atomic&lt; float &gt; *, <a class="el" href="namespaceHarmoniaCharter.html#ad4bd8890449f85b9593f7d1a4f22902d">HarmoniaCharter::dx7End</a> - <a class="el" href="namespaceHarmoniaCharter.html#ac7544da81ab8449ee2b9e8d2bec0c024">HarmoniaCharter::dx7Begin</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac809f0f97abf871b5c1a315c15b3c386">dx7</a> {}</td></tr>
+<tr class="memdesc:ac809f0f97abf871b5c1a315c15b3c386"><td class="mdescLeft">&#160;</td><td class="mdescRight">Index = (position dans <a class="el" href="namespaceHarmoniaCharter.html#a658eac6bbe4a6f21eef9370693286cbf" title="Every parameter: the global ones, then the analog engine (the AI&#39;s vector order), then the DX7 voice.">HarmoniaCharter::params</a>) - <a class="el" href="namespaceHarmoniaCharter.html#ac7544da81ab8449ee2b9e8d2bec0c024">HarmoniaCharter::dx7Begin</a>.  <br /></td></tr>
 <tr class="memitem:a8c8e06b54d0aa027d6e1255e20083df0" id="r_a8c8e06b54d0aa027d6e1255e20083df0"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; float &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c8e06b54d0aa027d6e1255e20083df0">osc1Waveform</a> = nullptr</td></tr>
 <tr class="memitem:a0f0c84f0276bf6d129ef08b6822ba151" id="r_a0f0c84f0276bf6d129ef08b6822ba151"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; float &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0f0c84f0276bf6d129ef08b6822ba151">osc2Waveform</a> = nullptr</td></tr>
 <tr class="memitem:a32b128626b9be206020b4da504d45a5c" id="r_a32b128626b9be206020b4da504d45a5c"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; float &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a32b128626b9be206020b4da504d45a5c">oscMix</a> = nullptr</td></tr>
@@ -126,7 +133,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:af10dcab90e7b180e8302902c83475c8e" id="r_af10dcab90e7b180e8302902c83475c8e"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; float &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af10dcab90e7b180e8302902c83475c8e">reverbMix</a> = nullptr</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Real-time safe parameter access structure. </p>
+<div class="textblock"><p>Acces temps reel : pointeurs nommes (refs.filterCutoff-&gt;load()) ou indexes. </p>
+<p>Real-time safe parameter access structure.</p>
+<p>Acces temps reel, pointeurs nommes comme en v1 : refs.filterCutoff-&gt;load().</p>
 <p>Stores raw atomic&lt;float&gt; pointers retrieved from AudioProcessorValueTreeState.</p>
 <p>Benefits:</p><ul>
 <li>Lock-free DSP access</li>
@@ -141,7 +150,32 @@ Public Attributes</h2></td></tr>
 </ul>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="aa24308cfaf5f44d7881a97e2afe943df" name="aa24308cfaf5f44d7881a97e2afe943df"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa24308cfaf5f44d7881a97e2afe943df">&#9670;&#160;</a></span>bind()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aa24308cfaf5f44d7881a97e2afe943df">&#9670;&#160;</a></span>bind() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HarmoniaParams::AtomicRefs::bind </td>
+          <td>(</td>
+          <td class="paramtype">juce::AudioProcessorValueTreeState &amp;</td>          <td class="paramname"><span class="paramname"><em>apvts</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa24308cfaf5f44d7881a97e2afe943df" name="aa24308cfaf5f44d7881a97e2afe943df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa24308cfaf5f44d7881a97e2afe943df">&#9670;&#160;</a></span>bind() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -172,6 +206,31 @@ Public Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="aa24308cfaf5f44d7881a97e2afe943df" name="aa24308cfaf5f44d7881a97e2afe943df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa24308cfaf5f44d7881a97e2afe943df">&#9670;&#160;</a></span>bind() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HarmoniaParams::AtomicRefs::bind </td>
+          <td>(</td>
+          <td class="paramtype">juce::AudioProcessorValueTreeState &amp;</td>          <td class="paramname"><span class="paramname"><em>apvts</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -232,6 +291,22 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a6d58d36bc8d972003cc18c43850c310c" name="a6d58d36bc8d972003cc18c43850c310c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d58d36bc8d972003cc18c43850c310c">&#9670;&#160;</a></span>analog</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::array&lt;std::atomic&lt;float&gt;*, <a class="el" href="namespaceHarmoniaCharter_1_1analog.html#ad58d139d369d75bbbeb5654b8f0ca5a9">HarmoniaCharter::analog::count</a>&gt; HarmoniaParams::AtomicRefs::analog {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Index = <a class="el" href="namespaceHarmoniaCharter_1_1analog.html#accb56d3487cd78cb9651f3e49292667f">HarmoniaCharter::analog::Index</a> (ex: refs.analog[<a class="el" href="namespaceHarmoniaCharter_1_1analog.html#accb56d3487cd78cb9651f3e49292667fa11edebc1ceaf69073114b814e66e5dfd">HarmoniaCharter::analog::filter_cutoff</a>]). </p>
+
+</div>
+</div>
 <a id="a13e3593dea674b90da95e35ead702311" name="a13e3593dea674b90da95e35ead702311"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a13e3593dea674b90da95e35ead702311">&#9670;&#160;</a></span>distortionMix</h2>
 
@@ -240,6 +315,36 @@ Public Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">std::atomic&lt;float&gt;* HarmoniaParams::AtomicRefs::distortionMix = nullptr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac809f0f97abf871b5c1a315c15b3c386" name="ac809f0f97abf871b5c1a315c15b3c386"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac809f0f97abf871b5c1a315c15b3c386">&#9670;&#160;</a></span>dx7</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::array&lt;std::atomic&lt;float&gt;*, <a class="el" href="namespaceHarmoniaCharter.html#ad4bd8890449f85b9593f7d1a4f22902d">HarmoniaCharter::dx7End</a> - <a class="el" href="namespaceHarmoniaCharter.html#ac7544da81ab8449ee2b9e8d2bec0c024">HarmoniaCharter::dx7Begin</a>&gt; HarmoniaParams::AtomicRefs::dx7 {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Index = (position dans <a class="el" href="namespaceHarmoniaCharter.html#a658eac6bbe4a6f21eef9370693286cbf" title="Every parameter: the global ones, then the analog engine (the AI&#39;s vector order), then the DX7 voice.">HarmoniaCharter::params</a>) - <a class="el" href="namespaceHarmoniaCharter.html#ac7544da81ab8449ee2b9e8d2bec0c024">HarmoniaCharter::dx7Begin</a>. </p>
+
+</div>
+</div>
+<a id="a751df5e027cb30d05159a8974b8e29c5" name="a751df5e027cb30d05159a8974b8e29c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a751df5e027cb30d05159a8974b8e29c5">&#9670;&#160;</a></span>engine</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::atomic&lt; float &gt; * HarmoniaParams::AtomicRefs::engine = nullptr</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -456,8 +561,10 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<hr/>The documentation for this struct was generated from the following files:<ul>
 <li>src/parameters/<a class="el" href="HarmoniaParameters_8h_source.html">HarmoniaParameters.h</a></li>
+<li>src/parameters/saved_params/<a class="el" href="HarmoniaCharterV1_8h_source.html">HarmoniaCharterV1.h</a></li>
+<li>src/parameters/saved_params/<a class="el" href="HarmoniaParametersV3_8h_source.html">HarmoniaParametersV3.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

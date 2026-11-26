@@ -93,76 +93,89 @@ $(function(){initNavTree('HistoryMapper_8h_source.html','',''); });
 <div class="contents">
 <a href="HistoryMapper_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;<a class="code" href="BackendTypes_8h.html">../BackendTypes.h</a>&quot;</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;nlohmann/json.hpp&gt;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="foldopen" id="foldopen00005" data-start="{" data-end="}">
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="namespaceHistoryMapper.html">    5</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceHistoryMapper.html">HistoryMapper</a></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>{</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    <span class="comment">// { &quot;osc_1_waveform&quot;: 0.5, ... } -&gt; map</span></div>
-<div class="foldopen" id="foldopen00008" data-start="{" data-end="}">
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="namespaceHistoryMapper.html#a2bfe67b95c3ce9344dfd7180844ad8ef">    8</a></span>    <span class="keyword">inline</span> std::map&lt;juce::String, float&gt; <a class="code hl_function" href="namespaceHistoryMapper.html#a2bfe67b95c3ce9344dfd7180844ad8ef">readParameters</a> (<span class="keyword">const</span> nlohmann::json&amp; obj)</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    {</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>        std::map&lt;juce::String, float&gt; out;</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        <span class="keywordflow">if</span> (! obj.is_object())</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>            <span class="keywordflow">return</span> out;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = obj.begin(); it != obj.end(); ++it)</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>            <span class="keywordflow">if</span> (it.value().is_number())</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>                out[juce::String (it.key())] = it.value().get&lt;<span class="keywordtype">float</span>&gt;();</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="keywordflow">return</span> out;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    }</div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="JsonUtil_8h.html">../core/JsonUtil.h</a>&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;nlohmann/json.hpp&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="foldopen" id="foldopen00006" data-start="{" data-end="}">
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="namespaceHistoryMapper.html">    6</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceHistoryMapper.html">HistoryMapper</a></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>{</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    <span class="comment">// { &quot;osc_1_waveform&quot;: 0.5, ... } -&gt; map</span></div>
+<div class="foldopen" id="foldopen00009" data-start="{" data-end="}">
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="namespaceHistoryMapper.html#a2bfe67b95c3ce9344dfd7180844ad8ef">    9</a></span>    <span class="keyword">inline</span> std::map&lt;juce::String, float&gt; <a class="code hl_function" href="namespaceHistoryMapper.html#a2bfe67b95c3ce9344dfd7180844ad8ef">readParameters</a> (<span class="keyword">const</span> nlohmann::json&amp; obj)</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    {</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        std::map&lt;juce::String, float&gt; out;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        <span class="keywordflow">if</span> (! obj.is_object())</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>            <span class="keywordflow">return</span> out;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = obj.begin(); it != obj.end(); ++it)</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>            <span class="keywordflow">if</span> (it.value().is_number())</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>                out[juce::String (it.key())] = it.value().get&lt;<span class="keywordtype">float</span>&gt;();</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="keywordflow">return</span> out;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    }</div>
 </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="comment">// Une entrée d&#39;historique : id, name, type, created_at, last_used_at,</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="comment">// et &quot;parameters&quot; s&#39;il est présent (cas de GET /profile/me).</span></div>
-<div class="foldopen" id="foldopen00024" data-start="{" data-end="}">
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="namespaceHistoryMapper.html#a77e99bbd6e1e019db756655291a88452">   24</a></span>    <span class="keyword">inline</span> <a class="code hl_struct" href="structHistoryEntry.html">HistoryEntry</a> <a class="code hl_function" href="namespaceHistoryMapper.html#a77e99bbd6e1e019db756655291a88452">readEntry</a> (<span class="keyword">const</span> nlohmann::json&amp; e)</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    {</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <a class="code hl_struct" href="structHistoryEntry.html">HistoryEntry</a> h;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        h.<a class="code hl_variable" href="structHistoryEntry.html#a5c8c075af83fa10a13c306fe40506727">id</a>         = e.value (<span class="stringliteral">&quot;id&quot;</span>, 0);</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        h.<a class="code hl_variable" href="structHistoryEntry.html#a17692ab0bf79cf59173b4c4e4218bd66">name</a>       = juce::String (e.value (<span class="stringliteral">&quot;name&quot;</span>, std::string()));</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        h.<a class="code hl_variable" href="structHistoryEntry.html#a87a0d3f5a98f8587d13b46401055f68c">type</a>       = juce::String (e.value (<span class="stringliteral">&quot;type&quot;</span>, std::string()));</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        h.<a class="code hl_variable" href="structHistoryEntry.html#a5878d14ff1ba83f83a6cf93463ddf503">createdAt</a>  = juce::String (e.value (<span class="stringliteral">&quot;created_at&quot;</span>, std::string()));</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        h.<a class="code hl_variable" href="structHistoryEntry.html#a5a937f97561fddad989dd4a62f8a63b0">lastUsedAt</a> = juce::String (e.value (<span class="stringliteral">&quot;last_used_at&quot;</span>, std::string()));</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keywordflow">if</span> (e.contains (<span class="stringliteral">&quot;parameters&quot;</span>))</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>            h.<a class="code hl_variable" href="structHistoryEntry.html#a43373df08514843048ea217724c287ce">parameters</a> = <a class="code hl_function" href="namespaceHistoryMapper.html#a2bfe67b95c3ce9344dfd7180844ad8ef">readParameters</a> (e[<span class="stringliteral">&quot;parameters&quot;</span>]);</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keywordflow">return</span> h;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    }</div>
-</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="foldopen" id="foldopen00039" data-start="{" data-end="}">
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="namespaceHistoryMapper.html#a4b70391ebb5d20133a0a0dea833f0ec5">   39</a></span>    <span class="keyword">inline</span> std::vector&lt;HistoryEntry&gt; <a class="code hl_function" href="namespaceHistoryMapper.html#a4b70391ebb5d20133a0a0dea833f0ec5">readFromJson</a> (<span class="keyword">const</span> nlohmann::json&amp; body)</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    {</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        std::vector&lt;HistoryEntry&gt; out;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="comment">// Une entrée d&#39;historique : id, name, type, model_id, model_name, created_at,</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="comment">// last_used_at, et &quot;parameters&quot; s&#39;il est présent (cas de GET /profile/me).</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="comment">// Passe par JsonUtil : les champs nullables (model_id / model_name à null)</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="comment">// ne doivent pas lever d&#39;exception.</span></div>
+<div class="foldopen" id="foldopen00027" data-start="{" data-end="}">
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="namespaceHistoryMapper.html#a77e99bbd6e1e019db756655291a88452">   27</a></span>    <span class="keyword">inline</span> <a class="code hl_struct" href="structHistoryEntry.html">HistoryEntry</a> <a class="code hl_function" href="namespaceHistoryMapper.html#a77e99bbd6e1e019db756655291a88452">readEntry</a> (<span class="keyword">const</span> nlohmann::json&amp; e)</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    {</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="keyword">auto</span> str = [&amp;e] (<span class="keyword">const</span> <span class="keywordtype">char</span>* key) { <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceJsonUtil.html#a39474ce2c7ce1a45571173f92556eaef">JsonUtil::toJuce</a> (<a class="code hl_function" href="namespaceJsonUtil.html#aa662d91f832f49c3dea9c4b1f2a90e60">JsonUtil::getString</a> (e, key)); };</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <a class="code hl_struct" href="structHistoryEntry.html">HistoryEntry</a> h;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        h.<a class="code hl_variable" href="structHistoryEntry.html#a5c8c075af83fa10a13c306fe40506727">id</a>         = <a class="code hl_function" href="namespaceJsonUtil.html#a6ebca18d68ec074ce0a8f86a688a52d8">JsonUtil::getInt</a> (e, <span class="stringliteral">&quot;id&quot;</span>);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        h.<a class="code hl_variable" href="structHistoryEntry.html#a17692ab0bf79cf59173b4c4e4218bd66">name</a>       = str (<span class="stringliteral">&quot;name&quot;</span>);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        h.<a class="code hl_variable" href="structHistoryEntry.html#a87a0d3f5a98f8587d13b46401055f68c">type</a>       = str (<span class="stringliteral">&quot;type&quot;</span>);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        h.<a class="code hl_variable" href="structHistoryEntry.html#af33f98eb6ebeccd38beac444eb4b585c">modelId</a>    = str (<span class="stringliteral">&quot;model_id&quot;</span>);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        h.<a class="code hl_variable" href="structHistoryEntry.html#a5b678d310990c063e4cd8d3796f097d9">modelName</a>  = str (<span class="stringliteral">&quot;model_name&quot;</span>);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        h.<a class="code hl_variable" href="structHistoryEntry.html#a5878d14ff1ba83f83a6cf93463ddf503">createdAt</a>  = str (<span class="stringliteral">&quot;created_at&quot;</span>);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        h.<a class="code hl_variable" href="structHistoryEntry.html#a5a937f97561fddad989dd4a62f8a63b0">lastUsedAt</a> = str (<span class="stringliteral">&quot;last_used_at&quot;</span>);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordflow">if</span> (e.contains (<span class="stringliteral">&quot;parameters&quot;</span>))</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            h.<a class="code hl_variable" href="structHistoryEntry.html#a43373df08514843048ea217724c287ce">parameters</a> = <a class="code hl_function" href="namespaceHistoryMapper.html#a2bfe67b95c3ce9344dfd7180844ad8ef">readParameters</a> (e[<span class="stringliteral">&quot;parameters&quot;</span>]);</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keywordflow">if</span> (! body.contains (<span class="stringliteral">&quot;history&quot;</span>) || ! body[<span class="stringliteral">&quot;history&quot;</span>].is_array())</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            <span class="keywordflow">return</span> out;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; e : body[<span class="stringliteral">&quot;history&quot;</span>])</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            <span class="keywordflow">if</span> (e.is_object())</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                out.push_back (<a class="code hl_function" href="namespaceHistoryMapper.html#a77e99bbd6e1e019db756655291a88452">readEntry</a> (e));</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="keywordflow">return</span> out;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    }</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keywordflow">return</span> h;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    }</div>
 </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>}</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="foldopen" id="foldopen00046" data-start="{" data-end="}">
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="namespaceHistoryMapper.html#a4b70391ebb5d20133a0a0dea833f0ec5">   46</a></span>    <span class="keyword">inline</span> std::vector&lt;HistoryEntry&gt; <a class="code hl_function" href="namespaceHistoryMapper.html#a4b70391ebb5d20133a0a0dea833f0ec5">readFromJson</a> (<span class="keyword">const</span> nlohmann::json&amp; body)</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    {</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        std::vector&lt;HistoryEntry&gt; out;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="keywordflow">if</span> (! body.contains (<span class="stringliteral">&quot;history&quot;</span>) || ! body[<span class="stringliteral">&quot;history&quot;</span>].is_array())</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            <span class="keywordflow">return</span> out;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; e : body[<span class="stringliteral">&quot;history&quot;</span>])</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            <span class="keywordflow">if</span> (e.is_object())</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                out.push_back (<a class="code hl_function" href="namespaceHistoryMapper.html#a77e99bbd6e1e019db756655291a88452">readEntry</a> (e));</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keywordflow">return</span> out;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    }</div>
+</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>}</div>
 </div>
 <div class="ttc" id="aBackendTypes_8h_html"><div class="ttname"><a href="BackendTypes_8h.html">BackendTypes.h</a></div><div class="ttdoc">Defines backend-related data structures.</div></div>
-<div class="ttc" id="anamespaceHistoryMapper_html"><div class="ttname"><a href="namespaceHistoryMapper.html">HistoryMapper</a></div><div class="ttdef"><b>Definition</b> HistoryMapper.h:6</div></div>
-<div class="ttc" id="anamespaceHistoryMapper_html_a2bfe67b95c3ce9344dfd7180844ad8ef"><div class="ttname"><a href="namespaceHistoryMapper.html#a2bfe67b95c3ce9344dfd7180844ad8ef">HistoryMapper::readParameters</a></div><div class="ttdeci">std::map&lt; juce::String, float &gt; readParameters(const nlohmann::json &amp;obj)</div><div class="ttdef"><b>Definition</b> HistoryMapper.h:8</div></div>
-<div class="ttc" id="anamespaceHistoryMapper_html_a4b70391ebb5d20133a0a0dea833f0ec5"><div class="ttname"><a href="namespaceHistoryMapper.html#a4b70391ebb5d20133a0a0dea833f0ec5">HistoryMapper::readFromJson</a></div><div class="ttdeci">std::vector&lt; HistoryEntry &gt; readFromJson(const nlohmann::json &amp;body)</div><div class="ttdef"><b>Definition</b> HistoryMapper.h:39</div></div>
-<div class="ttc" id="anamespaceHistoryMapper_html_a77e99bbd6e1e019db756655291a88452"><div class="ttname"><a href="namespaceHistoryMapper.html#a77e99bbd6e1e019db756655291a88452">HistoryMapper::readEntry</a></div><div class="ttdeci">HistoryEntry readEntry(const nlohmann::json &amp;e)</div><div class="ttdef"><b>Definition</b> HistoryMapper.h:24</div></div>
+<div class="ttc" id="aJsonUtil_8h_html"><div class="ttname"><a href="JsonUtil_8h.html">JsonUtil.h</a></div></div>
+<div class="ttc" id="anamespaceHistoryMapper_html"><div class="ttname"><a href="namespaceHistoryMapper.html">HistoryMapper</a></div><div class="ttdef"><b>Definition</b> HistoryMapper.h:7</div></div>
+<div class="ttc" id="anamespaceHistoryMapper_html_a2bfe67b95c3ce9344dfd7180844ad8ef"><div class="ttname"><a href="namespaceHistoryMapper.html#a2bfe67b95c3ce9344dfd7180844ad8ef">HistoryMapper::readParameters</a></div><div class="ttdeci">std::map&lt; juce::String, float &gt; readParameters(const nlohmann::json &amp;obj)</div><div class="ttdef"><b>Definition</b> HistoryMapper.h:9</div></div>
+<div class="ttc" id="anamespaceHistoryMapper_html_a4b70391ebb5d20133a0a0dea833f0ec5"><div class="ttname"><a href="namespaceHistoryMapper.html#a4b70391ebb5d20133a0a0dea833f0ec5">HistoryMapper::readFromJson</a></div><div class="ttdeci">std::vector&lt; HistoryEntry &gt; readFromJson(const nlohmann::json &amp;body)</div><div class="ttdef"><b>Definition</b> HistoryMapper.h:46</div></div>
+<div class="ttc" id="anamespaceHistoryMapper_html_a77e99bbd6e1e019db756655291a88452"><div class="ttname"><a href="namespaceHistoryMapper.html#a77e99bbd6e1e019db756655291a88452">HistoryMapper::readEntry</a></div><div class="ttdeci">HistoryEntry readEntry(const nlohmann::json &amp;e)</div><div class="ttdef"><b>Definition</b> HistoryMapper.h:27</div></div>
+<div class="ttc" id="anamespaceJsonUtil_html_a39474ce2c7ce1a45571173f92556eaef"><div class="ttname"><a href="namespaceJsonUtil.html#a39474ce2c7ce1a45571173f92556eaef">JsonUtil::toJuce</a></div><div class="ttdeci">juce::String toJuce(const std::string &amp;s)</div><div class="ttdoc">std::string (UTF-8) -&gt; juce::String, en précisant l&#39;encodage.</div><div class="ttdef"><b>Definition</b> JsonUtil.h:84</div></div>
+<div class="ttc" id="anamespaceJsonUtil_html_a6ebca18d68ec074ce0a8f86a688a52d8"><div class="ttname"><a href="namespaceJsonUtil.html#a6ebca18d68ec074ce0a8f86a688a52d8">JsonUtil::getInt</a></div><div class="ttdeci">int getInt(const json &amp;j, const char *key, int fallback=0)</div><div class="ttdef"><b>Definition</b> JsonUtil.h:44</div></div>
+<div class="ttc" id="anamespaceJsonUtil_html_aa662d91f832f49c3dea9c4b1f2a90e60"><div class="ttname"><a href="namespaceJsonUtil.html#aa662d91f832f49c3dea9c4b1f2a90e60">JsonUtil::getString</a></div><div class="ttdeci">std::string getString(const json &amp;j, const char *key, const std::string &amp;fallback={})</div><div class="ttdef"><b>Definition</b> JsonUtil.h:31</div></div>
 <div class="ttc" id="astructHistoryEntry_html"><div class="ttname"><a href="structHistoryEntry.html">HistoryEntry</a></div><div class="ttdef"><b>Definition</b> BackendTypes.h:40</div></div>
 <div class="ttc" id="astructHistoryEntry_html_a17692ab0bf79cf59173b4c4e4218bd66"><div class="ttname"><a href="structHistoryEntry.html#a17692ab0bf79cf59173b4c4e4218bd66">HistoryEntry::name</a></div><div class="ttdeci">juce::String name</div><div class="ttdef"><b>Definition</b> BackendTypes.h:42</div></div>
-<div class="ttc" id="astructHistoryEntry_html_a43373df08514843048ea217724c287ce"><div class="ttname"><a href="structHistoryEntry.html#a43373df08514843048ea217724c287ce">HistoryEntry::parameters</a></div><div class="ttdeci">std::map&lt; juce::String, float &gt; parameters</div><div class="ttdef"><b>Definition</b> BackendTypes.h:43</div></div>
+<div class="ttc" id="astructHistoryEntry_html_a43373df08514843048ea217724c287ce"><div class="ttname"><a href="structHistoryEntry.html#a43373df08514843048ea217724c287ce">HistoryEntry::parameters</a></div><div class="ttdeci">std::map&lt; juce::String, float &gt; parameters</div><div class="ttdef"><b>Definition</b> BackendTypes.h:44</div></div>
 <div class="ttc" id="astructHistoryEntry_html_a5878d14ff1ba83f83a6cf93463ddf503"><div class="ttname"><a href="structHistoryEntry.html#a5878d14ff1ba83f83a6cf93463ddf503">HistoryEntry::createdAt</a></div><div class="ttdeci">juce::String createdAt</div><div class="ttdef"><b>Definition</b> BackendTypes.h:42</div></div>
 <div class="ttc" id="astructHistoryEntry_html_a5a937f97561fddad989dd4a62f8a63b0"><div class="ttname"><a href="structHistoryEntry.html#a5a937f97561fddad989dd4a62f8a63b0">HistoryEntry::lastUsedAt</a></div><div class="ttdeci">juce::String lastUsedAt</div><div class="ttdef"><b>Definition</b> BackendTypes.h:42</div></div>
+<div class="ttc" id="astructHistoryEntry_html_a5b678d310990c063e4cd8d3796f097d9"><div class="ttname"><a href="structHistoryEntry.html#a5b678d310990c063e4cd8d3796f097d9">HistoryEntry::modelName</a></div><div class="ttdeci">juce::String modelName</div><div class="ttdef"><b>Definition</b> BackendTypes.h:43</div></div>
 <div class="ttc" id="astructHistoryEntry_html_a5c8c075af83fa10a13c306fe40506727"><div class="ttname"><a href="structHistoryEntry.html#a5c8c075af83fa10a13c306fe40506727">HistoryEntry::id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition</b> BackendTypes.h:41</div></div>
 <div class="ttc" id="astructHistoryEntry_html_a87a0d3f5a98f8587d13b46401055f68c"><div class="ttname"><a href="structHistoryEntry.html#a87a0d3f5a98f8587d13b46401055f68c">HistoryEntry::type</a></div><div class="ttdeci">juce::String type</div><div class="ttdef"><b>Definition</b> BackendTypes.h:42</div></div>
+<div class="ttc" id="astructHistoryEntry_html_af33f98eb6ebeccd38beac444eb4b585c"><div class="ttname"><a href="structHistoryEntry.html#af33f98eb6ebeccd38beac444eb4b585c">HistoryEntry::modelId</a></div><div class="ttdeci">juce::String modelId</div><div class="ttdef"><b>Definition</b> BackendTypes.h:43</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

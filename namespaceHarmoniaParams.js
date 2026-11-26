@@ -1,11 +1,13 @@
 var namespaceHarmoniaParams =
 [
     [ "IDs", "namespaceHarmoniaParams_1_1IDs.html", [
+      [ "idOf", "namespaceHarmoniaParams_1_1IDs.html#a7b9dab3e8947059cc217d8f6fb129014", null ],
       [ "ampAttack", "namespaceHarmoniaParams_1_1IDs.html#a552b788aa71ff8368904f74cb9332d2a", null ],
       [ "ampDecay", "namespaceHarmoniaParams_1_1IDs.html#a17a0372a6ebc3482c2e67da999fc63d3", null ],
       [ "ampRelease", "namespaceHarmoniaParams_1_1IDs.html#adf8b6f2d7878be253aa095362121fe29", null ],
       [ "ampSustain", "namespaceHarmoniaParams_1_1IDs.html#a050c95e728c8c4c589cc77364fabc249", null ],
       [ "distortionMix", "namespaceHarmoniaParams_1_1IDs.html#ac43b6320bb83ac38d1d90446ddcc555b", null ],
+      [ "engine", "namespaceHarmoniaParams_1_1IDs.html#a8bdad53bbd82ce74019e1a2602899ced", null ],
       [ "filterCutoff", "namespaceHarmoniaParams_1_1IDs.html#a3866b86c60a1862d6ca50d9d11eeeecd", null ],
       [ "filterEnvAmount", "namespaceHarmoniaParams_1_1IDs.html#ae2c7fe6e81e2bf37695cb24035a39ed4", null ],
       [ "filterEnvDecay", "namespaceHarmoniaParams_1_1IDs.html#a1ebb36f99a1b6e8bcb4dfe543c8e0b18", null ],
@@ -22,8 +24,22 @@ var namespaceHarmoniaParams =
       [ "reverbMix", "namespaceHarmoniaParams_1_1IDs.html#a9d2c77dc3b0b29c6ef5d1c32d1a913fa", null ],
       [ "velocityToFilter", "namespaceHarmoniaParams_1_1IDs.html#a5f848ecf1dd24b93edb78f4a7cd3f49e", null ]
     ] ],
+    [ "Output", "namespaceHarmoniaParams_1_1Output.html", [
+      [ "formatDb", "namespaceHarmoniaParams_1_1Output.html#aeae68edc740192f7442ef499f182c1ed", null ],
+      [ "defaultDb", "namespaceHarmoniaParams_1_1Output.html#a199a201b0b960bd29bd9d0b4ffd3ec49", null ],
+      [ "maxDb", "namespaceHarmoniaParams_1_1Output.html#aa58d06a36387c4a60b12858d6b52a0de", null ],
+      [ "minDb", "namespaceHarmoniaParams_1_1Output.html#a7724a52a14913d3c886b1e016baa6889", null ],
+      [ "numExtraParams", "namespaceHarmoniaParams_1_1Output.html#acb1014d55f6259bfbd75b62e1d016e74", null ],
+      [ "volumeId", "namespaceHarmoniaParams_1_1Output.html#a2bf38ee528073aeccf09adbc02aab5d7", null ]
+    ] ],
     [ "AtomicRefs", "structHarmoniaParams_1_1AtomicRefs.html", "structHarmoniaParams_1_1AtomicRefs" ],
+    [ "IndexedRefs", "namespaceHarmoniaParams.html#a3f7bc78ff24ed1f12f311c4fc04640c7", null ],
     [ "createLayout", "namespaceHarmoniaParams.html#a277e6f97c0c232c719467c6198da41be", null ],
+    [ "formatValue", "namespaceHarmoniaParams.html#aa08135503983de89bbff737fbc982bc4", null ],
     [ "makeLogRange", "namespaceHarmoniaParams.html#a299727c4fcdecee8c508ed19643a5bc0", null ],
-    [ "orderedIds", "namespaceHarmoniaParams.html#a817cf5dd08b4a72b77d6e6d4658aa9bc", null ]
+    [ "orderedAnalogIds", "namespaceHarmoniaParams.html#acaa1f2ac42e87d9ae5bc14b1fe1c10d8", null ],
+    [ "orderedIds", "namespaceHarmoniaParams.html#a817cf5dd08b4a72b77d6e6d4658aa9bc", null ],
+    [ "parseValue", "namespaceHarmoniaParams.html#ad78ee77389eec466fd3640a89a6a8959", null ],
+    [ "shortUnit", "namespaceHarmoniaParams.html#a68921824b6a8094c1ff3a754743d8e4a", null ],
+    [ "toJuce", "namespaceHarmoniaParams.html#a206e66e6cc62ecaa0d062741c1fdbe5d", null ]
 ];

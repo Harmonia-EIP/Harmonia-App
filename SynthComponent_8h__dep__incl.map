@@ -1,5 +1,5 @@
 <map id="src/components/SynthComponent.h" name="src/components/SynthComponent.h">
-<area shape="rect" id="Node000001" title="Virtual MIDI keyboard UI component for Harmonia." alt="" coords="271,5,523,33"/>
+<area shape="rect" id="Node000001" title="Panneau « Keyboard » : le piano du plugin, dans le même cadre que les autres sections." alt="" coords="271,5,523,33"/>
 <area shape="rect" id="Node000002" href="$MainComponent_8h.html" title="Main synthesizer interface component for Harmonia." alt="" coords="189,81,352,109"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="359,43,294,83,291,78,364,39"/>
 <area shape="rect" id="Node000005" href="$PluginEditor_8h.html" title="Main graphical editor of the Harmonia plugin." alt="" coords="260,232,393,260"/>

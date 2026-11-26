@@ -103,7 +103,7 @@ Inheritance diagram for LockableControl:</div>
 <area shape="poly" title=" " alt="" coords="293,43,256,83,252,78,288,46"/>
 <area shape="rect" href="classKnobControl.html" title=" " alt="" coords="338,81,440,109"/>
 <area shape="poly" title=" " alt="" coords="339,42,378,81,373,80,338,47"/>
-<area shape="rect" href="classFilterSlopeSelector.html" title="12 / 24 dB filter slope as a compact two&#45;way switch (it sits in the filter panel&#39;s title row)." alt="" coords="5,157,149,184"/>
+<area shape="rect" href="classFilterSlopeSelector.html" title="12 / 24 dB filter slope as a two&#45;way switch (above the filter type selector)." alt="" coords="5,157,149,184"/>
 <area shape="poly" title=" " alt="" coords="200,116,107,159,105,154,195,115"/>
 <area shape="rect" href="classFilterTypeSelector.html" title="Icon&#45;based filter type selector component." alt="" coords="172,157,310,184"/>
 <area shape="poly" title=" " alt="" coords="243,123,243,158,239,155,239,126"/>
@@ -119,6 +119,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae14b719c0e14502f471647e502930084" id="r_ae14b719c0e14502f471647e502930084"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae14b719c0e14502f471647e502930084">setLocked</a> (bool shouldLock)=0</td></tr>
 <tr class="memitem:ae8546d530b6112548b52d25e3b3710d4" id="r_ae8546d530b6112548b52d25e3b3710d4"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8546d530b6112548b52d25e3b3710d4">isLocked</a> () const =0</td></tr>
 <tr class="memitem:a4d28111e6df7559efbf968bfdb58efe9" id="r_a4d28111e6df7559efbf968bfdb58efe9"><td class="memItemLeft" align="right" valign="top">virtual juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d28111e6df7559efbf968bfdb58efe9">getParamId</a> () const =0</td></tr>
+<tr class="memitem:a94fd9c495c7ab37a7612425541678bea" id="r_a94fd9c495c7ab37a7612425541678bea"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a94fd9c495c7ab37a7612425541678bea">setArrowTarget</a> (bool isTarget)</td></tr>
+<tr class="memdesc:a94fd9c495c7ab37a7612425541678bea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contrôle ciblé par les flèches du clavier (le dernier cliqué).  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -254,6 +256,36 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implemented in <a class="el" href="classIconChoiceSelector.html#a2d644ccb79f8135847c16d78503a52db">IconChoiceSelector</a>, and <a class="el" href="classKnobControl.html#a564580581d3fc36ab36eac1bdaa49fc4">KnobControl</a>.</p>
+
+</div>
+</div>
+<a id="a94fd9c495c7ab37a7612425541678bea" name="a94fd9c495c7ab37a7612425541678bea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94fd9c495c7ab37a7612425541678bea">&#9670;&#160;</a></span>setArrowTarget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void LockableControl::setArrowTarget </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>isTarget</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Contrôle ciblé par les flèches du clavier (le dernier cliqué). </p>
+<p>Pas de repère visuel. </p>
+
+<p>Reimplemented in <a class="el" href="classIconChoiceSelector.html#a67b5ebfff71e95136b6864237d81b9ab">IconChoiceSelector</a>, and <a class="el" href="classKnobControl.html#abafcc5249c0dc1b1d36bb49a7945b833">KnobControl</a>.</p>
 
 </div>
 </div>

@@ -1,0 +1,11 @@
+<map id="src/components/HarmoniaKeyboard.cpp" name="src/components/HarmoniaKeyboard.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="47,5,327,33"/>
+<area shape="rect" id="Node000002" href="$HarmoniaKeyboard_8h.html" title=" " alt="" coords="5,81,164,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="167,35,117,74,113,70,171,32"/>
+<area shape="rect" id="Node000004" href="$HarmoniaPalette_8h.html" title=" " alt="" coords="188,81,395,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="206,31,263,72,258,73,205,36"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="6,157,163,201"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="86,107,87,141,82,140,83,111"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="220,157,362,201"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="293,107,293,142,289,139,289,111"/>
+</map>

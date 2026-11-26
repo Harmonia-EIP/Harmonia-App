@@ -126,7 +126,7 @@ Collaboration diagram for HistoryPicker:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac73c422cd8ac64982be53c1ac57a3f99" id="r_ac73c422cd8ac64982be53c1ac57a3f99"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac73c422cd8ac64982be53c1ac57a3f99">HistoryPicker</a> ()</td></tr>
 <tr class="memitem:a24dcd037f4bef5deaea58118705e188d" id="r_a24dcd037f4bef5deaea58118705e188d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a24dcd037f4bef5deaea58118705e188d">~HistoryPicker</a> () override</td></tr>
-<tr class="memitem:afbda2ff46e9c9aa3c82c81ee383907fc" id="r_afbda2ff46e9c9aa3c82c81ee383907fc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afbda2ff46e9c9aa3c82c81ee383907fc">setItems</a> (const juce::StringArray &amp;newTitles, const juce::StringArray &amp;newTypes, const juce::StringArray &amp;newDates)</td></tr>
+<tr class="memitem:a7d70c8e49513653c0fac227c3346ad64" id="r_a7d70c8e49513653c0fac227c3346ad64"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7d70c8e49513653c0fac227c3346ad64">setItems</a> (const <a class="el" href="HistoryItem_8h.html#a9cba6f6065ea40079e3b13e0f532d56a">HistoryItems</a> &amp;newItems)</td></tr>
 <tr class="memitem:aacbdc847b8a008a01b4a8f7de2ce7357" id="r_aacbdc847b8a008a01b4a8f7de2ce7357"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aacbdc847b8a008a01b4a8f7de2ce7357">setInteractive</a> (bool shouldBeInteractive)</td></tr>
 <tr class="memitem:aa7e787c9905d3a46df24463041458b3c" id="r_aa7e787c9905d3a46df24463041458b3c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa7e787c9905d3a46df24463041458b3c">paint</a> (juce::Graphics &amp;) override</td></tr>
 <tr class="memitem:a20fd533742cdb3068d5f128e05500bf8" id="r_a20fd533742cdb3068d5f128e05500bf8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a20fd533742cdb3068d5f128e05500bf8">mouseEnter</a> (const juce::MouseEvent &amp;) override</td></tr>
@@ -154,11 +154,9 @@ Static Private Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:ac86ee07e3bafe950ee28b1466e95226d" id="r_ac86ee07e3bafe950ee28b1466e95226d"><td class="memItemLeft" align="right" valign="top">juce::StringArray&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac86ee07e3bafe950ee28b1466e95226d">titles</a></td></tr>
-<tr class="memitem:ac68497be89ed889f6ebba6abc5272272" id="r_ac68497be89ed889f6ebba6abc5272272"><td class="memItemLeft" align="right" valign="top">juce::StringArray&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac68497be89ed889f6ebba6abc5272272">types</a></td></tr>
-<tr class="memitem:a472897f7abb63ae39435a45fdc83e3f2" id="r_a472897f7abb63ae39435a45fdc83e3f2"><td class="memItemLeft" align="right" valign="top">juce::StringArray&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a472897f7abb63ae39435a45fdc83e3f2">dates</a></td></tr>
+<tr class="memitem:a88c0380cdd68b81dd5eae2229f083f75" id="r_a88c0380cdd68b81dd5eae2229f083f75"><td class="memItemLeft" align="right" valign="top"><a class="el" href="HistoryItem_8h.html#a9cba6f6065ea40079e3b13e0f532d56a">HistoryItems</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a88c0380cdd68b81dd5eae2229f083f75">items</a></td></tr>
 <tr class="memitem:ac09b0bad48137d91bfae24c41b7ec8d0" id="r_ac09b0bad48137d91bfae24c41b7ec8d0"><td class="memItemLeft" align="right" valign="top">juce::Component::SafePointer&lt; <a class="el" href="classHistoryOverlay.html">HistoryOverlay</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac09b0bad48137d91bfae24c41b7ec8d0">overlay</a></td></tr>
-<tr class="memitem:acad46b9823049f04a5146ee0785dca6c" id="r_acad46b9823049f04a5146ee0785dca6c"><td class="memItemLeft" align="right" valign="top">std::function&lt; void(const juce::StringArray &amp;, const juce::StringArray &amp;, const juce::StringArray &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acad46b9823049f04a5146ee0785dca6c">pushToPanel</a></td></tr>
+<tr class="memitem:aa39c3164e190aea417e778e2db7f6762" id="r_aa39c3164e190aea417e778e2db7f6762"><td class="memItemLeft" align="right" valign="top">std::function&lt; void(const <a class="el" href="HistoryItem_8h.html#a9cba6f6065ea40079e3b13e0f532d56a">HistoryItems</a> &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa39c3164e190aea417e778e2db7f6762">pushToPanel</a></td></tr>
 <tr class="memitem:a11ba109417f364a070838e561ab9cd55" id="r_a11ba109417f364a070838e561ab9cd55"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a11ba109417f364a070838e561ab9cd55">menuOpen</a> = false</td></tr>
 <tr class="memitem:acf9cb5ba4bd2d65c3c79f2870fb7f6f0" id="r_acf9cb5ba4bd2d65c3c79f2870fb7f6f0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf9cb5ba4bd2d65c3c79f2870fb7f6f0">interactive</a> = true</td></tr>
 <tr class="memitem:a9a32039cdf327f40327bb45ae53b07f7" id="r_a9a32039cdf327f40327bb45ae53b07f7"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9a32039cdf327f40327bb45ae53b07f7">hoverAnim</a> = 0.0f</td></tr>
@@ -450,8 +448,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="afbda2ff46e9c9aa3c82c81ee383907fc" name="afbda2ff46e9c9aa3c82c81ee383907fc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afbda2ff46e9c9aa3c82c81ee383907fc">&#9670;&#160;</a></span>setItems()</h2>
+<a id="a7d70c8e49513653c0fac227c3346ad64" name="a7d70c8e49513653c0fac227c3346ad64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d70c8e49513653c0fac227c3346ad64">&#9670;&#160;</a></span>setItems()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -459,17 +457,8 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void HistoryPicker::setItems </td>
           <td>(</td>
-          <td class="paramtype">const juce::StringArray &amp;</td>          <td class="paramname"><span class="paramname"><em>newTitles</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">const <a class="el" href="HistoryItem_8h.html#a9cba6f6065ea40079e3b13e0f532d56a">HistoryItems</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>newItems</em></span></td><td>)</td>
           <td></td>
-          <td class="paramtype">const juce::StringArray &amp;</td>          <td class="paramname"><span class="paramname"><em>newTypes</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const juce::StringArray &amp;</td>          <td class="paramname"><span class="paramname"><em>newDates</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -527,28 +516,6 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
-<a id="a472897f7abb63ae39435a45fdc83e3f2" name="a472897f7abb63ae39435a45fdc83e3f2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a472897f7abb63ae39435a45fdc83e3f2">&#9670;&#160;</a></span>dates</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">juce::StringArray HistoryPicker::dates</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a9a32039cdf327f40327bb45ae53b07f7" name="a9a32039cdf327f40327bb45ae53b07f7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9a32039cdf327f40327bb45ae53b07f7">&#9670;&#160;</a></span>hoverAnim</h2>
 
@@ -582,6 +549,28 @@ Private Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">bool HistoryPicker::interactive = true</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a88c0380cdd68b81dd5eae2229f083f75" name="a88c0380cdd68b81dd5eae2229f083f75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88c0380cdd68b81dd5eae2229f083f75">&#9670;&#160;</a></span>items</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="HistoryItem_8h.html#a9cba6f6065ea40079e3b13e0f532d56a">HistoryItems</a> HistoryPicker::items</td>
         </tr>
       </table>
   </td>
@@ -701,8 +690,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="acad46b9823049f04a5146ee0785dca6c" name="acad46b9823049f04a5146ee0785dca6c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acad46b9823049f04a5146ee0785dca6c">&#9670;&#160;</a></span>pushToPanel</h2>
+<a id="aa39c3164e190aea417e778e2db7f6762" name="aa39c3164e190aea417e778e2db7f6762"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa39c3164e190aea417e778e2db7f6762">&#9670;&#160;</a></span>pushToPanel</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -711,51 +700,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::function&lt;void (const juce::StringArray&amp;, const juce::StringArray&amp;, const juce::StringArray&amp;)&gt; HistoryPicker::pushToPanel</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ac86ee07e3bafe950ee28b1466e95226d" name="ac86ee07e3bafe950ee28b1466e95226d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac86ee07e3bafe950ee28b1466e95226d">&#9670;&#160;</a></span>titles</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">juce::StringArray HistoryPicker::titles</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ac68497be89ed889f6ebba6abc5272272" name="ac68497be89ed889f6ebba6abc5272272"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac68497be89ed889f6ebba6abc5272272">&#9670;&#160;</a></span>types</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">juce::StringArray HistoryPicker::types</td>
+          <td class="memname">std::function&lt;void (const <a class="el" href="HistoryItem_8h.html#a9cba6f6065ea40079e3b13e0f532d56a">HistoryItems</a>&amp;)&gt; HistoryPicker::pushToPanel</td>
         </tr>
       </table>
   </td>

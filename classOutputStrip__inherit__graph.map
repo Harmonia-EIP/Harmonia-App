@@ -1,0 +1,5 @@
+<map id="OutputStrip" name="OutputStrip">
+<area shape="rect" id="Node000001" title="Bandeau de sortie compact (même cadre et même ombre que les SectionPanel) : titre et valeur empilés à..." alt="" coords="23,81,119,109"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,137,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="73,47,74,81,68,80,69,51"/>
+</map>

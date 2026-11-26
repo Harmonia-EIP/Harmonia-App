@@ -4,5 +4,6 @@ var dir_2052808828190f934b76e979ee65af8a =
     [ "HarmoniaDx7.cpp", "HarmoniaDx7_8cpp.html", "HarmoniaDx7_8cpp" ],
     [ "HarmoniaDx7.h", "HarmoniaDx7_8h.html", "HarmoniaDx7_8h" ],
     [ "HarmoniaEngineV3.cpp", "HarmoniaEngineV3_8cpp.html", "HarmoniaEngineV3_8cpp" ],
-    [ "HarmoniaEngineV3.h", "HarmoniaEngineV3_8h.html", "HarmoniaEngineV3_8h" ]
+    [ "HarmoniaEngineV3.h", "HarmoniaEngineV3_8h.html", "HarmoniaEngineV3_8h" ],
+    [ "OutputStage.h", "OutputStage_8h.html", "OutputStage_8h" ]
 ];

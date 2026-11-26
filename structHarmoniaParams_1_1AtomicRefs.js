@@ -1,11 +1,16 @@
 var structHarmoniaParams_1_1AtomicRefs =
 [
     [ "bind", "structHarmoniaParams_1_1AtomicRefs.html#aa24308cfaf5f44d7881a97e2afe943df", null ],
+    [ "bind", "structHarmoniaParams_1_1AtomicRefs.html#aa24308cfaf5f44d7881a97e2afe943df", null ],
+    [ "bind", "structHarmoniaParams_1_1AtomicRefs.html#aa24308cfaf5f44d7881a97e2afe943df", null ],
     [ "ampAttack", "structHarmoniaParams_1_1AtomicRefs.html#a1c37c6374c1d7811fb5d94f20c75e670", null ],
     [ "ampDecay", "structHarmoniaParams_1_1AtomicRefs.html#aa446341a453ae4b52849831641959599", null ],
     [ "ampRelease", "structHarmoniaParams_1_1AtomicRefs.html#a03153f042529fcda44fb2911b7fc9e5b", null ],
     [ "ampSustain", "structHarmoniaParams_1_1AtomicRefs.html#a83d41577aa3536d010edb9165acae863", null ],
+    [ "analog", "structHarmoniaParams_1_1AtomicRefs.html#a6d58d36bc8d972003cc18c43850c310c", null ],
     [ "distortionMix", "structHarmoniaParams_1_1AtomicRefs.html#a13e3593dea674b90da95e35ead702311", null ],
+    [ "dx7", "structHarmoniaParams_1_1AtomicRefs.html#ac809f0f97abf871b5c1a315c15b3c386", null ],
+    [ "engine", "structHarmoniaParams_1_1AtomicRefs.html#a751df5e027cb30d05159a8974b8e29c5", null ],
     [ "filterCutoff", "structHarmoniaParams_1_1AtomicRefs.html#af9c3baeacdb5f194b6c3cf3ed903bce6", null ],
     [ "filterEnvAmount", "structHarmoniaParams_1_1AtomicRefs.html#a68a3365d8322208f8bf8d4b786e9c72e", null ],
     [ "filterEnvDecay", "structHarmoniaParams_1_1AtomicRefs.html#a4a92138ef12a9efa548dd8ccce2e2895", null ],

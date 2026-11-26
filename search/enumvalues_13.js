@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['warn_0',['Warn',['../classBackendLogger.html#aae70cd25bd5ca009c1ce0309b1abfe98a56525ae64d370c0b448ac0d60710ef17',1,'BackendLogger']]],
-  ['warning_1',['Warning',['../classHarmoniaAlert.html#a1be057b08e0dbf8f2dedc4c501447519a0eaadb4fcb48a0a0ed7bc9868be9fbaa',1,'HarmoniaAlert']]]
+  ['validation_0',['Validation',['../structApiError.html#a3395681759a0b17abe3979f60e507ea3a13148717f8faa9037f37d28971dfc219',1,'ApiError']]],
+  ['velocity_5fto_5famp_1',['velocity_to_amp',['../namespaceHarmoniaCharter_1_1analog.html#accb56d3487cd78cb9651f3e49292667fa70b269224911a867e3ed95dba8a8e2f5',1,'HarmoniaCharter::analog']]],
+  ['velocity_5fto_5ffilter_2',['velocity_to_filter',['../namespaceHarmoniaCharter_1_1analog.html#accb56d3487cd78cb9651f3e49292667fa84642a2f7fb2f63d3bc58bbfb7ba4b54',1,'HarmoniaCharter::analog']]]
 ];

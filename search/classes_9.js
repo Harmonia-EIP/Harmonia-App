@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['knobcontrol_0',['KnobControl',['../classKnobControl.html',1,'']]]
+  ['keyboardchip_0',['KeyboardChip',['../classKeyboardChip.html',1,'']]],
+  ['knobcontrol_1',['KnobControl',['../classKnobControl.html',1,'']]]
 ];

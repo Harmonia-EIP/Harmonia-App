@@ -29,14 +29,14 @@ var searchData=
   ['bgmid_26',['bgMid',['../namespaceHarmoniaColours.html#af0b36e1d9803d0bbc5d0d9dc60d2f831',1,'HarmoniaColours']]],
   ['bgpanel_27',['bgPanel',['../namespaceHarmoniaColours.html#a1fbaaa0ce0eb58d7654b1e3342b5f9da',1,'HarmoniaColours']]],
   ['bgtop_28',['bgTop',['../classHarmoniaAlert.html#aab7c6d1e113ea61ad2dee388368b2da3',1,'HarmoniaAlert']]],
-  ['bind_29',['bind',['../structHarmoniaParams_1_1AtomicRefs.html#aa24308cfaf5f44d7881a97e2afe943df',1,'HarmoniaParams::AtomicRefs::bind()'],['../structHarmoniaParamsV3_1_1ParameterRefs.html#a0817c0930c2459bae6eb6d34235696f5',1,'HarmoniaParamsV3::ParameterRefs::bind()']]],
+  ['bind_29',['bind',['../structHarmoniaParams_1_1AtomicRefs.html#aa24308cfaf5f44d7881a97e2afe943df',1,'HarmoniaParams::AtomicRefs::bind(juce::AudioProcessorValueTreeState &amp;apvts)'],['../structHarmoniaParams_1_1AtomicRefs.html#aa24308cfaf5f44d7881a97e2afe943df',1,'HarmoniaParams::AtomicRefs::bind(juce::AudioProcessorValueTreeState &amp;apvts)'],['../structHarmoniaParams_1_1AtomicRefs.html#aa24308cfaf5f44d7881a97e2afe943df',1,'HarmoniaParams::AtomicRefs::bind(juce::AudioProcessorValueTreeState &amp;apvts)']]],
   ['block_30',['block',['../classharmonia_1_1Dx7Voice.html#ae553b073efba051c04b15745583f4a2a',1,'harmonia::Dx7Voice']]],
   ['blockpos_31',['blockPos',['../classharmonia_1_1Dx7Voice.html#aa98a84ae5fe822d0b97aeaaf4cac392b',1,'harmonia::Dx7Voice']]],
   ['blocksize_32',['blockSize',['../classharmonia_1_1Dx7Voice.html#a222d458b683458ad1227beb97538747a',1,'harmonia::Dx7Voice']]],
   ['blue_33',['Blue',['../classAppLookAndFeel.html#a7e966ad29d8634970a167de96d1a6b87a9594eec95be70e7b1710f730fdda33d9',1,'AppLookAndFeel::Blue'],['../namespaceStrings_1_1Themes.html#a4ebc3e26048af9d77dfd68e97985fe39',1,'Strings::Themes::Blue'],['../namespaceHarmoniaPalette.html#a48dd6f8d4570ed63402450e3ea1fba8ca9594eec95be70e7b1710f730fdda33d9',1,'HarmoniaPalette::Blue']]],
   ['blue_34',['blue',['../structThemePalette.html#ae5956eb3e300efa8b9e49c512e2aa324',1,'ThemePalette']]],
   ['body_35',['body',['../structHttpResponse.html#ab59b82bffe1ab9a8e2741d5f4f94d12a',1,'HttpResponse']]],
-  ['bool_36',['Bool',['../namespaceHarmoniaCharter.html#a4b50e3e01df637f77b78e8ccce774c9bac26f15e86e3de4c398a8273272aba034',1,'HarmoniaCharter']]],
+  ['bool_36',['Bool',['../namespaceHarmoniaCharter.html#a4b50e3e01df637f77b78e8ccce774c9bac26f15e86e3de4c398a8273272aba034',1,'HarmoniaCharter::Bool'],['../namespaceHarmoniaCharter.html#a4b50e3e01df637f77b78e8ccce774c9bac26f15e86e3de4c398a8273272aba034',1,'HarmoniaCharter::Bool'],['../namespaceHarmoniaCharter.html#a4b50e3e01df637f77b78e8ccce774c9bac26f15e86e3de4c398a8273272aba034',1,'HarmoniaCharter::Bool'],['../namespaceHarmoniaCharter.html#a4b50e3e01df637f77b78e8ccce774c9bac26f15e86e3de4c398a8273272aba034',1,'HarmoniaCharter::Bool']]],
   ['border_37',['border',['../namespaceHarmoniaPalette.html#a76db180530cfde516855be231f17d7c2',1,'HarmoniaPalette']]],
   ['borderhi_38',['borderHi',['../namespaceHarmoniaPalette.html#a2bb316d27757a2ed6ebcb0c650f78f0c',1,'HarmoniaPalette']]],
   ['bottomcenter_39',['BottomCenter',['../classHarmoniaAlert.html#a98075cfd80e876c28f9b0d5cf5065d0babf7d9c8ad2f89a37cf5378b5fec0b420',1,'HarmoniaAlert']]],
@@ -58,5 +58,6 @@ var searchData=
   ['burst_55',['Burst',['../structParticleField_1_1Burst.html',1,'ParticleField']]],
   ['burst_56',['burst',['../classModelPicker.html#a6cab80d4905c493e8d2975bd4a56fad4',1,'ModelPicker']]],
   ['bursts_57',['bursts',['../classParticleField.html#afcc910ebd26f4203f393bf37baa012c8',1,'ParticleField']]],
-  ['buttonstatechanged_58',['buttonStateChanged',['../classIconButton.html#a17a3a2ef3e9bab0bdb3b9a6530f53579',1,'IconButton::buttonStateChanged()'],['../classLogoButton.html#a809fe2b1cd03f9fca7a30423b83d67a7',1,'LogoButton::buttonStateChanged()']]]
+  ['button_58',['Button',['../classKeyboardChip.html#aa55b8cb467ce0bc780a505fb4e366009a87b7760f14fbff78d8819291f36ab9a0',1,'KeyboardChip']]],
+  ['buttonstatechanged_59',['buttonStateChanged',['../classIconButton.html#a17a3a2ef3e9bab0bdb3b9a6530f53579',1,'IconButton::buttonStateChanged()'],['../classLogoButton.html#a809fe2b1cd03f9fca7a30423b83d67a7',1,'LogoButton::buttonStateChanged()']]]
 ];

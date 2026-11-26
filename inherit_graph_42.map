@@ -1,5 +1,110 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" title=" " alt="" coords="5,5,97,33"/>
-<area shape="rect" id="Node000001" href="$classPresetLabel.html" title=" " alt="" coords="145,5,242,33"/>
-<area shape="poly" id="edge54_Node000000_Node000001" title=" " alt="" coords="112,17,147,19,142,19,113,22"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="66,84,165,112"/>
+<area shape="rect" id="Node000001" href="$classActionButton.html" title=" " alt="" coords="310,5,416,33"/>
+<area shape="poly" id="edge3_Node000000_Node000001" title=" " alt="" coords="172,77,273,43,315,32,311,36,274,48,176,80"/>
+<area shape="rect" id="Node000002" href="$classIconButton.html" title=" " alt="" coords="317,57,408,85"/>
+<area shape="poly" id="edge4_Node000000_Node000002" title=" " alt="" coords="179,89,319,74,315,78,183,93"/>
+<area shape="rect" id="Node000044" href="$classLogoButton.html" title=" " alt="" coords="315,109,410,137"/>
+<area shape="poly" id="edge5_Node000000_Node000044" title=" " alt="" coords="179,102,317,117,313,120,182,107"/>
+<area shape="rect" id="Node000045" href="$classRandomizeButton.html" title=" " alt="" coords="294,161,432,189"/>
+<area shape="poly" id="edge6_Node000000_Node000045" title=" " alt="" coords="174,115,274,146,316,159,311,162,273,151,176,119"/>
+<area shape="rect" id="Node000037" title=" " alt="" coords="37,629,194,657"/>
+<area shape="rect" id="Node000036" href="$classPaletteSelector_1_1Picker.html" title=" " alt="" coords="280,629,446,657"/>
+<area shape="poly" id="edge7_Node000037_Node000036" title=" " alt="" coords="208,641,281,641,277,645,211,645"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="50,916,181,944"/>
+<area shape="poly" id="edge33_Node000005_Node000036" title=" " alt="" coords="124,901,144,850,175,788,217,723,243,694,272,668,297,655,293,660,275,672,247,697,222,726,179,790,148,852,129,902"/>
+<area shape="rect" id="Node000006" href="$classAppController.html" title="Root UI controller of the Harmonia application." alt="" coords="308,889,418,917"/>
+<area shape="poly" id="edge8_Node000005_Node000006" title=" " alt="" coords="195,919,309,907,305,911,198,923"/>
+<area shape="rect" id="Node000007" href="$classComboControl.html" title="Dropdown selector component linked to an APVTS choice parameter." alt="" coords="306,941,420,969"/>
+<area shape="poly" id="edge9_Node000005_Node000007" title=" " alt="" coords="195,936,307,948,303,951,198,940"/>
+<area shape="rect" id="Node000008" href="$classDisplayScreen.html" title="Decorative oscilloscope display container component." alt="" coords="306,993,420,1021"/>
+<area shape="poly" id="edge10_Node000005_Node000008" title=" " alt="" coords="174,946,274,978,316,992,311,994,273,983,176,951"/>
+<area shape="rect" id="Node000009" href="$classEngineBadge.html" title=" " alt="" coords="310,1045,416,1073"/>
+<area shape="poly" id="edge11_Node000005_Node000009" title=" " alt="" coords="146,951,206,991,275,1030,311,1045,307,1047,273,1035,203,996,148,956"/>
+<area shape="rect" id="Node000010" href="$classEnvelopeVisualizer.html" title="Visualizes ADSR envelope parameters in real time." alt="" coords="290,1461,436,1489"/>
+<area shape="poly" id="edge12_Node000005_Node000010" title=" " alt="" coords="128,957,276,1447,293,1461,288,1461,271,1450,123,960"/>
+<area shape="rect" id="Node000004" href="$classHarmoniaAlert.html" title="Toast Harmonia : carte sombre avec lueur d&#39;accent, affichée quelques secondes puis disparue toute seu..." alt="" coords="305,213,421,241"/>
+<area shape="poly" id="edge13_Node000005_Node000004" title=" " alt="" coords="129,901,176,800,202,735,223,668,229,628,232,576,233,454,236,392,242,336,253,287,272,252,286,240,306,232,303,236,289,244,276,255,258,289,247,336,241,393,239,454,237,576,235,628,228,669,207,737,181,802,134,903"/>
+<area shape="rect" id="Node000018" href="$classHeaderComponent.html" title=" " alt="" coords="291,265,434,293"/>
+<area shape="poly" id="edge14_Node000005_Node000018" title=" " alt="" coords="129,901,176,800,202,735,223,668,229,633,232,587,235,481,244,377,255,335,272,304,292,290,289,295,276,308,260,337,250,378,241,481,237,588,234,633,228,669,207,737,181,802,134,903"/>
+<area shape="rect" id="Node000019" href="$classHistoryOverlay.html" title=" " alt="" coords="303,1097,422,1125"/>
+<area shape="poly" id="edge15_Node000005_Node000019" title=" " alt="" coords="136,953,196,1018,233,1053,275,1082,305,1097,300,1099,272,1087,230,1057,192,1022,137,959"/>
+<area shape="rect" id="Node000020" href="$classHistoryPanel.html" title=" " alt="" coords="311,1617,414,1645"/>
+<area shape="poly" id="edge16_Node000005_Node000020" title=" " alt="" coords="127,956,176,1101,204,1196,228,1293,235,1342,236,1385,230,1461,229,1496,234,1530,249,1565,276,1603,292,1616,314,1626,308,1626,289,1620,272,1606,244,1568,229,1531,224,1496,224,1461,231,1385,230,1342,223,1294,199,1197,171,1102,127,961"/>
+<area shape="rect" id="Node000024" href="$classHistoryPicker.html" title=" " alt="" coords="309,1149,416,1177"/>
+<area shape="poly" id="edge17_Node000005_Node000024" title=" " alt="" coords="130,954,155,996,187,1044,227,1093,275,1134,311,1152,306,1154,272,1139,224,1096,183,1047,150,998,131,960"/>
+<area shape="rect" id="Node000026" href="$classHistoryTile.html" title=" " alt="" coords="317,1305,409,1333"/>
+<area shape="poly" id="edge18_Node000005_Node000026" title=" " alt="" coords="121,957,138,1027,165,1116,185,1163,210,1210,240,1253,275,1290,295,1303,319,1312,314,1314,293,1308,272,1295,236,1256,206,1213,181,1166,160,1118,133,1028,121,962"/>
+<area shape="rect" id="Node000012" href="$classIconChoiceSelector.html" title=" " alt="" coords="290,1565,436,1593"/>
+<area shape="poly" id="edge19_Node000005_Node000012" title=" " alt="" coords="127,956,175,1101,228,1293,235,1334,236,1370,233,1433,234,1462,240,1490,253,1520,276,1551,292,1565,287,1565,272,1554,248,1522,235,1492,229,1463,228,1433,231,1370,230,1334,223,1294,170,1102,126,961"/>
+<area shape="rect" id="Node000027" href="$classKeyboardChip.html" title="Petite pastille cliquable de la ligne de titre du clavier." alt="" coords="307,1357,418,1385"/>
+<area shape="poly" id="edge23_Node000005_Node000027" title=" " alt="" coords="119,957,133,1036,159,1139,179,1194,204,1248,236,1298,275,1343,290,1353,309,1362,304,1364,288,1358,272,1346,232,1302,200,1251,174,1196,154,1140,128,1037,119,962"/>
+<area shape="rect" id="Node000017" href="$classKnobControl.html" title=" " alt="" coords="312,1513,414,1541"/>
+<area shape="poly" id="edge24_Node000005_Node000017" title=" " alt="" coords="126,956,173,1101,228,1293,235,1326,237,1355,237,1405,239,1428,245,1451,256,1474,276,1499,293,1511,315,1521,309,1522,290,1516,272,1502,252,1477,240,1453,234,1429,232,1406,232,1355,229,1326,223,1294,168,1103,126,961"/>
+<area shape="rect" id="Node000028" href="$classLevelMeter.html" title="Vumètre vertical du niveau de sortie (crête, en dB)." alt="" coords="316,1201,410,1229"/>
+<area shape="poly" id="edge25_Node000005_Node000028" title=" " alt="" coords="126,956,149,1007,180,1069,222,1132,247,1161,275,1186,295,1198,318,1207,313,1209,292,1203,272,1191,243,1165,218,1136,175,1072,144,1009,127,961"/>
+<area shape="rect" id="Node000030" href="$classLfoVisualizer.html" title="Real&#45;time animated LFO visualizer." alt="" coords="310,317,416,345"/>
+<area shape="poly" id="edge26_Node000005_Node000030" title=" " alt="" coords="128,901,175,800,201,735,223,668,232,621,234,578,227,502,226,467,230,431,245,395,272,356,289,343,311,335,308,339,291,347,276,360,249,397,235,433,231,467,232,502,239,578,237,621,228,669,206,737,180,802,133,903"/>
+<area shape="rect" id="Node000031" href="$classLoginPage.html" title="Authentication page — sign in with identifier + password." alt="" coords="319,369,406,397"/>
+<area shape="poly" id="edge27_Node000005_Node000031" title=" " alt="" coords="128,901,174,800,201,735,223,668,231,628,234,593,230,530,230,500,235,471,248,440,272,408,293,392,321,385,317,389,296,397,276,412,253,443,241,472,236,501,236,530,239,593,237,629,228,669,206,736,179,802,133,903"/>
+<area shape="rect" id="Node000032" href="$classMainComponent.html" title=" " alt="" coords="299,1253,427,1281"/>
+<area shape="poly" id="edge28_Node000005_Node000032" title=" " alt="" coords="123,956,143,1017,172,1093,192,1132,216,1171,244,1207,275,1238,301,1254,296,1256,272,1243,240,1211,211,1174,188,1135,167,1095,138,1019,123,961"/>
+<area shape="rect" id="Node000029" href="$classModelPicker.html" title=" " alt="" coords="313,1409,413,1437"/>
+<area shape="poly" id="edge29_Node000005_Node000029" title=" " alt="" coords="126,956,200,1201,243,1327,261,1371,276,1395,293,1407,315,1416,309,1417,290,1411,272,1398,257,1374,238,1329,195,1203,124,961"/>
+<area shape="rect" id="Node000033" href="$classOscilloscopeComponent.html" title="Real&#45;time oscilloscope waveform display." alt="" coords="274,421,452,449"/>
+<area shape="poly" id="edge30_Node000005_Node000033" title=" " alt="" coords="128,901,173,799,223,668,231,636,234,608,234,557,235,533,241,510,252,485,272,460,291,447,289,452,276,464,257,488,246,511,240,534,239,557,239,608,236,637,228,669,178,801,133,903"/>
+<area shape="rect" id="Node000034" href="$classOutputStrip.html" title="Bandeau de sortie compact (même cadre et même ombre que les SectionPanel) : titre et valeur empilés à..." alt="" coords="315,681,410,709"/>
+<area shape="poly" id="edge31_Node000005_Node000034" title=" " alt="" coords="128,902,150,861,183,812,223,762,272,720,292,709,317,702,313,705,295,713,275,724,227,766,187,815,155,864,133,903"/>
+<area shape="rect" id="Node000035" href="$classPaletteSelector.html" title=" " alt="" coords="303,733,422,761"/>
+<area shape="poly" id="edge32_Node000005_Node000035" title=" " alt="" coords="134,902,192,837,230,802,272,772,304,759,301,763,275,776,233,806,195,841,139,905"/>
+<area shape="rect" id="Node000038" href="$classParticleField.html" title="Decorative animated particle system component." alt="" coords="313,473,413,501"/>
+<area shape="poly" id="edge34_Node000005_Node000038" title=" " alt="" coords="127,902,171,799,223,668,234,622,237,584,246,549,256,531,272,512,290,499,314,491,311,495,293,503,275,516,260,534,251,551,242,585,239,623,228,669,176,801,132,903"/>
+<area shape="rect" id="Node000039" href="$classSectionPanel.html" title="Visual container for synthesizer UI sections." alt="" coords="311,785,415,813"/>
+<area shape="poly" id="edge35_Node000005_Node000039" title=" " alt="" coords="144,905,202,864,273,823,312,810,309,814,275,828,205,868,149,908"/>
+<area shape="rect" id="Node000040" href="$classSignupPage.html" title="Authentication page — create a new Harmonia account." alt="" coords="315,525,411,553"/>
+<area shape="poly" id="edge36_Node000005_Node000040" title=" " alt="" coords="126,901,209,703,272,564,292,551,316,544,313,548,294,556,276,568,214,705,131,902"/>
+<area shape="rect" id="Node000041" href="$classSynthComponent.html" title=" " alt="" coords="296,837,430,865"/>
+<area shape="poly" id="edge37_Node000005_Node000041" title=" " alt="" coords="172,909,273,875,315,864,311,868,274,880,176,913"/>
+<area shape="rect" id="Node000042" href="$classWelcomePage.html" title="Initial landing page allowing the user to choose between sign&#45;in and sign&#45;up." alt="" coords="307,577,419,605"/>
+<area shape="poly" id="edge38_Node000005_Node000042" title=" " alt="" coords="121,900,138,841,167,764,187,724,211,684,239,648,272,616,308,598,304,603,275,620,243,651,216,688,192,726,172,766,143,842,126,901"/>
+<area shape="rect" id="Node000013" href="$classFilterSlopeSelector.html" title="12 / 24 dB filter slope as a two&#45;way switch (above the filter type selector)." alt="" coords="500,1513,643,1541"/>
+<area shape="poly" id="edge20_Node000012_Node000013" title=" " alt="" coords="436,1558,515,1541,510,1542,437,1564"/>
+<area shape="rect" id="Node000014" href="$classFilterTypeSelector.html" title="Icon&#45;based filter type selector component." alt="" coords="503,1565,640,1593"/>
+<area shape="poly" id="edge21_Node000012_Node000014" title=" " alt="" coords="450,1577,505,1579,500,1580,451,1582"/>
+<area shape="rect" id="Node000015" href="$classWaveformSelector.html" title="Icon&#45;based waveform selection component." alt="" coords="501,1617,642,1645"/>
+<area shape="poly" id="edge22_Node000012_Node000015" title=" " alt="" coords="437,1595,516,1617,510,1617,436,1600"/>
+<area shape="rect" id="Node000043" title=" " alt="" coords="24,213,207,241"/>
+<area shape="poly" id="edge39_Node000043_Node000004" title=" " alt="" coords="221,225,306,225,302,229,224,229"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="19,1474,212,1519"/>
+<area shape="poly" id="edge40_Node000011_Node000010" title=" " alt="" coords="227,1484,292,1480,287,1483,228,1489"/>
+<area shape="poly" id="edge41_Node000011_Node000012" title=" " alt="" coords="193,1522,275,1550,315,1564,310,1565,273,1555,193,1527"/>
+<area shape="rect" id="Node000016" href="$classLockableControl.html" title=" " alt="" coords="53,1555,178,1582"/>
+<area shape="poly" id="edge42_Node000016_Node000012" title=" " alt="" coords="193,1569,292,1575,287,1577,194,1574"/>
+<area shape="poly" id="edge43_Node000016_Node000017" title=" " alt="" coords="193,1553,314,1534,310,1537,194,1558"/>
+<area shape="rect" id="Node000023" title=" " alt="" coords="5,1669,226,1697"/>
+<area shape="rect" id="Node000022" href="$classHarmoniaKeyboard.html" title="Piano du plugin, jouable au clavier d&#39;ordinateur, en AZERTY ou en QWERTY." alt="" coords="290,1669,436,1697"/>
+<area shape="poly" id="edge44_Node000023_Node000022" title=" " alt="" coords="241,1681,292,1683,287,1683,241,1686"/>
+<area shape="rect" id="Node000025" title=" " alt="" coords="20,1305,211,1333"/>
+<area shape="poly" id="edge45_Node000025_Node000024" title=" " alt="" coords="139,1293,197,1240,233,1212,272,1187,311,1174,307,1177,275,1192,236,1216,200,1244,143,1296"/>
+<area shape="poly" id="edge46_Node000025_Node000026" title=" " alt="" coords="226,1317,319,1318,314,1321,228,1322"/>
+<area shape="poly" id="edge47_Node000025_Node000027" title=" " alt="" coords="199,1334,309,1358,305,1361,200,1339"/>
+<area shape="poly" id="edge48_Node000025_Node000028" title=" " alt="" coords="154,1296,210,1267,273,1239,317,1226,313,1229,275,1244,212,1272,158,1299"/>
+<area shape="poly" id="edge49_Node000025_Node000029" title=" " alt="" coords="156,1338,212,1366,275,1394,315,1409,310,1411,273,1399,210,1371,157,1343"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="68,369,163,397"/>
+<area shape="poly" id="edge53_Node000003_Node000002" title=" " alt="" coords="140,357,183,310,223,251,233,229,238,208,241,170,247,134,256,115,272,96,293,82,319,74,315,78,295,86,275,100,261,118,252,135,246,171,243,209,238,231,228,254,187,313,145,360"/>
+<area shape="poly" id="edge57_Node000003_Node000044" title=" " alt="" coords="139,357,181,309,223,251,237,222,243,197,252,173,272,148,292,135,316,128,313,132,294,140,275,152,256,175,248,198,242,224,228,254,185,312,144,359"/>
+<area shape="poly" id="edge60_Node000003_Node000045" title=" " alt="" coords="136,356,216,261,272,200,300,188,297,192,275,204,220,265,141,358"/>
+<area shape="poly" id="edge50_Node000003_Node000004" title=" " alt="" coords="138,357,197,304,233,276,272,251,306,239,303,243,275,256,236,280,200,308,143,359"/>
+<area shape="poly" id="edge51_Node000003_Node000018" title=" " alt="" coords="154,360,210,331,273,303,311,292,307,296,275,308,212,336,158,363"/>
+<area shape="poly" id="edge52_Node000003_Node000024" title=" " alt="" coords="133,408,183,499,208,557,228,617,236,668,238,733,236,885,237,962,242,1033,254,1092,264,1116,276,1135,291,1147,311,1157,306,1159,288,1152,272,1138,259,1118,249,1094,237,1034,232,963,231,885,233,733,231,669,223,618,203,559,178,502,134,413"/>
+<area shape="poly" id="edge54_Node000003_Node000028" title=" " alt="" coords="133,408,183,499,208,557,228,617,236,673,238,745,235,912,235,997,240,1075,253,1140,263,1166,276,1187,294,1201,318,1210,313,1212,291,1206,272,1190,258,1168,247,1141,234,1075,229,997,229,912,233,745,231,674,223,618,203,559,179,502,134,413"/>
+<area shape="poly" id="edge55_Node000003_Node000030" title=" " alt="" coords="176,368,311,340,308,344,180,372"/>
+<area shape="poly" id="edge56_Node000003_Node000031" title=" " alt="" coords="176,381,320,381,317,385,179,385"/>
+<area shape="poly" id="edge58_Node000003_Node000033" title=" " alt="" coords="176,394,296,419,291,422,179,398"/>
+<area shape="poly" id="edge59_Node000003_Node000038" title=" " alt="" coords="155,402,212,430,275,458,315,472,310,475,273,463,210,435,157,407"/>
+<area shape="poly" id="edge61_Node000003_Node000040" title=" " alt="" coords="140,406,200,459,236,486,275,510,316,527,312,530,272,515,233,491,197,463,142,411"/>
+<area shape="poly" id="edge62_Node000003_Node000042" title=" " alt="" coords="133,408,191,485,230,527,275,562,309,578,304,581,272,567,227,531,187,489,134,413"/>
+<area shape="rect" id="Node000021" title=" " alt="" coords="47,1617,184,1645"/>
+<area shape="poly" id="edge64_Node000021_Node000020" title=" " alt="" coords="199,1629,313,1630,308,1632,199,1634"/>
+<area shape="poly" id="edge63_Node000021_Node000022" title=" " alt="" coords="199,1646,296,1668,291,1669,199,1651"/>
 </map>

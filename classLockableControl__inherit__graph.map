@@ -4,7 +4,7 @@
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="293,43,256,83,252,78,288,46"/>
 <area shape="rect" id="Node000006" href="$classKnobControl.html" title=" " alt="" coords="338,81,440,109"/>
 <area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="339,42,378,81,373,80,338,47"/>
-<area shape="rect" id="Node000003" href="$classFilterSlopeSelector.html" title="12 / 24 dB filter slope as a compact two&#45;way switch (it sits in the filter panel&#39;s title row)." alt="" coords="5,157,149,184"/>
+<area shape="rect" id="Node000003" href="$classFilterSlopeSelector.html" title="12 / 24 dB filter slope as a two&#45;way switch (above the filter type selector)." alt="" coords="5,157,149,184"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="200,116,107,159,105,154,195,115"/>
 <area shape="rect" id="Node000004" href="$classFilterTypeSelector.html" title="Icon&#45;based filter type selector component." alt="" coords="172,157,310,184"/>
 <area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="243,123,243,158,239,155,239,126"/>

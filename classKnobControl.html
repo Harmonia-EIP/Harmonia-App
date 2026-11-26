@@ -125,6 +125,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae8fd0ff2378670fd696e6698879d7a1b" id="r_ae8fd0ff2378670fd696e6698879d7a1b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8fd0ff2378670fd696e6698879d7a1b">setLocked</a> (bool shouldLock) override</td></tr>
 <tr class="memitem:a564580581d3fc36ab36eac1bdaa49fc4" id="r_a564580581d3fc36ab36eac1bdaa49fc4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a564580581d3fc36ab36eac1bdaa49fc4">isLocked</a> () const override</td></tr>
 <tr class="memitem:a4158a4afe24426a62bcf058eaa46b928" id="r_a4158a4afe24426a62bcf058eaa46b928"><td class="memItemLeft" align="right" valign="top">juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4158a4afe24426a62bcf058eaa46b928">getParamId</a> () const override</td></tr>
+<tr class="memitem:abafcc5249c0dc1b1d36bb49a7945b833" id="r_abafcc5249c0dc1b1d36bb49a7945b833"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abafcc5249c0dc1b1d36bb49a7945b833">setArrowTarget</a> (bool isTarget) override</td></tr>
+<tr class="memdesc:abafcc5249c0dc1b1d36bb49a7945b833"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contrôle ciblé par les flèches du clavier (le dernier cliqué).  <br /></td></tr>
+<tr class="memitem:a2bb6add0bc1550cef685af7bd820b550" id="r_a2bb6add0bc1550cef685af7bd820b550"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2bb6add0bc1550cef685af7bd820b550">isArrowTarget</a> () const noexcept</td></tr>
 <tr class="memitem:aa4426246288fc83c43e2016db8f9ba9e" id="r_aa4426246288fc83c43e2016db8f9ba9e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa4426246288fc83c43e2016db8f9ba9e">paint</a> (juce::Graphics &amp;g) override</td></tr>
 <tr class="memitem:a3497c1b173e4c553b507a97e8649edeb" id="r_a3497c1b173e4c553b507a97e8649edeb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3497c1b173e4c553b507a97e8649edeb">resized</a> () override</td></tr>
 <tr class="memitem:ae22297a684ec562a669956215462bc71" id="r_ae22297a684ec562a669956215462bc71"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae22297a684ec562a669956215462bc71">mouseDown</a> (const juce::MouseEvent &amp;e) override</td></tr>
@@ -145,6 +148,7 @@ Private Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:ac948d414bbe62a9a6d359cc1693878b3" id="r_ac948d414bbe62a9a6d359cc1693878b3"><td class="memItemLeft" align="right" valign="top">juce::Slider&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac948d414bbe62a9a6d359cc1693878b3">slider</a></td></tr>
+<tr class="memitem:a1fc08b055c35f8fae402fb5b89860fda" id="r_a1fc08b055c35f8fae402fb5b89860fda"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1fc08b055c35f8fae402fb5b89860fda">arrowTarget</a> = false</td></tr>
 <tr class="memitem:a8c1717ea01510e2630d5569294d52f33" id="r_a8c1717ea01510e2630d5569294d52f33"><td class="memItemLeft" align="right" valign="top">juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c1717ea01510e2630d5569294d52f33">caption</a></td></tr>
 <tr class="memitem:ae317ab14e449c366366dcdd53d1551a5" id="r_ae317ab14e449c366366dcdd53d1551a5"><td class="memItemLeft" align="right" valign="top">const juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae317ab14e449c366366dcdd53d1551a5">parameterId</a></td></tr>
 <tr class="memitem:afaa083fb3e295fd23ce87a031430b2ef" id="r_afaa083fb3e295fd23ce87a031430b2ef"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; juce::AudioProcessorValueTreeState::SliderAttachment &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afaa083fb3e295fd23ce87a031430b2ef">attachment</a></td></tr>
@@ -230,6 +234,31 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="classLockableControl.html#a4d28111e6df7559efbf968bfdb58efe9">LockableControl</a>.</p>
+
+</div>
+</div>
+<a id="a2bb6add0bc1550cef685af7bd820b550" name="a2bb6add0bc1550cef685af7bd820b550"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bb6add0bc1550cef685af7bd820b550">&#9670;&#160;</a></span>isArrowTarget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool KnobControl::isArrowTarget </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel noexcept">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -385,6 +414,36 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="abafcc5249c0dc1b1d36bb49a7945b833" name="abafcc5249c0dc1b1d36bb49a7945b833"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abafcc5249c0dc1b1d36bb49a7945b833">&#9670;&#160;</a></span>setArrowTarget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KnobControl::setArrowTarget </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>isTarget</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Contrôle ciblé par les flèches du clavier (le dernier cliqué). </p>
+<p>Pas de repère visuel. </p>
+
+<p>Reimplemented from <a class="el" href="classLockableControl.html#a94fd9c495c7ab37a7612425541678bea">LockableControl</a>.</p>
+
+</div>
+</div>
 <a id="ae8fd0ff2378670fd696e6698879d7a1b" name="ae8fd0ff2378670fd696e6698879d7a1b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae8fd0ff2378670fd696e6698879d7a1b">&#9670;&#160;</a></span>setLocked()</h2>
 
@@ -440,6 +499,28 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
+<a id="a1fc08b055c35f8fae402fb5b89860fda" name="a1fc08b055c35f8fae402fb5b89860fda"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fc08b055c35f8fae402fb5b89860fda">&#9670;&#160;</a></span>arrowTarget</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool KnobControl::arrowTarget = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="afaa083fb3e295fd23ce87a031430b2ef" name="afaa083fb3e295fd23ce87a031430b2ef"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afaa083fb3e295fd23ce87a031430b2ef">&#9670;&#160;</a></span>attachment</h2>
 

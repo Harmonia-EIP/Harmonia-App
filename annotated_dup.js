@@ -17,9 +17,6 @@ var annotated_dup =
     [ "HarmoniaParams", "namespaceHarmoniaParams.html", [
       [ "AtomicRefs", "structHarmoniaParams_1_1AtomicRefs.html", "structHarmoniaParams_1_1AtomicRefs" ]
     ] ],
-    [ "HarmoniaParamsV3", "namespaceHarmoniaParamsV3.html", [
-      [ "ParameterRefs", "structHarmoniaParamsV3_1_1ParameterRefs.html", "structHarmoniaParamsV3_1_1ParameterRefs" ]
-    ] ],
     [ "PresetLoader", "namespacePresetLoader.html", [
       [ "LoadResult", "structPresetLoader_1_1LoadResult.html", "structPresetLoader_1_1LoadResult" ]
     ] ],
@@ -61,11 +58,13 @@ var annotated_dup =
     [ "HarmoniaAlert", "classHarmoniaAlert.html", "classHarmoniaAlert" ],
     [ "HarmoniaAudioProcessor", "classHarmoniaAudioProcessor.html", "classHarmoniaAudioProcessor" ],
     [ "HarmoniaAudioProcessorEditor", "classHarmoniaAudioProcessorEditor.html", "classHarmoniaAudioProcessorEditor" ],
+    [ "HarmoniaKeyboard", "classHarmoniaKeyboard.html", "classHarmoniaKeyboard" ],
     [ "HarmoniaPatches", "structHarmoniaPatches.html", "structHarmoniaPatches" ],
     [ "HarmoniaSound", "classHarmoniaSound.html", "classHarmoniaSound" ],
     [ "HarmoniaVoice", "classHarmoniaVoice.html", "classHarmoniaVoice" ],
     [ "HeaderComponent", "classHeaderComponent.html", "classHeaderComponent" ],
     [ "HistoryEntry", "structHistoryEntry.html", "structHistoryEntry" ],
+    [ "HistoryItem", "structHistoryItem.html", "structHistoryItem" ],
     [ "HistoryOverlay", "classHistoryOverlay.html", "classHistoryOverlay" ],
     [ "HistoryPanel", "classHistoryPanel.html", "classHistoryPanel" ],
     [ "HistoryPicker", "classHistoryPicker.html", "classHistoryPicker" ],
@@ -76,7 +75,9 @@ var annotated_dup =
     [ "HttpResponse", "structHttpResponse.html", "structHttpResponse" ],
     [ "IconButton", "classIconButton.html", "classIconButton" ],
     [ "IconChoiceSelector", "classIconChoiceSelector.html", "classIconChoiceSelector" ],
+    [ "KeyboardChip", "classKeyboardChip.html", "classKeyboardChip" ],
     [ "KnobControl", "classKnobControl.html", "classKnobControl" ],
+    [ "LevelMeter", "classLevelMeter.html", "classLevelMeter" ],
     [ "Lfo", "classLfo.html", "classLfo" ],
     [ "LfoVisualizer", "classLfoVisualizer.html", "classLfoVisualizer" ],
     [ "LockableControl", "classLockableControl.html", "classLockableControl" ],
@@ -87,6 +88,7 @@ var annotated_dup =
     [ "ModelPicker", "classModelPicker.html", "classModelPicker" ],
     [ "Module", "classModule.html", "classModule" ],
     [ "OscilloscopeComponent", "classOscilloscopeComponent.html", "classOscilloscopeComponent" ],
+    [ "OutputStrip", "classOutputStrip.html", "classOutputStrip" ],
     [ "PaletteSelector", "classPaletteSelector.html", "classPaletteSelector" ],
     [ "PaletteState", "structPaletteState.html", "structPaletteState" ],
     [ "ParticleField", "classParticleField.html", "classParticleField" ],
@@ -97,6 +99,7 @@ var annotated_dup =
     [ "ProfileService", "classProfileService.html", "classProfileService" ],
     [ "ProfileSnapshot", "structProfileSnapshot.html", "structProfileSnapshot" ],
     [ "PromptEditor", "classPromptEditor.html", "classPromptEditor" ],
+    [ "RandomizeButton", "classRandomizeButton.html", "classRandomizeButton" ],
     [ "SectionPanel", "classSectionPanel.html", "classSectionPanel" ],
     [ "SessionStore", "classSessionStore.html", "classSessionStore" ],
     [ "SignupPage", "classSignupPage.html", "classSignupPage" ],

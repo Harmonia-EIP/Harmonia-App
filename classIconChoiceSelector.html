@@ -99,7 +99,7 @@ Inheritance diagram for IconChoiceSelector:</div>
 <div class="center"><img src="classIconChoiceSelector__inherit__graph.png" border="0" usemap="#aIconChoiceSelector_inherit__map" loading="lazy" alt="Inheritance graph"/></div>
 <map name="aIconChoiceSelector_inherit__map" id="aIconChoiceSelector_inherit__map">
 <area shape="rect" title=" " alt="" coords="168,98,314,126"/>
-<area shape="rect" href="classFilterSlopeSelector.html" title="12 / 24 dB filter slope as a compact two&#45;way switch (it sits in the filter panel&#39;s title row)." alt="" coords="5,174,149,201"/>
+<area shape="rect" href="classFilterSlopeSelector.html" title="12 / 24 dB filter slope as a two&#45;way switch (above the filter type selector)." alt="" coords="5,174,149,201"/>
 <area shape="poly" title=" " alt="" coords="200,133,107,176,105,171,195,132"/>
 <area shape="rect" href="classFilterTypeSelector.html" title="Icon&#45;based filter type selector component." alt="" coords="172,174,310,201"/>
 <area shape="poly" title=" " alt="" coords="243,140,243,175,239,172,239,143"/>
@@ -136,12 +136,17 @@ Public Types</h2></td></tr>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a921a84ff8c03d1e783804947934c21b3" id="r_a921a84ff8c03d1e783804947934c21b3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a921a84ff8c03d1e783804947934c21b3">IconChoiceSelector</a> (juce::AudioProcessorValueTreeState &amp;apvts, const juce::String &amp;paramId, <a class="el" href="#a71d1665ad83cfb6da0a351414545484a">IconDrawer</a> drawer)</td></tr>
 <tr class="memitem:aeaa4b62966fe0c7c779935df5d549a57" id="r_aeaa4b62966fe0c7c779935df5d549a57"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeaa4b62966fe0c7c779935df5d549a57">~IconChoiceSelector</a> () override</td></tr>
+<tr class="memitem:aa77ba36ea6b627caa7e75da3743ce94e" id="r_aa77ba36ea6b627caa7e75da3743ce94e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa77ba36ea6b627caa7e75da3743ce94e">setColumns</a> (int numColumns)</td></tr>
+<tr class="memdesc:aa77ba36ea6b627caa7e75da3743ce94e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reserve une bande en bas du composant pour le cadenas (0 = cadenas sur l'icone).  <br /></td></tr>
+<tr class="memitem:a7e1b3c14488377f5ed8874f06ac410fb" id="r_a7e1b3c14488377f5ed8874f06ac410fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e1b3c14488377f5ed8874f06ac410fb">setLockOnLeft</a> (bool shouldBeOnLeft)</td></tr>
+<tr class="memdesc:a7e1b3c14488377f5ed8874f06ac410fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cadenas dans une colonne à GAUCHE de la boîte (petits sélecteurs posés dans une ligne de titre, comme 12 / 24 dB).  <br /></td></tr>
 <tr class="memitem:a1bfaf5cfde9d03971e2e1e935f8d71f3" id="r_a1bfaf5cfde9d03971e2e1e935f8d71f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1bfaf5cfde9d03971e2e1e935f8d71f3">setLockStripHeight</a> (int h)</td></tr>
-<tr class="memdesc:a1bfaf5cfde9d03971e2e1e935f8d71f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reserve une bande en bas du composant pour le cadenas (0 = cadenas sur l'icone).  <br /></td></tr>
 <tr class="memitem:ae7a1dafc72d35ff398abcb1afefa7a1c" id="r_ae7a1dafc72d35ff398abcb1afefa7a1c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae7a1dafc72d35ff398abcb1afefa7a1c">setLockUiVisible</a> (bool visible) override</td></tr>
 <tr class="memitem:a44a5e74bc6f7f2ea0efb68779e50af06" id="r_a44a5e74bc6f7f2ea0efb68779e50af06"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a44a5e74bc6f7f2ea0efb68779e50af06">setLocked</a> (bool shouldLock) override</td></tr>
 <tr class="memitem:a2d644ccb79f8135847c16d78503a52db" id="r_a2d644ccb79f8135847c16d78503a52db"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d644ccb79f8135847c16d78503a52db">isLocked</a> () const override</td></tr>
 <tr class="memitem:ad4e9fde31a86e61232e780383a485fee" id="r_ad4e9fde31a86e61232e780383a485fee"><td class="memItemLeft" align="right" valign="top">juce::String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4e9fde31a86e61232e780383a485fee">getParamId</a> () const override</td></tr>
+<tr class="memitem:a67b5ebfff71e95136b6864237d81b9ab" id="r_a67b5ebfff71e95136b6864237d81b9ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a67b5ebfff71e95136b6864237d81b9ab">setArrowTarget</a> (bool isTarget) override</td></tr>
+<tr class="memdesc:a67b5ebfff71e95136b6864237d81b9ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contrôle ciblé par les flèches du clavier (le dernier cliqué).  <br /></td></tr>
 <tr class="memitem:abb3dfe355abe334dfd3a5f6980c87660" id="r_abb3dfe355abe334dfd3a5f6980c87660"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abb3dfe355abe334dfd3a5f6980c87660">paint</a> (juce::Graphics &amp;g) override</td></tr>
 <tr class="memitem:a2de4f36277bed50af58f214408a714f0" id="r_a2de4f36277bed50af58f214408a714f0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2de4f36277bed50af58f214408a714f0">mouseDown</a> (const juce::MouseEvent &amp;e) override</td></tr>
 <tr class="memitem:a951b7dbe2d2c870fec32b49634c87130" id="r_a951b7dbe2d2c870fec32b49634c87130"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a951b7dbe2d2c870fec32b49634c87130">mouseMove</a> (const juce::MouseEvent &amp;e) override</td></tr>
@@ -153,11 +158,14 @@ Public Member Functions</h2></td></tr>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:a25a3f269cb5fc7e3323bd524cbab452f" id="r_a25a3f269cb5fc7e3323bd524cbab452f"><td class="memItemLeft" align="right" valign="top">static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a25a3f269cb5fc7e3323bd524cbab452f">defaultLockStripH</a> = 14</td></tr>
 <tr class="memdesc:a25a3f269cb5fc7e3323bd524cbab452f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hauteur recommandee de la bande cadenas (a ajouter a la hauteur du selecteur).  <br /></td></tr>
+<tr class="memitem:a2c9f5b6397da8ae22a923787b278eb4a" id="r_a2c9f5b6397da8ae22a923787b278eb4a"><td class="memItemLeft" align="right" valign="top">static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c9f5b6397da8ae22a923787b278eb4a">lockColumnW</a> = 14</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a79ea404710b99bc09305ba8cd1cfc49d" id="r_a79ea404710b99bc09305ba8cd1cfc49d"><td class="memItemLeft" align="right" valign="top">juce::Rectangle&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a79ea404710b99bc09305ba8cd1cfc49d">boxBounds</a> () const</td></tr>
 <tr class="memitem:a30587604e4f5a341138167452d79aae9" id="r_a30587604e4f5a341138167452d79aae9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30587604e4f5a341138167452d79aae9">isInLockStrip</a> (juce::Point&lt; float &gt; p) const</td></tr>
+<tr class="memitem:a2e5eba924bde964b646e41c60af0121a" id="r_a2e5eba924bde964b646e41c60af0121a"><td class="memItemLeft" align="right" valign="top">juce::Rectangle&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2e5eba924bde964b646e41c60af0121a">cellRect</a> (int i) const</td></tr>
+<tr class="memdesc:a2e5eba924bde964b646e41c60af0121a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Case de l'icône <span class="tt">i</span> (une ligne, ou une grille avec setColumns).  <br /></td></tr>
 <tr class="memitem:add88fcec40721804404178f785995c64" id="r_add88fcec40721804404178f785995c64"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#add88fcec40721804404178f785995c64">indexAt</a> (juce::Point&lt; float &gt; p) const</td></tr>
 <tr class="memitem:ac0677ade23a6fb8eb3c308e3052c3f01" id="r_ac0677ade23a6fb8eb3c308e3052c3f01"><td class="memItemLeft" align="right" valign="top">juce::Rectangle&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac0677ade23a6fb8eb3c308e3052c3f01">padlockRect</a> () const</td></tr>
 <tr class="memitem:ad15d87d74d6a38624633b0942c04e6ea" id="r_ad15d87d74d6a38624633b0942c04e6ea"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad15d87d74d6a38624633b0942c04e6ea">readIndex</a> () const</td></tr>
@@ -173,6 +181,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a3779f7848d59032694feed881fb6291f" id="r_a3779f7848d59032694feed881fb6291f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3779f7848d59032694feed881fb6291f">currentIndex</a> = 0</td></tr>
 <tr class="memitem:a2d49f9f20b9ce1829b5406e713b3e978" id="r_a2d49f9f20b9ce1829b5406e713b3e978"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d49f9f20b9ce1829b5406e713b3e978">hoveredIndex</a> = -1</td></tr>
 <tr class="memitem:aa2eaa66873b939e72dbda63beaa30075" id="r_aa2eaa66873b939e72dbda63beaa30075"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa2eaa66873b939e72dbda63beaa30075">lockStripH</a> = 0</td></tr>
+<tr class="memitem:af73c4f28312eeb1a1309f0dcccbc4365" id="r_af73c4f28312eeb1a1309f0dcccbc4365"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af73c4f28312eeb1a1309f0dcccbc4365">columns</a> = 0</td></tr>
+<tr class="memitem:adae1fd1ed2ee3c92f85706bbb375fa83" id="r_adae1fd1ed2ee3c92f85706bbb375fa83"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adae1fd1ed2ee3c92f85706bbb375fa83">lockLeftW</a> = 0</td></tr>
+<tr class="memitem:a54cdadb31a9485faf80e329d02aae7f8" id="r_a54cdadb31a9485faf80e329d02aae7f8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54cdadb31a9485faf80e329d02aae7f8">arrowTarget</a> = false</td></tr>
 <tr class="memitem:a3b390d0764d80fd62c67a0cbabe732d8" id="r_a3b390d0764d80fd62c67a0cbabe732d8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3b390d0764d80fd62c67a0cbabe732d8">locked</a> = false</td></tr>
 <tr class="memitem:af06816205adb7a584fca16b1e8533eff" id="r_af06816205adb7a584fca16b1e8533eff"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af06816205adb7a584fca16b1e8533eff">lockUiVisible</a> = false</td></tr>
 </table><table class="memberdecls">
@@ -282,6 +293,33 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2e5eba924bde964b646e41c60af0121a" name="a2e5eba924bde964b646e41c60af0121a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e5eba924bde964b646e41c60af0121a">&#9670;&#160;</a></span>cellRect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">juce::Rectangle&lt; float &gt; IconChoiceSelector::cellRect </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>i</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Case de l'icône <span class="tt">i</span> (une ligne, ou une grille avec setColumns). </p>
 
 </div>
 </div>
@@ -568,6 +606,64 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="a67b5ebfff71e95136b6864237d81b9ab" name="a67b5ebfff71e95136b6864237d81b9ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67b5ebfff71e95136b6864237d81b9ab">&#9670;&#160;</a></span>setArrowTarget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IconChoiceSelector::setArrowTarget </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>isTarget</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Contrôle ciblé par les flèches du clavier (le dernier cliqué). </p>
+<p>Pas de repère visuel. </p>
+
+<p>Reimplemented from <a class="el" href="classLockableControl.html#a94fd9c495c7ab37a7612425541678bea">LockableControl</a>.</p>
+
+</div>
+</div>
+<a id="aa77ba36ea6b627caa7e75da3743ce94e" name="aa77ba36ea6b627caa7e75da3743ce94e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa77ba36ea6b627caa7e75da3743ce94e">&#9670;&#160;</a></span>setColumns()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IconChoiceSelector::setColumns </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>numColumns</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reserve une bande en bas du composant pour le cadenas (0 = cadenas sur l'icone). </p>
+<p>Nombre de colonnes de la grille d'icônes (0 = une seule ligne, le défaut). Ex. 2 avec 4 choix : grille 2 x 2. </p>
+
+</div>
+</div>
 <a id="a44a5e74bc6f7f2ea0efb68779e50af06" name="a44a5e74bc6f7f2ea0efb68779e50af06"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a44a5e74bc6f7f2ea0efb68779e50af06">&#9670;&#160;</a></span>setLocked()</h2>
 
@@ -595,6 +691,34 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="a7e1b3c14488377f5ed8874f06ac410fb" name="a7e1b3c14488377f5ed8874f06ac410fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e1b3c14488377f5ed8874f06ac410fb">&#9670;&#160;</a></span>setLockOnLeft()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IconChoiceSelector::setLockOnLeft </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>shouldBeOnLeft</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Cadenas dans une colonne à GAUCHE de la boîte (petits sélecteurs posés dans une ligne de titre, comme 12 / 24 dB). </p>
+<p>La colonne est toujours réservée : rien ne bouge quand les cadenas apparaissent. Remplace la bande du dessous. </p>
+
+</div>
+</div>
 <a id="a1bfaf5cfde9d03971e2e1e935f8d71f3" name="a1bfaf5cfde9d03971e2e1e935f8d71f3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1bfaf5cfde9d03971e2e1e935f8d71f3">&#9670;&#160;</a></span>setLockStripHeight()</h2>
 
@@ -617,8 +741,6 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Reserve une bande en bas du composant pour le cadenas (0 = cadenas sur l'icone). </p>
 
 </div>
 </div>
@@ -675,6 +797,50 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
+<a id="a54cdadb31a9485faf80e329d02aae7f8" name="a54cdadb31a9485faf80e329d02aae7f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54cdadb31a9485faf80e329d02aae7f8">&#9670;&#160;</a></span>arrowTarget</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool IconChoiceSelector::arrowTarget = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af73c4f28312eeb1a1309f0dcccbc4365" name="af73c4f28312eeb1a1309f0dcccbc4365"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af73c4f28312eeb1a1309f0dcccbc4365">&#9670;&#160;</a></span>columns</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int IconChoiceSelector::columns = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a3779f7848d59032694feed881fb6291f" name="a3779f7848d59032694feed881fb6291f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3779f7848d59032694feed881fb6291f">&#9670;&#160;</a></span>currentIndex</h2>
 
@@ -765,6 +931,28 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="a2c9f5b6397da8ae22a923787b278eb4a" name="a2c9f5b6397da8ae22a923787b278eb4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c9f5b6397da8ae22a923787b278eb4a">&#9670;&#160;</a></span>lockColumnW</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int IconChoiceSelector::lockColumnW = 14</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a3b390d0764d80fd62c67a0cbabe732d8" name="a3b390d0764d80fd62c67a0cbabe732d8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3b390d0764d80fd62c67a0cbabe732d8">&#9670;&#160;</a></span>locked</h2>
 
@@ -776,6 +964,28 @@ Additional Inherited Members</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">bool IconChoiceSelector::locked = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adae1fd1ed2ee3c92f85706bbb375fa83" name="adae1fd1ed2ee3c92f85706bbb375fa83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adae1fd1ed2ee3c92f85706bbb375fa83">&#9670;&#160;</a></span>lockLeftW</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int IconChoiceSelector::lockLeftW = 0</td>
         </tr>
       </table>
   </td>

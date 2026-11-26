@@ -67,16 +67,18 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "ActionButton_8cpp.html",
-"classAppLookAndFeel.html#a4c4e1f746f8231da685907a490ec2ee9",
-"classHarmoniaAlert.html#a5deeb020f7e58b9a409b8710797975f5",
-"classHistoryTile.html",
-"classMainComponent.html#aaa0959be142c801ba7d8b145148fcebd",
-"classWelcomeLookAndFeel.html#ae257f6b3510231cc8cadcf3abce7ef82",
-"dx7note_8cc.html#a626f704852a8f6b7917d0a789309e72d",
-"namespaceErrorCodes.html#ae5eed8d8c72605dfd23bec111c0c4b99",
-"namespacePresetLoader.html#a226bb0a71014a13c7a3783ea6fb8e2ef",
-"structAiModelsResult.html#a50af099afc64fe5c1d97b655716cd960",
-"structProfileResult.html#aa75142ddb619d8ecc0cedbf22b12b4a2"
+"classActionButton.html#abefeba9e05ce18944b19852907db5c81",
+"classFmCore.html#ac86220f89fe4c2984eeb4aeda24e2cbd",
+"classHeaderComponent.html#a893d006bb2f74d42db8e2b5c81d6f935",
+"classLevelMeter.html",
+"classOutputStrip.html#a725e62b842801eddfc52ddf3409685ff",
+"classharmonia_1_1AnalogVoice.html#a1f46d6513dbc63ab45d745faee4666f4",
+"fm__op__kernel_8cc.html#a33659fee90def6287064360913524674",
+"namespaceHarmoniaCharter.html#a4b50e3e01df637f77b78e8ccce774c9bac26f15e86e3de4c398a8273272aba034",
+"namespaceHarmoniaPalette.html",
+"namespaceStrings_1_1Sections.html#a24610a20a39ecbab4777b5aed7645e7c",
+"structHarmoniaKeyboard_1_1LayoutKeys.html#a5bf71c0014e0244f62f73dfc4c2b4bb0",
+"structharmonia_1_1Dx7Voice_1_1Impl.html#aa33005d5559fb194df64c5896cba1cd8"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

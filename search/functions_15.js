@@ -12,13 +12,14 @@ var searchData=
   ['_7ehistorypicker_9',['~HistoryPicker',['../classHistoryPicker.html#a24dcd037f4bef5deaea58118705e188d',1,'HistoryPicker']]],
   ['_7eiconchoiceselector_10',['~IconChoiceSelector',['../classIconChoiceSelector.html#aeaa4b62966fe0c7c779935df5d549a57',1,'IconChoiceSelector']]],
   ['_7eimpl_11',['~Impl',['../structharmonia_1_1Dx7Voice_1_1Impl.html#a4116bd2cbbbf290192c2bc977f100a43',1,'harmonia::Dx7Voice::Impl']]],
-  ['_7elockablecontrol_12',['~LockableControl',['../classLockableControl.html#a6d7615ea6aa8911baf87984e779f3d87',1,'LockableControl']]],
-  ['_7eloginpage_13',['~LoginPage',['../classLoginPage.html#acf5b30835039b07dd9075c7f81402077',1,'LoginPage']]],
-  ['_7emaincomponent_14',['~MainComponent',['../classMainComponent.html#afc7d0481eafa95da42e728443102f92e',1,'MainComponent']]],
-  ['_7epicker_15',['~Picker',['../classPaletteSelector_1_1Picker.html#a1d7172213d4b0fb9758d0bc1caf70038',1,'PaletteSelector::Picker']]],
-  ['_7eprofileservice_16',['~ProfileService',['../classProfileService.html#a77c9a9658354ce8f08104ed92a777e89',1,'ProfileService']]],
-  ['_7esignuppage_17',['~SignupPage',['../classSignupPage.html#a98bde77d5c610c0c434451e5aa113e4f',1,'SignupPage']]],
-  ['_7esynthcomponent_18',['~SynthComponent',['../classSynthComponent.html#a4cec9f95fa7ea465e9a59d03a9176a2b',1,'SynthComponent']]],
-  ['_7etuningstate_19',['~TuningState',['../classTuningState.html#a6a7eca818882ed4d29a6acfce581d90d',1,'TuningState']]],
-  ['_7ewelcomepage_20',['~WelcomePage',['../classWelcomePage.html#a7a336327432db29913ae5ed4eb61075b',1,'WelcomePage']]]
+  ['_7elevelmeter_12',['~LevelMeter',['../classLevelMeter.html#a6b26974fbd72dfdc77990d656bf6a3a8',1,'LevelMeter']]],
+  ['_7elockablecontrol_13',['~LockableControl',['../classLockableControl.html#a6d7615ea6aa8911baf87984e779f3d87',1,'LockableControl']]],
+  ['_7eloginpage_14',['~LoginPage',['../classLoginPage.html#acf5b30835039b07dd9075c7f81402077',1,'LoginPage']]],
+  ['_7emaincomponent_15',['~MainComponent',['../classMainComponent.html#afc7d0481eafa95da42e728443102f92e',1,'MainComponent']]],
+  ['_7epicker_16',['~Picker',['../classPaletteSelector_1_1Picker.html#a1d7172213d4b0fb9758d0bc1caf70038',1,'PaletteSelector::Picker']]],
+  ['_7eprofileservice_17',['~ProfileService',['../classProfileService.html#a77c9a9658354ce8f08104ed92a777e89',1,'ProfileService']]],
+  ['_7esignuppage_18',['~SignupPage',['../classSignupPage.html#a98bde77d5c610c0c434451e5aa113e4f',1,'SignupPage']]],
+  ['_7esynthcomponent_19',['~SynthComponent',['../classSynthComponent.html#a4cec9f95fa7ea465e9a59d03a9176a2b',1,'SynthComponent']]],
+  ['_7etuningstate_20',['~TuningState',['../classTuningState.html#a6a7eca818882ed4d29a6acfce581d90d',1,'TuningState']]],
+  ['_7ewelcomepage_21',['~WelcomePage',['../classWelcomePage.html#a7a336327432db29913ae5ed4eb61075b',1,'WelcomePage']]]
 ];

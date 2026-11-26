@@ -2,7 +2,7 @@ var searchData=
 [
   ['n_0',['N',['../synth_8h.html#ab2b6b0c222cd1ce70d6a831f57241e59',1,'synth.h']]],
   ['n_1',['n',['../classModule.html#a55f83280592ea01f6d6e15f597225f1c',1,'Module']]],
-  ['name_2',['name',['../structHistoryEntry.html#a17692ab0bf79cf59173b4c4e4218bd66',1,'HistoryEntry::name'],['../structAIModelData.html#a5ecf28f570fe50016dabfb2622ac3085',1,'AIModelData::name'],['../structModelPicker_1_1Item.html#ae7b57ce3e4c2c2431025bc27f05bdcae',1,'ModelPicker::Item::name']]],
+  ['name_2',['name',['../structHistoryEntry.html#a17692ab0bf79cf59173b4c4e4218bd66',1,'HistoryEntry::name'],['../structHarmoniaKeyboard_1_1LayoutKeys.html#a8937ee639c2eaaccecbf32b2f31a6a7d',1,'HarmoniaKeyboard::LayoutKeys::name'],['../structAIModelData.html#a5ecf28f570fe50016dabfb2622ac3085',1,'AIModelData::name'],['../structModelPicker_1_1Item.html#ae7b57ce3e4c2c2431025bc27f05bdcae',1,'ModelPicker::Item::name']]],
   ['networkerror_3',['NetworkError',['../namespaceStrings_1_1Errors.html#ac81e6704cacf1cdbab6f72caf42002e1',1,'Strings::Errors']]],
   ['networkerror_4',['networkError',['../structHttpResponse.html#a1aab779a623a1ef029bd9a9a71327359',1,'HttpResponse']]],
   ['networkerroradvice_5',['NetworkErrorAdvice',['../namespaceStrings_1_1Errors.html#adf3c9e3bb81d98e2e863588c7d64a476',1,'Strings::Errors']]],
@@ -14,7 +14,11 @@ var searchData=
   ['nopermission_11',['NoPermission',['../namespaceBackendStrings.html#aba7bfb209ab2a2a9ee655fb059b2f6b6',1,'BackendStrings::NoPermission'],['../namespaceErrorCodes.html#ae5eed8d8c72605dfd23bec111c0c4b99',1,'ErrorCodes::NoPermission']]],
   ['notallowed_12',['NotAllowed',['../namespaceBackendStrings.html#aa8e268df4a0c1e7e2cf1daf8468bce64',1,'BackendStrings']]],
   ['note_13',['note',['../structharmonia_1_1Dx7Voice_1_1Impl.html#a17998215dd24e181731bc06c53aa8a09',1,'harmonia::Dx7Voice::Impl::note'],['../classharmonia_1_1AnalogVoice.html#aacce194b25547cdd8dca39ecca587577',1,'harmonia::AnalogVoice::note']]],
-  ['notesplayed_14',['notesPlayed',['../classHarmoniaVoice.html#ae1d50b63906f3490c3905c57e0be31ee',1,'HarmoniaVoice']]],
-  ['nouserconnected_15',['NoUserConnected',['../namespaceStrings_1_1Errors.html#ab0129bf31f8264b04ebdc61ddc995aa6',1,'Strings::Errors']]],
-  ['numchoices_16',['numChoices',['../classIconChoiceSelector.html#a16bb7ea07106a32e4afd951ccb7be227',1,'IconChoiceSelector::numChoices'],['../structHarmoniaCharter_1_1Param.html#ab697c3cd389d1c0ab04eabdc51fec339',1,'HarmoniaCharter::Param::numChoices']]]
+  ['notes_14',['notes',['../structHarmoniaKeyboard_1_1LayoutKeys.html#ae4262c797f893ef8666e53d91abdfb56',1,'HarmoniaKeyboard::LayoutKeys']]],
+  ['notesplayed_15',['notesPlayed',['../classHarmoniaVoice.html#ae1d50b63906f3490c3905c57e0be31ee',1,'HarmoniaVoice']]],
+  ['nouserconnected_16',['NoUserConnected',['../namespaceStrings_1_1Errors.html#ab0129bf31f8264b04ebdc61ddc995aa6',1,'Strings::Errors']]],
+  ['numchoices_17',['numChoices',['../classIconChoiceSelector.html#a16bb7ea07106a32e4afd951ccb7be227',1,'IconChoiceSelector::numChoices'],['../structHarmoniaCharter_1_1Param.html#ab697c3cd389d1c0ab04eabdc51fec339',1,'HarmoniaCharter::Param::numChoices']]],
+  ['numextraparams_18',['numExtraParams',['../namespaceHarmoniaParams_1_1Output.html#acb1014d55f6259bfbd75b62e1d016e74',1,'HarmoniaParams::Output']]],
+  ['numlegacy_19',['numLegacy',['../namespaceParamRandomizer.html#ae87caf62679ce4e9955d4fa960c4ebae',1,'ParamRandomizer']]],
+  ['nummappednotes_20',['numMappedNotes',['../classHarmoniaKeyboard.html#ac59ca988ee0cdf693036637d7183bdfb',1,'HarmoniaKeyboard']]]
 ];

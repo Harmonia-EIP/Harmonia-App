@@ -25,10 +25,13 @@ var searchData=
   ['welcomepage_2ecpp_22',['WelcomePage.cpp',['../WelcomePage_8cpp.html',1,'']]],
   ['welcomepage_2eh_23',['WelcomePage.h',['../WelcomePage_8h.html',1,'']]],
   ['wheel_24',['wheel',['../classControllers.html#a784b441688bd44a6d335072ddd227c9d',1,'Controllers']]],
-  ['wireheaderbuttons_25',['wireHeaderButtons',['../classMainComponent.html#a9b9a588d88f74a774c88f7456ca6da4a',1,'MainComponent']]],
-  ['withtoken_26',['withToken',['../structHttpOptions.html#a88ebb9e98d48822ed99d355714c55478',1,'HttpOptions']]],
-  ['writeindex_27',['writeIndex',['../classIconChoiceSelector.html#aaeb11e1a2f6a7a1dd53ab02e7a0fa377',1,'IconChoiceSelector']]],
-  ['writelocked_28',['writeLocked',['../classSessionStore.html#a7a392ae973952c9511bcdd1183c175fb',1,'SessionStore']]],
-  ['writelog_29',['writeLog',['../classBackendManager.html#a9ee33036fd962fa87dbedecfc3e8c259',1,'BackendManager']]],
-  ['writepos_30',['writePos',['../classOscilloscopeComponent.html#ab96afb3cfe5442424b42d8dcdaa45981',1,'OscilloscopeComponent']]]
+  ['wheelaccum_25',['wheelAccum',['../classHarmoniaKeyboard.html#ad5f5321bb5ed73322c9b1fe946cd7cbc',1,'HarmoniaKeyboard']]],
+  ['wheelperkey_26',['wheelPerKey',['../classHarmoniaKeyboard.html#a5f1c253ae16935b0f71c59fca385cc3e',1,'HarmoniaKeyboard']]],
+  ['wireheaderbuttons_27',['wireHeaderButtons',['../classMainComponent.html#a9b9a588d88f74a774c88f7456ca6da4a',1,'MainComponent']]],
+  ['withtoken_28',['withToken',['../structHttpOptions.html#a88ebb9e98d48822ed99d355714c55478',1,'HttpOptions']]],
+  ['wraptitle_29',['wrapTitle',['../classHistoryTile.html#a91ce13aeffbe01b46d295bfd20e424d8',1,'HistoryTile']]],
+  ['writeindex_30',['writeIndex',['../classIconChoiceSelector.html#aaeb11e1a2f6a7a1dd53ab02e7a0fa377',1,'IconChoiceSelector']]],
+  ['writelocked_31',['writeLocked',['../classSessionStore.html#a7a392ae973952c9511bcdd1183c175fb',1,'SessionStore']]],
+  ['writelog_32',['writeLog',['../classBackendManager.html#a9ee33036fd962fa87dbedecfc3e8c259',1,'BackendManager']]],
+  ['writepos_33',['writePos',['../classOscilloscopeComponent.html#ab96afb3cfe5442424b42d8dcdaa45981',1,'OscilloscopeComponent']]]
 ];

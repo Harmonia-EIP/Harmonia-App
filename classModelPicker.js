@@ -12,6 +12,7 @@ var classModelPicker =
     [ "setPlaceholder", "classModelPicker.html#a0b47b4a4ac3b4c0bd02fc9dbb7f4a000", null ],
     [ "setSelectedId", "classModelPicker.html#a4e75e9716976a56f186c3911bd063962", null ],
     [ "showMenu", "classModelPicker.html#ae79d8127d1f6713fa46c266e55457435", null ],
+    [ "sparkle", "classModelPicker.html#ae891c8e9b8c95920dd0579323af3b6fb", null ],
     [ "update", "classModelPicker.html#a6f50736ff017c6e1aa07df40e702551c", null ],
     [ "burst", "classModelPicker.html#a6cab80d4905c493e8d2975bd4a56fad4", null ],
     [ "hoverAnim", "classModelPicker.html#af632a57beb0080d4be9b984066d7fd6a", null ],
