@@ -153,8 +153,8 @@ public:
         else // Back
         {
             const juce::Colour col = isHighlighted
-                ? juce::Colours::white.withAlpha(0.65f)
-                : juce::Colours::white.withAlpha(0.35f);
+                ? juce::Colours::white.withAlpha(0.80f)
+                : juce::Colours::white.withAlpha(0.50f);   // 4.5:1 min sur le fond (0.35 : 3.2:1)
 
             const juce::Font font("Inter", 13.f, juce::Font::plain);
             g.setFont(font);

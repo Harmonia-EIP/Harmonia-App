@@ -17,6 +17,7 @@ HarmoniaAudioProcessor::HarmoniaAudioProcessor()
 #endif
 {
     paramRefs.bind (apvts);
+    outputVolumeDb = apvts.getRawParameterValue (HarmoniaParams::Output::volumeId);
 }
 
 HarmoniaAudioProcessor::~HarmoniaAudioProcessor()
@@ -55,6 +56,9 @@ void HarmoniaAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlo
 
     effects.prepare (sampleRate);
     effectsScratch.setSize (2, juce::jmax (1, samplesPerBlock));
+
+    outputGain.reset (sampleRate, 0.05);   // 50 ms : pas de clic quand on tourne le knob
+    outputGain.setCurrentAndTargetValue (harmonia::output::dbToGain (outputVolumeDb->load()));
 }
 
 void HarmoniaAudioProcessor::releaseResources() {}
@@ -131,11 +135,38 @@ void HarmoniaAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer,
         }
     }
 
+    applyOutputStage (buffer, numSamples);
+
     {
         const juce::ScopedLock sl (oscLock);
         if (oscilloscope != nullptr)
             oscilloscope->pushBuffer (buffer, 0, buffer.getNumSamples());
     }
+}
+
+void HarmoniaAudioProcessor::applyOutputStage (juce::AudioBuffer<float>& buffer, int numSamples) noexcept
+{
+    outputGain.setTargetValue (harmonia::output::dbToGain (outputVolumeDb->load()));
+
+    const int numChannels = buffer.getNumChannels();
+    auto* const* channels = buffer.getArrayOfWritePointers();
+    float peak = 0.0f;
+
+    for (int s = 0; s < numSamples; ++s)
+    {
+        const float gain = outputGain.getNextValue();
+
+        for (int ch = 0; ch < numChannels; ++ch)
+        {
+            const float y = harmonia::output::softLimit (channels[ch][s] * gain);
+            channels[ch][s] = y;
+            peak = juce::jmax (peak, std::abs (y));
+        }
+    }
+
+    // le vumètre lit puis remet à zéro : on garde la plus haute crête en attendant
+    float previous = outputPeak.load (std::memory_order_relaxed);
+    while (peak > previous && ! outputPeak.compare_exchange_weak (previous, peak, std::memory_order_relaxed)) {}
 }
 
 bool HarmoniaAudioProcessor::hasEditor() const { return true; }

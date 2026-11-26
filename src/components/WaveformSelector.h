@@ -55,7 +55,7 @@ public:
 
 /**
  * @class FilterSlopeSelector
- * @brief 12 / 24 dB filter slope as a compact two-way switch (it sits in the filter panel's title row).
+ * @brief 12 / 24 dB filter slope as a two-way switch (above the filter type selector).
  */
 class FilterSlopeSelector : public IconChoiceSelector
 {
@@ -66,9 +66,9 @@ public:
             [] (juce::Graphics& g, juce::Rectangle<float> area, int idx, juce::Colour col)
             {
                 g.setColour (col);
-                g.setFont (juce::Font (juce::FontOptions (9.0f).withStyle ("Bold")));
-                g.drawText (idx == 0 ? "12" : "24",
-                            area.withSizeKeepingCentre (area.getWidth() + 14.0f, 12.0f),
+                g.setFont (juce::Font (juce::FontOptions (11.0f).withStyle ("Bold")));
+                g.drawText (idx == 0 ? "12 dB" : "24 dB",
+                            area.withSizeKeepingCentre (area.getWidth() + 20.0f, 14.0f),
                             juce::Justification::centred, false);
             })
     {}

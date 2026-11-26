@@ -29,11 +29,11 @@ SignupPage::SignupPage(BackendManager& be,
     subtitleLabel.setFont(juce::Font("Inter", 10.f, juce::Font::plain)
                               .withExtraKerningFactor(0.30f));
     subtitleLabel.setColour(juce::Label::textColourId,
-                            HarmoniaColours::waveBlue.withAlpha(0.65f));
+                            HarmoniaColours::textSubtitle);   // waveBlue à 65 % : 2.8:1, hors norme
     subtitleLabel.setJustificationType(juce::Justification::centred);
     addAndMakeVisible(subtitleLabel);
 
-    const auto placeholder = HarmoniaColours::textPrimary.withAlpha(0.35f);
+    const auto placeholder = HarmoniaColours::textPrimary.withAlpha(0.50f);   // 4.5:1 min (0.35 : 3.2:1)
 
     usernameField.setTextToShowWhenEmpty(Strings::Placeholders::Username,   placeholder);
     firstnameField.setTextToShowWhenEmpty(Strings::Placeholders::FirstName, placeholder);

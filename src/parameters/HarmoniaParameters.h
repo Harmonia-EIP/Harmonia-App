@@ -146,6 +146,93 @@ namespace HarmoniaParams
         return list;
     }
 
+    /** Unité courte affichée après une valeur ("cents" -> "ct"...) ; vide quand le nombre suffit. */
+    inline juce::String shortUnit (std::string_view unit)
+    {
+        if (unit == "Hz" || unit == "ms")
+            return toJuce (unit);
+        if (unit == "cents")
+            return "ct";
+        if (unit == "octaves")
+            return "oct";
+        if (unit == "semitones")
+            return "st";
+        return {};
+    }
+
+    /** Valeur lisible (knobs, hôte) : 2, 1 ou 0 décimales selon la grandeur, kHz / s au-delà
+        de 1000, un signe sur les paramètres bipolaires. Ex. "20.0 kHz", "2.50 s", "+7 st". */
+    inline juce::String formatValue (const HarmoniaCharter::Param& p, float value)
+    {
+        auto unit = shortUnit (p.unit);
+
+        if (p.kind == HarmoniaCharter::Kind::Int)
+        {
+            const int shown = (int) std::lround (value) + p.displayOffset;
+            const auto text = ((float) p.displayOffset + p.min < 0.0f && shown > 0 ? "+" : "") + juce::String (shown);
+            return unit.isEmpty() ? text : text + " " + unit;
+        }
+
+        if (unit == "Hz" && std::abs (value) >= 1000.0f)
+        {
+            value /= 1000.0f;
+            unit = "kHz";
+        }
+        else if (unit == "ms" && std::abs (value) >= 1000.0f)
+        {
+            value /= 1000.0f;
+            unit = "s";
+        }
+
+        const float magnitude = std::abs (value);
+        // juce::String (v, 0) veut dire "toutes les décimales" : on arrondit nous-mêmes au-delà de 100
+        auto text = magnitude >= 100.0f ? juce::String (juce::roundToInt (value))
+                                        : juce::String (value, magnitude >= 10.0f ? 1 : 2);
+
+        if (p.min < 0.0f && value > 0.0f)
+            text = "+" + text;
+
+        return unit.isEmpty() ? text : text + " " + unit;
+    }
+
+    /** Valeur tapée dans l'hôte ("1.2 kHz", "450", "1.5 s"). */
+    inline float parseValue (const HarmoniaCharter::Param& p, const juce::String& text)
+    {
+        const auto t = text.trim().toLowerCase();
+        float value = t.getFloatValue();
+
+        if (t.endsWith ("khz"))
+            value *= 1000.0f;
+        else if (p.unit == "ms" && t.endsWith ("s") && ! t.endsWith ("ms"))
+            value *= 1000.0f;
+
+        return value;
+    }
+
+    /**
+     * Volume de sortie du plugin : un réglage d'écoute, pas une partie du son.
+     * Il n'est PAS dans la charte : l'IA ne le génère pas et ne le reçoit pas (Refine),
+     * les presets ne le sauvegardent pas, le bouton aléatoire et le chargement d'un
+     * preset n'y touchent pas. Automatisable dans le DAW, retenu avec le projet.
+     */
+    namespace Output
+    {
+        inline const juce::String volumeId { "output_volume" };
+
+        inline constexpr float minDb     = -24.0f;
+        inline constexpr float maxDb     =   6.0f;
+        inline constexpr float defaultDb =   0.0f;
+
+        /** Paramètres hors charte (pour les comptes : charte + numExtraParams). */
+        inline constexpr int numExtraParams = 1;
+
+        inline juce::String formatDb (float db)
+        {
+            const auto text = juce::String (db, 1) + " dB";
+            return db > 0.0f ? "+" + text : text;
+        }
+    }
+
     /** Plage logarithmique (meme formule que le charter pour ses skews). */
     inline juce::NormalisableRange<float> makeLogRange (float minV, float maxV, float midpoint)
     {
@@ -165,6 +252,7 @@ namespace HarmoniaParams
             const auto name = toJuce (p.label);
             const auto unit = toJuce (p.unit);
             const int  off  = p.displayOffset;
+            const auto* spec = &p;   // `params` est constexpr : le pointeur reste valide
 
             switch (p.kind)
             {
@@ -173,14 +261,18 @@ namespace HarmoniaParams
                         pid, name,
                         juce::NormalisableRange<float> { p.min, p.max, p.interval, p.skew },
                         p.defaultValue,
-                        juce::AudioParameterFloatAttributes().withLabel (unit));
+                        juce::AudioParameterFloatAttributes()
+                            .withLabel (unit)
+                            .withStringFromValueFunction ([spec] (float v, int) { return formatValue (*spec, v); })
+                            .withValueFromStringFunction ([spec] (const juce::String& t) { return parseValue (*spec, t); }));
 
                 case Kind::Int:
                     return std::make_unique<juce::AudioParameterInt> (
                         pid, name, (int) p.min, (int) p.max, (int) p.defaultValue,
                         juce::AudioParameterIntAttributes()
                             .withLabel (unit)
-                            .withStringFromValueFunction ([off] (int v, int) { return juce::String (v + off); }));
+                            .withStringFromValueFunction ([spec] (int v, int) { return formatValue (*spec, (float) v); })
+                            .withValueFromStringFunction ([off] (const juce::String& t) { return t.getIntValue() - off; }));
 
                 case Kind::Choice:
                 {
@@ -215,6 +307,18 @@ namespace HarmoniaParams
 
             layout.add (std::move (group));
         }
+
+        // Volume de sortie : HORS charte (voir Output ci-dessus)
+        layout.add (std::make_unique<juce::AudioProcessorParameterGroup> (
+            "output", "Output", "|",
+            std::make_unique<juce::AudioParameterFloat> (
+                juce::ParameterID { Output::volumeId, versionHint }, "Output Volume",
+                juce::NormalisableRange<float> { Output::minDb, Output::maxDb, 0.1f },
+                Output::defaultDb,
+                juce::AudioParameterFloatAttributes()
+                    .withLabel ("dB")
+                    .withStringFromValueFunction ([] (float db, int) { return Output::formatDb (db); })
+                    .withValueFromStringFunction ([] (const juce::String& t) { return t.getFloatValue(); }))));
 
         return layout;
     }

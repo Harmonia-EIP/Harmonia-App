@@ -6,7 +6,7 @@ namespace AppConfig
     static constexpr auto Version    = "0.3.1";
     static constexpr auto ApiUrl    = "https://api.harmonia-eip.com";
     static constexpr int DefaultWidth  = 900;
-    static constexpr int DefaultHeight = 700;
+    static constexpr int DefaultHeight = 750;   // +50 px pour le clavier (panneau Keyboard)
 
     namespace Oscilloscope
     {

@@ -13,6 +13,13 @@ add_executable(Harmonia_Tests EXCLUDE_FROM_ALL
     PresetsTests.cpp
     UiTests.cpp
     HistoryTests.cpp
+    ContrastTests.cpp
+    BackendTests.cpp
+    RandomizerTests.cpp
+    FocusTests.cpp
+    KeyboardTests.cpp
+    OutputTests.cpp
+    SnapshotTests.cpp
     ${PLUGIN_SOURCES}
     ${MSFA_SOURCES})
 

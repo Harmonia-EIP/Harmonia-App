@@ -156,7 +156,12 @@ public:
 private:
     void parameterChanged (const juce::String&, float) override
     {
-        juce::MessageManager::callAsync ([this] { repaint(); });
+        // SafePointer : le composant peut être détruit avant que ce message ne passe
+        juce::MessageManager::callAsync ([safe = juce::Component::SafePointer<juce::Component> (this)]
+        {
+            if (safe != nullptr)
+                safe->repaint();
+        });
     }
 
     float getNorm (const juce::String& id) const

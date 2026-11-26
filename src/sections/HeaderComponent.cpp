@@ -416,7 +416,7 @@ void HeaderComponent::updateModeTexts()
     // Placeholder (textes dans Strings::Placeholders)
     if (refine)
         promptEditor.setHint (Strings::Placeholders::Refine,
-                              HarmoniaPalette::accent.withAlpha (0.80f),
+                              HarmoniaPalette::accent,   // pas de transparence : 4.2:1 en violet sinon
                               true);
     else
         promptEditor.setHint (Strings::Placeholders::Prompt,

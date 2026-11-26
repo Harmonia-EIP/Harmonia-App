@@ -21,7 +21,7 @@ namespace HarmoniaColours
     // Text
     static const juce::Colour textPrimary   { 0xffffffff };
     static const juce::Colour textSubtitle  { 0xff94a3b8 };  // cool grey
-    static const juce::Colour textMuted     { 0xff64748b };
+    static const juce::Colour textMuted     { 0xff7c8ba1 };  // 5.1:1 sur bgMid (64748b : 4.0:1)
 
     // Button fills
     static const juce::Colour btnSignInHover{ 0xff2563eb };

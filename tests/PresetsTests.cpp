@@ -375,7 +375,7 @@ TEST_CASE ("PresetLoader: forme 'values' appliquée dans l'ordre de orderedIds()
     {
         const auto& spec = HarmoniaCharter::params[i];
         INFO (std::string (spec.id));
-        auto* prm = a.getParameter (HarmoniaParamsV3::toJuce (spec.id));
+        auto* prm = a.getParameter (HarmoniaParams::toJuce (spec.id));
         const float expected = HarmoniaCharter::upgradeFromV2Normalized (spec, v2);
         REQUIRE (prm->convertFrom0to1 (prm->getValue()) == Catch::Approx (expected).epsilon (1e-3).margin (1e-3));
     }
@@ -494,7 +494,7 @@ namespace
     {
         Snapshot s;
         for (const auto& spec : HarmoniaCharter::params)
-            s[std::string (spec.id)] = a.getParameter (HarmoniaParamsV3::toJuce (spec.id))->getValue();
+            s[std::string (spec.id)] = a.getParameter (HarmoniaParams::toJuce (spec.id))->getValue();
         return s;
     }
 
@@ -533,7 +533,7 @@ TEST_CASE ("PresetLoader: entrée d'historique v2 convertie comme un fichier v2"
     for (const auto& id : HarmoniaCharter::v2Ids)
     {
         const float v = rng.nextFloat();
-        entry[HarmoniaParamsV3::toJuce (id)] = v;
+        entry[HarmoniaParams::toJuce (id)] = v;
         doc["parameters"][std::string (id)] = v;
     }
 
